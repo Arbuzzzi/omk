@@ -1,0 +1,65 @@
+.menu-horizontal {
+	border-radius: 5px;
+	background-color: #eeefef;
+	// padding: 0 15px;
+	// overflow: hidden;
+	&__list {
+		@include listUnstyle();
+		display: flex;
+		// justify-content: space-around;
+	}
+	&__box {
+		display: table;
+		min-height: 36px;
+		&-more {
+			margin-left: auto;
+		}
+		&:first-child {
+			.menu-horizontal__item {
+				border-top-left-radius: 5px;
+				border-bottom-left-radius: 5px;				
+			}
+		}
+
+		&:last-child {
+			.menu-horizontal__item {
+				border-top-right-radius: 5px;
+				border-bottom-right-radius: 5px;
+				
+			}
+		}
+	}
+	&__item {
+		display: table-cell;
+		vertical-align: middle;
+		padding: 0 15px;
+		text-align: center;
+		color: $dark-color;
+		font-size: 13px;
+		font-weight: 300;
+		transition: 0.4s;
+		color: $dark-color;
+		@include hover {
+			color: $light-color;
+			background-color: #d0d1d3;
+		}
+		&.current {
+			color: $light-color;
+			background-image: linear-gradient(180deg, #797c82 0%, #9a9da1 100%);
+			filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#797c82', endColorstr='#9a9da1',GradientType=0 );
+		}
+		&-more {
+
+			@include hover {
+				color: inherit;
+				background-color: inherit;
+			}
+		}
+	}
+	&__text {
+		text-transform: uppercase;
+		color: inherit;
+		font-size: 13px;
+		font-weight: 500;
+	}
+}

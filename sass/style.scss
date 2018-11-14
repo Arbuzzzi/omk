@@ -1,0 +1,38 @@
+// bootstrap functions-------------------
+
+@import 'bootstrap/_functions.scss';
+@import 'bootstrap/_variables.scss';
+@import 'bootstrap/_mixins.scss';
+
+// smart-grid
+@import 'general/_smart-grid.scss';
+
+// main libs ----------------------------
+@import 'general/_mixin.scss';
+@import 'general/_variables.scss';
+
+
+// fonts --------------------------------
+@import 'fonts/roboto';
+@import 'fonts/pt_serif';
+
+// fonts - icon -------------------------
+@import 'fonts/icon';
+
+// componets ----------------------------
+@import 'bootstrap/_tooltip.scss';
+@import 'bootstrap/_dropdown.scss';
+@import 'bootstrap/_transitions.scss';
+
+// deafult style ------------------------
+@import 'general/_deafult.scss';
+@import 'general/_buttons.scss';
+@import 'general/_form.scss';
+
+// main style ---------------------------
+@import '_header.scss';
+@import '_nav.scss';
+@import '_header-scroll.scss';
+@import '_menu-left.scss';
+@import '_menu-horizontal.scss';
+

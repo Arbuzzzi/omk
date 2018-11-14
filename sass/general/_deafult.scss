@@ -1,0 +1,142 @@
+@import "_variables.scss";
+
+a:hover,
+a:focus,
+a:active,
+a {
+  text-decoration: none;
+}
+
+button,
+a,
+input,
+button:focus,
+input:focus,
+a:focus
+textarea:focus {
+  outline: none;
+}
+a {
+  color: inherit;
+}
+a,
+button,
+label, {
+  cursor: pointer;
+}
+
+a,
+button,
+label,
+input {
+  background-color: transparent;
+  border: none;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  // font-family: 'Gotham Pro', Arial, sans-serif;
+  // transition: 0.5s;
+}
+
+body {
+  font-size: 16px;
+  font-family: 'Roboto', sans-serif;
+  color: $text-color;
+  font-weight: 400;
+}
+
+footer {
+  min-height: 3500px;
+}
+
+img{
+  max-width: 100%;
+}
+
+.hide {
+  display: none;
+}
+
+
+h1, .h1,
+h2, .h2,
+h3, .h3,
+h4, .h4,
+h5, .h5,
+h6, .h6,
+.section-title, 
+.title, {
+  // cursor: default;
+  // @include before() {
+    
+  // }
+}
+
+p, .section-text, .text {
+  color: $text-color;
+  &.text-dark {
+    // color: $text-dark-color;
+  }
+}
+
+
+h2, .section-title {
+  @include sm-block() {
+
+  }
+
+
+  &:after {
+
+  }
+
+  span {
+    color: $title-special-color;
+    @include sm-block() {
+    }
+  }
+}
+
+
+section, .section {
+  @include sm-block() {
+    
+  }
+}
+
+.section_special-bg {
+  &:before, &:after {
+  }
+  &:after {
+  }
+}
+
+.section-dark {
+  background-color: #000;
+
+
+  h2, h1, .section-title, p {
+    color: $light-color;
+  }
+
+
+  .section-title {
+    span {
+    }
+  }
+}
+
+.overlay {
+  // display: none;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #000;
+  opacity: 0.1;
+}

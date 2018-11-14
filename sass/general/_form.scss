@@ -1,0 +1,189 @@
+@import "_variables.scss";
+
+.form { 
+
+	&-search {
+		&__label {
+			display: flex;
+			margin-bottom: 2px;
+			padding: 9px 10px 9px;
+			border: 1px solid #dfdfdf;
+			border-radius: 6px;
+			cursor: text;
+			
+		}
+		&__input {
+			display: block;
+			width: 100%;
+		}
+		&__button {
+
+		}
+	}
+
+	&-inn {
+	}
+
+
+	&-title {
+	}
+
+
+	&-text {
+	}
+
+
+	&-box {
+	}
+
+
+	&-label {
+		display: block;
+	}
+
+
+	&-input {
+		
+		&::placeholder {
+
+			text-indent: 0px; // анимация для placeholder
+			transition: text-indent 400ms; // анимация для placeholder
+		}
+
+		&:focus {
+			&::placeholder {
+				text-indent: 500px; // анимация для placeholder
+			}
+		}
+	}
+
+
+	&-button {
+		padding: 15px 30px;
+		margin-bottom: 21px;
+		width: 100%;
+	}
+	&-checkbox{
+		
+			&__input { // стилизуем checkbox
+				position: absolute;
+				z-index: -1;
+				opacity: 0;
+				margin: 10px 0 0 20px;
+
+
+				&:checked + .form-checkbox__text:after {
+					display: block;
+				}
+				&:disabled + .form-checkbox__text {
+					opacity: 0.3;
+					cursor: not-allowed;
+				}
+			} 
+
+
+		&__text {
+			display: inline-block;
+			position: relative;
+			padding: 0 0 0 22px;
+			color: $dark-color;
+			font-size: 14px;
+			font-weight: 300;
+			cursor: pointer;
+			@include hover {
+				font-weight: 700;
+			}
+
+			&:before { 
+				content: '\e90f';
+				position: absolute;
+				top: 0;
+				left: 0;
+				@include sqwer(12px);
+				border: 1px solid $thin-color;
+				background: transparent;
+				transition: 0.2s;
+				color: #eeefef;
+				@include icon;
+				font-size: 6px;
+				line-height: 9.5px;
+				vertical-align: middle;
+				text-align: center;
+			}
+
+
+			&:after {
+				content: '\e90f';
+				display: none;
+				position: absolute;
+				top: 0;
+				left: 0;
+				@include sqwer(12px);
+				border: 1px solid $thin-color;
+				background-color: $thin-color;
+				transition: 0.2s;
+				@include icon;
+				font-size: 6px;
+				line-height: 9.5px;
+				vertical-align: middle;
+				text-align: center;
+				color: $light-color;
+			}
+			
+			a {
+				color: inherit;
+				text-decoration: underline;
+			}
+
+		}
+		&-button {
+			&-wrap {
+				text-align: right;
+				// padding-right: 10px;
+				margin-bottom: 5px;
+			}
+		}
+	}
+	&-setting {
+		&-button {
+			background-color: #eeefef;
+			font-weight: 300;
+			@include hover {
+				background-color: #eeefef;
+				color: $dark-color;
+				font-weight: 600;
+			}
+		}
+	}
+}
+
+
+
+
+.privacy { 
+	position: relative;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 80px;
+	max-width: 600px;
+	min-width: 240px;
+	padding: 10px;
+	background-color: #fff;
+	h2 {
+		text-align: center;
+		margin-bottom: 20px;
+		font-size: 18px;
+		line-height: 26px;
+		}
+	
+	p {
+		margin-bottom: 10px;
+	}
+}
+
+.label-error, .label-error span {
+	color: $error-color;
+}
+.label-valid {
+	color: $valid-color;
+}

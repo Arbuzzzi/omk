@@ -1,0 +1,114 @@
+@import 'bootstrap/_mixins.scss';
+@import 'general/_variables.scss';
+@import 'general/_mixin.scss';
+
+.container, .row {
+	@include clearfix;
+}
+
+.user {
+	&__name {
+		display: inline-block;
+	}
+	&__avatar {
+		display: inline-block;
+	}
+}
+
+
+.form {
+	&-search {
+		&__input {
+			display: block;
+			width: 93%;
+			float: left;
+			@include clearfix;
+		}
+		&__label {
+			display: block;
+		}
+	}
+}
+
+
+.header {
+	padding-top: 10px;
+	@include clearfix;
+	&-user {
+		display: inline-block;
+		margin-left: 10px;
+		vertical-align: top;
+	}
+	&-logo {
+		margin-bottom: 0;
+		margin-top: 10px;
+	}
+	&-visit {
+		margin-top: 7px;
+	}
+
+	&-info {
+		display: inline-block;
+		vertical-align: top;
+		padding-top: 0;
+	}
+}
+
+.header-nav {
+	&-button {
+		&-inn {
+			display: inline-block;
+			line-height: 45px;
+			vertical-align: middle;
+			float: left;
+			@include clearfix;
+		}
+	}
+	&__link {
+		span {
+			word-break: break-all;
+		}
+	}
+}
+
+.setting {
+	&-form{
+		&-wrap {
+			// display: flex;
+			// flex-wrap: wrap;
+			width: 100%;
+			padding-left: 13px;
+			@include clearfix;
+		}
+		&-checkbox {
+			margin-bottom: 10px;
+			width: 100%;
+			max-width: 33.33333333%;
+			text-align: left;
+			float: left;
+		}
+	}
+}
+.menu-left {
+	&-control {
+		&.active{
+			&:before {
+				content: '\e906';
+				color: $basic-color;
+			}
+		}
+	}
+}
+.menu-horizontal {
+	&__list {
+		@include clearfix;
+	}
+	&__box {
+		float: left;
+		display: table;
+	}
+	&__item {
+		display: table-cell;
+		vertical-align: middle;
+	}
+}
