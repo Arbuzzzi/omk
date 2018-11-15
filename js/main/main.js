@@ -57,12 +57,26 @@ $(document).ready(function() {
 		$(this)[0].setSelectionRange(0, 0);
 	});
 	
+	$('.menuNavHeader__item').on('mouseenter', function(event) {
+		var element = $(event.target).parents('.menuNavHeader__item'),
+				elementControl = $(element.data('target'));
+		if (elementControl.hasClass('collapse')) {
+			elementControl.collapse('show');	
+
+			$(this).on('mouseleave', function(event) {
+				elementControl.collapse('hide');
+			});
+		}
+	});
+	
+	
+
 	function addClassScroll(element, $class) {
 		var position = $(this).scrollTop();
 		if ($class === undefined) {
 			$class = 'scroll';
 		}
-		if (position >= 1) {
+		if (position >= 200) {
 			element.addClass($class);
 		} else {
 			element.removeClass($class);
@@ -75,7 +89,7 @@ $(document).ready(function() {
 		if ($class === undefined) {
 			$class = 'scroll';
 		}
-		if (position >= 1) {
+		if (position >= 200) {
 			element.removeClass($class);
 		} else {
 			element.addClass($class);
@@ -85,7 +99,7 @@ $(document).ready(function() {
 
 	function toggleCollapseScroll(element) {
 		var position = $(this).scrollTop();
-		if (position >= 1) {
+		if (position >= 200) {
 			element.collapse('hide');
 		} else {
 			element.collapse('show');
@@ -96,7 +110,7 @@ $(document).ready(function() {
 
 	function toggleDropdownScroll(element) {
 		var position = $(this).scrollTop();
-		if (position >= 1) {
+		if (position >= 200) {
 			element.attr('data-toggle', 'dropdown');
 			element.find('i').animate({opacity: 'show'}, 400);
 		} else {
@@ -106,53 +120,60 @@ $(document).ready(function() {
 		}
 	}
 
-	addClassScroll($('.header, .menu-left, .menu'));
-	toggleCollapseScroll($('#menuLeftList'));
-	toggleDropdownScroll($('#navMoreListControl'));
-	removeClassScroll($('.menu-left-more__list>li:first-child'), 'hide');
-
+	addClassScroll($('.header'));
 
 	// системы показываются
 	$('#headerNav').on('show.bs.collapse', function () {
-		var btn = $(event.target);
+		var btn = $('#headerNavControl');
 		btn.addClass('active')
 	});
 
 	// системы скрываются
 	$('#headerNav').on('hide.bs.collapse', function () {
-		var btn = $(event.target);
+		var btn = $('#headerNavControl');
 		btn.removeClass('active')
 	});
 
-	var menuLeftItemCurrent = $('#menuLeftItemCurrent'),
-			menuHorizontalCurrent = $('.menu-horizontal__item.current').html();
-	menuLeftItemCurrent.html(menuHorizontalCurrent);
-
+	// скрываем элементы во время скроллинга страницы
 	$(document).on('scroll', function(event) {
 		var position = $(this).scrollTop();
 
-		if (!$('.header').hasClass('.scroll')) {
-			if (!$('#headerNavSetting').hasClass('show')) {
-				addClassScroll($('.header, .menu-left, .menu'));
-				$('.menu-left__list').removeClass('show');
-				$('#headerNav').collapse('hide');
-				$('#headerNavControl').removeClass('active');
-
-				removeClassScroll($('.menu-left-more__list>li:first-child'), 'hide');
-				toggleCollapseScroll($('#menuLeftList'));
-				toggleDropdownScroll($('#navMoreListControl'));
-
-			}
+		if (!$('.header').hasClass('.scroll') && position <= 1000 && !$('#headerNavSetting').hasClass('show')) {
+			addClassScroll($('.header'));
 		}
 
+		if ($('.header').hasClass('scroll')) {
+			$('#headerNav').collapse('hide');
+			$('#headerNavControl').removeClass('active');
+		}
+
+		if ($('.dropdown-menu').hasClass('show')) {
+			$('.dropdown-menu').removeClass('show').dropdown('dispose');
+		}
+
+	});
+
+	// возвращаем пользователя наверх
+	$('#btnToTop').click(function() {
+		var destination = 0;
+		$('html:not(:animated),body:not(:animated)').animate({
+			scrollTop: destination
+		}, 800, function () {
+			$('#headerNav').collapse('show');
+			$('#menuLeftList').collapse('show');
+			
+		});
+		return false;
 	});
 
 	// настройки показываются
 	$('#headerNavSetting').on('show.bs.collapse', function () {
 
 		// инициализация drag & drop
-	  $( "#sortable" ).sortable();
+		$( "#sortable" ).sortable();
 		$( "#sortable" ).disableSelection();
+
+		$('.header').css('transform', 'none');
 
 		$(this).parent().append('<div class="overlay"/>');
 		$('.overlay').animate({opacity: 'show'}, 400);
@@ -167,6 +188,7 @@ $(document).ready(function() {
 
 	// настройки скрываются
 	$('#headerNavSetting').on('hide.bs.collapse', function () {
+		$('.header').css('transform', '');
 		$('.overlay').animate({
 			opacity: 0
 		}, 400, function() {
@@ -284,7 +306,7 @@ $(document).ready(function() {
 
 	// левое меню show 
 	$('#menuLeftList').on('show.bs.collapse', function() {
-		var btn = $(event.target);
+		var btn = $('#menuLeftListControl');
 		
 		btn.addClass('active');
 		$('.menu-left-more__list').removeClass('show');
@@ -295,7 +317,7 @@ $(document).ready(function() {
 
 	// левое меню hide 
 	$('#menuLeftList').on('hide.bs.collapse', function() {
-		var btn = $(event.target);
+		var btn = $('#menuLeftListControl');
 		btn.removeClass('active');
 
 		$('#navMoreListControl').attr('data-toggle', 'dropdown')

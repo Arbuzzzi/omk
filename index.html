@@ -9,7 +9,7 @@
 	<link rel="stylesheet" href="css/bootstrap/bootstrap-grid.css">
 	<link rel="stylesheet" href="jquery-ui-1.12.1.custom/jquery-ui.structure.min.css">
 	<link rel="stylesheet" href="jquery-ui-1.12.1.custom/jquery-ui.min.css">
-	<link href="css/style.css?v0.0.6" rel="stylesheet">
+	<link href="css/style.css?v0.0.7" rel="stylesheet">
 	<title>ОМК</title>
 </head>
 <body>
@@ -18,8 +18,163 @@
 	<div class="container">
 		<div class="header-box">
 			<div class="header-box__logo">
-				<a href="/projects/omk/" class="logo header-logo"><img src="img/logo.png" alt="Logo" class="logo-img"></a>
+				<div class="header-logowrap">
+					<a href="/projects/omk/" class="logo header-logo"><img src="img/logo.png" alt="Logo" class="logo-img"></a>
+				</div>
+
+				<nav class="menuNav menuNav-header">
+					<div class="nav-more menuNav-more menuNavHeader-more btn-group">
+						
+						<button class="button header-button menuNav__button menuNavHeader__button" data-toggle="dropdown" type="button" aria-haspopup="true" aria-expanded="false">новости <i class="icon-arrow-down"></i></button>
+						
+						<ul id="menuNavHeaderGroup" class="nav-more-list menuNav-group menuNavHeader-group dropdown-menu">
+
+							<li class="nav-more-list__item menuNav__item menuNavHeader__item" data-toggle="collapse" data-target="#menuNavHeaderCollaps-1" aria-expanded="false" aria-controls="menuNavHeaderCollaps-1">
+								<a href="#" class="menuNav__textbox menuNavHeader__textbox">
+									<div class="menuNav__text menuNavHeader__text"><span>Новости</span></div>
+								</a>
+
+								<ul id="menuNavHeaderCollaps-1">
+									<li class="nav-more-list__item menuNav__item menuNavHeader__item">
+										<a href="#" class="menuNav__textbox menuNavHeader__textbox">
+											<div class="menuNav__text menuNavHeader__text">НОВОСТИ ОМК</div>
+										</a>
+									</li>
+									<li class="nav-more-list__item menuNav__item menuNavHeader__item">
+										<a href="#" class="menuNav__textbox menuNavHeader__textbox current">
+											<div class="menuNav__text menuNavHeader__text">РЕГИОНАЛЬНЫЕ НОВОСТИ</div>
+										</a>
+									</li>
+									<li class="nav-more-list__item menuNav__item menuNavHeader__item">
+										<a href="#" class="menuNav__textbox menuNavHeader__textbox">
+											<div class="menuNav__text menuNavHeader__text">пс омк</div>
+										</a>
+									</li>
+									<li class="nav-more-list__item menuNav__item menuNavHeader__item">
+										<a href="#" class="menuNav__textbox menuNavHeader__textbox">
+											<div class="menuNav__text menuNavHeader__text">НОВОСТИ ПОДРАЗДЕЛЕНИЙ</div>
+										</a>
+									</li>
+									<li class="nav-more-list__item menuNav__item menuNavHeader__item">
+										<a href="#" class="menuNav__textbox menuNavHeader__textbox">
+											<div class="menuNav__text menuNavHeader__text">НОВОСТИ ФОНДА</div>
+										</a>
+									</li>
+									<li class="nav-more-list__item menuNav__item menuNavHeader__item">
+										<a href="#" class="menuNav__textbox menuNavHeader__textbox">
+											<div class="menuNav__text menuNavHeader__text">БЛОГ</div>
+										</a>
+									</li>
+								</ul>
+							</li>
+
+							<li class="nav-more-list__item menuNav__item menuNavHeader__item" data-toggle="collapse" data-target="#menuNavHeaderCollaps-2" aria-expanded="false" aria-controls="menuNavHeaderCollaps-2">
+								<a href="#" class="menuNav__textbox menuNavHeader__textbox">
+									<div class="menuNav__text menuNavHeader__text"><span>КОМПАНИЯ</span></div>
+								</a>
+
+								<ul id="menuNavHeaderCollaps-2" class="collapse">
+									<li class="nav-more-list__item menuNav__item menuNavHeader__item">
+										<a href="#" class="menuNav__textbox menuNavHeader__textbox">
+											<div class="menuNav__text menuNavHeader__text">КОМПАНИЯ 1</div>
+										</a>
+									</li>
+									<li class="nav-more-list__item menuNav__item menuNavHeader__item">
+										<a href="#" class="menuNav__textbox menuNavHeader__textbox">
+											<div class="menuNav__text menuNavHeader__text">КОМПАНИЯ 2</div>
+										</a>
+									</li>
+									<li class="nav-more-list__item menuNav__item menuNavHeader__item">
+										<a href="#" class="menuNav__textbox menuNavHeader__textbox">
+											<div class="menuNav__text menuNavHeader__text">КОМПАНИЯ 3</div>
+										</a>
+									</li>
+									<li class="nav-more-list__item menuNav__item menuNavHeader__item">
+										<a href="#" class="menuNav__textbox menuNavHeader__textbox">
+											<div class="menuNav__text menuNavHeader__text">КОМПАНИЯ 4</div>
+										</a>
+									</li>
+									<li class="nav-more-list__item menuNav__item menuNavHeader__item">
+										<a href="#" class="menuNav__textbox menuNavHeader__textbox">
+											<div class="menuNav__text menuNavHeader__text">КОМПАНИЯ 5</div>
+										</a>
+									</li>
+									<li class="nav-more-list__item menuNav__item menuNavHeader__item">
+										<a href="#" class="menuNav__textbox menuNavHeader__textbox">
+											<div class="menuNav__text menuNavHeader__text">КОМПАНИЯ 6</div>
+										</a>
+									</li>
+								</ul>
+							</li>
+
+							<li class="nav-more-list__item menuNav__item menuNavHeader__item" data-toggle="collapse" data-target="#menuNavHeaderCollaps-3" aria-expanded="false" aria-controls="menuNavHeaderCollaps-3">
+								<a href="#" class="menuNav__textbox menuNavHeader__textbox">
+									<div class="menuNav__text menuNavHeader__text"><span>СОТРУДНИКАМ</span></div>
+								</a>
+
+								<ul id="menuNavHeaderCollaps-3" class="collapse">
+									<li class="nav-more-list__item menuNav__item menuNavHeader__item">
+										<a href="#" class="menuNav__textbox menuNavHeader__textbox">
+											<div class="menuNav__text menuNavHeader__text">СОТРУДНИКАМ 1</div>
+										</a>
+									</li>
+									<li class="nav-more-list__item menuNav__item menuNavHeader__item">
+										<a href="#" class="menuNav__textbox menuNavHeader__textbox">
+											<div class="menuNav__text menuNavHeader__text">СОТРУДНИКАМ 2</div>
+										</a>
+									</li>
+									<li class="nav-more-list__item menuNav__item menuNavHeader__item">
+										<a href="#" class="menuNav__textbox menuNavHeader__textbox">
+											<div class="menuNav__text menuNavHeader__text">СОТРУДНИКАМ 3</div>
+										</a>
+									</li>
+										</a>
+									</li>
+								</ul>
+							</li>
+
+							<li class="nav-more-list__item menuNav__item menuNavHeader__item">
+								<a href="#" class="menuNav__textbox menuNavHeader__textbox">
+									<div class="menuNav__text menuNavHeader__text"><span>БАТАШЕВСКАЯ ПРЕМИЯ</span></div>
+								</a>
+							</li>
+
+							<li class="nav-more-list__item menuNav__item menuNavHeader__item">
+								<a href="#" class="menuNav__textbox menuNavHeader__textbox">
+									<div class="menuNav__text menuNavHeader__text"><span>ПРОИЗВОДСТВЕННАЯ СИСТЕМА</span></div>
+								</a>
+							</li>
+
+							<li class="nav-more-list__item menuNav__item menuNavHeader__item">
+								<a href="#" class="menuNav__textbox menuNavHeader__textbox">
+									<div class="menuNav__text menuNavHeader__text"><span>БИБЛИОТЕКА</span></div>
+								</a>
+							</li>
+
+							<li class="nav-more-list__item menuNav__item menuNavHeader__item">
+								<a href="#" class="menuNav__textbox menuNavHeader__textbox">
+									<div class="menuNav__text menuNavHeader__text"><span>ГАЛЕРЕЯ</span></div>
+								</a>
+							</li>
+
+							<li class="nav-more-list__item menuNav__item menuNavHeader__item">
+								<a href="#" class="menuNav__textbox menuNavHeader__textbox">
+									<div class="menuNav__text menuNavHeader__text"><span>СПОРТ</span></div>
+								</a>
+							</li>
+
+							<li class="nav-more-list__item menuNav__item menuNavHeader__item">
+								<a href="#" class="menuNav__textbox menuNavHeader__textbox">
+									<div class="menuNav__text menuNavHeader__text"><span>КОНТАКТЫ</span></div>
+								</a>
+							</li>
+						</ul>
+					</div>
+				</nav>
+			
 			</div> 
+
+
 
 			<div class="header-box__qwestion">
 				<div class="qwestion header-qwestion">
@@ -64,7 +219,8 @@
 					</div>
 
 					<div class="header-button-inn button-inn">
-						<button class="header-button button">помощь</button>
+						<button class="header-button button button-help">помощь</button>
+						<button id="btnToTop" class="header-button button button-toTop">Наверх</button>
 						<button id="headerNavControl" class="header-button button active" data-toggle="collapse" data-target="#headerNav" aria-expanded="false" aria-controls="headerNav">Системы</button>
 					</div>
 				</div>
@@ -72,82 +228,79 @@
 		</div>
 		<!-- /.header-box -->
 		
-		<nav class="header-nav">
-			<div id="headerNav" class="header-nav-wrap collapse show">
+		<nav class="headerNavSystem">
+			<div id="headerNav" class="headerNavSystem-wrap collapse show">
 				<div class="row align-items-xl-center">
 					<div class="col-xl-1 align-self-xl-start">
-						<a href="#" class="header-nav__item">
-							<div class="header-nav-icon-box"><i class="icon-book"></i></div>
-							<div class="header-nav__link"><span>DOCS SAP</span></div>
+						<a href="#" class="headerNavSystem__item">
+							<div class="headerNavSystem-icon-box"><i class="icon-book"></i></div>
+							<div class="headerNavSystem__link"><span>DOCS SAP</span></div>
 						</a>
 					</div>
 					<div class="col-xl-1 align-self-xl-start">
-						<a href="#" class="header-nav__item">
-							<div class="header-nav-icon-box"><i class="icon-aircraft"></i></div>
-							<div class="header-nav__link"><span>Реестр МИГ</span></div>
+						<a href="#" class="headerNavSystem__item">
+							<div class="headerNavSystem-icon-box"><i class="icon-aircraft"></i></div>
+							<div class="headerNavSystem__link"><span>Реестр МИГ</span></div>
 						</a>
 					</div>
 					<div class="col-xl-1 align-self-xl-start">
-						<a href="#" class="header-nav__item">
-							<div class="header-nav-icon-box"><i class="icon-barcode"></i></div>
-							<div class="header-nav__link"><span>SAP</span></div>
+						<a href="#" class="headerNavSystem__item">
+							<div class="headerNavSystem-icon-box"><i class="icon-barcode"></i></div>
+							<div class="headerNavSystem__link"><span>SAP</span></div>
 						</a>
 					</div>
 					<div class="col-xl-1 align-self-xl-start">
-						<a href="#" class="header-nav__item">
-							<div class="header-nav-icon-box"><i class="icon-stat"></i></div>
-							<div class="header-nav__link"><span>SAP PHR</span></div>
+						<a href="#" class="headerNavSystem__item">
+							<div class="headerNavSystem-icon-box"><i class="icon-stat"></i></div>
+							<div class="headerNavSystem__link"><span>SAP PHR</span></div>
 						</a>
 					</div>
 					<div class="col-xl-1 align-self-xl-start">
-						<a href="#" class="header-nav__item">
-							<div class="header-nav-icon-box"><i class="icon-production"></i></div>
-							<div class="header-nav__link"><span>SAP PHR</span></div>
+						<a href="#" class="headerNavSystem__item">
+							<div class="headerNavSystem-icon-box"><i class="icon-production"></i></div>
+							<div class="headerNavSystem__link"><span>SAP PHR</span></div>
 						</a>
 					</div>
 					<div class="col-xl-1 align-self-xl-start">
-						<a href="#" class="header-nav__item">
-							<div class="header-nav-icon-box"><i class="icon-chess"></i></div>
-							<div class="header-nav__link"><span>СААРЦ</span></div>
+						<a href="#" class="headerNavSystem__item">
+							<div class="headerNavSystem-icon-box"><i class="icon-chess"></i></div>
+							<div class="headerNavSystem__link"><span>СААРЦ</span></div>
 						</a>
 					</div>
 					<div class="col-xl-1 align-self-xl-start">
-						<a href="#" class="header-nav__item">
-							<div class="header-nav-icon-box"><i class="icon-list"></i></div>
-							<div class="header-nav__link"><span>NORMAL System 102</span></div>
+						<a href="#" class="headerNavSystem__item">
+							<div class="headerNavSystem-icon-box"><i class="icon-list"></i></div>
+							<div class="headerNavSystem__link"><span>NORMAL System 102</span></div>
 						</a>
 					</div>
 					<div class="col-xl-1 align-self-xl-start">
-						<a href="#" class="header-nav__item">
-							<div class="header-nav-icon-box"><i class="icon-box"></i></div>
-							<div class="header-nav__link"><span>Abnormal System 3367</span></div>
+						<a href="#" class="headerNavSystem__item">
+							<div class="headerNavSystem-icon-box"><i class="icon-box"></i></div>
+							<div class="headerNavSystem__link"><span>Abnormal System 3367</span></div>
 						</a>
 					</div>
 					<div class="col-xl-1 align-self-xl-start">
-						<a href="#" class="header-nav__item">
-							<div class="header-nav-icon-box"><i class="icon-production"></i></div>
-							<div class="header-nav__link"><span>Стандарты РосКосмос</span></div>
+						<a href="#" class="headerNavSystem__item">
+							<div class="headerNavSystem-icon-box"><i class="icon-production"></i></div>
+							<div class="headerNavSystem__link"><span>Стандарты РосКосмос</span></div>
 						</a>
 					</div>
 					<div class="col-xl-1 align-self-xl-start">
-						<a href="#" class="header-nav__item">
-							<div class="header-nav-icon-box"><i class="icon-money"></i></div>
-							<div class="header-nav__link"><span>РОСТЕХ</span></div>
+						<a href="#" class="headerNavSystem__item">
+							<div class="headerNavSystem-icon-box"><i class="icon-money"></i></div>
+							<div class="headerNavSystem__link"><span>РОСТЕХ</span></div>
 						</a>
 					</div>
 					<div class="col-xl-2 d-table">
-						<div class="header-nav-button-inn header-button-inn button-inn">
+						<div class="headerNavSystem-button-inn header-button-inn button-inn">
 							<div class="nav-more btn-group">
-								<!-- <button class="button header-button header-nav-button" data-nav-control="headerNavMore" data-hide="true">Ещё <i class="icon-arrow-down"></i></button> -->
-									<button 
-										id="headerNavMore" 
-										class="button header-button header-nav-button" 
-										type="button" 
-										data-toggle="dropdown" 
-										aria-haspopup="true" 
-										aria-expanded="false">
-
-										Ещё <i class="icon-arrow-down"></i>
+								<button 
+												id="headerNavMore" 
+												class="button header-button headerNavSystem-button" 
+												type="button" 
+												data-toggle="dropdown" 
+												aria-haspopup="true" 
+												aria-expanded="false">Ещё <i class="icon-arrow-down"></i>
 								</button>
 								<ul class="nav-more-list dropdown-menu dropdown-menu-right">
 									<li class="nav-more-list__item"><a href="#" class="link link-nav nav-more-list__link">Стандарты РосКосмос</a></li>
@@ -161,7 +314,7 @@
 								</ul>
 							</div>
 								
-							<button id="headerNavSettingControl" class="button header-button header-nav-button" type="button" data-toggle="collapse" data-target="#headerNavSetting" aria-expanded="false" aria-controls="headerNavSetting">Настройка</button>
+							<button id="headerNavSettingControl" class="button header-button headerNavSystem-button" type="button" data-toggle="collapse" data-target="#headerNavSetting" aria-expanded="false" aria-controls="headerNavSetting">Настройка</button>
 						</div>
 					</div>
 					<!-- /.col-xl-2 -->
@@ -171,142 +324,142 @@
 							<div class="nav-setting__items">
 								<div id="sortable" class="nav-setting-wrap">
 									<div class="ui-state-default nav-setting__item-inn" data-control="formCheckbox-0">
-										<div class="header-nav__item nav-setting__item">
-											<div class="header-nav-icon-box"><i class="icon-book"></i></div>
-											<div class="header-nav__link"><span>DOCS SAP</span></div>
+										<div class="headerNavSystem__item nav-setting__item">
+											<div class="headerNavSystem-icon-box"><i class="icon-book"></i></div>
+											<div class="headerNavSystem__link"><span>DOCS SAP</span></div>
 										</div>
 									</div>
 
 									<div class="ui-state-default nav-setting__item-inn" data-control="formCheckbox-1">
-										<div class="header-nav__item nav-setting__item">
-											<div class="header-nav-icon-box"><i class="icon-aircraft"></i></div>
-											<div class="header-nav__link"><span>NORMAL System 102</span></div>
+										<div class="headerNavSystem__item nav-setting__item">
+											<div class="headerNavSystem-icon-box"><i class="icon-aircraft"></i></div>
+											<div class="headerNavSystem__link"><span>NORMAL System 102</span></div>
 										</div>
 									</div>
 
 									<div class="ui-state-default nav-setting__item-inn" data-control="formCheckbox-2">
-										<div class="header-nav__item nav-setting__item">
-											<div class="header-nav-icon-box"><i class="icon-barcode"></i></div>
-											<div class="header-nav__link"><span>SAP Super Tasks</span></div>
+										<div class="headerNavSystem__item nav-setting__item">
+											<div class="headerNavSystem-icon-box"><i class="icon-barcode"></i></div>
+											<div class="headerNavSystem__link"><span>SAP Super Tasks</span></div>
 										</div>
 									</div>
 
 									<div class="ui-state-default nav-setting__item-inn" data-control="formCheckbox-3">
-										<div class="header-nav__item nav-setting__item">
-											<div class="header-nav-icon-box"><i class="icon-stat"></i></div>
-											<div class="header-nav__link"><span>Реестр МИГ</span></div>
+										<div class="headerNavSystem__item nav-setting__item">
+											<div class="headerNavSystem-icon-box"><i class="icon-stat"></i></div>
+											<div class="headerNavSystem__link"><span>Реестр МИГ</span></div>
 										</div>
 									</div>
 
 									<div class="ui-state-default nav-setting__item-inn" data-control="formCheckbox-4">
-										<div class="header-nav__item nav-setting__item">
-											<div class="header-nav-icon-box"><i class="icon-production"></i></div>
-											<div class="header-nav__link"><span>Стандарты РосКосмос</span></div>
+										<div class="headerNavSystem__item nav-setting__item">
+											<div class="headerNavSystem-icon-box"><i class="icon-production"></i></div>
+											<div class="headerNavSystem__link"><span>Стандарты РосКосмос</span></div>
 										</div>
 									</div>
 
 									<div class="ui-state-default nav-setting__item-inn" data-control="formCheckbox-5">
-										<div class="header-nav__item nav-setting__item">
-											<div class="header-nav-icon-box"><i class="icon-chess"></i></div>
-											<div class="header-nav__link"><span>Производственные</span></div>
+										<div class="headerNavSystem__item nav-setting__item">
+											<div class="headerNavSystem-icon-box"><i class="icon-chess"></i></div>
+											<div class="headerNavSystem__link"><span>Производственные</span></div>
 										</div>
 									</div>
 
 									<div class="ui-state-default nav-setting__item-inn" data-control="formCheckbox-6">
-										<div class="header-nav__item nav-setting__item">
-											<div class="header-nav-icon-box"><i class="icon-list"></i></div>
-											<div class="header-nav__link"><span>SAP</span></div>
+										<div class="headerNavSystem__item nav-setting__item">
+											<div class="headerNavSystem-icon-box"><i class="icon-list"></i></div>
+											<div class="headerNavSystem__link"><span>SAP</span></div>
 										</div>
 									</div>
 
 									<div class="ui-state-default nav-setting__item-inn" data-control="formCheckbox-7">
-										<div class="header-nav__item nav-setting__item">
-											<div class="header-nav-icon-box"><i class="icon-box"></i></div>
-											<div class="header-nav__link"><span>Abnormal System&nbsp;3367</span></div>
+										<div class="headerNavSystem__item nav-setting__item">
+											<div class="headerNavSystem-icon-box"><i class="icon-box"></i></div>
+											<div class="headerNavSystem__link"><span>Abnormal System&nbsp;3367</span></div>
 										</div>
 									</div>
 
 									<div class="ui-state-default nav-setting__item-inn" data-control="formCheckbox-8">
-										<div class="header-nav__item nav-setting__item">
-											<div class="header-nav-icon-box"><i class="icon-production"></i></div>
-											<div class="header-nav__link"><span>Системы Всех Систем</span></div>
+										<div class="headerNavSystem__item nav-setting__item">
+											<div class="headerNavSystem-icon-box"><i class="icon-production"></i></div>
+											<div class="headerNavSystem__link"><span>Системы Всех Систем</span></div>
 										</div>
 									</div>
 
 									<div class="ui-state-default nav-setting__item-inn" data-control="formCheckbox-9">
-										<div class="header-nav__item nav-setting__item">
-											<div class="header-nav-icon-box"><i class="icon-money"></i></div>
-											<div class="header-nav__link"><span>SAP PHR</span></div>
+										<div class="headerNavSystem__item nav-setting__item">
+											<div class="headerNavSystem-icon-box"><i class="icon-money"></i></div>
+											<div class="headerNavSystem__link"><span>SAP PHR</span></div>
 										</div>
 									</div>
 
 									<div class="ui-state-default nav-setting__item-inn" data-control="formCheckbox-10">
-										<div class="header-nav__item nav-setting__item">
-											<div class="header-nav-icon-box"><i class="icon-book"></i></div>
-											<div class="header-nav__link"><span>РОСТЕХ</span></div>
+										<div class="headerNavSystem__item nav-setting__item">
+											<div class="headerNavSystem-icon-box"><i class="icon-book"></i></div>
+											<div class="headerNavSystem__link"><span>РОСТЕХ</span></div>
 										</div>
 									</div>
 
 									<div class="ui-state-default nav-setting__item-inn" data-control="formCheckbox-11">
-										<div class="header-nav__item nav-setting__item">
-											<div class="header-nav-icon-box"><i class="icon-aircraft"></i></div>
-											<div class="header-nav__link"><span>Логистика</span></div>
+										<div class="headerNavSystem__item nav-setting__item">
+											<div class="headerNavSystem-icon-box"><i class="icon-aircraft"></i></div>
+											<div class="headerNavSystem__link"><span>Логистика</span></div>
 										</div>
 									</div>
 
 									<div class="ui-state-default nav-setting__item-inn" data-control="formCheckbox-12">
-										<div class="header-nav__item nav-setting__item">
-											<div class="header-nav-icon-box"><i class="icon-barcode"></i></div>
-											<div class="header-nav__link"><span>SAP PHR</span></div>
+										<div class="headerNavSystem__item nav-setting__item">
+											<div class="headerNavSystem-icon-box"><i class="icon-barcode"></i></div>
+											<div class="headerNavSystem__link"><span>SAP PHR</span></div>
 										</div>
 									</div>
 
 									<div class="ui-state-default nav-setting__item-inn" data-control="formCheckbox-13">
-										<div class="header-nav__item nav-setting__item">
-											<div class="header-nav-icon-box"><i class="icon-stat"></i></div>
-											<div class="header-nav__link"><span>Стандарты РосКосмос</span></div>
+										<div class="headerNavSystem__item nav-setting__item">
+											<div class="headerNavSystem-icon-box"><i class="icon-stat"></i></div>
+											<div class="headerNavSystem__link"><span>Стандарты РосКосмос</span></div>
 										</div>
 									</div>
 
 									<div class="ui-state-default nav-setting__item-inn" data-control="formCheckbox-14">
-										<div class="header-nav__item nav-setting__item">
-											<div class="header-nav-icon-box"><i class="icon-production"></i></div>
-											<div class="header-nav__link"><span>SAP SSH</span></div>
+										<div class="headerNavSystem__item nav-setting__item">
+											<div class="headerNavSystem-icon-box"><i class="icon-production"></i></div>
+											<div class="headerNavSystem__link"><span>SAP SSH</span></div>
 										</div>
 									</div>
 
 									<div class="ui-state-default nav-setting__item-inn" data-control="formCheckbox-15">
-										<div class="header-nav__item nav-setting__item">
-											<div class="header-nav-icon-box"><i class="icon-chess"></i></div>
-											<div class="header-nav__link"><span>СААРЦ</span></div>
+										<div class="headerNavSystem__item nav-setting__item">
+											<div class="headerNavSystem-icon-box"><i class="icon-chess"></i></div>
+											<div class="headerNavSystem__link"><span>СААРЦ</span></div>
 										</div>
 									</div>
 
 									<div class="ui-state-default nav-setting__item-inn" data-control="formCheckbox-16">
-										<div class="header-nav__item nav-setting__item">
-											<div class="header-nav-icon-box"><i class="icon-list"></i></div>
-											<div class="header-nav__link"><span>Газпром Системы</span></div>
+										<div class="headerNavSystem__item nav-setting__item">
+											<div class="headerNavSystem-icon-box"><i class="icon-list"></i></div>
+											<div class="headerNavSystem__link"><span>Газпром Системы</span></div>
 										</div>
 									</div>
 
 									<div class="ui-state-default nav-setting__item-inn" data-control="formCheckbox-17">
-										<div class="header-nav__item nav-setting__item">
-											<div class="header-nav-icon-box"><i class="icon-box"></i></div>
-											<div class="header-nav__link"><span>Больше систем</span></div>
+										<div class="headerNavSystem__item nav-setting__item">
+											<div class="headerNavSystem-icon-box"><i class="icon-box"></i></div>
+											<div class="headerNavSystem__link"><span>Больше систем</span></div>
 										</div>
 									</div>
 
 									<!-- <div class="ui-state-default nav-setting__item-inn" data-control="formCheckbox-18">
-										<div class="header-nav__item nav-setting__item">
-											<div class="header-nav-icon-box"><i class="icon-production"></i></div>
-											<div class="header-nav__link"><span>Стандарты РосКосмос</span></div>
+										<div class="headerNavSystem__item nav-setting__item">
+											<div class="headerNavSystem-icon-box"><i class="icon-production"></i></div>
+											<div class="headerNavSystem__link"><span>Стандарты РосКосмос</span></div>
 										</div>
 									</div> -->
 
 									<!-- <div class="ui-state-default nav-setting__item-inn" data-control="formCheckbox-19">
-										<div class="header-nav__item nav-setting__item">
-											<div class="header-nav-icon-box"><i class="icon-money"></i></div>
-											<div class="header-nav__link"><span>РОСТЕХ</span></div>
+										<div class="headerNavSystem__item nav-setting__item">
+											<div class="headerNavSystem-icon-box"><i class="icon-money"></i></div>
+											<div class="headerNavSystem__link"><span>РОСТЕХ</span></div>
 										</div>
 									</div> -->
 								
@@ -446,7 +599,7 @@
 											<span class="form-checkbox__text setting-form-checkbox__text">Больше систем</span>
 										</label>
 									</div>
-		
+
 								</div>
 								<div class="form-checkbox-button-wrap">
 									<button type="reset" class="button form-setting-button" data-toggle="collapse" data-target="#headerNavSetting">Отмена</button>
@@ -459,9 +612,9 @@
 				</div>
 				<!-- /.row -->
 			</div>
-			<!-- /.header-nav-wrap -->
-		</nav> 
-		<!-- /.header-nav -->
+			<!-- /.headerNavSystem-wrap -->
+		</nav>
+		<!-- /.headerNavSystem -->
 
 	</div>
 	<!--/.container -->
@@ -478,15 +631,9 @@
 									<!-- <h3 class="menu-left-title">НОВОСТИ</h3> -->
 									<div class="nav-more menu-left-more btn-group">
 										
-										<button id="navMoreListControl" class="button header-button header-nav-button menu-left-more__button" type="button" aria-haspopup="true" aria-expanded="false">ПРОИЗВОДСТВЕННАЯ СИСТЕМА <i class="icon-arrow-down"></i></button>
+										<button id="navMoreListControl" class="button header-button headerNavSystem-button menu-left-more__button" type="button" aria-haspopup="true" aria-expanded="false">ПРОИЗВОДСТВЕННАЯ СИСТЕМА <i class="icon-arrow-down"></i></button>
 										
 										<ul class="nav-more-list menu-left-more__list dropdown-menu">
-
-											<li class="nav-more-list__item menu-left-more__box menu-left__box">
-												<a href="#" class="menu-left__item menu-left-more__item">
-													<div class="menu-left__text menu-left-more__link"><span>Новости</span></div>
-												</a>
-											</li>
 
 											<li class="nav-more-list__item menu-left-more__box menu-left__box">
 												<a href="#" class="menu-left__item menu-left-more__item">
@@ -510,30 +657,6 @@
 												<a href="#" class="menu-left__item menu-left-more__item">
 													<div class="menu-left__text menu-left-more__link"><span>ПРОИЗВОДСТВЕННАЯ СИСТЕМА</span></div>
 												</a>
-
-												<ul>
-													<li class="nav-more-list__item menu-left-more__box menu-left__box">
-														<a href="#" class="menu-left__item menu-left-more__item">
-															<div class="menu-left__text menu-left-more__link">НОВОСТИ ОМК</div>
-														</a>
-													</li>
-													<li class="nav-more-list__item menu-left-more__box menu-left__box">
-														<a href="#" class="menu-left__item menu-left-more__item current">
-															<div class="menu-left__text menu-left-more__link">РЕГИОНАЛЬНЫЕ НОВОСТИ</div>
-														</a>
-													</li>
-													<li class="nav-more-list__item menu-left-more__box menu-left__box">
-														<a href="#" class="menu-left__item menu-left-more__item">
-															<div class="menu-left__text menu-left-more__link">новости о НОВОСТях</div>
-														</a>
-													</li>
-													<li class="nav-more-list__item menu-left-more__box menu-left__box">
-														<a href="#" class="menu-left__item menu-left-more__item">
-															<div class="menu-left__text menu-left-more__link">НОВОСТИ ФОНДА</div>
-														</a>
-													</li>
-												</ul>
-
 											</li>
 
 											<li class="nav-more-list__item menu-left-more__box menu-left__box">
@@ -562,7 +685,7 @@
 										</ul>
 									</div>
 
-									<button class="menu-left-control active" type="button" data-toggle="collapse" data-target="#menuLeftList" aria-expanded="false" aria-controls="menuLeftList"></button>
+									<button id="menuLeftListControl" class="menu-left-control active" type="button" data-toggle="collapse" data-target="#menuLeftList" aria-expanded="false" aria-controls="menuLeftList"></button>
 								</div>
 
 								<div id="menuLeftItemCurrent" class="menu-left__item menu-left__item-current"></div>
@@ -654,7 +777,7 @@
 						<li class="menu-horizontal__box menu-horizontal__box-more">
 							<div class="menu-horizontal__item menu-horizontal__item-more">
 								<div class="nav-more btn-group">
-									<button class="button header-button header-nav-button" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Ещё <i class="icon-arrow-down"></i></button>
+									<button class="button header-button headerNavSystem-button" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Ещё <i class="icon-arrow-down"></i></button>
 									<ul class="nav-more-list dropdown-menu dropdown-menu-right">
 										<li class="nav-more-list__item"><a href="#" class="link link-nav nav-more-list__link">Стандартные новости</a></li>
 										<li class="nav-more-list__item"><a href="#" class="link link-nav nav-more-list__link">Газпром новости</a></li>
@@ -702,11 +825,11 @@
 <script src="js/libs/jquery.maskedinput.min.js"></script>
 
 <!-- main script -->
-<script src="js/main/main.js?v0.0.6"></script>
+<script src="js/main/main.js?v0.0.7"></script>
 
 <!--[if lte IE 9]>
 	<link href="ie9/css/bootstrap-ie9.css" rel="stylesheet">
-	<link rel="stylesheet" href="ie9/css/style-ie9.css?v0.0.6">
+	<link rel="stylesheet" href="ie9/css/style-ie9.css?v0.0.7">
 	<script src="ie9/js/bootstrap-ie9.js"></script>
 <![endif]-->
 </body>

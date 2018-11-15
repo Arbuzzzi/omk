@@ -96,6 +96,8 @@
 		}
 	}
 	&-more {
+		display: table-cell;
+		vertical-align: middle;
 		width: 100%;
 		&__button {
 			text-align: left;
