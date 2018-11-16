@@ -1,3 +1,84 @@
+.headerNavSystem {
+	// display: none;
+	position: relative;
+	max-width: 1200px;
+	margin-left: -15px;
+	margin-right: -15px;
+	// @include mA();
+
+	&-wrap {
+		position: relative;
+		margin-top: 5px;
+		padding: 5px 15px 4px;
+		background-image: linear-gradient(180deg, #e4e4e4 0%, rgba(212, 212, 212, 0.24) 22%, #ececec 100%);
+		filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e4e4e4', endColorstr='#ececec',GradientType=0 );
+		background-color: #fff;
+		border-radius: 5px;
+		text-align: center;
+		@include after("\e90e") {
+			top: -9px;
+			right: 47px;
+			font-size: 10px;
+			@include icon;
+			color: #e4e4e4;
+		}
+	}
+	&__item {
+		color: $thin-color;
+		transition: 0.5s;
+		@include hover {
+			color: $special-color;
+		}
+		i:before {
+			color: inherit;
+			font-size: 19px;
+		}
+	}
+
+	&__link {
+		// display: table-cell;
+		// vertical-align: middle;
+		display: table;
+		min-height: 22px;
+		font-size: 10px;
+		color: inherit;
+		width: 100%;
+		text-align: center;
+		span {
+			display: block;
+			display: table-cell;
+			vertical-align: middle;
+			line-height: 10px;
+			word-break: break-word;
+			
+		}
+	}
+	&-icon-box {
+		// margin-bottom: 2px;
+	}
+	&-button {
+		background-color: transparent;
+		color: #797C82;
+		@include hover {
+			background-color: rgba($dark-color, 0.5);
+			background-color: #FFFFFF;
+			color: #797C82;
+		}
+		&-inn {
+			height: 100%;
+			margin-left: -3px;
+			margin-top: -2px;
+		}
+		i {
+			margin-left: 2px;
+			font-size: 10px;
+			&:before {
+				color: #BCBDC0;
+			}
+		}
+	}
+}
+
 .nav-setting {
 	// display: none;
 	position: absolute;
@@ -119,6 +200,7 @@
 }
 
 .menuNav {
+	position: relative;
 	display: inline-block;
 	&-header {
 		display: none;
@@ -148,10 +230,12 @@
 	}
 	&-group {
 		@include listUnstyle(); 
+		position: absolute;
 		max-width: none;
 		padding: 0;
 		border: 1px solid #dfdfdf;
 		background-color: $light-color;
+		min-width: 255px;
 		ul {
 			@include listUnstyle();
 
@@ -168,6 +252,7 @@
 		}
 	}
 	&__item {
+		position: relative;
 		margin-bottom: 0;
 		&:first-child {
 			.menuNav__textbox {
@@ -184,6 +269,7 @@
 		}
 	}
 	&__textbox {
+
 		display: table;
 		min-height: 26px;
 		width: 100%;
@@ -198,7 +284,8 @@
 		}
 		&.current {
 			background-color: #bcbdc0;
-			background-image: linear-gradient(180deg, #797c82 0%, rgba(137, 140, 145, 0.74) 74%, #9a9da1 100%);
+			color: $light-color;
+			background-image: linear-gradient(180deg, #797c82 0%, #9a9da1 100%);
 			filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#797c82', endColorstr='#9a9da1',GradientType=0 );
 			color: $light-color;
 		}

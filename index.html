@@ -9,7 +9,7 @@
 	<link rel="stylesheet" href="css/bootstrap/bootstrap-grid.css">
 	<link rel="stylesheet" href="jquery-ui-1.12.1.custom/jquery-ui.structure.min.css">
 	<link rel="stylesheet" href="jquery-ui-1.12.1.custom/jquery-ui.min.css">
-	<link href="css/style.css?v0.0.7" rel="stylesheet">
+	<link href="css/style.css?v0.0.8" rel="stylesheet">
 	<title>ОМК</title>
 </head>
 <body>
@@ -22,19 +22,20 @@
 					<a href="/projects/omk/" class="logo header-logo"><img src="img/logo.png" alt="Logo" class="logo-img"></a>
 				</div>
 
-				<nav class="menuNav menuNav-header">
-					<div class="nav-more menuNav-more menuNavHeader-more btn-group">
+				<nav id="menuNavMore" class="menuNav menuNav-header">
+					<div class="nav-more menuNav-more menuNavHeader-more">
 						
-						<button class="button header-button menuNav__button menuNavHeader__button" data-toggle="dropdown" type="button" aria-haspopup="true" aria-expanded="false">новости <i class="icon-arrow-down"></i></button>
+						<button class="button header-button menuNav__button menuNavHeader__button" data-toggle="collapse" data-target="#menuNavHeaderGroup" type="button" aria-haspopup="true" aria-expanded="false">РЕГИОНАЛЬНЫЕ НОВОСТИ <i class="icon-arrow-down"></i></button>
 						
-						<ul id="menuNavHeaderGroup" class="nav-more-list menuNav-group menuNavHeader-group dropdown-menu">
+						<ul id="menuNavHeaderGroup" class="nav-more-list menuNav-group menuNavHeader-group collapse">
 
 							<li class="nav-more-list__item menuNav__item menuNavHeader__item" data-toggle="collapse" data-target="#menuNavHeaderCollaps-1" aria-expanded="false" aria-controls="menuNavHeaderCollaps-1">
-								<a href="#" class="menuNav__textbox menuNavHeader__textbox">
-									<div class="menuNav__text menuNavHeader__text"><span>Новости</span></div>
-								</a>
+								<div class="menuNav__textbox menuNavHeader__textbox">
+									<a href="#" class="menuNav__text menuNavHeader__text"><span>Новости</span></a>
+									<button class="button-split" data-toggle="collapse" data-target="#menuNavHeaderCollaps-1" aria-expanded="false" aria-controls="menuNavHeaderCollaps-1"><i class="icon-arrow-down"></i></button>
+								</div>
 
-								<ul id="menuNavHeaderCollaps-1">
+								<ul id="menuNavHeaderCollaps-1" data-parent="#menuNavMore" class="collapse show">
 									<li class="nav-more-list__item menuNav__item menuNavHeader__item">
 										<a href="#" class="menuNav__textbox menuNavHeader__textbox">
 											<div class="menuNav__text menuNavHeader__text">НОВОСТИ ОМК</div>
@@ -68,12 +69,13 @@
 								</ul>
 							</li>
 
-							<li class="nav-more-list__item menuNav__item menuNavHeader__item" data-toggle="collapse" data-target="#menuNavHeaderCollaps-2" aria-expanded="false" aria-controls="menuNavHeaderCollaps-2">
-								<a href="#" class="menuNav__textbox menuNavHeader__textbox">
-									<div class="menuNav__text menuNavHeader__text"><span>КОМПАНИЯ</span></div>
-								</a>
+							<li class="nav-more-list__item menuNav__item menuNavHeader__item">
+								<div  class="menuNav__textbox menuNavHeader__textbox dropdown-toggle-split">
+									<a href="#" class="menuNav__text menuNavHeader__text"><span>КОМПАНИЯ</span></a>
+									<button class="button-split" data-toggle="collapse" data-target="#menuNavHeaderCollaps-2" aria-expanded="false" aria-controls="menuNavHeaderCollaps-2"><i class="icon-arrow-down"></i></button>
+								</div>
 
-								<ul id="menuNavHeaderCollaps-2" class="collapse">
+								<ul id="menuNavHeaderCollaps-2" class="collapse" data-parent="#menuNavMore">
 									<li class="nav-more-list__item menuNav__item menuNavHeader__item">
 										<a href="#" class="menuNav__textbox menuNavHeader__textbox">
 											<div class="menuNav__text menuNavHeader__text">КОМПАНИЯ 1</div>
@@ -108,11 +110,12 @@
 							</li>
 
 							<li class="nav-more-list__item menuNav__item menuNavHeader__item" data-toggle="collapse" data-target="#menuNavHeaderCollaps-3" aria-expanded="false" aria-controls="menuNavHeaderCollaps-3">
-								<a href="#" class="menuNav__textbox menuNavHeader__textbox">
-									<div class="menuNav__text menuNavHeader__text"><span>СОТРУДНИКАМ</span></div>
-								</a>
+								<div class="menuNav__textbox menuNavHeader__textbox">
+									<a href="#" class="menuNav__text menuNavHeader__text"><span>СОТРУДНИКАМ</span></a>
+									<button class="button-split" data-toggle="collapse" data-target="#menuNavHeaderCollaps-3" aria-expanded="false" aria-controls="menuNavHeaderCollaps-3"><i class="icon-arrow-down"></i></button>
+								</div>
 
-								<ul id="menuNavHeaderCollaps-3" class="collapse">
+								<ul id="menuNavHeaderCollaps-3" class="collapse" data-parent="#menuNavMore">
 									<li class="nav-more-list__item menuNav__item menuNavHeader__item">
 										<a href="#" class="menuNav__textbox menuNavHeader__textbox">
 											<div class="menuNav__text menuNavHeader__text">СОТРУДНИКАМ 1</div>
@@ -134,39 +137,39 @@
 							</li>
 
 							<li class="nav-more-list__item menuNav__item menuNavHeader__item">
-								<a href="#" class="menuNav__textbox menuNavHeader__textbox">
-									<div class="menuNav__text menuNavHeader__text"><span>БАТАШЕВСКАЯ ПРЕМИЯ</span></div>
-								</a>
+								<div class="menuNav__textbox menuNavHeader__textbox">
+									<a href="#" class="menuNav__text menuNavHeader__text"><span>БАТАШЕВСКАЯ ПРЕМИЯ</span></a>
+								</div>
 							</li>
 
 							<li class="nav-more-list__item menuNav__item menuNavHeader__item">
-								<a href="#" class="menuNav__textbox menuNavHeader__textbox">
-									<div class="menuNav__text menuNavHeader__text"><span>ПРОИЗВОДСТВЕННАЯ СИСТЕМА</span></div>
-								</a>
+								<div class="menuNav__textbox menuNavHeader__textbox">
+									<a href="#" class="menuNav__text menuNavHeader__text"><span>ПРОИЗВОДСТВЕННАЯ СИСТЕМА</span></a>
+								</div>
 							</li>
 
 							<li class="nav-more-list__item menuNav__item menuNavHeader__item">
-								<a href="#" class="menuNav__textbox menuNavHeader__textbox">
-									<div class="menuNav__text menuNavHeader__text"><span>БИБЛИОТЕКА</span></div>
-								</a>
+								<div class="menuNav__textbox menuNavHeader__textbox">
+									<a href="#" class="menuNav__text menuNavHeader__text"><span>БИБЛИОТЕКА</span></a>
+								</div>
 							</li>
 
 							<li class="nav-more-list__item menuNav__item menuNavHeader__item">
-								<a href="#" class="menuNav__textbox menuNavHeader__textbox">
-									<div class="menuNav__text menuNavHeader__text"><span>ГАЛЕРЕЯ</span></div>
-								</a>
+								<div class="menuNav__textbox menuNavHeader__textbox">
+									<a href="#" class="menuNav__text menuNavHeader__text"><span>ГАЛЕРЕЯ</span></a>
+								</div>
 							</li>
 
 							<li class="nav-more-list__item menuNav__item menuNavHeader__item">
-								<a href="#" class="menuNav__textbox menuNavHeader__textbox">
-									<div class="menuNav__text menuNavHeader__text"><span>СПОРТ</span></div>
-								</a>
+								<div class="menuNav__textbox menuNavHeader__textbox">
+									<a href="#" class="menuNav__text menuNavHeader__text"><span>СПОРТ</span></a>
+								</div>
 							</li>
 
 							<li class="nav-more-list__item menuNav__item menuNavHeader__item">
-								<a href="#" class="menuNav__textbox menuNavHeader__textbox">
-									<div class="menuNav__text menuNavHeader__text"><span>КОНТАКТЫ</span></div>
-								</a>
+								<div class="menuNav__textbox menuNavHeader__textbox">
+									<a href="#" class="menuNav__text menuNavHeader__text"><span>КОНТАКТЫ</span></a>
+								</div>
 							</li>
 						</ul>
 					</div>
@@ -220,8 +223,9 @@
 
 					<div class="header-button-inn button-inn">
 						<button class="header-button button button-help">помощь</button>
-						<button id="btnToTop" class="header-button button button-toTop">Наверх</button>
 						<button id="headerNavControl" class="header-button button active" data-toggle="collapse" data-target="#headerNav" aria-expanded="false" aria-controls="headerNav">Системы</button>
+						<button id="btnDeploy" class="header-button button button-deploy">Развернуть</button> 
+						<!-- <button id="btnToTop" class="header-button button button-toTop">Наверх</button> -->
 					</div>
 				</div>
 			</div>
@@ -608,18 +612,29 @@
 							</form>
 						</div>
 					</div>				
-					
 				</div>
 				<!-- /.row -->
 			</div>
 			<!-- /.headerNavSystem-wrap -->
 		</nav>
 		<!-- /.headerNavSystem -->
-
+		<div class="row">
+			<div class="col-xl-9 offset-xl-3">
+				<div class="breadcrumb">
+					<div class="breadcrumb-group">
+						<a href="#" class="breadcrumb__link">Главная</a>
+						<a href="#" class="breadcrumb__link">Новости</a>						
+					</div>
+					<div class="breadcrumb-back">
+						<a href="#" class="breadcrumb__link"><<Назад</a>	
+					</div>
+				</div>
+			</div>
+		</div>
 	</div>
 	<!--/.container -->
 </header>
-<section class="menu section">
+<section class="content section">
 	<div class="container">
 		<div class="row">
 			<div class="col-xl-3">
@@ -631,7 +646,7 @@
 									<!-- <h3 class="menu-left-title">НОВОСТИ</h3> -->
 									<div class="nav-more menu-left-more btn-group">
 										
-										<button id="navMoreListControl" class="button header-button headerNavSystem-button menu-left-more__button" type="button" aria-haspopup="true" aria-expanded="false">ПРОИЗВОДСТВЕННАЯ СИСТЕМА <i class="icon-arrow-down"></i></button>
+										<button id="navMoreListControl" class="button header-button headerNavSystem-button menu-left-more__button" type="button" aria-haspopup="true" aria-expanded="false">Новости <i class="icon-arrow-down"></i></button>
 										
 										<ul class="nav-more-list menu-left-more__list dropdown-menu">
 
@@ -793,6 +808,16 @@
 						</li>
 					</ul>
 				</nav>
+				<div class="breadcrumb">
+					<div class="breadcrumb-group">
+						<a href="#" class="breadcrumb__link">Главная</a>
+						<a href="#" class="breadcrumb__link">Новости</a>						
+					</div>
+					<div class="breadcrumb-back">
+						<a href="#" class="breadcrumb__link"><<Назад</a>	
+					</div>
+				</div>
+					
 				<div class="box" style="height: 410px;margin: 10px 0;background-color: #aaa;"></div>
 				<div class="box" style="height: 200px;margin: 10px 0;background-color: #888;"></div>
 				<div class="box" style="height: 410px;margin: 10px 0;background-color: #000;"></div>
@@ -825,11 +850,11 @@
 <script src="js/libs/jquery.maskedinput.min.js"></script>
 
 <!-- main script -->
-<script src="js/main/main.js?v0.0.7"></script>
+<script src="js/main/main.js?v0.0.8"></script>
 
 <!--[if lte IE 9]>
 	<link href="ie9/css/bootstrap-ie9.css" rel="stylesheet">
-	<link rel="stylesheet" href="ie9/css/style-ie9.css?v0.0.7">
+	<link rel="stylesheet" href="ie9/css/style-ie9.css?v0.0.8">
 	<script src="ie9/js/bootstrap-ie9.js"></script>
 <![endif]-->
 </body>

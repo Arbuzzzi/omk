@@ -79,6 +79,26 @@
 		text-align: center;
 	}
 }
+// dropdown
+.button-split {
+	position: absolute;
+	top: 0;
+	right: 0;
+	padding-top: 2px;
+	height: 100%;
+	max-height: 26px;
+	width: 30px;
+	color: $dark-color;
+	background-color: #fff;
+	font-size: 11px;
+	i {
+		color: inherit;
+		&:before {
+			color: inherit;
+		}
+	}
+
+}
 
 // пустая кнопка
 .button-o {
@@ -92,3 +112,4 @@
 
 	}
 }
+
