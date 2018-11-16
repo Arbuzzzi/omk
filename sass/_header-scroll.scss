@@ -6,7 +6,7 @@
 	padding-bottom: 15px;
 	background-color: #fff;
 	transform: translateZ(0);
-	opacity: 0;
+	opacity: 1;
 	&:before {
 		opacity: 1;
 	}
@@ -131,17 +131,8 @@
 	.button-deploy {
 		display: inline-block;
 	}
-	.breadcrumb {
-		position: absolute;
-		z-index: -1;
-		top: 0;
-		left: 0;
-		padding-left: 15px;
-		padding-right: 15px;
-		width: 100%;
-		background-color: #fff;
-		display: block;
-	}
+	
+	
 }
 .menu.scroll {
 	padding-top: 150px;

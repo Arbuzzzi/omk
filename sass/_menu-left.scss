@@ -27,6 +27,7 @@
 	}
 	&__item {
 		display: table;
+		height: 1px;
 		min-height: 36px;
 		width: 100%;
 		padding: 5px 15px;
@@ -100,6 +101,8 @@
 		&__button {
 			text-align: left;
 			width: 100%;
+			padding-left: 0;
+			padding-right: 0;
 			position: relative;
 			color: $light-color;
 			transition: none;

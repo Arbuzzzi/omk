@@ -728,6 +728,10 @@ h2 span,
           transform: none;
 }
 
+*.fixed {
+  position: fixed;
+}
+
 .link {
   display: inline-block;
   color: #797c82;
@@ -799,6 +803,12 @@ h2 span,
   color: #797c82;
   background-color: #fff;
   font-size: 11px;
+  -webkit-transition: 0.4s;
+  -o-transition: 0.4s;
+  transition: 0.4s;
+  border: 1px solid rgba(188, 189, 192, 0);
+  border-left: none;
+  border-right: none;
 }
 
 .button-split i {
@@ -806,6 +816,26 @@ h2 span,
 }
 
 .button-split i:before {
+  color: inherit;
+}
+
+.rollUp {
+  position: absolute;
+  top: -15px;
+  right: -15px;
+  color: #eeefef;
+  padding: 0;
+  font-size: 19px;
+  -webkit-transform: rotate(180deg);
+      -ms-transform: rotate(180deg);
+          transform: rotate(180deg);
+}
+
+.rollUp i {
+  color: inherit;
+}
+
+.rollUp i:before {
   color: inherit;
 }
 
@@ -1037,7 +1067,7 @@ h2 span,
   background-color: #fff;
   -webkit-transform: translateZ(0);
           transform: translateZ(0);
-  opacity: 0;
+  opacity: 1;
 }
 
 .header.scroll:before {
@@ -1201,18 +1231,6 @@ h2 span,
   display: inline-block;
 }
 
-.header.scroll .breadcrumb {
-  position: absolute;
-  z-index: -1;
-  top: 0;
-  left: 0;
-  padding-left: 15px;
-  padding-right: 15px;
-  width: 100%;
-  background-color: #fff;
-  display: block;
-}
-
 .menu.scroll {
   padding-top: 150px;
 }
@@ -1263,6 +1281,9 @@ h2 span,
 }
 
 .header {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
   z-index: 1000;
   width: 100%;
   -webkit-transform: translateZ(0);
@@ -1419,6 +1440,7 @@ h2 span,
 
 .header-user__box {
   margin-bottom: 5px;
+  position: relative;
 }
 
 .header-button-inn {
@@ -1436,6 +1458,21 @@ h2 span,
 
 .header .breadcrumb {
   display: none;
+  position: absolute;
+  z-index: -1;
+  top: 0;
+  left: 15px;
+  width: -webkit-calc(100% - 30px);
+  width: calc(100% - 30px);
+  background-color: #fff;
+}
+
+.header .rollUp {
+  display: none;
+}
+
+.header .rollUp.show {
+  display: block;
 }
 
 .headerNavSystem {
@@ -1494,6 +1531,7 @@ h2 span,
 
 .headerNavSystem__link {
   display: table;
+  height: 1px;
   min-height: 22px;
   font-size: 10px;
   color: inherit;
@@ -1502,7 +1540,6 @@ h2 span,
 }
 
 .headerNavSystem__link span {
-  display: block;
   display: table-cell;
   vertical-align: middle;
   line-height: 10px;
@@ -1814,6 +1851,7 @@ h2 span,
 
 .menu-left__item {
   display: table;
+  height: 1px;
   min-height: 36px;
   width: 100%;
   padding: 5px 15px;
@@ -1911,6 +1949,8 @@ h2 span,
 .menu-left-more__button {
   text-align: left;
   width: 100%;
+  padding-left: 0;
+  padding-right: 0;
   position: relative;
   color: #ffffff;
   -webkit-transition: none;
@@ -1997,6 +2037,7 @@ h2 span,
 
 .menu-horizontal__box {
   display: table;
+  height: 1px;
   min-height: 36px;
 }
 
@@ -2073,6 +2114,14 @@ h2 span,
   .button:hover {
     background-color: #BCBDC0;
     color: #ffffff;
+  }
+
+  .button-split:hover {
+    border-color: #bcbdc0;
+  }
+
+  .rollUp:hover {
+    color: #BCBDC0;
   }
 
   .button-o:hover {

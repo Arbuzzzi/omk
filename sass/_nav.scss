@@ -36,16 +36,14 @@
 	}
 
 	&__link {
-		// display: table-cell;
-		// vertical-align: middle;
 		display: table;
+		height: 1px;
 		min-height: 22px;
 		font-size: 10px;
 		color: inherit;
 		width: 100%;
 		text-align: center;
 		span {
-			display: block;
 			display: table-cell;
 			vertical-align: middle;
 			line-height: 10px;

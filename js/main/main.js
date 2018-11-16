@@ -68,6 +68,13 @@ $(document).ready(function() {
 	// 		});
 	// 	}
 	// });
+
+	$('.rollUp').on('click', function(event) {
+		// $('.header').addClass('.scroll');
+		$(document).trigger('scroll');
+
+		
+	});
 	
 	$('.btn-group').on('show.bs.dropdown', function() {
 		$('.header').css('transform', 'none');
@@ -87,12 +94,16 @@ $(document).ready(function() {
     }
 		
 	});
-	function addClassScroll(element, $class) {
+
+	function addClassScroll(element, $class, positionMax) {
 		var position = $(this).scrollTop();
 		if ($class === undefined) {
 			$class = 'scroll';
 		}
-		if (position >= 200) {
+		if (positionMax === undefined) {
+			positionMax = 200;
+		}
+		if (position >= positionMax) {
 			element.addClass($class);
 		} else {
 			element.removeClass($class);
@@ -119,7 +130,6 @@ $(document).ready(function() {
 			element.collapse('hide');
 		} else {
 			element.collapse('show');
-			
 		}
 		return position;
 	}
@@ -149,17 +159,27 @@ $(document).ready(function() {
 		var btn = $('#headerNavControl');
 		btn.removeClass('active')
 	});
-
+	// var marker = true;
+	// function markerChange (marker){
+	// 	if (marker == true) {
+	// 		return false;
+	// 	} else {
+	// 		return true;
+	// 	}
+	// }
 	// скрываем элементы во время скроллинга страницы
 	var positionContent = $('.content').offset().top;
 	$(document).on('scroll', function(event) {
 		var position = $(this).scrollTop(),
 				positionAside = $('.menu-left + *').offset().top;
 				heightHeader = $('.header:not(.header.scroll)').outerHeight();
+				positionContentEvent = $('.content').offset().top;
+		console.log(position);
 
 
 		if (!$('.header').hasClass('.scroll')  && !$('#headerNavSetting').hasClass('show')) {
-			addClassScroll($('.header'));
+			addClassScroll($('.header'), 'scroll', positionAside);
+
 			if (position >= 200) {
 				$('.header + *').css('padding-top', positionContent + 15);
 			} else {
@@ -172,33 +192,57 @@ $(document).ready(function() {
 			$('#headerNavControl').removeClass('active');
 		}
 
-		if (position < 300) {
+		if (position <= 0) {
 			$('#headerNav').collapse('show');
 			$('.header').removeAttr('style');
+			if ($('.header .breadcrumb').css('display') != 'none') {
+				$('.header .breadcrumb').hide().stop(true, true);
+			}
 		}
 
 		if (position > 0) {
 			$('.menu-left').removeAttr('style');
 			$('#menuNavHeaderGroup').collapse('hide');
+			$('.content').css('padding-top', positionContentEvent);
+			$('.header').css('padding-bottom', '')
+			// $('.header .breadcrumb').animate({height: 'show'}, 200);
+			
+			if (!$('.rollUp').hasClass('show') && $('.header').hasClass('scroll')) {
+				$('.rollUp').addClass('show');
+			} else {
+				$('.rollUp').removeClass('show');
+			}
+
+			if (!$('.header').hasClass('scroll')) {
+				$('.header').css({'position': 'fixed'});
+			}
+
+		} else {
+			$('.rollUp').removeClass('show');
 		}
 
 		if ($('.dropdown-menu').hasClass('show')) {
 			$('.dropdown-menu').removeClass('show');
 		}
 
-		if (position >= 200 && position < positionAside && position < 400) {
-			$('.header').stop(true, true);
-		} 
+		// if (position < positionAside && position < 400) {
+		// 	$('.header').stop(true, true);
+		// } 
 
-		if (position >= positionAside && position >= 400) {
-			$('.header').animate({opacity: 1}, 300);
-		} else if(position > 200){
-			$('.header').animate({opacity: 0}, 300, function () {
-				$(this).css('opacity', '');
-			})
-		}
+		// if (position >= positionAside && position > 400) {
+		// 	if (marker) {
+		// 		$('.header.scroll').animate({opacity: 0.3}, 200, function(){
+		// 			marker = markerChange(marker);
+		// 			$('.header.scroll').animate({opacity: 1}, 300, function () {
+		// 				$(this).css('opacity', '');
+		// 			})
+		// 		});
+				
+		// 	}
+		// } else if(position > 200){
+		// 	marker = true;
+		// }
 	});
-
 	// возвращаем пользователя наверх
 	$('#btnToTop').click(function() {
 		var destination = 0;
@@ -218,7 +262,7 @@ $(document).ready(function() {
 				headerNavSustem = $('.headerNavSystem');
 		$('.header').removeClass('scroll').css({
 			'position': 'fixed',
-			'padding-bottom': '15px'
+			'padding-bottom': '10px'
 		});
 
 		$('#headerNav').collapse('show');
@@ -228,6 +272,7 @@ $(document).ready(function() {
 			top: header.outerHeight(true) + headerNavSustem.outerHeight(),
 			width: '270px',
 		});
+		$('.rollUp').addClass('show');
 		return false;
 	});
 

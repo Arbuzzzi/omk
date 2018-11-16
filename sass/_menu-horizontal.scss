@@ -1,4 +1,5 @@
 .menu-horizontal {
+
 	border-radius: 5px;
 	background-color: #eeefef;
 	// padding: 0 15px;
@@ -10,6 +11,7 @@
 	}
 	&__box {
 		display: table;
+		height: 1px;
 		min-height: 36px;
 		&-more {
 			margin-left: auto;
