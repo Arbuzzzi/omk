@@ -18,11 +18,11 @@
 
 .form {
 	&-search {
+		@include clearfix;
 		&__input {
 			display: block;
-			width: 93%;
+			width: 91% !important;
 			float: left;
-			@include clearfix;
 		}
 		&__label {
 			display: block;
@@ -34,6 +34,15 @@
 .header {
 	padding-top: 10px;
 	@include clearfix;
+	&-box {
+		@include clearfix;
+		& > div {
+			float: left;
+		}
+		&__logo {
+			@include clearfix;
+		}
+	}
 	&-user {
 		display: inline-block;
 		margin-left: 10px;
@@ -41,7 +50,6 @@
 	}
 	&-logo {
 		margin-bottom: 0;
-		margin-top: 10px;
 	}
 	&-visit {
 		margin-top: 7px;
@@ -51,6 +59,9 @@
 		display: inline-block;
 		vertical-align: top;
 		padding-top: 0;
+	}
+	&-logowrap {
+		float: left;
 	}
 }
 
@@ -70,7 +81,12 @@
 		}
 	}
 }
-
+.nav-more {
+	position: relative;
+}
+.dropdown-menu {
+	top: 100% !important;
+}
 .setting {
 	&-form{
 		&-wrap {
@@ -109,6 +125,20 @@
 	}
 	&__item {
 		display: table-cell;
-		vertical-align: middle;
+		vertical-align: middle; 
 	}
 }
+
+
+.header.scroll {
+	.header {
+		&-info {
+			@include clearfix;
+			&__time {
+				float: left;
+				margin-right: 10px;
+			}
+		}
+	}	
+}
+

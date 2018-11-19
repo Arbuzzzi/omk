@@ -124,8 +124,6 @@
 		padding: 18px 20px 16px;
 		margin-right: -10px;
 		margin-bottom: 3px;
-		border-bottom: 1px solid #eceae9;
-		// min-height: 67px;
 		a {
 			font-size: 13px;
 			line-height: 16px;
@@ -154,21 +152,25 @@
 			font-size: 0;
 		}
 	}
+	.breadcrumb {
+		// display: none;
+		position: absolute;
+		// z-index: -1;
+		top: 0;
+		left: 0;
+		width: 100%;
+		background-color: #fff;
+		&-wrap{
+			position: relative;
+		}
+	}
 	.button-toTop {
 		display: none;
 	}
 	.button-deploy {
 		display: none;
 	}
-	.breadcrumb {
-		display: none;
-		position: absolute;
-		z-index: -1;
-		top: 0;
-		left: 15px;
-		width: calc(100% - 30px);
-		background-color: #fff;
-	}
+
 	.rollUp {
 		display: none;
 		&.show {

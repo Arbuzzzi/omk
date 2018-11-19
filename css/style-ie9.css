@@ -13,16 +13,16 @@
   display: inline-block;
 }
 
-.form-search__input {
-  display: block;
-  width: 93%;
-  float: left;
-}
-
-.form-search__input::after {
+.form-search::after {
   display: block;
   clear: both;
   content: "";
+}
+
+.form-search__input {
+  display: block;
+  width: 91% !important;
+  float: left;
 }
 
 .form-search__label {
@@ -39,6 +39,22 @@
   content: "";
 }
 
+.header-box::after {
+  display: block;
+  clear: both;
+  content: "";
+}
+
+.header-box > div {
+  float: left;
+}
+
+.header-box__logo::after {
+  display: block;
+  clear: both;
+  content: "";
+}
+
 .header-user {
   display: inline-block;
   margin-left: 10px;
@@ -47,7 +63,6 @@
 
 .header-logo {
   margin-bottom: 0;
-  margin-top: 10px;
 }
 
 .header-visit {
@@ -58,6 +73,10 @@
   display: inline-block;
   vertical-align: top;
   padding-top: 0;
+}
+
+.header-logowrap {
+  float: left;
 }
 
 .header-nav-button-inn {
@@ -75,6 +94,14 @@
 
 .header-nav__link span {
   word-break: break-all;
+}
+
+.nav-more {
+  position: relative;
+}
+
+.dropdown-menu {
+  top: 100% !important;
 }
 
 .setting-form-wrap {
@@ -115,4 +142,15 @@
 .menu-horizontal__item {
   display: table-cell;
   vertical-align: middle;
+}
+
+.header.scroll .header-info::after {
+  display: block;
+  clear: both;
+  content: "";
+}
+
+.header.scroll .header-info__time {
+  float: left;
+  margin-right: 10px;
 }

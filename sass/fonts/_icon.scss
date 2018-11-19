@@ -24,6 +24,14 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+.icon-comment:before {
+  content: "\e906";
+  color: #797c82;
+}
+.icon-like:before {
+  content: "\e911";
+  color: #797c82;
+}
 .icon-aircraft:before {
   content: "\e900";
   color: #a1a3a7;
@@ -47,10 +55,6 @@
 .icon-chess:before {
   content: "\e905";
   color: #a1a3a7;
-}
-.icon-menu-left-arrowbottom:before {
-  content: "\e906";
-  color: #5e6167;
 }
 .icon-list:before {
   content: "\e907";
@@ -92,4 +96,8 @@
 .icon-menu-left-arrowtop:before {
   content: "\e910";
   color: #bcbdc0;
+}
+.icon-filters:before {
+  content: "\e912";
+  color: #797c82;
 }

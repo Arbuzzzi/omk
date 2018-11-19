@@ -229,6 +229,7 @@
 	&-group {
 		@include listUnstyle(); 
 		position: absolute;
+		z-index: 100;
 		max-width: none;
 		padding: 0;
 		border: 1px solid #dfdfdf;
