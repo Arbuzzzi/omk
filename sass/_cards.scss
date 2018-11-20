@@ -12,7 +12,7 @@
 		&-head {
 			background-color: transparent;
 			padding: 0;
-			margin-bottom: 20px;
+			margin-bottom: 5px;
 		}
 	}
 	&__imgbox {
@@ -45,8 +45,13 @@
 		margin-bottom: 15px;
 		font-family: "PT Serif", serif;
 		font-size: 17px;
-		& h1, h2, h3, h4, h5 {
+		& h1, h2, h3, h4, h5, a {
 			font-size: 1em;
+		}
+		a {
+			@include hover {
+				text-decoration: underline;
+			}
 		}
 	}
 	&-date {

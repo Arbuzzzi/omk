@@ -129,14 +129,20 @@
 
 // пустая кнопка
 .button-o {
-	color: $btn-color;
-	background-color: $btn-bg-color;
-	border: 1px solid $btn-border-color;
-	@include hover {
-		color: $btn-hov-color;
-		background-color: $btn-hov-bg-color;
-		border: 1px solid $btn-hov-border-color;
+	padding: 2px 5px;
+	margin: 0 5px;
+	color: $dark-color;
+	background-color: transparent;
+	border-radius: 3px;
+	border: 1px solid #d1d1d1;
+	line-height: 1.4;
+	font-size: 12px;
+	font-weight: 300;
 
+	@include hover {
+		color: darken(#d1d1d1, 20);
+		background-color: transparent;
+		border: 1px solid darken(#d1d1d1, 20);
 	}
 }
 
@@ -156,8 +162,8 @@
 	transform: rotate(180deg);
 	background-color: #000;
 	opacity: 0.2;
-	width: 28px;
-	height: 28px;
+	width: 33px;
+	height: 33px;
 	min-width: 1px;
 	transition: opacity 0.4s;
 	border-radius: 3px;

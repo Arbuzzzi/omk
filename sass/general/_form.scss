@@ -40,7 +40,7 @@
 	&-label {
 		display: block;
 	}
-
+	
 
 	&-input {
 		
@@ -54,6 +54,23 @@
 			&::placeholder {
 				text-indent: 500px; // анимация для placeholder
 			}
+		}
+	}
+
+	&-select {
+		padding-right: 20px;
+		background: transparent url(../img/icon/arrow-select.svg) 94% 52% no-repeat / 8px;
+		appearance: none !important;
+		text-indent: 0.01px; 
+		text-overflow: '';
+		&:-ms-expand {
+  		display: none;
+		}
+		option {
+			padding-top: 3px;
+			padding-bottom: 3px;
+			line-height: 3;
+			// font-size: 14px;
 		}
 	}
 

@@ -91,7 +91,7 @@ $(document).ready(function() {
 				current.parents('.collapse').collapse('show');
 			}
 			$('#menuNavHeaderGroup').collapse('hide');
-    }
+		}
 		
 	});
 
@@ -240,10 +240,13 @@ $(document).ready(function() {
 			if (position > 0) {
 				$('.header + *').css('padding-top', positionContent);
 				$('#btnUp').animate({bottom: 'show'}, 500);
+				$('.header .breadcrumb').css({
+					paddingBottom: '15px'});
 
 			} else {
 				$('.header + *').css('padding-top', '');
 				$('#btnUp').animate({bottom: 'hide', opacity: 'hide'}, 500);
+				$('.header .breadcrumb').removeAttr('style')
 			}
 		}
 
@@ -517,23 +520,116 @@ $(document).ready(function() {
 
 	// отправка формы settingForm
 	$('#settingForm').submit(function(e) {
-			var $form = $(this);
-			var buttonSubmit  = $(this).find('[type="submit"]'),
-					buttons = buttonSubmit.attr('data-nav-control');
+		var $form = $(this);
+		var buttonSubmit  = $(this).find('[type="submit"]'),
+				buttons = buttonSubmit.attr('data-nav-control');
 
-			$.ajax({
-				type: $form.attr('method'),
-				url: $form.attr('action'),
-				data: $form.serialize()
-			}).done(function(msg) {
+		$.ajax({
+			type: $form.attr('method'),
+			url: $form.attr('action'),
+			data: $form.serialize()
+		}).done(function(msg) {
 
-				$('[data-nav-control='+buttons+']').removeClass('active');
+			$('[data-nav-control='+buttons+']').removeClass('active');
 
 
-			}).fail(function(msg) {
-				alert('Ошибка! Обратитесь к администратору.');
-			});
-			//отмена действия по умолчанию для кнопки submit
-			e.preventDefault(); 
+		}).fail(function(msg) {
+			alert('Ошибка! Обратитесь к администратору.');
 		});
+		//отмена действия по умолчанию для кнопки submit
+		e.preventDefault(); 
+	});
+
+	$('.like-button:not(.comment-button)').on('click', function(event) {
+		$(this).toggleClass('active');		
+	});
+
+	$('#contentFilterButton').on('click', function(event) {
+		var options = {
+			direction: 'right'
+		}
+		$('.content-filter__formbox').toggle('slide', options);
+	});
+
+
+	$('#filtersCalendarPeriod').on('change', function(event) {
+		if ($(this).val() == 'true-date') {
+			$('[name="period_date_buffer"]').datepicker($.datepicker.regional[ "ru" ]);
+			$('[name="period_date_buffer"]').datepicker('widget').addClass('calendar');
+			$('[name="period_date_buffer"]').datepicker('show');
+			
+		}
+	});
+	$('[name="period_date_buffer"]').on('change', function(event) {
+		$('#filtersCalendarPeriod').find('option').removeAttr('selected');
+		$('#period_date').val($(this).val());
+		$('#period_date').text($(this).val());
+		$('#period_date').attr('selected', 'true');
+	});
+	
+	// var $datarange = $('input[name="daterange"]');
+	// $datarange.datepicker($.datepicker.regional[ "ru" ]);
+	// $datarange.datepicker('widget').addClass('calendar');
+
+	// $datarange.datepicker({
+	// 	showButtonPanel: true,
+	// 	range: 'period', // режим - выбор периода
+	// 	onSelect: function(dateText, inst, extensionRange) {
+	// 		// extensionRange - объект расширения
+	// 		createFiltersCalendarPeriod(inst);
+	// 		$datarange.val(extensionRange.startDateText + ' - ' + extensionRange.endDateText);
+	// 		$('#bufer').text(extensionRange.startDateText + ' - ' + extensionRange.endDateText);
+	// 		$datarange.width($('#bufer').width()+5);
+
+	// 	},
+	// 	currentText: 'Закрыть',
+	// 	closeText: 'Сбросить',
+	// 	onClose: function (dateText, inst) {
+	// 		if ($(window.event.srcElement).hasClass('ui-datepicker-close')){
+	// 			$(this).val('').change();
+	// 			$datarange.datepicker('widget').removeData('datepickerExtensionRange');
+	// 		}
+	// 	},
+	// 	beforeShow: function (input, inst) {
+	// 		setTimeout(function(){
+	// 			createFiltersCalendarPeriod(inst)
+	// 		})
+	// 	}
+	// });
+	// $.datepicker._gotoToday = function(id) { 
+	//     $(id).datepicker('hide').blur();
+	// };
+	// // var extensionRange = $datarange.datepicker('widget').data('datepickerExtensionRange');
+	// $datarange.after('<div id="bufer" style="position: absolute;top: -1000px;left: -1000px;visibility: hidden;white-space: nowrap;"/>')
+	
+	// function createFiltersCalendarPeriod(inst) {
+	// 	console.log(inst);
+	// 	var items = [];
+	// 	var values = ["Месяц", "Год", "Неделя", "Квартал"];
+	// 	for (var i = 0; i < values.length; i++) {
+	// 		items[i] = '<option value="'+values[i]+'">'+values[i]+'</option>'
+	// 	}
+	// 	inst.dpDiv.find('.ui-datepicker-buttonpane')
+	// 		.after('<select id="filtersCalendarPeriod" name="period" class="button button-o form-select form-filters__select">'+					
+	// 			'<option value="" disabled selected>Выберите период</option>' +
+	// 			items +
+	// 		'</select>');
+
+	// 	for (var i = 0; i < values.length; i++) {
+	// 		if (values[i] == $datarange.val()) {
+	// 			$('#filtersCalendarPeriod').val($datarange.val())
+	// 		}
+	// 	}
+
+	// 	$('#filtersCalendarPeriod').on('change', function() {
+	// 		$datarange.val($(this).val());
+	// 		$datarange.datepicker('widget').removeData('datepickerExtensionRange');
+	// 		$datarange.datepicker('hide').blur();					
+	// 	});
+	// }
+
+	// $datarange.on('change', function() {
+	// 	$('#bufer').text($(this).val());
+	// 	$datarange.width($('#bufer').width()+5);		
+	// });
 });

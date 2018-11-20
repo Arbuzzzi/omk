@@ -7,6 +7,7 @@
 		display: flex;
 		flex-wrap: wrap;
 		padding-top: 37px;
+		padding-top: 18px;
 		margin-left: -15px;
 		margin-right: -15px;
 	}
@@ -27,13 +28,68 @@
 		}
 	}	
 	&-filter {
+		display: flex;
+		justify-content: flex-end;
+		align-items: center;
 		text-align: right;
 		font-size: 32px;
-		button {
+		line-height: 1.4em;
+		&__btnbox {
+			vertical-align: middle;
+		}
+		&__formbox {
+			display: none;
+		}
+		&__button {
 			font-size: 16px;
+			line-height: 44px;
+			vertical-align: middle;
 		}
 	}
 }
+
+
+.form-filters {
+	display: flex;
+	justify-content: flex-end;
+	align-items: center;
+	margin-right: 10px;
+	font-size: 12px;
+	vertical-align: middle;
+	&__title{
+		margin-right: 5px;
+	} 
+	&__date {
+		width: 132px;
+		min-width: 132px;
+		margin-right: 10px;
+	}
+	&__label {
+		position: relative;
+		@include clearfix;
+		i {
+			position: absolute;
+			top: 50%;
+			right: 5px;
+			margin-top: -3px;
+			color: $dark-color;
+			font-size: 8px;
+			&:before {
+				color: inherit;
+			}
+		}
+	}
+	&__searchbox {
+
+	}
+	&__search {
+		float: left;
+	}
+	&__submit {
+		font-size: 10px;
+	}
+}
+
 
 .tag {
 	float: left;
@@ -53,7 +109,7 @@
 		color: $dark-color;
 		font-size: 12px;
 		font-weight: 400;
-		transition: color 0.4s ease-out;
+		// transition: color 0.4s ease-out;
 		.icon-comment {
 			display: inline-block;
 			transform: translateY(2px);
@@ -67,11 +123,30 @@
 		@include hover {
 			color: darken($dark-color, 30);
 		}
+		@media screen and (min-width: 1024px) {
+			&:active {
+				// transition: 0;
+				color: $special-color;
+			}			
+		}
+		&.active {
+			color: $special-color;
+			@include hover {
+				color: $special-color;
+			}
+		}
 
 		&_light {
 			color: $light-color;
 			@include hover {
 				color: darken($light-color, 30);
+			}
+			@media screen and (min-width: 1024px) {
+				&:active {
+					// transition: 0;
+					color: $special-color;
+				}
+				
 			}
 		}
 	}
