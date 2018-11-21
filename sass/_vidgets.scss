@@ -1,0 +1,134 @@
+.vidget {
+	&-box {
+		margin-bottom: 15px;
+		background-color: #fbfbfb;
+		border-radius: 5px;
+	}
+	&-items {
+		flex-wrap: nowrap;
+		justify-content: flex-end;
+	}
+	&-item {
+		position: relative;
+		z-index: 1;
+		flex-shrink: 1;
+		padding: 5px 10px;
+		margin-right: -10px;
+		overflow: hidden;
+		white-space: nowrap;
+		color: #bcbdc0;
+		font-size: 12px;
+		font-weight: 300;
+		border-radius: 5px 5px 0 0;
+		border: 1px solid #dddee0;
+		background-color: #fbfbfb;
+
+		&:first-child {
+			z-index: 2;
+			&.active {
+				margin-right: -10px;
+			}
+		}
+		&:not(:last-child), &:not(:first-child ) {
+			z-index: 3;
+		}
+		&:last-child {
+			z-index: 1;
+			margin-left: -10px;
+			margin-right: 0;
+			text-align: right;
+			direction: rtl;
+			&.active {
+				text-align: left;
+				direction: ltr;
+			}
+		}
+		&.active {
+			z-index: 10;
+			flex-shrink: 0;
+			margin-right: 0;
+			margin-left: 0;
+			background-color: #f4f5f5;
+			border-bottom-color: transparent;
+		}
+	}
+	&-tabs {
+
+	}
+	&-imgbox {
+		border-radius: 5px;
+		overflow: hidden;
+	}
+	&-content {
+		display: flex;
+		padding: 15px;
+		background-color: #f4f5f5;
+		border-radius: 0 0 5px 5px;
+		border: 1px solid #dddee0;
+		border-top: none;
+		&_bdtop {
+			border-radius: 5px;
+			border-top: 1px solid #dddee0;
+		}
+		&_dblock {
+			display: block;
+		}
+		&__left {
+			display: flex;
+			flex-grow: 1;
+			flex-direction: column;
+			// height: 100%;
+			padding-right: 10px;
+		}
+		&__right {
+			max-width: 114px;
+			text-align: right;
+		}
+	}
+	&-footer {
+		margin-top: auto;
+	}
+	&-title {
+		color: $dark-color;
+		font-size: 14px;
+		line-height: 17px;
+		font-weight: 300;
+	}
+	&-link {
+		color: $dark-color;
+		font-size: 12px;
+		line-height: 14px;
+		font-weight: 400;
+	}
+	&-group {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		margin-bottom: -5px;
+		margin-right: -10px;
+		margin-top: 20px;
+		&_special {
+			margin-top: 5px;
+			margin-bottom: -15px;
+		}
+	}
+	&-text {
+		&_small {
+			color: #9a9da1;
+			font-size: 11px;
+			line-height: 13.2px;
+			font-weight: 400;
+		}
+		&_count {
+			color: #32363f;
+			font-size: 37px;
+			font-weight: 300;
+		}
+		&.danger {
+		  color: $special-color;
+		}
+		&.succes {
+		  color: $succes-color;
+		}
+	}
+}
