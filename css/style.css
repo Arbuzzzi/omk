@@ -2755,8 +2755,7 @@ h2 span,
 }
 
 .calendar {
-  width: 220px;
-  padding: 10px;
+  padding: 15px;
   margin-top: 25px;
   -webkit-border-radius: 5px;
           border-radius: 5px;
@@ -2766,6 +2765,34 @@ h2 span,
 .calendar-change {
   height: 20px;
   background-color: red;
+}
+
+.calendar.vidget-box {
+  width: auto;
+  border: 1px solid #dddee0;
+  background-color: #f4f5f5;
+}
+
+.calendar.vidget-box .ui-state-active {
+  background-color: transparent;
+}
+
+.calendar.vidget-box .ui-datepicker {
+  display: block;
+}
+
+.calendar .ui-datepicker {
+  width: 100%;
+}
+
+.calendar table {
+  font-size: 14px;
+}
+
+.calendar .ui-datepicker-title {
+  color: #797c82;
+  font-size: 13px;
+  font-weight: 400;
 }
 
 .calendar .ui-datepicker-prev:before,
@@ -2789,7 +2816,7 @@ h2 span,
   /* Better Font Rendering =========== */
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  font-size: 12px;
+  font-size: 10px;
 }
 
 .calendar .ui-datepicker-prev:before {
@@ -2804,20 +2831,30 @@ h2 span,
           transform: rotate(-90deg);
 }
 
-.calendar .ui-datepicker-today {
-  border: 1px solid #ee3124;
+.calendar .ui-datepicker-calendar td {
+  padding: 2.5px;
 }
 
-.calendar .ui-datepicker-today .ui-state-highlight .ui-state-hover {
-  background-color: transparent;
+.calendar .ui-datepicker-today .ui-state-default {
+  border: 1px solid #ee3124;
+  color: #ee3124;
+}
+
+.calendar .ui-state-default {
+  text-align: center;
+  border: 1px solid #d0d1d3;
+  color: #bcbdc0;
+  font-size: 16px;
+}
+
+.calendar .ui-state-week {
+  color: #bcbdc0;
+  font-size: 10px;
+  font-weight: 300;
 }
 
 .calendar .ui-state-active {
-  background-color: #BCBDC0;
-}
-
-.calendar .ui-state-hover {
-  background-color: #BCBDC0;
+  border: 1px solid #32363f;
 }
 
 .calendar .ui-datepicker-buttonpane {
@@ -2849,9 +2886,51 @@ h2 span,
   margin-top: 40px;
 }
 
+.events {
+  display: none;
+}
+
+.event {
+  display: none;
+}
+
+.event-nav {
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+
+.event-title {
+  margin-bottom: 10px;
+  font-family: "PT Serif";
+  color: #5e6167;
+  font-size: 18px;
+  line-height: 18px;
+  font-weight: 400;
+}
+
+.event-control {
+  position: absolute;
+  right: 0;
+  top: 0;
+  display: none;
+  color: #E0E1E2;
+  -webkit-transform: rotate(90deg);
+      -ms-transform: rotate(90deg);
+          transform: rotate(90deg);
+}
+
+.event-control i {
+  color: inherit;
+}
+
+.event-control i:before {
+  color: inherit;
+}
+
 .vidget-box {
   margin-bottom: 15px;
-  background-color: #fbfbfb;
+  margin-top: 0;
   -webkit-border-radius: 5px;
           border-radius: 5px;
 }
@@ -2889,8 +2968,11 @@ h2 span,
   z-index: 2;
 }
 
-.vidget-item:first-child.active {
+.vidget-item:first-child.active,
+.vidget-item:first-child:hover {
   margin-right: -10px;
+  min-width: 103px;
+  text-align: center;
 }
 
 .vidget-item:not(:last-child),
@@ -2906,26 +2988,69 @@ h2 span,
   direction: rtl;
 }
 
-.vidget-item:last-child.active {
+.vidget-item:last-child.active,
+.vidget-item:last-child.active:hover {
   text-align: left;
   direction: ltr;
 }
 
-.vidget-item.active {
+.vidget-item.active,
+.vidget-item:hover {
   z-index: 10;
   -webkit-flex-shrink: 0;
       -ms-flex-negative: 0;
           flex-shrink: 0;
   margin-right: 0;
   margin-left: 0;
+  color: #5e6167;
+  font-size: 12px;
+  font-weight: 400;
   background-color: #f4f5f5;
   border-bottom-color: transparent;
 }
 
+.vidget-item_fixfirsttab:first-child.active,
+.vidget-item_fixfirsttab:first-child:hover {
+  margin-right: 0;
+}
+
 .vidget-imgbox {
-  -webkit-border-radius: 5px;
-          border-radius: 5px;
+  position: relative;
   overflow: hidden;
+  min-height: 125px;
+}
+
+.vidget-imgbox_full {
+  margin-bottom: 10px;
+}
+
+.vidget-imgbox__text {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  z-index: 10;
+  width: 100%;
+  min-height: 60px;
+  padding: 25px 15px 15px;
+  font-size: 16px;
+  background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(0, 0, 0, 0)), color-stop(14%, rgba(0, 0, 0, 0.14)), to(#000000));
+  background-image: -webkit-linear-gradient(top, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.14) 14%, #000000 100%);
+  background-image: -o-linear-gradient(top, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.14) 14%, #000000 100%);
+  background-image: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.14) 14%, #000000 100%);
+}
+
+.vidget-imgbox__text h3 {
+  margin-bottom: 3px;
+  font-family: "Roboto", sans-serif;
+  color: #ffffff;
+  font-size: 1.125em;
+  font-weight: 400;
+}
+
+.vidget-imgbox__text p {
+  color: #bcbdc0;
+  font-size: 1em;
+  font-weight: 400;
 }
 
 .vidget-content {
@@ -2978,10 +3103,21 @@ h2 span,
 }
 
 .vidget-title {
+  position: relative;
+  margin-bottom: 10px;
   color: #797c82;
   font-size: 14px;
   line-height: 17px;
   font-weight: 300;
+}
+
+.vidget-subtitle {
+  position: relative;
+  margin-top: 7px;
+  margin-bottom: 15px;
+  color: #797c82;
+  font-size: 13px;
+  font-weight: 400;
 }
 
 .vidget-link {
@@ -3014,6 +3150,20 @@ h2 span,
   margin-bottom: -15px;
 }
 
+.vidget-text {
+  color: #797c82;
+  font-size: 12px;
+  font-weight: 400;
+}
+
+.vidget-text p {
+  margin-bottom: 2px;
+}
+
+.vidget-text p:last-child {
+  margin-bottom: 0;
+}
+
 .vidget-text_small {
   color: #9a9da1;
   font-size: 11px;
@@ -3025,6 +3175,11 @@ h2 span,
   color: #32363f;
   font-size: 37px;
   font-weight: 300;
+}
+
+.vidget-text_big {
+  font-size: 18px;
+  font-weight: 400;
 }
 
 .vidget-text.danger {
@@ -3153,6 +3308,11 @@ h2 span,
 
   .card__title a:hover {
     text-decoration: underline;
+  }
+
+  .calendar .ui-state-default:hover {
+    background-color: #BCBDC0;
+    color: #ffffff;
   }
 
   .calendar .ui-datepicker-buttonpane button:hover {

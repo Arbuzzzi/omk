@@ -502,8 +502,6 @@ $(document).ready(function() {
 		var btn = $('#menuLeftListControl');
 		var position = $(document).scrollTop();
 		btn.removeClass('active');
-		console.log($('.content').scrollTop());
-		console.log($('.content-group').scrollTop());
 		$('#navMoreListControl').attr('data-toggle', 'dropdown')
 		$('.menu-left-more__button>i').animate({opacity: 'show'}, 400);
 		if (position < positionOne) {
@@ -540,10 +538,12 @@ $(document).ready(function() {
 		e.preventDefault(); 
 	});
 
+	// ставим лайки
 	$('.like-button:not(.comment-button)').on('click', function(event) {
 		$(this).toggleClass('active');		
 	});
 
+	// скрываем показываем фильтры
 	$('#contentFilterButton').on('click', function(event) {
 		var options = {
 			direction: 'right'
@@ -551,9 +551,10 @@ $(document).ready(function() {
 		$('.content-filter__formbox').toggle('slide', options);
 	});
 
-
-	$('#filtersCalendarPeriod').on('change', function(event) {
+	// ставим текущую дату в фильтре
+	$('#filtersCalendarPeriod').on('change click', function(event) {
 		if ($(this).val() == 'true-date') {
+			$(this).val('');
 			$('[name="period_date_buffer"]').datepicker($.datepicker.regional[ "ru" ]);
 			$('[name="period_date_buffer"]').datepicker('widget').addClass('calendar');
 			$('[name="period_date_buffer"]').datepicker('show');
@@ -565,71 +566,110 @@ $(document).ready(function() {
 		$('#period_date').val($(this).val());
 		$('#period_date').text($(this).val());
 		$('#period_date').attr('selected', 'true');
+		$('#filtersCalendarPeriod').val($(this).val());
 	});
+
 	
-	// var $datarange = $('input[name="daterange"]');
-	// $datarange.datepicker($.datepicker.regional[ "ru" ]);
-	// $datarange.datepicker('widget').addClass('calendar');
+	// hover на виджете с табами
+	$('.vidget-tabbox').on('mousemove', '.vidget-item', function(event) {
+		var box = $(event.delegateTarget),
+				items = box.find('.vidget-item');
+				currentItem = box.find('.vidget-item.active');
+		currentItem.attr('data-current', 'true')
+		items.removeClass('active');
+		box.on('mouseleave', '.vidget-items', function(event) {
+			$('.vidget-item[data-current="true"]').addClass('active')
+		});
+		items.click(function() {
+			$('.vidget-item[data-current="true"]').removeAttr('data-current')
+		});
+		
+	});
 
-	// $datarange.datepicker({
-	// 	showButtonPanel: true,
-	// 	range: 'period', // режим - выбор периода
-	// 	onSelect: function(dateText, inst, extensionRange) {
-	// 		// extensionRange - объект расширения
-	// 		createFiltersCalendarPeriod(inst);
-	// 		$datarange.val(extensionRange.startDateText + ' - ' + extensionRange.endDateText);
-	// 		$('#bufer').text(extensionRange.startDateText + ' - ' + extensionRange.endDateText);
-	// 		$datarange.width($('#bufer').width()+5);
+	// подсветка текущего дня в виджете календарь
+	var nowDay = $.datepicker.formatDate('dd', new Date());
+	var dateArr = $('#calendarVidgetBox .ui-state-default');
 
-	// 	},
-	// 	currentText: 'Закрыть',
-	// 	closeText: 'Сбросить',
-	// 	onClose: function (dateText, inst) {
-	// 		if ($(window.event.srcElement).hasClass('ui-datepicker-close')){
-	// 			$(this).val('').change();
-	// 			$datarange.datepicker('widget').removeData('datepickerExtensionRange');
-	// 		}
-	// 	},
-	// 	beforeShow: function (input, inst) {
-	// 		setTimeout(function(){
-	// 			createFiltersCalendarPeriod(inst)
-	// 		})
-	// 	}
-	// });
-	// $.datepicker._gotoToday = function(id) { 
-	//     $(id).datepicker('hide').blur();
-	// };
-	// // var extensionRange = $datarange.datepicker('widget').data('datepickerExtensionRange');
-	// $datarange.after('<div id="bufer" style="position: absolute;top: -1000px;left: -1000px;visibility: hidden;white-space: nowrap;"/>')
-	
-	// function createFiltersCalendarPeriod(inst) {
-	// 	console.log(inst);
-	// 	var items = [];
-	// 	var values = ["Месяц", "Год", "Неделя", "Квартал"];
-	// 	for (var i = 0; i < values.length; i++) {
-	// 		items[i] = '<option value="'+values[i]+'">'+values[i]+'</option>'
-	// 	}
-	// 	inst.dpDiv.find('.ui-datepicker-buttonpane')
-	// 		.after('<select id="filtersCalendarPeriod" name="period" class="button button-o form-select form-filters__select">'+					
-	// 			'<option value="" disabled selected>Выберите период</option>' +
-	// 			items +
-	// 		'</select>');
+	for (var i = 0; i < dateArr.length; i++) {
+		if ($(dateArr[i]).text() == nowDay) {
+			$(dateArr[i]).parent().addClass('ui-datepicker-today');
+		} else {
+			$(dateArr[i]).parent().removeClass('ui-datepicker-today');
+		}
+	}
 
-	// 	for (var i = 0; i < values.length; i++) {
-	// 		if (values[i] == $datarange.val()) {
-	// 			$('#filtersCalendarPeriod').val($datarange.val())
-	// 		}
-	// 	}
+	// открываем событие на текущей дате
+	$('#calendarVidgetBox').on('click', 'a.ui-state-default.ui-state-active', function(e) {
+		e.preventDefault();
+		var dayCurrent = $(this),
+				eventElements = $(dayCurrent.attr('href')),
+				eventElementArr = eventElements.find('.event')
+				element = $(e.delegateTarget),
+				subtitle = element.find('.vidget-subtitle span'),
+				calendar = element.find('.ui-datepicker-calendar'),
+				eventElementControl = element.find('.event-control');
 
-	// 	$('#filtersCalendarPeriod').on('change', function() {
-	// 		$datarange.val($(this).val());
-	// 		$datarange.datepicker('widget').removeData('datepickerExtensionRange');
-	// 		$datarange.datepicker('hide').blur();					
-	// 	});
-	// }
+		calendar.animate({
+			opacity: 'hide'},
+			150, function() {
+			eventElements.animate({opacity: 'show'}, 150);
+			eventElementControl.animate({opacity: 'show'}, 150);
+		});
+		eventElementControl.click(function(event) {
+			element.find('.event-nav').detach();
+			eventElements.animate({opacity: 'hide'}, 150);
+			eventElementControl.animate({opacity: 'hide'}, 150, function () {
+				calendar.animate({opacity: 'show'}, 150);
+			});
+		});
+		$(eventElementArr[0]).show().addClass('current');
+		for (var i = 0; i < eventElementArr.length; i++) {
+			$(eventElementArr[i]).attr('data-count', i);			
+		}
 
-	// $datarange.on('change', function() {
-	// 	$('#bufer').text($(this).val());
-	// 	$datarange.width($('#bufer').width()+5);		
-	// });
+		if (eventElementArr.length > 1) {
+
+			subtitle.after('<div class="event-nav">'+
+												'<button class="prev">&lt;&nbsp;</button>'+
+												'<span class="count">'+1+'&nbsp;из&nbsp;'+eventElementArr.length+'</span>'+
+												'<button class="next">&nbsp;&gt;</button>'+
+											'</div>');
+		}
+		var eventNav = element.find('.event-nav'),
+				prev = $(eventNav).find('.prev'),
+				next = $(eventNav).find('.next'),
+				count = $(eventNav).find('.count');
+
+		prev.click(function() {
+			var current = eventElements.find('.event.current');
+			if ($(current).data('count') == 0) {
+				count.text(eventElementArr.length + ' из ' + eventElementArr.length);
+				$(current).fadeOut('150', function() {
+					$(eventElementArr[eventElementArr.length - 1]).fadeIn('150').addClass('current');
+				}).removeClass('current');
+			} else {
+				count.text($(current).data('count') + ' из ' + eventElementArr.length)
+				$(current).fadeOut('150', function() {
+					$(eventElementArr[$(current).data('count') - 1]).fadeIn('150').addClass('current');
+				}).removeClass('current');
+			}
+		});
+
+		next.click(function() {
+			var current = eventElements.find('.event.current');
+			if ($(current).data('count') == eventElementArr.length - 1) {
+				count.text('1' + ' из '+eventElementArr.length)
+				$(current).fadeOut('150', function() {
+					$(eventElementArr[0]).fadeIn('150').addClass('current');
+				}).removeClass('current');
+			} else {
+				count.text($(current).data('count')+2 +' из '+eventElementArr.length)
+				$(current).fadeOut('150', function() {
+					$(eventElementArr[$(current).data('count') + 1]).fadeIn('150').addClass('current');
+				}).removeClass('current');
+			}
+		});
+	});
+
+
 });
