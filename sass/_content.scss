@@ -15,18 +15,43 @@
 	&-title {
 		background-color: $light-color;
 		@include clearfix;
-		&box {
-			float: left;
-			& h1, h2, h3, h4, h5, p, div, span {
-				margin: 0;
-				padding: 0;
-				font-family: "PT Serif", serif;
-				color: $basic-color;
-				font-weight: 400;
-				font-size: 32px;
-			}
+	}
+
+	&-titlebox {
+		float: left;
+		& h1, h2, h3, h4, h5, p, div, span {
+			margin: 0;
+			padding: 0;
+			font-family: "PT Serif", serif;
+			color: $basic-color;
+			font-weight: 400;
+			font-size: 32px;
 		}
-	}	
+	}
+	&-subtitle {
+		float: left;
+		margin-top: 10px;
+		margin-bottom: 10px;
+		font-size: 16px;
+		font-weight: 300;
+		&_right {
+			float: right;
+			text-align: right;
+		}
+		h2 {
+			font-family: Roboto;
+			font-size: 1.125em;
+			font-weight: inherit;
+		}
+		h3 {
+			font-family: Roboto;
+			font-size: 1em;
+			font-weight: inherit;
+		}
+		span {
+			color: #bcbdc0;
+		}
+	}
 	&-filter {
 		display: flex;
 		justify-content: flex-end;

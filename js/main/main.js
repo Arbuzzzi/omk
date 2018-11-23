@@ -225,16 +225,10 @@ $(document).ready(function() {
 			if (position >= positionOne) {
 				collapseItemScrollHide($('#menuLeftListControl'), positionOne);
 			} else {
+				if (position <= 300) {
 					collapseItemScrollShow($('#menuLeftListControl'), positionOne);
+				}
 			}
-
-			// 2 брэйкпоинт 
-			// if (position >= positionTwo) {
-			// 	$('.menu-left, .menu-horizontal').addClass('hide')
-			// } else {
-			// 	$('.menu-left, .menu-horizontal').removeClass('hide')
-			// }
-
 
 			// сохраняем отступ
 			if (position > 0) {
@@ -556,7 +550,7 @@ $(document).ready(function() {
 		if ($(this).val() == 'true-date') {
 			$(this).val('');
 			$('[name="period_date_buffer"]').datepicker($.datepicker.regional[ "ru" ]);
-			$('[name="period_date_buffer"]').datepicker('widget').addClass('calendar');
+			$('[name="period_date_buffer"]').datepicker('widget').addClass('vidget-calendar');
 			$('[name="period_date_buffer"]').datepicker('show');
 			
 		}
@@ -620,7 +614,9 @@ $(document).ready(function() {
 			eventElements.animate({opacity: 'hide'}, 150);
 			eventElementControl.animate({opacity: 'hide'}, 150, function () {
 				calendar.animate({opacity: 'show'}, 150);
+				eventElementArr.hide()
 			});
+
 		});
 		$(eventElementArr[0]).show().addClass('current');
 		for (var i = 0; i < eventElementArr.length; i++) {
@@ -671,5 +667,6 @@ $(document).ready(function() {
 		});
 	});
 
+	$('.card__title *').dotdotdot();
 
 });

@@ -1,149 +1,95 @@
 .calendar {
-	padding: 15px;
-	margin-top: 25px;
-	border-radius: 5px;
-	background-color: #f4f5f5;
-	&-change {
-		height: 20px;
-		background-color: red;
-	}
-	&.vidget-box {
-		width: auto;
-		border: 1px solid #dddee0;
-		background-color: #f4f5f5;
-		.ui-state-active {
-			background-color: transparent;
-		}
-		.ui-datepicker {
-			display: block;
-		}
-	}
-	.ui-datepicker {
-		width: 100%;
-	}
-	table {
-		font-size: 14px;
-	}
-	.ui-datepicker-title {
-		color: $dark-color;
-		font-size: 13px;
-		font-weight: 400;
-	}
-	.ui-datepicker-prev, .ui-datepicker-next {
-		@include before('\e901') {
-			top: 50%;
-			left: 50%;
-			margin-top: -6px;
-			margin-left: -6px;
-			width: 12px;
-			height: 12px;
-			@include icon;
-			font-size: 10px;			
-		}
-	}
-	.ui-datepicker-prev {
-		&:before {
-			transform: rotate(90deg);
-		}
-	}
-	.ui-datepicker-next {
-		&:before {
-			transform: rotate(-90deg);
-		}
-	}
-	.ui-datepicker-calendar {
-		td {
-			padding: 2.5px;
-		}
-	}
-
-	.ui-datepicker-today {
-		.ui-state-default {
-			border: 1px solid $special-color;
-			color: $special-color;
-		}
-	}
-	.ui-state-default {
-		text-align: center;
-		border: 1px solid #d0d1d3;
-		color: #bcbdc0;
-		font-size: 16px;
-		@include hover {
-			background-color: $btn-hov-bg-color;
-			color: $light-color;
-		}
-	}
-	.ui-state-week {
-		color: #bcbdc0;
-		font-size: 10px;
-		font-weight: 300;
-	}
-	.ui-state-active {
-		border: 1px solid #32363f;
-	}
-	.ui-state-hover {
-
-	}
-	.ui-datepicker-buttonpane {
-		margin: 0;
-		button {
-			margin: 0;
-			padding: 3px 5px 4px 5px;
-			min-width: 86px;
-			margin-right: 1px;
-			background-color: $btn-bg-color;
-			color: $btn-color;
-			font-size: 13px;
-			line-height: 15px;
-			text-align: center;  
-			text-transform: capitalize;
-			border-radius: 5px;
-			transition: 0.5s;
-
-			@include hover {
-				background-color: $btn-hov-bg-color;
-				color: $btn-hov-color;
+	display: block;
+	width: 100%;
+	border-collapse: collapse;	
+	border-spacing: 0px;
+	thead {
+		display: block;
+		tr {
+			display: flex;
+			width: 100%;
+			th {
+				margin-bottom: 5px;
+				display: block;
+				width: calc(100% / 7);
+				color: $dark-color;
+				font-size: 14px;
+				font-weight: 300;
+				line-height: 17px;
+				text-align: right;
 			}
 		}
-		
 	}
-	.form-filters__select {
-		margin-left: auto;
-		margin-right: auto;
+	tbody {
 		display: block;
-		margin-top: 40px;
+		border: 1px solid #bcbdc0;
+		border-radius: 5px;
+		overflow: hidden;
+		tr {
+			display: flex;
+			width: 100%;
+			border-bottom: 1px solid #bcbdc0;
+			&:last-child {
+				border-bottom: 0;
+			}
+		}
 	}
-}
-.events {
-	display: none;	
-}
-.event {
-	display: none;
-	&-nav {
-		position: absolute;
-		right: 0;
-		top: 0;
-	}
-	&-title {
-		margin-bottom: 10px;
-		font-family: "PT Serif";
-		color: $basic-color;
-		font-size: 18px;
-		line-height: 18px;
-		font-weight: 400;
-	}
-	&-control {
-		position: absolute;
-		right: 0;
-		top: 0;
-		display: none;
-		color: #E0E1E2;
-		transform: rotate(90deg);
-		i {
+	&__day {
+		display: block;
+		width: calc(100% / 7);
+		min-height: 124px;
+		padding: 11px 9px;
+		color: #bcbdc0;
+		font-size: 49px;
+		font-weight: 300;
+		text-align: right;
+		border-right: 1px solid #bcbdc0;
+		color: $dark-color;
+		&:last-child {
+			border-right: 0;
+		}
+		a, div { 
+			display: flex;
+			flex-direction: column;
+			height: 100%;
 			color: inherit;
-			&:before {
+			p {
+				font-weight: 700;
+				color: inherit;
+			}
+			span {
+				font-size: 12px;
+				font-weight: 300;
 				color: inherit;
 			}
 		}
+	}
+	&__day {
+		&_special {
+			background-color: rgba(0, 185, 31, 0.1);			
+		}
+		&_major {
+			color: $special-color;
+		}
+	}
+	&__today {
+		background-color: rgba($special-color, 0.1);
+		div {
+			p {
+				color: $thin-color;
+			}
+		}
+	}				
+	&__weekend {
+		background-color: #f4f5f5;
+	}
+	&__caption {
+		display: block;
+		margin-top: auto;
+		text-align: left;
+		vertical-align: bottom;
+		color: #bcbdc0;
+		font-size: 12px;
+		font-weight: 300;
 	}
 }

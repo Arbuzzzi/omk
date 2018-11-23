@@ -118,6 +118,9 @@
 		&_dblock {
 			display: block;
 		}
+		&_ads {
+			min-height: 315px;
+		}
 		&__left {
 			display: flex;
 			flex-grow: 1;
@@ -176,6 +179,11 @@
 			&:last-child {
 				margin-bottom: 0;
 			}
+		}
+		h4 {
+			font-family: "Roboto", sans-serif;
+			font-size: 14px;
+			font-weight: 400;
 		}
 		&_small {
 			color: #9a9da1;

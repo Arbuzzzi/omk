@@ -98,7 +98,15 @@ h6, .h6,
   color: inherit;
   font-weight: 400;
 }
-
+.sign-title {
+  padding: 3px 10px;
+  border-radius: 5px;
+  background-color: #dddee0;
+  color: #000000;
+  font-family: Roboto;
+  font-size: 16px;
+  font-weight: 400;
+}
 
 p, .section-text, .text {
   color: inherit;

@@ -1,0 +1,100 @@
+.article {
+	position: relative;
+	width: 100%;
+	margin-bottom: 30px;
+	@include after {
+		bottom: 0;
+		right: 15px;
+		left: 15px;
+		height: 1px;
+		background-color: #707070;
+		opacity: 0.4;
+	}
+	&:last-child {
+		&:after {
+			display: none;
+		}
+	}
+	&-title {
+		margin-bottom: 15px;
+	}
+	&-imgwrap {
+		margin-bottom: 30px;
+		@include clearfix;
+	}
+	&-imgbox {
+		background: center no-repeat / cover;
+		border-radius: 5px;
+		border: 1px solid #707070;
+		&_full {
+			height: 300px;
+			width: 100%;
+		}
+		&_third {
+			float: left;
+			width: calc(33.33333% - 10px);
+			height: 210px; 
+			margin-right: 15px;
+			&:last-child {
+				margin-right: 0;
+			}
+		}
+		&_half {
+			float: left;
+			width: calc(50% - 7.5px);
+			height: 230px; 
+			margin-right: 15px;
+			&:last-child {
+				margin-right: 0;
+			}
+		}
+	}
+	&-quote {
+
+	}
+	&-blockquote {
+		position: relative;
+		padding: 15px;
+		padding-left: 72px;
+		margin-bottom: 15px;
+		border-radius: 5px;
+		background-color: #eeefef;
+		color: $basic-color;
+		font-family: "PT Serif";
+		font-size: 17px;
+		font-weight: 400;
+		line-height: 23px;
+		@include before {
+			top: 15px;
+			left: 15px;
+			width: 27px;
+			height: 26px;
+			background: url(../img/icon/quote.svg) center no-repeat / contain;
+		}
+	}
+	&-text {
+		color: $basic-color;
+		font-family: "PT Serif";
+		font-size: 16px;
+		font-weight: 400;
+		line-height: 23px;
+		p {
+			font-size: 1.0625em; /* 17/16 */
+			margin-bottom: 15px;
+		}
+		h3 {
+			margin-bottom: 18px;
+			font-size: 1.375em;
+		}
+	}
+	&-autor {
+		margin-top: 34px;
+		text-align: right;
+		border-radius: 5px;
+		background-color: #fbfbfb;
+		color: $basic-color;
+		font-family: "PT Serif";
+		font-size: 17px;
+		font-weight: 400;
+	}
+}

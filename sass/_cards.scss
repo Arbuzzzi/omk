@@ -2,6 +2,7 @@
 	padding: 0 15px;
 	width: 100%;
 	margin-bottom: 30px;
+	@include clearfix;
 	&-wrap {
 		display: flex;
 		flex-direction: column;
@@ -49,6 +50,10 @@
 			font-size: 1em;
 		}
 		a {
+			display: block;
+			max-height: 38px;
+			overflow: hidden;
+			text-overflow: ellipsis;
 			@include hover {
 				text-decoration: underline;
 			}
@@ -78,7 +83,10 @@
 		&__title {
 			font-size: 40px;
 			margin-top: -15px;
-			margin-bottom: 5px;				
+			margin-bottom: 5px;
+			a {
+				max-height: none;
+			}		
 		}
 		&__text {
 			margin-bottom: 15px;
