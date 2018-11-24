@@ -3,6 +3,7 @@
 	margin-top: 25px;
 	border-radius: 5px;
 	background-color: #f4f5f5;
+	height: 238px;
 	// &-change {
 	// 	height: 20px;
 	// 	background-color: red;
@@ -16,6 +17,8 @@
 		}
 		.ui-datepicker {
 			display: block;
+			padding: 0;
+			margin-left: -2px;
 		}
 	}
 	.ui-datepicker {
@@ -23,6 +26,7 @@
 	}
 	table {
 		font-size: 14px;
+		margin-bottom: 0;
 	}
 	.ui-datepicker-title {
 		color: $dark-color;
@@ -115,10 +119,14 @@
 	}
 }
 .events {
-	display: none;	
+	display: none;
+	height: 155px;
+	margin-top: -5px;
 }
 .event {
-	display: none;
+	display: flex;
+	flex-direction: column;
+	height: 100%;
 	&-nav {
 		position: absolute;
 		right: 0;

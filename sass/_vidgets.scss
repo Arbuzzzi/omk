@@ -71,11 +71,18 @@
 	&-imgbox {
 		position: relative;
 		overflow: hidden;
-		min-height: 125px;
+		// min-height: 125px;
+		background: center no-repeat / cover;
+		&_calendar {
+			margin-top: auto;
+			height: 100%;
+			max-height: 115px;
+		}
 		img {
 
 		}
 		&_full {
+			height: 180px;
 			margin-bottom: 10px;
 		}
 		&__text {

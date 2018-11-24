@@ -13,21 +13,48 @@
 	}
 
 	&-title {
-		background-color: $light-color;
+		background-color: $light-color;		
 		@include clearfix;
 	}
 
 	&-titlebox {
 		float: left;
-		& h1, h2, h3, h4, h5, p, div, span {
+		color: $basic-color;
+		h1, h2, h3, h4, h5, p, div, span {
 			margin: 0;
 			padding: 0;
 			font-family: "PT Serif", serif;
-			color: $basic-color;
+			color: inherit;
 			font-weight: 400;
 			font-size: 32px;
 		}
+		&_specialtitle {
+			h1, h2, h3, h4, h5, p, div, span {
+				margin-top: 15px;
+				margin-bottom: 25px;
+				font-family: Roboto;
+				font-weight: 700;
+			}
+		}
+		&_dark {
+			padding: 6px 15px 4px;
+			margin-bottom: 15px;
+			color: $light-color;
+			width: 100%;
+			border-radius: 5px;
+			background-color: $dark-color;
+			font-size: 16px;
+			h1, h2, h3, h4, h5, p, div, span {
+				color: inherit;
+				font-family: Roboto;
+			}
+			h4 {
+				font-weight: 400;
+				font-size: 1.375em;
+			}
+		}
 	}
+
 	&-subtitle {
 		float: left;
 		margin-top: 10px;

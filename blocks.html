@@ -10,7 +10,7 @@
 	<link rel="stylesheet" href="jquery-ui-1.12.1.custom/jquery-ui.structure.min.css">
 	<link rel="stylesheet" href="jquery-ui-1.12.1.custom/jquery-ui.min.css">
 	<link href="css/style.css?v0.1.2" rel="stylesheet">
-	<title>Календарь | OMK</title>
+	<title>Комбинированные блоки | OMK</title>
 </head>
 <body>
 
@@ -802,8 +802,8 @@
 						<div class="breadcrumb">
 							<div class="breadcrumb-group">
 								<a href="/projects/omk/" class="breadcrumb__link">Главная</a>
-								<a href="#" class="breadcrumb__link">Сотрудникам</a>
-								<a href="/calendar.html" class="breadcrumb__link">Календарь</a>
+								<a href="#" class="breadcrumb__link">Новости ОМК</a>
+								<a href="/calendar.html" class="breadcrumb__link">Более 10,6 млн тонн рулонного проката произвел литейно-прокатный комплекс ВМЗ за 10 лет работы</a>
 							</div>
 							<div class="breadcrumb-back">
 								<a href="#" class="breadcrumb__link">&lt;&lt;Назад</a>	
@@ -1013,18 +1013,18 @@
 								<tr>
 									<td class=""><a href="#" class="ui-state-deafult ui-state-week">02</a></td>
 									<td class=""><a class="ui-state-default" href="#">5</a></td>
-									<td class=""><a class="ui-state-default ui-state-active" href="#event-6">6</a></td>
+									<td class="selected"><a class="ui-state-default ui-state-active" href="#">6</a></td>
 									<td class=""><a class="ui-state-default" href="#">7</a></td>
 									<td class=""><a class="ui-state-default" href="#">8</a></td>
 									<td class=""><a class="ui-state-default" href="#">9</a></td>
 									<td class="ui-datepicker-week-end"><a class="ui-state-default" href="#">10</a></td>
-									<td class="ui-datepicker-week-end selected"><a class="ui-state-default" href="#event-11">11</a></td>
+									<td class="ui-datepicker-week-end selected"><a class="ui-state-default ui-state-active" href="#event-11">11</a></td>
 								</tr>
 								<tr>
 									<td class=""><a href="#" class="ui-state-deafult ui-state-week">03</a></td>
 									<td class=""><a class="ui-state-default" href="#">12</a></td>
 									<td class=""><a class="ui-state-default" href="#">13</a></td>
-									<td class=""><a class="ui-state-default ui-state-active" href="#event-14">14</a></td>
+									<td class=""><a class="ui-state-default" href="#">14</a></td>
 									<td class=""><a class="ui-state-default" href="#">15</a></td>
 									<td class=""><a class="ui-state-default" href="#">16</a></td>
 									<td class="ui-datepicker-week-end"><a class="ui-state-default" href="#">17</a></td>
@@ -1053,37 +1053,21 @@
 							</tbody>
 						</table>
 					</div>
-					<div id="event-14" class="events">
-						<a href="calendar2.html#event1-14-10-2018" class="event">
+					<div id="event-11" class="events">
+						<div class="event">
 							<div class="event-title"><span>1 День великого праздника в две строки</span></div>
-							<div class="vidget-imgbox vidget-imgbox_calendar" style="background-image: url(img/event-img-01.jpg);"></div>
-						</a>							
+							<div class="vidget-imgbox"><img src="img/event-img-01.jpg" alt="image event"></div>
+						</div>							
 						
-						<a href="calendar2.html#event2-14-10-2018" class="event">
+						<div class="event">
 							<div class="event-title"><span>2 День великого праздника в две строки</span></div>
-							<div class="vidget-imgbox vidget-imgbox_calendar" style="background-image: url(img/event-img-01.jpg);"></div>
-						</a>							
+							<div class="vidget-imgbox"><img src="img/event-img-01.jpg" alt="image event"></div>
+						</div>							
 
-						<a href="calendar2.html#event3-14-10-2018" class="event">
+						<div class="event">
 							<div class="event-title"><span>3 День великого праздника в две строки</span></div>
-							<div class="vidget-imgbox vidget-imgbox_calendar" style="background-image: url(img/event-img-01.jpg);"></div>
-						</a>							
-					</div>
-					<div id="event-6" class="events">
-						<a href="calendar.html#event1-06-10-2018" class="event">
-							<div class="event-title"><span>День металлурга</span></div>
-							<div class="vidget-imgbox vidget-imgbox_calendar" style="background-image: url(img/article-img-01.jpg);"></div>
-						</a>							
-						
-						<a href="calendar.html#event2-06-10-2018" class="event">
-							<div class="event-title"><span>День поедателей йогуртов</span></div>
-							<div class="vidget-imgbox vidget-imgbox_calendar" style="background-image: url(img/article-img-01.jpg);"></div>
-						</a>							
-
-						<a href="calendar.html#event3-06-10-2018" class="event">
-							<div class="event-title"><span>День металлурга</span></div>
-							<div class="vidget-imgbox vidget-imgbox_calendar" style="background-image: url(img/article-img-01.jpg);"></div>
-						</a>							
+							<div class="vidget-imgbox"><img src="img/event-img-01.jpg" alt="image event"></div>
+						</div>							
 					</div>
 						
 					<div id="event-24" class="events">
@@ -1205,7 +1189,8 @@
 								<div class="vidget-title">
 									АКЦИИ В РЕГИОНАХ
 								</div>
-								<div class="vidget-imgbox vidget-imgbox_full" style="background-image: url(img/vidget-img-09.jpg);">
+								<div class="vidget-imgbox vidget-imgbox_full">
+									<img src="img/vidget-img-09.jpg" alt="image">
 								</div>
 								<div class="vidget-text">
 									<h4><strong>
@@ -1222,7 +1207,8 @@
 								<div class="vidget-title">
 									ОБЪЯВЛЕНИЯ
 								</div>
-								<div class="vidget-imgbox vidget-imgbox_full" style="background-image: url(img/vidget-img-08.jpg);">
+								<div class="vidget-imgbox vidget-imgbox_full">
+									<img src="img/vidget-img-08.jpg" alt="image">
 								</div>
 								<div class="vidget-text">
 									<p>УАЗ 452 Буханка, 1999</p>
@@ -1259,291 +1245,161 @@
 					</div>							
 				</div>
 			</div>
-
-
 			<div class="col-xl-9">
 				<div class="content-group">
-					<div class="card cardFull cardFull-head">
-						<div class="card-wrap cardFull-wrap card-wrap-head">
+					<!-- Текст + Изображение, тип "Текст справа", с заголовком, кнопкой и без -->
+					<div class="cards">
+						<div class="card cardFull-head_special">
 							<div class="content-title">
-								<div class="content-titlebox"><h1>Календарь</h1></div>
+								<div class="content-titlebox content-titlebox_specialtitle"><h1>Комбинированные блоки</h1></div>
+							</div>
+							<div class="content-title">
+								<div class="content-titlebox_dark"><h4>Текст + Изображение, тип "Текст справа", с заголовком, кнопкой и без</h4></div>
+							</div>
+							<div class="content-title">
+								<div class="content-titlebox"><h2>Новые технологии на ВМЗ в 2019</h2></div>
 							</div>
 						</div>
+						<div class="card cardThird">					
+							<div class="cardThird__imgbox card__imgbox" style="background-image: url(img/block-img-01.jpg);">
+								<div class="card-warning-text hide">
+									<p></p>
+								</div>
+							</div>
+						</div>
+						<div class="card cardTwoThirds">
+							<div class="card__text cardTwoThirds__text">
+								<p>Литейно-прокатный комплекс Выксунского металлургического завода (АО «ВМЗ», Нижегородская область, входит в состав Объединенной металлургической компании, АО «ОМК») за 10 лет работы произвел более 10,6 млн тонн горячекатаного рулонного проката, став важным звеном в полностью отечественной цепочке производства труб для нефтегазового комплекса.</p>
+
+								<p>Литейно-прокатный комплекс - уникальное для России предприятие, в котором в единый технологический </p>
+								<a href="#" class="button card__more">Читать далее</a>
+							</div>
+						</div>
+						<div class="card cardThird">					
+							<div class="cardThird__imgbox card__imgbox" style="background-image: url(img/block-img-02.jpg);">
+								<div class="card-warning-text hide">
+									<p></p>
+								</div>
+							</div>
+						</div>
+						<div class="card cardTwoThirds">
+							<div class="card__text cardTwoThirds__text">
+								<p>Литейно-прокатный комплекс Выксунского металлургического завода (АО «ВМЗ», Нижегородская область, входит в состав Объединенной металлургической компании, АО «ОМК») за 10 лет работы произвел более 10,6 млн тонн горячекатаного рулонного проката, став важным звеном в полностью отечественной цепочке производства труб для нефтегазового комплекса...</p>
+
+								<p>Литейно-прокатный комплекс - уникальное для России предприятие, в котором в единый технологический процесс совмещены процесс совмещены процесс совмещены процесс совмещены процесс совмещены процесс совмещены процесс совмещены процесс совмещены процесс совмещены процесс совмещены процесс совмещены выплавка 
+								</p>
+								<a href="#" class="button card__more">Читать далее</a>
+							</div>
+						</div>						
 					</div>
 					
-					<div class="card">
-						<div class="content-title">
-							<div class="content-subtitle">
-								<h2>Ноябрь, <span>2018</span></h2>
+					<!-- Текст + Изображение, тип "Текст слева", с заголовком, кнопкой и без -->
+					<div class="cards">
+						<div class="card cardFull-head_special">
+							<div class="content-title">
+								<div class="content-titlebox_dark"><h4>Текст + Изображение, тип "Текст слева", с заголовком, кнопкой и без</h4></div>
 							</div>
-							<div class="content-subtitle content-subtitle_right">
-								<h3><span>< Сегодня: 20 Ноября ></span></h3>
+							<div class="content-title">
+								<div class="content-titlebox"><h2>Новые технологии на ВМЗ в 2019</h2></div>
 							</div>
 						</div>
-						<div class="calendar-wrap">
-							<table class="calendar">
-								<thead>
-									<tr>
-										<th>ПН</th>
-										<th>ВТ</th>
-										<th>СР</th>
-										<th>ЧТ</th>
-										<th>ПТ</th>
-										<th>СБ</th>
-										<th>ВС</th>
-									</tr>
-								</thead>
-								<tbody>
-									<tr>
-										<td class="calendar__day">
-											<p>29</p>
-										</td>
-										<td class="calendar__day">
-											<p>30</p>
-										</td>
-										<td class="calendar__day">
-											<p>31</p>
-										</td>
-										<td class="calendar__day">
-											<p>1</p>
-										</td>
-										<td class="calendar__day">
-											<p>2</p>
-										</td>
-										<td class="calendar__day calendar__weekend">
-											<p>3</p>
-										</td>
-										<td class="calendar__day calendar__weekend">
-											<p>4</p>
-										</td>
-									</tr>
-									<tr>
-										<td class="calendar__day">
-											<p>5</p>
-										</td>
-										<td class="calendar__day" data-placement="right" data-toggle="tooltip" data-html="true" 
-											title="<p>День металлурга</p> 
-														 <p>День поедателей йогуртов</p> 
-														 <p>День металлурга 2</p>">
-											<a href="#events-06-10-2018" class="calendar__link">
-												<p>6</p>
-												<span class="calendar__caption">3 события</span>
-											</a>
-										</td>
-										<td class="calendar__day">
-											<p>7</p>
-										</td>
-										<td class="calendar__day">
-											<p>8</p>
-										</td>
-										<td class="calendar__day">
-											<a href="#">
-												<p>9</p>												
-											</a>
-										</td>
-										<td class="calendar__day calendar__weekend">
-											<p>10</p>
-										</td>
-										<td class="calendar__day calendar__weekend">
-											<p>11</p>
-										</td>
-									</tr>
-									<tr>
-										<td class="calendar__day">
-											<p>12</p>
-										</td>
-										<td class="calendar__day">
-											<p>13</p>
-										</td>
-										<td class="calendar__day" data-placement="right" data-toggle="tooltip" data-html="true" 
-											title="<p>День металлурга</p> 
-														 <p>День поедателей йогуртов</p> 
-														 <p>День металлурга 2</p>">
+						<div class="card cardTwoThirds">
+							<div class="card__text cardTwoThirds__text">
+								<p>Литейно-прокатный комплекс Выксунского металлургического завода (АО «ВМЗ», Нижегородская область, входит в состав Объединенной металлургической компании, АО «ОМК») за 10 лет работы произвел более 10,6 млн тонн горячекатаного рулонного проката, став важным звеном в полностью отечественной цепочке производства труб для нефтегазового комплекса.</p>
 
-											<a href="calendar2.html#events-14-10-2018">
-												<p>14</p>
-												<span class="calendar__caption">1 событие</span>
-											</a>
-										</td>
-										<td class="calendar__day calendar__day_special"><p>15</p>
-										</td>
-										<td class="calendar__day">
-											<p>16</p>
-										</td>
-										<td class="calendar__day calendar__weekend">
-											<p>17</p>
-										</td>
-										<td class="calendar__day calendar__weekend">
-											<p>18</p>
-										</td>
-									</tr>
-									<tr>
-										<td class="calendar__day">
-											<p>19</p>
-										</td>
-										<td class="calendar__day">
-											<p>20</p>
-										</td>
-										<td class="calendar__day">
-											<p>21</p>
-										</td>
-										<td class="calendar__day">
-											<p>22</p>
-										</td>
-										<td class="calendar__day calendar__today">
-											<div> 
-												<p>23</p>
-												<span class="calendar__caption">Сегодня</span>
-											</div>
-										</td>
-										<td class="calendar__day calendar__weekend">
-											<p>24</p>
-										</td>
-										<td class="calendar__day calendar__weekend calendar__day_major">
-											<a href="#">
-												<p>25</p>
-												<span class="calendar__caption">Важное событие</span>
-											</a>
-										</td>
-									</tr>
-									<tr>
-										<td class="calendar__day">
-											<a href="#">
-												<p>26</p>
-												<span class="calendar__caption">4 события</span>
-											</a>
-										</td>
-										<td class="calendar__day">
-											<p>27</p>
-										</td>
-										<td class="calendar__day">
-											<p>28</p>
-										</td>
-										<td class="calendar__day">
-											<p>29</p>
-										</td>
-										<td class="calendar__day">
-											<p>30</p>
-										</td>
-										<td class="calendar__day calendar__weekend">
-											<p>1</p>
-										</td>
-										<td class="calendar__day calendar__weekend">
-											<p>2</p>
-										</td>
-									</tr>
-								</tbody>
-							</table>
+								<p>Литейно-прокатный комплекс - уникальное для России предприятие, в котором в единый технологический </p>
+								<a href="#" class="button card__more">Читать далее</a>
+							</div>
+						</div>
+						<div class="card cardThird">					
+							<div class="cardThird__imgbox card__imgbox" style="background-image: url(img/block-img-05.jpg);">
+								<div class="card-warning-text hide">
+									<p></p>
+								</div>
+							</div>
+						</div>
+						<div class="card cardTwoThirds">
+							<div class="card__text cardTwoThirds__text">
+								<p>Литейно-прокатный комплекс Выксунского металлургического завода (АО «ВМЗ», Нижегородская область, входит в состав Объединенной металлургической компании, АО «ОМК») за 10 лет работы произвел более 10,6 млн тонн горячекатаного рулонного проката, став важным звеном в полностью отечественной цепочке производства труб для нефтегазового комплекса...</p>
+
+								<p>Литейно-прокатный комплекс - уникальное для России предприятие, в котором в единый технологический процесс совмещены процесс совмещены процесс совмещены процесс совмещены процесс совмещены процесс совмещены процесс совмещены процесс совмещены процесс совмещены процесс совмещены процесс совмещены выплавка 
+								</p>
+								<a href="#" class="button card__more">Читать далее</a>
+							</div>
+						</div>
+						<div class="card cardThird">					
+							<div class="cardThird__imgbox card__imgbox" style="background-image: url(img/block-img-06.jpg);">
+								<div class="card-warning-text hide">
+									<p></p>
+								</div>
+							</div>
+						</div>						
+					</div>
+
+					<!-- Текст + Изображение, тип "2 колонки", возможность задать фикс. текст -->
+					<div class="cards">
+						<div class="card cardFull-head_special">
+							<div class="content-title">
+								<div class="content-titlebox_dark"><h4>Текст + Изображение, тип "2 колонки", возможность задать фикс. текст</h4></div>
+							</div>
+							<div class="content-title">
+								<div class="content-titlebox"><h2>Новые технологии на ВМЗ в 2019</h2></div>
+							</div>
+						</div>					
+						<div class="card cardHalf">
+							<div class="cardHalf-imgbox card__imgbox" style="background-image: url(img/block-img-03.jpg);">
+								<div class="card-warning-text hide">
+									<p></p>
+								</div>
+							</div>
+							<div class="card__text cardHalf__text">
+								<p>Конкурс «Проектный Олимп» проводится с 2014 года аналитическим центром при Правительстве Российской Федерации. С 2017 года в конкурсе могут принимать участие не только органы государственной власти.</p>
+								<a href="#" class="button card__more">Читать далее</a>
+							</div>
+						</div>
+						<div class="card cardHalf">
+							<div class="cardHalf-imgbox card__imgbox" style="background-image: url(img/block-img-08.jpg);">
+								<div class="card-warning-text hide">
+									<p></p>
+								</div>
+							</div>
+							<div class="card__text cardHalf__text">
+								<p>Конкурс «Проектный Олимп» проводится с 2014 года аналитическим центром при Правительстве Российской Федерации. С 2017 года в конкурсе могут принимать участие не только органы государственной власти, государственные корпорации и компании, а также частные компании, оказывающие наиболее значительное влияние на развитие экономики. Оценка в номинации «Лучший проект года» проводилась по методике Российской национальной ассоциации управления Российскойнациональнойассоциацииуправления</p>
+								<a href="#" class="button card__more">Читать далее</a>
+							</div>
 						</div>
 					</div>
-					
-					<div id="events-06-10-2018" class="card">
-						<div class="sign-title">
-							<p>События: 6 Ноября 2018</p>
+
+					<!-- Текст + Изображение, тип "Текст справа (мини)", с заголовком и без -->
+					<div class="cards">
+						<div class="card cardFull-head_special">
+							<div class="content-title">
+								<div class="content-titlebox_dark"><h4>Текст + Изображение, тип "2 колонки", возможность задать фикс. текст</h4></div>
+							</div>
+							<div class="content-title">
+								<div class="content-titlebox"><h2>Благодарность всем сотрудникам подразделения</h2></div>
+							</div>
 						</div>
+						<div class="card cardFull-head_special">
+							<div class="tagbox">
+								<div class="tag">
+									<div class="card-date">
+										<span>24 Сентября 2018</span>
+									</div>
+								</div>
+								<div class="like-card">
+									<button class="like-button comment-button">
+										<i class="icon-comment"></i>
+										<span class="like-count">23</span>
+									</button>
+									<button class="like-button">
+										<i class="icon-like"></i>
+										<span class="like-count">1286</span>
+									</button>
+								</div>
+							</div>
+						</div>						
 					</div>
-					<article id="event1-06-10-2018" class="article">
-						<div class="card">
-							<div class="content-title">
-								<div class="article-title content-titlebox">
-									<h3>День металлурга</h3>
-								</div>								
-							</div>
-							<div class="article-imgwrap">
-								<div class="article-imgbox article-imgbox_full" style="background-image: url(img/article-img-01.jpg);"></div>
-							</div>
-							<div class="article-quote">
-								<blockquote class="article-blockquote"> 
-									«Металлургия – базовая отрасль промышленности, одна из основных. Не развивая производство продукции из стали, не развивая производство листа, труб, колес для железнодорожных вагонов мы будем не конкурентоспособны. Такие предприятия, где используются современные технологии и оборудование, где оптимизированы все бизнес-процессы, где активно применяются цифровые технологии, позволяют развивать всю нашу промышленность. ВМЗ выпускает конкурентоспособную продукцию, аналогов которой в мире не так много. Можно только пожелать успехов предприятию, порадоваться за регион. Что еще важно: предприятие выполняет социальные обязательства, развивая территории, на которых оно работает», - отметил после посещения ВМЗ заместитель министра промышленности и торговли России Виктор Евтухов.
-								</blockquote>
-							</div>
-							<div class="article-text">
-								<p>
-								Литейно-прокатный комплекс Выксунского металлургического завода (АО «ВМЗ», Нижегородская область, входит в состав Объединенной металлургической компании, АО «ОМК») за 10 лет работы произвел более 10,6 млн тонн горячекатаного рулонного проката, став важным звеном в полностью отечественной цепочке</p>
-
-								<p>«Выксунский металлургический завод – не только один из крупнейших налогоплательщиков Нижегородской области, это еще яркий пример корпоративной социальной ответственности. Коллеги из ОМК показывают пример как необходимо взаимодействовать с местным самоуправлением, с региональными властями для того, чтобы жизнь выксунцев стала лучше. У компании много новых проектов развития производства в Выксе, вся необходимая поддержка от правительства области будет оказана», - сказал исполняющий обязанности заместителя губернатора, заместителя председателя Правительства Нижегородской области Игорь Носов.</p>
-
-								<p>«Основной итог десятилетней работы ЛПК - возможность производить трубные марки стали самого ответственного назначения в самые короткие сроки. Сегодня по производственным показателям ЛПК является лучшим среди предприятий аналогичного класса в мире. Мы не стоим на месте, планируем увеличить объем производства на 20%, до 1,5 млн тонн проката в год, осваиваем новые марки стали, которые востребованы отечественной топливно-энергетической отраслью», - отметил председатель Совета директоров ОМК Анатолий Седых.</p>
-							</div>
-							<div class="article-imgwrap">
-								<div class="article-imgbox article-imgbox_third" style="background-image: url(img/article-img-02.jpg)"></div>
-								<div class="article-imgbox article-imgbox_third" style="background-image: url(img/article-img-03.jpg)"></div>
-								<div class="article-imgbox article-imgbox_third" style="background-image: url(img/article-img-04.jpg)"></div>
-							</div>
-							<div class="article-text">
-								<h3>СПРАВКА</h3>
-
-								<p>Десятилетняя история литейно-прокатного комплекса – это история высоких достижений: только в течение нескольких последних лет коллектив ЛПК установил десятки производственных рекордов. Из года в год литейно-прокатный комплекс неизменно подтверждает статус одного из самых эффективных металлургических производств страны, объемы выпуска стали неоднократно превышали расчётную мощность комплекса.</p>
-
-								<p>Сегодня в комплексе работает около 1200 сотрудников.</p>
-							</div>
-							<div class="article-autor">
-								<p>Автор статьи: Елена Мацинова</p>
-							</div>
-						</div>
-					</article>
-					<article id="event2-06-10-2018" class="article">
-						<div class="card">
-							<div class="content-title">
-								<div class="article-title content-titlebox">
-									<h3>День поедателей йогуртов</h3>
-								</div>								
-							</div>
-							<div class="article-imgwrap">
-								<div class="article-imgbox article-imgbox_full" style="background-image: url(img/article-img-05.jpg);"></div>
-							</div>
-							<div class="article-quote">
-								<blockquote class="article-blockquote">Правило тут достаточно простое: чем меньше срок годности йогурта, тем он натуральнее. Так называемый «живой» йогурт может храниться при температуре 2-6 градусов Цельсия максимум 2-3 недели. Если же на упаковке указан большой срок годности (свыше 3-4 недель), то вряд в данном йогурте вряд ли содержаться полезные пробиотики. Ведь увеличить срок хранения йогурта можно только за счет его термообработки, в результате которой все полезные микроорганизмы погибают.</blockquote>
-							</div>
-							<div class="article-text">
-								<p>Если в названии или описании йогурта написано, что он термизированный или стерилизованный, то можно с уверенностью сказать, что данный продукт в ходе его производства подвергался термической обработке (это так называемый «неживой» йогурт). В процессе такой обработки погибли не только вредные, но и полезные микроорганизмы, так необходимые нашему организму. В результате чего срок годности такого йогурта может достигать 30 дней и более.</p>
-
-								<p>Однако хоть в ходе термообработки и погибают все полезные биологические культуры, «неживой» йогурт может принести определенную пользу вашему организму, ведь он богат белками, углеводами и жирами, витаминами и минералами.</p>
-							</div>
-							<div class="article-autor">
-								<p>Автор статьи: Елена Мацинова</p>
-							</div>
-						</div>
-					</article>
-					<article id="event3-06-10-2018" class="article">
-						<div class="card">
-							<div class="content-title">
-								<div class="article-title content-titlebox">
-									<h3>День металлурга 2</h3>
-								</div>								
-							</div>
-							<div class="article-imgwrap">
-								<div class="article-imgbox article-imgbox_full" style="background-image: url(img/article-img-01.jpg);"></div>
-							</div>
-							<div class="article-quote">
-								<blockquote class="article-blockquote"> 
-									«Металлургия – базовая отрасль промышленности, одна из основных. Не развивая производство продукции из стали, не развивая производство листа, труб, колес для железнодорожных вагонов мы будем не конкурентоспособны. Такие предприятия, где используются современные технологии и оборудование, где оптимизированы все бизнес-процессы, где активно применяются цифровые технологии, позволяют развивать всю нашу промышленность. ВМЗ выпускает конкурентоспособную продукцию, аналогов которой в мире не так много. Можно только пожелать успехов предприятию, порадоваться за регион. Что еще важно: предприятие выполняет социальные обязательства, развивая территории, на которых оно работает», - отметил после посещения ВМЗ заместитель министра промышленности и торговли России Виктор Евтухов.
-								</blockquote>
-							</div>
-							<div class="article-text">
-								<p>
-								Литейно-прокатный комплекс Выксунского металлургического завода (АО «ВМЗ», Нижегородская область, входит в состав Объединенной металлургической компании, АО «ОМК») за 10 лет работы произвел более 10,6 млн тонн горячекатаного рулонного проката, став важным звеном в полностью отечественной цепочке</p>
-
-								<p>«Выксунский металлургический завод – не только один из крупнейших налогоплательщиков Нижегородской области, это еще яркий пример корпоративной социальной ответственности. Коллеги из ОМК показывают пример как необходимо взаимодействовать с местным самоуправлением, с региональными властями для того, чтобы жизнь выксунцев стала лучше. У компании много новых проектов развития производства в Выксе, вся необходимая поддержка от правительства области будет оказана», - сказал исполняющий обязанности заместителя губернатора, заместителя председателя Правительства Нижегородской области Игорь Носов.</p>
-
-								<p>«Основной итог десятилетней работы ЛПК - возможность производить трубные марки стали самого ответственного назначения в самые короткие сроки. Сегодня по производственным показателям ЛПК является лучшим среди предприятий аналогичного класса в мире. Мы не стоим на месте, планируем увеличить объем производства на 20%, до 1,5 млн тонн проката в год, осваиваем новые марки стали, которые востребованы отечественной топливно-энергетической отраслью», - отметил председатель Совета директоров ОМК Анатолий Седых.</p>
-							</div>
-							<div class="article-imgwrap">
-								<div class="article-imgbox article-imgbox_half" style="background-image: url(img/article-img-02.jpg)"></div>
-								<div class="article-imgbox article-imgbox_half" style="background-image: url(img/article-img-04.jpg)"></div>
-							</div>
-							<div class="article-text">
-								<h3>СПРАВКА</h3>
-
-								<p>Десятилетняя история литейно-прокатного комплекса – это история высоких достижений: только в течение нескольких последних лет коллектив ЛПК установил десятки производственных рекордов. Из года в год литейно-прокатный комплекс неизменно подтверждает статус одного из самых эффективных металлургических производств страны, объемы выпуска стали неоднократно превышали расчётную мощность комплекса.</p>
-
-								<p>Сегодня в комплексе работает около 1200 сотрудников.</p>
-							</div>
-							<div class="article-autor">
-								<p>Автор статьи: Елена Мацинова</p>
-							</div>
-						</div>
-					</article>
 				</div>
 			</div>
 		</div>

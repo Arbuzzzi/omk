@@ -230,3 +230,9 @@ section, .section {
 .tooltip {
   z-index: 110000;
 }
+.tooltip-inner {
+  p {
+    text-align: left;
+    
+  }
+}

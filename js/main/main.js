@@ -285,15 +285,49 @@ $(document).ready(function() {
 		}
 	});
 
-	// возвращаем пользователя наверх
-	$('#btnUp').click(function() {
-		var destination = 0;
+	// плавный скролл
+	$(document).on('click', 'a.event', function(event) {
+		var link = $(this).attr('href');
+		var elementToScroll = $('#' + link.split('#')[1]);
+		var elementToScrollPos = elementToScroll.offset().top;
+		var headerHeight = $('.header').outerHeight(); // высота хэдера
+		if (elementToScrollPos < positionTwo) {
+			elementToScrollPos = elementToScroll.offset().top - headerHeight - 45;
+		} else {
+			elementToScrollPos = elementToScroll.offset().top - 90;
+		}
+		if (elementToScroll !== undefined) {
+			event.preventDefault();
+			$('html:not(:animated),body:not(:animated)').animate({scrollTop: elementToScrollPos}, 800);
+		}
+	});	
+
+	var myHash = location.hash; //получаем значение хеша
+	location.hash = ''; //очищаем хеш
+	var headerHeight = $('.header').outerHeight(); // высота хэдера
+
+	if(myHash[1] != undefined){ //проверяем, есть ли в хеше какое-то значение
+		var elementToScrolling = $(myHash).offset().top;
+		if (elementToScrolling < positionTwo) {
+			elementToScrolling = $(myHash).offset().top - 150;
+		} else {
+			elementToScrolling = $(myHash).offset().top;
+		}
+
+	  $('html:not(:animated),body:not(:animated)').animate({scrollTop: elementToScrolling}, 800); //скроллим за полсекунды
+	};
+	$('#btnUp, .calendar__link').click(function() {
+		var destination = 0,
+				element = $(this).attr('href');
+				headerHeight = $('.header').outerHeight();
+
+		if (element !== undefined) {
+			destination = $(element).offset().top - headerHeight - 70;
+
+		}
 		$('html:not(:animated),body:not(:animated)').animate({
 			scrollTop: destination
-		}, 800, function () {
-			// $('#headerNav').collapse('show');
-			// $('#menuLeftList').collapse('show');
-			
+		}, 800, function () {			
 		});
 		return false;
 	});
@@ -603,6 +637,7 @@ $(document).ready(function() {
 				calendar = element.find('.ui-datepicker-calendar'),
 				eventElementControl = element.find('.event-control');
 
+		eventElementArr.hide();
 		calendar.animate({
 			opacity: 'hide'},
 			150, function() {
@@ -668,5 +703,26 @@ $(document).ready(function() {
 	});
 
 	$('.card__title *').dotdotdot();
+	$('.cardTwoThirds__text').dotdotdot({
+		keep: '.card__more',
+		tolerance: 10,
+		callback: function () {
+			if ($(this).hasClass('ddd-truncated')) {
+				$(this).find('.card__more').css('display', 'table');
+				$(this).dotdotdot({tolerance: 0})
+			}
+		}
+	});
+	$('.cardHalf__text').dotdotdot({
+		keep: '.card__more',
+		// tolerance: 10,
+		callback: function () {
+			if ($(this).hasClass('ddd-truncated')) {
+				$(this).find('.card__more').css('display', 'table');
+				// $(this).dotdotdot({tolerance: 0})
+			}
+		}
+	});
+	$('.calendar__day').tooltip();
 
 });
