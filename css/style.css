@@ -2652,7 +2652,11 @@ h2 span,
 
 .card {
   padding: 0 15px;
-  width: 100%;
+  max-width: 100%;
+  -webkit-box-flex: 1;
+  -webkit-flex-grow: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
   margin-bottom: 30px;
 }
 
@@ -2812,6 +2816,7 @@ h2 span,
 }
 
 .cardFull-head_special {
+  width: 100%;
   margin-bottom: 15px;
 }
 
@@ -2938,6 +2943,30 @@ h2 span,
 
 .cardTwoThirds__text {
   max-height: 210px;
+}
+
+.cardMin {
+  max-width: 19.54%;
+  -webkit-box-flex: 0;
+  -webkit-flex: 0 0 19.54%;
+      -ms-flex: 0 0 19.54%;
+          flex: 0 0 19.54%;
+}
+
+.cardMin__imgbox {
+  height: 132px;
+}
+
+.cardMinOther {
+  max-width: 80.46%;
+  -webkit-box-flex: 0;
+  -webkit-flex: 0 0 80.46%;
+      -ms-flex: 0 0 80.46%;
+          flex: 0 0 80.46%;
+}
+
+.cardMinOther__text {
+  max-height: 132px;
 }
 
 .vidget-calendar {

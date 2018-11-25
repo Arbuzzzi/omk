@@ -6,7 +6,8 @@
 }
 .card {
 	padding: 0 15px;
-	width: 100%;
+	max-width: 100%;
+	flex-grow: 1;
 	margin-bottom: 30px;
 	@include clearfix;
 	&-wrap {
@@ -113,6 +114,7 @@
 			background-color: #fff;
 			margin-bottom: 0;
 			&_special {
+				width: 100%;
 				margin-bottom: 15px;
 			}
 		}
@@ -206,6 +208,21 @@
 		}
 		&__text {
 			max-height: 210px;
+		}
+	}
+	&Min {
+		max-width: 19.54%;
+		flex: 0 0 19.54%;
+		&__imgbox {
+			height: 132px;
+		}
+	}
+	&MinOther {
+		max-width: 80.46%;
+		flex: 0 0 80.46%;
+		&__text {
+			max-height: 132px;
+			
 		}
 	}
 }

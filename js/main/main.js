@@ -714,6 +714,7 @@ $(document).ready(function() {
 			}
 		}
 	});
+	
 	$('.cardHalf__text').dotdotdot({
 		keep: '.card__more',
 		// tolerance: 10,
@@ -721,6 +722,17 @@ $(document).ready(function() {
 			if ($(this).hasClass('ddd-truncated')) {
 				$(this).find('.card__more').css('display', 'table');
 				// $(this).dotdotdot({tolerance: 0})
+			}
+		}
+	});
+	
+	$('.cardMinOther__text').dotdotdot({
+		keep: '.card__more',
+		tolerance: 10,
+		callback: function () {
+			if ($(this).hasClass('ddd-truncated')) {
+				$(this).find('.card__more').css('display', 'table');
+				$(this).dotdotdot({tolerance: 0})
 			}
 		}
 	});

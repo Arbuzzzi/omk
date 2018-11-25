@@ -1,8 +1,9 @@
 extends modules/_base
+block vars
+	-var pageTitle = 'Календарь';
 block content
 	- var eventDate = '6 Ноября 2018';
 
-	-var pageTitle = 'Календарь';
 	include page/_page-head
 
 	include cards/_card-calendar
