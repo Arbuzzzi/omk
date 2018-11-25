@@ -737,5 +737,5 @@ $(document).ready(function() {
 		}
 	});
 	$('.calendar__day').tooltip();
-
+	$('.sliderBlog').slick();
 });

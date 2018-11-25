@@ -94,6 +94,9 @@
 		&_light {
 			color: $light-color;
 		}
+		&_big {
+			font-size: 15px;
+		}
 	}
 	&__more {
 		display: none;
@@ -103,6 +106,39 @@
 		padding-left: 44px;
 		padding-right: 44px;
 		font-family: Roboto;
+	}
+
+	&-logos{
+		// display: flex;
+		// flex-wrap: wrap;
+		@include clearfix;
+	}
+	&-logo {
+		float: left;
+		margin-bottom: 15px;
+		padding-right: 15px;
+		box-sizing: content-box;
+		&:nth-child(5n) {
+			padding-right: 0;
+		}
+		&__imgbox {
+			display: inline-block;
+			width: 155px;
+			height: 120px;
+			line-height: 90px;
+			vertical-align: middle;
+			border-radius: 5px;
+			border: 1px solid #dddee0;
+			padding: 15px;
+			text-align: center;
+			img {
+				vertical-align: middle;
+			}
+			@include hover {
+				border: 2px solid $thin-color;
+				padding: 14px;
+			}
+		}
 	}
 
 
