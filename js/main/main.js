@@ -218,6 +218,7 @@ $(document).ready(function() {
 				heightHeader = $('.header:not(.header.scroll)').outerHeight(),
 				positionContentEvent = $('.content').offset().top;
 		// меню в обычном состоянии
+		$('*').tooltip('hide');
 		if (!$('.header').hasClass('.scroll')  && !$('#headerNavSetting').hasClass('show')) {
 			addClassScroll($('.header'), 'scroll', positionThre);
 
@@ -615,16 +616,16 @@ $(document).ready(function() {
 	});
 
 	// подсветка текущего дня в виджете календарь
-	var nowDay = $.datepicker.formatDate('dd', new Date());
-	var dateArr = $('#calendarVidgetBox .ui-state-default');
+	// var nowDay = $.datepicker.formatDate('dd', new Date());
+	// var dateArr = $('#calendarVidgetBox .ui-state-default');
 
-	for (var i = 0; i < dateArr.length; i++) {
-		if ($(dateArr[i]).text() == nowDay) {
-			$(dateArr[i]).parent().addClass('ui-datepicker-today');
-		} else {
-			$(dateArr[i]).parent().removeClass('ui-datepicker-today');
-		}
-	}
+	// for (var i = 0; i < dateArr.length; i++) {
+	// 	if ($(dateArr[i]).text() == nowDay) {
+	// 		$(dateArr[i]).parent().addClass('ui-datepicker-today');
+	// 	} else {
+	// 		$(dateArr[i]).parent().removeClass('ui-datepicker-today');
+	// 	}
+	// }
 
 	// открываем событие на текущей дате
 	$('#calendarVidgetBox').on('click', 'a.ui-state-default.ui-state-active', function(e) {

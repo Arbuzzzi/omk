@@ -1,0 +1,2154 @@
+extends modules/_base
+	
+block content
+	-var pageTitle = 'Главная страница';
+	// строка
+	include page/_page-head-filters
+	// строка
+	include cards/_card-full
+	// строка
+	include cards/_cards-third
+	// строка
+	include cards/_cards-half
+	// строка
+	include cards/_cards-two-thirds_left
+	// строка
+	include cards/_cards-two-thirds_right
+	// строка
+	include cards/_card-full_imgfullheight
+	.card.cardTwoThirds
+		.card-wrap.cardTwoThirds-wrap
+			.cardTwoThirds__imgbox.card__imgbox(style='background-image: url(img/news-twothirds-img-01.jpg);')
+				.card-warning-text
+					p Что-то пошло не так
+			.card__content.cardTwoThirds__content
+				.tagbox
+					.tag
+						button.button.button-tag Новости ПС
+					.like-card
+						button.like-button.comment-button
+							i.icon-comment
+							span.like-count 23
+						button.like-button
+							i.icon-like
+							span.like-count 1286
+				.card__title.cardTwoThirds-title
+					a(href='#')
+						| Насосно-компрессорные 
+						br
+						| трубы ТЭСЦ-1
+				.card-date
+					span 24 Сентября 2018
+	.card.cardThird
+		.card-wrap.cardThird-wrap
+			.cardThird__imgbox.card__imgbox(style='background-image: url(img/news-third-03.jpg);')
+				.card-warning-text.hide
+					p
+			.card__content.cardThird__content
+				.tagbox
+					.tag
+						button.button.button-tag Новости ПС
+					.like-card
+						button.like-button.comment-button
+							i.icon-comment
+							span.like-count 23
+						button.like-button
+							i.icon-like
+							span.like-count 1286
+				.card__title.cardThird__title
+					a(href='#')
+						| Обход управлющего 
+						br
+						|  директора БАЗ цеха №1
+				.card-date
+					span 24 Сентября 2018
+	// строка
+	.card.cardHalf.cardHalf_fullHeightImg
+		.card-wrap.cardHalf-wrap(style='background-image: url(img/news-half-full-img-01.jpg);')
+			.card__content.cardHalf__content
+				.tagbox
+					.tag
+						button.button.button-tag.button-tag-o.button-tag-o_light Отдельные новости
+					.like-card
+						button.like-button.like-button_light.comment-button
+							i.icon-comment
+							span.like-count 23
+						button.like-button.like-button_light
+							i.icon-like
+							span.like-count 1286
+				.card__title.cardHalf-title
+					a(href='#')
+						| Насосно-компрессорные 
+						br
+						| трубы ТЭСЦ-1
+				.card-date.card-date_light
+					span 24 Сентября 2018
+	.card.cardHalf
+		.card-wrap.cardHalf-wrap
+			.cardHalf-imgbox.card__imgbox(style='background-image: url(img/news-half-img-01.jpg);')
+				.card-warning-text
+					p Всё изменится!
+			.card__content.cardHalf__content
+				.tagbox
+					.tag
+						button.button.button-tag.button-tag-o Новости ПС
+					.like-card
+						button.like-button.comment-button
+							i.icon-comment
+							span.like-count 23
+						button.like-button
+							i.icon-like
+							span.like-count 1286
+				.card__title.cardHalf-title
+					a(href='#')
+						| Насосно-компрессорные 
+						br
+						| трубы ТЭСЦ-1
+				.card-date
+					span 24 Сентября 2018
+	.card.cardFull
+		.card-wrap.cardFull-wrap
+			.cardFull__imgbox.card__imgbox(style='background-image: url(img/news-full.jpg);')
+				.card-warning-text.hide
+					p
+			.card__content.cardFull__content
+				.tagbox
+					.tag
+						button.button.button-tag Новости ОМК
+					.like-card
+						button.like-button.comment-button
+							i.icon-comment
+							span.like-count 23
+						button.like-button
+							i.icon-like
+							span.like-count 1286
+				.card__title.cardFull__title
+					a(href='#') Хороший старт!
+				.card__text.cardFull__text
+					p
+						| Беговая команда ОМК в этом году впервые в истории приняла участие в Московском марафоне
+				.card-date
+					span 24 Сентября 2018
+	// строка
+	.card.cardThird
+		.card-wrap.cardThird-wrap
+			.cardThird__imgbox.card__imgbox(style='background-image: url(img/news-third-01.jpg);')
+				.card-warning-text.hide
+					p
+			.card__content.cardThird__content
+				.tagbox
+					.tag
+						button.button.button-tag Региональные новости
+					.like-card
+						button.like-button.comment-button
+							i.icon-comment
+							span.like-count 23
+						button.like-button
+							i.icon-like
+							span.like-count 1286
+				.card__title.cardThird__title
+					a(href='#')
+						| Насосно-компрессорные 
+						br
+						| трубы ТЭСЦ-1 
+						br
+						| трубы ТЭСЦ-1
+				.card-date
+					span 24 Сентября 2018
+	.card.cardThird
+		.card-wrap.cardThird-wrap
+			.cardThird__imgbox.card__imgbox(style='background-image: url(img/news-third-02.jpg);')
+				.card-warning-text
+					p Оценка: ПЛОХО!
+			.card__content.cardThird__content
+				.tagbox
+					.tag
+						button.button.button-tag Новости ПС
+					.like-card
+						button.like-button.comment-button
+							i.icon-comment
+							span.like-count 23
+						button.like-button
+							i.icon-like
+							span.like-count 1286
+				.card__title.cardThird__title
+					a(href='#')
+						| Обход управлющего 
+						br
+						|  директора БАЗ цеха №1
+				.card-date
+					span 24 Сентября 2018
+	.card.cardThird.cardThird_fullHeightImg
+		.card-wrap.cardThird-wrap_fullHeightImg(style='background-image: url(img/news-third-full-img-01.jpg);')
+			.card__content.cardThird__content
+				.tagbox
+					.tag
+						button.button.button-tag.button-tag_dark Новости ПС
+					.like-card.like-card_light
+						button.like-button.like-button_light.comment-button
+							i.icon-comment
+							span.like-count 23
+						button.like-button.like-button_light
+							i.icon-like
+							span.like-count 1286
+				.card__title.cardThird__title
+					a(href='#')
+						| Насосно-компрессорные 
+						br
+						| трубы ТЭСЦ-1
+				.card-date.card-date_light
+					span 24 Сентября 2018
+	// строка
+	.card.cardHalf.cardHalf_fullHeightImg
+		.card-wrap.cardHalf-wrap(style='background-image: url(img/news-half-full-img-01.jpg);')
+			.card__content.cardHalf__content
+				.tagbox
+					.tag
+						button.button.button-tag.button-tag-o.button-tag-o_light Отдельные новости
+					.like-card
+						button.like-button.like-button_light.comment-button
+							i.icon-comment
+							span.like-count 23
+						button.like-button.like-button_light
+							i.icon-like
+							span.like-count 1286
+				.card__title.cardHalf-title
+					a(href='#')
+						| Насосно-компрессорные 
+						br
+						| трубы ТЭСЦ-1 
+						br
+						| трубы ТЭСЦ-1
+				.card-date.card-date_light
+					span 24 Сентября 2018
+	.card.cardHalf
+		.card-wrap.cardHalf-wrap
+			.cardHalf-imgbox.card__imgbox(style='background-image: url(img/news-half-img-01.jpg);')
+				.card-warning-text.hide
+					p
+			.card__content.cardHalf__content
+				.tagbox
+					.tag
+						button.button.button-tag.button-tag-o Новости ПС
+					.like-card
+						button.like-button.comment-button
+							i.icon-comment
+							span.like-count 23
+						button.like-button
+							i.icon-like
+							span.like-count 1286
+				.card__title.cardHalf-title
+					a(href='#')
+						| Насосно-компрессорные 
+						br
+						| трубы ТЭСЦ-1
+				.card-date
+					span 24 Сентября 2018
+	// строка
+	.card.cardTwoThirds
+		.card-wrap.cardTwoThirds-wrap
+			.cardTwoThirds__imgbox.card__imgbox(style='background-image: url(img/news-twothirds-img-01.jpg);')
+				.card-warning-text.hide
+					p
+			.card__content.cardTwoThirds__content
+				.tagbox
+					.tag
+						button.button.button-tag Новости ПС
+					.like-card
+						button.like-button.comment-button
+							i.icon-comment
+							span.like-count 23
+						button.like-button
+							i.icon-like
+							span.like-count 1286
+				.card__title.cardTwoThirds-title
+					a(href='#')
+						| Насосно-компрессорные 
+						br
+						| трубы ТЭСЦ-1
+				.card-date
+					span 24 Сентября 2018
+	.card.cardThird
+		.card-wrap.cardThird-wrap
+			.cardThird__imgbox.card__imgbox(style='background-image: url(img/news-third-03.jpg);')
+				.card-warning-text.hide
+					p
+			.card__content.cardThird__content
+				.tagbox
+					.tag
+						button.button.button-tag Новости ПС
+					.like-card
+						button.like-button.comment-button
+							i.icon-comment
+							span.like-count 23
+						button.like-button
+							i.icon-like
+							span.like-count 1286
+				.card__title.cardThird__title
+					a(href='#')
+						| Обход управлющего 
+						br
+						|  директора БАЗ цеха №1
+				.card-date
+					span 24 Сентября 2018
+	// строка
+	.card.cardThird
+		.card-wrap.cardThird-wrap
+			.cardThird__imgbox.card__imgbox(style='background-image: url(img/news-third-04.jpg);')
+				.card-warning-text.hide
+					p
+			.card__content.cardThird__content
+				.tagbox
+					.tag
+						button.button.button-tag Новости ПС
+					.like-card
+						button.like-button.comment-button
+							i.icon-comment
+							span.like-count 23
+						button.like-button
+							i.icon-like
+							span.like-count 1286
+				.card__title.cardThird__title
+					a(href='#')
+						| Обход управлющего 
+						br
+						|  директора БАЗ цеха №1
+				.card-date
+					span 24 Сентября 2018
+	.card.cardTwoThirds.cardTwoThirds_fullHeightImg
+		.card-wrap.cardTwoThirds-wrap.cardTwoThirds-wrap_fullHeightImg(style='background-image: url(img/news-twothirds-full-img-01.jpg);')
+			.card__content.cardTwoThirds__content
+				.tagbox
+					.tag
+						button.button.button-tag.button-tag_dark Новости ПС
+					.like-card
+						button.like-button.like-button_light.comment-button
+							i.icon-comment
+							span.like-count 23
+						button.like-button.like-button_light
+							i.icon-like
+							span.like-count 1286
+				.card__title.cardTwoThirds-title
+					a(href='#')
+						| Насосно-компрессорные 
+						br
+						| трубы ТЭСЦ-1
+				.card-date.card-date_light
+					span 24 Сентября 2018
+	// строка
+	.card.cardFull.cardFull_fullHeightImg
+		.card-wrap.cardFull-wrap.cardFull-wrap_fullHeightImg(style='background-image: url(img/news-full.jpg);')
+			.card__content.cardFull__content
+				.tagbox
+					.tag
+						button.button.button-tag.button-tag_dark Новости ОМК
+					.like-card
+						button.like-button.like-button_light.comment-button
+							i.icon-comment
+							span.like-count 23
+						button.like-button.like-button_light
+							i.icon-like
+							span.like-count 1286
+				.card__title.cardFull__title
+					a(href='#') Хороший старт!
+				.card__text.cardFull__text
+					p
+						| Беговая команда ОМК в этом году впервые в истории приняла участие в Московском марафоне
+				.card-date.card-date_light
+					span 24 Сентября 2018
+	// строка
+	.card.cardTwoThirds
+		.card-wrap.cardTwoThirds-wrap
+			.cardTwoThirds__imgbox.card__imgbox(style='background-image: url(img/news-twothirds-img-01.jpg);')
+				.card-warning-text
+					p Что-то пошло не так
+			.card__content.cardTwoThirds__content
+				.tagbox
+					.tag
+						button.button.button-tag Новости ПС
+					.like-card
+						button.like-button.comment-button
+							i.icon-comment
+							span.like-count 23
+						button.like-button
+							i.icon-like
+							span.like-count 1286
+				.card__title.cardTwoThirds-title
+					a(href='#')
+						| Насосно-компрессорные 
+						br
+						| трубы ТЭСЦ-1
+				.card-date
+					span 24 Сентября 2018
+	.card.cardThird
+		.card-wrap.cardThird-wrap
+			.cardThird__imgbox.card__imgbox(style='background-image: url(img/news-third-03.jpg);')
+				.card-warning-text.hide
+					p
+			.card__content.cardThird__content
+				.tagbox
+					.tag
+						button.button.button-tag Новости ПС
+					.like-card
+						button.like-button.comment-button
+							i.icon-comment
+							span.like-count 23
+						button.like-button
+							i.icon-like
+							span.like-count 1286
+				.card__title.cardThird__title
+					a(href='#')
+						| Обход управлющего 
+						br
+						|  директора БАЗ цеха №1
+				.card-date
+					span 24 Сентября 2018
+	// строка
+	.card.cardHalf.cardHalf_fullHeightImg
+		.card-wrap.cardHalf-wrap(style='background-image: url(img/news-half-full-img-01.jpg);')
+			.card__content.cardHalf__content
+				.tagbox
+					.tag
+						button.button.button-tag.button-tag-o.button-tag-o_light Отдельные новости
+					.like-card
+						button.like-button.like-button_light.comment-button
+							i.icon-comment
+							span.like-count 23
+						button.like-button.like-button_light
+							i.icon-like
+							span.like-count 1286
+				.card__title.cardHalf-title
+					a(href='#')
+						| Насосно-компрессорные 
+						br
+						| трубы ТЭСЦ-1
+				.card-date.card-date_light
+					span 24 Сентября 2018
+	.card.cardHalf
+		.card-wrap.cardHalf-wrap
+			.cardHalf-imgbox.card__imgbox(style='background-image: url(img/news-half-img-01.jpg);')
+				.card-warning-text
+					p Всё изменится!
+			.card__content.cardHalf__content
+				.tagbox
+					.tag
+						button.button.button-tag.button-tag-o Новости ПС
+					.like-card
+						button.like-button.comment-button
+							i.icon-comment
+							span.like-count 23
+						button.like-button
+							i.icon-like
+							span.like-count 1286
+				.card__title.cardHalf-title
+					a(href='#')
+						| Насосно-компрессорные 
+						br
+						| трубы ТЭСЦ-1
+				.card-date
+					span 24 Сентября 2018
+	.card.cardFull
+		.card-wrap.cardFull-wrap
+			.cardFull__imgbox.card__imgbox(style='background-image: url(img/news-full.jpg);')
+				.card-warning-text.hide
+					p
+			.card__content.cardFull__content
+				.tagbox
+					.tag
+						button.button.button-tag Новости ОМК
+					.like-card
+						button.like-button.comment-button
+							i.icon-comment
+							span.like-count 23
+						button.like-button
+							i.icon-like
+							span.like-count 1286
+				.card__title.cardFull__title
+					a(href='#') Хороший старт!
+				.card__text.cardFull__text
+					p
+						| Беговая команда ОМК в этом году впервые в истории приняла участие в Московском марафоне
+				.card-date
+					span 24 Сентября 2018
+	// строка
+	.card.cardThird
+		.card-wrap.cardThird-wrap
+			.cardThird__imgbox.card__imgbox(style='background-image: url(img/news-third-01.jpg);')
+				.card-warning-text.hide
+					p
+			.card__content.cardThird__content
+				.tagbox
+					.tag
+						button.button.button-tag Региональные новости
+					.like-card
+						button.like-button.comment-button
+							i.icon-comment
+							span.like-count 23
+						button.like-button
+							i.icon-like
+							span.like-count 1286
+				.card__title.cardThird__title
+					a(href='#')
+						| Насосно-компрессорные 
+						br
+						| трубы ТЭСЦ-1 
+						br
+						| трубы ТЭСЦ-1
+				.card-date
+					span 24 Сентября 2018
+	.card.cardThird
+		.card-wrap.cardThird-wrap
+			.cardThird__imgbox.card__imgbox(style='background-image: url(img/news-third-02.jpg);')
+				.card-warning-text
+					p Оценка: ПЛОХО!
+			.card__content.cardThird__content
+				.tagbox
+					.tag
+						button.button.button-tag Новости ПС
+					.like-card
+						button.like-button.comment-button
+							i.icon-comment
+							span.like-count 23
+						button.like-button
+							i.icon-like
+							span.like-count 1286
+				.card__title.cardThird__title
+					a(href='#')
+						| Обход управлющего 
+						br
+						|  директора БАЗ цеха №1
+				.card-date
+					span 24 Сентября 2018
+	.card.cardThird.cardThird_fullHeightImg
+		.card-wrap.cardThird-wrap_fullHeightImg(style='background-image: url(img/news-third-full-img-01.jpg);')
+			.card__content.cardThird__content
+				.tagbox
+					.tag
+						button.button.button-tag.button-tag_dark Новости ПС
+					.like-card.like-card_light
+						button.like-button.like-button_light.comment-button
+							i.icon-comment
+							span.like-count 23
+						button.like-button.like-button_light
+							i.icon-like
+							span.like-count 1286
+				.card__title.cardThird__title
+					a(href='#')
+						| Насосно-компрессорные 
+						br
+						| трубы ТЭСЦ-1
+				.card-date.card-date_light
+					span 24 Сентября 2018
+	// строка
+	.card.cardHalf.cardHalf_fullHeightImg
+		.card-wrap.cardHalf-wrap(style='background-image: url(img/news-half-full-img-01.jpg);')
+			.card__content.cardHalf__content
+				.tagbox
+					.tag
+						button.button.button-tag.button-tag-o.button-tag-o_light Отдельные новости
+					.like-card
+						button.like-button.like-button_light.comment-button
+							i.icon-comment
+							span.like-count 23
+						button.like-button.like-button_light
+							i.icon-like
+							span.like-count 1286
+				.card__title.cardHalf-title
+					a(href='#')
+						| Насосно-компрессорные 
+						br
+						| трубы ТЭСЦ-1 
+						br
+						| трубы ТЭСЦ-1
+				.card-date.card-date_light
+					span 24 Сентября 2018
+	.card.cardHalf
+		.card-wrap.cardHalf-wrap
+			.cardHalf-imgbox.card__imgbox(style='background-image: url(img/news-half-img-01.jpg);')
+				.card-warning-text.hide
+					p
+			.card__content.cardHalf__content
+				.tagbox
+					.tag
+						button.button.button-tag.button-tag-o Новости ПС
+					.like-card
+						button.like-button.comment-button
+							i.icon-comment
+							span.like-count 23
+						button.like-button
+							i.icon-like
+							span.like-count 1286
+				.card__title.cardHalf-title
+					a(href='#')
+						| Насосно-компрессорные 
+						br
+						| трубы ТЭСЦ-1
+				.card-date
+					span 24 Сентября 2018
+	// строка
+	.card.cardTwoThirds
+		.card-wrap.cardTwoThirds-wrap
+			.cardTwoThirds__imgbox.card__imgbox(style='background-image: url(img/news-twothirds-img-01.jpg);')
+				.card-warning-text.hide
+					p
+			.card__content.cardTwoThirds__content
+				.tagbox
+					.tag
+						button.button.button-tag Новости ПС
+					.like-card
+						button.like-button.comment-button
+							i.icon-comment
+							span.like-count 23
+						button.like-button
+							i.icon-like
+							span.like-count 1286
+				.card__title.cardTwoThirds-title
+					a(href='#')
+						| Насосно-компрессорные 
+						br
+						| трубы ТЭСЦ-1
+				.card-date
+					span 24 Сентября 2018
+	.card.cardThird
+		.card-wrap.cardThird-wrap
+			.cardThird__imgbox.card__imgbox(style='background-image: url(img/news-third-03.jpg);')
+				.card-warning-text.hide
+					p
+			.card__content.cardThird__content
+				.tagbox
+					.tag
+						button.button.button-tag Новости ПС
+					.like-card
+						button.like-button.comment-button
+							i.icon-comment
+							span.like-count 23
+						button.like-button
+							i.icon-like
+							span.like-count 1286
+				.card__title.cardThird__title
+					a(href='#')
+						| Обход управлющего 
+						br
+						|  директора БАЗ цеха №1
+				.card-date
+					span 24 Сентября 2018
+	// строка
+	.card.cardThird
+		.card-wrap.cardThird-wrap
+			.cardThird__imgbox.card__imgbox(style='background-image: url(img/news-third-04.jpg);')
+				.card-warning-text.hide
+					p
+			.card__content.cardThird__content
+				.tagbox
+					.tag
+						button.button.button-tag Новости ПС
+					.like-card
+						button.like-button.comment-button
+							i.icon-comment
+							span.like-count 23
+						button.like-button
+							i.icon-like
+							span.like-count 1286
+				.card__title.cardThird__title
+					a(href='#')
+						| Обход управлющего 
+						br
+						|  директора БАЗ цеха №1
+				.card-date
+					span 24 Сентября 2018
+	.card.cardTwoThirds.cardTwoThirds_fullHeightImg
+		.card-wrap.cardTwoThirds-wrap.cardTwoThirds-wrap_fullHeightImg(style='background-image: url(img/news-twothirds-full-img-01.jpg);')
+			.card__content.cardTwoThirds__content
+				.tagbox
+					.tag
+						button.button.button-tag.button-tag_dark Новости ПС
+					.like-card
+						button.like-button.like-button_light.comment-button
+							i.icon-comment
+							span.like-count 23
+						button.like-button.like-button_light
+							i.icon-like
+							span.like-count 1286
+				.card__title.cardTwoThirds-title
+					a(href='#')
+						| Насосно-компрессорные 
+						br
+						| трубы ТЭСЦ-1
+				.card-date.card-date_light
+					span 24 Сентября 2018
+	// строка
+	.card.cardFull.cardFull_fullHeightImg
+		.card-wrap.cardFull-wrap.cardFull-wrap_fullHeightImg(style='background-image: url(img/news-full.jpg);')
+			.card__content.cardFull__content
+				.tagbox
+					.tag
+						button.button.button-tag.button-tag_dark Новости ОМК
+					.like-card
+						button.like-button.like-button_light.comment-button
+							i.icon-comment
+							span.like-count 23
+						button.like-button.like-button_light
+							i.icon-like
+							span.like-count 1286
+				.card__title.cardFull__title
+					a(href='#') Хороший старт!
+				.card__text.cardFull__text
+					p
+						| Беговая команда ОМК в этом году впервые в истории приняла участие в Московском марафоне
+				.card-date.card-date_light
+					span 24 Сентября 2018
+	// строка
+	.card.cardTwoThirds
+		.card-wrap.cardTwoThirds-wrap
+			.cardTwoThirds__imgbox.card__imgbox(style='background-image: url(img/news-twothirds-img-01.jpg);')
+				.card-warning-text
+					p Что-то пошло не так
+			.card__content.cardTwoThirds__content
+				.tagbox
+					.tag
+						button.button.button-tag Новости ПС
+					.like-card
+						button.like-button.comment-button
+							i.icon-comment
+							span.like-count 23
+						button.like-button
+							i.icon-like
+							span.like-count 1286
+				.card__title.cardTwoThirds-title
+					a(href='#')
+						| Насосно-компрессорные 
+						br
+						| трубы ТЭСЦ-1
+				.card-date
+					span 24 Сентября 2018
+	.card.cardThird
+		.card-wrap.cardThird-wrap
+			.cardThird__imgbox.card__imgbox(style='background-image: url(img/news-third-03.jpg);')
+				.card-warning-text.hide
+					p
+			.card__content.cardThird__content
+				.tagbox
+					.tag
+						button.button.button-tag Новости ПС
+					.like-card
+						button.like-button.comment-button
+							i.icon-comment
+							span.like-count 23
+						button.like-button
+							i.icon-like
+							span.like-count 1286
+				.card__title.cardThird__title
+					a(href='#')
+						| Обход управлющего 
+						br
+						|  директора БАЗ цеха №1
+				.card-date
+					span 24 Сентября 2018
+	// строка
+	.card.cardHalf.cardHalf_fullHeightImg
+		.card-wrap.cardHalf-wrap(style='background-image: url(img/news-half-full-img-01.jpg);')
+			.card__content.cardHalf__content
+				.tagbox
+					.tag
+						button.button.button-tag.button-tag-o.button-tag-o_light Отдельные новости
+					.like-card
+						button.like-button.like-button_light.comment-button
+							i.icon-comment
+							span.like-count 23
+						button.like-button.like-button_light
+							i.icon-like
+							span.like-count 1286
+				.card__title.cardHalf-title
+					a(href='#')
+						| Насосно-компрессорные 
+						br
+						| трубы ТЭСЦ-1
+				.card-date.card-date_light
+					span 24 Сентября 2018
+	.card.cardHalf
+		.card-wrap.cardHalf-wrap
+			.cardHalf-imgbox.card__imgbox(style='background-image: url(img/news-half-img-01.jpg);')
+				.card-warning-text
+					p Всё изменится!
+			.card__content.cardHalf__content
+				.tagbox
+					.tag
+						button.button.button-tag.button-tag-o Новости ПС
+					.like-card
+						button.like-button.comment-button
+							i.icon-comment
+							span.like-count 23
+						button.like-button
+							i.icon-like
+							span.like-count 1286
+				.card__title.cardHalf-title
+					a(href='#')
+						| Насосно-компрессорные 
+						br
+						| трубы ТЭСЦ-1
+				.card-date
+					span 24 Сентября 2018
+	.card.cardFull
+		.card-wrap.cardFull-wrap
+			.cardFull__imgbox.card__imgbox(style='background-image: url(img/news-full.jpg);')
+				.card-warning-text.hide
+					p
+			.card__content.cardFull__content
+				.tagbox
+					.tag
+						button.button.button-tag Новости ОМК
+					.like-card
+						button.like-button.comment-button
+							i.icon-comment
+							span.like-count 23
+						button.like-button
+							i.icon-like
+							span.like-count 1286
+				.card__title.cardFull__title
+					a(href='#') Хороший старт!
+				.card__text.cardFull__text
+					p
+						| Беговая команда ОМК в этом году впервые в истории приняла участие в Московском марафоне
+				.card-date
+					span 24 Сентября 2018
+	// строка
+	.card.cardThird
+		.card-wrap.cardThird-wrap
+			.cardThird__imgbox.card__imgbox(style='background-image: url(img/news-third-01.jpg);')
+				.card-warning-text.hide
+					p
+			.card__content.cardThird__content
+				.tagbox
+					.tag
+						button.button.button-tag Региональные новости
+					.like-card
+						button.like-button.comment-button
+							i.icon-comment
+							span.like-count 23
+						button.like-button
+							i.icon-like
+							span.like-count 1286
+				.card__title.cardThird__title
+					a(href='#')
+						| Насосно-компрессорные 
+						br
+						| трубы ТЭСЦ-1 
+						br
+						| трубы ТЭСЦ-1
+				.card-date
+					span 24 Сентября 2018
+	.card.cardThird
+		.card-wrap.cardThird-wrap
+			.cardThird__imgbox.card__imgbox(style='background-image: url(img/news-third-02.jpg);')
+				.card-warning-text
+					p Оценка: ПЛОХО!
+			.card__content.cardThird__content
+				.tagbox
+					.tag
+						button.button.button-tag Новости ПС
+					.like-card
+						button.like-button.comment-button
+							i.icon-comment
+							span.like-count 23
+						button.like-button
+							i.icon-like
+							span.like-count 1286
+				.card__title.cardThird__title
+					a(href='#')
+						| Обход управлющего 
+						br
+						|  директора БАЗ цеха №1
+				.card-date
+					span 24 Сентября 2018
+	.card.cardThird.cardThird_fullHeightImg
+		.card-wrap.cardThird-wrap_fullHeightImg(style='background-image: url(img/news-third-full-img-01.jpg);')
+			.card__content.cardThird__content
+				.tagbox
+					.tag
+						button.button.button-tag.button-tag_dark Новости ПС
+					.like-card.like-card_light
+						button.like-button.like-button_light.comment-button
+							i.icon-comment
+							span.like-count 23
+						button.like-button.like-button_light
+							i.icon-like
+							span.like-count 1286
+				.card__title.cardThird__title
+					a(href='#')
+						| Насосно-компрессорные 
+						br
+						| трубы ТЭСЦ-1
+				.card-date.card-date_light
+					span 24 Сентября 2018
+	// строка
+	.card.cardHalf.cardHalf_fullHeightImg
+		.card-wrap.cardHalf-wrap(style='background-image: url(img/news-half-full-img-01.jpg);')
+			.card__content.cardHalf__content
+				.tagbox
+					.tag
+						button.button.button-tag.button-tag-o.button-tag-o_light Отдельные новости
+					.like-card
+						button.like-button.like-button_light.comment-button
+							i.icon-comment
+							span.like-count 23
+						button.like-button.like-button_light
+							i.icon-like
+							span.like-count 1286
+				.card__title.cardHalf-title
+					a(href='#')
+						| Насосно-компрессорные 
+						br
+						| трубы ТЭСЦ-1 
+						br
+						| трубы ТЭСЦ-1
+				.card-date.card-date_light
+					span 24 Сентября 2018
+	.card.cardHalf
+		.card-wrap.cardHalf-wrap
+			.cardHalf-imgbox.card__imgbox(style='background-image: url(img/news-half-img-01.jpg);')
+				.card-warning-text.hide
+					p
+			.card__content.cardHalf__content
+				.tagbox
+					.tag
+						button.button.button-tag.button-tag-o Новости ПС
+					.like-card
+						button.like-button.comment-button
+							i.icon-comment
+							span.like-count 23
+						button.like-button
+							i.icon-like
+							span.like-count 1286
+				.card__title.cardHalf-title
+					a(href='#')
+						| Насосно-компрессорные 
+						br
+						| трубы ТЭСЦ-1
+				.card-date
+					span 24 Сентября 2018
+	// строка
+	.card.cardTwoThirds
+		.card-wrap.cardTwoThirds-wrap
+			.cardTwoThirds__imgbox.card__imgbox(style='background-image: url(img/news-twothirds-img-01.jpg);')
+				.card-warning-text.hide
+					p
+			.card__content.cardTwoThirds__content
+				.tagbox
+					.tag
+						button.button.button-tag Новости ПС
+					.like-card
+						button.like-button.comment-button
+							i.icon-comment
+							span.like-count 23
+						button.like-button
+							i.icon-like
+							span.like-count 1286
+				.card__title.cardTwoThirds-title
+					a(href='#')
+						| Насосно-компрессорные 
+						br
+						| трубы ТЭСЦ-1
+				.card-date
+					span 24 Сентября 2018
+	.card.cardThird
+		.card-wrap.cardThird-wrap
+			.cardThird__imgbox.card__imgbox(style='background-image: url(img/news-third-03.jpg);')
+				.card-warning-text.hide
+					p
+			.card__content.cardThird__content
+				.tagbox
+					.tag
+						button.button.button-tag Новости ПС
+					.like-card
+						button.like-button.comment-button
+							i.icon-comment
+							span.like-count 23
+						button.like-button
+							i.icon-like
+							span.like-count 1286
+				.card__title.cardThird__title
+					a(href='#')
+						| Обход управлющего 
+						br
+						|  директора БАЗ цеха №1
+				.card-date
+					span 24 Сентября 2018
+	// строка
+	.card.cardThird
+		.card-wrap.cardThird-wrap
+			.cardThird__imgbox.card__imgbox(style='background-image: url(img/news-third-04.jpg);')
+				.card-warning-text.hide
+					p
+			.card__content.cardThird__content
+				.tagbox
+					.tag
+						button.button.button-tag Новости ПС
+					.like-card
+						button.like-button.comment-button
+							i.icon-comment
+							span.like-count 23
+						button.like-button
+							i.icon-like
+							span.like-count 1286
+				.card__title.cardThird__title
+					a(href='#')
+						| Обход управлющего 
+						br
+						|  директора БАЗ цеха №1
+				.card-date
+					span 24 Сентября 2018
+	.card.cardTwoThirds.cardTwoThirds_fullHeightImg
+		.card-wrap.cardTwoThirds-wrap.cardTwoThirds-wrap_fullHeightImg(style='background-image: url(img/news-twothirds-full-img-01.jpg);')
+			.card__content.cardTwoThirds__content
+				.tagbox
+					.tag
+						button.button.button-tag.button-tag_dark Новости ПС
+					.like-card
+						button.like-button.like-button_light.comment-button
+							i.icon-comment
+							span.like-count 23
+						button.like-button.like-button_light
+							i.icon-like
+							span.like-count 1286
+				.card__title.cardTwoThirds-title
+					a(href='#')
+						| Насосно-компрессорные 
+						br
+						| трубы ТЭСЦ-1
+				.card-date.card-date_light
+					span 24 Сентября 2018
+	// строка
+	.card.cardFull.cardFull_fullHeightImg
+		.card-wrap.cardFull-wrap.cardFull-wrap_fullHeightImg(style='background-image: url(img/news-full.jpg);')
+			.card__content.cardFull__content
+				.tagbox
+					.tag
+						button.button.button-tag.button-tag_dark Новости ОМК
+					.like-card
+						button.like-button.like-button_light.comment-button
+							i.icon-comment
+							span.like-count 23
+						button.like-button.like-button_light
+							i.icon-like
+							span.like-count 1286
+				.card__title.cardFull__title
+					a(href='#') Хороший старт!
+				.card__text.cardFull__text
+					p
+						| Беговая команда ОМК в этом году впервые в истории приняла участие в Московском марафоне
+				.card-date.card-date_light
+					span 24 Сентября 2018
+	// строка
+	.card.cardTwoThirds
+		.card-wrap.cardTwoThirds-wrap
+			.cardTwoThirds__imgbox.card__imgbox(style='background-image: url(img/news-twothirds-img-01.jpg);')
+				.card-warning-text
+					p Что-то пошло не так
+			.card__content.cardTwoThirds__content
+				.tagbox
+					.tag
+						button.button.button-tag Новости ПС
+					.like-card
+						button.like-button.comment-button
+							i.icon-comment
+							span.like-count 23
+						button.like-button
+							i.icon-like
+							span.like-count 1286
+				.card__title.cardTwoThirds-title
+					a(href='#')
+						| Насосно-компрессорные 
+						br
+						| трубы ТЭСЦ-1
+				.card-date
+					span 24 Сентября 2018
+	.card.cardThird
+		.card-wrap.cardThird-wrap
+			.cardThird__imgbox.card__imgbox(style='background-image: url(img/news-third-03.jpg);')
+				.card-warning-text.hide
+					p
+			.card__content.cardThird__content
+				.tagbox
+					.tag
+						button.button.button-tag Новости ПС
+					.like-card
+						button.like-button.comment-button
+							i.icon-comment
+							span.like-count 23
+						button.like-button
+							i.icon-like
+							span.like-count 1286
+				.card__title.cardThird__title
+					a(href='#')
+						| Обход управлющего 
+						br
+						|  директора БАЗ цеха №1
+				.card-date
+					span 24 Сентября 2018
+	// строка
+	.card.cardHalf.cardHalf_fullHeightImg
+		.card-wrap.cardHalf-wrap(style='background-image: url(img/news-half-full-img-01.jpg);')
+			.card__content.cardHalf__content
+				.tagbox
+					.tag
+						button.button.button-tag.button-tag-o.button-tag-o_light Отдельные новости
+					.like-card
+						button.like-button.like-button_light.comment-button
+							i.icon-comment
+							span.like-count 23
+						button.like-button.like-button_light
+							i.icon-like
+							span.like-count 1286
+				.card__title.cardHalf-title
+					a(href='#')
+						| Насосно-компрессорные 
+						br
+						| трубы ТЭСЦ-1
+				.card-date.card-date_light
+					span 24 Сентября 2018
+	.card.cardHalf
+		.card-wrap.cardHalf-wrap
+			.cardHalf-imgbox.card__imgbox(style='background-image: url(img/news-half-img-01.jpg);')
+				.card-warning-text
+					p Всё изменится!
+			.card__content.cardHalf__content
+				.tagbox
+					.tag
+						button.button.button-tag.button-tag-o Новости ПС
+					.like-card
+						button.like-button.comment-button
+							i.icon-comment
+							span.like-count 23
+						button.like-button
+							i.icon-like
+							span.like-count 1286
+				.card__title.cardHalf-title
+					a(href='#')
+						| Насосно-компрессорные 
+						br
+						| трубы ТЭСЦ-1
+				.card-date
+					span 24 Сентября 2018
+	.card.cardFull
+		.card-wrap.cardFull-wrap
+			.cardFull__imgbox.card__imgbox(style='background-image: url(img/news-full.jpg);')
+				.card-warning-text.hide
+					p
+			.card__content.cardFull__content
+				.tagbox
+					.tag
+						button.button.button-tag Новости ОМК
+					.like-card
+						button.like-button.comment-button
+							i.icon-comment
+							span.like-count 23
+						button.like-button
+							i.icon-like
+							span.like-count 1286
+				.card__title.cardFull__title
+					a(href='#') Хороший старт!
+				.card__text.cardFull__text
+					p
+						| Беговая команда ОМК в этом году впервые в истории приняла участие в Московском марафоне
+				.card-date
+					span 24 Сентября 2018
+	// строка
+	.card.cardThird
+		.card-wrap.cardThird-wrap
+			.cardThird__imgbox.card__imgbox(style='background-image: url(img/news-third-01.jpg);')
+				.card-warning-text.hide
+					p
+			.card__content.cardThird__content
+				.tagbox
+					.tag
+						button.button.button-tag Региональные новости
+					.like-card
+						button.like-button.comment-button
+							i.icon-comment
+							span.like-count 23
+						button.like-button
+							i.icon-like
+							span.like-count 1286
+				.card__title.cardThird__title
+					a(href='#')
+						| Насосно-компрессорные 
+						br
+						| трубы ТЭСЦ-1 
+						br
+						| трубы ТЭСЦ-1
+				.card-date
+					span 24 Сентября 2018
+	.card.cardThird
+		.card-wrap.cardThird-wrap
+			.cardThird__imgbox.card__imgbox(style='background-image: url(img/news-third-02.jpg);')
+				.card-warning-text
+					p Оценка: ПЛОХО!
+			.card__content.cardThird__content
+				.tagbox
+					.tag
+						button.button.button-tag Новости ПС
+					.like-card
+						button.like-button.comment-button
+							i.icon-comment
+							span.like-count 23
+						button.like-button
+							i.icon-like
+							span.like-count 1286
+				.card__title.cardThird__title
+					a(href='#')
+						| Обход управлющего 
+						br
+						|  директора БАЗ цеха №1
+				.card-date
+					span 24 Сентября 2018
+	.card.cardThird.cardThird_fullHeightImg
+		.card-wrap.cardThird-wrap_fullHeightImg(style='background-image: url(img/news-third-full-img-01.jpg);')
+			.card__content.cardThird__content
+				.tagbox
+					.tag
+						button.button.button-tag.button-tag_dark Новости ПС
+					.like-card.like-card_light
+						button.like-button.like-button_light.comment-button
+							i.icon-comment
+							span.like-count 23
+						button.like-button.like-button_light
+							i.icon-like
+							span.like-count 1286
+				.card__title.cardThird__title
+					a(href='#')
+						| Насосно-компрессорные 
+						br
+						| трубы ТЭСЦ-1
+				.card-date.card-date_light
+					span 24 Сентября 2018
+	// строка
+	.card.cardHalf.cardHalf_fullHeightImg
+		.card-wrap.cardHalf-wrap(style='background-image: url(img/news-half-full-img-01.jpg);')
+			.card__content.cardHalf__content
+				.tagbox
+					.tag
+						button.button.button-tag.button-tag-o.button-tag-o_light Отдельные новости
+					.like-card
+						button.like-button.like-button_light.comment-button
+							i.icon-comment
+							span.like-count 23
+						button.like-button.like-button_light
+							i.icon-like
+							span.like-count 1286
+				.card__title.cardHalf-title
+					a(href='#')
+						| Насосно-компрессорные 
+						br
+						| трубы ТЭСЦ-1 
+						br
+						| трубы ТЭСЦ-1
+				.card-date.card-date_light
+					span 24 Сентября 2018
+	.card.cardHalf
+		.card-wrap.cardHalf-wrap
+			.cardHalf-imgbox.card__imgbox(style='background-image: url(img/news-half-img-01.jpg);')
+				.card-warning-text.hide
+					p
+			.card__content.cardHalf__content
+				.tagbox
+					.tag
+						button.button.button-tag.button-tag-o Новости ПС
+					.like-card
+						button.like-button.comment-button
+							i.icon-comment
+							span.like-count 23
+						button.like-button
+							i.icon-like
+							span.like-count 1286
+				.card__title.cardHalf-title
+					a(href='#')
+						| Насосно-компрессорные 
+						br
+						| трубы ТЭСЦ-1
+				.card-date
+					span 24 Сентября 2018
+	// строка
+	.card.cardTwoThirds
+		.card-wrap.cardTwoThirds-wrap
+			.cardTwoThirds__imgbox.card__imgbox(style='background-image: url(img/news-twothirds-img-01.jpg);')
+				.card-warning-text.hide
+					p
+			.card__content.cardTwoThirds__content
+				.tagbox
+					.tag
+						button.button.button-tag Новости ПС
+					.like-card
+						button.like-button.comment-button
+							i.icon-comment
+							span.like-count 23
+						button.like-button
+							i.icon-like
+							span.like-count 1286
+				.card__title.cardTwoThirds-title
+					a(href='#')
+						| Насосно-компрессорные 
+						br
+						| трубы ТЭСЦ-1
+				.card-date
+					span 24 Сентября 2018
+	.card.cardThird
+		.card-wrap.cardThird-wrap
+			.cardThird__imgbox.card__imgbox(style='background-image: url(img/news-third-03.jpg);')
+				.card-warning-text.hide
+					p
+			.card__content.cardThird__content
+				.tagbox
+					.tag
+						button.button.button-tag Новости ПС
+					.like-card
+						button.like-button.comment-button
+							i.icon-comment
+							span.like-count 23
+						button.like-button
+							i.icon-like
+							span.like-count 1286
+				.card__title.cardThird__title
+					a(href='#')
+						| Обход управлющего 
+						br
+						|  директора БАЗ цеха №1
+				.card-date
+					span 24 Сентября 2018
+	// строка
+	.card.cardThird
+		.card-wrap.cardThird-wrap
+			.cardThird__imgbox.card__imgbox(style='background-image: url(img/news-third-04.jpg);')
+				.card-warning-text.hide
+					p
+			.card__content.cardThird__content
+				.tagbox
+					.tag
+						button.button.button-tag Новости ПС
+					.like-card
+						button.like-button.comment-button
+							i.icon-comment
+							span.like-count 23
+						button.like-button
+							i.icon-like
+							span.like-count 1286
+				.card__title.cardThird__title
+					a(href='#')
+						| Обход управлющего 
+						br
+						|  директора БАЗ цеха №1
+				.card-date
+					span 24 Сентября 2018
+	.card.cardTwoThirds.cardTwoThirds_fullHeightImg
+		.card-wrap.cardTwoThirds-wrap.cardTwoThirds-wrap_fullHeightImg(style='background-image: url(img/news-twothirds-full-img-01.jpg);')
+			.card__content.cardTwoThirds__content
+				.tagbox
+					.tag
+						button.button.button-tag.button-tag_dark Новости ПС
+					.like-card
+						button.like-button.like-button_light.comment-button
+							i.icon-comment
+							span.like-count 23
+						button.like-button.like-button_light
+							i.icon-like
+							span.like-count 1286
+				.card__title.cardTwoThirds-title
+					a(href='#')
+						| Насосно-компрессорные 
+						br
+						| трубы ТЭСЦ-1
+				.card-date.card-date_light
+					span 24 Сентября 2018
+	// строка
+	.card.cardFull.cardFull_fullHeightImg
+		.card-wrap.cardFull-wrap.cardFull-wrap_fullHeightImg(style='background-image: url(img/news-full.jpg);')
+			.card__content.cardFull__content
+				.tagbox
+					.tag
+						button.button.button-tag.button-tag_dark Новости ОМК
+					.like-card
+						button.like-button.like-button_light.comment-button
+							i.icon-comment
+							span.like-count 23
+						button.like-button.like-button_light
+							i.icon-like
+							span.like-count 1286
+				.card__title.cardFull__title
+					a(href='#') Хороший старт!
+				.card__text.cardFull__text
+					p
+						| Беговая команда ОМК в этом году впервые в истории приняла участие в Московском марафоне
+				.card-date.card-date_light
+					span 24 Сентября 2018
+	// строка
+	.card.cardTwoThirds
+		.card-wrap.cardTwoThirds-wrap
+			.cardTwoThirds__imgbox.card__imgbox(style='background-image: url(img/news-twothirds-img-01.jpg);')
+				.card-warning-text
+					p Что-то пошло не так
+			.card__content.cardTwoThirds__content
+				.tagbox
+					.tag
+						button.button.button-tag Новости ПС
+					.like-card
+						button.like-button.comment-button
+							i.icon-comment
+							span.like-count 23
+						button.like-button
+							i.icon-like
+							span.like-count 1286
+				.card__title.cardTwoThirds-title
+					a(href='#')
+						| Насосно-компрессорные 
+						br
+						| трубы ТЭСЦ-1
+				.card-date
+					span 24 Сентября 2018
+	.card.cardThird
+		.card-wrap.cardThird-wrap
+			.cardThird__imgbox.card__imgbox(style='background-image: url(img/news-third-03.jpg);')
+				.card-warning-text.hide
+					p
+			.card__content.cardThird__content
+				.tagbox
+					.tag
+						button.button.button-tag Новости ПС
+					.like-card
+						button.like-button.comment-button
+							i.icon-comment
+							span.like-count 23
+						button.like-button
+							i.icon-like
+							span.like-count 1286
+				.card__title.cardThird__title
+					a(href='#')
+						| Обход управлющего 
+						br
+						|  директора БАЗ цеха №1
+				.card-date
+					span 24 Сентября 2018
+	// строка
+	.card.cardHalf.cardHalf_fullHeightImg
+		.card-wrap.cardHalf-wrap(style='background-image: url(img/news-half-full-img-01.jpg);')
+			.card__content.cardHalf__content
+				.tagbox
+					.tag
+						button.button.button-tag.button-tag-o.button-tag-o_light Отдельные новости
+					.like-card
+						button.like-button.like-button_light.comment-button
+							i.icon-comment
+							span.like-count 23
+						button.like-button.like-button_light
+							i.icon-like
+							span.like-count 1286
+				.card__title.cardHalf-title
+					a(href='#')
+						| Насосно-компрессорные 
+						br
+						| трубы ТЭСЦ-1
+				.card-date.card-date_light
+					span 24 Сентября 2018
+	.card.cardHalf
+		.card-wrap.cardHalf-wrap
+			.cardHalf-imgbox.card__imgbox(style='background-image: url(img/news-half-img-01.jpg);')
+				.card-warning-text
+					p Всё изменится!
+			.card__content.cardHalf__content
+				.tagbox
+					.tag
+						button.button.button-tag.button-tag-o Новости ПС
+					.like-card
+						button.like-button.comment-button
+							i.icon-comment
+							span.like-count 23
+						button.like-button
+							i.icon-like
+							span.like-count 1286
+				.card__title.cardHalf-title
+					a(href='#')
+						| Насосно-компрессорные 
+						br
+						| трубы ТЭСЦ-1
+				.card-date
+					span 24 Сентября 2018
+	.card.cardFull
+		.card-wrap.cardFull-wrap
+			.cardFull__imgbox.card__imgbox(style='background-image: url(img/news-full.jpg);')
+				.card-warning-text.hide
+					p
+			.card__content.cardFull__content
+				.tagbox
+					.tag
+						button.button.button-tag Новости ОМК
+					.like-card
+						button.like-button.comment-button
+							i.icon-comment
+							span.like-count 23
+						button.like-button
+							i.icon-like
+							span.like-count 1286
+				.card__title.cardFull__title
+					a(href='#') Хороший старт!
+				.card__text.cardFull__text
+					p
+						| Беговая команда ОМК в этом году впервые в истории приняла участие в Московском марафоне
+				.card-date
+					span 24 Сентября 2018
+	// строка
+	.card.cardThird
+		.card-wrap.cardThird-wrap
+			.cardThird__imgbox.card__imgbox(style='background-image: url(img/news-third-01.jpg);')
+				.card-warning-text.hide
+					p
+			.card__content.cardThird__content
+				.tagbox
+					.tag
+						button.button.button-tag Региональные новости
+					.like-card
+						button.like-button.comment-button
+							i.icon-comment
+							span.like-count 23
+						button.like-button
+							i.icon-like
+							span.like-count 1286
+				.card__title.cardThird__title
+					a(href='#')
+						| Насосно-компрессорные 
+						br
+						| трубы ТЭСЦ-1 
+						br
+						| трубы ТЭСЦ-1
+				.card-date
+					span 24 Сентября 2018
+	.card.cardThird
+		.card-wrap.cardThird-wrap
+			.cardThird__imgbox.card__imgbox(style='background-image: url(img/news-third-02.jpg);')
+				.card-warning-text
+					p Оценка: ПЛОХО!
+			.card__content.cardThird__content
+				.tagbox
+					.tag
+						button.button.button-tag Новости ПС
+					.like-card
+						button.like-button.comment-button
+							i.icon-comment
+							span.like-count 23
+						button.like-button
+							i.icon-like
+							span.like-count 1286
+				.card__title.cardThird__title
+					a(href='#')
+						| Обход управлющего 
+						br
+						|  директора БАЗ цеха №1
+				.card-date
+					span 24 Сентября 2018
+	.card.cardThird.cardThird_fullHeightImg
+		.card-wrap.cardThird-wrap_fullHeightImg(style='background-image: url(img/news-third-full-img-01.jpg);')
+			.card__content.cardThird__content
+				.tagbox
+					.tag
+						button.button.button-tag.button-tag_dark Новости ПС
+					.like-card.like-card_light
+						button.like-button.like-button_light.comment-button
+							i.icon-comment
+							span.like-count 23
+						button.like-button.like-button_light
+							i.icon-like
+							span.like-count 1286
+				.card__title.cardThird__title
+					a(href='#')
+						| Насосно-компрессорные 
+						br
+						| трубы ТЭСЦ-1
+				.card-date.card-date_light
+					span 24 Сентября 2018
+	// строка
+	.card.cardHalf.cardHalf_fullHeightImg
+		.card-wrap.cardHalf-wrap(style='background-image: url(img/news-half-full-img-01.jpg);')
+			.card__content.cardHalf__content
+				.tagbox
+					.tag
+						button.button.button-tag.button-tag-o.button-tag-o_light Отдельные новости
+					.like-card
+						button.like-button.like-button_light.comment-button
+							i.icon-comment
+							span.like-count 23
+						button.like-button.like-button_light
+							i.icon-like
+							span.like-count 1286
+				.card__title.cardHalf-title
+					a(href='#')
+						| Насосно-компрессорные 
+						br
+						| трубы ТЭСЦ-1 
+						br
+						| трубы ТЭСЦ-1
+				.card-date.card-date_light
+					span 24 Сентября 2018
+	.card.cardHalf
+		.card-wrap.cardHalf-wrap
+			.cardHalf-imgbox.card__imgbox(style='background-image: url(img/news-half-img-01.jpg);')
+				.card-warning-text.hide
+					p
+			.card__content.cardHalf__content
+				.tagbox
+					.tag
+						button.button.button-tag.button-tag-o Новости ПС
+					.like-card
+						button.like-button.comment-button
+							i.icon-comment
+							span.like-count 23
+						button.like-button
+							i.icon-like
+							span.like-count 1286
+				.card__title.cardHalf-title
+					a(href='#')
+						| Насосно-компрессорные 
+						br
+						| трубы ТЭСЦ-1
+				.card-date
+					span 24 Сентября 2018
+	// строка
+	.card.cardTwoThirds
+		.card-wrap.cardTwoThirds-wrap
+			.cardTwoThirds__imgbox.card__imgbox(style='background-image: url(img/news-twothirds-img-01.jpg);')
+				.card-warning-text.hide
+					p
+			.card__content.cardTwoThirds__content
+				.tagbox
+					.tag
+						button.button.button-tag Новости ПС
+					.like-card
+						button.like-button.comment-button
+							i.icon-comment
+							span.like-count 23
+						button.like-button
+							i.icon-like
+							span.like-count 1286
+				.card__title.cardTwoThirds-title
+					a(href='#')
+						| Насосно-компрессорные 
+						br
+						| трубы ТЭСЦ-1
+				.card-date
+					span 24 Сентября 2018
+	.card.cardThird
+		.card-wrap.cardThird-wrap
+			.cardThird__imgbox.card__imgbox(style='background-image: url(img/news-third-03.jpg);')
+				.card-warning-text.hide
+					p
+			.card__content.cardThird__content
+				.tagbox
+					.tag
+						button.button.button-tag Новости ПС
+					.like-card
+						button.like-button.comment-button
+							i.icon-comment
+							span.like-count 23
+						button.like-button
+							i.icon-like
+							span.like-count 1286
+				.card__title.cardThird__title
+					a(href='#')
+						| Обход управлющего 
+						br
+						|  директора БАЗ цеха №1
+				.card-date
+					span 24 Сентября 2018
+	// строка
+	.card.cardThird
+		.card-wrap.cardThird-wrap
+			.cardThird__imgbox.card__imgbox(style='background-image: url(img/news-third-04.jpg);')
+				.card-warning-text.hide
+					p
+			.card__content.cardThird__content
+				.tagbox
+					.tag
+						button.button.button-tag Новости ПС
+					.like-card
+						button.like-button.comment-button
+							i.icon-comment
+							span.like-count 23
+						button.like-button
+							i.icon-like
+							span.like-count 1286
+				.card__title.cardThird__title
+					a(href='#')
+						| Обход управлющего 
+						br
+						|  директора БАЗ цеха №1
+				.card-date
+					span 24 Сентября 2018
+	.card.cardTwoThirds.cardTwoThirds_fullHeightImg
+		.card-wrap.cardTwoThirds-wrap.cardTwoThirds-wrap_fullHeightImg(style='background-image: url(img/news-twothirds-full-img-01.jpg);')
+			.card__content.cardTwoThirds__content
+				.tagbox
+					.tag
+						button.button.button-tag.button-tag_dark Новости ПС
+					.like-card
+						button.like-button.like-button_light.comment-button
+							i.icon-comment
+							span.like-count 23
+						button.like-button.like-button_light
+							i.icon-like
+							span.like-count 1286
+				.card__title.cardTwoThirds-title
+					a(href='#')
+						| Насосно-компрессорные 
+						br
+						| трубы ТЭСЦ-1
+				.card-date.card-date_light
+					span 24 Сентября 2018
+	// строка
+	.card.cardFull.cardFull_fullHeightImg
+		.card-wrap.cardFull-wrap.cardFull-wrap_fullHeightImg(style='background-image: url(img/news-full.jpg);')
+			.card__content.cardFull__content
+				.tagbox
+					.tag
+						button.button.button-tag.button-tag_dark Новости ОМК
+					.like-card
+						button.like-button.like-button_light.comment-button
+							i.icon-comment
+							span.like-count 23
+						button.like-button.like-button_light
+							i.icon-like
+							span.like-count 1286
+				.card__title.cardFull__title
+					a(href='#') Хороший старт!
+				.card__text.cardFull__text
+					p
+						| Беговая команда ОМК в этом году впервые в истории приняла участие в Московском марафоне
+				.card-date.card-date_light
+					span 24 Сентября 2018
+	// строка
+	.card.cardTwoThirds
+		.card-wrap.cardTwoThirds-wrap
+			.cardTwoThirds__imgbox.card__imgbox(style='background-image: url(img/news-twothirds-img-01.jpg);')
+				.card-warning-text
+					p Что-то пошло не так
+			.card__content.cardTwoThirds__content
+				.tagbox
+					.tag
+						button.button.button-tag Новости ПС
+					.like-card
+						button.like-button.comment-button
+							i.icon-comment
+							span.like-count 23
+						button.like-button
+							i.icon-like
+							span.like-count 1286
+				.card__title.cardTwoThirds-title
+					a(href='#')
+						| Насосно-компрессорные 
+						br
+						| трубы ТЭСЦ-1
+				.card-date
+					span 24 Сентября 2018
+	.card.cardThird
+		.card-wrap.cardThird-wrap
+			.cardThird__imgbox.card__imgbox(style='background-image: url(img/news-third-03.jpg);')
+				.card-warning-text.hide
+					p
+			.card__content.cardThird__content
+				.tagbox
+					.tag
+						button.button.button-tag Новости ПС
+					.like-card
+						button.like-button.comment-button
+							i.icon-comment
+							span.like-count 23
+						button.like-button
+							i.icon-like
+							span.like-count 1286
+				.card__title.cardThird__title
+					a(href='#')
+						| Обход управлющего 
+						br
+						|  директора БАЗ цеха №1
+				.card-date
+					span 24 Сентября 2018
+	// строка
+	.card.cardHalf.cardHalf_fullHeightImg
+		.card-wrap.cardHalf-wrap(style='background-image: url(img/news-half-full-img-01.jpg);')
+			.card__content.cardHalf__content
+				.tagbox
+					.tag
+						button.button.button-tag.button-tag-o.button-tag-o_light Отдельные новости
+					.like-card
+						button.like-button.like-button_light.comment-button
+							i.icon-comment
+							span.like-count 23
+						button.like-button.like-button_light
+							i.icon-like
+							span.like-count 1286
+				.card__title.cardHalf-title
+					a(href='#')
+						| Насосно-компрессорные 
+						br
+						| трубы ТЭСЦ-1
+				.card-date.card-date_light
+					span 24 Сентября 2018
+	.card.cardHalf
+		.card-wrap.cardHalf-wrap
+			.cardHalf-imgbox.card__imgbox(style='background-image: url(img/news-half-img-01.jpg);')
+				.card-warning-text
+					p Всё изменится!
+			.card__content.cardHalf__content
+				.tagbox
+					.tag
+						button.button.button-tag.button-tag-o Новости ПС
+					.like-card
+						button.like-button.comment-button
+							i.icon-comment
+							span.like-count 23
+						button.like-button
+							i.icon-like
+							span.like-count 1286
+				.card__title.cardHalf-title
+					a(href='#')
+						| Насосно-компрессорные 
+						br
+						| трубы ТЭСЦ-1
+				.card-date
+					span 24 Сентября 2018
+	.card.cardFull
+		.card-wrap.cardFull-wrap
+			.cardFull__imgbox.card__imgbox(style='background-image: url(img/news-full.jpg);')
+				.card-warning-text.hide
+					p
+			.card__content.cardFull__content
+				.tagbox
+					.tag
+						button.button.button-tag Новости ОМК
+					.like-card
+						button.like-button.comment-button
+							i.icon-comment
+							span.like-count 23
+						button.like-button
+							i.icon-like
+							span.like-count 1286
+				.card__title.cardFull__title
+					a(href='#') Хороший старт!
+				.card__text.cardFull__text
+					p
+						| Беговая команда ОМК в этом году впервые в истории приняла участие в Московском марафоне
+				.card-date
+					span 24 Сентября 2018
+	// строка
+	.card.cardThird
+		.card-wrap.cardThird-wrap
+			.cardThird__imgbox.card__imgbox(style='background-image: url(img/news-third-01.jpg);')
+				.card-warning-text.hide
+					p
+			.card__content.cardThird__content
+				.tagbox
+					.tag
+						button.button.button-tag Региональные новости
+					.like-card
+						button.like-button.comment-button
+							i.icon-comment
+							span.like-count 23
+						button.like-button
+							i.icon-like
+							span.like-count 1286
+				.card__title.cardThird__title
+					a(href='#')
+						| Насосно-компрессорные 
+						br
+						| трубы ТЭСЦ-1 
+						br
+						| трубы ТЭСЦ-1
+				.card-date
+					span 24 Сентября 2018
+	.card.cardThird
+		.card-wrap.cardThird-wrap
+			.cardThird__imgbox.card__imgbox(style='background-image: url(img/news-third-02.jpg);')
+				.card-warning-text
+					p Оценка: ПЛОХО!
+			.card__content.cardThird__content
+				.tagbox
+					.tag
+						button.button.button-tag Новости ПС
+					.like-card
+						button.like-button.comment-button
+							i.icon-comment
+							span.like-count 23
+						button.like-button
+							i.icon-like
+							span.like-count 1286
+				.card__title.cardThird__title
+					a(href='#')
+						| Обход управлющего 
+						br
+						|  директора БАЗ цеха №1
+				.card-date
+					span 24 Сентября 2018
+	.card.cardThird.cardThird_fullHeightImg
+		.card-wrap.cardThird-wrap_fullHeightImg(style='background-image: url(img/news-third-full-img-01.jpg);')
+			.card__content.cardThird__content
+				.tagbox
+					.tag
+						button.button.button-tag.button-tag_dark Новости ПС
+					.like-card.like-card_light
+						button.like-button.like-button_light.comment-button
+							i.icon-comment
+							span.like-count 23
+						button.like-button.like-button_light
+							i.icon-like
+							span.like-count 1286
+				.card__title.cardThird__title
+					a(href='#')
+						| Насосно-компрессорные 
+						br
+						| трубы ТЭСЦ-1
+				.card-date.card-date_light
+					span 24 Сентября 2018
+	// строка
+	.card.cardHalf.cardHalf_fullHeightImg
+		.card-wrap.cardHalf-wrap(style='background-image: url(img/news-half-full-img-01.jpg);')
+			.card__content.cardHalf__content
+				.tagbox
+					.tag
+						button.button.button-tag.button-tag-o.button-tag-o_light Отдельные новости
+					.like-card
+						button.like-button.like-button_light.comment-button
+							i.icon-comment
+							span.like-count 23
+						button.like-button.like-button_light
+							i.icon-like
+							span.like-count 1286
+				.card__title.cardHalf-title
+					a(href='#')
+						| Насосно-компрессорные 
+						br
+						| трубы ТЭСЦ-1 
+						br
+						| трубы ТЭСЦ-1
+				.card-date.card-date_light
+					span 24 Сентября 2018
+	.card.cardHalf
+		.card-wrap.cardHalf-wrap
+			.cardHalf-imgbox.card__imgbox(style='background-image: url(img/news-half-img-01.jpg);')
+				.card-warning-text.hide
+					p
+			.card__content.cardHalf__content
+				.tagbox
+					.tag
+						button.button.button-tag.button-tag-o Новости ПС
+					.like-card
+						button.like-button.comment-button
+							i.icon-comment
+							span.like-count 23
+						button.like-button
+							i.icon-like
+							span.like-count 1286
+				.card__title.cardHalf-title
+					a(href='#')
+						| Насосно-компрессорные 
+						br
+						| трубы ТЭСЦ-1
+				.card-date
+					span 24 Сентября 2018
+	// строка
+	.card.cardTwoThirds
+		.card-wrap.cardTwoThirds-wrap
+			.cardTwoThirds__imgbox.card__imgbox(style='background-image: url(img/news-twothirds-img-01.jpg);')
+				.card-warning-text.hide
+					p
+			.card__content.cardTwoThirds__content
+				.tagbox
+					.tag
+						button.button.button-tag Новости ПС
+					.like-card
+						button.like-button.comment-button
+							i.icon-comment
+							span.like-count 23
+						button.like-button
+							i.icon-like
+							span.like-count 1286
+				.card__title.cardTwoThirds-title
+					a(href='#')
+						| Насосно-компрессорные 
+						br
+						| трубы ТЭСЦ-1
+				.card-date
+					span 24 Сентября 2018
+	.card.cardThird
+		.card-wrap.cardThird-wrap
+			.cardThird__imgbox.card__imgbox(style='background-image: url(img/news-third-03.jpg);')
+				.card-warning-text.hide
+					p
+			.card__content.cardThird__content
+				.tagbox
+					.tag
+						button.button.button-tag Новости ПС
+					.like-card
+						button.like-button.comment-button
+							i.icon-comment
+							span.like-count 23
+						button.like-button
+							i.icon-like
+							span.like-count 1286
+				.card__title.cardThird__title
+					a(href='#')
+						| Обход управлющего 
+						br
+						|  директора БАЗ цеха №1
+				.card-date
+					span 24 Сентября 2018
+	// строка
+	.card.cardThird
+		.card-wrap.cardThird-wrap
+			.cardThird__imgbox.card__imgbox(style='background-image: url(img/news-third-04.jpg);')
+				.card-warning-text.hide
+					p
+			.card__content.cardThird__content
+				.tagbox
+					.tag
+						button.button.button-tag Новости ПС
+					.like-card
+						button.like-button.comment-button
+							i.icon-comment
+							span.like-count 23
+						button.like-button
+							i.icon-like
+							span.like-count 1286
+				.card__title.cardThird__title
+					a(href='#')
+						| Обход управлющего 
+						br
+						|  директора БАЗ цеха №1
+				.card-date
+					span 24 Сентября 2018
+	.card.cardTwoThirds.cardTwoThirds_fullHeightImg
+		.card-wrap.cardTwoThirds-wrap.cardTwoThirds-wrap_fullHeightImg(style='background-image: url(img/news-twothirds-full-img-01.jpg);')
+			.card__content.cardTwoThirds__content
+				.tagbox
+					.tag
+						button.button.button-tag.button-tag_dark Новости ПС
+					.like-card
+						button.like-button.like-button_light.comment-button
+							i.icon-comment
+							span.like-count 23
+						button.like-button.like-button_light
+							i.icon-like
+							span.like-count 1286
+				.card__title.cardTwoThirds-title
+					a(href='#')
+						| Насосно-компрессорные 
+						br
+						| трубы ТЭСЦ-1
+				.card-date.card-date_light
+					span 24 Сентября 2018
+	// строка
+	.card.cardFull.cardFull_fullHeightImg
+		.card-wrap.cardFull-wrap.cardFull-wrap_fullHeightImg(style='background-image: url(img/news-full.jpg);')
+			.card__content.cardFull__content
+				.tagbox
+					.tag
+						button.button.button-tag.button-tag_dark Новости ОМК
+					.like-card
+						button.like-button.like-button_light.comment-button
+							i.icon-comment
+							span.like-count 23
+						button.like-button.like-button_light
+							i.icon-like
+							span.like-count 1286
+				.card__title.cardFull__title
+					a(href='#') Хороший старт!
+				.card__text.cardFull__text
+					p
+						| Беговая команда ОМК в этом году впервые в истории приняла участие в Московском марафоне
+				.card-date.card-date_light
+					span 24 Сентября 2018
+	// строка
+	.card.cardTwoThirds
+		.card-wrap.cardTwoThirds-wrap
+			.cardTwoThirds__imgbox.card__imgbox(style='background-image: url(img/news-twothirds-img-01.jpg);')
+				.card-warning-text
+					p Что-то пошло не так
+			.card__content.cardTwoThirds__content
+				.tagbox
+					.tag
+						button.button.button-tag Новости ПС
+					.like-card
+						button.like-button.comment-button
+							i.icon-comment
+							span.like-count 23
+						button.like-button
+							i.icon-like
+							span.like-count 1286
+				.card__title.cardTwoThirds-title
+					a(href='#')
+						| Насосно-компрессорные 
+						br
+						| трубы ТЭСЦ-1
+				.card-date
+					span 24 Сентября 2018
+	.card.cardThird
+		.card-wrap.cardThird-wrap
+			.cardThird__imgbox.card__imgbox(style='background-image: url(img/news-third-03.jpg);')
+				.card-warning-text.hide
+					p
+			.card__content.cardThird__content
+				.tagbox
+					.tag
+						button.button.button-tag Новости ПС
+					.like-card
+						button.like-button.comment-button
+							i.icon-comment
+							span.like-count 23
+						button.like-button
+							i.icon-like
+							span.like-count 1286
+				.card__title.cardThird__title
+					a(href='#')
+						| Обход управлющего 
+						br
+						|  директора БАЗ цеха №1
+				.card-date
+					span 24 Сентября 2018
+	// строка
+	.card.cardHalf.cardHalf_fullHeightImg
+		.card-wrap.cardHalf-wrap(style='background-image: url(img/news-half-full-img-01.jpg);')
+			.card__content.cardHalf__content
+				.tagbox
+					.tag
+						button.button.button-tag.button-tag-o.button-tag-o_light Отдельные новости
+					.like-card
+						button.like-button.like-button_light.comment-button
+							i.icon-comment
+							span.like-count 23
+						button.like-button.like-button_light
+							i.icon-like
+							span.like-count 1286
+				.card__title.cardHalf-title
+					a(href='#')
+						| Насосно-компрессорные 
+						br
+						| трубы ТЭСЦ-1
+				.card-date.card-date_light
+					span 24 Сентября 2018
+	.card.cardHalf
+		.card-wrap.cardHalf-wrap
+			.cardHalf-imgbox.card__imgbox(style='background-image: url(img/news-half-img-01.jpg);')
+				.card-warning-text
+					p Всё изменится!
+			.card__content.cardHalf__content
+				.tagbox
+					.tag
+						button.button.button-tag.button-tag-o Новости ПС
+					.like-card
+						button.like-button.comment-button
+							i.icon-comment
+							span.like-count 23
+						button.like-button
+							i.icon-like
+							span.like-count 1286
+				.card__title.cardHalf-title
+					a(href='#')
+						| Насосно-компрессорные 
+						br
+						| трубы ТЭСЦ-1
+				.card-date
+					span 24 Сентября 2018

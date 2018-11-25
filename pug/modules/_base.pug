@@ -1,0 +1,56 @@
+doctype html
+html(lang='ru')
+	head
+		meta(charset='utf-8')
+		meta(name='viewport', content='width=device-width, initial-scale=1, shrink-to-fit=no')
+		meta(name='description', content='')
+		meta(name='author', content='')
+		link(rel='stylesheet', href='css/normalize.css')
+		link(rel='stylesheet', href='css/bootstrap/bootstrap-grid.css')
+		link(rel='stylesheet', href='jquery-ui-1.12.1.custom/jquery-ui.structure.min.css')
+		link(rel='stylesheet', href='jquery-ui-1.12.1.custom/jquery-ui.min.css')
+		link(href='css/style.css?v0.1.1', rel='stylesheet')
+		title ОМК
+	body
+		include _header
+		section.content.section
+			.container
+				.row
+					.col-xl-3
+						include _aside
+					.col-xl-9
+						.content-group
+							//- block vars
+							
+							block content
+								- var eventDate = '';
+								- var pageTitle = '';
+								- var ID = '';
+								- var signTitle = '';
+		.upp
+			.container
+				.row
+					.col-12
+						button#btnUp.button.button-up
+							i.icon-arrow-down
+			// /.container
+			// /.footer
+			// jQuery
+			script(src='js/libs/jquery.min.js')
+			// jQuery-UI
+			script(src='jquery-ui-1.12.1.custom/jquery-ui.min.js')
+			script(src='jquery-ui-1.12.1.custom/datepicker-ru.js')
+			script(src='jquery-ui-1.12.1.custom/datepicker.extension.range.min.js')
+			script(src='js/libs/jquery.dotdotdot.js')
+			// Bootstrap
+			script(src='js/libs/bootstrap/bootstrap.bundle.min.js')
+			script(src='js/libs/jquery.actual.min.js')
+			// Валидация
+			script(src='js/libs/validate/jquery.validate.min.js')
+			script(src='js/libs/jquery.maskedinput.min.js')
+			// main script
+			script(src='js/main/main.js?v0.1.1')
+			//if lte IE 9
+				link(href='ie9/css/bootstrap-ie9.css', rel='stylesheet')
+				link(rel='stylesheet', href='ie9/css/style-ie9.css?v0.1.1')
+				script(src='ie9/js/bootstrap-ie9.js')

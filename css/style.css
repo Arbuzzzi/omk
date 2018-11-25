@@ -742,6 +742,7 @@ body {
   font-family: 'Roboto', sans-serif;
   color: #5e6167;
   font-weight: 400;
+  overflow-x: hidden;
 }
 
 .bos {
@@ -2507,6 +2508,7 @@ h2 span,
   text-align: right;
   font-size: 32px;
   line-height: 1.4em;
+  overflow: hidden;
 }
 
 .content-filter__btnbox {
@@ -2601,6 +2603,10 @@ h2 span,
   text-align: right;
 }
 
+.like-count {
+  margin-left: 5px;
+}
+
 .like-button {
   margin-left: 5px;
   color: #797c82;
@@ -2636,6 +2642,13 @@ h2 span,
   -webkit-flex-wrap: wrap;
       -ms-flex-wrap: wrap;
           flex-wrap: wrap;
+  width: 100%;
+}
+
+.cards::after {
+  display: block;
+  content: "";
+  clear: both;
 }
 
 .card {
@@ -2746,7 +2759,6 @@ h2 span,
       -ms-flex-direction: column;
           flex-direction: column;
   height: 100%;
-  color: #5e6167;
   font-family: "PT Serif";
   font-size: 16px;
   font-weight: 400;

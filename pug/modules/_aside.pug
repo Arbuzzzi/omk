@@ -1,0 +1,364 @@
+#leftNavigationPseudo.left-navigation-pseudo.collapse.show
+// TABVIDGET
+#tabvidget1.vidget-box.vidget-tabbox
+	nav
+		#nav-tab.nav.nav-tabs.vidget-items(role="tablist")
+			a#nav-home-tab.nav-item.vidget-item(data-toggle="tab" href="#vidget1-tab1" role="tab" aria-controls="vidget1-tab1" aria-selected="false") Годовой отчет
+			a#nav-profile-tab.nav-item.vidget-item(data-toggle="tab" href="#vidget1-tab2" role="tab" aria-controls="vidget1-tab2" aria-selected="false") Территория ОМК
+			a#nav-contact-tab.nav-item.vidget-item.active(data-toggle="tab" href="#vidget1-tab3" role="tab" aria-controls="vidget1-tab3" aria-selected="true") ОМК-команда
+	#nav-tabContent.tab-content.vidget-tabs
+		#vidget1-tab1.tab-pane.vidget-tab.fade.show.active(role="tabpanel" aria-labelledby="nav-contact-tab")
+			.vidget-content
+				.vidget-content__left
+					.vidget-head
+						.vidget-title
+							| ГОДОВОЙ 
+							br
+							| ОТЧЕТ ОМК
+					.vidget-footer
+						a.vidget-link(href="#")
+							| Web-версия 
+							br
+							| Скачать PDF
+				.vidget-content__right
+					.vidget-imgbox
+						img(src="img/vidget-img-01.jpg" alt="image")
+		#vidget1-tab2.tab-pane.vidget-tab.fade(role="tabpanel" aria-labelledby="nav-profile-tab")
+			.vidget-content
+				.vidget-content__left
+					.vidget-head
+						.vidget-title
+							| ТЕРРИТОРИЯ 
+							br
+							| ОМК
+					.vidget-footer
+						a.vidget-link(href="#")
+							| 16.11.2018 
+							br
+							| №43 (154) 2018
+				.vidget-content__right
+					.vidget-imgbox
+						img(src="img/vidget-img-02.jpg" alt="image")
+		#vidget1-tab3.tab-pane.vidget-tab.fade(role="tabpanel" aria-labelledby="nav-home-tab")
+			.vidget-content
+				.vidget-content__left
+					.vidget-head
+						.vidget-title
+							| КОРПОРАТИВНАЯ 
+							br
+							| ПРЕССА
+					.vidget-footer
+						a.vidget-link(href="#")
+							| Журнал 
+							br
+							| ОМК-команда 
+							br
+							| выпуск 34, 2018
+				.vidget-content__right
+					.vidget-imgbox
+						img(src="img/vidget-img-04.jpg" alt="image")
+// VIDGET count
+.vidget-box
+	.vidget-content.vidget-content_bdtop.vidget-content_dblock
+		.vidget-title
+			| ПОСЕЩАЕМОСТЬ
+		.vidget-group.vidget-text_small
+			p
+				| Сегодня на портале 
+				br
+				| побывало человек:
+			.vidget-text.vidget-text_count
+				| 12 021
+// VIDGET counts
+.vidget-box
+	.vidget-content.vidget-content_bdtop.vidget-content_dblock
+		.vidget-title
+			| ПУБЛИКАЦИЯ НОВОСТЕЙ
+		.vidget-group.vidget-group_special
+			.vidget-countbox
+				.vidget-text_small
+					p Сегодня
+				.vidget-text.vidget-text_count 17
+			.vidget-countbox
+				.vidget-text_small
+					p Неделя
+				.vidget-text.vidget-text_count 84
+			.vidget-countbox
+				.vidget-text_small
+					p Месяц
+				.vidget-text.vidget-text_count 247
+// VIDGET danger
+.vidget-box
+	.vidget-content.vidget-content_bdtop.vidget-content_dblock
+		.vidget-title
+			| НЕПРОЧИТАННЫЕ НОВОСТИ
+		.vidget-group.vidget-text.vidget-text_small.danger
+			p
+				| Вы не прочитали 
+				br
+				| важных новостей:
+			.vidget-text.vidget-text.vidget-text_count.danger
+				| 28
+// VIDGET succes
+.vidget-box
+	.vidget-content.vidget-content_bdtop.vidget-content_dblock
+		.vidget-title
+			| ДНЕЙ БЕЗ ТРАВМАТИЗМА
+		.vidget-group.vidget-text.vidget-text_small.succes
+			p
+				| На предприятиях компании 
+				br
+				| без происшествий, дней
+			.vidget-text.vidget-text.vidget-text_count.succes
+				| 427
+// VIDGET vidget-calendar
+#calendarVidgetBox.vidget-box.vidget-calendar
+	.vidget-title
+		| КАЛЕНДАРЬ СОБЫТИЙ 
+		button.event-control
+			i.icon-arrow-down
+	.vidget-subtitle
+		span Сегодня 20 ноября 2018
+	.ui-datepicker-inline.ui-datepicker.ui-widget.ui-widget-content.ui-helper-clearfix.ui-corner-all
+		table.ui-datepicker-calendar
+			tbody
+				tr
+					td
+						a.ui-state-deafult.ui-state-week(href="#") 01
+					td.ui-datepicker-other-month.ui-datepicker-unselectable.ui-state-disabled  
+					td.ui-datepicker-other-month.ui-datepicker-unselectable.ui-state-disabled  
+					td.ui-datepicker-other-month.ui-datepicker-unselectable.ui-state-disabled  
+					td.first-of-month
+						a.ui-state-default(href="#") 1
+					td
+						a.ui-state-default(href="#") 2
+					td.ui-datepicker-week-end
+						a.ui-state-default(href="#") 3
+					td.ui-datepicker-week-end
+						a.ui-state-default(href="#") 4
+				tr
+					td
+						a.ui-state-deafult.ui-state-week(href="#") 02
+					td
+						a.ui-state-default(href="#") 5
+					td
+						a.ui-state-default.ui-state-active(href="#event-6") 6
+					td
+						a.ui-state-default(href="#") 7
+					td
+						a.ui-state-default(href="#") 8
+					td
+						a.ui-state-default(href="#") 9
+					td.ui-datepicker-week-end
+						a.ui-state-default(href="#") 10
+					td.ui-datepicker-week-end.selected
+						a.ui-state-default(href="#event-11") 11
+				tr
+					td
+						a.ui-state-deafult.ui-state-week(href="#") 03
+					td
+						a.ui-state-default(href="#") 12
+					td
+						a.ui-state-default(href="#") 13
+					td
+						a.ui-state-default.ui-state-active(href="#event-14") 14
+					td
+						a.ui-state-default(href="#") 15
+					td
+						a.ui-state-default(href="#") 16
+					td.ui-datepicker-week-end
+						a.ui-state-default(href="#") 17
+					td.ui-datepicker-week-end
+						a.ui-state-default(href="#") 18
+				tr
+					td
+						a.ui-state-deafult.ui-state-week(href="#") 04
+					td
+						a.ui-state-default(href="#") 19
+					td.ui-datepicker-today
+						a.ui-state-default(href="#") 20
+					td
+						a.ui-state-default(href="#") 21
+					td
+						a.ui-state-default(href="#") 22
+					td
+						a.ui-state-default(href="#") 23
+					td.ui-datepicker-week-end.selected
+						a.ui-state-default.ui-state-active(href="#event-24") 24
+					td.ui-datepicker-week-end.selected.ui-datepicker-current-day
+						a.ui-state-default(href="#") 25
+				tr
+					td
+						a.ui-state-deafult.ui-state-week(href="#") 05
+					td
+						a.ui-state-default(href="#") 26
+					td
+						a.ui-state-default(href="#") 27
+					td
+						a.ui-state-default(href="#") 28
+					td
+						a.ui-state-default(href="#") 29
+					td.last-of-month
+						a.ui-state-default(href="#") 30
+					td.ui-datepicker-week-end.ui-datepicker-other-month.ui-datepicker-unselectable.ui-state-disabled  
+					td.ui-datepicker-week-end.ui-datepicker-other-month.ui-datepicker-unselectable.ui-state-disabled  
+	#event-14.events
+		a.event(href="calendar2.html#event1-14-10-2018")
+			.event-title
+				span 1 День великого праздника в две строки
+			.vidget-imgbox.vidget-imgbox_calendar(style="background-image: url(img/event-img-01.jpg);")
+		a.event(href="calendar2.html#event2-14-10-2018")
+			.event-title
+				span 2 День великого праздника в две строки
+			.vidget-imgbox.vidget-imgbox_calendar(style="background-image: url(img/event-img-01.jpg);")
+		a.event(href="calendar2.html#event3-14-10-2018")
+			.event-title
+				span 3 День великого праздника в две строки
+			.vidget-imgbox.vidget-imgbox_calendar(style="background-image: url(img/event-img-01.jpg);")
+	#event-6.events
+		a.event(href="calendar.html#event1-06-10-2018")
+			.event-title
+				span День металлурга
+			.vidget-imgbox.vidget-imgbox_calendar(style="background-image: url(img/article-img-01.jpg);")
+		a.event(href="calendar.html#event2-06-10-2018")
+			.event-title
+				span День поедателей йогуртов
+			.vidget-imgbox.vidget-imgbox_calendar(style="background-image: url(img/article-img-01.jpg);")
+		a.event(href="calendar.html#event3-06-10-2018")
+			.event-title
+				span День металлурга 2
+			.vidget-imgbox.vidget-imgbox_calendar(style="background-image: url(img/article-img-01.jpg);")
+	#event-24.events
+		a.event(href="calendar2.html#event1-24-10-2018")
+			.event-title
+				span День поедателей йогуртов
+			.vidget-imgbox.vidget-imgbox_calendar(style="background-image: url(img/article-img-05.jpg);")
+
+// TABVIDGET
+#tabvidget2.vidget-box.vidget-tabbox
+	nav
+		#nav-tab.nav.nav-tabs.vidget-items(role="tablist")
+			a#nav-contact-tab.nav-item.vidget-item(data-toggle="tab" href="#vidget2-tab3" role="tab" aria-controls="vidget2-tab3" aria-selected="false") Доска почета
+			a#nav-profile-tab.nav-item.vidget-item(data-toggle="tab" href="#vidget2-tab2" role="tab" aria-controls="vidget2-tab2" aria-selected="false") День рождения
+			a#nav-home-tab.nav-item.vidget-item.active(data-toggle="tab" href="#vidget2-tab1" role="tab" aria-controls="vidget2-tab1" aria-selected="true") Назначение
+	#nav-tabContent.tab-content.vidget-tabs
+		#vidget2-tab3.tab-pane.vidget-tab.fade(role="tabpanel" aria-labelledby="nav-contact-tab")
+			.vidget-content
+				.vidget-content__left
+					.vidget-head
+						.vidget-title
+							| ДОСКА 
+							br
+							| ПОЧЕТА
+					.vidget-footer
+						.vidget-text
+							p
+								strong
+									| Контаревский 
+									br
+									| Николай 
+									br
+									| Константинович 
+									br
+								| Председатель 
+								br
+								| подразделения 28 
+								br
+				.vidget-content__right
+					.vidget-imgbox
+						img(src="img/vidget-img-07.jpg" alt="image")
+		#vidget2-tab2.tab-pane.vidget-tab.fade(role="tabpanel" aria-labelledby="nav-profile-tab")
+			.vidget-content
+				.vidget-content__left
+					.vidget-head
+						.vidget-title
+							| ДЕНЬ 
+							br
+							| РОЖДЕНИЯ
+					.vidget-footer
+						.vidget-text
+							p
+								strong
+									| Тушин 
+									br
+									| Петр 
+									br
+									| Николаевич 
+									br
+								| Директор по 
+								br
+								| управлению 
+								br
+								| эффективностью
+				.vidget-content__right
+					.vidget-imgbox
+						img(src="img/vidget-img-05.png" alt="image")
+		#vidget2-tab1.tab-pane.vidget-tab.fade.show.active(role="tabpanel" aria-labelledby="nav-home-tab")
+			.vidget-content
+				.vidget-content__left
+					.vidget-head
+						.vidget-title
+							| НАЗНАЧЕНИЕ
+					.vidget-footer
+						.vidget-text
+							p
+								strong
+									| Еремина 
+									br
+									| Наталья 
+									br
+									| Константиновна 
+									br
+								| Председатель 
+								br
+								| правления ОМК
+				.vidget-content__right
+					.vidget-imgbox
+						img(src="img/vidget-img-06.jpg" alt="image")
+// TABVIDGET
+#tabvidget3.vidget-box.vidget-tabbox
+	nav
+		#nav-tab.nav.nav-tabs.vidget-items(role="tablist")
+			a#nav-contact-tab.nav-item.vidget-item.vidget-item_fixfirsttab(data-toggle="tab" href="#vidget3-tab3" role="tab" aria-controls="vidget3-tab3" aria-selected="false") Акции в регионах
+			a#nav-profile-tab.nav-item.vidget-item.active(data-toggle="tab" href="#vidget3-tab2" role="tab" aria-controls="vidget3-tab2" aria-selected="true") Объявления
+	#nav-tabContent.tab-content.vidget-tabs
+		#vidget3-tab3.tab-pane.vidget-tab.fade(role="tabpanel" aria-labelledby="nav-contact-tab")
+			.vidget-content.vidget-content_ads.vidget-content_dblock
+				.vidget-title
+					| АКЦИИ В РЕГИОНАХ
+				.vidget-imgbox.vidget-imgbox_full(style="background-image: url(img/vidget-img-09.jpg);")
+				.vidget-text
+					h4
+						strong
+							| Волонтеров берем на работу 
+							br
+							| в первую очередь
+					p Выкса
+					p Сегодня 15:26
+		#vidget3-tab2.tab-pane.vidget-tab.fade.show.active(role="tabpanel" aria-labelledby="nav-profile-tab")
+			.vidget-content.vidget-content_ads.vidget-content_dblock
+				.vidget-title
+					| ОБЪЯВЛЕНИЯ
+				.vidget-imgbox.vidget-imgbox_full(style="background-image: url(img/vidget-img-08.jpg);")
+				.vidget-text
+					p УАЗ 452 Буханка, 1999
+					p
+						span.vidget-text_big 129 000
+						|   руб.
+					p Выкса
+					p Сегодня 15:26
+// VIDGET
+.vidget-box.vidget-calendar
+	.vidget-title
+		| БЛАГОТВОРИТЕЛЬНОСТЬ
+	.vidget-imgbox
+		img(src="img/vidget-img-10.jpg" alt="image")
+// VIDGET
+.vidget-box.vidget-calendar
+	.vidget-title
+		| КОНКУРСЫ
+	.vidget-imgbox
+		img(src="img/vidget-img-11.jpg" alt="image")
+		.vidget-imgbox__text
+			h3 Фотоконкурс!
+			p ждем ваши фотографии

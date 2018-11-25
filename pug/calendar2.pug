@@ -1,0 +1,21 @@
+extends modules/_base
+block content
+	- var eventDate = '14 Ноября 2018';
+
+	-var pageTitle = 'Календарь';
+	include page/_page-head
+
+	include cards/_card-calendar
+
+	- var ID = 'events-14-10-2018';
+	- var signTitle = 'События: '+eventDate;
+	include page/_page-sign-title
+
+	- var ID = 'event1-14-10-2018';
+	include articles/_article-01
+
+	- var ID = 'event2-14-10-2018';
+	include articles/_article-02
+
+	- var ID = 'event3-14-10-2018';
+	include articles/_article-03
