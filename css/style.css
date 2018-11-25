@@ -2652,11 +2652,7 @@ h2 span,
 
 .card {
   padding: 0 15px;
-  max-width: 100%;
-  -webkit-box-flex: 1;
-  -webkit-flex-grow: 1;
-      -ms-flex-positive: 1;
-          flex-grow: 1;
+  width: 100%;
   margin-bottom: 30px;
 }
 
@@ -3683,6 +3679,16 @@ h2 span,
   font-family: "PT Serif";
   font-size: 17px;
   font-weight: 400;
+}
+
+.article-autor::after {
+  display: block;
+  content: "";
+  clear: both;
+}
+
+.article .hashtag {
+  float: left;
 }
 
 @media screen and (min-width: 1024px) {

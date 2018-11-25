@@ -96,5 +96,9 @@
 		font-family: "PT Serif";
 		font-size: 17px;
 		font-weight: 400;
+		@include clearfix;
+	}
+	.hashtag {
+		float: left;
 	}
 }
