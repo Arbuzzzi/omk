@@ -1,3 +1,4 @@
+- var version = '?0.1.3';
 doctype html
 html(lang='ru')
 	head
@@ -9,7 +10,7 @@ html(lang='ru')
 		link(rel='stylesheet', href='css/bootstrap/bootstrap-grid.css')
 		link(rel='stylesheet', href='jquery-ui-1.12.1.custom/jquery-ui.structure.min.css')
 		link(rel='stylesheet', href='jquery-ui-1.12.1.custom/jquery-ui.min.css')
-		link(href='css/style.css?v0.1.1', rel='stylesheet')
+		link(href='css/style.css'+version, rel='stylesheet')
 		title ОМК
 	body
 		include _header
@@ -49,8 +50,8 @@ html(lang='ru')
 			script(src='js/libs/validate/jquery.validate.min.js')
 			script(src='js/libs/jquery.maskedinput.min.js')
 			// main script
-			script(src='js/main/main.js?v0.1.1')
+			script(src='js/main/main.js'+version)
 			//if lte IE 9
 				link(href='ie9/css/bootstrap-ie9.css', rel='stylesheet')
-				link(rel='stylesheet', href='ie9/css/style-ie9.css?v0.1.1')
+				link(rel='stylesheet', href='ie9/css/style-ie9.css')
 				script(src='ie9/js/bootstrap-ie9.js')
