@@ -1,0 +1,32 @@
+// TABVIDGET
+#tabvidget3.vidget-box.vidget-tabbox
+	nav
+		#nav-tab.nav.nav-tabs.vidget-items(role="tablist")
+			a#nav-contact-tab.nav-item.vidget-item.vidget-item_fixfirsttab(data-toggle="tab" href="#vidget3-tab3" role="tab" aria-controls="vidget3-tab3" aria-selected="false") Акции в регионах
+			a#nav-profile-tab.nav-item.vidget-item.active(data-toggle="tab" href="#vidget3-tab2" role="tab" aria-controls="vidget3-tab2" aria-selected="true") Объявления
+	#nav-tabContent.tab-content.vidget-tabs
+		#vidget3-tab3.tab-pane.vidget-tab.fade(role="tabpanel" aria-labelledby="nav-contact-tab")
+			.vidget-content.vidget-content_ads.vidget-content_dblock
+				.vidget-title
+					| АКЦИИ В РЕГИОНАХ
+				.vidget-imgbox.vidget-imgbox_full(style="background-image: url(img/vidget-img-09.jpg);")
+				.vidget-text
+					h4
+						strong
+							| Волонтеров берем на работу 
+							br
+							| в первую очередь
+					p Выкса
+					p Сегодня 15:26
+		#vidget3-tab2.tab-pane.vidget-tab.fade.show.active(role="tabpanel" aria-labelledby="nav-profile-tab")
+			.vidget-content.vidget-content_ads.vidget-content_dblock
+				.vidget-title
+					| ОБЪЯВЛЕНИЯ
+				.vidget-imgbox.vidget-imgbox_full(style="background-image: url(img/vidget-img-08.jpg);")
+				.vidget-text
+					p УАЗ 452 Буханка, 1999
+					p
+						span.vidget-text_big 129 000
+						|   руб.
+					p Выкса
+					p Сегодня 15:26
