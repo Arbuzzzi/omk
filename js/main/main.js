@@ -56,6 +56,8 @@ $(document).ready(function() {
 	$('input[type="tel"]').on('change focus click', function() {
 		$(this)[0].setSelectionRange(0, 0);
 	});
+
+
 	// подпункты меню раскрывается при наведении
 	// $('.menuNavHeader__item').on('mouseenter', function(event) {
 	// 	var element = $(event.target).parents('.menuNavHeader__item'),
@@ -95,81 +97,6 @@ $(document).ready(function() {
 		
 	});
 
-	function addClassScroll(element, $class, positionMax) {
-		var position = $(this).scrollTop();
-		if ($class === undefined) {
-			$class = 'scroll';
-		}
-		if (positionMax === undefined) {
-			positionMax = 200;
-		}
-		if (position >= positionMax) {
-			element.addClass($class);
-		} else {
-			element.removeClass($class);
-		}
-		return position;
-	}	
-
-	function removeClassScroll(element, $class) {
-		var position = $(this).scrollTop();
-		if ($class === undefined) {
-			$class = 'scroll';
-		}
-		if (position >= 200) {
-			element.removeClass($class);
-		} else {
-			element.addClass($class);
-		}
-		return position;
-	}
-
-	function toggleCollapseScroll(element) {
-		var position = $(this).scrollTop();
-		if (position >= 200) {
-			element.collapse('hide');
-		} else {
-			element.collapse('show');
-		}
-		return position;
-	}
-
-	function toggleDropdownScroll(element) {
-		var position = $(this).scrollTop();
-		if (position >= 200) {
-			element.attr('data-toggle', 'dropdown');
-			element.find('i').animate({opacity: 'show'}, 400);
-		} else {
-			element.removeAttr('data-toggle');
-			element.dropdown('dispose');
-			element.find('i').animate({opacity: 'hide'}, 400);
-		}
-	}
-
-	function collapseItemScrollHide(btnControl, hidePosition) {
-		var position = $(this).scrollTop(),
-				itemControl = $(btnControl.data('target'));
-
-		if (hidePosition === undefined) {
-			hidePosition = 0;
-		}
-		if (position > hidePosition && itemControl.hasClass('show')) {
-			itemControl.collapse('hide');
-		}
-	}
-
-	function collapseItemScrollShow(btnControl, hidePosition) {
-		var position = $(this).scrollTop(),
-				itemControl = $(btnControl.data('target'));
-
-		if (hidePosition === undefined) {
-			hidePosition = 0;
-		}
-		if (position < hidePosition && menuLeftListDeafult) {
-			itemControl.collapse('show');
-		}
-	}
-
 	function cahgeTrueFalse(argument) {
 		if (argument) {
 			return false;
@@ -177,8 +104,6 @@ $(document).ready(function() {
 			return true;
 		}
 	}
-
-	addClassScroll($('.header'));
 
 	// системы показываются
 	$('#headerNav').on('show.bs.collapse', function () {
@@ -191,148 +116,7 @@ $(document).ready(function() {
 		var btn = $('#headerNavControl');
 		btn.removeClass('active')
 	});
-	// var marker = true;
-	// function markerChange (marker){
-	// 	if (marker == true) {
-	// 		return false;
-	// 	} else {
-	// 		return true;
-	// 	}
-	// }
-	// скрываем элементы во время скроллинга страницы
-	var positionContent = $('.header').actual('outerHeight'),
-			positionOne = $(window).innerHeight(),
-			menuLeftListDeafult = $('#menuLeftList').hasClass('show'),
-			positionTwo = positionOne * 2;
-			positionThre =  positionTwo + positionOne;
-
-	$('#menuLeftListControl').on('click', function() {
-		var position = $(window).scrollTop();
-		if (position < positionOne) {
-			menuLeftListDeafult = cahgeTrueFalse(menuLeftListDeafult);
-		}
-	});
-
-	$(document).on('scroll', function(event) {
-		var position = $(this).scrollTop(),
-				heightHeader = $('.header:not(.header.scroll)').outerHeight(),
-				positionContentEvent = $('.content').offset().top;
-		// меню в обычном состоянии
-		$('*').tooltip('hide');
-		if (!$('.header').hasClass('.scroll')  && !$('#headerNavSetting').hasClass('show')) {
-			addClassScroll($('.header'), 'scroll', positionThre);
-
-			// 1 брэйкпоинт 
-			if (position >= positionOne) {
-				collapseItemScrollHide($('#menuLeftListControl'), positionOne);
-			} else {
-				if (position <= 300) {
-					collapseItemScrollShow($('#menuLeftListControl'), positionOne);
-				}
-			}
-
-			// сохраняем отступ
-			if (position > 0) {
-				$('.header + *').css('padding-top', positionContent);
-				$('#btnUp').animate({bottom: 'show'}, 500);
-				$('.header .breadcrumb').css({
-					paddingBottom: '15px'});
-
-			} else {
-				$('.header + *').css('padding-top', '');
-				$('#btnUp').animate({bottom: 'hide', opacity: 'hide'}, 500);
-				$('.header .breadcrumb').removeAttr('style')
-			}
-		}
-
-		// меню свернуто
-		if ($('.header').hasClass('scroll')) {
-			$('#headerNav').collapse('hide');
-			$('#headerNavControl').removeClass('active');
-		}
-
-		// scroll top самый верх экана
-		if (position <= 0) {
-			$('#headerNav').collapse('show');
-			$('.header').removeAttr('style');
-			addClassScroll($('.header'));
-			positionContent = $('.header').actual('outerHeight');
-		}
-
-		// scroll bottom 
-		if (position > 0) {
-			$('.menu-left').removeAttr('style');
-			$('#menuNavHeaderGroup').collapse('hide');
-			$('.header').css('padding-bottom', '')
-
-			// развернуть
-			if (!$('.rollUp').hasClass('show') && $('.header').hasClass('scroll')) {
-				$('.rollUp').addClass('show');
-			} else {
-				$('.rollUp').removeClass('show');
-			}
-
-			if (!$('.header').hasClass('scroll')) {
-				$('.header').css({'position': 'fixed'});
-			}
-
-		} else {
-			$('.rollUp').removeClass('show');
-		}
-
-		// скрываем dropdown при скролле
-		if ($('.dropdown-menu').hasClass('show')) {
-			$('.dropdown-menu').removeClass('show');
-		}
-	});
-
-	// плавный скролл
-	$(document).on('click', 'a.event', function(event) {
-		var link = $(this).attr('href');
-		var elementToScroll = $('#' + link.split('#')[1]);
-		var elementToScrollPos = elementToScroll.offset().top;
-		var headerHeight = $('.header').outerHeight(); // высота хэдера
-		if (elementToScrollPos < positionTwo) {
-			elementToScrollPos = elementToScroll.offset().top - headerHeight - 45;
-		} else {
-			elementToScrollPos = elementToScroll.offset().top - 90;
-		}
-		if (elementToScroll !== undefined) {
-			event.preventDefault();
-			$('html:not(:animated),body:not(:animated)').animate({scrollTop: elementToScrollPos}, 800);
-		}
-	});	
-
-	var myHash = location.hash; //получаем значение хеша
-	location.hash = ''; //очищаем хеш
-	var headerHeight = $('.header').outerHeight(); // высота хэдера
-
-	if(myHash[1] != undefined){ //проверяем, есть ли в хеше какое-то значение
-		var elementToScrolling = $(myHash).offset().top;
-		if (elementToScrolling < positionTwo) {
-			elementToScrolling = $(myHash).offset().top - 150;
-		} else {
-			elementToScrolling = $(myHash).offset().top;
-		}
-
-	  $('html:not(:animated),body:not(:animated)').animate({scrollTop: elementToScrolling}, 800); //скроллим за полсекунды
-	};
-	$('#btnUp, .calendar__link').click(function() {
-		var destination = 0,
-				element = $(this).attr('href');
-				headerHeight = $('.header').outerHeight();
-
-		if (element !== undefined) {
-			destination = $(element).offset().top - headerHeight - 70;
-
-		}
-		$('html:not(:animated),body:not(:animated)').animate({
-			scrollTop: destination
-		}, 800, function () {			
-		});
-		return false;
-	});
-
+	
 	// разворачиваем меню
 	$('#btnDeploy').click(function(event) {
 		var header = $('.header'),
@@ -403,7 +187,6 @@ $(document).ready(function() {
 			$('#headerNavSettingControl').removeClass('active').removeAttr('style');
 		})
 	})
-
 
 	var checkboxs = $('input[type="checkbox"].setting-form-checkbox__input');
 			checkboxCheckd        = $('.setting-form').find('input[type="checkbox"]:checked'),
@@ -510,6 +293,273 @@ $(document).ready(function() {
 		return checkboxArrDeafult;
 
 	}
+
+	/* START СКРОЛЛИНГ ---------------------------------------------------------------------------------- */
+	addClassScroll($('.header'));
+	// скрываем элементы во время скроллинга страницы
+	var positionContent = $('.header').actual('outerHeight'),
+			positionOne = $(window).innerHeight(),
+			menuLeftListDeafult = $('#menuLeftList').hasClass('show'),
+			positionTwo = positionOne * 2;
+			positionThre =  positionTwo + positionOne,
+			currentScroll = 0;
+
+	$('#menuLeftListControl').on('click', function() {
+		var position = $(window).scrollTop();
+		if (position < positionOne) {
+			menuLeftListDeafult = cahgeTrueFalse(menuLeftListDeafult);
+		}
+	});
+
+	$(document).on('scroll', function(event) {
+		var position = $(this).scrollTop(),
+				heightHeader = $('.header:not(.header.scroll)').outerHeight(),
+				positionContentEvent = $('.content').offset().top;
+
+		if (position > currentScroll) { //скроллим вниз
+			if ($('#aside').css('margin-top') == '1px') {
+				$('#aside').css({
+					position: '',
+					marginTop: $('#aside').offset().top - (position - currentScroll) - $('.header').outerHeight(),
+				});
+				console.log('test1');
+
+
+			}
+			if (position>=$('#aside').offset().top+$('#aside').outerHeight()-positionOne) {
+				$('#aside').css({
+					position: 'fixed',
+					bottom: '0px',
+					width: $('#aside').parent().width(),
+					marginTop: '',
+					top: ''
+				});
+				console.log('test2');
+
+
+			}
+		} else { // скроллим вверх
+
+			if($('#aside').css('margin') == '0px' && position > positionTwo){
+				$('#leftNavigationPseudo').height(0)
+				$('#aside').css({
+					position: '',
+					marginTop: $('#aside').offset().top - (position - currentScroll) - $('.header').outerHeight(),
+				});
+				console.log('test3');
+
+
+			} else if($('#aside').offset().top+200 >= position && position > 300) {
+				$('#aside').css({
+					position: 'fixed',
+					top: $('.header').outerHeight(),
+					bottom: '',
+					marginTop: '1px'
+				});
+				console.log('test5');
+
+
+			} else if (position <= 0) {
+				$('#aside').removeAttr('style')
+				console.log('test6');
+
+			}	
+		}
+
+		// меню в обычном состоянии
+		$('*').tooltip('hide');
+		if (!$('.header').hasClass('.scroll')  && !$('#headerNavSetting').hasClass('show')) {
+			addClassScroll($('.header'), 'scroll', positionThre);
+
+			// 1 брэйкпоинт 
+			if (position >= positionOne) {
+				collapseItemScrollHide($('#menuLeftListControl'), positionOne);
+			} else {
+				if (position <= 300) {
+					collapseItemScrollShow($('#menuLeftListControl'), positionOne);
+				}
+			}
+
+			// сохраняем отступ
+			if (position > 0) {
+				$('.header + *').css('padding-top', positionContent);
+				$('#btnUp').animate({bottom: 'show'}, 500);
+				$('.header .breadcrumb').css({
+					paddingBottom: '15px'});
+
+			} else {
+				$('.header + *').css('padding-top', '');
+				$('#btnUp').animate({bottom: 'hide', opacity: 'hide'}, 500);
+				$('.header .breadcrumb').removeAttr('style')
+			}
+		}
+
+		// меню свернуто
+		if ($('.header').hasClass('scroll')) {
+			$('#headerNav').collapse('hide');
+			$('#headerNavControl').removeClass('active');
+		}
+
+		// scroll top самый верх экана
+		if (position <= 0) {
+			$('#headerNav').collapse('show');
+			$('.header').removeAttr('style');
+			addClassScroll($('.header'));
+			positionContent = $('.header').actual('outerHeight');
+		}
+
+		// scroll bottom 
+		if (position > 0) {
+			$('.menu-left').removeAttr('style');
+			$('#menuNavHeaderGroup').collapse('hide');
+			$('.header').css('padding-bottom', '')
+
+			// развернуть
+			if (!$('.rollUp').hasClass('show') && $('.header').hasClass('scroll')) {
+				$('.rollUp').addClass('show');
+			} else {
+				$('.rollUp').removeClass('show');
+			}
+
+			if (!$('.header').hasClass('scroll')) {
+				$('.header').css({'position': 'fixed'});
+			}
+
+		} else {
+			$('.rollUp').removeClass('show');
+		}
+
+		// скрываем dropdown при скролле
+		if ($('.dropdown-menu').hasClass('show')) {
+			$('.dropdown-menu').removeClass('show');
+		}
+		currentScroll = position;
+	});
+
+	// плавный скролл
+	$(document).on('click', 'a.event', function(event) {
+		var link = $(this).attr('href');
+		var elementToScroll = $('#' + link.split('#')[1]);
+		var elementToScrollPos = elementToScroll.offset().top;
+		var headerHeight = $('.header').outerHeight(); // высота хэдера
+		if (elementToScrollPos < positionTwo) {
+			elementToScrollPos = elementToScroll.offset().top - headerHeight - 45;
+		} else {
+			elementToScrollPos = elementToScroll.offset().top - 90;
+		}
+		if (elementToScroll !== undefined) {
+			event.preventDefault();
+			$('html:not(:animated),body:not(:animated)').animate({scrollTop: elementToScrollPos}, 800);
+		}
+	});	
+
+	var myHash = location.hash; //получаем значение хеша
+	location.hash = ''; //очищаем хеш
+	var headerHeight = $('.header').outerHeight(); // высота хэдера
+
+	if(myHash[1] != undefined){ //проверяем, есть ли в хеше какое-то значение
+		var elementToScrolling = $(myHash).offset().top;
+		if (elementToScrolling < positionTwo) {
+			elementToScrolling = $(myHash).offset().top - 150;
+		} else {
+			elementToScrolling = $(myHash).offset().top;
+		}
+
+	  $('html:not(:animated),body:not(:animated)').animate({scrollTop: elementToScrolling}, 800); //скроллим за полсекунды
+	};
+
+	$('#btnUp, .calendar__link').click(function() {
+		var destination = 0,
+				element = $(this).attr('href');
+				headerHeight = $('.header').outerHeight();
+
+		if (element !== undefined) {
+			destination = $(element).offset().top - headerHeight - 70;
+
+		}
+		$('html:not(:animated),body:not(:animated)').animate({
+			scrollTop: destination
+		}, 800, function () {			
+		});
+		return false;
+	});
+
+	function addClassScroll(element, $class, positionMax) {
+		var position = $(this).scrollTop();
+		if ($class === undefined) {
+			$class = 'scroll';
+		}
+		if (positionMax === undefined) {
+			positionMax = 200;
+		}
+		if (position >= positionMax) {
+			element.addClass($class);
+		} else {
+			element.removeClass($class);
+		}
+		return position;
+	}	
+
+	function removeClassScroll(element, $class) {
+		var position = $(this).scrollTop();
+		if ($class === undefined) {
+			$class = 'scroll';
+		}
+		if (position >= 200) {
+			element.removeClass($class);
+		} else {
+			element.addClass($class);
+		}
+		return position;
+	}
+
+	function toggleCollapseScroll(element) {
+		var position = $(this).scrollTop();
+		if (position >= 200) {
+			element.collapse('hide');
+		} else {
+			element.collapse('show');
+		}
+		return position;
+	}
+
+	function toggleDropdownScroll(element) {
+		var position = $(this).scrollTop();
+		if (position >= 200) {
+			element.attr('data-toggle', 'dropdown');
+			element.find('i').animate({opacity: 'show'}, 400);
+		} else {
+			element.removeAttr('data-toggle');
+			element.dropdown('dispose');
+			element.find('i').animate({opacity: 'hide'}, 400);
+		}
+	}
+
+	function collapseItemScrollHide(btnControl, hidePosition) {
+		var position = $(this).scrollTop(),
+				itemControl = $(btnControl.data('target'));
+
+		if (hidePosition === undefined) {
+			hidePosition = 0;
+		}
+		if (position > hidePosition && itemControl.hasClass('show')) {
+			itemControl.collapse('hide');
+		}
+	}
+
+	function collapseItemScrollShow(btnControl, hidePosition) {
+		var position = $(this).scrollTop(),
+				itemControl = $(btnControl.data('target'));
+
+		if (hidePosition === undefined) {
+			hidePosition = 0;
+		}
+		if (position < hidePosition && menuLeftListDeafult) {
+			itemControl.collapse('show');
+		}
+	}
+
+	/* END СКРОЛЛИНГ ------------------------------------------------------------------------------------ */
 
 	// левое меню show 
 	$('#menuLeftList').on('show.bs.collapse', function() {
