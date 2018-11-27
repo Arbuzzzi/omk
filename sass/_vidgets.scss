@@ -215,3 +215,19 @@
 		}
 	}
 }
+
+.vidget-slider {
+		margin-left: -7.5px;
+		margin-right: -7.5px;
+	&-wrap {
+		overflow: hidden;
+	}
+	&__tab {
+		padding-left: 7.5px;
+		padding-right: 7.5px;
+	}
+	&__content {
+		border-radius: 5px;
+		border: 1px solid #dddee0;
+	}		
+}

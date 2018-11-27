@@ -354,7 +354,8 @@ $(document).ready(function() {
 					position: 'fixed',
 					top: $('.header').outerHeight(),
 					bottom: '',
-					marginTop: '1px'
+					marginTop: '1px',
+					width: $('#aside').parent().width(),
 				});
 				console.log('test5');
 
@@ -788,4 +789,10 @@ $(document).ready(function() {
 	});
 	$('.calendar__day').tooltip();
 	$('.sliderBlog').slick();
+	$('.vidget-slider').slick({
+		autoplay: true,
+		autoplaySpeed: 6000,
+		prevArrow: '<div class="slider-arrow slider-arrow__left"></div>',
+		nextArrow: '<div class="slider-arrow slider-arrow__right"></div>',
+	});
 });

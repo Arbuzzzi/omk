@@ -887,6 +887,33 @@ h2 span,
   margin-left: 10px;
 }
 
+.slider-arrow {
+  position: absolute;
+  z-index: 10;
+  top: 0;
+  width: 15px;
+  height: 100%;
+  background-color: rgba(255, 255, 255, 0.1);
+  cursor: pointer;
+  -webkit-transition: 0.4s;
+  -o-transition: 0.4s;
+  transition: 0.4s;
+}
+
+.slider-arrow__left {
+  left: 7.5px;
+  -webkit-border-radius: 5px 0 0 5px;
+          border-radius: 5px 0 0 5px;
+  background: rgba(255, 255, 255, 0.4) url(../img/icon/slider-arrow-left.svg) center no-repeat/50%;
+}
+
+.slider-arrow__right {
+  right: 7.5px;
+  -webkit-border-radius: 0 5px 5px 0;
+          border-radius: 0 5px 5px 0;
+  background: rgba(255, 255, 255, 0.4) url(../img/icon/slider-arrow-right.svg) center no-repeat/50%;
+}
+
 .link {
   display: inline-block;
   color: #797c82;
@@ -3444,6 +3471,26 @@ h2 span,
   color: #39b54a;
 }
 
+.vidget-slider {
+  margin-left: -7.5px;
+  margin-right: -7.5px;
+}
+
+.vidget-slider-wrap {
+  overflow: hidden;
+}
+
+.vidget-slider__tab {
+  padding-left: 7.5px;
+  padding-right: 7.5px;
+}
+
+.vidget-slider__content {
+  -webkit-border-radius: 5px;
+          border-radius: 5px;
+  border: 1px solid #dddee0;
+}
+
 .calendar {
   display: block;
   width: 100%;
@@ -3711,6 +3758,14 @@ h2 span,
   .hashtag:hover {
     color: #5e6167;
     text-decoration: underline;
+  }
+
+  .slider-arrow__left:hover {
+    background-color: rgba(255, 255, 255, 0.85);
+  }
+
+  .slider-arrow__right:hover {
+    background-color: rgba(255, 255, 255, 0.85);
   }
 
   .link:hover {
