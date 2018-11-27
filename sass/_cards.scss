@@ -22,6 +22,9 @@
 			margin-bottom: 5px;
 		}
 	}
+	&_advant-news {
+		border-bottom: 3px solid $dark-color;
+	}
 	&__imgbox {
 		position: relative;
 		border-radius: 5px;		
@@ -178,6 +181,29 @@
 				filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', endColorstr='#000000',GradientType=0 );
 			}
 		}
+		&-slider {
+			overflow: hidden;
+			background-color: #fff;
+			margin-left: 15px;
+			margin-right: 15px;
+			padding: 0;
+			flex: auto;
+			border-radius: 5px;
+			&-wrap {
+				margin-left: -15px;
+				margin-right: -15px;
+				background-color: transparent;
+				font-size: 0;
+				overflow: hidden;		
+			}
+			&__item {
+				padding-left: 15px;
+				padding-right: 15px;
+			}
+			&__imgbox {
+				min-height: 210px;
+			}
+		}
 	}
 
 
@@ -223,6 +249,29 @@
 		&__text {
 			padding-top: 15px;
 			max-height: 305px;
+		}
+		&-slider {
+			overflow: hidden;
+			background-color: #fff;
+			margin-left: 15px;
+			margin-right: 15px;
+			padding: 0;
+			flex: auto;
+			border-radius: 5px;
+			&-wrap {
+				margin-left: -15px;
+				margin-right: -15px;
+				background-color: transparent;
+				font-size: 0;
+				overflow: hidden;		
+			}
+			&__item {
+				padding-left: 15px;
+				padding-right: 15px;
+			}
+			&__imgbox {
+				min-height: 330px;
+			}
 		}
 	}
 	&TwoThirds {

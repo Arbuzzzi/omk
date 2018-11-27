@@ -891,7 +891,7 @@ h2 span,
   position: absolute;
   z-index: 10;
   top: 0;
-  width: 15px;
+  width: 30px;
   height: 100%;
   background-color: rgba(255, 255, 255, 0.1);
   cursor: pointer;
@@ -901,17 +901,17 @@ h2 span,
 }
 
 .slider-arrow__left {
-  left: 7.5px;
+  left: 15px;
   -webkit-border-radius: 5px 0 0 5px;
           border-radius: 5px 0 0 5px;
-  background: rgba(255, 255, 255, 0.4) url(../img/icon/slider-arrow-left.svg) center no-repeat/50%;
+  background: rgba(255, 255, 255, 0.4) url(../img/icon/slider-arrow-left.svg) center no-repeat/65%;
 }
 
 .slider-arrow__right {
-  right: 7.5px;
+  right: 15px;
   -webkit-border-radius: 0 5px 5px 0;
           border-radius: 0 5px 5px 0;
-  background: rgba(255, 255, 255, 0.4) url(../img/icon/slider-arrow-right.svg) center no-repeat/50%;
+  background: rgba(255, 255, 255, 0.4) url(../img/icon/slider-arrow-right.svg) center no-repeat/65%;
 }
 
 .link {
@@ -2689,6 +2689,10 @@ h2 span,
   margin-bottom: 5px;
 }
 
+.card_advant-news {
+  border-bottom: 3px solid #797c82;
+}
+
 .card__imgbox {
   position: relative;
   -webkit-border-radius: 5px;
@@ -2893,6 +2897,37 @@ h2 span,
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', endColorstr='#000000',GradientType=0 );
 }
 
+.cardFull-slider {
+  overflow: hidden;
+  background-color: #fff;
+  margin-left: 15px;
+  margin-right: 15px;
+  padding: 0;
+  -webkit-box-flex: 1;
+  -webkit-flex: auto;
+      -ms-flex: auto;
+          flex: auto;
+  -webkit-border-radius: 5px;
+          border-radius: 5px;
+}
+
+.cardFull-slider-wrap {
+  margin-left: -15px;
+  margin-right: -15px;
+  background-color: transparent;
+  font-size: 0;
+  overflow: hidden;
+}
+
+.cardFull-slider__item {
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+.cardFull-slider__imgbox {
+  min-height: 210px;
+}
+
 .cardThird {
   width: 33.333333%;
   -webkit-box-flex: 0;
@@ -2952,6 +2987,37 @@ h2 span,
 .cardHalf__text {
   padding-top: 15px;
   max-height: 305px;
+}
+
+.cardHalf-slider {
+  overflow: hidden;
+  background-color: #fff;
+  margin-left: 15px;
+  margin-right: 15px;
+  padding: 0;
+  -webkit-box-flex: 1;
+  -webkit-flex: auto;
+      -ms-flex: auto;
+          flex: auto;
+  -webkit-border-radius: 5px;
+          border-radius: 5px;
+}
+
+.cardHalf-slider-wrap {
+  margin-left: -15px;
+  margin-right: -15px;
+  background-color: transparent;
+  font-size: 0;
+  overflow: hidden;
+}
+
+.cardHalf-slider__item {
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+.cardHalf-slider__imgbox {
+  min-height: 330px;
 }
 
 .cardTwoThirds {
@@ -3489,6 +3555,22 @@ h2 span,
   -webkit-border-radius: 5px;
           border-radius: 5px;
   border: 1px solid #dddee0;
+}
+
+.vidget-slider-arrow {
+  width: 15px;
+}
+
+.vidget-slider-arrow__left {
+  left: 7.5px;
+  -webkit-background-size: 50% 50%;
+          background-size: 50%;
+}
+
+.vidget-slider-arrow__right {
+  right: 7.5px;
+  -webkit-background-size: 50% 50%;
+          background-size: 50%;
 }
 
 .calendar {

@@ -229,5 +229,16 @@
 	&__content {
 		border-radius: 5px;
 		border: 1px solid #dddee0;
-	}		
+	}
+	&-arrow	 {
+		width: 15px;
+		&__left {
+			left: 7.5px;
+			background-size: 50%;
+		}
+		&__right {
+			right: 7.5px;
+			background-size: 50%;
+		}
+	}
 }

@@ -87,12 +87,14 @@ $(document).ready(function() {
 	});
 
 	$(document).click(function() {
-		if (!$(event.target).is("#menuNavMore *")) {
-			var current = $('#menuNavMore').find('.current');
-			if ($('#menuNavHeaderGroup').hasClass('show')) {
-				current.parents('.collapse').collapse('show');
+		if (event !== undefined) {
+			if (!$(event.target).is("#menuNavMore *")) {
+				var current = $('#menuNavMore').find('.current');
+				if ($('#menuNavHeaderGroup').hasClass('show')) {
+					current.parents('.collapse').collapse('show');
+				}
+				$('#menuNavHeaderGroup').collapse('hide');
 			}
-			$('#menuNavHeaderGroup').collapse('hide');
 		}
 		
 	});
@@ -150,11 +152,18 @@ $(document).ready(function() {
 			zIndex: '1000'
 		}).addClass('active');
 
-		$('body').css({
-			overflow: 'hidden',
-			paddingRight: '17px',
-			paddingTop: positionContent
-		});
+		if ($(document).scrollTop() <= 0) {
+			$('body').css({
+				overflow: 'hidden',
+				paddingRight: '17px',
+				paddingTop: positionContent
+			});			
+		} else {
+			$('body').css({
+				overflow: 'hidden',
+				paddingRight: '17px',
+			});			
+		}
 
 		var headerPositionDeafult = $('.header').css('position')
 		$('.header').wrap('<div class="extra-wrapper"></div>')
@@ -350,6 +359,7 @@ $(document).ready(function() {
 
 
 			} else if($('#aside').offset().top+200 >= position && position > 300) {
+				$('#leftNavigationPseudo').height(0)
 				$('#aside').css({
 					position: 'fixed',
 					top: $('.header').outerHeight(),
@@ -679,7 +689,19 @@ $(document).ready(function() {
 	// }
 
 	// открываем событие на текущей дате
-	$('#calendarVidgetBox').on('click', 'a.ui-state-default.ui-state-active', function(e) {
+	var setTimer;
+	setInterval(function(){
+		if (!$('#calendarVidgetBox').hasClass('show-event')) {
+			$('#calendarVidgetBox .ui-datepicker-today.selected a.ui-state-default').trigger('click')
+			setTimer = setTimeout(function () {
+				console.log('setTimeout');
+				$('.event-control').trigger('click');
+				$('#calendarVidgetBox').removeClass('show-event');
+			}, 5000)
+		}
+	}, 10000);
+
+	$('#calendarVidgetBox').on('click', 'a.ui-state-default', function(e) {
 		e.preventDefault();
 		var dayCurrent = $(this),
 				eventElements = $(dayCurrent.attr('href')),
@@ -688,6 +710,7 @@ $(document).ready(function() {
 				subtitle = element.find('.vidget-subtitle span'),
 				calendar = element.find('.ui-datepicker-calendar'),
 				eventElementControl = element.find('.event-control');
+		element.addClass('show-event');
 
 		eventElementArr.hide();
 		calendar.animate({
@@ -697,6 +720,8 @@ $(document).ready(function() {
 			eventElementControl.animate({opacity: 'show'}, 150);
 		});
 		eventElementControl.click(function(event) {
+			element.removeClass('show-event');
+			clearTimeout(setTimer);
 			element.find('.event-nav').detach();
 			eventElements.animate({opacity: 'hide'}, 150);
 			eventElementControl.animate({opacity: 'hide'}, 150, function () {
@@ -789,9 +814,22 @@ $(document).ready(function() {
 	});
 	$('.calendar__day').tooltip();
 	$('.sliderBlog').slick();
+
 	$('.vidget-slider').slick({
 		autoplay: true,
 		autoplaySpeed: 6000,
+		prevArrow: '<div class="slider-arrow slider-arrow__left vidget-slider-arrow vidget-slider-arrow__left"></div>',
+		nextArrow: '<div class="slider-arrow slider-arrow__right vidget-slider-arrow vidget-slider-arrow__right"></div>',
+	});
+
+	$('.cardFull-slider-wrap').slick({
+		prevArrow: '<div class="slider-arrow slider-arrow__left"></div>',
+		nextArrow: '<div class="slider-arrow slider-arrow__right"></div>',
+	});
+
+	$('.cardHalf-slider-wrap').slick({
+		slidesToShow: 2,
+		slidesToScroll: 1,
 		prevArrow: '<div class="slider-arrow slider-arrow__left"></div>',
 		nextArrow: '<div class="slider-arrow slider-arrow__right"></div>',
 	});
