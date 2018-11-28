@@ -1,5 +1,5 @@
 $(document).ready(function() {
-	/* Валидация ---------------------------------------*/
+	/* Валидация ---------------------------------------------------------------------------------------- */
 	var x = {
 				rules: {
 						name: {
@@ -72,10 +72,7 @@ $(document).ready(function() {
 	// });
 
 	$('.rollUp').on('click', function(event) {
-		// $('.header').addClass('.scroll');
-		$(document).trigger('scroll');
-
-		
+		$(document).trigger('scroll');		
 	});
 	
 	$('.btn-group').on('show.bs.dropdown', function() {
@@ -95,8 +92,7 @@ $(document).ready(function() {
 				}
 				$('#menuNavHeaderGroup').collapse('hide');
 			}
-		}
-		
+		}		
 	});
 
 	function cahgeTrueFalse(argument) {
@@ -107,6 +103,7 @@ $(document).ready(function() {
 		}
 	}
 
+	/* ПОДМЕНЮ "СИСТЕМЫ" -------------------------------------------------------------------------------- */
 	// системы показываются
 	$('#headerNav').on('show.bs.collapse', function () {
 		var btn = $('#headerNavControl');
@@ -230,6 +227,28 @@ $(document).ready(function() {
 
 		checkboxDisabl($(this), 10)
 
+	});
+
+	// отправка формы settingForm
+	$('#settingForm').submit(function(e) {
+		var $form = $(this);
+		var buttonSubmit  = $(this).find('[type="submit"]'),
+				buttons = buttonSubmit.attr('data-nav-control');
+
+		$.ajax({
+			type: $form.attr('method'),
+			url: $form.attr('action'),
+			data: $form.serialize()
+		}).done(function(msg) {
+
+			$('[data-nav-control='+buttons+']').removeClass('active');
+
+
+		}).fail(function(msg) {
+			alert('Ошибка! Обратитесь к администратору.');
+		});
+		//отмена действия по умолчанию для кнопки submit
+		e.preventDefault(); 
 	});
 
 	function checkboxDisabl(form, max, checkboxArrDeafult, speed) {
@@ -596,28 +615,6 @@ $(document).ready(function() {
 
 	// ---------------------------------------------------------------------------------------------------	
 
-	// отправка формы settingForm
-	$('#settingForm').submit(function(e) {
-		var $form = $(this);
-		var buttonSubmit  = $(this).find('[type="submit"]'),
-				buttons = buttonSubmit.attr('data-nav-control');
-
-		$.ajax({
-			type: $form.attr('method'),
-			url: $form.attr('action'),
-			data: $form.serialize()
-		}).done(function(msg) {
-
-			$('[data-nav-control='+buttons+']').removeClass('active');
-
-
-		}).fail(function(msg) {
-			alert('Ошибка! Обратитесь к администратору.');
-		});
-		//отмена действия по умолчанию для кнопки submit
-		e.preventDefault(); 
-	});
-
 	// ставим лайки
 	$('.like-button:not(.comment-button)').on('click', function(event) {
 		$(this).toggleClass('active');		
@@ -649,6 +646,7 @@ $(document).ready(function() {
 		$('#filtersCalendarPeriod').val($(this).val());
 	});
 
+	/* ВИДЖЕТЫ ------------------------------------------------------------------------------------------ */
 	
 	// hover на виджете с табами
 	$('.vidget-tabbox').on('mousemove', '.vidget-item', function(event) {
@@ -678,9 +676,10 @@ $(document).ready(function() {
 	// 	}
 	// }
 
-	// открываем событие на текущей дате
+	/* СОБЫТИЯ В ВИДЖЕТЕ "КАЛЕНДАРЬ" ------------------------------------------------------------------- */
+	
 	var setTimer;
-	setInterval(function(){
+	setInterval(function(){ // открываем событие на текущей дате по таймеру
 		if (!$('#calendarVidgetBox').hasClass('show-event')) {
 			$('#calendarVidgetBox .ui-datepicker-today.selected a.ui-state-default').trigger('click')
 			setTimer = setTimeout(function () {
@@ -691,6 +690,7 @@ $(document).ready(function() {
 		}
 	}, 10000);
 
+	// открываем события на выбранной дате
 	$('#calendarVidgetBox').on('click', 'a.ui-state-default', function(e) {
 		e.preventDefault();
 		var dayCurrent = $(this),
@@ -703,28 +703,21 @@ $(document).ready(function() {
 		element.addClass('show-event');
 
 		eventElementArr.hide();
+		// скрываем календарь
 		calendar.animate({
 			opacity: 'hide'},
 			150, function() {
 			eventElements.animate({opacity: 'show'}, 150);
 			eventElementControl.animate({opacity: 'show'}, 150);
 		});
-		eventElementControl.click(function(event) {
-			element.removeClass('show-event');
-			clearTimeout(setTimer);
-			element.find('.event-nav').detach();
-			eventElements.animate({opacity: 'hide'}, 150);
-			eventElementControl.animate({opacity: 'hide'}, 150, function () {
-				calendar.animate({opacity: 'show'}, 150);
-				eventElementArr.hide()
-			});
 
-		});
+		// показываем события выбраной даты
 		$(eventElementArr[0]).show().addClass('current');
 		for (var i = 0; i < eventElementArr.length; i++) {
 			$(eventElementArr[i]).attr('data-count', i);			
 		}
 
+		// если событий больше 1 то делаем их ввиде слайдера
 		if (eventElementArr.length > 1) {
 
 			subtitle.after('<div class="event-nav">'+
@@ -767,8 +760,23 @@ $(document).ready(function() {
 				}).removeClass('current');
 			}
 		});
-	});
 
+		// нажимаем на кнопку скрыть
+		eventElementControl.click(function(event) {
+			element.removeClass('show-event');
+			clearTimeout(setTimer);
+			element.find('.event-nav').detach();
+			eventElements.animate({opacity: 'hide'}, 150);
+			eventElementControl.animate({opacity: 'hide'}, 150, function () {
+				calendar.animate({opacity: 'show'}, 150);
+				eventElementArr.hide()
+			});
+
+		});
+	});
+	
+
+	/* СОКРАЩАЕМ ТЕКСТ ----------------------------------------------------------------------------------- */
 	$('.card__title *').dotdotdot();
 	$('.cardTwoThirds__text').dotdotdot({
 		keep: '.card__more',
@@ -802,9 +810,12 @@ $(document).ready(function() {
 			}
 		}
 	});
+
+	/* TOOLTIPS ----------------------------------------------------------------------------------------- */
 	$('.calendar__day').tooltip();
 	$('.sliderBlog').slick();
 
+	/* СЛАЙДЕРЫ ----------------------------------------------------------------------------------------- */  
 	$('.vidget-slider').slick({
 		autoplay: true,
 		autoplaySpeed: 6000,
