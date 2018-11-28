@@ -331,8 +331,6 @@ $(document).ready(function() {
 					position: '',
 					marginTop: $('#aside').offset().top - (position - currentScroll) - $('.header').outerHeight(),
 				});
-				console.log('test1');
-
 
 			}
 			if (position>=$('#aside').offset().top+$('#aside').outerHeight()-positionOne) {
@@ -343,8 +341,6 @@ $(document).ready(function() {
 					marginTop: '',
 					top: ''
 				});
-				console.log('test2');
-
 
 			}
 		} else { // скроллим вверх
@@ -355,8 +351,6 @@ $(document).ready(function() {
 					position: '',
 					marginTop: $('#aside').offset().top - (position - currentScroll) - $('.header').outerHeight(),
 				});
-				console.log('test3');
-
 
 			} else if($('#aside').offset().top+200 >= position && position > 300) {
 				$('#leftNavigationPseudo').height(0)
@@ -367,13 +361,9 @@ $(document).ready(function() {
 					marginTop: '1px',
 					width: $('#aside').parent().width(),
 				});
-				console.log('test5');
-
 
 			} else if (position <= 0) {
 				$('#aside').removeAttr('style')
-				console.log('test6');
-
 			}	
 		}
 
@@ -485,7 +475,7 @@ $(document).ready(function() {
 				headerHeight = $('.header').outerHeight();
 
 		if (element !== undefined) {
-			destination = $(element).offset().top - headerHeight - 70;
+			destination = $(element).offset().top - headerHeight;
 
 		}
 		$('html:not(:animated),body:not(:animated)').animate({
