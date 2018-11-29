@@ -683,7 +683,6 @@ $(document).ready(function() {
 		if (!$('#calendarVidgetBox').hasClass('show-event')) {
 			$('#calendarVidgetBox .ui-datepicker-today.selected a.ui-state-default').trigger('click')
 			setTimer = setTimeout(function () {
-				console.log('setTimeout');
 				$('.event-control').trigger('click');
 				$('#calendarVidgetBox').removeClass('show-event');
 			}, 5000)
@@ -818,7 +817,6 @@ $(document).ready(function() {
 	/* СЛАЙДЕРЫ ----------------------------------------------------------------------------------------- */  
 	$('.vidget-slider').slick({
 		autoplay: true,
-		autoplaySpeed: 6000,
 		prevArrow: '<div class="slider-arrow slider-arrow__left vidget-slider-arrow vidget-slider-arrow__left"></div>',
 		nextArrow: '<div class="slider-arrow slider-arrow__right vidget-slider-arrow vidget-slider-arrow__right"></div>',
 	});
@@ -830,6 +828,20 @@ $(document).ready(function() {
 
 	$('.cardHalf-slider-wrap').slick({
 		slidesToShow: 2,
+		slidesToScroll: 1,
+		prevArrow: '<div class="slider-arrow slider-arrow__left"></div>',
+		nextArrow: '<div class="slider-arrow slider-arrow__right"></div>',
+	});
+
+	$('.cardThird-slider-wrap').slick({
+		slidesToShow: 3,
+		slidesToScroll: 1,
+		prevArrow: '<div class="slider-arrow slider-arrow__left"></div>',
+		nextArrow: '<div class="slider-arrow slider-arrow__right"></div>',
+	});
+
+	$('.cardFifth-slider-wrap').slick({
+		slidesToShow: 5,
 		slidesToScroll: 1,
 		prevArrow: '<div class="slider-arrow slider-arrow__left"></div>',
 		nextArrow: '<div class="slider-arrow slider-arrow__right"></div>',

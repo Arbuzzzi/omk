@@ -11,6 +11,7 @@
 		opacity: 0.4;
 	}
 	&:last-child {
+		margin-bottom: 0;
 		&:after {
 			display: none;
 		}
@@ -53,6 +54,10 @@
 		}
 		&_slim {
 			height: 210px;
+			width: 100%;
+		}
+		&_head {
+			height: 360px;
 			width: 100%;
 		}
 	}

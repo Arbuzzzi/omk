@@ -1,0 +1,50 @@
+// Документы (Блоки ссылок)
+.cards
+	.card.cardFull-head_special
+		.content-title
+			.content-titlebox_dark
+				h4 Документы (Блоки ссылок)
+	.card
+		.content-title
+			.content-titlebox
+				h2 Важная документация для сопровождения заказа
+	.card
+		.card-links
+			.card-links-wrap
+				.card-links__img
+					.card-links__imgbox
+						img(src="img/icon/pdf.svg")
+				.card-links__items
+					- var items = ['Типа производства по ГОСТ 14.004-83', 'Стадии разработки документов по ГОСТ 3.1102-81', 'Степени детализации описания технологических процессов, установленных по ГОСТ 3.1109-82;', 'Применяемых технологических методов изготовления и ремонта изделий.', 'Типа производства по ГОСТ 14.004-83', 'Стадии разработки документов по ГОСТ 3.1102-81'];
+					each item in items
+						.card-links__lnkbox
+							a.card-links__lnk(href="#")= item
+	.card
+		.card-links
+			.card-links-wrap
+				.card-links__img
+					.card-links__imgbox
+						img(src="img/icon/exel.svg")
+				.card-links__items
+					- var items = ['Типа производства по ГОСТ 14.004-83', 'Стадии разработки документов по ГОСТ 3.1102-81', 'Степени детализации описания технологических процессов, установленных по ГОСТ 3.1109-82;', 'Применяемых технологических методов изготовления и ремонта изделий.', 'Типа производства по ГОСТ 14.004-83', 'Стадии разработки документов по ГОСТ 3.1102-81'];
+					each item in items
+						.card-links__lnkbox
+							a.card-links__lnk(href="#")= item
+	.card
+		.content-title
+			.content-titlebox
+				h2 Регламенты использования ресурсов 2019
+
+	.card
+		.card-links
+			.card-links-wrap
+				.card-links__img
+					.card-links__imgbox
+						img(src="img/icon/word.svg")
+				.card-links__items
+					- var items = ['Типа производства по ГОСТ 14.004-83', 'Стадии разработки документов по ГОСТ 3.1102-81', 'Степени детализации описания технологических процессов, установленных по ГОСТ 3.1109-82;', 'Применяемых технологических методов изготовления и ремонта изделий.', 'Типа производства по ГОСТ 14.004-83', 'Стадии разработки документов по ГОСТ 3.1102-81'];
+					each item in items
+						.card-links__lnkbox
+							a.card-links__lnk(href="#")= item
+	.card
+		a.link-big(href="#") &gt;&gt; Галереи

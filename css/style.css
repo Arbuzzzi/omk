@@ -893,7 +893,6 @@ h2 span,
   top: 0;
   width: 30px;
   height: 100%;
-  background-color: rgba(255, 255, 255, 0.1);
   cursor: pointer;
   -webkit-transition: 0.4s;
   -o-transition: 0.4s;
@@ -904,14 +903,14 @@ h2 span,
   left: 15px;
   -webkit-border-radius: 5px 0 0 5px;
           border-radius: 5px 0 0 5px;
-  background: rgba(255, 255, 255, 0.4) url(../img/icon/slider-arrow-left.svg) center no-repeat/65%;
+  background: rgba(255, 255, 255, 0.2) url(../img/icon/slider-arrow-left.svg) center no-repeat/65%;
 }
 
 .slider-arrow__right {
   right: 15px;
   -webkit-border-radius: 0 5px 5px 0;
           border-radius: 0 5px 5px 0;
-  background: rgba(255, 255, 255, 0.4) url(../img/icon/slider-arrow-right.svg) center no-repeat/65%;
+  background: rgba(255, 255, 255, 0.2) url(../img/icon/slider-arrow-right.svg) center no-repeat/65%;
 }
 
 .link {
@@ -940,6 +939,14 @@ h2 span,
 
 .link-special:focus {
   border-bottom: 1px dashed #797c82;
+}
+
+.link-big {
+  color: #5e6167;
+  font-family: Roboto;
+  font-size: 32px;
+  font-weight: 700;
+  line-height: 40px;
 }
 
 .button {
@@ -2846,6 +2853,13 @@ h2 span,
   vertical-align: middle;
 }
 
+.card-hr {
+  border: none;
+  height: 1px;
+  background-color: #707070;
+  opacity: 0.4;
+}
+
 .card-slider {
   overflow: hidden;
   margin-left: 15px;
@@ -3140,6 +3154,46 @@ h2 span,
 
 .cardFifth-slider .slider-arrow__right {
   right: 7.5px;
+}
+
+.card-links-wrap {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.card-links__img {
+  max-width: 100px;
+  padding-left: 15px;
+  padding-right: 15px;
+  text-align: center;
+}
+
+.card-links__items {
+  padding-left: 15px;
+}
+
+.card-links__lnkbox {
+  color: #797c82;
+  font-family: "PT Serif";
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 20px;
+  margin-bottom: 5px;
+}
+
+.card-links__lnkbox:last-child {
+  margin-bottom: 0;
+}
+
+.card-links a {
+  color: inherit;
+  font-size: 1em;
+  font-weight: inherit;
+  -webkit-transition: color 0.2s;
+  -o-transition: color 0.2s;
+  transition: color 0.2s;
 }
 
 .vidget-calendar {
@@ -3783,6 +3837,10 @@ h2 span,
   opacity: 0.4;
 }
 
+.article:last-child {
+  margin-bottom: 0;
+}
+
 .article:last-child:after {
   display: none;
 }
@@ -3843,6 +3901,11 @@ h2 span,
 
 .article-imgbox_slim {
   height: 210px;
+  width: 100%;
+}
+
+.article-imgbox_head {
+  height: 360px;
   width: 100%;
 }
 
@@ -3929,11 +3992,11 @@ h2 span,
   }
 
   .slider-arrow__left:hover {
-    background-color: rgba(255, 255, 255, 0.85);
+    background-color: rgba(255, 255, 255, 0.35);
   }
 
   .slider-arrow__right:hover {
-    background-color: rgba(255, 255, 255, 0.85);
+    background-color: rgba(255, 255, 255, 0.35);
   }
 
   .link:hover {
@@ -3947,6 +4010,11 @@ h2 span,
 
   .link-special:hover {
     border-bottom: 1px solid #484a4d;
+  }
+
+  .link-big:hover {
+    text-decoration: underline;
+    color: #2d2f32;
   }
 
   .button:hover {
@@ -4054,6 +4122,11 @@ h2 span,
   .card-logo__imgbox:hover {
     border: 2px solid #a1a3a7;
     padding: 14px;
+  }
+
+  .card-links a:hover {
+    color: #000000;
+    text-decoration: underline;
   }
 
   .vidget-calendar .ui-state-default:hover {

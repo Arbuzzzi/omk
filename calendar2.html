@@ -533,14 +533,11 @@
           <div class="col-xl-3">
             <div class="aside-wrap" id="aside">
               <div class="left-navigation-pseudo collapse show" id="leftNavigationPseudo"></div>
-              <!-- TABVIDGET-->
-              <div class="vidget-box vidget-tabbox" id="tabvidget1">
-                <nav>
-                  <div class="nav nav-tabs vidget-items" id="nav-tab" role="tablist"><a class="nav-item vidget-item" id="nav-home-tab" data-toggle="tab" href="#vidget1-tab1" role="tab" aria-controls="vidget1-tab1" aria-selected="false">Годовой отчет</a><a class="nav-item vidget-item" id="nav-profile-tab" data-toggle="tab" href="#vidget1-tab2" role="tab" aria-controls="vidget1-tab2" aria-selected="false">Территория ОМК</a><a class="nav-item vidget-item active" id="nav-contact-tab" data-toggle="tab" href="#vidget1-tab3" role="tab" aria-controls="vidget1-tab3" aria-selected="true">ОМК-команда</a></div>
-                </nav>
-                <div class="tab-content vidget-tabs" id="nav-tabContent">
-                  <div class="tab-pane vidget-tab fade show active" id="vidget1-tab1" role="tabpanel" aria-labelledby="nav-contact-tab">
-                    <div class="vidget-content">
+              <!-- VIDGET-SLIDER Пресса-->
+              <div class="vidget-slider-wrap"> 
+                <div class="vidget-box vidget-tabbox vidget-slider" data-slick="{&quot;autoplaySpeed&quot;: 4000}">
+                  <div class="vidget-tab vidget-slider__tab" id="vidget1-tab1">
+                    <div class="vidget-content vidget-slider__content">
                       <div class="vidget-content__left">
                         <div class="vidget-head">
                           <div class="vidget-title">ГОДОВОЙ <br>ОТЧЕТ ОМК</div>
@@ -552,8 +549,8 @@
                       </div>
                     </div>
                   </div>
-                  <div class="tab-pane vidget-tab fade" id="vidget1-tab2" role="tabpanel" aria-labelledby="nav-profile-tab">
-                    <div class="vidget-content">
+                  <div class="vidget-tab vidget-slider__tab" id="vidget1-tab2">
+                    <div class="vidget-content vidget-slider__content">
                       <div class="vidget-content__left">
                         <div class="vidget-head">
                           <div class="vidget-title">ТЕРРИТОРИЯ <br>ОМК</div>
@@ -565,8 +562,8 @@
                       </div>
                     </div>
                   </div>
-                  <div class="tab-pane vidget-tab fade" id="vidget1-tab3" role="tabpanel" aria-labelledby="nav-home-tab">
-                    <div class="vidget-content">
+                  <div class="vidget-tab vidget-slider__tab" id="vidget1-tab3">
+                    <div class="vidget-content vidget-slider__content">
                       <div class="vidget-content__left">
                         <div class="vidget-head">
                           <div class="vidget-title">КОРПОРАТИВНАЯ <br>ПРЕССА</div>
@@ -663,10 +660,10 @@
                     <div class="event-title"><span>День поедателей йогуртов</span></div>
                     <div class="vidget-imgbox vidget-imgbox_calendar" style="background-image: url(img/article-img-05.jpg);"></div></a></div>
               </div>
-              <!-- VIDGET-SLIDER-->
+              <!-- VIDGET-SLIDER Доска \ Дни \ Назначения-->
               <div class="vidget-slider-wrap"> 
-                <div class="vidget-box vidget-tabbox vidget-slider">
-                  <div class="vidget-tab vidget-slider__tab fade-" id="vidget2-tab3">
+                <div class="vidget-box vidget-tabbox vidget-slider" data-slick="{&quot;autoplaySpeed&quot;: 6000}">
+                  <div class="vidget-tab vidget-slider__tab" id="vidget2-tab3">
                     <div class="vidget-content vidget-slider__content">
                       <div class="vidget-content__left">
                         <div class="vidget-head">
@@ -683,7 +680,7 @@
                       </div>
                     </div>
                   </div>
-                  <div class="vidget-tab vidget-slider__tab fade-" id="vidget2-tab2"> 
+                  <div class="vidget-tab vidget-slider__tab" id="vidget2-tab2"> 
                     <div class="vidget-content vidget-slider__content">
                       <div class="vidget-content__left">
                         <div class="vidget-head">
@@ -700,7 +697,7 @@
                       </div>
                     </div>
                   </div>
-                  <div class="vidget-tab vidget-slider__tab fade-" id="vidget2-tab1">
+                  <div class="vidget-tab vidget-slider__tab" id="vidget2-tab1">
                     <div class="vidget-content vidget-slider__content">
                       <div class="vidget-content__left">
                         <div class="vidget-head">
@@ -719,14 +716,11 @@
                   </div>
                 </div>
               </div>
-              <!-- TABVIDGET-->
-              <div class="vidget-box vidget-tabbox" id="tabvidget3">
-                <nav>
-                  <div class="nav nav-tabs vidget-items" id="nav-tab" role="tablist"><a class="nav-item vidget-item vidget-item_fixfirsttab" id="nav-contact-tab" data-toggle="tab" href="#vidget3-tab3" role="tab" aria-controls="vidget3-tab3" aria-selected="false">Акции в регионах</a><a class="nav-item vidget-item active" id="nav-profile-tab" data-toggle="tab" href="#vidget3-tab2" role="tab" aria-controls="vidget3-tab2" aria-selected="true">Объявления</a></div>
-                </nav>
-                <div class="tab-content vidget-tabs" id="nav-tabContent">
-                  <div class="tab-pane vidget-tab fade" id="vidget3-tab3" role="tabpanel" aria-labelledby="nav-contact-tab">
-                    <div class="vidget-content vidget-content_ads vidget-content_dblock">
+              <!-- TABVIDGET Объявления-->
+              <div class="vidget-slider-wrap"> 
+                <div class="vidget-box vidget-tabbox vidget-slider" data-slick="{&quot;autoplaySpeed&quot;: 8000}">
+                  <div class="tab-pane vidget-tab vidget-slider__tab" id="vidget3-tab3">
+                    <div class="vidget-content vidget-content_ads vidget-content_dblock vidget-slider__content">
                       <div class="vidget-title">АКЦИИ В РЕГИОНАХ</div>
                       <div class="vidget-imgbox vidget-imgbox_full" style="background-image: url(img/vidget-img-09.jpg);"></div>
                       <div class="vidget-text">
@@ -736,8 +730,8 @@
                       </div>
                     </div>
                   </div>
-                  <div class="tab-pane vidget-tab fade show active" id="vidget3-tab2" role="tabpanel" aria-labelledby="nav-profile-tab">
-                    <div class="vidget-content vidget-content_ads vidget-content_dblock">
+                  <div class="tab-pane vidget-tab vidget-slider__tab" id="vidget3-tab2">
+                    <div class="vidget-content vidget-content_ads vidget-content_dblock vidget-slider__content">
                       <div class="vidget-title">ОБЪЯВЛЕНИЯ</div>
                       <div class="vidget-imgbox vidget-imgbox_full" style="background-image: url(img/vidget-img-08.jpg);"></div>
                       <div class="vidget-text">
@@ -1041,9 +1035,6 @@
                   </div>
                   <div class="article-imgwrap">
                     <div class="article-imgbox article-imgbox_full" style="background-image: url(img/news-twothirds-img-01.jpg);"></div>
-                  </div>
-                  <div class="article-quote">
-                    <blockquote class="article-blockquote">«Металлургия – базовая отрасль промышленности, одна из основных. Не развивая производство продукции из стали, не развивая производство листа, труб, колес для железнодорожных вагонов мы будем не конкурентоспособны. Такие предприятия, где используются современные технологии и оборудование, где оптимизированы все бизнес-процессы, где активно применяются цифровые технологии, позволяют развивать всю нашу промышленность. ВМЗ выпускает конкурентоспособную продукцию, аналогов которой в мире не так много. Можно только пожелать успехов предприятию, порадоваться за регион. Что еще важно: предприятие выполняет социальные обязательства, развивая территории, на которых оно работает», - отметил после посещения ВМЗ заместитель министра промышленности и торговли России Виктор Евтухов.</blockquote>
                   </div>
                   <div class="article-text">
                     <p>Литейно-прокатный комплекс Выксунского металлургического завода (АО «ВМЗ», Нижегородская область, входит в состав Объединенной металлургической компании, АО «ОМК») за 10 лет работы произвел более 10,6 млн тонн горячекатаного рулонного проката, став важным звеном в полностью отечественной цепочке</p>
