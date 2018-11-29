@@ -1,0 +1,15 @@
+.card.card-slider.cardFifth-slider
+	.card-wrap.card-slider-wrap.cardFifth-slider-wrap
+
+		- var items = [];
+		- items.push({url: 'background-image: url(img/person-photo-01.jpg);'});
+		- items.push({url: 'background-image: url(img/person-photo-02.jpg);'});
+		- items.push({url: 'background-image: url(img/person-photo-03.jpg);'});
+		- items.push({url: 'background-image: url(img/person-photo-02.jpg);'});
+		- items.push({url: 'background-image: url(img/person-photo-01.jpg);'});
+		- items.push({url: 'background-image: url(img/person-photo-03.jpg);'});
+		- items.push({url: 'background-image: url(img/person-photo-02.jpg);'});
+		- items.push({url: 'background-image: url(img/person-photo-01.jpg);'});
+		each item in items
+			.card-slider__item.cardFifth-slider__item
+				.cardFifth-slider__imgbox.card__imgbox(style=item.url)

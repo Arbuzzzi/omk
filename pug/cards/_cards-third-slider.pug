@@ -1,0 +1,29 @@
+.card.card-slider.cardThird-slider
+	.card-wrap.card-slider-wrap.cardThird-slider-wrap
+
+		- var items = [];
+		- items.push({url: 'background-image: url(img/blog-img-01.jpg);', title: 'Как вам прошедший концерт?'});
+		- items.push({url: 'background-image: url(img/blog-img-02.jpg);', title: 'Хочется лета, а вокруг одни офисы! Поеду на Ямайку!'});
+		- items.push({url: 'background-image: url(img/blog-img-03.jpg);', title: 'После работы надо обязательно поработать ра...'});
+		- items.push({url: 'background-image: url(img/blog-img-02.jpg);', title: 'Хочется лета, а вокруг одни офисы! Поеду на Ямайку!'});
+		- items.push({url: 'background-image: url(img/blog-img-01.jpg);', title: 'Как вам прошедший концерт?'});
+		each item in items
+			.card-slider__item.cardThird-slider__item
+				.cardThird-slider__imgbox.card__imgbox(style=item.url)
+					.card-warning-text.hide
+						p
+				.card__content.cardThird__content
+					.tagbox
+						.tag
+							button.button.button-tag Региональные новости
+						.like-card
+							button.like-button.comment-button
+								i.icon-comment
+								span.like-count 23
+							button.like-button
+								i.icon-like
+								span.like-count 1286
+					.card__title.cardThird__title
+						a(href='#')=item.title
+					.card-date
+						span 24 Сентября 2018

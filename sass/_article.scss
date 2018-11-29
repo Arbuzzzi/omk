@@ -21,6 +21,9 @@
 	&-imgwrap {
 		margin-bottom: 30px;
 		@include clearfix;
+		&_slim {
+			margin-bottom: 15px;
+		}
 	}
 	&-imgbox {
 		background: center no-repeat / cover;
@@ -47,6 +50,10 @@
 			&:last-child {
 				margin-right: 0;
 			}
+		}
+		&_slim {
+			height: 210px;
+			width: 100%;
 		}
 	}
 	&-quote {
@@ -97,5 +104,14 @@
 		font-size: 17px;
 		font-weight: 400;
 		@include clearfix;
+	}
+	&Preview {
+		&-text {
+			height: 70px;
+			overflow: hidden;
+		}
+		.tagbox {
+			margin-bottom: 15px;
+		}
 	}
 }

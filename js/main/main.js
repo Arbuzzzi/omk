@@ -1,5 +1,5 @@
 $(document).ready(function() {
-	/* Валидация ---------------------------------------------------------------------------------------- */
+	/* Валидация ---------------------------------------*/
 	var x = {
 				rules: {
 						name: {
@@ -56,8 +56,6 @@ $(document).ready(function() {
 	$('input[type="tel"]').on('change focus click', function() {
 		$(this)[0].setSelectionRange(0, 0);
 	});
-
-
 	// подпункты меню раскрывается при наведении
 	// $('.menuNavHeader__item').on('mouseenter', function(event) {
 	// 	var element = $(event.target).parents('.menuNavHeader__item'),
@@ -72,7 +70,10 @@ $(document).ready(function() {
 	// });
 
 	$('.rollUp').on('click', function(event) {
-		$(document).trigger('scroll');		
+		// $('.header').addClass('.scroll');
+		$(document).trigger('scroll');
+
+		
 	});
 	
 	$('.btn-group').on('show.bs.dropdown', function() {
@@ -84,424 +85,14 @@ $(document).ready(function() {
 	});
 
 	$(document).click(function() {
-		if (event !== undefined) {
-			if (!$(event.target).is("#menuNavMore *")) {
-				var current = $('#menuNavMore').find('.current');
-				if ($('#menuNavHeaderGroup').hasClass('show')) {
-					current.parents('.collapse').collapse('show');
-				}
-				$('#menuNavHeaderGroup').collapse('hide');
+		if (!$(event.target).is("#menuNavMore *")) {
+			var current = $('#menuNavMore').find('.current');
+			if ($('#menuNavHeaderGroup').hasClass('show')) {
+				current.parents('.collapse').collapse('show');
 			}
-		}		
-	});
-
-	function cahgeTrueFalse(argument) {
-		if (argument) {
-			return false;
-		} else {
-			return true;
-		}
-	}
-
-	/* ПОДМЕНЮ "СИСТЕМЫ" -------------------------------------------------------------------------------- */
-	// системы показываются
-	$('#headerNav').on('show.bs.collapse', function () {
-		var btn = $('#headerNavControl');
-		btn.addClass('active')
-	});
-
-	// системы скрываются
-	$('#headerNav').on('hide.bs.collapse', function () {
-		var btn = $('#headerNavControl');
-		btn.removeClass('active')
-	});
-	
-	// разворачиваем меню
-	$('#btnDeploy').click(function(event) {
-		var header = $('.header'),
-				headerNavSustem = $('.headerNavSystem');
-		$('.header').removeClass('scroll').css({
-			'position': 'fixed',
-			'padding-bottom': '10px'
-		});
-
-		$('#headerNav').collapse('show');
-		$('#menuLeftList').collapse('show');
-
-		$('.rollUp').addClass('show');
-		return false;
-	});	
-
-	// настройки показываются
-	$('#headerNavSetting').on('show.bs.collapse', function () {
-
-		// инициализация drag & drop
-		$( "#sortable" ).sortable();
-		$( "#sortable" ).disableSelection();
-
-		$('.header').css('transform', 'none');
-
-		$(this).parent().append('<div class="overlay"/>');
-		$('.overlay').animate({opacity: 'show'}, 400);
-
-		$('#headerNavSettingControl').css({
-			position: 'relative', 
-			zIndex: '1000'
-		}).addClass('active');
-
-		if ($(document).scrollTop() <= 0) {
-			$('body').css({
-				overflow: 'hidden',
-				paddingRight: '17px',
-				paddingTop: positionContent
-			});			
-		} else {
-			$('body').css({
-				overflow: 'hidden',
-				paddingRight: '17px',
-			});			
-		}
-
-		var headerPositionDeafult = $('.header').css('position')
-		$('.header').wrap('<div class="extra-wrapper"></div>')
-		$('.header').css({
-			position: '',
-			// 'padding-right': '17px'
-		});
-
-		checkboxDisabl($(this), 10)
-		// настройки скрываются
-		$('#headerNavSetting').on('hide.bs.collapse', function () {
-			$('.header').css('transform', '');
-			$('.overlay').animate({
-				opacity: 0
-			}, 400, function() {
-				$(this).detach()
-			});
-
-			$('body').css({
-				overflow: '',
-				paddingRight: '',
-				paddingTop: ''
-			});
-			$('.header').css({
-				'padding-right': '',
-				'position': headerPositionDeafult
-			});
-			$('.header').unwrap();
-
-			$('#headerNavSettingControl').removeClass('active').removeAttr('style');
-		})
-	})
-
-	var checkboxs = $('input[type="checkbox"].setting-form-checkbox__input');
-			checkboxCheckd        = $('.setting-form').find('input[type="checkbox"]:checked'),
-			checkboxCheckdInch    = checkboxCheckd.length,
-			deafultCheckboxCheckd = checkboxDisabl($('.setting-form'), 10),
-			deafultSettingBoxes     = $('.nav-setting-wrap').html();
-
-	// сброс формы
-
-	$('.setting-form').on('click', 'button.form-setting-button:reset', function(event) {
-
-		$('.nav-setting-wrap').html(deafultSettingBoxes);
-		checkboxDisabl($(this), 10, deafultCheckboxCheckd, 0);
-	
-	});
-
-	// изменеие checkbox
-	$('.setting-form').on('change', checkboxs, function(event) {
-		var checkbox   = $(event.target),
-				checkboxID = checkbox.attr('id');
-		
-		if (checkbox.prop('checked')) {
-			var el = $('[data-control='+checkboxID+']'),
-					elParent = el.parent();
-
-			el.appendTo(elParent).show('400');
-			// $('[data-control='+checkboxID+']').show('400');
-			
-		} else {
-			$('[data-control='+checkboxID+']').hide('400');
-		}
-
-		checkboxDisabl($(this), 10)
-
-	});
-
-	// отправка формы settingForm
-	$('#settingForm').submit(function(e) {
-		var $form = $(this);
-		var buttonSubmit  = $(this).find('[type="submit"]'),
-				buttons = buttonSubmit.attr('data-nav-control');
-
-		$.ajax({
-			type: $form.attr('method'),
-			url: $form.attr('action'),
-			data: $form.serialize()
-		}).done(function(msg) {
-
-			$('[data-nav-control='+buttons+']').removeClass('active');
-
-
-		}).fail(function(msg) {
-			alert('Ошибка! Обратитесь к администратору.');
-		});
-		//отмена действия по умолчанию для кнопки submit
-		e.preventDefault(); 
-	});
-
-	function checkboxDisabl(form, max, checkboxArrDeafult, speed) {
-		// form - елемент в котором ищем активные чекбоксы
-		// max - максимальное количество input со значение checked
-		// checkboxArrDeafult - изначальное положение элементов
-		// speed - скорость анимации
-		var checkbox = form.find('input[type="checkbox"]'),
-				checkboxCheckd,
-				checkboxNotCheckd,
-				checkboxCheckdInch,
-				checkboxNotCheckdInch,
-				speed,
-				checkboxArrID;
-
-		if (speed === undefined) {
-			speed = 400;
-		}
-		if (checkboxArrDeafult === undefined) {
-			checkboxCheckd = form.find('input[type="checkbox"]:checked');
-			checkboxNotCheckd = form.find('input[type="checkbox"]:not(:checked)');
-
-		} else {
-			checkboxCheckd = checkboxArrDeafult['deafultCheckboxCheckd'];
-			checkboxNotCheckd = checkboxArrDeafult['deafultCheckboxNotCheckdInch'];
-		}
-		
-		checkboxArrDeafult = {
-			deafultCheckboxCheckd: form.find('input[type="checkbox"]:checked'),
-			deafultCheckboxNotCheckdInch: form.find('input[type="checkbox"]:not(:checked)'),
-			
-		}
-
-		checkboxCheckdInch    = checkboxCheckd.length
-		checkboxNotCheckdInch = checkboxNotCheckd.length,
-
-		checkboxNotCheckdArrID = checkboxNotCheckd.map(function(indx, element){
-			return $(element).attr("id");
-		});
-
-		checkboxCheckdArrID = checkboxCheckd.map(function(indx, element){
-			return $(element).attr("id");
-		});
-
-		if (checkboxCheckdInch >= max) {      
-			// если болшье max выключаем не отмеченые checkbox
-			// checkboxNotCheckd.prop("disabled", true);
-
-			// скрываем не отмечене блоки drag & drop
-			for (var i = checkboxNotCheckdArrID.length - 1; i >= 0; i--) {        
-				$('[data-control='+checkboxNotCheckdArrID[i]+']').hide(speed);
-				$('#'+checkboxNotCheckdArrID[i]).prop("disabled", true);
-				$('#'+checkboxNotCheckdArrID[i]).parent().tooltip('enable');
-			}
-			for (var i = checkboxCheckdArrID.length - 1; i >= 0; i--) {
-				$('[data-control='+checkboxCheckdArrID[i]+']').show(speed);
-				$('#'+checkboxCheckdArrID[i]).prop("disabled", false);
-				$('#'+checkboxCheckdArrID[i]).parent().tooltip('disable');
-			}
-
-
-
-		} else {
-			// если меньше max включаем не отмеченые checkbox
-			checkboxNotCheckd.prop("disabled", false);  
-			checkboxNotCheckd.parent().tooltip('disable');
-			checkboxCheckd.parent().tooltip('disable');
-
-		} 
-		return checkboxArrDeafult;
-
-	}
-
-	/* START СКРОЛЛИНГ ---------------------------------------------------------------------------------- */
-	addClassScroll($('.header'));
-	// скрываем элементы во время скроллинга страницы
-	var positionContent = $('.header').actual('outerHeight'),
-			positionOne = $(window).innerHeight(),
-			menuLeftListDeafult = $('#menuLeftList').hasClass('show'),
-			positionTwo = positionOne * 2;
-			positionThre =  positionTwo + positionOne,
-			currentScroll = 0;
-
-	$('#menuLeftListControl').on('click', function() {
-		var position = $(window).scrollTop();
-		if (position < positionOne) {
-			menuLeftListDeafult = cahgeTrueFalse(menuLeftListDeafult);
-		}
-	});
-
-	$(document).on('scroll', function(event) {
-		var position = $(this).scrollTop(),
-				heightHeader = $('.header:not(.header.scroll)').outerHeight(),
-				positionContentEvent = $('.content').offset().top;
-
-		if (position > currentScroll) { //скроллим вниз
-			if ($('#aside').css('margin-top') == '1px') {
-				$('#aside').css({
-					position: '',
-					marginTop: $('#aside').offset().top - (position - currentScroll) - $('.header').outerHeight(),
-				});
-
-			}
-			if (position>=$('#aside').offset().top+$('#aside').outerHeight()-positionOne) {
-				$('#aside').css({
-					position: 'fixed',
-					bottom: '0px',
-					width: $('#aside').parent().width(),
-					marginTop: '',
-					top: ''
-				});
-
-			}
-		} else { // скроллим вверх
-
-			if($('#aside').css('margin') == '0px' && position > positionTwo){
-				$('#leftNavigationPseudo').height(0)
-				$('#aside').css({
-					position: '',
-					marginTop: $('#aside').offset().top - (position - currentScroll) - $('.header').outerHeight(),
-				});
-
-			} else if($('#aside').offset().top+200 >= position && position > 300) {
-				$('#leftNavigationPseudo').height(0)
-				$('#aside').css({
-					position: 'fixed',
-					top: $('.header').outerHeight(),
-					bottom: '',
-					marginTop: '1px',
-					width: $('#aside').parent().width(),
-				});
-
-			} else if (position <= 0) {
-				$('#aside').removeAttr('style')
-			}	
-		}
-
-		// меню в обычном состоянии
-		$('*').tooltip('hide');
-		if (!$('.header').hasClass('.scroll')  && !$('#headerNavSetting').hasClass('show')) {
-			addClassScroll($('.header'), 'scroll', positionThre);
-
-			// 1 брэйкпоинт 
-			if (position >= positionOne) {
-				collapseItemScrollHide($('#menuLeftListControl'), positionOne);
-			} else {
-				if (position <= 300) {
-					collapseItemScrollShow($('#menuLeftListControl'), positionOne);
-				}
-			}
-
-			// сохраняем отступ
-			if (position > 0) {
-				$('.header + *').css('padding-top', positionContent);
-				$('#btnUp').animate({bottom: 'show'}, 500);
-				$('.header .breadcrumb').css({
-					paddingBottom: '15px'});
-
-			} else {
-				$('.header + *').css('padding-top', '');
-				$('#btnUp').animate({bottom: 'hide', opacity: 'hide'}, 500);
-				$('.header .breadcrumb').removeAttr('style')
-			}
-		}
-
-		// меню свернуто
-		if ($('.header').hasClass('scroll')) {
-			$('#headerNav').collapse('hide');
-			$('#headerNavControl').removeClass('active');
-		}
-
-		// scroll top самый верх экана
-		if (position <= 0) {
-			$('#headerNav').collapse('show');
-			$('.header').removeAttr('style');
-			addClassScroll($('.header'));
-			positionContent = $('.header').actual('outerHeight');
-		}
-
-		// scroll bottom 
-		if (position > 0) {
-			$('.menu-left').removeAttr('style');
 			$('#menuNavHeaderGroup').collapse('hide');
-			$('.header').css('padding-bottom', '')
-
-			// развернуть
-			if (!$('.rollUp').hasClass('show') && $('.header').hasClass('scroll')) {
-				$('.rollUp').addClass('show');
-			} else {
-				$('.rollUp').removeClass('show');
-			}
-
-			if (!$('.header').hasClass('scroll')) {
-				$('.header').css({'position': 'fixed'});
-			}
-
-		} else {
-			$('.rollUp').removeClass('show');
 		}
-
-		// скрываем dropdown при скролле
-		if ($('.dropdown-menu').hasClass('show')) {
-			$('.dropdown-menu').removeClass('show');
-		}
-		currentScroll = position;
-	});
-
-	// плавный скролл
-	$(document).on('click', 'a.event', function(event) {
-		var link = $(this).attr('href');
-		var elementToScroll = $('#' + link.split('#')[1]);
-		var elementToScrollPos = elementToScroll.offset().top;
-		var headerHeight = $('.header').outerHeight(); // высота хэдера
-		if (elementToScrollPos < positionTwo) {
-			elementToScrollPos = elementToScroll.offset().top - headerHeight - 45;
-		} else {
-			elementToScrollPos = elementToScroll.offset().top - 90;
-		}
-		if (elementToScroll !== undefined) {
-			event.preventDefault();
-			$('html:not(:animated),body:not(:animated)').animate({scrollTop: elementToScrollPos}, 800);
-		}
-	});	
-
-	var myHash = location.hash; //получаем значение хеша
-	location.hash = ''; //очищаем хеш
-	var headerHeight = $('.header').outerHeight(); // высота хэдера
-
-	if(myHash[1] != undefined){ //проверяем, есть ли в хеше какое-то значение
-		var elementToScrolling = $(myHash).offset().top;
-		if (elementToScrolling < positionTwo) {
-			elementToScrolling = $(myHash).offset().top - 150;
-		} else {
-			elementToScrolling = $(myHash).offset().top;
-		}
-
-	  $('html:not(:animated),body:not(:animated)').animate({scrollTop: elementToScrolling}, 800); //скроллим за полсекунды
-	};
-
-	$('#btnUp, .calendar__link').click(function() {
-		var destination = 0,
-				element = $(this).attr('href');
-				headerHeight = $('.header').outerHeight();
-
-		if (element !== undefined) {
-			destination = $(element).offset().top - headerHeight;
-
-		}
-		$('html:not(:animated),body:not(:animated)').animate({
-			scrollTop: destination
-		}, 800, function () {			
-		});
-		return false;
+		
 	});
 
 	function addClassScroll(element, $class, positionMax) {
@@ -579,7 +170,346 @@ $(document).ready(function() {
 		}
 	}
 
-	/* END СКРОЛЛИНГ ------------------------------------------------------------------------------------ */
+	function cahgeTrueFalse(argument) {
+		if (argument) {
+			return false;
+		} else {
+			return true;
+		}
+	}
+
+	addClassScroll($('.header'));
+
+	// системы показываются
+	$('#headerNav').on('show.bs.collapse', function () {
+		var btn = $('#headerNavControl');
+		btn.addClass('active')
+	});
+
+	// системы скрываются
+	$('#headerNav').on('hide.bs.collapse', function () {
+		var btn = $('#headerNavControl');
+		btn.removeClass('active')
+	});
+	// var marker = true;
+	// function markerChange (marker){
+	// 	if (marker == true) {
+	// 		return false;
+	// 	} else {
+	// 		return true;
+	// 	}
+	// }
+	// скрываем элементы во время скроллинга страницы
+	var positionContent = $('.header').actual('outerHeight'),
+			positionOne = $(window).innerHeight(),
+			menuLeftListDeafult = $('#menuLeftList').hasClass('show'),
+			positionTwo = positionOne * 2;
+			positionThre =  positionTwo + positionOne;
+
+	$('#menuLeftListControl').on('click', function() {
+		var position = $(window).scrollTop();
+		if (position < positionOne) {
+			menuLeftListDeafult = cahgeTrueFalse(menuLeftListDeafult);
+		}
+	});
+
+	$(document).on('scroll', function(event) {
+		var position = $(this).scrollTop(),
+				heightHeader = $('.header:not(.header.scroll)').outerHeight(),
+				positionContentEvent = $('.content').offset().top;
+		// меню в обычном состоянии
+		$('*').tooltip('hide');
+		if (!$('.header').hasClass('.scroll')  && !$('#headerNavSetting').hasClass('show')) {
+			addClassScroll($('.header'), 'scroll', positionThre);
+
+			// 1 брэйкпоинт 
+			if (position >= positionOne) {
+				collapseItemScrollHide($('#menuLeftListControl'), positionOne);
+			} else {
+				if (position <= 300) {
+					collapseItemScrollShow($('#menuLeftListControl'), positionOne);
+				}
+			}
+
+			// сохраняем отступ
+			if (position > 0) {
+				$('.header + *').css('padding-top', positionContent);
+				$('#btnUp').animate({bottom: 'show'}, 500);
+				$('.header .breadcrumb').css({
+					paddingBottom: '15px'});
+
+			} else {
+				$('.header + *').css('padding-top', '');
+				$('#btnUp').animate({bottom: 'hide', opacity: 'hide'}, 500);
+				$('.header .breadcrumb').removeAttr('style')
+			}
+		}
+
+		// меню свернуто
+		if ($('.header').hasClass('scroll')) {
+			$('#headerNav').collapse('hide');
+			$('#headerNavControl').removeClass('active');
+		}
+
+		// scroll top самый верх экана
+		if (position <= 0) {
+			$('#headerNav').collapse('show');
+			$('.header').removeAttr('style');
+			addClassScroll($('.header'));
+			positionContent = $('.header').actual('outerHeight');
+		}
+
+		// scroll bottom 
+		if (position > 0) {
+			$('.menu-left').removeAttr('style');
+			$('#menuNavHeaderGroup').collapse('hide');
+			$('.header').css('padding-bottom', '')
+
+			// развернуть
+			if (!$('.rollUp').hasClass('show') && $('.header').hasClass('scroll')) {
+				$('.rollUp').addClass('show');
+			} else {
+				$('.rollUp').removeClass('show');
+			}
+
+			if (!$('.header').hasClass('scroll')) {
+				$('.header').css({'position': 'fixed'});
+			}
+
+		} else {
+			$('.rollUp').removeClass('show');
+		}
+
+		// скрываем dropdown при скролле
+		if ($('.dropdown-menu').hasClass('show')) {
+			$('.dropdown-menu').removeClass('show');
+		}
+	});
+
+	// плавный скролл
+	$(document).on('click', 'a.event', function(event) {
+		var link = $(this).attr('href');
+		var elementToScroll = $('#' + link.split('#')[1]);
+		var elementToScrollPos = elementToScroll.offset().top;
+		var headerHeight = $('.header').outerHeight(); // высота хэдера
+		if (elementToScrollPos < positionTwo) {
+			elementToScrollPos = elementToScroll.offset().top - headerHeight - 45;
+		} else {
+			elementToScrollPos = elementToScroll.offset().top - 90;
+		}
+		if (elementToScroll !== undefined) {
+			event.preventDefault();
+			$('html:not(:animated),body:not(:animated)').animate({scrollTop: elementToScrollPos}, 800);
+		}
+	});	
+
+	var myHash = location.hash; //получаем значение хеша
+	location.hash = ''; //очищаем хеш
+	var headerHeight = $('.header').outerHeight(); // высота хэдера
+
+	if(myHash[1] != undefined){ //проверяем, есть ли в хеше какое-то значение
+		var elementToScrolling = $(myHash).offset().top;
+		if (elementToScrolling < positionTwo) {
+			elementToScrolling = $(myHash).offset().top - 150;
+		} else {
+			elementToScrolling = $(myHash).offset().top;
+		}
+
+	  $('html:not(:animated),body:not(:animated)').animate({scrollTop: elementToScrolling}, 800); //скроллим за полсекунды
+	};
+	$('#btnUp, .calendar__link').click(function() {
+		var destination = 0,
+				element = $(this).attr('href');
+				headerHeight = $('.header').outerHeight();
+
+		if (element !== undefined) {
+			destination = $(element).offset().top - headerHeight - 70;
+
+		}
+		$('html:not(:animated),body:not(:animated)').animate({
+			scrollTop: destination
+		}, 800, function () {			
+		});
+		return false;
+	});
+
+	// разворачиваем меню
+	$('#btnDeploy').click(function(event) {
+		var header = $('.header'),
+				headerNavSustem = $('.headerNavSystem');
+		$('.header').removeClass('scroll').css({
+			'position': 'fixed',
+			'padding-bottom': '10px'
+		});
+
+		$('#headerNav').collapse('show');
+		$('#menuLeftList').collapse('show');
+
+		$('.rollUp').addClass('show');
+		return false;
+	});	
+
+	// настройки показываются
+	$('#headerNavSetting').on('show.bs.collapse', function () {
+
+		// инициализация drag & drop
+		$( "#sortable" ).sortable();
+		$( "#sortable" ).disableSelection();
+
+		$('.header').css('transform', 'none');
+
+		$(this).parent().append('<div class="overlay"/>');
+		$('.overlay').animate({opacity: 'show'}, 400);
+
+		$('#headerNavSettingControl').css({
+			position: 'relative', 
+			zIndex: '1000'
+		}).addClass('active');
+
+		$('body').css({
+			overflow: 'hidden',
+			paddingRight: '17px',
+			paddingTop: positionContent
+		});
+
+		var headerPositionDeafult = $('.header').css('position')
+		$('.header').wrap('<div class="extra-wrapper"></div>')
+		$('.header').css({
+			position: '',
+			// 'padding-right': '17px'
+		});
+
+		checkboxDisabl($(this), 10)
+		// настройки скрываются
+		$('#headerNavSetting').on('hide.bs.collapse', function () {
+			$('.header').css('transform', '');
+			$('.overlay').animate({
+				opacity: 0
+			}, 400, function() {
+				$(this).detach()
+			});
+
+			$('body').css({
+				overflow: '',
+				paddingRight: '',
+				paddingTop: ''
+			});
+			$('.header').css({
+				'padding-right': '',
+				'position': headerPositionDeafult
+			});
+			$('.header').unwrap();
+
+			$('#headerNavSettingControl').removeClass('active').removeAttr('style');
+		})
+	})
+
+
+	var checkboxs = $('input[type="checkbox"].setting-form-checkbox__input');
+			checkboxCheckd        = $('.setting-form').find('input[type="checkbox"]:checked'),
+			checkboxCheckdInch    = checkboxCheckd.length,
+			deafultCheckboxCheckd = checkboxDisabl($('.setting-form'), 10),
+			deafultSettingBoxes     = $('.nav-setting-wrap').html();
+
+	// сброс формы
+
+	$('.setting-form').on('click', 'button.form-setting-button:reset', function(event) {
+
+		$('.nav-setting-wrap').html(deafultSettingBoxes);
+		checkboxDisabl($(this), 10, deafultCheckboxCheckd, 0);
+	
+	});
+
+	// изменеие checkbox
+	$('.setting-form').on('change', checkboxs, function(event) {
+		var checkbox   = $(event.target),
+				checkboxID = checkbox.attr('id');
+		
+		if (checkbox.prop('checked')) {
+			var el = $('[data-control='+checkboxID+']'),
+					elParent = el.parent();
+
+			el.appendTo(elParent).show('400');
+			// $('[data-control='+checkboxID+']').show('400');
+			
+		} else {
+			$('[data-control='+checkboxID+']').hide('400');
+		}
+
+		checkboxDisabl($(this), 10)
+
+	});
+
+	function checkboxDisabl(form, max, checkboxArrDeafult, speed) {
+		// form - елемент в котором ищем активные чекбоксы
+		// max - максимальное количество input со значение checked
+		// checkboxArrDeafult - изначальное положение элементов
+		// speed - скорость анимации
+		var checkbox = form.find('input[type="checkbox"]'),
+				checkboxCheckd,
+				checkboxNotCheckd,
+				checkboxCheckdInch,
+				checkboxNotCheckdInch,
+				speed,
+				checkboxArrID;
+
+		if (speed === undefined) {
+			speed = 400;
+		}
+		if (checkboxArrDeafult === undefined) {
+			checkboxCheckd = form.find('input[type="checkbox"]:checked');
+			checkboxNotCheckd = form.find('input[type="checkbox"]:not(:checked)');
+
+		} else {
+			checkboxCheckd = checkboxArrDeafult['deafultCheckboxCheckd'];
+			checkboxNotCheckd = checkboxArrDeafult['deafultCheckboxNotCheckdInch'];
+		}
+		
+		checkboxArrDeafult = {
+			deafultCheckboxCheckd: form.find('input[type="checkbox"]:checked'),
+			deafultCheckboxNotCheckdInch: form.find('input[type="checkbox"]:not(:checked)'),
+			
+		}
+
+		checkboxCheckdInch    = checkboxCheckd.length
+		checkboxNotCheckdInch = checkboxNotCheckd.length,
+
+		checkboxNotCheckdArrID = checkboxNotCheckd.map(function(indx, element){
+			return $(element).attr("id");
+		});
+
+		checkboxCheckdArrID = checkboxCheckd.map(function(indx, element){
+			return $(element).attr("id");
+		});
+
+		if (checkboxCheckdInch >= max) {      
+			// если болшье max выключаем не отмеченые checkbox
+			// checkboxNotCheckd.prop("disabled", true);
+
+			// скрываем не отмечене блоки drag & drop
+			for (var i = checkboxNotCheckdArrID.length - 1; i >= 0; i--) {        
+				$('[data-control='+checkboxNotCheckdArrID[i]+']').hide(speed);
+				$('#'+checkboxNotCheckdArrID[i]).prop("disabled", true);
+				$('#'+checkboxNotCheckdArrID[i]).parent().tooltip('enable');
+			}
+			for (var i = checkboxCheckdArrID.length - 1; i >= 0; i--) {
+				$('[data-control='+checkboxCheckdArrID[i]+']').show(speed);
+				$('#'+checkboxCheckdArrID[i]).prop("disabled", false);
+				$('#'+checkboxCheckdArrID[i]).parent().tooltip('disable');
+			}
+
+
+
+		} else {
+			// если меньше max включаем не отмеченые checkbox
+			checkboxNotCheckd.prop("disabled", false);  
+			checkboxNotCheckd.parent().tooltip('disable');
+			checkboxCheckd.parent().tooltip('disable');
+
+		} 
+		return checkboxArrDeafult;
+
+	}
 
 	// левое меню show 
 	$('#menuLeftList').on('show.bs.collapse', function() {
@@ -615,6 +545,28 @@ $(document).ready(function() {
 
 	// ---------------------------------------------------------------------------------------------------	
 
+	// отправка формы settingForm
+	$('#settingForm').submit(function(e) {
+		var $form = $(this);
+		var buttonSubmit  = $(this).find('[type="submit"]'),
+				buttons = buttonSubmit.attr('data-nav-control');
+
+		$.ajax({
+			type: $form.attr('method'),
+			url: $form.attr('action'),
+			data: $form.serialize()
+		}).done(function(msg) {
+
+			$('[data-nav-control='+buttons+']').removeClass('active');
+
+
+		}).fail(function(msg) {
+			alert('Ошибка! Обратитесь к администратору.');
+		});
+		//отмена действия по умолчанию для кнопки submit
+		e.preventDefault(); 
+	});
+
 	// ставим лайки
 	$('.like-button:not(.comment-button)').on('click', function(event) {
 		$(this).toggleClass('active');		
@@ -646,7 +598,6 @@ $(document).ready(function() {
 		$('#filtersCalendarPeriod').val($(this).val());
 	});
 
-	/* ВИДЖЕТЫ ------------------------------------------------------------------------------------------ */
 	
 	// hover на виджете с табами
 	$('.vidget-tabbox').on('mousemove', '.vidget-item', function(event) {
@@ -676,22 +627,8 @@ $(document).ready(function() {
 	// 	}
 	// }
 
-	/* СОБЫТИЯ В ВИДЖЕТЕ "КАЛЕНДАРЬ" ------------------------------------------------------------------- */
-	
-	var setTimer;
-	setInterval(function(){ // открываем событие на текущей дате по таймеру
-		if (!$('#calendarVidgetBox').hasClass('show-event')) {
-			$('#calendarVidgetBox .ui-datepicker-today.selected a.ui-state-default').trigger('click')
-			setTimer = setTimeout(function () {
-				console.log('setTimeout');
-				$('.event-control').trigger('click');
-				$('#calendarVidgetBox').removeClass('show-event');
-			}, 5000)
-		}
-	}, 10000);
-
-	// открываем события на выбранной дате
-	$('#calendarVidgetBox').on('click', 'a.ui-state-default', function(e) {
+	// открываем событие на текущей дате
+	$('#calendarVidgetBox').on('click', 'a.ui-state-default.ui-state-active', function(e) {
 		e.preventDefault();
 		var dayCurrent = $(this),
 				eventElements = $(dayCurrent.attr('href')),
@@ -700,24 +637,28 @@ $(document).ready(function() {
 				subtitle = element.find('.vidget-subtitle span'),
 				calendar = element.find('.ui-datepicker-calendar'),
 				eventElementControl = element.find('.event-control');
-		element.addClass('show-event');
 
 		eventElementArr.hide();
-		// скрываем календарь
 		calendar.animate({
 			opacity: 'hide'},
 			150, function() {
 			eventElements.animate({opacity: 'show'}, 150);
 			eventElementControl.animate({opacity: 'show'}, 150);
 		});
+		eventElementControl.click(function(event) {
+			element.find('.event-nav').detach();
+			eventElements.animate({opacity: 'hide'}, 150);
+			eventElementControl.animate({opacity: 'hide'}, 150, function () {
+				calendar.animate({opacity: 'show'}, 150);
+				eventElementArr.hide()
+			});
 
-		// показываем события выбраной даты
+		});
 		$(eventElementArr[0]).show().addClass('current');
 		for (var i = 0; i < eventElementArr.length; i++) {
 			$(eventElementArr[i]).attr('data-count', i);			
 		}
 
-		// если событий больше 1 то делаем их ввиде слайдера
 		if (eventElementArr.length > 1) {
 
 			subtitle.after('<div class="event-nav">'+
@@ -760,23 +701,8 @@ $(document).ready(function() {
 				}).removeClass('current');
 			}
 		});
-
-		// нажимаем на кнопку скрыть
-		eventElementControl.click(function(event) {
-			element.removeClass('show-event');
-			clearTimeout(setTimer);
-			element.find('.event-nav').detach();
-			eventElements.animate({opacity: 'hide'}, 150);
-			eventElementControl.animate({opacity: 'hide'}, 150, function () {
-				calendar.animate({opacity: 'show'}, 150);
-				eventElementArr.hide()
-			});
-
-		});
 	});
-	
 
-	/* СОКРАЩАЕМ ТЕКСТ ----------------------------------------------------------------------------------- */
 	$('.card__title *').dotdotdot();
 	$('.cardTwoThirds__text').dotdotdot({
 		keep: '.card__more',
@@ -810,28 +736,6 @@ $(document).ready(function() {
 			}
 		}
 	});
-
-	/* TOOLTIPS ----------------------------------------------------------------------------------------- */
 	$('.calendar__day').tooltip();
 	$('.sliderBlog').slick();
-
-	/* СЛАЙДЕРЫ ----------------------------------------------------------------------------------------- */  
-	$('.vidget-slider').slick({
-		autoplay: true,
-		autoplaySpeed: 6000,
-		prevArrow: '<div class="slider-arrow slider-arrow__left vidget-slider-arrow vidget-slider-arrow__left"></div>',
-		nextArrow: '<div class="slider-arrow slider-arrow__right vidget-slider-arrow vidget-slider-arrow__right"></div>',
-	});
-
-	$('.cardFull-slider-wrap').slick({
-		prevArrow: '<div class="slider-arrow slider-arrow__left"></div>',
-		nextArrow: '<div class="slider-arrow slider-arrow__right"></div>',
-	});
-
-	$('.cardHalf-slider-wrap').slick({
-		slidesToShow: 2,
-		slidesToScroll: 1,
-		prevArrow: '<div class="slider-arrow slider-arrow__left"></div>',
-		nextArrow: '<div class="slider-arrow slider-arrow__right"></div>',
-	});
 });
