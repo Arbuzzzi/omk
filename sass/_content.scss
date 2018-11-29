@@ -148,7 +148,6 @@
 	float: left;
 	color: #a5a6aa;
 	&box {
-		margin-bottom: 20px;
 		@include clearfix;
 	}
 }

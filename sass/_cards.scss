@@ -50,6 +50,9 @@
 		display: flex;
 		flex-direction: column;
 		height: 100%;
+		.tagbox {
+			margin-bottom: 20px;
+		}
 	}
 	&__title {
 		margin-bottom: 15px;
@@ -144,6 +147,26 @@
 		}
 	}
 
+	&-slider {
+		overflow: hidden;
+		margin-left: 15px;
+		margin-right: 15px;
+		padding: 0;
+		flex: auto;
+		border-radius: 5px;
+		&-wrap {
+			margin-left: -15px;
+			margin-right: -15px;
+			background-color: transparent;
+			font-size: 0;
+			overflow: hidden;		
+		}
+		&__item {
+			padding-left: 15px;
+			padding-right: 15px;
+		}
+	}
+
 
 	&Full {
 		max-width: 100%;
@@ -205,14 +228,12 @@
 			}
 		}
 	}
-
-
 	&Third {
 		width: 33.333333%;
 		flex: 0 0 33.333333%;
 		&-wrap {
 		}
-		&__imgbox {
+		&__imgbox, &-slider__imgbox {
 			// margin-left: -15px;
 			// margin-right: -15px;
 			min-height: 210px;
@@ -227,6 +248,21 @@
 			.cardThird__content {
 				margin-top: 210px;
 				background-image: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.14) 14%, #000000 100%);
+			}
+		}
+		&-slider {
+			&__item {
+				position: relative;
+				@include after {
+					z-index: -1;
+					left: 15px;
+					right: 15px;
+					top: 0;
+					height: 100%;
+					border: 1px solid #dddee0;
+					border-radius: 5px;
+
+				}
 			}
 		}
 	}
@@ -307,6 +343,29 @@
 		&__text {
 			max-height: 132px;
 			
+		}
+	}
+	&Fifth {
+		&-slider {
+			&-wrap {
+				margin-left: -7.5px;
+				margin-right: -7.5px;
+			}
+			&__item {
+				padding-left: 7.5px;
+				padding-right: 7.5px;
+			}
+			&__imgbox {
+				min-height: 210px;
+			}
+			.slider-arrow {
+				&__left {
+					left: 7.5px;
+				}
+				&__right {
+					right: 7.5px;
+				}
+			}
 		}
 	}
 }
