@@ -423,9 +423,9 @@ $(document).ready(function() {
 			addClassScroll($('.header'));
 			positionContent = $('.header').actual('outerHeight');
 		}
-		if (position <= 0 && menuLeftListDeafult) {
-			$('#menuLeftList').collapse('show');
-		}
+		// if (position <= 0 && menuLeftListDeafult) {
+		// 	$('#menuLeftList').collapse('show');
+		// }
 
 		// scroll bottom 
 		if (position > 0) {
@@ -463,7 +463,7 @@ $(document).ready(function() {
 		if (position <= 0 && menuLeftListDeafult && !meuLeftShown) {
 			$('#menuLeftList').collapse('show');
 		}
-	}, 5)
+	}, 3000)
 
 
 	// плавный скролл до элемента
