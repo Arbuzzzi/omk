@@ -388,12 +388,12 @@ $(document).ready(function() {
 			addClassScroll($('.header'), 'scroll', positionThre);
 
 			// 1 брэйкпоинт 
-			if (position >= positionOne) {
-				collapseItemScrollHide($('#menuLeftListControl'), positionOne);
+			if (position > 0) {
+				collapseItemScrollHide($('#menuLeftListControl'), 0);
 			} else {
-				if (position <= 300) {
-					collapseItemScrollShow($('#menuLeftListControl'), positionOne);
-				}
+				// if (position <= 300) {
+				// 	collapseItemScrollShow($('#menuLeftListControl'), positionOne);
+				// }
 			}
 
 			// сохраняем отступ
