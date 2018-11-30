@@ -111,6 +111,14 @@
 		font-size: 17px;
 		font-weight: 400;
 		@include clearfix;
+		&__left {
+			float: left;
+			color: $basic-color;
+			font-family: Roboto;
+			font-size: 20px;
+			font-weight: 400;
+			margin-left: 15px;
+		}
 	}
 	&Preview {
 		&-text {

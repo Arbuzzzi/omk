@@ -1,5 +1,5 @@
 $(document).ready(function() {
-	/* Валидация ---------------------------------------------------------------------------------------- */
+	/* Валидация ------------------------------------------------------------------------------------ */
 	var x = {
 				rules: {
 						name: {
@@ -99,7 +99,7 @@ $(document).ready(function() {
 		return !argument;
 	}
 
-	/* ПОДМЕНЮ "СИСТЕМЫ" -------------------------------------------------------------------------------- */
+	/* ПОДМЕНЮ "СИСТЕМЫ" ----------------------------------------------------------------------------- */
 	// системы показываются
 	$('#headerNav').on('show.bs.collapse', function () {
 		var btn = $('#headerNavControl');
@@ -318,7 +318,7 @@ $(document).ready(function() {
 
 	}
 
-	/* START СКРОЛЛИНГ ---------------------------------------------------------------------------------- */
+	/* START СКРОЛЛИНГ ------------------------------------------------------------------------------- */
 	addClassScroll($('.header'));
 	// скрываем элементы во время скроллинга страницы
 	var positionContent = $('.header').actual('outerHeight'),
@@ -344,7 +344,7 @@ $(document).ready(function() {
 			if ($('#aside').css('margin-top') == '1px') {
 				$('#aside').css({
 					position: '',
-					marginTop: $('#aside').offset().top - (position - currentScroll) - $('.header').outerHeight(),
+					marginTop: $('#aside').offset().top-(position-currentScroll)-$('.header').outerHeight(),
 				});
 			}
 
@@ -364,7 +364,7 @@ $(document).ready(function() {
 				$('#leftNavigationPseudo').height(0)
 				$('#aside').css({
 					position: '',
-					marginTop: $('#aside').offset().top - (position - currentScroll) - $('.header').outerHeight(),
+					marginTop: $('#aside').offset().top-(position-currentScroll)-$('.header').outerHeight(),
 				});
 
 			} else if($('#aside').offset().top+200 >= position && position > 300) {
@@ -505,7 +505,7 @@ $(document).ready(function() {
 			elementToScrolling = $(myHash).offset().top;
 		}
 
-	  $('html:not(:animated),body:not(:animated)').animate({scrollTop: elementToScrolling}, 800); //скроллим за полсекунды
+	  $('html:not(:animated),body:not(:animated)').animate({scrollTop: elementToScrolling}, 800);
 	};
 
 	$('#btnUp').click(function() {
@@ -599,7 +599,7 @@ $(document).ready(function() {
 		}
 	}
 
-	/* END СКРОЛЛИНГ ------------------------------------------------------------------------------------ */
+	/* END СКРОЛЛИНГ ------------------------------------------------------------------------------- */
 
 	// левое меню show 
 	$('#menuLeftList').on('show.bs.collapse', function() {
@@ -633,8 +633,6 @@ $(document).ready(function() {
 	// 	$('#leftNavigationPseudo').collapse('toggle');
 	// });
 
-	// ---------------------------------------------------------------------------------------------------	
-
 	// ставим лайки
 	$('.like-button:not(.comment-button)').on('click', function(event) {
 		$(this).toggleClass('active');		
@@ -666,7 +664,7 @@ $(document).ready(function() {
 		$('#filtersCalendarPeriod').val($(this).val());
 	});
 
-	/* ВИДЖЕТЫ ------------------------------------------------------------------------------------------ */
+	/* ВИДЖЕТЫ -------------------------------------------------------------------------------------- */
 	
 	// hover на виджете с табами
 	$('.vidget-tabbox').on('mousemove', '.vidget-item', function(event) {
@@ -696,7 +694,7 @@ $(document).ready(function() {
 	// 	}
 	// }
 
-	/* СОБЫТИЯ В ВИДЖЕТЕ "КАЛЕНДАРЬ" ------------------------------------------------------------------- */
+	/* СОБЫТИЯ В ВИДЖЕТЕ "КАЛЕНДАРЬ" ----------------------------------------------------------------- */
 	
 	var setTimer;
 	setInterval(function(){ // открываем событие на текущей дате по таймеру
@@ -795,7 +793,7 @@ $(document).ready(function() {
 	});
 	
 
-	/* СОКРАЩАЕМ ТЕКСТ ----------------------------------------------------------------------------------- */
+	/* СОКРАЩАЕМ ТЕКСТ ------------------------------------------------------------------------------ */
 	$('.card__title *').dotdotdot();
 	$('.cardTwoThirds__text').dotdotdot({
 		keep: '.card__more',
@@ -830,15 +828,17 @@ $(document).ready(function() {
 		}
 	});
 
-	/* TOOLTIPS ----------------------------------------------------------------------------------------- */
+	/* TOOLTIPS ------------------------------------------------------------------------------------ */
 	$('.calendar__day').tooltip();
 	$('.sliderBlog').slick();
 
-	/* СЛАЙДЕРЫ ----------------------------------------------------------------------------------------- */  
+	/* СЛАЙДЕРЫ -------------------------------------------------------------------------------------*/
 	$('.vidget-slider').slick({
 		autoplay: true,
-		prevArrow: '<div class="slider-arrow slider-arrow__left vidget-slider-arrow vidget-slider-arrow__left"></div>',
-		nextArrow: '<div class="slider-arrow slider-arrow__right vidget-slider-arrow vidget-slider-arrow__right"></div>',
+		prevArrow: '<div class="slider-arrow slider-arrow__left \
+								vidget-slider-arrow vidget-slider-arrow__left"></div>',
+		nextArrow: '<div class="slider-arrow slider-arrow__right \
+								vidget-slider-arrow vidget-slider-arrow__right"></div>',
 	});
 
 	$('.cardFull-slider-wrap').slick({
@@ -865,5 +865,39 @@ $(document).ready(function() {
 		slidesToScroll: 1,
 		prevArrow: '<div class="slider-arrow slider-arrow__left"></div>',
 		nextArrow: '<div class="slider-arrow slider-arrow__right"></div>',
+	});
+	/* Show long comment ----------------------------------------------------------------------------- */
+	
+	var commentBox = $('.comment-box');
+	for (var i = 0; i < commentBox.length; i++) {
+		var	text = $(commentBox[i]).find('.comment__text > *'),
+				textBlock = $(commentBox[i]).find('.comment__text'),
+				textHeight = 0;
+		for (var x = 0; x < text.length; x++) {
+			textHeight = textHeight + $(text[x]).actual('outerHeight')
+		};
+		if (textHeight > 170) {
+			$(commentBox[i]).append('<button class="comment-long__showbtn">\
+																	<span>Развернуть</span>\
+																	<i class="icon-arrow-down"></i>\
+																</button>')
+		}
+	}
+
+	$('.comment-box').on('click', '.comment-long__showbtn', function(event) {
+		var el = $(this),
+				elParent = event.delegateTarget,
+				text = $(elParent).find('.comment__text > *'),
+				textBlock = $(elParent).find('.comment__text'),
+				textHeight = 0;
+		for (var i = 0; i < text.length; i++) {
+			textHeight = textHeight + $(text[i]).actual('outerHeight')
+		}
+		el.hide();
+		textBlock.css('height', 170);
+		textBlock.css('max-height', 'none');
+		textBlock.animate({
+			height: textHeight + 25
+		}, 400)
 	});
 });
