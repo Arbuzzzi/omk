@@ -96,11 +96,7 @@ $(document).ready(function() {
 	});
 
 	function cahgeTrueFalse(argument) {
-		if (argument) {
-			return false;
-		} else {
-			return true;
-		}
+		return !argument;
 	}
 
 	/* ПОДМЕНЮ "СИСТЕМЫ" -------------------------------------------------------------------------------- */
@@ -350,8 +346,8 @@ $(document).ready(function() {
 					position: '',
 					marginTop: $('#aside').offset().top - (position - currentScroll) - $('.header').outerHeight(),
 				});
-
 			}
+
 			if (position>=$('#aside').offset().top+$('#aside').outerHeight()-positionOne) {
 				$('#aside').css({
 					position: 'fixed',
@@ -427,6 +423,9 @@ $(document).ready(function() {
 			addClassScroll($('.header'));
 			positionContent = $('.header').actual('outerHeight');
 		}
+		if (position <= 0 && menuLeftListDeafult) {
+			$('#menuLeftList').collapse('show');
+		}
 
 		// scroll bottom 
 		if (position > 0) {
@@ -456,12 +455,24 @@ $(document).ready(function() {
 		currentScroll = position;
 	});
 
-	// плавный скролл
-	$(document).on('click', 'a.event', function(event) {
+	setInterval(function() {
+		var position = $(document).scrollTop(),
+				menuLeft = $('#menuLeftList'),
+				meuLeftShown = menuLeft.hasClass('show');
+
+		if (position <= 0 && menuLeftListDeafult && !meuLeftShown) {
+			$('#menuLeftList').collapse('show');
+		}
+	}, 5)
+
+
+	// плавный скролл до элемента
+	$(document).on('click', 'a.event, a.calendar__link', function(event) {
 		var link = $(this).attr('href');
 		var elementToScroll = $('#' + link.split('#')[1]);
 		var elementToScrollPos = elementToScroll.offset().top;
 		var headerHeight = $('.header').outerHeight(); // высота хэдера
+		console.log(elementToScroll);
 		if (elementToScrollPos < positionTwo) {
 			elementToScrollPos = elementToScroll.offset().top - headerHeight - 45;
 		} else {
@@ -477,7 +488,16 @@ $(document).ready(function() {
 	location.hash = ''; //очищаем хеш
 	var headerHeight = $('.header').outerHeight(); // высота хэдера
 
-	if(myHash[1] != undefined){ //проверяем, есть ли в хеше какое-то значение
+	// заказчик попросил чтобы при клике на пустую ссылку ничего не происходило
+	$(document).on('click', 'a', function(event) {
+		var el = event.target,
+				elHref = $(el).attr('href');
+		if (elHref === undefined || elHref === '#' || elHref === '') {
+			event.preventDefault();			
+		}
+	});
+
+	if(myHash[1] !== undefined && myHash[1] !== '#'){ //проверяем, есть ли в хеше какое-то значение
 		var elementToScrolling = $(myHash).offset().top;
 		if (elementToScrolling < positionTwo) {
 			elementToScrolling = $(myHash).offset().top - 150;
@@ -488,15 +508,15 @@ $(document).ready(function() {
 	  $('html:not(:animated),body:not(:animated)').animate({scrollTop: elementToScrolling}, 800); //скроллим за полсекунды
 	};
 
-	$('#btnUp, .calendar__link').click(function() {
-		var destination = 0,
-				element = $(this).attr('href');
-				headerHeight = $('.header').outerHeight();
+	$('#btnUp').click(function() {
+		var destination = 0;
+		// 		element = $(this).attr('href');
+		// 		headerHeight = $('.header').outerHeight();
+		// console.log($(element));
+		// if ($(element).offset() !== undefined) {
+		// 	destination = $(element).offset().top - headerHeight;
 
-		if (element !== undefined) {
-			destination = $(element).offset().top - headerHeight;
-
-		}
+		// }
 		$('html:not(:animated),body:not(:animated)').animate({
 			scrollTop: destination
 		}, 800, function () {			

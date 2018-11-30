@@ -17,7 +17,8 @@
 		left: -45px;
 		width: 90px;
 		height: 90px;
-		background: #fff center no-repeat / contain;
+		background: #fff center no-repeat;
+		background-size: contain;
 		border-radius: 50%;
 		border: 1px solid #707070;
 	}
@@ -37,7 +38,8 @@
 			margin-right: 5px;
 			width: 16px;
 			height: 18px;
-			background: url(../img/icon/shape.svg) center no-repeat / contain;
+			background: url(../img/icon/shape.svg) center no-repeat;
+			background-size: contain;
 			vertical-align: bottom;
 		}
 	}

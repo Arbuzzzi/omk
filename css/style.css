@@ -2665,7 +2665,6 @@ h2 span,
 
 .card {
   padding: 0 15px;
-  width: 100%;
   margin-bottom: 30px;
 }
 
@@ -2689,7 +2688,9 @@ h2 span,
   overflow: hidden;
   -webkit-border-radius: 5px;
           border-radius: 5px;
-  background: #eeefef center no-repeat / cover;
+  background: #eeefef center no-repeat;
+  -webkit-background-size: cover;
+          background-size: cover;
 }
 
 .card-wrap-head {
@@ -2710,7 +2711,9 @@ h2 span,
   position: relative;
   -webkit-border-radius: 5px;
           border-radius: 5px;
-  background: #ffffff center no-repeat/cover;
+  background: #ffffff center no-repeat;
+  -webkit-background-size: cover;
+          background-size: cover;
   overflow: hidden;
 }
 
@@ -2979,7 +2982,7 @@ h2 span,
 }
 
 .cardThird {
-  width: 33.333333%;
+  max-width: 33.333333%;
   -webkit-box-flex: 0;
   -webkit-flex: 0 0 33.333333%;
       -ms-flex: 0 0 33.333333%;
@@ -3027,7 +3030,7 @@ h2 span,
 }
 
 .cardHalf {
-  width: 50%;
+  max-width: 50%;
   -webkit-box-flex: 0;
   -webkit-flex: 0 0 50%;
       -ms-flex: 0 0 50%;
@@ -3036,7 +3039,9 @@ h2 span,
 
 .cardHalf-imgbox {
   min-height: 260px;
-  background: no-repeat center / cover;
+  background: no-repeat center;
+  -webkit-background-size: cover;
+          background-size: cover;
 }
 
 .cardHalf_fullHeightImg {
@@ -3090,7 +3095,7 @@ h2 span,
 }
 
 .cardTwoThirds {
-  width: 66.666667%;
+  max-width: 66.666667%;
   -webkit-box-flex: 0;
   -webkit-flex: 0 0 66.666667%;
       -ms-flex: 0 0 66.666667%;
@@ -3478,7 +3483,9 @@ h2 span,
 .vidget-imgbox {
   position: relative;
   overflow: hidden;
-  background: center no-repeat / cover;
+  background: center no-repeat;
+  -webkit-background-size: cover;
+          background-size: cover;
 }
 
 .vidget-imgbox_calendar {
@@ -3873,7 +3880,9 @@ h2 span,
 }
 
 .article-imgbox {
-  background: center no-repeat / cover;
+  background: center no-repeat;
+  -webkit-background-size: cover;
+          background-size: cover;
   -webkit-border-radius: 5px;
           border-radius: 5px;
   border: 1px solid #707070;
@@ -3941,7 +3950,9 @@ h2 span,
   left: 15px;
   width: 27px;
   height: 26px;
-  background: url(../img/icon/quote.svg) center no-repeat/contain;
+  background: url(../img/icon/quote.svg) center no-repeat;
+  -webkit-background-size: contain;
+          background-size: contain;
 }
 
 .article-text {
@@ -4014,7 +4025,9 @@ h2 span,
   left: -45px;
   width: 90px;
   height: 90px;
-  background: #fff center no-repeat / contain;
+  background: #fff center no-repeat;
+  -webkit-background-size: contain;
+          background-size: contain;
   -webkit-border-radius: 50%;
           border-radius: 50%;
   border: 1px solid #707070;
@@ -4039,7 +4052,9 @@ h2 span,
   margin-right: 5px;
   width: 16px;
   height: 18px;
-  background: url(../img/icon/shape.svg) center no-repeat/contain;
+  background: url(../img/icon/shape.svg) center no-repeat;
+  -webkit-background-size: contain;
+          background-size: contain;
   vertical-align: bottom;
 }
 

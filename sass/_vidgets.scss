@@ -72,7 +72,8 @@
 		position: relative;
 		overflow: hidden;
 		// min-height: 125px;
-		background: center no-repeat / cover;
+		background: center no-repeat;
+		background-size: cover;
 		&_calendar {
 			margin-top: auto;
 			height: 100%;

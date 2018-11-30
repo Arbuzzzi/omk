@@ -27,7 +27,8 @@
 		}
 	}
 	&-imgbox {
-		background: center no-repeat / cover;
+		background: center no-repeat;
+		background-size: cover;
 		border-radius: 5px;
 		border: 1px solid #707070;
 		&_full {
@@ -81,7 +82,8 @@
 			left: 15px;
 			width: 27px;
 			height: 26px;
-			background: url(../img/icon/quote.svg) center no-repeat / contain;
+			background: url(../img/icon/quote.svg) center no-repeat;
+			background-size: contain;
 		}
 	}
 	&-text {
