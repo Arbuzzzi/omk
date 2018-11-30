@@ -1,5 +1,9 @@
 .comment {
 	padding-left: 45px;
+	&_special {
+		margin-top: -15px;
+		margin-bottom: 15px;
+	}
 	&-box {
 		position: relative;
 		padding: 15px;
@@ -44,11 +48,13 @@
 		}
 	}
 	&__text {
-			font-size: 14px;
-			line-height: 20px;
+		max-height: 170px;
+		overflow-y: hidden;
+		font-size: 14px;
+		line-height: 20px;
 		p {
 			font-size: 1em;
-			margin-bottom: 10px;
+			margin-bottom: 25px;
 			font-weight: 400;
 		}
 	}
@@ -63,5 +69,66 @@
 				font-weight: 400;
 			}
 		}
+	}
+	&-long {
+		&__showbtn {
+			position: absolute;
+			// z-index: 10;
+			bottom: 0;
+			left: 0;
+			width: 100%;
+			padding-top: 5px;
+			padding-bottom: 15px;
+			color: $dark-color;
+			font-size: 12px;
+			font-weight: 400;
+			letter-spacing: 0.5px;
+			background-color: $light-color;
+			@include hover {
+				letter-spacing: 0;
+				font-weight: 700;
+			}
+			@include before {
+				z-index: 1;
+				bottom: 0;
+				left: 0;
+				width: 100%;
+				height: 91px;
+				background-image: linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, #fff 100%);
+			}
+			i {
+				margin-left: 5px;
+				vertical-align: middle;
+				color: #bcbdc0;
+				&:before {
+					color: inherit;
+				}
+			}
+			&>* {
+				position: relative;
+				z-index: 10;
+			}
+		}
+	}
+}
+
+.comment-form {
+	padding-bottom: 100px;
+	&__textareabox {
+		margin-bottom: 15px;
+	}
+	&__textarea {
+		width: 100%;
+		min-height: 114px;
+		border-radius: 5px;
+		border: 1px solid #bcbdc0;
+		padding: 18px;
+		resize: vertical;
+	}
+	&__btnbox {
+		text-align: right;
+	}
+	&__button {
+		min-width: 170px;
 	}
 }
