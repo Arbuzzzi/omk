@@ -57,17 +57,14 @@ block content
 				h2 Комментарии
 	.card.card_slim
 		- var items = [];
-		- items.push({url: 'background-image: url(img/person-photo-01.jpg)', title: 'ЮЛИЯ ШХИЯНЦ', text: 'В ходе горячих испытаний оборудования покрытие из УФ-лака было нанесено на гладкие трубы диаметром 426 мм. Параллельно с пуско-наладкой оборудования специалисты фирмы Venjakob провели теоретическое и практическое обучение работе с установкой для сотрудников ВМЗ, включая ремонтные службы, технологов и автоматчиков.'});
-		- items.push({url: 'background-image: url(img/person-photo-02.jpg)', title: 'ПЕТР ТУШИН', text: 'Параллельно с пуско-наладкой оборудования специалисты фирмы Venjakob провели теоретическое и практическое обучение работе с установкой для сотрудников ВМЗ.'});
-		- items.push({url: 'background-image: url(img/person-photo-03.jpg)', title: 'СВЕТЛАНА НИКОЛАШИНА', text: 'Мы стремимся к тому, чтобы работа в ОМК помогала сотрудникам компании реализовывать свой потенциал и раскрывать свои способности Активно развиваясь, Компания делает реальными перспективы профессионального и карьерного роста. Для обеспечения взаимовыгодного партнерства и соблюдения трудовых прав мы активно поддерживаем и развиваем социальный диалог с сотрудниками и их представителями. Читать подробнее о работе с персоналом. Мы разработали специальную форму − Приложение к договору «Требование о соблюдении законодательства в области охраны труда, промышленной, пожарной безопасности, охраны окружающей среды». Подписывая его, подрядчик обязуется следовать процедурам, правилам и инструкциям ОМК в области охраны труда, промышленной, экологической и экономической безопасности с целью исключения или минимизации возможного ущерба, наносимого окружающей среде, здоровью сотрудников ОМК, посетителей и третьих лиц.'});
-		.comment
+		.comment#commentator_01
 			.comment-box
-				.comment__avatar(style= items[0].url)
+				.comment__avatar(style='background-image: url(img/person-photo-01.jpg)')
 				.comment__content
 					.tagbox.comment__tagbox
 						.tag
 							.comment__nickname
-								span= items[0].title
+								span ЮЛИЯ ШХИЯНЦ
 						.like-card
 							button.like-button.comment-button.like-button_thin
 								i #
@@ -79,17 +76,18 @@ block content
 					.comment__date
 							span 12 Декабря 2018, 16:32
 					.comment__text
-						p= items[0].text
+						p
+							| В ходе горячих испытаний оборудования покрытие из УФ-лака было нанесено на гладкие трубы диаметром 426 мм. Параллельно с пуско-наладкой оборудования специалисты фирмы Venjakob провели теоретическое и практическое обучение работе с установкой для сотрудников ВМЗ, включая ремонтные службы, технологов и автоматчиков.
 					.comment__link
-						a(href="#") Ответить
-			.comment
+						button.comment__reply Ответить
+			.comment#commentator_02
 				.comment-box
-					.comment__avatar(style= items[1].url)
+					.comment__avatar(style='background-image: url(img/person-photo-02.jpg)')
 					.comment__content
 						.tagbox.comment__tagbox
 							.tag
 								.comment__nickname
-									span= items[1].title
+									span ПЕТР ТУШИН
 							.like-card
 								button.like-button.comment-button.like-button_thin
 									i #
@@ -101,17 +99,18 @@ block content
 						.comment__date
 								span 12 Декабря 2018, 16:32
 						.comment__text
-							p= items[1].text
+							p
+								| Параллельно с пуско-наладкой оборудования специалисты фирмы Venjakob провели теоретическое и практическое обучение работе с установкой для сотрудников ВМЗ.
 						.comment__link
-							a(href="#") Ответить
-				.comment
+							button.comment__reply Ответить
+				.comment#commentator_03
 					.comment-box
-						.comment__avatar(style= items[2].url)
+						.comment__avatar(style='background-image: url(img/person-photo-03.jpg)')
 						.comment__content
 							.tagbox.comment__tagbox
 								.tag
 									.comment__nickname
-										span= items[2].title
+										span СВЕТЛАНА НИКОЛАШИНА
 								.like-card
 									button.like-button.comment-button.like-button_thin
 										i #
@@ -128,8 +127,8 @@ block content
 								p
 									| Мы разработали специальную форму − Приложение к договору «Требование о соблюдении законодательства в области охраны труда, промышленной, пожарной безопасности, охраны окружающей среды». Подписывая его, подрядчик обязуется следовать процедурам, правилам и инструкциям ОМК в области охраны труда, промышленной, экологической и экономической безопасности с целью исключения или минимизации возможного ущерба, наносимого окружающей среде, здоровью сотрудников ОМК, посетителей и третьих лиц.
 							.comment__link
-								a(href="#") Ответить
-		.comment
+								button.comment__reply Ответить
+		.comment#commentator_04
 			.comment-box
 				.comment__avatar(style='background-image: url(img/person-photo-04.jpg)')
 				.comment__content
@@ -152,8 +151,8 @@ block content
 						p
 							| Особое внимание мы уделяем недопущению детского и принудительного труда, дискриминации любых форм. Мы уважаем право сотрудников на формирование ассоциаций и других совместных организаций по представлению их интересов и общению с работодателем.
 					.comment__link
-						a(href="#") Ответить
-		.comment
+						button.comment__reply Ответить
+		.comment#commentator_05
 			.comment-box
 				.comment__avatar(style='background-image: url(img/person-photo-05.jpg)')
 				.comment__content
@@ -176,14 +175,15 @@ block content
 						p
 							| Коллеги, у нас будет самый лучший корпоративный портал. Без сомнения!
 					.comment__link
-						a(href="#") Ответить
-		.comment.comment_special
-			.article-autor
-				p.article-autor__left Оставить комментарий:
-				p от Константина Константинопольского
-		.comment
-			form.comment-form
-				.comment-form__textareabox
-					textarea.comment-form__textarea(placeholder="Комментарий")
-				.comment-form__btnbox
-					button.button.comment-form__button(type="submit") Отправить
+						button.comment__reply Ответить
+		#commentFormbox
+			.comment.comment_special
+				.article-autor
+					p.article-autor__left Оставить комментарий:
+					p от Константина Константинопольского
+			.comment
+				form.comment-form
+					.comment-form__textareabox
+						textarea.comment-form__textarea(placeholder="Комментарий")
+					.comment-form__btnbox
+						button.button.comment-form__button(type="submit") Отправить
