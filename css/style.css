@@ -794,6 +794,16 @@ h6,
   font-weight: 400;
 }
 
+.sign-title__link {
+  vertical-align: middle;
+  font-size: 14px;
+  color: #ee3124;
+}
+
+.sign-title__link:first-child {
+  margin-left: 5px;
+}
+
 p,
 .section-text,
 .text {
@@ -4003,11 +4013,20 @@ h2 span,
 }
 
 .article-autor__left {
+  vertical-align: middle;
+  display: inline-block;
   float: left;
-  color: #5e6167;
   font-family: Roboto;
   font-size: 20px;
   font-weight: 400;
+}
+
+.article-autor__username {
+  vertical-align: middle;
+  display: inline-block;
+  font-family: Roboto;
+  font-size: 14px;
+  font-weight: 300;
 }
 
 .articlePreview-text {
@@ -4168,7 +4187,7 @@ h2 span,
 
 .comment-form__textarea {
   width: 100%;
-  min-height: 114px;
+  min-height: 150px;
   -webkit-border-radius: 5px;
           border-radius: 5px;
   border: 1px solid #bcbdc0;
@@ -4185,6 +4204,10 @@ h2 span,
 }
 
 @media screen and (min-width: 1024px) {
+  .sign-title__link:hover {
+    text-decoration: underline;
+  }
+
   .breadcrumb__link:hover {
     color: #6e7075;
   }

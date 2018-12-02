@@ -112,11 +112,20 @@
 		font-weight: 400;
 		@include clearfix;
 		&__left {
+			vertical-align: middle;
+			display: inline-block;
 			float: left;
-			color: $basic-color;
 			font-family: Roboto;
 			font-size: 20px;
 			font-weight: 400;
+		}
+
+		&__username {
+			vertical-align: middle;
+			display: inline-block;
+			font-family: Roboto;
+			font-size: 14px;
+			font-weight: 300;
 		}
 	}
 	&Preview {

@@ -86,6 +86,17 @@ h6, .h6,
 	font-family: Roboto;
 	font-size: 16px;
 	font-weight: 400;
+	&__link {
+		vertical-align: middle;
+		font-size: 14px;
+		color: $special-color;
+		&:first-child {
+			margin-left: 5px;
+		}
+		@include hover {
+			text-decoration: underline;
+		}
+	}
 }
 
 p, .section-text, .text {
