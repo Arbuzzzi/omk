@@ -1,0 +1,6 @@
+.card(id=ID)
+	.sign-title
+		p 
+			=signTitle+' '
+			each event in events
+				a.calendar__link.sign-title__link(href='#'+event.articleID)= event.articleTitle

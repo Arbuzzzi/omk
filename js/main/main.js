@@ -866,6 +866,8 @@ $(document).ready(function() {
 		prevArrow: '<div class="slider-arrow slider-arrow__left"></div>',
 		nextArrow: '<div class="slider-arrow slider-arrow__right"></div>',
 	});
+
+
 	/* Show long comment ----------------------------------------------------------------------------- */
 	
 	var commentBox = $('.comment-box');
@@ -900,4 +902,63 @@ $(document).ready(function() {
 			height: textHeight + 25
 		}, 400)
 	});
+
+	/* Ответить на комментарий ----------------------------------------------------------------------- */
+	
+	var elDeafultText;
+
+	$('.comment').on('click', '.comment__reply', function(event) {
+		var commentFormbox = $('#commentFormbox').clone(),
+				el = $(this),				
+				elParent = el.closest('.comment'),
+				elParentID = elParent.attr('id'),
+				commentFormboxAppend;
+		
+		commentFormboxAppend = commentFormboxCreate(commentFormbox, event);
+		if (!elParent.hasClass('show-form')) {
+			commentFormboxShow(el, commentFormboxAppend);
+			return false;
+		} else {
+			commentFormboxHide();
+			return false;
+		}
+		event.preventDefault();
+
+		function commentFormboxShow(element, addElement) {
+			var eventParent = element.closest('.comment'),
+					eventParentID = elParent.attr('id'),
+					eventParentTitle = eventParent.find('.comment__nickname:first').text();
+			
+			eventParent.addClass('show-form');
+			eventParent.find('.comment-box:first').after($(addElement));
+			$(addElement).toggle('blind');			
+			elDeafultText = el.text(),	
+			el.text('Отменить');
+			$(elParent).find('textarea.comment-form__textarea').focus();
+			
+		}
+		function commentFormboxHide(element, event) {
+			elParent.removeClass('show-form');
+			$('#'+commentFormboxAppend.attr('id')).toggle('blind', 'swing', 400, function () {
+				$('#'+commentFormboxAppend.attr('id')).remove();
+				
+			});
+			el.text(elDeafultText);	
+			
+		}
+
+		function commentFormboxCreate(element, event) {
+			var eventParent = $(event.delegateTarget),
+					eventParentID = elParent.attr('id'),
+					elementID = $(element).attr('id')
+					eventParentTitle = eventParent.find('.comment__nickname:first').text();
+			element = $(element).attr('id', elementID+'_'+eventParentID);
+			$(element).find('form.comment-form').addClass('comment-form-reply');
+			$(element).find('textarea.comment-form__textarea').val(eventParentTitle+', ');
+			$(element).css('display', 'none');
+			return element;
+			
+		}
+	});
+
 });

@@ -894,7 +894,7 @@
                 </div>
               </div>
               <div class="card card_slim">
-                <div class="comment">
+                <div class="comment" id="commentator_01">
                   <div class="comment-box">
                     <div class="comment__avatar" style="background-image: url(img/person-photo-01.jpg)"></div>
                     <div class="comment__content">
@@ -911,10 +911,12 @@
                       <div class="comment__text">
                         <p>В ходе горячих испытаний оборудования покрытие из УФ-лака было нанесено на гладкие трубы диаметром 426 мм. Параллельно с пуско-наладкой оборудования специалисты фирмы Venjakob провели теоретическое и практическое обучение работе с установкой для сотрудников ВМЗ, включая ремонтные службы, технологов и автоматчиков.</p>
                       </div>
-                      <div class="comment__link"><a href="#">Ответить</a></div>
+                      <div class="comment__link">
+                        <button class="comment__reply">Ответить</button>
+                      </div>
                     </div>
                   </div>
-                  <div class="comment">
+                  <div class="comment" id="commentator_02">
                     <div class="comment-box">
                       <div class="comment__avatar" style="background-image: url(img/person-photo-02.jpg)"></div>
                       <div class="comment__content">
@@ -931,10 +933,12 @@
                         <div class="comment__text">
                           <p>Параллельно с пуско-наладкой оборудования специалисты фирмы Venjakob провели теоретическое и практическое обучение работе с установкой для сотрудников ВМЗ.</p>
                         </div>
-                        <div class="comment__link"><a href="#">Ответить</a></div>
+                        <div class="comment__link">
+                          <button class="comment__reply">Ответить</button>
+                        </div>
                       </div>
                     </div>
-                    <div class="comment">
+                    <div class="comment" id="commentator_03">
                       <div class="comment-box">
                         <div class="comment__avatar" style="background-image: url(img/person-photo-03.jpg)"></div>
                         <div class="comment__content">
@@ -952,13 +956,15 @@
                             <p>Мы стремимся к тому, чтобы работа в ОМК помогала сотрудникам компании реализовывать свой потенциал и раскрывать свои способности Активно развиваясь, Компания делает реальными перспективы профессионального и карьерного роста. Для обеспечения взаимовыгодного партнерства и соблюдения трудовых прав мы активно поддерживаем и развиваем социальный диалог с сотрудниками и их представителями. Читать подробнее о работе с персоналом. </p>
                             <p>Мы разработали специальную форму − Приложение к договору «Требование о соблюдении законодательства в области охраны труда, промышленной, пожарной безопасности, охраны окружающей среды». Подписывая его, подрядчик обязуется следовать процедурам, правилам и инструкциям ОМК в области охраны труда, промышленной, экологической и экономической безопасности с целью исключения или минимизации возможного ущерба, наносимого окружающей среде, здоровью сотрудников ОМК, посетителей и третьих лиц.</p>
                           </div>
-                          <div class="comment__link"><a href="#">Ответить</a></div>
+                          <div class="comment__link">
+                            <button class="comment__reply">Ответить</button>
+                          </div>
                         </div>
                       </div>
                     </div>
                   </div>
                 </div>
-                <div class="comment">
+                <div class="comment" id="commentator_04">
                   <div class="comment-box">
                     <div class="comment__avatar" style="background-image: url(img/person-photo-04.jpg)"></div>
                     <div class="comment__content">
@@ -975,11 +981,13 @@
                       <div class="comment__text">
                         <p>Особое внимание мы уделяем недопущению детского и принудительного труда, дискриминации любых форм. Мы уважаем право сотрудников на формирование ассоциаций и других совместных организаций по представлению их интересов и общению с работодателем.</p>
                       </div>
-                      <div class="comment__link"><a href="#">Ответить</a></div>
+                      <div class="comment__link">
+                        <button class="comment__reply">Ответить</button>
+                      </div>
                     </div>
                   </div>
                 </div>
-                <div class="comment">
+                <div class="comment" id="commentator_05">
                   <div class="comment-box">
                     <div class="comment__avatar" style="background-image: url(img/person-photo-05.jpg)"></div>
                     <div class="comment__content">
@@ -996,25 +1004,29 @@
                       <div class="comment__text">
                         <p>Коллеги, у нас будет самый лучший корпоративный портал. Без сомнения!</p>
                       </div>
-                      <div class="comment__link"><a href="#">Ответить</a></div>
+                      <div class="comment__link">
+                        <button class="comment__reply">Ответить</button>
+                      </div>
                     </div>
                   </div>
                 </div>
-                <div class="comment comment_special">
-                  <div class="article-autor">
-                    <p class="article-autor__left">Оставить комментарий:</p>
-                    <p>от Константина Константинопольского</p>
+                <div id="commentFormbox">
+                  <div class="comment comment_special">
+                    <div class="article-autor">
+                      <p class="article-autor__left">Оставить комментарий:</p>
+                      <p class="article-autor__username">от Константина Константинопольского</p>
+                    </div>
                   </div>
-                </div>
-                <div class="comment">
-                  <form class="comment-form">
-                    <div class="comment-form__textareabox">
-                      <textarea class="comment-form__textarea" placeholder="Комментарий"></textarea>
-                    </div>
-                    <div class="comment-form__btnbox">
-                      <button class="button comment-form__button" type="submit">Отправить</button>
-                    </div>
-                  </form>
+                  <div class="comment">
+                    <form class="comment-form">
+                      <div class="comment-form__textareabox">
+                        <textarea class="comment-form__textarea" placeholder="Комментарий"></textarea>
+                      </div>
+                      <div class="comment-form__btnbox">
+                        <button class="button comment-form__button" type="submit">Отправить</button>
+                      </div>
+                    </form>
+                  </div>
                 </div>
               </div>
             </div>
