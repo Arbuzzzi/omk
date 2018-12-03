@@ -494,10 +494,11 @@ $(document).ready(function() {
 			event.preventDefault();			
 		}
 	});
+	var myHash = location.hash; //получаем значение хеша
+	location.hash = ''; //очищаем хеш
+	// console.log(location);
 	$(window).on('load', function() {
-		var myHash = location.hash; //получаем значение хеша
 		var headerHeight = $('.header').outerHeight(); // высота хэдера
-		
 
 		if(myHash[1] !== undefined && myHash[1] !== '#'){ //проверяем, есть ли в хеше какое-то значение
 			var elementToScrolling = $(myHash).offset().top;
@@ -507,12 +508,11 @@ $(document).ready(function() {
 				elementToScrolling = $(myHash).offset().top;
 			}
 
-		  $('html:not(:animated),body:not(:animated)').animate({
-		  	scrollTop: elementToScrolling
-		  	},
-		  	800, function() {
-		  		location.hash = ''; //очищаем хеш
-		  });
+		  $('html:not(:animated),body:not(:animated)').animate({scrollTop: elementToScrolling}, 800,
+		  	function () {
+		  		console.log(elementToScrolling);
+		  		console.log($(myHash).offset().top - headerHeight - 48);
+		  	});
 		};	
 		
 	});
