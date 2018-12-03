@@ -496,17 +496,19 @@ $(document).ready(function() {
 			event.preventDefault();			
 		}
 	});
+	$(window).on('load', function() {
+		if(myHash[1] !== undefined && myHash[1] !== '#'){ //проверяем, есть ли в хеше какое-то значение
+			var elementToScrolling = $(myHash).offset().top;
+			if (elementToScrolling < positionTwo) {
+				elementToScrolling = $(myHash).offset().top - $('.header').outerHeight() - 48;
+			} else {
+				elementToScrolling = $(myHash).offset().top;
+			}
 
-	if(myHash[1] !== undefined && myHash[1] !== '#'){ //проверяем, есть ли в хеше какое-то значение
-		var elementToScrolling = $(myHash).offset().top;
-		if (elementToScrolling < positionTwo) {
-			elementToScrolling = $(myHash).offset().top - 150;
-		} else {
-			elementToScrolling = $(myHash).offset().top;
-		}
-
-	  $('html:not(:animated),body:not(:animated)').animate({scrollTop: elementToScrolling}, 800);
-	};
+		  $('html:not(:animated),body:not(:animated)').animate({scrollTop: elementToScrolling}, 800);
+		};	
+		
+	});
 
 	$('#btnUp').click(function() {
 		var destination = 0;
@@ -913,7 +915,6 @@ $(document).ready(function() {
 				elParent = el.closest('.comment'),
 				elParentID = elParent.attr('id'),
 				commentFormboxAppend;
-		
 		commentFormboxAppend = commentFormboxCreate(commentFormbox, event);
 		if (!elParent.hasClass('show-form')) {
 			commentFormboxShow(el, commentFormboxAppend);
