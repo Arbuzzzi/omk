@@ -4364,6 +4364,10 @@ h2 span,
     color: #ffffff;
   }
 
+  .vidget-title_link:hover {
+    text-decoration: underline;
+  }
+
   .calendar__day:hover {
     background-color: rgba(0, 185, 31, 0.1);
   }

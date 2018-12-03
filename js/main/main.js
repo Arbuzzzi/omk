@@ -472,7 +472,6 @@ $(document).ready(function() {
 		var elementToScroll = $('#' + link.split('#')[1]);
 		var elementToScrollPos = elementToScroll.offset().top;
 		var headerHeight = $('.header').outerHeight(); // высота хэдера
-		console.log(elementToScroll);
 		if (elementToScrollPos < positionTwo) {
 			elementToScrollPos = elementToScroll.offset().top - headerHeight - 45;
 		} else {
@@ -894,7 +893,7 @@ $(document).ready(function() {
 																</button>')
 		}
 	}
-
+	var elControlDeafultText;
 	$('.comment-box').on('click', '.comment-long__showbtn', function(event) {
 		var el = $(this),
 				elParent = event.delegateTarget,
@@ -918,54 +917,73 @@ $(document).ready(function() {
 
 	$('.comment').on('click', '.comment__reply', function(event) {
 		var commentFormbox = $('#commentFormbox').clone(),
-				el = $(this),				
-				elParent = el.closest('.comment'),
+				commentFormboxAppend,
+
+				elControl = $(this),				
+				elParent = elControl.closest('.comment'),
 				elParentID = elParent.attr('id'),
-				commentFormboxAppend;
-		commentFormboxAppend = commentFormboxCreate(commentFormbox, event);
-		if (!elParent.hasClass('show-form')) {
-			commentFormboxShow(el, commentFormboxAppend);
-			return false;
-		} else {
-			commentFormboxHide();
-			return false;
+
+				formActive = $(elControl).hasClass('form-active');
+				console.log('test');
+		event.stopImmediatePropagation()
+		commentFormboxAppend = commentFormboxCreate(event, commentFormbox);
+
+		if (!elControl.hasClass('form-active')) {
+			elControlDeafultText = elControl.text();
 		}
+
+
+		$('.form-duplicate').on('hidden.bs.collapse', function() {
+			$('.comment__reply').text(elControlDeafultText);
+			$('.comment__reply').removeClass('form-active');
+			$('.comment__reply').removeAttr('data-target');
+			$('.comment').removeClass('show-form');
+			$(this).collapse('dispose');
+			$(this).remove();
+		});
+
+		$(commentFormboxAppend).on('shown.bs.collapse', function(event) {
+			elControl.addClass('form-active');
+			elControl.text('Отменить');
+			$(this).collapse('dispose');
+			$(this).find('textarea').focus();
+		});
+		
+		if (!elControl.hasClass('form-active')) {
+
+			commentFormboxShow(elControl, commentFormboxAppend).collapse('show');
+			
+			
+		} else {
+			$('.form-duplicate').collapse('hide');			
+		}
+
 		event.preventDefault();
 
-		function commentFormboxShow(element, addElement) {
-			var eventParent = element.closest('.comment'),
-					eventParentID = elParent.attr('id'),
-					eventParentTitle = eventParent.find('.comment__nickname:first').text();
-			
+		function commentFormboxShow(elControl, addElement) {
+			var eventParent = elControl.closest('.comment');
+
 			eventParent.addClass('show-form');
 			eventParent.find('.comment-box:first').after($(addElement));
-			$(addElement).toggle('blind');			
-			elDeafultText = el.text(),	
-			el.text('Отменить');
-			$(elParent).find('textarea.comment-form__textarea').focus();
-			
-		}
-		function commentFormboxHide(element, event) {
-			elParent.removeClass('show-form');
-			$('#'+commentFormboxAppend.attr('id')).toggle('blind', 'swing', 400, function () {
-				$('#'+commentFormboxAppend.attr('id')).remove();
-				
-			});
-			el.text(elDeafultText);	
-			
-		}
 
-		function commentFormboxCreate(element, event) {
+			elControl.attr('data-target', '#'+$(addElement).attr('id'));
+			
+			return $(addElement);			
+		}
+		function commentFormboxCreate(event, elClone) {
 			var eventParent = $(event.delegateTarget),
 					eventParentID = elParent.attr('id'),
-					elementID = $(element).attr('id')
-					eventParentTitle = eventParent.find('.comment__nickname:first').text();
-			element = $(element).attr('id', elementID+'_'+eventParentID);
-			$(element).find('form.comment-form').addClass('comment-form-reply');
-			$(element).find('textarea.comment-form__textarea').val(eventParentTitle+', ');
-			$(element).css('display', 'none');
-			return element;
-			
+					eventParentTitle = eventParent.find('.comment__nickname:first').text(),
+					
+					elementID = $(elClone).attr('id'),
+					elementNew = $(elClone);
+
+			$(elClone).attr('id', elementID+'_'+eventParentID);
+			$(elClone).attr('data-parent', '#allComentators');
+			$(elClone).addClass('form-duplicate collapse');
+			$(elClone).find('form.comment-form').addClass('comment-form-reply');
+			$(elClone).find('textarea.comment-form__textarea').val(eventParentTitle+', ');
+			return elementNew;
 		}
 	});
 
