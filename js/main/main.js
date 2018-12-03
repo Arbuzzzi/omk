@@ -484,9 +484,7 @@ $(document).ready(function() {
 		}
 	});	
 
-	var myHash = location.hash; //получаем значение хеша
-	location.hash = ''; //очищаем хеш
-	var headerHeight = $('.header').outerHeight(); // высота хэдера
+	
 
 	// заказчик попросил чтобы при клике на пустую ссылку ничего не происходило
 	$(document).on('click', 'a', function(event) {
@@ -497,15 +495,24 @@ $(document).ready(function() {
 		}
 	});
 	$(window).on('load', function() {
+		var myHash = location.hash; //получаем значение хеша
+		var headerHeight = $('.header').outerHeight(); // высота хэдера
+		
+
 		if(myHash[1] !== undefined && myHash[1] !== '#'){ //проверяем, есть ли в хеше какое-то значение
 			var elementToScrolling = $(myHash).offset().top;
 			if (elementToScrolling < positionTwo) {
-				elementToScrolling = $(myHash).offset().top - $('.header').outerHeight() - 48;
+				elementToScrolling = $(myHash).offset().top - headerHeight - 48;
 			} else {
 				elementToScrolling = $(myHash).offset().top;
 			}
 
-		  $('html:not(:animated),body:not(:animated)').animate({scrollTop: elementToScrolling}, 800);
+		  $('html:not(:animated),body:not(:animated)').animate({
+		  	scrollTop: elementToScrolling
+		  	},
+		  	800, function() {
+		  		location.hash = ''; //очищаем хеш
+		  });
 		};	
 		
 	});
