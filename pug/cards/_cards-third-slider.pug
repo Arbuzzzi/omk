@@ -2,11 +2,11 @@
 	.card-wrap.card-slider-wrap.cardThird-slider-wrap
 
 		- var items = [];
-		- items.push({url: 'background-image: url(img/blog-img-01.jpg);', title: 'Как вам прошедший концерт?'});
-		- items.push({url: 'background-image: url(img/blog-img-02.jpg);', title: 'Хочется лета, а вокруг одни офисы! Поеду на Ямайку!'});
-		- items.push({url: 'background-image: url(img/blog-img-03.jpg);', title: 'После работы надо обязательно поработать ра...'});
-		- items.push({url: 'background-image: url(img/blog-img-02.jpg);', title: 'Хочется лета, а вокруг одни офисы! Поеду на Ямайку!'});
-		- items.push({url: 'background-image: url(img/blog-img-01.jpg);', title: 'Как вам прошедший концерт?'});
+		- items.push({url: 'background-image: url(img/blog-img-01.jpg);', title: 'Как вам прошедший концерт?', buttonTitle: 'Константинов Константин'});
+		- items.push({url: 'background-image: url(img/blog-img-02.jpg);', title: 'Хочется лета, а вокруг одни офисы! Поеду на Ямайку!', buttonTitle: 'Мацинова Елена'});
+		- items.push({url: 'background-image: url(img/blog-img-03.jpg);', title: 'После работы надо обязательно поработать ра...', buttonTitle: 'Андреевский Андрей'});
+		- items.push({url: 'background-image: url(img/blog-img-02.jpg);', title: 'Хочется лета, а вокруг одни офисы! Поеду на Ямайку!', buttonTitle: 'Мацинова Елена'});
+		- items.push({url: 'background-image: url(img/blog-img-01.jpg);', title: 'Как вам прошедший концерт?', buttonTitle: 'Андреевский Андрей'});
 		each item in items
 			.card-slider__item.cardThird-slider__item
 				.cardThird-slider__imgbox.card__imgbox(style=item.url)
@@ -15,7 +15,7 @@
 				.card__content.cardThird__content
 					.tagbox
 						.tag
-							button.button.button-tag Региональные новости
+							button.button.button-tag= item.buttonTitle
 						.like-card
 							button.like-button.comment-button
 								i.icon-comment
