@@ -495,7 +495,7 @@ $(document).ready(function() {
 		}
 	});
 	var myHash = location.hash; //получаем значение хеша
-	location.hash = ''; //очищаем хеш
+	//location.hash = ''; //очищаем хеш
 	// console.log(location);
 	$(window).on('load', function() {
 		var headerHeight = $('.header').outerHeight(); // высота хэдера
