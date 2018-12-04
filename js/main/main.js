@@ -507,11 +507,11 @@ $(document).ready(function() {
 				elementToScrolling = $(myHash).offset().top;
 			}
 
-		  $('html:not(:animated),body:not(:animated)').animate({scrollTop: elementToScrolling}, 800,
-		  	function () {
-		  		console.log(elementToScrolling);
-		  		console.log($(myHash).offset().top - headerHeight - 48);
-		  	});
+			$('html:not(:animated),body:not(:animated)').animate({scrollTop: elementToScrolling}, 800,
+				function () {
+					console.log(elementToScrolling);
+					console.log($(myHash).offset().top - headerHeight - 48);
+				});
 		};	
 		
 	});
@@ -849,10 +849,25 @@ $(document).ready(function() {
 								vidget-slider-arrow vidget-slider-arrow__right"></div>',
 	});
 
+	$('.cardFull-slider-wrap').on('init reInit afterChange', 
+		function(event, slick, currentSlide, nextSlide){
+			var status = $(this).find('.card-slider-number span');
+			//currentSlide is undefined on init -- set it to 0 in this case (currentSlide is 0 based)
+			var i = (currentSlide ? currentSlide : 0) + 1;
+			status.text(i + ' / ' + slick.slideCount);
+			console.log('init success');
+			
+	});
+
 	$('.cardFull-slider-wrap').slick({
+		// onInit: function() {
+		// 	$('.card-slider-number span').text(i + '/' + slick.slideCount);
+		// 	console.log('init success');
+		// },
 		prevArrow: '<div class="slider-arrow slider-arrow__left"></div>',
 		nextArrow: '<div class="slider-arrow slider-arrow__right"></div>',
 	});
+
 
 	$('.cardHalf-slider-wrap').slick({
 		slidesToShow: 2,

@@ -1,0 +1,44 @@
+.cards
+	.card.cardFull-head_special
+		.content-title
+			.content-titlebox_dark
+				h2 Галерея - "Слайдер с описанием", тип "Светлый"
+
+		.content-title
+			.content-titlebox
+				h2 Светлый вариант галереи с описанием
+
+	.card.card_slim
+		- var text= '24 Сентября 2018';
+		include ../modules/_tag-box
+
+	.card.cardFull.cardFull-slider
+		.cardFull-slider-wrap.card-wrap.cardFull-wrap
+			.cardFull-slider__item
+				.cardFull-slider__itembox_dark
+					.card__imgbox.card__imgbox_xl(style='background-image: url(img/news-twothirds-img-01.jpg);')
+						img(src="img/news-twothirds-img-01.jpg", alt="image")
+					.card__info
+						.content-title
+							.content-titlebox
+								h3 Новые технологии на ВМЗ в 2019
+							.card-slider-number
+								span
+
+						.card__text
+							p
+								| Литейно-прокатный комплекс Выксунского металлургического завода (АО «ВМЗ», Нижегородская область, входит в состав Объединенной металлургической компании, АО «ОМК») за 10 лет работы произвел более 10,6 млн тонн горячекатаного рулонного проката, став важным звеном в полностью отечественной цепочке
+			.cardFull-slider__item
+				.cardFull-slider__itembox_dark
+					.card__imgbox.card__imgbox_xl(style='background-image: url(img/article-img-01.jpg);')
+						img(src="img/article-img-01.jpg", alt="image")
+					.card__info
+						.content-title
+							.content-titlebox
+								h3 Новые технологии на ВМЗ слайд2
+							.card-slider-number
+								span
+
+						.card__text
+							p
+								| Литейно-прокатный комплекс Выксунского металлургического завода (АО «ВМЗ», Нижегородская область, входит в состав Объединенной металлургической компании, АО «ОМК») за 10 лет работы произвел более 10,6 млн тонн горячекатаного рулонного проката, став важным звеном в полностью отечественной цепочке

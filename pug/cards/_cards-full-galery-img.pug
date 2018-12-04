@@ -1,0 +1,10 @@
+if cardSettings === undefined
+	- var cardSettings = {title: 'Заголовок', cardSize: 'xl', imgUrl: 'img/'};
+.cards
+	.card.cardFull-head_special
+		.content-title
+			.content-titlebox_dark
+				h2= cardSettings.title
+	.card.cardFull
+		.card__imgbox(class='card__imgbox_'+cardSettings.cardSize, style='background-image: url('+cardSettings.imgUrl+');')
+			img(src=cardSettings.imgUrl)

@@ -1,0 +1,18 @@
+extends modules/_base
+block vars
+	-var pageTitle = 'Галерея "Изображение"';
+block content
+	include page/_page-special-title
+
+	- var cardSettings = {title: 'Галерея - "Изображение", высота "360 px"', cardSize: 'xl', imgUrl: 'img/img-full-360.png'};
+	include cards/_cards-full-galery-img
+
+	- var cardSettings = {title: 'Галерея - "Изображение", высота "300 px"', cardSize: 'lg', imgUrl: 'img/img-full-300.png'};
+	include cards/_cards-full-galery-img	
+
+	- var cardSettings = {title: 'Галерея - "Изображение", высота "210 px"', cardSize: 'md', imgUrl: 'img/img-full-210.png'};
+	include cards/_cards-full-galery-img
+
+	include cards/_cards-full-slider-galery
+
+	include cards/_cards-full-slider-galery-imgfull
