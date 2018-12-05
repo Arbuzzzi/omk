@@ -797,6 +797,10 @@ h6,
 .sign-title__link {
   vertical-align: middle;
   font-size: 14px;
+  color: #a5a6aa;
+  -webkit-transition: 0.3s;
+  -o-transition: 0.3s;
+  transition: 0.3s;
 }
 
 .sign-title__link:first-child {
@@ -4376,7 +4380,7 @@ h2 span,
 
 @media screen and (min-width: 1024px) {
   .sign-title__link:hover {
-    text-decoration: underline;
+    color: #5e6167;
   }
 
   .breadcrumb__link:hover {

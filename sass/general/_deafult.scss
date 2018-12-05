@@ -89,12 +89,13 @@ h6, .h6,
 	&__link {
 		vertical-align: middle;
 		font-size: 14px;
-		// color: $special-color;
+		color: #a5a6aa;
+		transition: 0.3s;
 		&:first-child {
 			margin-left: 5px;
 		}
 		@include hover {
-			text-decoration: underline;
+			color: $basic-color;
 		}
 	}
 }
