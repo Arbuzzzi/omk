@@ -1,0 +1,54 @@
+extends modules/_base
+block vars
+	- var pageTitle = 'Галерея "Видео"';
+block content
+	include page/_page-special-title
+
+	- var cardSettings = {title: 'Галерея - "Видео"', cardSize: 'xl', imgUrl: 'img/img-full-360.png', advantClass: 'card__videobox'};
+	include cards/_cards-full-galery-img
+	.cards
+		.card.cardFull-head_special
+			.content-title
+				.content-titlebox_dark
+					h2 Галерея - "Видео-слайдер", тип "1"
+
+			.content-title
+				.content-titlebox
+					h2 Новые технологии на ВМЗ в 2019
+
+		.card.card_slim
+			- var text= '24 Сентября 2018';
+			include modules/_tag-box
+		include cards/_card-full-slider-video
+
+	.cards
+		.card.cardFull-head_special
+			.content-title
+				.content-titlebox_dark
+					h2 Галерея - "Видео-слайдер", тип "2"
+
+			.content-title
+				.content-titlebox
+					h2 Новые технологии на ВМЗ в 2019
+
+		.card.card_slim
+			- var text= '24 Сентября 2018';
+			- var cardSettings = {advantClass: 'card__videobox card__imgbox_xl'};
+			include modules/_tag-box
+		include cards/_card-half-slider-galery
+
+	.cards
+		.card.cardFull-head_special
+			.content-title
+				.content-titlebox_dark
+					h2 Галерея - "Видео-слайдер", тип "3"
+
+			.content-title
+				.content-titlebox
+					h2 Новые технологии на ВМЗ в 2019
+
+		.card.card_slim
+			- var text= '24 Сентября 2018';
+			- var cardSettings = {advantClass: 'card__videobox card__imgbox_sm'};
+			include modules/_tag-box
+		include cards/_card-third-slider

@@ -6,5 +6,5 @@ if cardSettings === undefined
 			.content-titlebox_dark
 				h2= cardSettings.title
 	.card.cardFull
-		.card__imgbox(class='card__imgbox_'+cardSettings.cardSize, style='background-image: url('+cardSettings.imgUrl+');')
+		.card__imgbox(class='card__imgbox_'+cardSettings.cardSize, class=cardSettings.advantClass, style='background-image: url('+cardSettings.imgUrl+');')
 			img(src=cardSettings.imgUrl)

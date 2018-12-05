@@ -29,6 +29,39 @@
 	&_advant-news {
 		border-bottom: 3px solid $dark-color;
 	}
+	&__videobox{
+		position: relative;
+		cursor: pointer;
+		@include before {
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			background-color: #000000;
+			opacity: 0.1;
+			transition: opacity 0.4s;
+		}
+		@include after {
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			background: url('../img/icon/play-btn.svg') center no-repeat;
+			background-size: auto 20%;
+			transition: opacity 0.4s;
+		}
+		@include hover {
+			&:before {
+				opacity: 0.3;
+			}
+			&:after {
+				opacity: 0.6;
+			}
+		}
+	}
+	&__imgwrap {
+		@include clearfix;
+	}
 	&__imgbox {
 		position: relative;
 		border-radius: 5px;		
@@ -45,7 +78,38 @@
 			height: 300px;
 		}
 		&_md {
+			height: 280px;
+		}
+		&_sm {
 			height: 210px;
+		}
+		&_full {
+			height: 300px;
+			width: 100%;
+		}
+		&_third {
+			float: left;
+			width: calc(33.33333% - 10px);
+			margin-right: 15px;
+			&:last-child {
+				margin-right: 0;
+			}
+		}
+		&_twothird {
+			float: left;
+			width: calc(66.66666% - 10px);
+			margin-right: 15px;
+			&:last-child {
+				margin-right: 0;
+			}
+		}
+		&_half {
+			float: left;
+			width: calc(50% - 7.5px);
+			margin-right: 15px;
+			&:last-child {
+				margin-right: 0;
+			}
 		}
 	}
 	&-warning-text {

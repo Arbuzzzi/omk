@@ -25,12 +25,18 @@
 		&_slim {
 			margin-bottom: 15px;
 		}
+		&:last-child {
+			margin-bottom: 0;
+		}
 	}
 	&-imgbox {
 		background: center no-repeat;
 		background-size: cover;
 		border-radius: 5px;
 		border: 1px solid #707070;
+		img {
+			display: none;
+		}
 		&_full {
 			height: 300px;
 			width: 100%;
@@ -38,7 +44,16 @@
 		&_third {
 			float: left;
 			width: calc(33.33333% - 10px);
-			height: 210px; 
+			height: 210px;
+			margin-right: 15px;
+			&:last-child {
+				margin-right: 0;
+			}
+		}
+		&_twothird {
+			float: left;
+			width: calc(66.66666% - 10px);
+			height: 210px;
 			margin-right: 15px;
 			&:last-child {
 				margin-right: 0;
