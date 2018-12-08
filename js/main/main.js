@@ -130,6 +130,7 @@ $(document).ready(function() {
 
 	// настройки показываются
 	$('#headerNavSetting').on('show.bs.collapse', function () {
+		var headerHeight = $('.header').actual('outerHeight');
 
 		// инициализация drag & drop
 		$( "#sortable" ).sortable();
@@ -149,7 +150,7 @@ $(document).ready(function() {
 			$('body').css({
 				overflow: 'hidden',
 				paddingRight: '17px',
-				paddingTop: positionContent
+				paddingTop: headerHeight
 			});			
 		} else {
 			$('body').css({
@@ -495,7 +496,6 @@ $(document).ready(function() {
 	});
 	var myHash = location.hash; //получаем значение хеша
 	//location.hash = ''; //очищаем хеш
-	// console.log(location);
 	$(window).on('load', function() {
 		var headerHeight = $('.header').outerHeight(); // высота хэдера
 
@@ -509,8 +509,7 @@ $(document).ready(function() {
 
 			$('html:not(:animated),body:not(:animated)').animate({scrollTop: elementToScrolling}, 800,
 				function () {
-					console.log(elementToScrolling);
-					console.log($(myHash).offset().top - headerHeight - 48);
+					
 				});
 		};	
 		
@@ -520,7 +519,6 @@ $(document).ready(function() {
 		var destination = 0;
 		// 		element = $(this).attr('href');
 		// 		headerHeight = $('.header').outerHeight();
-		// console.log($(element));
 		// if ($(element).offset() !== undefined) {
 		// 	destination = $(element).offset().top - headerHeight;
 
@@ -642,8 +640,9 @@ $(document).ready(function() {
 	// });
 
 	// ставим лайки
-	$('.like-button:not(.comment-button)').on('click', function(event) {
-		$(this).toggleClass('active');		
+	$(document).on('click', '.like-button:not(.comment-button)', function(event) {
+		$(this).toggleClass('active');
+		console.log('test');		
 	});
 
 	// скрываем показываем фильтры
@@ -851,18 +850,18 @@ $(document).ready(function() {
 
 	$('.cardFull-slider-wrap').on('init reInit afterChange', 
 		function(event, slick, currentSlide, nextSlide){
-			var status = $(this).find('.card-slider-number span');
+			var status = $(this).find('.card-slider-number span'),
+					slide = $(this).find('.card__imgbox');
+			slide.attr('data-current-slide', currentSlide);
 			//currentSlide is undefined on init -- set it to 0 in this case (currentSlide is 0 based)
 			var i = (currentSlide ? currentSlide : 0) + 1;
 			status.text(i + ' / ' + slick.slideCount);
-			console.log('init success');
 			
 	});
 
 	$('.cardFull-slider-wrap').slick({
 		// onInit: function() {
 		// 	$('.card-slider-number span').text(i + '/' + slick.slideCount);
-		// 	console.log('init success');
 		// },
 		prevArrow: '<div class="slider-arrow slider-arrow__left"></div>',
 		nextArrow: '<div class="slider-arrow slider-arrow__right"></div>',
@@ -909,9 +908,9 @@ $(document).ready(function() {
 		}
 	}
 	var elControlDeafultText;
-	$('.comment-box').on('click', '.comment-long__showbtn', function(event) {
+	$(document).on('click', '.comment-long__showbtn', function(event) {
 		var el = $(this),
-				elParent = event.delegateTarget,
+				elParent = el.parents('.comment-box'),
 				text = $(elParent).find('.comment__text > *'),
 				textBlock = $(elParent).find('.comment__text'),
 				textHeight = 0;
@@ -928,9 +927,10 @@ $(document).ready(function() {
 
 	/* Ответить на комментарий ----------------------------------------------------------------------- */
 	
-	var elDeafultText;
+	var elDeafultText,
+			formDuplicateShow = false;
 
-	$('.comment').on('click', '.comment__reply', function(event) {
+	$(document).on('click', '.comment__reply', function(event) {
 		var commentFormbox = $('#commentFormbox').clone(),
 				commentFormboxAppend,
 
@@ -939,14 +939,18 @@ $(document).ready(function() {
 				elParentID = elParent.attr('id'),
 
 				formActive = $(elControl).hasClass('form-active');
-				console.log('test');
+
 		event.stopImmediatePropagation()
-		commentFormboxAppend = commentFormboxCreate(event, commentFormbox);
+		commentFormboxAppend = commentFormboxCreate(elControl, commentFormbox);
 
 		if (!elControl.hasClass('form-active')) {
 			elControlDeafultText = elControl.text();
 		}
 
+		// проверяем где юзер отвечает на коммент
+		if (formDuplicateShow && $('.modalMain').hasClass('show')) { 
+			$('.form-duplicate').collapse('hide');
+		}
 
 		$('.form-duplicate').on('hidden.bs.collapse', function() {
 			$('.comment__reply').text(elControlDeafultText);
@@ -954,6 +958,7 @@ $(document).ready(function() {
 			$('.comment__reply').removeAttr('data-target');
 			$('.comment').removeClass('show-form');
 			$(this).collapse('dispose');
+			formDuplicateShow = false;
 			$(this).remove();
 		});
 
@@ -962,6 +967,7 @@ $(document).ready(function() {
 			elControl.text('Отменить');
 			$(this).collapse('dispose');
 			$(this).find('textarea').focus();
+			formDuplicateShow = true;
 		});
 		
 		if (!elControl.hasClass('form-active')) {
@@ -970,7 +976,7 @@ $(document).ready(function() {
 			
 			
 		} else {
-			$('.form-duplicate').collapse('hide');			
+			$('.form-duplicate').collapse('hide');
 		}
 
 		event.preventDefault();
@@ -986,12 +992,13 @@ $(document).ready(function() {
 			return $(addElement);			
 		}
 		function commentFormboxCreate(event, elClone) {
-			var eventParent = $(event.delegateTarget),
+			var eventParent = $($(event).parents('.comment-box'))
 					eventParentID = elParent.attr('id'),
 					eventParentTitle = eventParent.find('.comment__nickname:first').text(),
 					
 					elementID = $(elClone).attr('id'),
 					elementNew = $(elClone);
+					console.log(eventParent);
 
 			$(elClone).attr('id', elementID+'_'+eventParentID);
 			$(elClone).attr('data-parent', '#allComentators');
@@ -1002,4 +1009,174 @@ $(document).ready(function() {
 		}
 	});
 
+
+
+	/* modals -------------------------------------------------------------------------------- */
+
+	$('.modal').on('show.bs.modal', function(event) {
+		$('.header').css('padding-right', '17px');
+	});
+	$('.modal').on('hidden.bs.modal', function(event) {
+		$('.header').css('padding-right', '');
+	});
+
+	$('#modalImgBox').on('show.bs.modal', function(event) {
+		var modal 				= $(this),
+				modalContent  = modal.find('.modalMain__content'),
+
+				elControl 		= $(event.relatedTarget),
+				elAdd,
+
+				targetContent = $(elControl.data('target-content')).clone();
+		modalContent.html(targetContent);
+	});
+
+	$('.modalMain-slider-wrap').on('init reInit afterChange', 
+		function(event, slick, currentSlide, nextSlide){
+			// нумерация слайдов в модалке
+			var status = $('.slider-number'),
+					slide = $(this).find('.card__imgbox'),
+					i = (currentSlide ? currentSlide : 0) + 1,
+					currentLink = '<span class="slider-number-elem">'+'#'+i+'</span>',
+					statusInner = currentLink + ' из ' + slick.slideCount;
+
+			status.html(statusInner); 
+			
+	});
+
+	$('#modalContentSlider').on('show.bs.modal', function(event) {
+		var modal 				= $(this),
+				modalContent  = modal.find('.modalMain__content'),
+
+				elControl 		= $(event.relatedTarget),
+				elAdd,
+
+				targetContent 					 = $(elControl.data('target-content')).clone(),
+				targetContentSliderTitle = targetContent.find('.post-info').clone(),
+				targetComments					 = targetContent.find('.comments-dark').clone(),
+
+				sliderModal 		= modal.find('.modalMain-slider-wrap'),
+				sliderTitle 		= modal.find('.modalMain-slider-title'),
+				sliderComments 	= modal.find('.modalMain-comments');
+
+		event.stopImmediatePropagation();
+
+		modal.addClass('modalMain-preload');
+		elAdd = getElement(targetContent);
+
+		sliderModal.html(elAdd); // вставляем слайдер
+
+		sliderTitle.html(targetContentSliderTitle); // вставляем заголовок слайдера
+
+		sliderComments.html(targetComments); // вставляем блок комментариев
+
+
+		function getElement(el) {
+			var element = $(el),
+					elements;
+			element.find('.slick-cloned').remove();
+			elements = $(element.find('.card-image'))
+				.wrap('<div class="modalMain-slider__imgbox"></div>')
+				.parent()
+				.wrap('<div class="modalMain-slider__item"></div>')
+				.parent();
+			return elements;
+		}
+	});
+
+	$('#modalContentSlider').on('shown.bs.modal', function(event) {
+		var modal 				= $(this),
+				modalContent  = modal.find('.modalMain__content'),
+
+				elControl 		= $(event.relatedTarget),
+				elControlCurrent = elControl.data('current-slide'),
+				elAdd,
+
+				targetContent = $(elControl.data('target-content')).clone(),
+
+				sliderModal 	= modal.find('.modalMain-slider-wrap');
+
+
+		modal.css('padding-right', '');
+
+		$('#modalMainSliderTop').slick({
+			slidesToShow: 1,
+			slidesToScroll: 1,
+			initialSlide: elControlCurrent,
+			asNavFor: '#modalMainSliderBottom',
+			prevArrow: '<div class="slider-arrow \
+															slider-arrow__left \
+															modalMain-slider-arrow \
+															modalMain-slider-arrow__left"></div>',
+			nextArrow: '<div class="slider-arrow \
+															slider-arrow__right \
+															modalMain-slider-arrow \
+															modalMain-slider-arrow__right"></div>',
+		});
+
+		$('#modalMainSliderBottom').slick({
+			slidesToShow: 7,
+			slidesToScroll: 1,
+			initialSlide: elControlCurrent,
+			focusOnSelect: true,
+			asNavFor: '#modalMainSliderTop',
+			prevArrow: '<div class="slider-arrow \
+															slider-arrow__left \
+															modalMain-slider-arrow \
+															modalMain-slider-arrow__left"></div>',
+			nextArrow: '<div class="slider-arrow \
+															slider-arrow__right \
+															modalMain-slider-arrow \
+															modalMain-slider-arrow__right"></div>',
+		});
+		setTimeout(function () {
+			$('.preloader').fadeOut('300');
+			modal.removeClass('modalMain-preload');
+		}, 800) 
+
+	});
+
+	$('#modalContentSlider').on('hidden.bs.modal', function(event) {
+		var modal 				= $(this),
+				modalContent  = modal.find('.modalMain__content'),
+
+				elControl 		= $(event.relatedTarget),
+				elAdd,
+
+				sliderModal 	= modal.find('.modalMain-slider-wrap'),
+				targetContent = $(elControl.data('target-content')).clone();
+		modal.modal('dispose');
+		$(sliderModal).slick('unslick');
+		$('.preloader').stop().show();
+	});
+
+	$(document).on('click', '.slider-number-elem', function(event) {
+			var elEvent = $(this),
+
+					textArea = $('#modalContentSlider').find('.comment-form__textarea'),
+					textAreaPositionTop = textArea.position().top;
+
+					modalDialog = $('#modalContentSlider').find('.modal-dialog');
+			$('.form-duplicate').collapse('hide');	
+			$('#modalContentSlider')
+				.animate({
+					scrollTop: textAreaPositionTop,
+				}, 800, function(){
+					textArea.focus();
+				});
+			textArea.val(elEvent.text()+' ');
+			
+		});
+	$(document).on('click', '.modalMain-comments__curentImg', function(event) {
+		var element = $(this);
+		console.log(element.attr('href') - 1);
+		$('#modalContentSlider')
+			.animate({
+				scrollTop: 0,
+			}, 800, function(){
+				$('#modalMainSliderTop').slick('slickGoTo', parseInt(element.attr('href') - 1));
+			});
+
+		event.preventDefault();
+	});
 });

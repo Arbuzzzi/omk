@@ -38,7 +38,7 @@
 			width: 100%;
 			height: 100%;
 			background-color: #000000;
-			opacity: 0.1;
+			opacity: 0.3;
 			transition: opacity 0.4s;
 		}
 		@include after {
@@ -49,25 +49,36 @@
 			background: url('../img/icon/play-btn.svg') center no-repeat;
 			background-size: auto 20%;
 			transition: opacity 0.4s;
+			opacity: 0.6;
+			
 		}
 		@include hover {
 			&:before {
-				opacity: 0.3;
+				opacity: 0.1;
 			}
 			&:after {
-				opacity: 0.6;
+				opacity: 1;
 			}
 		}
 	}
 	&__imgwrap {
+		margin-bottom: 30px;
 		@include clearfix;
+		&_slim {
+			margin-bottom: 15px;
+		}
+		&:last-child {
+			margin-bottom: 0;
+		}
 	}
 	&__imgbox {
 		position: relative;
+		min-height: 210px;
+		overflow: hidden;
+
 		border-radius: 5px;		
 		background: $light-color center no-repeat;
 		background-size: cover;
-		overflow: hidden;
 		img {
 			display: none;
 		}
@@ -97,7 +108,7 @@
 		}
 		&_twothird {
 			float: left;
-			width: calc(66.66666% - 10px);
+			width: calc(66.66666% - 5px);
 			margin-right: 15px;
 			&:last-child {
 				margin-right: 0;
@@ -111,6 +122,11 @@
 				margin-right: 0;
 			}
 		}
+	}
+	&-image {
+		border-radius: 5px;
+		overflow: hidden;
+		// width: 1110px;
 	}
 	&-warning-text {
 		position: absolute;

@@ -1,6 +1,18 @@
 .card.cardFull.cardFull-slider
+	.post-info
+		.post-info__title
+			span.slider-number #54 из 82:
+			| Первый запуск цеха автоматизации процессов заводского производства 152
+		.post-info__like
+			.post-info__date 25.12.2018
+			.like-card.post-info__likebox
+				button.like-button
+					i.icon-like
+					span.like-count 2586
 	.cardFull-slider-wrap.card-wrap.cardFull-wrap
-		.cardFull-slider__item
-			.cardFull-slider__imgbox.card__imgbox(style='background-image: url(img/news-twothirds-img-01.jpg);')
-		.cardFull-slider__item
-			.cardFull-slider__imgbox.card__imgbox(style='background-image: url(img/article-img-01.jpg);')
+		- var imagesUrl = ['img/img-block-full-01.jpg', 'img/img-block-full-03.jpg', 'img/img-block-full-04.jpg', 'img/img-block-full-02.jpg'];
+		- var imagesUrl = imagesUrl.concat(imagesUrl);
+		each imgUrl in imagesUrl
+			.cardFull-slider__item
+				.cardFull-slider__imgbox.card__imgbox(style='background-image: url('+imgUrl+');', data-target="#modalContentSlider", data-toggle="modal",data-target-content='#cardModalSlider-01')
+					img.card-image(src=imgUrl)

@@ -1,0 +1,44 @@
+.post-info {
+	display: none;
+	padding: 15px 30px 20px;
+	@include clearfix;
+	&__title {
+		float: left;
+		max-width: 970px;
+		font-size: 22px;
+		line-height: 20px;
+		font-weight: 400;
+		color: $light-color;
+		text-align: left;
+		.slider-number {
+			color: $thin-color;
+			margin-right: 5px;
+		}		
+	}
+	&__like {
+		text-align: right;
+		@include clearfix;
+	}
+	&__likebox {
+		float: right;
+	}
+	&__date {
+		display: inline-block;
+		color: #bcbdc0;
+		font-size: 15px;
+		font-weight: 400;
+		line-height: 20px;
+		vertical-align: middle;
+	}
+	.like-button {
+		color: #bcbdc0;
+		font-size: 15px;
+		font-weight: 400;
+		@include hover {
+			color: $light-color;
+		}
+		&.active {
+			color: $special-color;
+		}
+	}
+}

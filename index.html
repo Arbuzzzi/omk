@@ -877,13 +877,42 @@
                   </div>
                 </div>
               </div>
-              <div class="card cardFull cardFull-slider">
-                <div class="cardFull-slider-wrap card-wrap cardFull-wrap">
-                  <div class="cardFull-slider__item">
-                    <div class="cardFull-slider__imgbox card__imgbox" style="background-image: url(img/news-twothirds-img-01.jpg);"></div>
+              <div class="cards" id="cardModalSlider-01">
+                <div class="card cardFull cardFull-slider">
+                  <div class="post-info">
+                    <div class="post-info__title"><span class="slider-number">#54 из 82:</span>Первый запуск цеха автоматизации процессов заводского производства 152</div>
+                    <div class="post-info__like">
+                      <div class="post-info__date">25.12.2018</div>
+                      <div class="like-card post-info__likebox">
+                        <button class="like-button"><i class="icon-like"></i><span class="like-count">2586</span></button>
+                      </div>
+                    </div>
                   </div>
-                  <div class="cardFull-slider__item">
-                    <div class="cardFull-slider__imgbox card__imgbox" style="background-image: url(img/article-img-01.jpg);"></div>
+                  <div class="cardFull-slider-wrap card-wrap cardFull-wrap">
+                    <div class="cardFull-slider__item">
+                      <div class="cardFull-slider__imgbox card__imgbox" style="background-image: url(img/img-block-full-01.jpg);" data-target="#modalContentSlider" data-toggle="modal" data-target-content="#cardModalSlider-01"><img class="card-image" src="img/img-block-full-01.jpg"></div>
+                    </div>
+                    <div class="cardFull-slider__item">
+                      <div class="cardFull-slider__imgbox card__imgbox" style="background-image: url(img/img-block-full-03.jpg);" data-target="#modalContentSlider" data-toggle="modal" data-target-content="#cardModalSlider-01"><img class="card-image" src="img/img-block-full-03.jpg"></div>
+                    </div>
+                    <div class="cardFull-slider__item">
+                      <div class="cardFull-slider__imgbox card__imgbox" style="background-image: url(img/img-block-full-04.jpg);" data-target="#modalContentSlider" data-toggle="modal" data-target-content="#cardModalSlider-01"><img class="card-image" src="img/img-block-full-04.jpg"></div>
+                    </div>
+                    <div class="cardFull-slider__item">
+                      <div class="cardFull-slider__imgbox card__imgbox" style="background-image: url(img/img-block-full-02.jpg);" data-target="#modalContentSlider" data-toggle="modal" data-target-content="#cardModalSlider-01"><img class="card-image" src="img/img-block-full-02.jpg"></div>
+                    </div>
+                    <div class="cardFull-slider__item">
+                      <div class="cardFull-slider__imgbox card__imgbox" style="background-image: url(img/img-block-full-01.jpg);" data-target="#modalContentSlider" data-toggle="modal" data-target-content="#cardModalSlider-01"><img class="card-image" src="img/img-block-full-01.jpg"></div>
+                    </div>
+                    <div class="cardFull-slider__item">
+                      <div class="cardFull-slider__imgbox card__imgbox" style="background-image: url(img/img-block-full-03.jpg);" data-target="#modalContentSlider" data-toggle="modal" data-target-content="#cardModalSlider-01"><img class="card-image" src="img/img-block-full-03.jpg"></div>
+                    </div>
+                    <div class="cardFull-slider__item">
+                      <div class="cardFull-slider__imgbox card__imgbox" style="background-image: url(img/img-block-full-04.jpg);" data-target="#modalContentSlider" data-toggle="modal" data-target-content="#cardModalSlider-01"><img class="card-image" src="img/img-block-full-04.jpg"></div>
+                    </div>
+                    <div class="cardFull-slider__item">
+                      <div class="cardFull-slider__imgbox card__imgbox" style="background-image: url(img/img-block-full-02.jpg);" data-target="#modalContentSlider" data-toggle="modal" data-target-content="#cardModalSlider-01"><img class="card-image" src="img/img-block-full-02.jpg"></div>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -3119,30 +3148,64 @@
           </div>
         </div>
       </div>
-      <!-- /.container-->
-      <!-- /.footer-->
-      <!-- jQuery-->
-      <script src="js/libs/jquery.min.js"></script>
-      <!-- jQuery-UI-->
-      <script src="jquery-ui-1.12.1.custom/jquery-ui.min.js"></script>
-      <script src="jquery-ui-1.12.1.custom/datepicker-ru.js"></script>
-      <script src="jquery-ui-1.12.1.custom/datepicker.extension.range.min.js"></script>
-      <script src="js/libs/jquery.dotdotdot.js"></script>
-      <!-- slick-->
-      <script src="slick/slick.min.js"></script>
-      <!-- Bootstrap-->
-      <script src="js/libs/bootstrap/bootstrap.bundle.min.js"></script>
-      <script src="js/libs/jquery.actual.min.js"></script>
-      <!-- Валидация-->
-      <script src="js/libs/validate/jquery.validate.min.js"></script>
-      <script src="js/libs/jquery.maskedinput.min.js"></script>
-      <!-- main script-->
-      <script src="js/main/main.js?0.2.1"></script>
-      <!--if lte IE 9
-      link(href='ie9/css/bootstrap-ie9.css', rel='stylesheet')
-      link(rel='stylesheet', href='ie9/css/style-ie9.css')
-      script(src='ie9/js/bootstrap-ie9.js')
-      -->
     </div>
+    <div class="modal fade modalMain" id="modalImgBox" tabindex="-1" role="dialog" aria-labelledby="modalImgBoxLabel" aria-hidden="true">
+      <div class="modal-dialog container" role="document">
+        <div class="row">
+          <div class="col-xl-12">
+            <div class="modal-content">
+              <div class="modalMain__content"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="modal fade modalMain" id="modalContentSlider" tabindex="-1" role="dialog" aria-labelledby="modalImgBoxLabel" aria-hidden="true">
+      <div class="modal-dialog container" role="document">
+        <div class="row">
+          <div class="col-xl-12">
+            <div class="modal-content">
+              <div class="preloader">
+                <div class="page-loader-circle"></div>
+              </div>
+              <div class="modalMain__content">
+                <div class="modalMain-slider">
+                  <div class="modalMain-slider-wrap" id="modalMainSliderTop"></div>
+                </div>
+                <div class="modalMain-slider-title"></div>
+                <div class="modalMain-slider modalMain-slider-bottom">
+                  <div class="modalMain-slider-wrap" id="modalMainSliderBottom"></div>
+                </div>
+                <div class="modalMain-comments"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- /.container-->
+    <!-- /.footer-->
+    <!-- jQuery-->
+    <script src="js/libs/jquery.min.js"></script>
+    <!-- jQuery-UI-->
+    <script src="jquery-ui-1.12.1.custom/jquery-ui.min.js"></script>
+    <script src="jquery-ui-1.12.1.custom/datepicker-ru.js"></script>
+    <script src="jquery-ui-1.12.1.custom/datepicker.extension.range.min.js"></script>
+    <script src="js/libs/jquery.dotdotdot.js"></script>
+    <!-- slick-->
+    <script src="slick/slick.min.js"></script>
+    <!-- Bootstrap-->
+    <script src="js/libs/bootstrap/bootstrap.bundle.min.js"></script>
+    <script src="js/libs/jquery.actual.min.js"></script>
+    <!-- Валидация-->
+    <script src="js/libs/validate/jquery.validate.min.js"></script>
+    <script src="js/libs/jquery.maskedinput.min.js"></script>
+    <!-- main script-->
+    <script src="js/main/main.js?0.2.1"></script>
+    <!--if lte IE 9
+    link(href='ie9/css/bootstrap-ie9.css', rel='stylesheet')
+    link(rel='stylesheet', href='ie9/css/style-ie9.css')
+    script(src='ie9/js/bootstrap-ie9.js')
+    -->
   </body>
 </html>

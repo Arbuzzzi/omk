@@ -1,0 +1,36 @@
+.comments-dark {
+	display: none;
+	margin-top: 30px;
+	padding: 15px 120px;
+	margin-bottom: 30px;
+	border-radius: 5px;
+	background-color: $basic-color;
+	.content-titlebox {
+		color: #eeefef;
+	}
+	.comment {
+		&-box {
+			text-align: left;
+			border-radius: 5px;
+			border: 1px solid #bcbdc0;
+			background-color: #eeefef;
+		}
+		&-form {
+			padding-bottom: 15px;
+			&__textarea {
+				background-color: #eeefef;
+			}
+		}
+		&-long__showbtn {
+			background-color: #eeefef;
+			&:before {
+				background-image: linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, #eeefef 100%);
+			}
+		}
+	}
+	.article-autor {
+		padding: 0 15px;
+		background-color: rgba(#fbfbfb, 0.3);
+		color: #eeefef;
+	}
+}

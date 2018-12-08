@@ -4,13 +4,13 @@ block vars
 block content
 	include page/_page-special-title
 
-	- var cardSettings = {title: 'Галерея - "Изображение", высота "360 px"', cardSize: 'xl', imgUrl: 'img/img-full-360.png'};
+	- var cardSettings = {title: 'Галерея - "Изображение", высота "360 px"', cardSize: 'xl', imgUrl: 'img/img-block-full-01.jpg', imgClass: 'card-image'};
 	include cards/_cards-full-galery-img
 
-	- var cardSettings = {title: 'Галерея - "Изображение", высота "300 px"', cardSize: 'lg', imgUrl: 'img/img-full-300.png'};
+	- var cardSettings = {title: 'Галерея - "Изображение", высота "300 px"', cardSize: 'lg', imgUrl: 'img/img-block-full-02.jpg', imgClass: 'card-image'};
 	include cards/_cards-full-galery-img	
 
-	- var cardSettings = {title: 'Галерея - "Изображение", высота "210 px"', cardSize: 'sm', imgUrl: 'img/img-full-210.png'};
+	- var cardSettings = {title: 'Галерея - "Изображение", высота "210 px"', cardSize: 'sm', imgUrl: 'img/img-block-full-03.jpg', imgClass: 'card-image'};
 	include cards/_cards-full-galery-img
 
 	include cards/_cards-full-galery-slider-text
@@ -34,3 +34,4 @@ block content
 	include cards/_cards-galery-slider-thirds-3x3
 
 	include cards/_cards-galery-slider-mosaic
+	

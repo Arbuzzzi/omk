@@ -24,11 +24,14 @@
 @import 'bootstrap/_dropdown.scss';
 @import 'bootstrap/_transitions.scss';
 @import 'bootstrap/_nav.scss';
+@import 'bootstrap/_modal.scss';
 
 // deafult style ------------------------
+@import 'general/_preloader.scss';
 @import 'general/_deafult.scss';
 @import 'general/_buttons.scss';
 @import 'general/_form.scss';
+@import 'general/_modalMain.scss';
 
 // main style ---------------------------
 @import '_header-scroll.scss';
@@ -43,4 +46,6 @@
 @import '_calendar.scss';
 @import '_article.scss';
 @import '_comment.scss';
+@import '_comment-dark.scss';
+@import '_post-info.scss';
 
