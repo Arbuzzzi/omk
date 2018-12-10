@@ -382,6 +382,22 @@ $(document).ready(function() {
 				$('#aside').removeAttr('style')
 			}	
 		}
+		
+		var positionScrollBottom = position+positionOne,
+				asidePositionBottom = parseInt($('#aside').css('margin-top'))+$('#aside').outerHeight();
+
+		if (positionScrollBottom < asidePositionBottom && currentScroll < position) {
+			$('#aside').css({
+				position: 'fixed',
+				bottom: 0,
+				top: 'auto',
+				marginTop: 0
+			});
+		}
+		console.log(position);
+		console.log(currentScroll);
+		console.log(position+positionOne);
+		console.log(parseInt($('#aside').css('margin-top'))+$('#aside').outerHeight());
 
 		// меню в обычном состоянии
 		$('*').tooltip('hide');
@@ -1103,7 +1119,7 @@ $(document).ready(function() {
 			slidesToShow: 1,
 			slidesToScroll: 1,
 			initialSlide: elControlCurrent,
-			asNavFor: '#modalMainSliderBottom',
+			// asNavFor: '#modalMainSliderBottom',
 			prevArrow: '<div class="slider-arrow \
 															slider-arrow__left \
 															modalMain-slider-arrow \
@@ -1119,7 +1135,8 @@ $(document).ready(function() {
 			slidesToScroll: 1,
 			initialSlide: elControlCurrent,
 			focusOnSelect: true,
-			asNavFor: '#modalMainSliderTop',
+			// centerMode: true,
+			// asNavFor: '#modalMainSliderTop',
 			prevArrow: '<div class="slider-arrow \
 															slider-arrow__left \
 															modalMain-slider-arrow \
@@ -1164,12 +1181,11 @@ $(document).ready(function() {
 				}, 800, function(){
 					textArea.focus();
 				});
-			textArea.val(elEvent.text()+' ');
+			textArea.val(textArea.val() + elEvent.text()+' ');
 			
 		});
 	$(document).on('click', '.modalMain-comments__curentImg', function(event) {
 		var element = $(this);
-		console.log(element.attr('href') - 1);
 		$('#modalContentSlider')
 			.animate({
 				scrollTop: 0,
@@ -1178,5 +1194,56 @@ $(document).ready(function() {
 			});
 
 		event.preventDefault();
+	});
+
+
+	var deafultTextBtn = $('#formMoreInputsControl').text();
+
+	$('#formMoreInputs').on('show.bs.collapse', function(event) {
+		var elControl = $('#formMoreInputsControl'),
+				elControlAltText = elControl.data('alt-text');
+
+		elControl.text(elControlAltText);
+		$('.form-sender').fadeOut('400');
+		$('.form__title_main').fadeOut('400');
+		$('.form__title_alt').fadeIn('400');
+		
+	});
+
+	$('#formMoreInputs').on('hide.bs.collapse', function(event) {
+		var elControl = $('#formMoreInputsControl');
+
+		elControl.text(deafultTextBtn);
+		$('.form-sender').fadeIn('400');
+		$('.form__title_alt').fadeOut('400');
+		$('.form__title_main').fadeIn('400');
+		
+	});
+	$('#formCheckbox').on('change', function() {
+			$('.form-slide-input').toggle('slide')
+	});
+
+	$('.article.collapse, .card.collapse').on('show.bs.collapse', function(event) {
+		$(this).find('.cardFull-slider-wrap').slick('unslick');
+		// $(this).addClass('modalMain-preload');
+		$('[data-target="#'+ $(this).attr('id') +'"]').addClass('active');
+		
+	});
+	$('.article.collapse, .card.collapse').on('shown.bs.collapse', function(event) {
+		var element = $(this);
+		$(this).find('.cardFull-slider-wrap').slick({
+			prevArrow: '<div class="slider-arrow slider-arrow__left"></div>',
+			nextArrow: '<div class="slider-arrow slider-arrow__right"></div>',
+		});
+		$('[data-target="#'+ $(this).attr('id') +'"]').addClass('active');
+		// setTimeout(function () {
+		// 	$('.preloader').fadeOut('300');
+		// 	element.removeClass('modalMain-preload');
+		// }, 800)
+	});
+
+	$('.article.collapse, .card.collapse').on('hide.bs.collapse', function(event) {
+		$('[data-target="#'+ $(this).attr('id') +'"]').removeClass('active');
+		
 	});
 });

@@ -132,6 +132,9 @@ section, .section {
 		
 	}
 }
+.footer {
+	margin-top: 100px;
+}
 
 .section_special-bg {
 	&:before, &:after {
@@ -268,4 +271,7 @@ section, .section {
 }
 .slick-slide {
 	font-size: 0;
+}
+.text-right {
+	text-align: right;
 }

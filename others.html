@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="slick/slick-theme.css">
     <link rel="stylesheet" href="slick/slick.css">
     <link href="css/style.css?0.2.3" rel="stylesheet">
-    <title>Комбинированные блоки | ОМК</title>
+    <title>Формы, таблицы и другие элементы | ОМК</title>
   </head>
   <body>
     <header class="header">
@@ -814,210 +814,258 @@
               <div class="card">
                 <div class="content-title">
                   <div class="content-titlebox content-titlebox_specialtitle">
-                    <h1>Комбинированные блоки</h1>
+                    <h1>Формы, таблицы и другие элементы</h1>
                   </div>
                 </div>
               </div>
-              <!-- Текст + Изображение, тип "Текст справа", с заголовком, кнопкой и без -->
-              <div class="cards">
-                <div class="card cardFull-head_special">
-                  <div class="content-title">
-                    <div class="content-titlebox_dark">
-                      <h4>Текст + Изображение, тип "Текст справа", с заголовком, кнопкой и без</h4>
+              <div class="card">
+                <form class="form">
+                  <div class="form__box form__box_title">
+                    <h3 class="form__title form__title_main">Заполните форму обращения</h3>
+                    <h3 class="form__title form__title_alt">Отправить форму от другого имени</h3>
+                  </div>
+                  <div class="form__box">
+                    <label class="form-label form-label_special" for="formSubject">Тема</label>
+                    <div class="form-sender"><span class="form__text">
+                         Сообщение будет отправлено от: <strong>Константинова Конcтантина </strong></span><span class="form__text">Сегодня: <strong>15 октября, 18:29 </strong>(МСК)</span></div>
+                    <input class="form__input" id="formSubject" type="text" placeholder="Введите тему обращения">
+                  </div>
+                  <div class="form__box text-right">
+                    <button class="form__button_more" id="formMoreInputsControl" type="button" data-toggle="collapse" data-target="#formMoreInputs" data-alt-text="Отменить">Отправить от другого имени</button>
+                  </div>
+                  <div class="form__group collapse" id="formMoreInputs">
+                    <div class="form__box">
+                      <label class="form-label" for="formFulName"><span>Ф.И.О.</span></label>
+                      <input class="form__input" id="formFulName" type="text" placeholder="Ваши Ф.И.О.">
+                    </div>
+                    <div class="form__box">
+                      <label class="form-label" for="formDepartment"><span>Подразделение</span></label>
+                      <input class="form__input" id="formDepartment" type="text" placeholder="Введите наименование подразделения">
+                    </div>
+                    <div class="form__box">
+                      <label class="form-label" for="formEmail"><span>Email</span></label>
+                      <input class="form__input" id="formEmail" type="email" placeholder="Введите ваш Email">
                     </div>
                   </div>
-                  <div class="content-title">
-                    <div class="content-titlebox">
-                      <h2>Новые технологии на ВМЗ в 2019</h2>
+                  <div class="form__box">
+                    <label class="form-label" for="formTextarea"><span>Текст обращения</span></label>
+                    <textarea class="form__textarea" id="formTextarea" placeholder="Введите текст обращения"></textarea>
+                  </div>
+                  <div class="form__box form__box_flex">
+                    <div class="form-checkbox">
+                      <label class="form-checkbox__label" for="formCheckbox">
+                        <input class="form-checkbox__input" id="formCheckbox" type="checkbox" name="form_copy"><span class="form-checkbox__text form-checkbox__text_thin">Отправить себе копию сообщения</span>
+                      </label>
+                      <div class="form-slide-input">
+                        <label class="form-label form-label_slim" for="formEmailCopy"><span>Дополнительный Email (необяз.):</span>
+                          <input class="form__input form__input_slim" id="formEmailCopy" type="email" placeholder="konstantinopolskiy.k@yandex.ru">
+                        </label>
+                      </div>
+                    </div>
+                    <div class="form__buttonbox">
+                      <button class="button form__button" type="submit">Отправить</button>
                     </div>
                   </div>
-                </div>
-                <div class="card cardThird">
-                  <div class="cardThird__imgbox card__imgbox" style="background-image: url(img/block-img-01.jpg);">
-                    <div class="card-warning-text hide">
-                      <p></p>
-                    </div>
-                  </div>
-                </div>
-                <div class="card cardTwoThirds">
-                  <div class="card__text cardTwoThirds__text">
-                    <p>Литейно-прокатный комплекс Выксунского металлургического завода (АО «ВМЗ», Нижегородская область, входит в состав Объединенной металлургической компании, АО «ОМК») за 10 лет работы произвел более 10,6 млн тонн горячекатаного рулонного проката, став важным звеном в полностью отечественной цепочке производства труб для нефтегазового комплекса.</p>
-                    <p>Литейно-прокатный комплекс - уникальное для России предприятие, в котором в единый технологический</p><a class="button card__more" href="#">Читать далее</a>
-                  </div>
-                </div>
-                <div class="card cardThird">
-                  <div class="cardThird__imgbox card__imgbox" style="background-image: url(img/block-img-02.jpg);">
-                    <div class="card-warning-text hide">
-                      <p></p>
-                    </div>
-                  </div>
-                </div>
-                <div class="card cardTwoThirds">
-                  <div class="card__text cardTwoThirds__text">
-                    <p>Литейно-прокатный комплекс Выксунского металлургического завода (АО «ВМЗ», Нижегородская область, входит в состав Объединенной металлургической компании, АО «ОМК») за 10 лет работы произвел более 10,6 млн тонн горячекатаного рулонного проката, став важным звеном в полностью отечественной цепочке производства труб для нефтегазового комплекса...</p>
-                    <p>Литейно-прокатный комплекс - уникальное для России предприятие, в котором в единый технологический процесс совмещены процесс совмещены процесс совмещены процесс совмещены процесс совмещены процесс совмещены процесс совмещены процесс совмещены процесс совмещены процесс совмещены процесс совмещены выплавка</p><a class="button card__more" href="#">Читать далее</a>
+                </form>
+              </div>
+              <div class="card card_slim">
+                <div class="content-title">
+                  <div class="content-titlebox">
+                    <h2>Таблица наименований регулярных мероприятий</h2>
                   </div>
                 </div>
               </div>
-              <!-- Текст + Изображение, тип "Текст слева", с заголовком, кнопкой и без-->
-              <div class="cards">
-                <div class="card cardFull-head_special">
-                  <div class="content-title">
-                    <div class="content-titlebox_dark">
-                      <h4>Текст + Изображение, тип "Текст слева", с заголовком, кнопкой и без</h4>
-                    </div>
-                  </div>
-                  <div class="content-title">
-                    <div class="content-titlebox">
-                      <h2>Новые технологии на ВМЗ в 2019</h2>
-                    </div>
-                  </div>
-                </div>
-                <div class="card cardTwoThirds">
-                  <div class="card__text cardTwoThirds__text">
-                    <p>Литейно-прокатный комплекс Выксунского металлургического завода (АО «ВМЗ», Нижегородская область, входит в состав Объединенной металлургической компании, АО «ОМК») за 10 лет работы произвел более 10,6 млн тонн горячекатаного рулонного проката, став важным звеном в полностью отечественной цепочке производства труб для нефтегазового комплекса.</p>
-                    <p>Литейно-прокатный комплекс - уникальное для России предприятие, в котором в единый технологический</p><a class="button card__more" href="#">Читать далее</a>
-                  </div>
-                </div>
-                <div class="card cardThird">
-                  <div class="cardThird__imgbox card__imgbox" style="background-image: url(img/block-img-05.jpg);">
-                    <div class="card-warning-text hide">
-                      <p></p>
-                    </div>
-                  </div>
-                </div>
-                <div class="card cardTwoThirds">
-                  <div class="card__text cardTwoThirds__text">
-                    <p>Литейно-прокатный комплекс Выксунского металлургического завода (АО «ВМЗ», Нижегородская область, входит в состав Объединенной металлургической компании, АО «ОМК») за 10 лет работы произвел более 10,6 млн тонн горячекатаного рулонного проката, став важным звеном в полностью отечественной цепочке производства труб для нефтегазового комплекса...</p>
-                    <p>Литейно-прокатный комплекс - уникальное для России предприятие, в котором в единый технологический процесс совмещены процесс совмещены процесс совмещены процесс совмещены процесс совмещены процесс совмещены процесс совмещены процесс совмещены процесс совмещены процесс совмещены процесс совмещены выплавка</p><a class="button card__more" href="#">Читать далее</a>
-                  </div>
-                </div>
-                <div class="card cardThird">
-                  <div class="cardThird__imgbox card__imgbox" style="background-image: url(img/block-img-06.jpg);">
-                    <div class="card-warning-text hide">
-                      <p></p>
-                    </div>
+              <div class="card">
+                <table class="table table-horizontal-line">
+                  <thead>
+                    <tr>
+                      <th>#</th>
+                      <th>Наименование</th>
+                      <th>Подразделение</th>
+                      <th>Описание</th>
+                      <th>Дата</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td># 10</td>
+                      <td>Система "Айсберг 34-М18-Т"</td>
+                      <td>Подразделение ВМЗ по настройке технических решений</td>
+                      <td>Программно-аппаратный комплекс для производства сложных изделий из металла</td>
+                      <td>23.12.2019</td>
+                    </tr>
+                    <tr>
+                      <td># 2451 отступ слева 15px</td>
+                      <td>База данных "МИГ"</td>
+                      <td>Подразделение ВМЗ по настройке технических решений</td>
+                      <td>Актуальная база для решений программного комплекса ТШГ-251, редакция 6250</td>
+                      <td>23.12.2019 Учитывается отступ в 15px справа</td>
+                    </tr>
+                    <tr>
+                      <td># 10</td>
+                      <td>Система "Айсберг 34-М18-Т"</td>
+                      <td>Подразделение ВМЗ по настройке технических решений</td>
+                      <td>Программно-аппаратный комплекс для производства сложных изделий из металла</td>
+                      <td>23.12.2019</td>
+                    </tr>
+                    <tr>
+                      <td># 2451 отступ слева 15px</td>
+                      <td>База данных "МИГ"</td>
+                      <td>Подразделение ВМЗ по настройке технических решений</td>
+                      <td>Актуальная база для решений программного комплекса ТШГ-251, редакция 6250</td>
+                      <td>23.12.2019 Учитывается отступ в 15px справа</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <div class="card card_slim">
+                <div class="content-title">
+                  <div class="content-titlebox">
+                    <h2>Другие стили таблиц</h2>
                   </div>
                 </div>
               </div>
-              <!-- Текст + Изображение, тип "2 колонки", возможность задать фикс. текст-->
-              <div class="cards">
-                <div class="card cardFull-head_special">
-                  <div class="content-title">
-                    <div class="content-titlebox_dark">
-                      <h4>Текст + Изображение, тип "2 колонки", возможность задать фикс. текст</h4>
-                    </div>
-                  </div>
-                  <div class="content-title">
-                    <div class="content-titlebox">
-                      <h2>Новые технологии на ВМЗ в 2019</h2>
-                    </div>
-                  </div>
-                </div>
-                <div class="card cardHalf">
-                  <div class="cardHalf-imgbox card__imgbox" style="background-image: url(img/block-img-03.jpg);">
-                    <div class="card-warning-text hide">
-                      <p></p>
-                    </div>
-                  </div>
-                  <div class="card__text cardHalf__text">
-                    <p>Конкурс «Проектный Олимп» проводится с 2014 года аналитическим центром при Правительстве Российской Федерации. С 2017 года в конкурсе могут принимать участие не только органы государственной власти.</p><a class="button card__more" href="#">Читать далее</a>
-                  </div>
-                </div>
-                <div class="card cardHalf">
-                  <div class="cardHalf-imgbox card__imgbox" style="background-image: url(img/block-img-08.jpg);">
-                    <div class="card-warning-text hide">
-                      <p></p>
-                    </div>
-                  </div>
-                  <div class="card__text cardHalf__text">
-                    <p>Конкурс «Проектный Олимп» проводится с 2014 года аналитическим центром при Правительстве Российской Федерации. С 2017 года в конкурсе могут принимать участие не только органы государственной власти, государственные корпорации и компании, а также частные компании, оказывающие наиболее значительное влияние на развитие экономики. Оценка в номинации «Лучший проект года» проводилась по методике Российской национальной ассоциации управления Российскойнациональнойассоциацииуправления</p><a class="button card__more" href="#">Читать далее</a>
+              <div class="card">
+                <table class="table table-all-line">
+                  <thead>
+                    <tr>
+                      <th>#</th>
+                      <th>Наименование</th>
+                      <th>Подразделение</th>
+                      <th>Описание</th>
+                      <th>Дата</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td># 10</td>
+                      <td>Система "Айсберг 34-М18-Т"</td>
+                      <td>Подразделение ВМЗ по настройке технических решений</td>
+                      <td>Программно-аппаратный комплекс для производства сложных изделий из металла</td>
+                      <td>23.12.2019</td>
+                    </tr>
+                    <tr>
+                      <td># 2451 отступ слева 15px</td>
+                      <td>База данных "МИГ"</td>
+                      <td>Подразделение ВМЗ по настройке технических решений</td>
+                      <td>Актуальная база для решений программного комплекса ТШГ-251, редакция 6250</td>
+                      <td>23.12.2019 Учитывается отступ в 15px справа</td>
+                    </tr>
+                    <tr>
+                      <td># 10</td>
+                      <td>Система "Айсберг 34-М18-Т"</td>
+                      <td>Подразделение ВМЗ по настройке технических решений</td>
+                      <td>Программно-аппаратный комплекс для производства сложных изделий из металла</td>
+                      <td>23.12.2019</td>
+                    </tr>
+                    <tr>
+                      <td># 2451 отступ слева 15px</td>
+                      <td>База данных "МИГ"</td>
+                      <td>Подразделение ВМЗ по настройке технических решений</td>
+                      <td>Актуальная база для решений программного комплекса ТШГ-251, редакция 6250</td>
+                      <td>23.12.2019 Учитывается отступ в 15px справа</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <div class="card">
+                <table class="table table-thin-head">
+                  <thead>
+                    <tr>
+                      <th>#</th>
+                      <th>Наименование</th>
+                      <th>Подразделение</th>
+                      <th>Описание</th>
+                      <th>Дата</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td># 10</td>
+                      <td>Система "Айсберг 34-М18-Т"</td>
+                      <td>Подразделение ВМЗ по настройке технических решений</td>
+                      <td>Программно-аппаратный комплекс для производства сложных изделий из металла</td>
+                      <td>23.12.2019</td>
+                    </tr>
+                    <tr>
+                      <td># 2451 отступ слева 15px</td>
+                      <td>База данных "МИГ"</td>
+                      <td>Подразделение ВМЗ по настройке технических решений</td>
+                      <td>Актуальная база для решений программного комплекса ТШГ-251, редакция 6250</td>
+                      <td>23.12.2019 Учитывается отступ в 15px справа</td>
+                    </tr>
+                    <tr>
+                      <td># 10</td>
+                      <td>Система "Айсберг 34-М18-Т"</td>
+                      <td>Подразделение ВМЗ по настройке технических решений</td>
+                      <td>Программно-аппаратный комплекс для производства сложных изделий из металла</td>
+                      <td>23.12.2019</td>
+                    </tr>
+                    <tr>
+                      <td># 2451 отступ слева 15px</td>
+                      <td>База данных "МИГ"</td>
+                      <td>Подразделение ВМЗ по настройке технических решений</td>
+                      <td>Актуальная база для решений программного комплекса ТШГ-251, редакция 6250</td>
+                      <td>23.12.2019 Учитывается отступ в 15px справа</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <div class="card">
+                <table class="table table-thin-head table-light table-all-line">
+                  <thead>
+                    <tr>
+                      <th>#</th>
+                      <th>Наименование</th>
+                      <th>Подразделение</th>
+                      <th>Описание</th>
+                      <th>Дата</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td># 10</td>
+                      <td>Система "Айсберг 34-М18-Т"</td>
+                      <td>Подразделение ВМЗ по настройке технических решений</td>
+                      <td>Программно-аппаратный комплекс для производства сложных изделий из металла</td>
+                      <td>23.12.2019</td>
+                    </tr>
+                    <tr>
+                      <td># 2451 отступ слева 15px</td>
+                      <td>База данных "МИГ"</td>
+                      <td>Подразделение ВМЗ по настройке технических решений</td>
+                      <td>Актуальная база для решений программного комплекса ТШГ-251, редакция 6250</td>
+                      <td>23.12.2019 Учитывается отступ в 15px справа</td>
+                    </tr>
+                    <tr>
+                      <td># 10</td>
+                      <td>Система "Айсберг 34-М18-Т"</td>
+                      <td>Подразделение ВМЗ по настройке технических решений</td>
+                      <td>Программно-аппаратный комплекс для производства сложных изделий из металла</td>
+                      <td>23.12.2019</td>
+                    </tr>
+                    <tr>
+                      <td># 2451 отступ слева 15px</td>
+                      <td>База данных "МИГ"</td>
+                      <td>Подразделение ВМЗ по настройке технических решений</td>
+                      <td>Актуальная база для решений программного комплекса ТШГ-251, редакция 6250</td>
+                      <td>23.12.2019 Учитывается отступ в 15px справа</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <div class="card card_slim">
+                <div class="content-title">
+                  <div class="content-titlebox_dark content-titlebox_collapse" data-toggle="collapse" data-target="#articleCollapse01">
+                    <h4>Это заголовок-спойлер и под ним скрывается текстовый блок или галерея</h4>
                   </div>
                 </div>
               </div>
-              <!-- Текст + Изображение, тип "Текст справа (мини)", с заголовком и без-->
-              <div class="cards">
-                <div class="card cardFull-head_special">
-                  <div class="content-title">
-                    <div class="content-titlebox_dark">
-                      <h4>Текст + Изображение, тип "2 колонки", возможность задать фикс. текст</h4>
-                    </div>
-                  </div>
-                  <div class="content-title">
-                    <div class="content-titlebox">
-                      <h2>Благодарность всем сотрудникам подразделения</h2>
-                    </div>
-                  </div>
-                </div>
-                <div class="card cardFull-head_special">
-                  <div class="tag">
-                    <div class="card-date"><span>24 Сентября 2018</span></div>
-                  </div>
-                  <div class="like-card">
-                    <button class="like-button comment-button"><i class="icon-comment"></i><span class="like-count">23</span></button>
-                    <button class="like-button"><i class="icon-like"></i><span class="like-count">1286</span></button>
-                  </div>
-                </div>
-                <div class="card cardMin">
-                  <div class="cardMin__imgbox card__imgbox" style="background-image: url(img/block-img-01.jpg);">
-                    <div class="card-warning-text hide">
-                      <p></p>
-                    </div>
-                  </div>
-                </div>
-                <div class="card cardMinOther">
-                  <div class="card__text cardMinOther__text">
-                    <p>Литейно-прокатный комплекс Выксунского металлургического завода (АО «ВМЗ», Нижегородская область, входит в состав Объединенной металлургической компании, АО «ОМК») за 10 лет работы произвел более 10,6 млн тонн горячекатаного рулонного проката, став важным звеном в полностью отечественной цепочке производства труб для нефтегазового комплекса.</p>
-                    <p>Литейно-прокатный комплекс - уникальное для России предприятие, в котором в единый технологический</p><a class="button card__more" href="#">Читать далее</a>
-                  </div>
-                </div>
-                <div class="card cardMin">
-                  <div class="cardMin__imgbox card__imgbox" style="background-image: url(img/block-img-09.jpg);">
-                    <div class="card-warning-text hide">
-                      <p></p>
-                    </div>
-                  </div>
-                </div>
-                <div class="card cardMinOther">
-                  <div class="card__text cardMinOther__text">
-                    <p>Литейно-прокатный комплекс Выксунского металлургического завода (АО «ВМЗ», Нижегородская область, входит в состав Объединенной металлургической компании, АО «ОМК») за 10 лет работы произвел более 10,6 млн тонн горячекатаного рулонного проката, став важным звеном в полностью отечественной цепочке производства труб для нефтегазового комплекса.</p>
-                    <p>Литейно-прокатный комплекс - уникальное для России предприятие, в котором в единый технологический</p><a class="button card__more" href="#">Читать далее</a>
-                  </div>
-                </div>
-                <div class="card cardMin">
-                  <div class="cardMin__imgbox card__imgbox" style="background-image: url(img/block-img-04.jpg);">
-                    <div class="card-warning-text hide">
-                      <p></p>
-                    </div>
-                  </div>
-                </div>
-                <div class="card cardMinOther">
-                  <div class="card__text cardMinOther__text">
-                    <p>Литейно-прокатный комплекс Выксунского металлургического завода (АО «ВМЗ», Нижегородская область, входит в состав Объединенной металлургической компании, АО «ОМК») за 10 лет работы произвел более 10,6 млн тонн горячекатаного рулонного проката, став важным звеном в полностью отечественной цепочке производства труб для нефтегазового комплекса.</p><a class="button card__more" href="#">Читать далее</a>
-                  </div>
-                </div>
-              </div>
-              <!-- Текст-->
-              <article class="article cards">
-                <div class="card cardFull-head_special">
-                  <div class="content-title">
-                    <div class="content-titlebox_dark">
-                      <h4>Текст</h4>
-                    </div>
-                  </div>
-                  <div class="tag">
-                    <div class="card-date card-date_big"><span>24 Сентября 2018</span></div>
-                  </div>
-                  <div class="like-card">
-                    <button class="like-button comment-button"><i class="icon-comment"></i><span class="like-count">23</span></button>
-                    <button class="like-button"><i class="icon-like"></i><span class="like-count">1286</span></button>
-                  </div>
-                </div>
+              <article class="collapse article" id="articleCollapse01">
                 <div class="card">
-                  <div class="content-title">
-                    <div class="article-title content-titlebox">
-                      <h2>Более 10,6 млн тонн рулонного проката произвел литейно-прокатный комплекс ВМЗ за 10 лет работы</h2>
-                    </div>
+                  <div class="article-text">
+                    <p>Литейно-прокатный комплекс Выксунского металлургического завода (АО «ВМЗ», Нижегородская область, входит в состав Объединенной металлургической компании, АО «ОМК») за 10 лет работы произвел более 10,6 млн тонн горячекатаного рулонного проката, став важным звеном в полностью отечественной цепочке</p>
+                    <p>«Основной итог десятилетней работы ЛПК - возможность производить трубные марки стали самого ответственного назначения в самые короткие сроки. Сегодня по производственным показателям ЛПК является лучшим среди предприятий аналогичного класса в мире. Мы не стоим на месте, планируем увеличить объем производства на 20%, до 1,5 млн тонн проката в год, осваиваем новые марки стали, которые востребованы отечественной топливно-энергетической отраслью», - отметил председатель Совета директоров ОМК Анатолий Седых.</p>
                   </div>
                   <div class="article-quote">
                     <blockquote class="article-blockquote">«Металлургия – базовая отрасль промышленности, одна из основных. Не развивая производство продукции из стали, не развивая производство листа, труб, колес для железнодорожных вагонов мы будем не конкурентоспособны. Такие предприятия, где используются современные технологии и оборудование, где оптимизированы все бизнес-процессы, где активно применяются цифровые технологии, позволяют развивать всю нашу промышленность. ВМЗ выпускает конкурентоспособную продукцию, аналогов которой в мире не так много. Можно только пожелать успехов предприятию, порадоваться за регион. Что еще важно: предприятие выполняет социальные обязательства, развивая территории, на которых оно работает», - отметил после посещения ВМЗ заместитель министра промышленности и торговли России Виктор Евтухов.</blockquote>
@@ -1027,348 +1075,126 @@
                     <p>«Выксунский металлургический завод – не только один из крупнейших налогоплательщиков Нижегородской области, это еще яркий пример корпоративной социальной ответственности. Коллеги из ОМК показывают пример как необходимо взаимодействовать с местным самоуправлением, с региональными властями для того, чтобы жизнь выксунцев стала лучше. У компании много новых проектов развития производства в Выксе, вся необходимая поддержка от правительства области будет оказана», - сказал исполняющий обязанности заместителя губернатора, заместителя председателя Правительства Нижегородской области Игорь Носов.</p>
                     <p>«Основной итог десятилетней работы ЛПК - возможность производить трубные марки стали самого ответственного назначения в самые короткие сроки. Сегодня по производственным показателям ЛПК является лучшим среди предприятий аналогичного класса в мире. Мы не стоим на месте, планируем увеличить объем производства на 20%, до 1,5 млн тонн проката в год, осваиваем новые марки стали, которые востребованы отечественной топливно-энергетической отраслью», - отметил председатель Совета директоров ОМК Анатолий Седых.</p>
                   </div>
+                  <div class="article-imgwrap">
+                    <div class="article-imgbox article-imgbox_third" style="background-image: url(img/article-img-02.jpg)"></div>
+                    <div class="article-imgbox article-imgbox_third" style="background-image: url(img/article-img-03.jpg)"></div>
+                    <div class="article-imgbox article-imgbox_third" style="background-image: url(img/article-img-04.jpg)"></div>
+                  </div>
                   <div class="article-text">
                     <h3>СПРАВКА</h3>
                     <p>Десятилетняя история литейно-прокатного комплекса – это история высоких достижений: только в течение нескольких последних лет коллектив ЛПК установил десятки производственных рекордов. Из года в год литейно-прокатный комплекс неизменно подтверждает статус одного из самых эффективных металлургических производств страны, объемы выпуска стали неоднократно превышали расчётную мощность комплекса.</p>
                     <p>Сегодня в комплексе работает около 1200 сотрудников.</p>
                   </div>
-                  <div class="article-autor"><a class="hashtag" href="#">#статья</a><a class="hashtag" href="#">#событие2019</a><a class="hashtag" href="#">#фамилия</a><a class="hashtag" href="#">#справочное_слово</a>
-                    <p>Автор статьи: Елена Мацинова</p>
-                  </div>
                 </div>
               </article>
-              <!-- Логотипы или большие кнопки-->
-              <div class="cards">
-                <div class="card cardFull-head_special">
-                  <div class="content-title">
-                    <div class="content-titlebox_dark">
-                      <h4>Логотипы или большие кнопки</h4>
-                    </div>
-                  </div>
-                </div>
-                <div class="card cardFull-head_special">
-                  <div class="content-title">
-                    <div class="content-titlebox">
-                      <h2>Логотипы партнеров мероприятия</h2>
-                    </div>
-                  </div>
-                </div>
-                <div class="card cardFull-head_special">
-                  <div class="card-logos">
-                    <div class="card-logo"><a class="card-logo__imgbox"><img src="img/logo.png"></a></div>
-                    <div class="card-logo"><a class="card-logo__imgbox"><img src="img/logo.png"></a></div>
-                    <div class="card-logo"><a class="card-logo__imgbox"><img src="img/logo.png"></a></div>
-                    <div class="card-logo"><a class="card-logo__imgbox"><img src="img/logo.png"></a></div>
-                    <div class="card-logo"><a class="card-logo__imgbox"><img src="img/logo.png"></a></div>
-                  </div>
-                </div>
-                <div class="card cardFull-head_special">
-                  <div class="content-title">
-                    <div class="content-titlebox">
-                      <h2>Логотипы дочерних предприятий компании</h2>
-                    </div>
-                  </div>
-                </div>
-                <div class="card cardFull-head_special">
-                  <div class="card-logos">
-                    <div class="card-logo"><a class="card-logo__imgbox"><img src="img/logo.png"></a></div>
-                    <div class="card-logo"><a class="card-logo__imgbox"><img src="img/logo.png"></a></div>
-                    <div class="card-logo"><a class="card-logo__imgbox"><img src="img/logo.png"></a></div>
-                    <div class="card-logo"><a class="card-logo__imgbox"><img src="img/logo.png"></a></div>
-                    <div class="card-logo"><a class="card-logo__imgbox"><img src="img/logo.png"></a></div>
-                    <div class="card-logo"><a class="card-logo__imgbox"><img src="img/logo.png"></a></div>
-                    <div class="card-logo"><a class="card-logo__imgbox"><img src="img/logo.png"></a></div>
-                    <div class="card-logo"><a class="card-logo__imgbox"><img src="img/logo.png"></a></div>
-                    <div class="card-logo"><a class="card-logo__imgbox"><img src="img/logo.png"></a></div>
-                    <div class="card-logo"><a class="card-logo__imgbox"><img src="img/logo.png"></a></div>
+              <div class="card card_slim">
+                <div class="content-title">
+                  <div class="content-titlebox_dark content-titlebox_collapse" data-toggle="collapse" data-target="#articleCollapseSlider01">
+                    <h4>Контент-слайдер - это многостраничный спойлер</h4>
                   </div>
                 </div>
               </div>
-              <!-- Блоки блога-->
-              <div class="cards">
-                <div class="card cardFull-head_special">
-                  <div class="content-title">
-                    <div class="content-titlebox_dark">
-                      <h4>Блоки блога</h4>
-                    </div>
-                  </div>
-                </div>
-                <div class="card cardFull-head_special">
-                  <div class="content-title">
-                    <div class="content-titlebox">
-                      <h2>Блоги 2018</h2>
-                    </div>
-                  </div>
-                </div>
-                <div class="card card-slider cardThird-slider">
-                  <div class="card-wrap card-slider-wrap cardThird-slider-wrap">
-                    <div class="card-slider__item cardThird-slider__item">
-                      <div class="cardThird-slider__imgbox card__imgbox" style="background-image: url(img/blog-img-01.jpg);">
-                        <div class="card-warning-text hide">
-                          <p></p>
-                        </div>
-                      </div>
-                      <div class="card__content cardThird__content">
-                        <div class="tagbox">
-                          <div class="tag">
-                            <button class="button button-tag">Константинов Константин</button>
-                          </div>
-                          <div class="like-card">
-                            <button class="like-button comment-button"><i class="icon-comment"></i><span class="like-count">23</span></button>
-                            <button class="like-button"><i class="icon-like"></i><span class="like-count">1286</span></button>
+              <div class="card cardFull cardFull-slider collapse" id="articleCollapseSlider01">
+                <div class="cardFull-slider-wrap card-wrap cardFull-wrap">
+                  <div class="cardFull-slider__item">
+                    <article class="article-slider article" id="articleCollapse01">
+                      <div class="card">
+                        <div class="content-title">
+                          <div class="article-title content-titlebox">
+                            <h3>День металлурга</h3>
                           </div>
                         </div>
-                        <div class="card__title cardThird__title"><a href="#">Как вам прошедший концерт?</a></div>
-                        <div class="card-date"><span>24 Сентября 2018</span></div>
-                      </div>
-                    </div>
-                    <div class="card-slider__item cardThird-slider__item">
-                      <div class="cardThird-slider__imgbox card__imgbox" style="background-image: url(img/blog-img-02.jpg);">
-                        <div class="card-warning-text hide">
-                          <p></p>
+                        <div class="article-imgwrap">
+                          <div class="article-imgbox article-imgbox_full" style="background-image: url(img/news-twothirds-img-01.jpg);"></div>
+                        </div>
+                        <div class="article-quote">
+                          <div class="article-text">
+                            <p>Литейно-прокатный комплекс Выксунского металлургического завода (АО «ВМЗ», Нижегородская область, входит в состав Объединенной металлургической компании, АО «ОМК») за 10 лет работы произвел более 10,6 млн тонн горячекатаного рулонного проката, став важным звеном в полностью отечественной цепочке</p>
+                            <p>«Основной итог десятилетней работы ЛПК - возможность производить трубные марки стали самого ответственного назначения в самые короткие сроки. Сегодня по производственным показателям ЛПК является лучшим среди предприятий аналогичного класса в мире. Мы не стоим на месте, планируем увеличить объем производства на 20%, до 1,5 млн тонн проката в год, осваиваем новые марки стали, которые востребованы отечественной топливно-энергетической отраслью», - отметил председатель Совета директоров ОМК Анатолий Седых.</p>
+                          </div>
+                          <blockquote class="article-blockquote">«Металлургия – базовая отрасль промышленности, одна из основных. Не развивая производство продукции из стали, не развивая производство листа, труб, колес для железнодорожных вагонов мы будем не конкурентоспособны. Такие предприятия, где используются современные технологии и оборудование, где оптимизированы все бизнес-процессы, где активно применяются цифровые технологии, позволяют развивать всю нашу промышленность. ВМЗ выпускает конкурентоспособную продукцию, аналогов которой в мире не так много. Можно только пожелать успехов предприятию, порадоваться за регион. Что еще важно: предприятие выполняет социальные обязательства, развивая территории, на которых оно работает», - отметил после посещения ВМЗ заместитель министра промышленности и торговли России Виктор Евтухов.</blockquote>
+                        </div>
+                        <div class="article-text">
+                          <p>Литейно-прокатный комплекс Выксунского металлургического завода (АО «ВМЗ», Нижегородская область, входит в состав Объединенной металлургической компании, АО «ОМК») за 10 лет работы произвел более 10,6 млн тонн горячекатаного рулонного проката, став важным звеном в полностью отечественной цепочке</p>
+                          <p>«Выксунский металлургический завод – не только один из крупнейших налогоплательщиков Нижегородской области, это еще яркий пример корпоративной социальной ответственности. Коллеги из ОМК показывают пример как необходимо взаимодействовать с местным самоуправлением, с региональными властями для того, чтобы жизнь выксунцев стала лучше. У компании много новых проектов развития производства в Выксе, вся необходимая поддержка от правительства области будет оказана», - сказал исполняющий обязанности заместителя губернатора, заместителя председателя Правительства Нижегородской области Игорь Носов.</p>
+                          <p>«Основной итог десятилетней работы ЛПК - возможность производить трубные марки стали самого ответственного назначения в самые короткие сроки. Сегодня по производственным показателям ЛПК является лучшим среди предприятий аналогичного класса в мире. Мы не стоим на месте, планируем увеличить объем производства на 20%, до 1,5 млн тонн проката в год, осваиваем новые марки стали, которые востребованы отечественной топливно-энергетической отраслью», - отметил председатель Совета директоров ОМК Анатолий Седых.</p>
+                        </div>
+                        <div class="article-imgwrap">
+                          <div class="article-imgbox article-imgbox_third" style="background-image: url(img/article-img-02.jpg)"></div>
+                          <div class="article-imgbox article-imgbox_third" style="background-image: url(img/article-img-03.jpg)"></div>
+                          <div class="article-imgbox article-imgbox_third" style="background-image: url(img/article-img-04.jpg)"></div>
+                        </div>
+                        <div class="article-text">
+                          <h3>СПРАВКА</h3>
+                          <p>Десятилетняя история литейно-прокатного комплекса – это история высоких достижений: только в течение нескольких последних лет коллектив ЛПК установил десятки производственных рекордов. Из года в год литейно-прокатный комплекс неизменно подтверждает статус одного из самых эффективных металлургических производств страны, объемы выпуска стали неоднократно превышали расчётную мощность комплекса.</p>
+                          <p>Сегодня в комплексе работает около 1200 сотрудников.</p>
+                        </div>
+                        <div class="article-autor"><a class="hashtag" href="#">#статья</a><a class="hashtag" href="#">#событие2019</a><a class="hashtag" href="#">#фамилия</a><a class="hashtag" href="#">#справочное_слово</a>
+                          <p>Автор статьи: Елена Мацинова</p>
                         </div>
                       </div>
-                      <div class="card__content cardThird__content">
-                        <div class="tagbox">
-                          <div class="tag">
-                            <button class="button button-tag">Мацинова Елена</button>
-                          </div>
-                          <div class="like-card">
-                            <button class="like-button comment-button"><i class="icon-comment"></i><span class="like-count">23</span></button>
-                            <button class="like-button"><i class="icon-like"></i><span class="like-count">1286</span></button>
-                          </div>
+                    </article>
+                  </div>
+                  <div class="cardFull-slider__item">
+                    <article class="article-slider article" id="articleCollapse01">
+                      <div class="card">
+                        <div class="article-text">
+                          <p>Литейно-прокатный комплекс Выксунского металлургического завода (АО «ВМЗ», Нижегородская область, входит в состав Объединенной металлургической компании, АО «ОМК») за 10 лет работы произвел более 10,6 млн тонн горячекатаного рулонного проката, став важным звеном в полностью отечественной цепочке</p>
+                          <p>«Основной итог десятилетней работы ЛПК - возможность производить трубные марки стали самого ответственного назначения в самые короткие сроки. Сегодня по производственным показателям ЛПК является лучшим среди предприятий аналогичного класса в мире. Мы не стоим на месте, планируем увеличить объем производства на 20%, до 1,5 млн тонн проката в год, осваиваем новые марки стали, которые востребованы отечественной топливно-энергетической отраслью», - отметил председатель Совета директоров ОМК Анатолий Седых.</p>
                         </div>
-                        <div class="card__title cardThird__title"><a href="#">Хочется лета, а вокруг одни офисы! Поеду на Ямайку!</a></div>
-                        <div class="card-date"><span>24 Сентября 2018</span></div>
-                      </div>
-                    </div>
-                    <div class="card-slider__item cardThird-slider__item">
-                      <div class="cardThird-slider__imgbox card__imgbox" style="background-image: url(img/blog-img-03.jpg);">
-                        <div class="card-warning-text hide">
-                          <p></p>
+                        <div class="article-quote">
+                          <blockquote class="article-blockquote">«Металлургия – базовая отрасль промышленности, одна из основных. Не развивая производство продукции из стали, не развивая производство листа, труб, колес для железнодорожных вагонов мы будем не конкурентоспособны. Такие предприятия, где используются современные технологии и оборудование, где оптимизированы все бизнес-процессы, где активно применяются цифровые технологии, позволяют развивать всю нашу промышленность. ВМЗ выпускает конкурентоспособную продукцию, аналогов которой в мире не так много. Можно только пожелать успехов предприятию, порадоваться за регион. Что еще важно: предприятие выполняет социальные обязательства, развивая территории, на которых оно работает», - отметил после посещения ВМЗ заместитель министра промышленности и торговли России Виктор Евтухов.</blockquote>
                         </div>
-                      </div>
-                      <div class="card__content cardThird__content">
-                        <div class="tagbox">
-                          <div class="tag">
-                            <button class="button button-tag">Андреевский Андрей</button>
-                          </div>
-                          <div class="like-card">
-                            <button class="like-button comment-button"><i class="icon-comment"></i><span class="like-count">23</span></button>
-                            <button class="like-button"><i class="icon-like"></i><span class="like-count">1286</span></button>
-                          </div>
+                        <div class="article-text">
+                          <p>Литейно-прокатный комплекс Выксунского металлургического завода (АО «ВМЗ», Нижегородская область, входит в состав Объединенной металлургической компании, АО «ОМК») за 10 лет работы произвел более 10,6 млн тонн горячекатаного рулонного проката, став важным звеном в полностью отечественной цепочке</p>
+                          <p>«Выксунский металлургический завод – не только один из крупнейших налогоплательщиков Нижегородской области, это еще яркий пример корпоративной социальной ответственности. Коллеги из ОМК показывают пример как необходимо взаимодействовать с местным самоуправлением, с региональными властями для того, чтобы жизнь выксунцев стала лучше. У компании много новых проектов развития производства в Выксе, вся необходимая поддержка от правительства области будет оказана», - сказал исполняющий обязанности заместителя губернатора, заместителя председателя Правительства Нижегородской области Игорь Носов.</p>
+                          <p>«Основной итог десятилетней работы ЛПК - возможность производить трубные марки стали самого ответственного назначения в самые короткие сроки. Сегодня по производственным показателям ЛПК является лучшим среди предприятий аналогичного класса в мире. Мы не стоим на месте, планируем увеличить объем производства на 20%, до 1,5 млн тонн проката в год, осваиваем новые марки стали, которые востребованы отечественной топливно-энергетической отраслью», - отметил председатель Совета директоров ОМК Анатолий Седых.</p>
                         </div>
-                        <div class="card__title cardThird__title"><a href="#">После работы надо обязательно поработать ра...</a></div>
-                        <div class="card-date"><span>24 Сентября 2018</span></div>
-                      </div>
-                    </div>
-                    <div class="card-slider__item cardThird-slider__item">
-                      <div class="cardThird-slider__imgbox card__imgbox" style="background-image: url(img/blog-img-02.jpg);">
-                        <div class="card-warning-text hide">
-                          <p></p>
+                        <div class="article-imgwrap">
+                          <div class="article-imgbox article-imgbox_third" style="background-image: url(img/article-img-02.jpg)"></div>
+                          <div class="article-imgbox article-imgbox_third" style="background-image: url(img/article-img-03.jpg)"></div>
+                          <div class="article-imgbox article-imgbox_third" style="background-image: url(img/article-img-04.jpg)"></div>
+                        </div>
+                        <div class="article-text">
+                          <h3>СПРАВКА</h3>
+                          <p>Десятилетняя история литейно-прокатного комплекса – это история высоких достижений: только в течение нескольких последних лет коллектив ЛПК установил десятки производственных рекордов. Из года в год литейно-прокатный комплекс неизменно подтверждает статус одного из самых эффективных металлургических производств страны, объемы выпуска стали неоднократно превышали расчётную мощность комплекса.</p>
+                          <p>Сегодня в комплексе работает около 1200 сотрудников.</p>
                         </div>
                       </div>
-                      <div class="card__content cardThird__content">
-                        <div class="tagbox">
-                          <div class="tag">
-                            <button class="button button-tag">Мацинова Елена</button>
-                          </div>
-                          <div class="like-card">
-                            <button class="like-button comment-button"><i class="icon-comment"></i><span class="like-count">23</span></button>
-                            <button class="like-button"><i class="icon-like"></i><span class="like-count">1286</span></button>
-                          </div>
-                        </div>
-                        <div class="card__title cardThird__title"><a href="#">Хочется лета, а вокруг одни офисы! Поеду на Ямайку!</a></div>
-                        <div class="card-date"><span>24 Сентября 2018</span></div>
-                      </div>
-                    </div>
-                    <div class="card-slider__item cardThird-slider__item">
-                      <div class="cardThird-slider__imgbox card__imgbox" style="background-image: url(img/blog-img-01.jpg);">
-                        <div class="card-warning-text hide">
-                          <p></p>
-                        </div>
-                      </div>
-                      <div class="card__content cardThird__content">
-                        <div class="tagbox">
-                          <div class="tag">
-                            <button class="button button-tag">Андреевский Андрей</button>
-                          </div>
-                          <div class="like-card">
-                            <button class="like-button comment-button"><i class="icon-comment"></i><span class="like-count">23</span></button>
-                            <button class="like-button"><i class="icon-like"></i><span class="like-count">1286</span></button>
+                    </article>
+                  </div>
+                  <div class="cardFull-slider__item">
+                    <article class="article-slider article" id="articleCollapse01">
+                      <div class="card">
+                        <div class="content-title">
+                          <div class="article-title content-titlebox">
+                            <h3>День металлурга 2</h3>
                           </div>
                         </div>
-                        <div class="card__title cardThird__title"><a href="#">Как вам прошедший концерт?</a></div>
-                        <div class="card-date"><span>24 Сентября 2018</span></div>
+                        <div class="article-imgwrap">
+                          <div class="article-imgbox article-imgbox_full" style="background-image: url(img/news-twothirds-img-01.jpg);"></div>
+                        </div>
+                        <div class="article-text">
+                          <p>Литейно-прокатный комплекс Выксунского металлургического завода (АО «ВМЗ», Нижегородская область, входит в состав Объединенной металлургической компании, АО «ОМК») за 10 лет работы произвел более 10,6 млн тонн горячекатаного рулонного проката, став важным звеном в полностью отечественной цепочке</p>
+                          <p>«Выксунский металлургический завод – не только один из крупнейших налогоплательщиков Нижегородской области, это еще яркий пример корпоративной социальной ответственности. Коллеги из ОМК показывают пример как необходимо взаимодействовать с местным самоуправлением, с региональными властями для того, чтобы жизнь выксунцев стала лучше. У компании много новых проектов развития производства в Выксе, вся необходимая поддержка от правительства области будет оказана», - сказал исполняющий обязанности заместителя губернатора, заместителя председателя Правительства Нижегородской области Игорь Носов.</p>
+                          <p>«Основной итог десятилетней работы ЛПК - возможность производить трубные марки стали самого ответственного назначения в самые короткие сроки. Сегодня по производственным показателям ЛПК является лучшим среди предприятий аналогичного класса в мире. Мы не стоим на месте, планируем увеличить объем производства на 20%, до 1,5 млн тонн проката в год, осваиваем новые марки стали, которые востребованы отечественной топливно-энергетической отраслью», - отметил председатель Совета директоров ОМК Анатолий Седых.</p>
+                        </div>
+                        <div class="article-imgwrap">
+                          <div class="article-imgbox article-imgbox_half" style="background-image: url(img/article-img-02.jpg)"></div>
+                          <div class="article-imgbox article-imgbox_half" style="background-image: url(img/article-img-04.jpg)"></div>
+                        </div>
+                        <div class="article-text">
+                          <h3>СПРАВКА</h3>
+                          <p>Десятилетняя история литейно-прокатного комплекса – это история высоких достижений: только в течение нескольких последних лет коллектив ЛПК установил десятки производственных рекордов. Из года в год литейно-прокатный комплекс неизменно подтверждает статус одного из самых эффективных металлургических производств страны, объемы выпуска стали неоднократно превышали расчётную мощность комплекса.</p>
+                          <p>Сегодня в комплексе работает около 1200 сотрудников.</p>
+                        </div>
+                        <div class="article-autor"><a class="hashtag" href="#">#статья</a><a class="hashtag" href="#">#событие2019</a><a class="hashtag" href="#">#фамилия</a><a class="hashtag" href="#">#справочное_слово</a>
+                          <p>Автор статьи: Елена Мацинова</p>
+                        </div>
                       </div>
-                    </div>
+                    </article>
                   </div>
                 </div>
-                <div class="card cardFull-head_special">
-                  <div class="content-title">
-                    <div class="content-titlebox">
-                      <h2>Лучшие блогеры тысячелетия</h2>
-                    </div>
-                  </div>
-                </div>
-                <div class="card card-slider cardFifth-slider">
-                  <div class="card-wrap card-slider-wrap cardFifth-slider-wrap">
-                    <div class="card-slider__item cardFifth-slider__item">
-                      <div class="cardFifth-slider__imgbox card__imgbox" style="background-image: url(img/person-photo-01.jpg);"></div>
-                    </div>
-                    <div class="card-slider__item cardFifth-slider__item">
-                      <div class="cardFifth-slider__imgbox card__imgbox" style="background-image: url(img/person-photo-02.jpg);"></div>
-                    </div>
-                    <div class="card-slider__item cardFifth-slider__item">
-                      <div class="cardFifth-slider__imgbox card__imgbox" style="background-image: url(img/person-photo-03.jpg);"></div>
-                    </div>
-                    <div class="card-slider__item cardFifth-slider__item">
-                      <div class="cardFifth-slider__imgbox card__imgbox" style="background-image: url(img/person-photo-02.jpg);"></div>
-                    </div>
-                    <div class="card-slider__item cardFifth-slider__item">
-                      <div class="cardFifth-slider__imgbox card__imgbox" style="background-image: url(img/person-photo-01.jpg);"></div>
-                    </div>
-                    <div class="card-slider__item cardFifth-slider__item">
-                      <div class="cardFifth-slider__imgbox card__imgbox" style="background-image: url(img/person-photo-03.jpg);"></div>
-                    </div>
-                    <div class="card-slider__item cardFifth-slider__item">
-                      <div class="cardFifth-slider__imgbox card__imgbox" style="background-image: url(img/person-photo-02.jpg);"></div>
-                    </div>
-                    <div class="card-slider__item cardFifth-slider__item">
-                      <div class="cardFifth-slider__imgbox card__imgbox" style="background-image: url(img/person-photo-01.jpg);"></div>
-                    </div>
-                  </div>
-                </div>
-                <div class="card">
-                  <hr class="card-hr">
-                </div>
-                <article class="article articlePreview">
-                  <div class="card">
-                    <div class="article-imgwrap article-imgwrap_slim">
-                      <div class="article-imgbox article-imgbox_slim" style="background-image: url(img/article-prev-img-01.jpg);"></div>
-                    </div>
-                    <div class="tagbox">
-                      <div class="tag">
-                        <div class="card-date card-date_big"><span>24 Сентября 2018, Мацинова Елена</span></div>
-                      </div>
-                      <div class="like-card">
-                        <button class="like-button comment-button"><i class="icon-comment"></i><span class="like-count">23</span></button>
-                        <button class="like-button"><i class="icon-like"></i><span class="like-count">1286</span></button>
-                      </div>
-                    </div>
-                    <div class="content-title">
-                      <div class="article-title content-titlebox">
-                        <h3>Хочется лета, а вокруг одни офисы! Поеду на Ямайку!</h3>
-                      </div>
-                    </div>
-                    <div class="article-text articlePreview-text">
-                      <p>Ямайка находится в зоне тропического климата с господством северо-восточных пассатов, заметно влияющих, наравне с показателем абсолютной высоты местности, на климат страны В столичном районе средняя температура за год меняется от 24 до 27 °C, а в местечке Гордон-Хилл в горах Блу-Маунтинс — от температура температура температура</p>
-                    </div>
-                  </div>
-                </article>
-                <article class="article articlePreview">
-                  <div class="card">
-                    <div class="article-imgwrap article-imgwrap_slim">
-                      <div class="article-imgbox article-imgbox_slim" style="background-image: url(img/article-prev-img-02.jpg);"></div>
-                    </div>
-                    <div class="tagbox">
-                      <div class="tag">
-                        <div class="card-date card-date_big"><span>24 Сентября 2018, Мацинова Елена</span></div>
-                      </div>
-                      <div class="like-card">
-                        <button class="like-button comment-button"><i class="icon-comment"></i><span class="like-count">23</span></button>
-                        <button class="like-button"><i class="icon-like"></i><span class="like-count">1286</span></button>
-                      </div>
-                    </div>
-                    <div class="content-title">
-                      <div class="article-title content-titlebox">
-                        <h3>Как вам прошедший концерт?</h3>
-                      </div>
-                    </div>
-                    <div class="article-text articlePreview-text">
-                      <p>Ямайка находится в зоне тропического климата с господством северо-восточных пассатов, заметно влияющих, наравне с показателем абсолютной высоты местности, на климат страны В столичном районе средняя температура за год меняется от 24 до 27 °C, а в местечке Гордон-Хилл в горах Блу-Маунтинс — от...</p>
-                    </div>
-                  </div>
-                  <div class="card">
-                    <hr class="card-hr">
-                  </div>
-                </article>
-              </div>
-              <!-- Документы (Блоки ссылок)-->
-              <div class="cards">
-                <div class="card cardFull-head_special">
-                  <div class="content-title">
-                    <div class="content-titlebox_dark">
-                      <h4>Документы (Блоки ссылок)</h4>
-                    </div>
-                  </div>
-                </div>
-                <div class="card">
-                  <div class="content-title">
-                    <div class="content-titlebox">
-                      <h2>Важная документация для сопровождения заказа</h2>
-                    </div>
-                  </div>
-                </div>
-                <div class="card">
-                  <div class="card-links">
-                    <div class="card-links-wrap">
-                      <div class="card-links__img">
-                        <div class="card-links__imgbox"><img src="img/icon/pdf.svg"></div>
-                      </div>
-                      <div class="card-links__items">
-                        <div class="card-links__lnkbox"><a class="card-links__lnk" href="">Типа производства по ГОСТ 14.004-83</a></div>
-                        <div class="card-links__lnkbox"><a class="card-links__lnk" href="">Стадии разработки документов по ГОСТ 3.1102-81</a></div>
-                        <div class="card-links__lnkbox"><a class="card-links__lnk" href="">Степени детализации описания технологических процессов, установленных по ГОСТ 3.1109-82;</a></div>
-                        <div class="card-links__lnkbox"><a class="card-links__lnk" href="">Применяемых технологических методов изготовления и ремонта изделий.</a></div>
-                        <div class="card-links__lnkbox"><a class="card-links__lnk" href="">Типа производства по ГОСТ 14.004-83</a></div>
-                        <div class="card-links__lnkbox"><a class="card-links__lnk" href="">Стадии разработки документов по ГОСТ 3.1102-81</a></div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="card">
-                  <div class="card-links">
-                    <div class="card-links-wrap">
-                      <div class="card-links__img">
-                        <div class="card-links__imgbox"><img src="img/icon/exel.svg"></div>
-                      </div>
-                      <div class="card-links__items">
-                        <div class="card-links__lnkbox"><a class="card-links__lnk" href="">Типа производства по ГОСТ 14.004-83</a></div>
-                        <div class="card-links__lnkbox"><a class="card-links__lnk" href="">Стадии разработки документов по ГОСТ 3.1102-81</a></div>
-                        <div class="card-links__lnkbox"><a class="card-links__lnk" href="">Степени детализации описания технологических процессов, установленных по ГОСТ 3.1109-82;</a></div>
-                        <div class="card-links__lnkbox"><a class="card-links__lnk" href="">Применяемых технологических методов изготовления и ремонта изделий.</a></div>
-                        <div class="card-links__lnkbox"><a class="card-links__lnk" href="">Типа производства по ГОСТ 14.004-83</a></div>
-                        <div class="card-links__lnkbox"><a class="card-links__lnk" href="">Стадии разработки документов по ГОСТ 3.1102-81</a></div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="card">
-                  <div class="content-title">
-                    <div class="content-titlebox">
-                      <h2>Регламенты использования ресурсов 2019</h2>
-                    </div>
-                  </div>
-                </div>
-                <div class="card">
-                  <div class="card-links">
-                    <div class="card-links-wrap">
-                      <div class="card-links__img">
-                        <div class="card-links__imgbox"><img src="img/icon/word.svg"></div>
-                      </div>
-                      <div class="card-links__items">
-                        <div class="card-links__lnkbox"><a class="card-links__lnk" href="">Типа производства по ГОСТ 14.004-83</a></div>
-                        <div class="card-links__lnkbox"><a class="card-links__lnk" href="">Стадии разработки документов по ГОСТ 3.1102-81</a></div>
-                        <div class="card-links__lnkbox"><a class="card-links__lnk" href="">Степени детализации описания технологических процессов, установленных по ГОСТ 3.1109-82;</a></div>
-                        <div class="card-links__lnkbox"><a class="card-links__lnk" href="">Применяемых технологических методов изготовления и ремонта изделий.</a></div>
-                        <div class="card-links__lnkbox"><a class="card-links__lnk" href="">Типа производства по ГОСТ 14.004-83</a></div>
-                        <div class="card-links__lnkbox"><a class="card-links__lnk" href="">Стадии разработки документов по ГОСТ 3.1102-81</a></div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="card"><a class="link-big" href="">&gt;&gt; Галереи</a></div>
               </div>
             </div>
           </div>

@@ -1,0 +1,49 @@
+.card
+	form.form
+		.form__box.form__box_title
+			h3.form__title.form__title_main Заполните форму обращения
+			h3.form__title.form__title_alt Отправить форму от другого имени
+		.form__box
+			label.form-label.form-label_special(for="formSubject") Тема
+			.form-sender
+				span.form__text 
+					|Сообщение будет отправлено от: 
+					strong Константинова Конcтантина 
+				span.form__text
+					| Сегодня: 
+					strong 15 октября, 18:29 
+					| (МСК)
+			input#formSubject.form__input(type="text", placeholder="Введите тему обращения")
+		.form__box.text-right
+			button#formMoreInputsControl.form__button_more(type="button" data-toggle="collapse" data-target="#formMoreInputs" data-alt-text="Отменить")
+				| Отправить от другого имени
+		#formMoreInputs.form__group.collapse
+			.form__box
+				label.form-label(for="formFulName")
+					span Ф.И.О.
+				input#formFulName.form__input(type="text", placeholder="Ваши Ф.И.О.")
+
+			.form__box
+				label.form-label(for="formDepartment")
+					span Подразделение
+				input#formDepartment.form__input(type="text", placeholder="Введите наименование подразделения")
+
+			.form__box
+				label.form-label(for="formEmail")
+					span Email
+				input#formEmail.form__input(type="email", placeholder="Введите ваш Email")
+		.form__box
+			label.form-label(for="formTextarea")
+				span Текст обращения
+			textarea#formTextarea.form__textarea(placeholder="Введите текст обращения")
+		.form__box.form__box_flex
+			.form-checkbox
+				label.form-checkbox__label(for='formCheckbox')
+					input#formCheckbox.form-checkbox__input(type='checkbox', name='form_copy')
+					span.form-checkbox__text.form-checkbox__text_thin Отправить себе копию сообщения
+				.form-slide-input
+					label.form-label.form-label_slim(for="formEmailCopy")
+						span Дополнительный Email (необяз.):
+						input#formEmailCopy.form__input.form__input_slim(type="email", placeholder="konstantinopolskiy.k@yandex.ru")
+			.form__buttonbox
+				button.button.form__button(type="submit") Отправить

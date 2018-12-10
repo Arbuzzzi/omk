@@ -1,0 +1,97 @@
+.table {
+	border-collapse: separate;
+	border: 1px solid #bcbdc0;
+	border-radius: 5px;
+	width: 100%;
+	border-spacing: 0px;
+	thead {
+		border-radius: 5px 0 0 5px;
+		overflow: hidden;
+		color: #f4f5f5;
+		background-color: $tooltip-bg;		
+		tr {
+			border-radius: 5px 0 0 5px;
+			overflow: hidden;
+			th {
+				&:first-child {
+					border-radius: 5px 0 0 0;
+					overflow: hidden;
+				}
+				&:last-child {
+					border-radius: 0 5px 0 0;
+					overflow: hidden;
+				}
+			}
+		}
+	}
+	td,
+	th {
+		max-width: 200px;
+		padding: 11px 15px;
+		vertical-align: top;
+		// border-bottom: 1px solid #bcbdc0;
+		text-align: left;
+		&:first-child {
+			max-width: 85px;
+			border-left: 0;
+		}
+		&:last-child {
+			max-width: 185px;
+			border-right: 0;
+
+		}
+	}
+	tr {
+		&:nth-child(2n) {
+			background-color: #f4f5f5;
+		}
+		&:last-child {
+			td {
+				border-bottom: 0;
+				&:first-child {
+					border-radius: 0 0 0 5px;
+				}
+				&:last-child {
+					border-radius: 0 0 5px 0;
+				}
+			}
+		}
+		&:first-child {
+			td {
+				border-top: 0;
+			}
+		}
+	}
+}
+.table-horizontal-line {
+	td,
+	th {
+		border-bottom: 1px solid #bcbdc0;
+	}
+}
+.table-all-line {
+	td,
+	th {
+		border-bottom: 1px solid #bcbdc0;
+		border-left: 1px solid #bcbdc0;
+	}	
+}
+
+.table-light {
+	thead {
+		color: $tooltip-bg;
+		background-color: transparent;
+	}
+	tr {
+		&:nth-child(2n) {
+			background-color: transparent;
+		}
+	}
+}
+
+.table-thin-head {
+	thead {
+		color: $tooltip-bg;
+		background-color: #f4f5f5;
+	}
+}

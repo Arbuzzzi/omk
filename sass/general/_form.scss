@@ -10,7 +10,7 @@
 			border: 1px solid #dfdfdf;
 			border-radius: 6px;
 			cursor: text;
-			
+
 		}
 		&__input {
 			display: block;
@@ -25,26 +25,113 @@
 	}
 
 
-	&-title {
+	&__title {
+		// font-size: 24px;
+		font-weight: 400;
+		font-family: Roboto;
+		font-weight: inherit;
+		font-size: 1.5em;
+		&_alt {
+			position: absolute;
+			top: 0;
+			left: 0;
+			display: none;
+			width: 100%;
+		}
 	}
 
 
 	&-text {
 	}
 
-
-	&-box {
+	&__group {
+		margin-bottom: 10px;
+	}
+	
+	&__box {
+		position: relative;
+		margin-bottom: 10px;
+		@include clearfix;
+		&:last-child {
+			margin-bottom: 0;
+		}
+		&_title {
+			min-height: 27px;			
+		}
+		&_flex {
+			display: flex;
+			vertical-align: middle;
+		}
 	}
 
-
+	&-slide {
+		&-input {
+			display: none;
+		}
+	}
 	&-label {
 		display: block;
+		color: $tooltip-bg;
+		font-size: 17px;
+		font-weight: 400;
+		margin-bottom: 10px;
+		&_special {
+			float: left;
+		}
+		&_slim {
+			position: relative;
+			display: flex;
+			align-items: center;
+			margin-bottom: 0;
+			padding-left: 25px;
+			font-size: 13px;
+			font-weight: 400;
+			color: $basic-color;
+			@include after("\e901") {
+				top: 50%;
+				left: 7px;
+				margin-top: -5.5px;
+				@include icon;
+				font-size: 11px;
+				color: #bcbdc0;
+				transform: rotate(-90deg);
+			}
+		}
+	}
+	&-sender {
+		text-align: right;
+	}
+	&__text {
+		margin-right: 20px;
+		text-align: right;
+		font-size: 13px;
+		font-weight: 300;
+		color: #a5a6aa;
+		vertical-align: middle;
+		&:last-child {
+			margin-right: 0;
+		}
+		strong {
+			font-weight: 400;
+			color: $basic-color;
+		}
+
 	}
 	
 
-	&-input {
+	&__input,
+	&__textarea {
+		border-radius: 5px;
+		border: 1px solid #bcbdc0;
+		width: 100%;
+		padding: 10px 15px;
+		color: #000000;
+		font-size: 16px;
+		font-weight: 400;
 		
 		&::placeholder {
+			font-size: 12px;
+			font-weight: 300;
 
 			text-indent: 0px; // анимация для placeholder
 			transition: text-indent 400ms; // анимация для placeholder
@@ -52,10 +139,24 @@
 
 		&:focus {
 			&::placeholder {
-				text-indent: 500px; // анимация для placeholder
+				text-indent: -500px; // анимация для placeholder
 			}
 		}
 	}
+	&__textarea {
+		min-height: 210px;
+		resize: vertical;
+	}
+	&__input {
+		&_slim {
+			display: inline-block;
+			margin-left: 9px;
+			padding: 0px 10px 2px;
+			max-width: 203px;
+		}
+		
+	}
+
 
 	&-select {
 		padding-right: 20px;
@@ -74,29 +175,56 @@
 		}
 	}
 
+	&__buttonbox {
+		display: flex;
+		align-items: center;
+		margin-left: auto;
+		text-align: right;
 
-	&-button {
-		padding: 15px 30px;
-		margin-bottom: 21px;
-		width: 100%;
+	}
+
+	&__button {
+		min-width: 170px;
+		min-height: 20px;
+		background-color: #eeefef;
+		font-size: 13px;
+		font-weight: 400;
+		@include hover {
+			background-color: $tooltip-bg;
+		}
+		&_more {
+			color: $basic-color;
+			font-size: 14px;
+			font-weight: 400;
+			@include hover {
+				font-weight: 700;
+			}
+		}
 	}
 	&-checkbox{
-		
-			&__input { // стилизуем checkbox
-				position: absolute;
-				z-index: -1;
-				opacity: 0;
-				margin: 10px 0 0 20px;
+		// float: left;
+		display: flex;
+		align-items: center;
+		&__label {
+			display: flex;
+			align-items: center;
+			height: 100%;
+		}
+	
+		&__input { // стилизуем checkbox
+			position: absolute;
+			z-index: -1;
+			opacity: 0;
 
 
-				&:checked + .form-checkbox__text:after {
-					display: block;
-				}
-				&:disabled + .form-checkbox__text {
-					opacity: 0.3;
-					cursor: not-allowed;
-				}
-			} 
+			&:checked + .form-checkbox__text:after {
+				display: block;
+			}
+			&:disabled + .form-checkbox__text {
+				opacity: 0.3;
+				cursor: not-allowed;
+			}
+		} 
 
 
 		&__text {
@@ -114,8 +242,9 @@
 			&:before { 
 				content: '\e90f';
 				position: absolute;
-				top: 0;
+				top: 50%;
 				left: 0;
+				margin-top: -6px;
 				@include sqwer(12px);
 				border: 1px solid $thin-color;
 				background: transparent;
@@ -133,8 +262,9 @@
 				content: '\e90f';
 				display: none;
 				position: absolute;
-				top: 0;
+				top: 50%;
 				left: 0;
+				margin-top: -6px;
 				@include sqwer(12px);
 				border: 1px solid $thin-color;
 				background-color: $thin-color;
@@ -145,6 +275,33 @@
 				vertical-align: middle;
 				text-align: center;
 				color: $light-color;
+			}
+
+			&_thin {
+				color: $basic-color;
+				font-size: 13px;
+				font-weight: 400;
+				min-width: 235px;
+				&:after {
+					content: '';
+					width: 15px;
+					height: 15px;
+					margin-top: -8.5px;
+					border-radius: 3px;
+					border: 1px solid #bcbdc0;
+					background: #d0d1d3 url('../img/icon/tick.svg') center no-repeat;
+					background-size: 90%;
+
+				}
+				&:before {
+					content: '';
+					width: 15px;
+					height: 15px;
+					margin-top: -8.5px;
+					border-radius: 3px;
+					border: 1px solid #bcbdc0;
+					background-color: $light-color;
+				}
 			}
 			
 			a {

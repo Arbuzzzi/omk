@@ -1,0 +1,50 @@
+extends modules/_base
+block vars
+	-var pageTitle = 'Формы, таблицы и другие элементы';
+block content
+	//- - var pageTitle = 'Комбинированные блоки';
+	include page/_page-special-title
+	include modules/_form
+
+	.card.card_slim
+		.content-title
+			.content-titlebox
+				h2 Таблица наименований регулярных мероприятий
+
+	- var tableClass = 'table-horizontal-line';
+	include tables/_table-01
+
+	.card.card_slim
+		.content-title
+			.content-titlebox
+				h2 Другие стили таблиц
+
+	- var tableClass = 'table-all-line';
+	include tables/_table-01
+
+	- var tableClass = 'table-thin-head';
+	include tables/_table-01
+
+	- var tableClass = 'table-thin-head table-light table-all-line';
+	include tables/_table-01
+
+	.card.card_slim
+		.content-title
+			.content-titlebox_dark.content-titlebox_collapse(data-toggle="collapse" data-target="#articleCollapse01")
+				h4 Это заголовок-спойлер и под ним скрывается текстовый блок или галерея
+	- var ID = 'articleCollapse01';
+	- var articleClass = 'collapse';
+	include articles/_article-04
+	.card.card_slim
+		.content-title
+			.content-titlebox_dark.content-titlebox_collapse(data-toggle="collapse" data-target="#articleCollapseSlider01")
+				h4 Контент-слайдер - это многостраничный спойлер
+	#articleCollapseSlider01.card.cardFull.cardFull-slider.collapse
+		.cardFull-slider-wrap.card-wrap.cardFull-wrap
+			.cardFull-slider__item
+				- var articleClass = 'article-slider';
+				include articles/_article-01
+			.cardFull-slider__item
+				include articles/_article-04
+			.cardFull-slider__item
+				include articles/_article-03

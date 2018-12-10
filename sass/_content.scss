@@ -53,6 +53,34 @@
 				font-size: 1.375em;
 			}
 		}
+
+		&_collapse {
+			position: relative;
+			padding-top: 5px;
+			padding-bottom: 7px;
+			padding-right: 15px;
+			transition: transform 0.4s, background-color 0.4s;
+			cursor: pointer;
+			h1, h2, h3, h4, h5, p, div, span {
+				font-family: "PT Serif", serif;				
+			}
+			@include before("\e901") {
+				top: 50%;
+				margin-top: -6px;
+				right: 12px;
+				color: #dddee0;
+				@include icon;
+				font-size: 12px;
+				transition: transform 0.4s;
+
+			}
+			&.active {
+				background-color: #a5a6aa;
+				&:before {
+					transform: rotate(180deg);
+				}
+			}
+		}
 	}
 
 	&-subtitle {
