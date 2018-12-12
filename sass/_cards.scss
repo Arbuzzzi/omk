@@ -79,6 +79,9 @@
 		border-radius: 5px;		
 		background: $light-color center no-repeat;
 		background-size: cover;
+		&[data-toggle="modal"] {
+			cursor: pointer;
+		}
 		img {
 			display: none;
 		}
@@ -135,6 +138,34 @@
 		width: 100%;
 		padding: 6px 15px;
 		background-color: $special-color;
+		color: $light-color;
+		font-size: 11px;
+		font-weight: 400;
+		p {
+			font-size: 1em;
+		}
+	}
+	&-succes-text {
+		position: absolute;
+		bottom: 0;
+		left: 0;
+		width: 100%;
+		padding: 6px 15px;
+		background-color: $succes-color;
+		color: $light-color;
+		font-size: 11px;
+		font-weight: 400;
+		p {
+			font-size: 1em;
+		}
+	}
+	&-average-text {
+		position: absolute;
+		bottom: 0;
+		left: 0;
+		width: 100%;
+		padding: 6px 15px;
+		background-color: #D99D1B;
 		color: $light-color;
 		font-size: 11px;
 		font-weight: 400;
@@ -240,8 +271,6 @@
 	}
 
 	&-logos{
-		// display: flex;
-		// flex-wrap: wrap;
 		@include clearfix;
 	}
 	&-logo {
@@ -513,6 +542,12 @@
 				}
 			}
 		}
+	}
+}
+.card-number-elem {
+	cursor: pointer;
+	@include hover {
+		color: $light-color;
 	}
 }
 .card-links{

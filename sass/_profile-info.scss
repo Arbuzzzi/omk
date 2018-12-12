@@ -1,0 +1,25 @@
+.profile-info {
+	width: 100%;
+	border-collapse: collapse;	
+	border-spacing: 0px;
+	tr {
+		td {
+			padding-right: 5px;
+			min-width: 235px;
+			&:first-child {
+				min-width: auto;
+			}
+			&:last-child {
+				min-width: auto;
+				width: 100%;
+			}
+			hr {
+				margin-bottom: 10px;
+				width: 100%;
+				background-color: #707070;
+				opacity: 0.4;
+			}
+		}
+	}
+
+}

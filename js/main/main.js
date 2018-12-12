@@ -383,22 +383,18 @@ $(document).ready(function() {
 			}	
 		}
 		
-		var positionScrollBottom = position+positionOne,
-				asidePositionBottom = parseInt($('#aside').css('margin-top'))+$('#aside').outerHeight();
+		// var positionScrollBottom = position+positionOne,
+		// 		asidePositionBottom = parseInt($('#aside').css('margin-top'))+$('#aside').outerHeight();
 
-		if (positionScrollBottom < asidePositionBottom && currentScroll < position) {
-			$('#aside').css({
-				position: 'fixed',
-				bottom: 0,
-				top: 'auto',
-				marginTop: 0
-			});
-		}
-		console.log(position);
-		console.log(currentScroll);
-		console.log(position+positionOne);
-		console.log(parseInt($('#aside').css('margin-top'))+$('#aside').outerHeight());
-
+		// if (positionScrollBottom < asidePositionBottom && currentScroll > position) {
+		// 	$('#aside').css({
+		// 		position: 'fixed',
+		// 		bottom: 0,
+		// 		top: 'auto',
+		// 		marginTop: 0,
+		// 		width: '270px',
+		// 	});
+		// }
 		// меню в обычном состоянии
 		$('*').tooltip('hide');
 		if (!$('.header').hasClass('.scroll')  && !$('#headerNavSetting').hasClass('show')) {
@@ -740,6 +736,7 @@ $(document).ready(function() {
 				subtitle = element.find('.vidget-subtitle span'),
 				calendar = element.find('.ui-datepicker-calendar'),
 				eventElementControl = element.find('.event-control');
+				
 		element.addClass('show-event');
 
 		eventElementArr.hide();
@@ -946,15 +943,17 @@ $(document).ready(function() {
 	var elDeafultText,
 			formDuplicateShow = false;
 
+
 	$(document).on('click', '.comment__reply', function(event) {
 		var commentFormbox = $('#commentFormbox').clone(),
 				commentFormboxAppend,
+				commentFormboxOrigin = $('.comment-form-inn'),
 
 				elControl = $(this),				
 				elParent = elControl.closest('.comment'),
 				elParentID = elParent.attr('id'),
 
-				formActive = $(elControl).hasClass('form-active');
+				formActive = elControl.hasClass('form-active');
 
 		event.stopImmediatePropagation()
 		commentFormboxAppend = commentFormboxCreate(elControl, commentFormbox);
@@ -985,14 +984,21 @@ $(document).ready(function() {
 			$(this).find('textarea').focus();
 			formDuplicateShow = true;
 		});
+
+		
+		$(commentFormboxAppend).on('show.bs.collapse', function(event) {
+			commentFormboxOrigin.collapse('hide');
+		});
+
 		
 		if (!elControl.hasClass('form-active')) {
 
 			commentFormboxShow(elControl, commentFormboxAppend).collapse('show');
-			
+			commentFormboxOrigin.collapse('hide');
 			
 		} else {
 			$('.form-duplicate').collapse('hide');
+			commentFormboxOrigin.collapse('show');
 		}
 
 		event.preventDefault();
@@ -1014,8 +1020,8 @@ $(document).ready(function() {
 					
 					elementID = $(elClone).attr('id'),
 					elementNew = $(elClone);
-					console.log(eventParent);
 
+			$(elClone).removeClass('comment-form-inn show');
 			$(elClone).attr('id', elementID+'_'+eventParentID);
 			$(elClone).attr('data-parent', '#allComentators');
 			$(elClone).addClass('form-duplicate collapse');
@@ -1024,6 +1030,7 @@ $(document).ready(function() {
 			return elementNew;
 		}
 	});
+
 
 
 
@@ -1053,11 +1060,10 @@ $(document).ready(function() {
 			var status = $('.slider-number'),
 					slide = $(this).find('.card__imgbox'),
 					i = (currentSlide ? currentSlide : 0) + 1,
-					currentLink = '<span class="slider-number-elem">'+'#'+i+'</span>',
+					currentLink = '<span class="card-number-elem">'+'#'+i+'</span>',
 					statusInner = currentLink + ' из ' + slick.slideCount;
 
-			status.html(statusInner); 
-			
+			status.html(statusInner);			
 	});
 
 	$('#modalContentSlider').on('show.bs.modal', function(event) {
@@ -1136,6 +1142,8 @@ $(document).ready(function() {
 			initialSlide: elControlCurrent,
 			focusOnSelect: true,
 			// centerMode: true,
+			// centerPadding: '0px',
+			waitForAnimate: false,
 			// asNavFor: '#modalMainSliderTop',
 			prevArrow: '<div class="slider-arrow \
 															slider-arrow__left \
@@ -1153,6 +1161,11 @@ $(document).ready(function() {
 
 	});
 
+	$('#modalMainSliderBottom').on('click', '.slick-slide', function(event) {
+		var eventSlide = $('#modalMainSliderBottom').slick('slickCurrentSlide');
+		$('#modalMainSliderTop').slick('slickGoTo', eventSlide);
+	});	
+
 	$('#modalContentSlider').on('hidden.bs.modal', function(event) {
 		var modal 				= $(this),
 				modalContent  = modal.find('.modalMain__content'),
@@ -1162,19 +1175,21 @@ $(document).ready(function() {
 
 				sliderModal 	= modal.find('.modalMain-slider-wrap'),
 				targetContent = $(elControl.data('target-content')).clone();
+
 		modal.modal('dispose');
 		$(sliderModal).slick('unslick');
 		$('.preloader').stop().show();
 	});
 
-	$(document).on('click', '.slider-number-elem', function(event) {
+	$(document).on('click', '.card-number-elem', function(event) {
 			var elEvent = $(this),
 
-					textArea = $('#modalContentSlider').find('.comment-form__textarea'),
+					textArea = $('#modalContentSlider').find('.comment-form__textarea:visible'),
 					textAreaPositionTop = textArea.position().top;
 
 					modalDialog = $('#modalContentSlider').find('.modal-dialog');
-			$('.form-duplicate').collapse('hide');	
+			console.log(textArea);
+			// $('.form-duplicate').collapse('hide');
 			$('#modalContentSlider')
 				.animate({
 					scrollTop: textAreaPositionTop,
@@ -1184,6 +1199,7 @@ $(document).ready(function() {
 			textArea.val(textArea.val() + elEvent.text()+' ');
 			
 		});
+
 	$(document).on('click', '.modalMain-comments__curentImg', function(event) {
 		var element = $(this);
 		$('#modalContentSlider')
@@ -1196,7 +1212,7 @@ $(document).ready(function() {
 		event.preventDefault();
 	});
 
-
+	/* Forms ------------------------------------------------------------------------------------------ */
 	var deafultTextBtn = $('#formMoreInputsControl').text();
 
 	$('#formMoreInputs').on('show.bs.collapse', function(event) {

@@ -1,0 +1,64 @@
+extends modules/_base
+
+block vars
+	-var pageTitle = 'Константин Александрович Константинопольский';
+	
+block content
+	.card.card_slim
+		.content-title
+			.content-titlebox
+				h1= pageTitle
+	- var x;
+	.cards
+		.card.cardThird
+			.card-wrap.cardThird-wrap
+				.card__imgbox.card__imgbox_xl(style='background-image: url(img/photo-01.png);')
+		.card.cardTwoThirds
+			.content-text
+				h3 Главный инженер отделения трубопрокатного цеха 
+					span.small (Подразделение отдела № 1023)
+
+				table.profile-info
+					tbody
+						tr
+							td.text-right
+								p
+									span.light Телефон:
+							td
+								p +7&nbsp;(83&nbsp;177)&nbsp;3-76-05&nbsp;доб.&nbsp;4526
+							td.text-right
+								p
+									a.special-link(href="#") Редактировать профиль
+						tr
+							td.text-right
+								p
+									span.light Email:
+							td
+								p name.surname@omk.omk.ru
+							td.text-right
+								p
+						tr
+							td(colspan='2')
+								hr
+							td
+						tr
+							td.text-right
+								p
+									span.light Skype:
+							td
+								p omk_engineer
+							td
+						tr
+							td.text-right
+								p
+									span.light Моб.:
+							td
+								p +7 (903) 924-25-27
+							td
+						tr
+							td.text-right
+								p
+									span.light VK:
+							td
+								p vk.com/omk_engineer
+							td

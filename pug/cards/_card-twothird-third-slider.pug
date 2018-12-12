@@ -1,10 +1,29 @@
-.card.cardFull.cardFull-slider
+.card.cardFull.cardFull-slider#cardModalSlider-02
+	.post-info
+		.post-info__title
+			span.slider-number #54 из 82:
+			| Автоматизация процессов заводского производства 249
+		.post-info__like
+			.post-info__date 14.12.2018
+			.like-card.post-info__likebox
+				button.like-button
+					i.icon-like
+					span.like-count 1586
+	include ../modals/_modal-content-comments
 	.cardFull-slider-wrap.card-wrap.cardFull-wrap
 		.cardFull-slider__item
 			.card__imgwrap
-				.card__imgbox.card__imgbox_twothird(style='background-image: url(img/article-img-02.jpg)')
-				.card__imgbox.card__imgbox_third(style='background-image: url(img/article-img-01.jpg)')
+				- var imgUrl='img/article-img-02.jpg';
+				.card__imgbox.card__imgbox_twothird(style='background-image: url('+imgUrl+')', data-target="#modalContentSlider", data-toggle="modal", data-target-content='#cardModalSlider-02')
+					img.card-image(src=imgUrl)
+				- var imgUrl = 'img/article-img-01.jpg';
+				.card__imgbox.card__imgbox_third(style='background-image: url('+imgUrl+')',  data-target="#modalContentSlider", data-toggle="modal",data-target-content='#cardModalSlider-02')
+					img.card-image(src=imgUrl)
 		.cardFull-slider__item
 			.card__imgwrap
-				.card__imgbox.card__imgbox_twothird(style='background-image: url(img/article-img-02.jpg)')
-				.card__imgbox.card__imgbox_third(style='background-image: url(img/article-img-01.jpg)')
+				- var imgUrl='img/article-img-02.jpg';
+				.card__imgbox.card__imgbox_twothird(style='background-image: url('+imgUrl+')', data-target="#modalContentSlider", data-toggle="modal", data-target-content='#cardModalSlider-02')
+					img.card-image(src=imgUrl)
+				- var imgUrl = 'img/article-img-01.jpg';
+				.card__imgbox.card__imgbox_third(style='background-image: url('+imgUrl+')',  data-target="#modalContentSlider", data-toggle="modal",data-target-content='#cardModalSlider-02')
+					img.card-image(src=imgUrl)
