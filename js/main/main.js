@@ -670,7 +670,7 @@ $(document).ready(function() {
 		if ($(this).val() == 'true-date') {
 			$(this).val('');
 			$('[name="period_date_buffer"]').datepicker($.datepicker.regional[ "ru" ]);
-			$('[name="period_date_buffer"]').datepicker('widget').addClass('vidget-calendar');
+			$('[name="period_date_buffer"]').datepicker('widget').addClass('widget-calendar');
 			$('[name="period_date_buffer"]').datepicker('show');
 			
 		}
@@ -686,24 +686,24 @@ $(document).ready(function() {
 	/* ВИДЖЕТЫ -------------------------------------------------------------------------------------- */
 	
 	// hover на виджете с табами
-	$('.vidget-tabbox').on('mousemove', '.vidget-item', function(event) {
+	$('.widget-tabbox').on('mousemove', '.widget-item', function(event) {
 		var box = $(event.delegateTarget),
-				items = box.find('.vidget-item');
-				currentItem = box.find('.vidget-item.active');
+				items = box.find('.widget-item');
+				currentItem = box.find('.widget-item.active');
 		currentItem.attr('data-current', 'true')
 		items.removeClass('active');
-		box.on('mouseleave', '.vidget-items', function(event) {
-			$('.vidget-item[data-current="true"]').addClass('active')
+		box.on('mouseleave', '.widget-items', function(event) {
+			$('.widget-item[data-current="true"]').addClass('active')
 		});
 		items.click(function() {
-			$('.vidget-item[data-current="true"]').removeAttr('data-current')
+			$('.widget-item[data-current="true"]').removeAttr('data-current')
 		});
 		
 	});
 
 	// подсветка текущего дня в виджете календарь
 	// var nowDay = $.datepicker.formatDate('dd', new Date());
-	// var dateArr = $('#calendarVidgetBox .ui-state-default');
+	// var dateArr = $('#calendarwidgetBox .ui-state-default');
 
 	// for (var i = 0; i < dateArr.length; i++) {
 	// 	if ($(dateArr[i]).text() == nowDay) {
@@ -717,23 +717,23 @@ $(document).ready(function() {
 	
 	var setTimer;
 	setInterval(function(){ // открываем событие на текущей дате по таймеру
-		if (!$('#calendarVidgetBox').hasClass('show-event')) {
-			$('#calendarVidgetBox .ui-datepicker-today.selected a.ui-state-default').trigger('click')
+		if (!$('#calendarwidgetBox').hasClass('show-event')) {
+			$('#calendarwidgetBox .ui-datepicker-today.selected a.ui-state-default').trigger('click')
 			setTimer = setTimeout(function () {
 				$('.event-control').trigger('click');
-				$('#calendarVidgetBox').removeClass('show-event');
+				$('#calendarwidgetBox').removeClass('show-event');
 			}, 5000)
 		}
 	}, 10000);
 
 	// открываем события на выбранной дате
-	$('#calendarVidgetBox').on('click', 'a.ui-state-default', function(e) {
+	$('#calendarwidgetBox').on('click', 'a.ui-state-default', function(e) {
 		e.preventDefault();
 		var dayCurrent = $(this),
 				eventElements = $(dayCurrent.attr('href')),
 				eventElementArr = eventElements.find('.event')
 				element = $(e.delegateTarget),
-				subtitle = element.find('.vidget-subtitle span'),
+				subtitle = element.find('.widget-subtitle span'),
 				calendar = element.find('.ui-datepicker-calendar'),
 				eventElementControl = element.find('.event-control');
 				
@@ -853,12 +853,12 @@ $(document).ready(function() {
 	$('.sliderBlog').slick();
 
 	/* СЛАЙДЕРЫ -------------------------------------------------------------------------------------*/
-	$('.vidget-slider').slick({
+	$('.widget-slider').slick({
 		autoplay: true,
 		prevArrow: '<div class="slider-arrow slider-arrow__left \
-								vidget-slider-arrow vidget-slider-arrow__left"></div>',
+								widget-slider-arrow widget-slider-arrow__left"></div>',
 		nextArrow: '<div class="slider-arrow slider-arrow__right \
-								vidget-slider-arrow vidget-slider-arrow__right"></div>',
+								widget-slider-arrow widget-slider-arrow__right"></div>',
 	});
 
 	$('.cardFull-slider-wrap').on('init reInit afterChange', 

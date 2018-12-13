@@ -1,0 +1,81 @@
+// TABwidget
+#tabwidget2.widget-box.widget-tabbox
+	nav
+		#nav-tab.nav.nav-tabs.widget-items(role="tablist")
+			a#nav-contact-tab.nav-item.widget-item(data-toggle="tab" href="#widget2-tab3" role="tab" aria-controls="widget2-tab3" aria-selected="false") Доска почета
+			a#nav-profile-tab.nav-item.widget-item(data-toggle="tab" href="#widget2-tab2" role="tab" aria-controls="widget2-tab2" aria-selected="false") День рождения
+			a#nav-home-tab.nav-item.widget-item.active(data-toggle="tab" href="#widget2-tab1" role="tab" aria-controls="widget2-tab1" aria-selected="true") Назначение
+	#nav-tabContent.tab-content.widget-tabs
+		#widget2-tab3.tab-pane.widget-tab.fade(role="tabpanel" aria-labelledby="nav-contact-tab")
+			.widget-content
+				.widget-content__left
+					.widget-head
+						.widget-title
+							| ДОСКА 
+							br
+							| ПОЧЕТА
+					.widget-footer
+						.widget-text
+							p
+								strong
+									| Контаревский 
+									br
+									| Николай 
+									br
+									| Константинович 
+									br
+								| Председатель 
+								br
+								| подразделения 28 
+								br
+				.widget-content__right
+					.widget-imgbox
+						img(src="img/widget-img-07.jpg" alt="image")
+		#widget2-tab2.tab-pane.widget-tab.fade(role="tabpanel" aria-labelledby="nav-profile-tab")
+			.widget-content
+				.widget-content__left
+					.widget-head
+						.widget-title
+							| ДЕНЬ 
+							br
+							| РОЖДЕНИЯ
+					.widget-footer
+						.widget-text
+							p
+								strong
+									| Тушин 
+									br
+									| Петр 
+									br
+									| Николаевич 
+									br
+								| Директор по 
+								br
+								| управлению 
+								br
+								| эффективностью
+				.widget-content__right
+					.widget-imgbox
+						img(src="img/widget-img-05.png" alt="image")
+		#widget2-tab1.tab-pane.widget-tab.fade.show.active(role="tabpanel" aria-labelledby="nav-home-tab")
+			.widget-content
+				.widget-content__left
+					.widget-head
+						.widget-title
+							| НАЗНАЧЕНИЕ
+					.widget-footer
+						.widget-text
+							p
+								strong
+									| Еремина 
+									br
+									| Наталья 
+									br
+									| Константиновна 
+									br
+								| Председатель 
+								br
+								| правления ОМК
+				.widget-content__right
+					.widget-imgbox
+						img(src="img/widget-img-06.jpg" alt="image")

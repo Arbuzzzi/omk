@@ -1,0 +1,58 @@
+// TABwidget
+#tabwidget1.widget-box.widget-tabbox
+	nav
+		#nav-tab.nav.nav-tabs.widget-items(role="tablist")
+			a#nav-home-tab.nav-item.widget-item(data-toggle="tab" href="#widget1-tab1" role="tab" aria-controls="widget1-tab1" aria-selected="false") Годовой отчет
+			a#nav-profile-tab.nav-item.widget-item(data-toggle="tab" href="#widget1-tab2" role="tab" aria-controls="widget1-tab2" aria-selected="false") Территория ОМК
+			a#nav-contact-tab.nav-item.widget-item.active(data-toggle="tab" href="#widget1-tab3" role="tab" aria-controls="widget1-tab3" aria-selected="true") ОМК-команда
+	#nav-tabContent.tab-content.widget-tabs
+		#widget1-tab1.tab-pane.widget-tab.fade.show.active(role="tabpanel" aria-labelledby="nav-contact-tab")
+			.widget-content
+				.widget-content__left
+					.widget-head
+						.widget-title
+							| ГОДОВОЙ 
+							br
+							| ОТЧЕТ ОМК
+					.widget-footer
+						a.widget-link(href="#")
+							| Web-версия 
+							br
+							| Скачать PDF
+				.widget-content__right
+					.widget-imgbox
+						img(src="img/widget-img-01.jpg" alt="image")
+		#widget1-tab2.tab-pane.widget-tab.fade(role="tabpanel" aria-labelledby="nav-profile-tab")
+			.widget-content
+				.widget-content__left
+					.widget-head
+						.widget-title
+							| ТЕРРИТОРИЯ 
+							br
+							| ОМК
+					.widget-footer
+						a.widget-link(href="#")
+							| 16.11.2018 
+							br
+							| №43 (154) 2018
+				.widget-content__right
+					.widget-imgbox
+						img(src="img/widget-img-02.jpg" alt="image")
+		#widget1-tab3.tab-pane.widget-tab.fade(role="tabpanel" aria-labelledby="nav-home-tab")
+			.widget-content
+				.widget-content__left
+					.widget-head
+						.widget-title
+							| КОРПОРАТИВНАЯ 
+							br
+							| ПРЕССА
+					.widget-footer
+						a.widget-link(href="#")
+							| Журнал 
+							br
+							| ОМК-команда 
+							br
+							| выпуск 34, 2018
+				.widget-content__right
+					.widget-imgbox
+						img(src="img/widget-img-04.jpg" alt="image")

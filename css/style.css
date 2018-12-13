@@ -1969,7 +1969,7 @@ h2 span,
   max-width: 42.73%;
 }
 
-.header.scroll .header-box__qwestion {
+.header.scroll .header-box__question {
   -webkit-box-flex: 0;
   -webkit-flex: 0 0 11.11%;
       -ms-flex: 0 0 11.11%;
@@ -2002,18 +2002,18 @@ h2 span,
   height: 25px;
 }
 
-.header.scroll .header-qwestion {
+.header.scroll .header-question {
   background-image: none;
   padding: 0;
   margin-right: -20px;
   border-bottom: none;
 }
 
-.header.scroll .header-qwestion a {
+.header.scroll .header-question a {
   font-size: 12px;
 }
 
-.header.scroll .header-qwestion br {
+.header.scroll .header-question br {
   display: none;
 }
 
@@ -2229,7 +2229,7 @@ h2 span,
   max-width: 25%;
 }
 
-.header-box__qwestion {
+.header-box__question {
   padding: 0 15px;
   width: 100%;
   -webkit-box-flex: 0;
@@ -2291,7 +2291,7 @@ h2 span,
   font-size: 12px;
 }
 
-.header-qwestion {
+.header-question {
   background-color: #efefef;
   background: transparent url("../img/omk_question.png") center no-repeat;
   -webkit-background-size: contain;
@@ -2301,7 +2301,7 @@ h2 span,
   margin-bottom: 3px;
 }
 
-.header-qwestion a {
+.header-question a {
   font-size: 13px;
   line-height: 16px;
   -webkit-transition-property: color;
@@ -4118,7 +4118,7 @@ h2 span,
   transition: color 0.2s;
 }
 
-.vidget-calendar {
+.widget-calendar {
   padding: 15px;
   margin-top: 25px;
   -webkit-border-radius: 5px;
@@ -4127,39 +4127,39 @@ h2 span,
   height: 238px;
 }
 
-.vidget-calendar.vidget-box {
+.widget-calendar.widget-box {
   width: auto;
   border: 1px solid #dddee0;
   background-color: #f4f5f5;
 }
 
-.vidget-calendar.vidget-box .ui-state-active {
+.widget-calendar.widget-box .ui-state-active {
   background-color: transparent;
 }
 
-.vidget-calendar.vidget-box .ui-datepicker {
+.widget-calendar.widget-box .ui-datepicker {
   display: block;
   padding: 0;
   margin-left: -2px;
 }
 
-.vidget-calendar .ui-datepicker {
+.widget-calendar .ui-datepicker {
   width: 100%;
 }
 
-.vidget-calendar table {
+.widget-calendar table {
   font-size: 14px;
   margin-bottom: 0;
 }
 
-.vidget-calendar .ui-datepicker-title {
+.widget-calendar .ui-datepicker-title {
   color: #797c82;
   font-size: 13px;
   font-weight: 400;
 }
 
-.vidget-calendar .ui-datepicker-prev:before,
-.vidget-calendar .ui-datepicker-next:before {
+.widget-calendar .ui-datepicker-prev:before,
+.widget-calendar .ui-datepicker-next:before {
   content: "";
   position: absolute;
   display: block;
@@ -4182,49 +4182,49 @@ h2 span,
   font-size: 10px;
 }
 
-.vidget-calendar .ui-datepicker-prev:before {
+.widget-calendar .ui-datepicker-prev:before {
   -webkit-transform: rotate(90deg);
       -ms-transform: rotate(90deg);
           transform: rotate(90deg);
 }
 
-.vidget-calendar .ui-datepicker-next:before {
+.widget-calendar .ui-datepicker-next:before {
   -webkit-transform: rotate(-90deg);
       -ms-transform: rotate(-90deg);
           transform: rotate(-90deg);
 }
 
-.vidget-calendar .ui-datepicker-calendar td {
+.widget-calendar .ui-datepicker-calendar td {
   padding: 2.5px;
 }
 
-.vidget-calendar .ui-datepicker-today .ui-state-default {
+.widget-calendar .ui-datepicker-today .ui-state-default {
   border: 1px solid #ee3124;
   color: #ee3124;
 }
 
-.vidget-calendar .ui-state-default {
+.widget-calendar .ui-state-default {
   text-align: center;
   border: 1px solid #d0d1d3;
   color: #bcbdc0;
   font-size: 16px;
 }
 
-.vidget-calendar .ui-state-week {
+.widget-calendar .ui-state-week {
   color: #bcbdc0;
   font-size: 10px;
   font-weight: 300;
 }
 
-.vidget-calendar .ui-state-active {
+.widget-calendar .ui-state-active {
   border: 1px solid #32363f;
 }
 
-.vidget-calendar .ui-datepicker-buttonpane {
+.widget-calendar .ui-datepicker-buttonpane {
   margin: 0;
 }
 
-.vidget-calendar .ui-datepicker-buttonpane button {
+.widget-calendar .ui-datepicker-buttonpane button {
   margin: 0;
   padding: 3px 5px 4px 5px;
   min-width: 86px;
@@ -4242,7 +4242,7 @@ h2 span,
   transition: 0.5s;
 }
 
-.vidget-calendar .form-filters__select {
+.widget-calendar .form-filters__select {
   margin-left: auto;
   margin-right: auto;
   display: block;
@@ -4302,14 +4302,14 @@ h2 span,
   color: inherit;
 }
 
-.vidget-box {
+.widget-box {
   margin-bottom: 15px;
   margin-top: 0;
   -webkit-border-radius: 5px;
           border-radius: 5px;
 }
 
-.vidget-items {
+.widget-items {
   -webkit-flex-wrap: nowrap;
       -ms-flex-wrap: nowrap;
           flex-wrap: nowrap;
@@ -4319,7 +4319,7 @@ h2 span,
           justify-content: flex-end;
 }
 
-.vidget-item {
+.widget-item {
   position: relative;
   z-index: 1;
   -webkit-flex-shrink: 1;
@@ -4338,23 +4338,23 @@ h2 span,
   background-color: #fbfbfb;
 }
 
-.vidget-item:first-child {
+.widget-item:first-child {
   z-index: 2;
 }
 
-.vidget-item:first-child.active,
-.vidget-item:first-child:hover {
+.widget-item:first-child.active,
+.widget-item:first-child:hover {
   margin-right: -10px;
   min-width: 103px;
   text-align: center;
 }
 
-.vidget-item:not(:last-child),
-.vidget-item:not(:first-child) {
+.widget-item:not(:last-child),
+.widget-item:not(:first-child) {
   z-index: 3;
 }
 
-.vidget-item:last-child {
+.widget-item:last-child {
   z-index: 1;
   margin-left: -10px;
   margin-right: 0;
@@ -4362,14 +4362,14 @@ h2 span,
   direction: rtl;
 }
 
-.vidget-item:last-child.active,
-.vidget-item:last-child.active:hover {
+.widget-item:last-child.active,
+.widget-item:last-child.active:hover {
   text-align: left;
   direction: ltr;
 }
 
-.vidget-item.active,
-.vidget-item:hover {
+.widget-item.active,
+.widget-item:hover {
   z-index: 10;
   -webkit-flex-shrink: 0;
       -ms-flex-negative: 0;
@@ -4383,12 +4383,12 @@ h2 span,
   border-bottom-color: transparent;
 }
 
-.vidget-item_fixfirsttab:first-child.active,
-.vidget-item_fixfirsttab:first-child:hover {
+.widget-item_fixfirsttab:first-child.active,
+.widget-item_fixfirsttab:first-child:hover {
   margin-right: 0;
 }
 
-.vidget-imgbox {
+.widget-imgbox {
   position: relative;
   overflow: hidden;
   background: center no-repeat;
@@ -4396,18 +4396,18 @@ h2 span,
           background-size: cover;
 }
 
-.vidget-imgbox_calendar {
+.widget-imgbox_calendar {
   margin-top: auto;
   height: 100%;
   max-height: 115px;
 }
 
-.vidget-imgbox_full {
+.widget-imgbox_full {
   height: 180px;
   margin-bottom: 10px;
 }
 
-.vidget-imgbox__text {
+.widget-imgbox__text {
   position: absolute;
   left: 0;
   bottom: 0;
@@ -4422,7 +4422,7 @@ h2 span,
   background-image: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.14) 14%, #000000 100%);
 }
 
-.vidget-imgbox__text h3 {
+.widget-imgbox__text h3 {
   margin-bottom: 3px;
   font-family: "Roboto", sans-serif;
   color: #ffffff;
@@ -4430,13 +4430,13 @@ h2 span,
   font-weight: 400;
 }
 
-.vidget-imgbox__text p {
+.widget-imgbox__text p {
   color: #bcbdc0;
   font-size: 1em;
   font-weight: 400;
 }
 
-.vidget-content {
+.widget-content {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -4449,21 +4449,21 @@ h2 span,
   border-top: none;
 }
 
-.vidget-content_bdtop {
+.widget-content_bdtop {
   -webkit-border-radius: 5px;
           border-radius: 5px;
   border-top: 1px solid #dddee0;
 }
 
-.vidget-content_dblock {
+.widget-content_dblock {
   display: block;
 }
 
-.vidget-content_ads {
+.widget-content_ads {
   min-height: 315px;
 }
 
-.vidget-content__left {
+.widget-content__left {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -4480,16 +4480,16 @@ h2 span,
   padding-right: 10px;
 }
 
-.vidget-content__right {
+.widget-content__right {
   max-width: 114px;
   text-align: right;
 }
 
-.vidget-footer {
+.widget-footer {
   margin-top: auto;
 }
 
-.vidget-title {
+.widget-title {
   position: relative;
   display: block;
   margin-bottom: 10px;
@@ -4499,7 +4499,7 @@ h2 span,
   font-weight: 300;
 }
 
-.vidget-subtitle {
+.widget-subtitle {
   position: relative;
   margin-top: 7px;
   margin-bottom: 15px;
@@ -4508,14 +4508,14 @@ h2 span,
   font-weight: 400;
 }
 
-.vidget-link {
+.widget-link {
   color: #797c82;
   font-size: 12px;
   line-height: 14px;
   font-weight: 400;
 }
 
-.vidget-group {
+.widget-group {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -4533,88 +4533,88 @@ h2 span,
   margin-top: 20px;
 }
 
-.vidget-group_special {
+.widget-group_special {
   margin-top: 5px;
   margin-bottom: -15px;
 }
 
-.vidget-text {
+.widget-text {
   color: #797c82;
   font-size: 12px;
   font-weight: 400;
 }
 
-.vidget-text p {
+.widget-text p {
   margin-bottom: 2px;
 }
 
-.vidget-text p:last-child {
+.widget-text p:last-child {
   margin-bottom: 0;
 }
 
-.vidget-text h4 {
+.widget-text h4 {
   font-family: "Roboto", sans-serif;
   font-size: 14px;
   font-weight: 400;
 }
 
-.vidget-text_small {
+.widget-text_small {
   color: #9a9da1;
   font-size: 11px;
   line-height: 13.2px;
   font-weight: 400;
 }
 
-.vidget-text_count {
+.widget-text_count {
   color: #32363f;
   font-size: 37px;
   font-weight: 300;
 }
 
-.vidget-text_big {
+.widget-text_big {
   font-size: 18px;
   font-weight: 400;
 }
 
-.vidget-text.danger {
+.widget-text.danger {
   color: #ee3124;
 }
 
-.vidget-text.succes {
+.widget-text.succes {
   color: #39b54a;
 }
 
-.vidget-slider {
+.widget-slider {
   margin-left: -7.5px;
   margin-right: -7.5px;
 }
 
-.vidget-slider-wrap {
+.widget-slider-wrap {
   overflow: hidden;
 }
 
-.vidget-slider__tab {
+.widget-slider__tab {
   padding-left: 7.5px;
   padding-right: 7.5px;
 }
 
-.vidget-slider__content {
+.widget-slider__content {
   -webkit-border-radius: 5px;
           border-radius: 5px;
   border: 1px solid #dddee0;
 }
 
-.vidget-slider-arrow {
+.widget-slider-arrow {
   width: 15px;
 }
 
-.vidget-slider-arrow__left {
+.widget-slider-arrow__left {
   left: 7.5px;
   -webkit-background-size: 50% 50%;
           background-size: 50%;
 }
 
-.vidget-slider-arrow__right {
+.widget-slider-arrow__right {
   right: 7.5px;
   -webkit-background-size: 50% 50%;
           background-size: 50%;
@@ -5554,17 +5554,17 @@ h2 span,
     text-decoration: underline;
   }
 
-  .vidget-calendar .ui-state-default:hover {
+  .widget-calendar .ui-state-default:hover {
     background-color: #BCBDC0;
     color: #ffffff;
   }
 
-  .vidget-calendar .ui-datepicker-buttonpane button:hover {
+  .widget-calendar .ui-datepicker-buttonpane button:hover {
     background-color: #BCBDC0;
     color: #ffffff;
   }
 
-  .vidget-title_link:hover {
+  .widget-title_link:hover {
     text-decoration: underline;
   }
 
