@@ -1,5 +1,5 @@
-.card.card-slider.cardThird-slider
-	.card-wrap.card-slider-wrap.cardThird-slider-wrap
+.card.card-slider.card-third-slider
+	.card-wrap.card-slider-wrap.card-third-slider-wrap
 
 		- var items = [];
 		- items.push({url: 'background-image: url(img/blog-img-01.jpg);', title: 'Как вам прошедший концерт?', buttonTitle: 'Константинов Константин'});
@@ -8,11 +8,11 @@
 		- items.push({url: 'background-image: url(img/blog-img-02.jpg);', title: 'Хочется лета, а вокруг одни офисы! Поеду на Ямайку!', buttonTitle: 'Мацинова Елена'});
 		- items.push({url: 'background-image: url(img/blog-img-01.jpg);', title: 'Как вам прошедший концерт?', buttonTitle: 'Андреевский Андрей'});
 		each item in items
-			.card-slider__item.cardThird-slider__item
-				.cardThird-slider__imgbox.card__imgbox(style=item.url)
+			.card-slider__item.card-third-slider__item
+				.card-third-slider__imgbox.card__imgbox(style=item.url)
 					.card-warning-text.hide
 						p
-				.card__content.cardThird__content
+				.card__content.card-third__content
 					.tagbox
 						.tag
 							button.button.button-tag= item.buttonTitle
@@ -23,7 +23,7 @@
 							button.like-button
 								i.icon-like
 								span.like-count 1286
-					.card__title.cardThird__title
+					.card__title.card-third__title
 						a(href='#')=item.title
 					.card-date
 						span 24 Сентября 2018

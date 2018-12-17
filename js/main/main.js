@@ -826,7 +826,7 @@ $(document).ready(function() {
 		}
 	});
 	
-	$('.cardHalf__text').dotdotdot({
+	$('.card-half__text').dotdotdot({
 		keep: '.card__more',
 		// tolerance: 10,
 		callback: function () {
@@ -881,14 +881,14 @@ $(document).ready(function() {
 	});
 
 
-	$('.cardHalf-slider-wrap').slick({
+	$('.card-half-slider-wrap').slick({
 		slidesToShow: 2,
 		slidesToScroll: 1,
 		prevArrow: '<div class="slider-arrow slider-arrow__left"></div>',
 		nextArrow: '<div class="slider-arrow slider-arrow__right"></div>',
 	});
 
-	$('.cardThird-slider-wrap').slick({
+	$('.card-third-slider-wrap').slick({
 		slidesToShow: 3,
 		slidesToScroll: 1,
 		prevArrow: '<div class="slider-arrow slider-arrow__left"></div>',

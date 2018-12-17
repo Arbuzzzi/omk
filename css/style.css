@@ -3885,7 +3885,7 @@ h2 span,
   min-height: 210px;
 }
 
-.cardThird {
+.card-third {
   max-width: 33.333333%;
   -webkit-box-flex: 0;
   -webkit-flex: 0 0 33.333333%;
@@ -3893,21 +3893,21 @@ h2 span,
           flex: 0 0 33.333333%;
 }
 
-.cardThird__imgbox,
-.cardThird-slider__imgbox {
+.card-third__imgbox,
+.card-third-slider__imgbox {
   min-height: 210px;
 }
 
-.cardThird__content {
+.card-third__content {
   padding-left: 15px;
   padding-right: 15px;
 }
 
-.cardThird_fullHeightImg {
+.card-third_fullHeightImg {
   color: #ffffff;
 }
 
-.cardThird_fullHeightImg .cardThird__content {
+.card-third_fullHeightImg .card-third__content {
   margin-top: 210px;
   background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(0, 0, 0, 0)), color-stop(14%, rgba(0, 0, 0, 0.14)), to(#000000));
   background-image: -webkit-linear-gradient(top, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.14) 14%, #000000 100%);
@@ -3915,11 +3915,11 @@ h2 span,
   background-image: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.14) 14%, #000000 100%);
 }
 
-.cardThird-slider__item {
+.card-third-slider__item {
   position: relative;
 }
 
-.cardThird-slider__item:after {
+.card-third-slider__item:after {
   content: "";
   position: absolute;
   display: block;
@@ -3933,7 +3933,7 @@ h2 span,
           border-radius: 5px;
 }
 
-.cardHalf {
+.card-half {
   max-width: 50%;
   -webkit-box-flex: 0;
   -webkit-flex: 0 0 50%;
@@ -3941,18 +3941,18 @@ h2 span,
           flex: 0 0 50%;
 }
 
-.cardHalf-imgbox {
+.card-half-imgbox {
   min-height: 260px;
   background: no-repeat center;
   -webkit-background-size: cover;
           background-size: cover;
 }
 
-.cardHalf_fullHeightImg {
+.card-half_fullHeightImg {
   color: #ffffff;
 }
 
-.cardHalf_fullHeightImg .cardHalf__content {
+.card-half_fullHeightImg .card-half__content {
   margin-top: 220px;
   padding-top: 55px;
   background: -webkit-gradient(linear, left top, left bottom, from(rgba(0, 0, 0, 0)), color-stop(14%, rgba(0, 0, 0, 0.14)), to(black));
@@ -3962,12 +3962,12 @@ h2 span,
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', endColorstr='#000000',GradientType=0 );
 }
 
-.cardHalf__text {
+.card-half__text {
   padding-top: 15px;
   max-height: 305px;
 }
 
-.cardHalf-slider {
+.card-half-slider {
   overflow: hidden;
   background-color: #fff;
   margin-left: 15px;
@@ -3981,7 +3981,7 @@ h2 span,
           border-radius: 5px;
 }
 
-.cardHalf-slider-wrap {
+.card-half-slider-wrap {
   margin-left: -15px;
   margin-right: -15px;
   background-color: transparent;
@@ -3989,12 +3989,12 @@ h2 span,
   overflow: hidden;
 }
 
-.cardHalf-slider__item {
+.card-half-slider__item {
   padding-left: 15px;
   padding-right: 15px;
 }
 
-.cardHalf-slider__imgbox {
+.card-half-slider__imgbox {
   min-height: 330px;
 }
 
