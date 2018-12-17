@@ -1,4 +1,4 @@
-.headerNavSystem {
+.header-nav-system {
 	// display: none;
 	position: relative;
 	max-width: 1200px;
@@ -51,9 +51,9 @@
 			
 		}
 	}
-	&-icon-box {
-		// margin-bottom: 2px;
-	}
+	// &-icon-box {
+	//  margin-bottom: 2px;
+	// }
 	&-button {
 		background-color: transparent;
 		color: #797C82;
@@ -197,7 +197,7 @@
 	}
 }
 
-.menuNav {
+.menu-nav {
 	position: relative;
 	display: inline-block;
 	&-header {
@@ -238,7 +238,7 @@
 		ul {
 			@include listUnstyle();
 
-			.menuNav__textbox {
+			.menu-nav__textbox {
 				padding-left: 30px;
 				&:first-child, &:last-child {
 					border-radius: 0;
@@ -254,14 +254,14 @@
 		position: relative;
 		margin-bottom: 0;
 		&:first-child {
-			.menuNav__textbox {
+			.menu-nav__textbox {
 				border-top-left-radius: 5px;
 				border-top-right-radius: 5px;
 			}				
 		}
 
 		&:last-child {
-			.menuNav__textbox {
+			.menu-nav__textbox {
 				border-bottom-left-radius: 5px;
 				border-bottom-right-radius: 5px;
 			}				

@@ -59,8 +59,8 @@ $(document).ready(function() {
 
 
 	// подпункты меню раскрывается при наведении
-	// $('.menuNavHeader__item').on('mouseenter', function(event) {
-	// 	var element = $(event.target).parents('.menuNavHeader__item'),
+	// $('.menu-nav-header__item').on('mouseenter', function(event) {
+	// 	var element = $(event.target).parents('.menu-nav-header__item'),
 	// 			elementControl = $(element.data('target'));
 	// 	if (elementControl.hasClass('collapse')) {
 	// 		elementControl.collapse('show');	
@@ -85,12 +85,12 @@ $(document).ready(function() {
 
 	$(document).click(function() {
 		if (event !== undefined) {
-			if (!$(event.target).is("#menuNavMore *")) {
-				var current = $('#menuNavMore').find('.current');
-				if ($('#menuNavHeaderGroup').hasClass('show')) {
+			if (!$(event.target).is("#menu-nav-more *")) {
+				var current = $('#menu-nav-more').find('.current');
+				if ($('#menu-nav-headerGroup').hasClass('show')) {
 					current.parents('.collapse').collapse('show');
 				}
-				$('#menuNavHeaderGroup').collapse('hide');
+				$('#menu-nav-headerGroup').collapse('hide');
 			}
 		}		
 	});
@@ -101,27 +101,27 @@ $(document).ready(function() {
 
 	/* ПОДМЕНЮ "СИСТЕМЫ" ----------------------------------------------------------------------------- */
 	// системы показываются
-	$('#headerNav').on('show.bs.collapse', function () {
-		var btn = $('#headerNavControl');
+	$('#header-nav').on('show.bs.collapse', function () {
+		var btn = $('#header-navControl');
 		btn.addClass('active')
 	});
 
 	// системы скрываются
-	$('#headerNav').on('hide.bs.collapse', function () {
-		var btn = $('#headerNavControl');
+	$('#header-nav').on('hide.bs.collapse', function () {
+		var btn = $('#header-navControl');
 		btn.removeClass('active')
 	});
 	
 	// разворачиваем меню
 	$('#btnDeploy').click(function(event) {
-		var header = $('.header'),
-				headerNavSustem = $('.headerNavSystem');
+		// var header = $('.header'),
+		// 		headerNavSustem = $('.header-nav-system');
 		$('.header').removeClass('scroll').css({
 			'position': 'fixed',
 			'padding-bottom': '10px'
 		});
 
-		$('#headerNav').collapse('show');
+		$('#header-nav').collapse('show');
 		$('#menuLeftList').collapse('show');
 
 		$('.rollUp').addClass('show');
@@ -129,7 +129,7 @@ $(document).ready(function() {
 	});	
 
 	// настройки показываются
-	$('#headerNavSetting').on('show.bs.collapse', function () {
+	$('#header-navSetting').on('show.bs.collapse', function () {
 		var headerHeight = $('.header').actual('outerHeight');
 
 		// инициализация drag & drop
@@ -141,7 +141,7 @@ $(document).ready(function() {
 		$(this).parent().append('<div class="overlay"/>');
 		$('.overlay').animate({opacity: 'show'}, 400);
 
-		$('#headerNavSettingControl').css({
+		$('#header-navSettingControl').css({
 			position: 'relative', 
 			zIndex: '1000'
 		}).addClass('active');
@@ -168,7 +168,7 @@ $(document).ready(function() {
 
 		checkboxDisabl($(this), 10)
 		// настройки скрываются
-		$('#headerNavSetting').on('hide.bs.collapse', function () {
+		$('#header-navSetting').on('hide.bs.collapse', function () {
 			$('.header').css('transform', '');
 			$('.overlay').animate({
 				opacity: 0
@@ -187,7 +187,7 @@ $(document).ready(function() {
 			});
 			$('.header').unwrap();
 
-			$('#headerNavSettingControl').removeClass('active').removeAttr('style');
+			$('#header-navSettingControl').removeClass('active').removeAttr('style');
 		})
 	})
 
@@ -397,7 +397,7 @@ $(document).ready(function() {
 		// }
 		// меню в обычном состоянии
 		$('*').tooltip('hide');
-		if (!$('.header').hasClass('.scroll')  && !$('#headerNavSetting').hasClass('show')) {
+		if (!$('.header').hasClass('.scroll')  && !$('#header-navSetting').hasClass('show')) {
 			addClassScroll($('.header'), 'scroll', positionThre);
 
 			// 1 брэйкпоинт 
@@ -425,13 +425,13 @@ $(document).ready(function() {
 
 		// меню свернуто
 		if ($('.header').hasClass('scroll')) {
-			$('#headerNav').collapse('hide');
-			$('#headerNavControl').removeClass('active');
+			$('#header-nav').collapse('hide');
+			$('#header-navControl').removeClass('active');
 		}
 
 		// scroll top самый верх экана
 		if (position <= 0) {
-			$('#headerNav').collapse('show');
+			$('#header-nav').collapse('show');
 			$('.header').removeAttr('style');
 			addClassScroll($('.header'));
 			positionContent = $('.header').actual('outerHeight');
@@ -443,7 +443,7 @@ $(document).ready(function() {
 		// scroll bottom 
 		if (position > 0) {
 			$('.menu-left').removeAttr('style');
-			$('#menuNavHeaderGroup').collapse('hide');
+			$('#menu-nav-headerGroup').collapse('hide');
 			$('.header').css('padding-bottom', '')
 
 			// развернуть
@@ -861,7 +861,7 @@ $(document).ready(function() {
 								widget-slider-arrow widget-slider-arrow__right"></div>',
 	});
 
-	$('.cardFull-slider-wrap').on('init reInit afterChange', 
+	$('.card-full-slider-wrap').on('init reInit afterChange', 
 		function(event, slick, currentSlide, nextSlide){
 			var status = $(this).find('.card-slider-number span'),
 					slide = $(this).find('.card__imgbox');
@@ -872,7 +872,7 @@ $(document).ready(function() {
 			
 	});
 
-	$('.cardFull-slider-wrap').slick({
+	$('.card-full-slider-wrap').slick({
 		// onInit: function() {
 		// 	$('.card-slider-number span').text(i + '/' + slick.slideCount);
 		// },
@@ -1240,14 +1240,14 @@ $(document).ready(function() {
 	});
 
 	$('.article.collapse, .card.collapse').on('show.bs.collapse', function(event) {
-		$(this).find('.cardFull-slider-wrap').slick('unslick');
+		$(this).find('.card-full-slider-wrap').slick('unslick');
 		// $(this).addClass('modalMain-preload');
 		$('[data-target="#'+ $(this).attr('id') +'"]').addClass('active');
 		
 	});
 	$('.article.collapse, .card.collapse').on('shown.bs.collapse', function(event) {
 		var element = $(this);
-		$(this).find('.cardFull-slider-wrap').slick({
+		$(this).find('.card-full-slider-wrap').slick({
 			prevArrow: '<div class="slider-arrow slider-arrow__left"></div>',
 			nextArrow: '<div class="slider-arrow slider-arrow__right"></div>',
 		});

@@ -77,9 +77,9 @@
 			width: 100%;
 		}
 	}
-	&-quote {
+	// &-quote {
 
-	}
+	// }
 	&-blockquote {
 		position: relative;
 		padding: 15px;
@@ -108,7 +108,7 @@
 		font-weight: 400;
 		line-height: 23px;
 		p {
-			font-size: 1.0625em; /* 17/16 */
+			font-size: 17px;
 			margin-bottom: 15px;
 		}
 		h3 {
@@ -143,7 +143,7 @@
 			font-weight: 300;
 		}
 	}
-	&Preview {
+	&-preview {
 		&-text {
 			height: 70px;
 			overflow: hidden;

@@ -1,10 +1,10 @@
 if cardSettings === undefined
 	- var cardSettings = {title: 'Заголовок', cardSize: 'xl', imgUrl: 'img/', imgClass: 'card-image'};
 .cards
-	.card.cardFull-head_special
+	.card.card-full-head_special
 		.content-title
 			.content-titlebox_dark
 				h2= cardSettings.title
-	.card.cardFull
+	.card.card-full
 		.card__imgbox(class='card__imgbox_'+cardSettings.cardSize, class=cardSettings.advantClass, style='background-image: url('+cardSettings.imgUrl+');', data-target="#modalImgBox", data-toggle="modal",data-target-content='#image_'+cardSettings.cardSize)
 			img(id='image_'+cardSettings.cardSize, src=cardSettings.imgUrl, class=cardSettings.imgClass)
