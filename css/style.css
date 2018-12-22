@@ -3396,7 +3396,7 @@ h2 span,
   margin-bottom: 5px;
 }
 
-.margin-bottom-15 {
+.card_slim {
   margin-bottom: 15px;
 }
 
@@ -4926,7 +4926,6 @@ h2 span,
 
 .article-autor__left {
   vertical-align: middle;
-  display: inline-block;
   float: left;
   font-family: Roboto;
   font-size: 20px;
