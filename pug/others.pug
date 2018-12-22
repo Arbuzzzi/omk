@@ -6,7 +6,7 @@ block content
 	include page/_page-special-title
 	include modules/_form
 
-	.card.card_slim
+	.card.margin-bottom-15
 		.content-title
 			.content-titlebox
 				h2 Таблица наименований регулярных мероприятий
@@ -14,7 +14,7 @@ block content
 	- var tableClass = 'table-horizontal-line';
 	include tables/_table-01
 
-	.card.card_slim
+	.card.margin-bottom-15
 		.content-title
 			.content-titlebox
 				h2 Другие стили таблиц
@@ -28,14 +28,14 @@ block content
 	- var tableClass = 'table-thin-head table-light table-all-line';
 	include tables/_table-01
 
-	.card.card_slim
+	.card.margin-bottom-15
 		.content-title
 			.content-titlebox_dark.content-titlebox_collapse(data-toggle="collapse" data-target="#articleCollapse01")
 				h4 Это заголовок-спойлер и под ним скрывается текстовый блок или галерея
 	- var ID = 'articleCollapse01';
 	- var articleClass = 'collapse';
 	include articles/_article-04
-	.card.card_slim
+	.card.margin-bottom-15
 		.content-title
 			.content-titlebox_dark.content-titlebox_collapse(data-toggle="collapse" data-target="#articleCollapseSlider01")
 				h4 Контент-слайдер - это многостраничный спойлер

@@ -985,6 +985,10 @@ img {
   display: none;
 }
 
+.margin-bottom-15 {
+  margin-bottom: 15px;
+}
+
 h1,
 .h1,
 h2,
@@ -3392,7 +3396,7 @@ h2 span,
   margin-bottom: 5px;
 }
 
-.card_slim {
+.margin-bottom-15 {
   margin-bottom: 15px;
 }
 
@@ -4893,8 +4897,7 @@ h2 span,
 }
 
 .article-text p {
-  font-size: 1.0625em;
-  /* 17/16 */
+  font-size: 17px;
   margin-bottom: 15px;
 }
 
