@@ -29,6 +29,12 @@
   background-image: url(#{$url+$name});
 }
 
+@mixin marginBottom($mb) {
+  *.margin-bottom-#{$mb} {
+    margin-bottom: #{$mb}px;
+  }
+}
+
 @mixin sqwer($size){ // квадрат 
   height: $size;
   width: $size;

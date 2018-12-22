@@ -177,7 +177,8 @@
 .nav-more {
 	display: inline-block;
 	// max-width: 155px;
-	// position: relative;
+  // position: relative;
+  vertical-align: baseline;
 	&-list {
 		@include listUnstyle();
 		// top: 0;

@@ -1,31 +1,34 @@
 .card.card-full.card-full-head
 	.card-wrap.card-full-wrap.card-wrap-head
-		.content-title
-			.content-titlebox
-				h1=pageTitle
-			.content-filter
-				.content-filter__formbox
-					form.form-filters.form(action='#')
-						.form-filters__title Фильтр:
-						select#number.button.button-o.form-select.form-filters__select(name='number')
-							option(selected='selected') Москва
-							option Выкса
-							option Челябинск
-							option Чусовой
-							option Благовещенск
-							option Альтемьевск
-						input(type='hidden', name='period_date_buffer', disabled='')
-						select#filtersCalendarPeriod.button.button-o.form-select.form-filters__select(name='period')
-							option(value='', disabled='', selected='selected') Выберите период
-							option(value='Месяц') Месяц
-							option(value='Год') Год
-							option(value='Неделя') Неделя
-							option(value='Квартал') Квартал
-							option(value='true-date') Точная дата
-							option#period_date(value='', hidden='')  
-						.button.button-o.form-filters__searchbox
-							input#formSearchInput2.form-filters__search(type='search')
-							button.form-filters__submit.icon-search(type='submit')
-				.content-filter__btnbox
-					button#contentFilterButton.content-filter__button
-						i.icon-filters
+.row
+	.col-xl-12
+		.card.bg-color-light
+			.content-title
+				.content-titlebox
+					h1=pageTitle
+				.content-filter
+					.content-filter__formbox
+						form.form-filters.form(action='#')
+							.form-filters__title Фильтр:
+							select#number.button.button-o.form-select.form-filters__select(name='number')
+								option(selected='selected') Москва
+								option Выкса
+								option Челябинск
+								option Чусовой
+								option Благовещенск
+								option Альтемьевск
+							input(type='hidden', name='period_date_buffer', disabled='')
+							select#filtersCalendarPeriod.button.button-o.form-select.form-filters__select(name='period')
+								option(value='', disabled='', selected='selected') Выберите период
+								option(value='Месяц') Месяц
+								option(value='Год') Год
+								option(value='Неделя') Неделя
+								option(value='Квартал') Квартал
+								option(value='true-date') Точная дата
+								option#period_date(value='', hidden='')  
+							.button.button-o.form-filters__searchbox
+								input#formSearchInput2.form-filters__search(type='search')
+								button.form-filters__submit.icon-search(type='submit')
+					.content-filter__btnbox
+						button#contentFilterButton.content-filter__button
+							i.icon-filters

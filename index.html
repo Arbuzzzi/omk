@@ -6,7 +6,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <link rel="stylesheet" href="css/normalize.css">
-    <link rel="stylesheet" href="css/bootstrap/bootstrap-grid.css">
+    <link rel="stylesheet" href="css/bootstrap/bootstrap.css">
     <link rel="stylesheet" href="jquery-ui-1.12.1.custom/jquery-ui.structure.min.css">
     <link rel="stylesheet" href="jquery-ui-1.12.1.custom/jquery-ui.min.css">
     <link rel="stylesheet" href="slick/slick-theme.css">
@@ -812,68 +812,75 @@
           <div class="col-xl-9">
             <div class="content-group">
               <div class="card card-full card-full-head">
-                <div class="card-wrap card-full-wrap card-wrap-head">
-                  <div class="content-title">
-                    <div class="content-titlebox">
-                      <h1>Главная страница</h1>
-                    </div>
-                    <div class="content-filter">
-                      <div class="content-filter__formbox">
-                        <form class="form-filters form" action="#">
-                          <div class="form-filters__title">Фильтр:</div>
-                          <select class="button button-o form-select form-filters__select" id="number" name="number">
-                            <option selected="selected">Москва</option>
-                            <option>Выкса</option>
-                            <option>Челябинск</option>
-                            <option>Чусовой</option>
-                            <option>Благовещенск</option>
-                            <option>Альтемьевск</option>
-                          </select>
-                          <input type="hidden" name="period_date_buffer" disabled="">
-                          <select class="button button-o form-select form-filters__select" id="filtersCalendarPeriod" name="period">
-                            <option value="" disabled="" selected="selected">Выберите период</option>
-                            <option value="Месяц">Месяц</option>
-                            <option value="Год">Год</option>
-                            <option value="Неделя">Неделя</option>
-                            <option value="Квартал">Квартал</option>
-                            <option value="true-date">Точная дата</option>
-                            <option id="period_date" value="" hidden=""> </option>
-                          </select>
-                          <div class="button button-o form-filters__searchbox">
-                            <input class="form-filters__search" id="formSearchInput2" type="search">
-                            <button class="form-filters__submit icon-search" type="submit"></button>
-                          </div>
-                        </form>
+                <div class="card-wrap card-full-wrap card-wrap-head"></div>
+              </div>
+              <div class="row">
+                <div class="col-xl-12">
+                  <div class="card bg-color-light">
+                    <div class="content-title">
+                      <div class="content-titlebox">
+                        <h1>Главная страница</h1>
                       </div>
-                      <div class="content-filter__btnbox">
-                        <button class="content-filter__button" id="contentFilterButton"><i class="icon-filters"></i></button>
+                      <div class="content-filter">
+                        <div class="content-filter__formbox">
+                          <form class="form-filters form" action="#">
+                            <div class="form-filters__title">Фильтр:</div>
+                            <select class="button button-o form-select form-filters__select" id="number" name="number">
+                              <option selected="selected">Москва</option>
+                              <option>Выкса</option>
+                              <option>Челябинск</option>
+                              <option>Чусовой</option>
+                              <option>Благовещенск</option>
+                              <option>Альтемьевск</option>
+                            </select>
+                            <input type="hidden" name="period_date_buffer" disabled="">
+                            <select class="button button-o form-select form-filters__select" id="filtersCalendarPeriod" name="period">
+                              <option value="" disabled="" selected="selected">Выберите период</option>
+                              <option value="Месяц">Месяц</option>
+                              <option value="Год">Год</option>
+                              <option value="Неделя">Неделя</option>
+                              <option value="Квартал">Квартал</option>
+                              <option value="true-date">Точная дата</option>
+                              <option id="period_date" value="" hidden=""> </option>
+                            </select>
+                            <div class="button button-o form-filters__searchbox">
+                              <input class="form-filters__search" id="formSearchInput2" type="search">
+                              <button class="form-filters__submit icon-search" type="submit"></button>
+                            </div>
+                          </form>
+                        </div>
+                        <div class="content-filter__btnbox">
+                          <button class="content-filter__button" id="contentFilterButton"><i class="icon-filters"></i></button>
+                        </div>
                       </div>
                     </div>
                   </div>
                 </div>
               </div>
-              <div class="card card-full">
-                <div class="card-wrap card-full-wrap card_advant-news">
-                  <div class="card-full__imgbox card__imgbox" style="background-image: url(img/news-full.jpg);">
-                    <div class="card-warning-text hide">
-                      <p></p>
-                    </div>
-                  </div>
-                  <div class="card__content card-full__content">
-                    <div class="tagbox">
-                      <div class="tag">
-                        <button class="button button-tag">Новости ОМК</button>
-                      </div>
-                      <div class="like-card">
-                        <button class="like-button comment-button"><i class="icon-comment"></i><span class="like-count">23</span></button>
-                        <button class="like-button"><i class="icon-like"></i><span class="like-count">1286</span></button>
+              <div class="row">
+                <div class="col-xl-12">
+                  <div class="card card-full card_advant-news bg-color-dark-1 margin-bottom-30">
+                    <div class="card-full__imgbox card__imgbox" style="background-image: url(img/news-full.jpg);">
+                      <div class="card-warning-text hide">
+                        <p></p>
                       </div>
                     </div>
-                    <div class="card__title card-full__title"><a href="#">Хороший старт!</a></div>
-                    <div class="card__text card-full__text">
-                      <p>Беговая команда ОМК в этом году впервые в истории приняла участие в Московском марафоне</p>
+                    <div class="card__content card-full__content">
+                      <div class="tagbox">
+                        <div class="tag">
+                          <button class="button button-tag">Новости ОМК</button>
+                        </div>
+                        <div class="like-card">
+                          <button class="like-button comment-button"><i class="icon-comment"></i><span class="like-count">23</span></button>
+                          <button class="like-button"><i class="icon-like"></i><span class="like-count">1286</span></button>
+                        </div>
+                      </div>
+                      <div class="card__title card-full__title"><a href="#">Хороший старт!</a></div>
+                      <div class="card__text card-full__text">
+                        <p>Беговая команда ОМК в этом году впервые в истории приняла участие в Московском марафоне</p>
+                      </div>
+                      <div class="card-date"><span>24 Сентября 2018</span></div>
                     </div>
-                    <div class="card-date"><span>24 Сентября 2018</span></div>
                   </div>
                 </div>
               </div>

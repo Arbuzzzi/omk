@@ -42,7 +42,7 @@ $(document).ready(function() {
 		if ($('#' + inputId).hasClass('error') == true) {
 			$('label[for='+inputId+']').addClass('label-error')
 
-		} 
+		}
 		if ($('#' + inputId).hasClass('error') != true) {
 			$('label[for='+inputId+']').removeClass('label-error')
 

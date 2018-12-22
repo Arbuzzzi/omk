@@ -6,7 +6,8 @@
 	// overflow: hidden;
 	&__list {
 		@include listUnstyle();
-		display: flex;
+    display: flex;
+    margin-bottom: 0;
 		// justify-content: space-around;
 	}
 	&__box {

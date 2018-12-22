@@ -50,7 +50,8 @@ body {
 	font-family: 'Roboto', sans-serif;
 	color: $text-color;
 	font-weight: 400;
-	overflow-x: hidden;
+  overflow-x: hidden;
+  line-height: normal;
 }
 
 img{
@@ -60,8 +61,21 @@ img{
 *.hide {
 	display: none;
 }
-.margin-bottom-15 {
-  margin-bottom: 15px;
+
+@include marginBottom(0);
+@include marginBottom(5);
+@include marginBottom(10);
+@include marginBottom(15);
+@include marginBottom(20);
+@include marginBottom(30);
+
+*.bg-color {
+  &-light {
+    background-color: $light-color;
+	}
+	&-dark-1 {
+		background: #eeefef;
+	}
 }
 
 
@@ -103,12 +117,18 @@ h6, .h6,
 	}
 }
 
+ol,
+ul,
+dl {
+  margin-bottom: 0;
+}
+
 p, .section-text, .text {
 	color: inherit;
 	// color: $text-color;
-	&.text-dark {
-		// color: $text-dark-color;
-	}
+	// &.text-dark {
+	// 	color: $text-dark-color;
+	// }
 }
 
 
@@ -118,9 +138,9 @@ h2, .section-title {
 	}
 
 
-	&:after {
+	// &:after {
 
-	}
+	// }
 
 	span {
 		color: $title-special-color;
@@ -139,26 +159,19 @@ section, .section {
 	margin-top: 100px;
 }
 
-.section_special-bg {
-	&:before, &:after {
-	}
-	&:after {
-	}
-}
-
 .section-dark {
 	background-color: #000;
 	color: $light-color;
 
 
-	h2, h1, .section-title, p {
-	}
+	// h2, h1, .section-title, p {
+	// }
 
 
-	.section-title {
-		span {
-		}
-	}
+	// .section-title {
+	// 	span {
+	// 	}
+	// }
 }
 
 .overlay {
@@ -173,7 +186,9 @@ section, .section {
 	opacity: 0.1;
 }
 .breadcrumb {
-	padding: 15px 0 15px;
+  display: block;
+  margin: 0;
+  padding: 15px 0 15px;
 	@include clearfix;
 	&-group {
 		float: left;
@@ -219,9 +234,9 @@ section, .section {
 		transform: none;
 	}
 }
-.wrapper {
+// .wrapper {
 
-}
+// }
 *.fixed {
 	position: fixed;
 }
