@@ -144,6 +144,7 @@
 		font-weight: 400;
 		p {
 			font-size: 1em;
+			margin-bottom: 0;
 		}
 	}
 	&-succes-text {
@@ -158,6 +159,7 @@
 		font-weight: 400;
 		p {
 			font-size: 1em;
+			margin-bottom: 0;
 		}
 	}
 	&-average-text {
@@ -172,6 +174,7 @@
 		font-weight: 400;
 		p {
 			font-size: 1em;
+			margin-bottom: 0;
 		}
 	}
 	&__content {
@@ -214,14 +217,16 @@
 	&__title {
 		margin-bottom: 15px;
 		font-family: "PT Serif", serif;
-		& h1, h2, h3, h4, h5, a {
-      font-size: 17px;
+		&>h1, &>h2, &>h3, &>h4, &>h5 {
+      font-size: 38px;
 		}
 		a {
 			display: block;
 			max-height: 38px;
 			overflow: hidden;
+			font-size: 17px;
 			text-overflow: ellipsis;
+
 			@include hover {
 				text-decoration: underline;
 			}
@@ -310,10 +315,10 @@
 
 	&-slider {
 		overflow: hidden;
-		margin-left: 15px;
-		margin-right: 15px;
-		padding: 0;
-		flex: auto;
+		// margin-left: 15px;
+		// margin-right: 15px;
+		// padding: 0;
+		// flex: auto;
 		border-radius: 5px;
 		&-wrap {
 			margin-left: -15px;
@@ -334,7 +339,6 @@
 			font-weight: 400;
 		}
 	}
-
 
 	&-full {
 		max-width: 100%;
@@ -464,8 +468,8 @@
 		&-slider {
 			overflow: hidden;
 			background-color: #fff;
-			margin-left: 15px;
-			margin-right: 15px;
+			// margin-left: 15px;
+			// margin-right: 15px;
 			padding: 0;
 			flex: auto;
 			border-radius: 5px;

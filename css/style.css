@@ -923,6 +923,7 @@ a:focus,
 a:active,
 a {
   text-decoration: none;
+  color: inherit;
 }
 
 button,
@@ -3580,6 +3581,7 @@ h2 span,
 
 .card-warning-text p {
   font-size: 1em;
+  margin-bottom: 0;
 }
 
 .card-succes-text {
@@ -3596,6 +3598,7 @@ h2 span,
 
 .card-succes-text p {
   font-size: 1em;
+  margin-bottom: 0;
 }
 
 .card-average-text {
@@ -3612,6 +3615,7 @@ h2 span,
 
 .card-average-text p {
   font-size: 1em;
+  margin-bottom: 0;
 }
 
 .card__content {
@@ -3679,19 +3683,19 @@ h2 span,
   font-family: "PT Serif", serif;
 }
 
-.card__title h1,
-.card__title h2,
-.card__title h3,
-.card__title h4,
-.card__title h5,
-.card__title a {
-  font-size: 17px;
+.card__title > h1,
+.card__title > h2,
+.card__title > h3,
+.card__title > h4,
+.card__title > h5 {
+  font-size: 38px;
 }
 
 .card__title a {
   display: block;
   max-height: 38px;
   overflow: hidden;
+  font-size: 17px;
   -o-text-overflow: ellipsis;
      text-overflow: ellipsis;
 }
@@ -3796,13 +3800,6 @@ h2 span,
 
 .card-slider {
   overflow: hidden;
-  margin-left: 15px;
-  margin-right: 15px;
-  padding: 0;
-  -webkit-box-flex: 1;
-  -webkit-flex: auto;
-      -ms-flex: auto;
-          flex: auto;
   -webkit-border-radius: 5px;
           border-radius: 5px;
 }
@@ -4001,8 +3998,6 @@ h2 span,
 .card-half-slider {
   overflow: hidden;
   background-color: #fff;
-  margin-left: 15px;
-  margin-right: 15px;
   padding: 0;
   -webkit-box-flex: 1;
   -webkit-flex: auto;
