@@ -1011,6 +1011,46 @@ img {
   margin-bottom: 30px;
 }
 
+*.font-size-17 {
+  font-size: 17px;
+}
+
+*.font-size-17 > * {
+  font-size: 17px;
+}
+
+*.font-size-24 {
+  font-size: 24px;
+}
+
+*.font-size-24 > * {
+  font-size: 24px;
+}
+
+*.font-size-28 {
+  font-size: 28px;
+}
+
+*.font-size-28 > * {
+  font-size: 28px;
+}
+
+*.font-size-32 {
+  font-size: 32px;
+}
+
+*.font-size-32 > * {
+  font-size: 32px;
+}
+
+*.font-size-40 {
+  font-size: 40px;
+}
+
+*.font-size-40 > * {
+  font-size: 40px;
+}
+
 *.bg-color-light {
   background-color: #ffffff;
 }
@@ -1046,7 +1086,7 @@ h6,
           border-radius: 5px;
   background-color: #dddee0;
   color: #000000;
-  font-family: Roboto;
+  font-family: Roboto serif;
   font-size: 16px;
   font-weight: 400;
 }
@@ -2378,6 +2418,9 @@ h2 span,
   padding-bottom: 0;
   width: 100%;
   background-color: #fff;
+  border: none;
+  -webkit-border-radius: 0;
+          border-radius: 0;
 }
 
 .header .breadcrumb-wrap {
@@ -3392,12 +3435,17 @@ h2 span,
 
 .card {
   border: none;
+  margin-bottom: 30px;
 }
 
 .card::after {
   display: block;
   content: "";
   clear: both;
+}
+
+.card-color-light {
+  color: #ffffff;
 }
 
 .card-wrap {
@@ -3632,6 +3680,14 @@ h2 span,
   height: 100%;
 }
 
+.card__content_sm {
+  margin-top: 210px;
+  background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(0, 0, 0, 0)), color-stop(14%, rgba(0, 0, 0, 0.14)), to(#000000));
+  background-image: -webkit-linear-gradient(top, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.14) 14%, #000000 100%);
+  background-image: -o-linear-gradient(top, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.14) 14%, #000000 100%);
+  background-image: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.14) 14%, #000000 100%);
+}
+
 .card__content .tagbox {
   margin-bottom: 20px;
 }
@@ -3679,6 +3735,7 @@ h2 span,
 }
 
 .card__title {
+  min-height: 38px;
   margin-bottom: 15px;
   font-family: "PT Serif", serif;
 }
@@ -3693,9 +3750,8 @@ h2 span,
 
 .card__title a {
   display: block;
-  max-height: 38px;
+  max-height: 45px;
   overflow: hidden;
-  font-size: 17px;
   -o-text-overflow: ellipsis;
      text-overflow: ellipsis;
 }
@@ -3712,7 +3768,7 @@ h2 span,
       -ms-flex-direction: column;
           flex-direction: column;
   height: 100%;
-  font-family: "PT Serif";
+  font-family: "PT Serif", serif;
   font-size: 16px;
   font-weight: 400;
   line-height: 23px;
@@ -3753,7 +3809,7 @@ h2 span,
   margin-top: auto;
   padding-left: 44px;
   padding-right: 44px;
-  font-family: Roboto;
+  font-family: "Roboto", sans-serif;
 }
 
 .card-logos::after {
@@ -3820,17 +3876,9 @@ h2 span,
 .card-slider-number {
   text-align: right;
   color: #a1a3a7;
-  font-family: Roboto;
+  font-family: "Roboto", sans-serif;
   font-size: 16px;
   font-weight: 400;
-}
-
-.card-full {
-  max-width: 100%;
-  -webkit-box-flex: 0;
-  -webkit-flex: 0 0 100%;
-      -ms-flex: 0 0 100%;
-          flex: 0 0 100%;
 }
 
 .card-full-head {
@@ -3863,11 +3911,7 @@ h2 span,
   font-size: 17px;
 }
 
-.card-full_fullHeightImg {
-  color: #ffffff;
-}
-
-.card-full_fullHeightImg .card-full__content {
+.card-full_imgbg .card__content {
   margin-top: 355px;
   padding-top: 55px;
   background: -webkit-gradient(linear, left top, left bottom, from(rgba(0, 0, 0, 0)), color-stop(14%, rgba(0, 0, 0, 0.14)), to(black));
@@ -3926,11 +3970,6 @@ h2 span,
   min-height: 210px;
 }
 
-.card-third__content {
-  padding-left: 15px;
-  padding-right: 15px;
-}
-
 .card-third_fullHeightImg {
   color: #ffffff;
 }
@@ -3961,14 +4000,6 @@ h2 span,
           border-radius: 5px;
 }
 
-.card-half {
-  max-width: 50%;
-  -webkit-box-flex: 0;
-  -webkit-flex: 0 0 50%;
-      -ms-flex: 0 0 50%;
-          flex: 0 0 50%;
-}
-
 .card-half-imgbox {
   min-height: 260px;
   background: no-repeat center;
@@ -3976,11 +4007,7 @@ h2 span,
           background-size: cover;
 }
 
-.card-half_fullHeightImg {
-  color: #ffffff;
-}
-
-.card-half_fullHeightImg .card-half__content {
+.card-half_imgbg .card__content {
   margin-top: 220px;
   padding-top: 55px;
   background: -webkit-gradient(linear, left top, left bottom, from(rgba(0, 0, 0, 0)), color-stop(14%, rgba(0, 0, 0, 0.14)), to(black));
@@ -4040,7 +4067,7 @@ h2 span,
   color: #ffffff;
 }
 
-.cardTwoThirds_fullHeightImg .cardTwoThirds__content {
+.cardTwoThirds_fullHeightImg .card__content {
   margin-top: 170px;
   padding-top: 55px;
   background: -webkit-gradient(linear, left top, left bottom, from(rgba(0, 0, 0, 0)), color-stop(14%, rgba(0, 0, 0, 0.14)), to(black));
@@ -4124,7 +4151,7 @@ h2 span,
 
 .card-links__lnkbox {
   color: #797c82;
-  font-family: "PT Serif";
+  font-family: "PT Serif", serif;
   font-size: 20px;
   font-weight: 400;
   line-height: 20px;

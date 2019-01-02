@@ -8,8 +8,13 @@
   border: none;
 	// padding: 0 15px;
 	// width: 100%;
-	// margin-bottom: 30px;
+	margin-bottom: 30px;
   @include clearfix;
+	&-color {
+		&-light {
+			color: $light-color;
+		}
+	}
 	&-wrap {
 		display: flex;
 		flex-direction: column;
@@ -153,7 +158,7 @@
 		left: 0;
 		width: 100%;
 		padding: 6px 15px;
-		background-color: $succes-color;
+		background-color: $success-color;
 		color: $light-color;
 		font-size: 11px;
 		font-weight: 400;
@@ -177,11 +182,16 @@
 			margin-bottom: 0;
 		}
 	}
+
 	&__content {
 		padding: 15px 20px 20px;
 		display: flex;
 		flex-direction: column;
 		height: 100%;
+		&_sm {
+			margin-top: 210px;
+			background-image: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.14) 14%, #000000 100%);
+		}
 		.tagbox {
 			margin-bottom: 20px;
 		}
@@ -215,6 +225,7 @@
 		}
 	}
 	&__title {
+		min-height: 38px;
 		margin-bottom: 15px;
 		font-family: "PT Serif", serif;
 		&>h1, &>h2, &>h3, &>h4, &>h5 {
@@ -222,22 +233,22 @@
 		}
 		a {
 			display: block;
-			max-height: 38px;
+			max-height: 45px;
 			overflow: hidden;
-			font-size: 17px;
 			text-overflow: ellipsis;
 
 			@include hover {
 				text-decoration: underline;
 			}
 		}
+
 	}
 	&__text {
 		position: relative;
 		display: flex;
 		flex-direction: column;
 		height: 100%;
-		font-family: "PT Serif";
+		font-family: "PT Serif", serif;
 		font-size: 16px;
 		font-weight: 400;
 		line-height: 23px;
@@ -272,7 +283,7 @@
 		margin-top: auto;
 		padding-left: 44px;
 		padding-right: 44px;
-		font-family: Roboto;
+		font-family: "Roboto", sans-serif;
 	}
 
 	&-logos{
@@ -334,15 +345,13 @@
 		&-number {
 			text-align: right;
 			color: $thin-color;
-			font-family: Roboto;
+			font-family: "Roboto", sans-serif;
 			font-size: 16px;
 			font-weight: 400;
 		}
 	}
 
 	&-full {
-		max-width: 100%;
-		flex: 0 0 100%;
 		&-head {
 			background-color: #fff;
 			margin-bottom: 0;
@@ -367,9 +376,8 @@
 			font-family: "PT Serif", serif;
 			font-size: 17px;
 		}
-		&_fullHeightImg {
-			color: $light-color;
-			.card-full__content {
+		&_imgbg {
+			.card__content {
 				margin-top: 355px;
 				padding-top: 55px;
 				background: linear-gradient(to bottom, rgba(0,0,0,0) 0%,rgba(0,0,0,0.14) 14%,rgba(0,0,0,1) 100%); 
@@ -417,8 +425,8 @@
 			min-height: 210px;
 		}
 		&__content {
-			padding-left: 15px;
-			padding-right: 15px;
+			//padding-left: 15px;
+			//padding-right: 15px;
 
 		}
 		&_fullHeightImg {
@@ -445,16 +453,13 @@
 		}
 	}
 	&-half {
-		max-width: 50%;
-		flex: 0 0 50%;
 		&-imgbox {
 			min-height: 260px;
 			background: no-repeat center;
 			background-size: cover;
 		}
-		&_fullHeightImg {
-			color: $light-color;
-			.card-half__content {
+		&_imgbg {
+			.card__content {
 				margin-top: 220px;
 				padding-top: 55px;
 				background: linear-gradient(to bottom, rgba(0,0,0,0) 0%,rgba(0,0,0,0.14) 14%,rgba(0,0,0,1) 100%); 
@@ -465,6 +470,7 @@
 			padding-top: 15px;
 			max-height: 305px;
 		}
+
 		&-slider {
 			overflow: hidden;
 			background-color: #fff;
@@ -498,7 +504,7 @@
 
 		&_fullHeightImg {
 			color: $light-color;
-			.cardTwoThirds__content {
+			.card__content {
 				margin-top: 170px;
 				padding-top: 55px;
 				background: linear-gradient(to bottom, rgba(0,0,0,0) 0%,rgba(0,0,0,0.14) 14%,rgba(0,0,0,1) 100%); 
@@ -569,7 +575,7 @@
 	}
 	&__lnkbox {
 		color: $dark-color;
-		font-family: "PT Serif";
+		font-family: "PT Serif", serif;
 		font-size: 20px;
 		font-weight: 400;
 		line-height: 20px;

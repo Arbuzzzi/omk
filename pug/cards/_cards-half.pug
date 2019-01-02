@@ -1,31 +1,33 @@
 .cards.cards-half
-	.card.card-half.card-half_fullHeightImg
-		.card-wrap.card-half-wrap(style='background-image: url(img/news-half-full-img-01.jpg);')
-			.card__content.card-half__content
-				.tagbox
-					.tag
-						button.button.button-tag.button-tag-o.button-tag-o_light Отдельные новости
-					.like-card
-						button.like-button.like-button_light.comment-button
-							i.icon-comment
-							span.like-count 23
-						button.like-button.like-button_light
-							i.icon-like
-							span.like-count 1286
-				.card__title.card-half-title
-					a(href='#')
-						| Насосно-компрессорные 
-						br
-						| трубы ТЭСЦ-1 
-						br
-						| трубы ТЭСЦ-1
-				.card-date.card-date_light
-					span 24 Сентября 2018
-	.card.card-half
-		.card-wrap.card-half-wrap
+.row
+	.col-xl-6
+		.card.card-half.card-half_imgbg
+			.card-wrap(style='background-image: url(img/news-half-full-img-01.jpg);')
+				.card__content
+					.tagbox
+						.tag
+							button.button.button-tag.button-tag-o.button-tag-o_light Отдельные новости
+						.like-card
+							button.like-button.like-button_light.comment-button
+								i.icon-comment
+								span.like-count 23
+							button.like-button.like-button_light
+								i.icon-like
+								span.like-count 1286
+					.card__title.card-color-light
+						a(href='#')
+							| Насосно-компрессорные
+							br
+							| трубы ТЭСЦ-1
+							br
+							| трубы ТЭСЦ-1
+					.card-date.card-date_light
+						span 24 Сентября 2018
+	.col-xl-6
+		.card.card-half.bg-color-dark-1
 			.card-half-imgbox.card__imgbox(style='background-image: url(img/news-half-img-01.jpg);')
-				.card-warning-text.hide
-					p
+				.card-average-text
+					p Оценка: Нормально!
 			.card__content.card-half__content
 				.tagbox
 					.tag
@@ -37,9 +39,9 @@
 						button.like-button
 							i.icon-like
 							span.like-count 1286
-				.card__title.card-half-title
+				.card__title
 					a(href='#')
-						| Насосно-компрессорные 
+						| Насосно-компрессорные
 						br
 						| трубы ТЭСЦ-1
 				.card-date

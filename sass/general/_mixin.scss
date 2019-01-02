@@ -35,6 +35,15 @@
   }
 }
 
+@mixin fontSizeClass($fz) {
+  *.font-size-#{$fz} {
+    font-size: #{$fz}px;
+    &>* {
+      font-size: #{$fz}px;
+    }
+  }
+}
+
 @mixin sqwer($size){ // квадрат 
   height: $size;
   width: $size;
