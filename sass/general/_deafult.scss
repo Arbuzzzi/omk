@@ -70,6 +70,9 @@ img{
 @include marginBottom(20);
 @include marginBottom(30);
 
+*.padding-all-15 {
+	padding: 15px;
+}
 
 @include fontSizeClass(17);
 @include fontSizeClass(24);
@@ -84,6 +87,14 @@ img{
 	&-dark-1 {
 		background: #eeefef;
 	}
+	&-dark-2 {
+		background-color: #f4f5f5;
+	}
+}
+
+.border-default {
+	border-radius: 5px;
+	border: 1px solid #dddee0;
 }
 
 

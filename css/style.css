@@ -1011,6 +1011,10 @@ img {
   margin-bottom: 30px;
 }
 
+*.padding-all-15 {
+  padding: 15px;
+}
+
 *.font-size-17 {
   font-size: 17px;
 }
@@ -1057,6 +1061,16 @@ img {
 
 *.bg-color-dark-1 {
   background: #eeefef;
+}
+
+*.bg-color-dark-2 {
+  background-color: #f4f5f5;
+}
+
+.border-default {
+  -webkit-border-radius: 5px;
+          border-radius: 5px;
+  border: 1px solid #dddee0;
 }
 
 h1,
@@ -4360,6 +4374,10 @@ h2 span,
   margin-top: 0;
   -webkit-border-radius: 5px;
           border-radius: 5px;
+}
+
+.widget_fix-height-240 {
+  height: 240px;
 }
 
 .widget-items {

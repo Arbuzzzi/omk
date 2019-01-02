@@ -5,6 +5,9 @@
 
 		border-radius: 5px;
 	}
+	&_fix-height-240 {
+		height: 240px;
+	}
 	&-items {
 		flex-wrap: nowrap;
 		justify-content: flex-end;
