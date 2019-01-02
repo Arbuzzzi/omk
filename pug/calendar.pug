@@ -1,6 +1,6 @@
 extends modules/_base
 block vars
-	-var pageTitle = 'Календарь';
+	- var pageTitle = 'Календарь';
 block content
 	- var eventDate = '6 Ноября 2018';
 
@@ -10,7 +10,7 @@ block content
 
 	- var ID = 'events-06-10-2018';
 	- var signTitle = 'События: '+eventDate;
-	-var events = [{articleTitle: 'День металурга, ', articleID: 'event1-06-10-2018'}, {articleTitle: 'День поедателей йогуртов, ', articleID: 'event2-06-10-2018'}, {articleTitle: 'День металлурга 2', articleID: 'event3-06-10-2018'}];
+	- var events = [{articleTitle: 'День металурга, ', articleID: 'event1-06-10-2018'}, {articleTitle: 'День поедателей йогуртов, ', articleID: 'event2-06-10-2018'}, {articleTitle: 'День металлурга 2', articleID: 'event3-06-10-2018'}];
 	include page/_page-calendar-sign-title
 
 	- var ID = 'event1-06-10-2018';
