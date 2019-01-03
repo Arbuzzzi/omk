@@ -5,10 +5,12 @@
 	@include clearfix;
 }
 .card {
+	display: block;
   border: none;
 	// padding: 0 15px;
-	// width: 100%;
+	width: 100%;
 	margin-bottom: 30px;
+	background-color: transparent;
   @include clearfix;
 	&-color {
 		&-light {
@@ -390,12 +392,13 @@
 		&-slider {
 			overflow: hidden;
 			background-color: #fff;
-			margin-left: 15px;
-			margin-right: 15px;
+			//margin-left: 15px;
+			//margin-right: 15px;
 			padding: 0;
 			flex: auto;
 			border-radius: 5px;
 			&-wrap {
+				display: block;
 				margin-left: -15px;
 				margin-right: -15px;
 				background-color: transparent;

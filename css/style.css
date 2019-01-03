@@ -953,6 +953,7 @@ label,
 input {
   background-color: transparent;
   border: none;
+  margin-bottom: 0;
 }
 
 button,
@@ -3157,6 +3158,7 @@ h2 span,
 .content-titlebox_dark span {
   color: inherit;
   font-family: "Roboto", sans-serif;
+  font-size: 22px;
 }
 
 .content-titlebox_dark h4 {
@@ -3447,8 +3449,11 @@ h2 span,
 }
 
 .card {
+  display: block;
   border: none;
+  width: 100%;
   margin-bottom: 30px;
+  background-color: transparent;
 }
 
 .card::after {
@@ -3941,8 +3946,6 @@ h2 span,
 .card-full-slider {
   overflow: hidden;
   background-color: #fff;
-  margin-left: 15px;
-  margin-right: 15px;
   padding: 0;
   -webkit-box-flex: 1;
   -webkit-flex: auto;
@@ -3953,6 +3956,7 @@ h2 span,
 }
 
 .card-full-slider-wrap {
+  display: block;
   margin-left: -15px;
   margin-right: -15px;
   background-color: transparent;
@@ -4976,7 +4980,7 @@ h2 span,
   font-size: 22px;
 }
 
-.article-autor {
+.article-author {
   margin-top: 34px;
   text-align: right;
   -webkit-border-radius: 5px;
@@ -4988,13 +4992,13 @@ h2 span,
   font-weight: 400;
 }
 
-.article-autor::after {
+.article-author::after {
   display: block;
   content: "";
   clear: both;
 }
 
-.article-autor__left {
+.article-author__left {
   vertical-align: middle;
   float: left;
   font-family: "Roboto", sans-serif;
@@ -5002,7 +5006,7 @@ h2 span,
   font-weight: 400;
 }
 
-.article-autor__username {
+.article-author__username {
   vertical-align: middle;
   display: inline-block;
   font-family: "Roboto", sans-serif;
@@ -5036,13 +5040,12 @@ h2 span,
   margin-bottom: 15px;
 }
 
-.comment_special .article-autor {
+.comment_special .article-author {
   margin-top: 0;
 }
 
 .comment-box {
   position: relative;
-  padding: 15px;
   padding-left: 60px;
   margin-bottom: 15px;
   -webkit-border-radius: 5px;
@@ -5234,7 +5237,7 @@ h2 span,
   background-image: linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, #eeefef 100%);
 }
 
-.comments-dark .article-autor {
+.comments-dark .article-author {
   padding: 0 15px;
   background-color: rgba(251, 251, 251, 0.3);
   color: #eeefef;
