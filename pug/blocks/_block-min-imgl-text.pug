@@ -1,54 +1,64 @@
 // Текст + Изображение, тип "Текст справа (мини)", с заголовком и без
-.cards
-	.card.card-full-head_special
-		.content-title
-			.content-titlebox_dark
-				h4 Текст + Изображение, тип "2 колонки", возможность задать фикс. текст
-		.content-title
-			.content-titlebox
-				h2 Благодарность всем сотрудникам подразделения
-	.card.card-full-head_special
-		.tag
-			.card-date
-				span 24 Сентября 2018
-		.like-card
-			button.like-button.comment-button
-				i.icon-comment
-				span.like-count 23
-			button.like-button
-				i.icon-like
-				span.like-count 1286
-
-	.card.cardMin
-		.cardMin__imgbox.card__imgbox(style='background-image: url(img/block-img-01.jpg);')
-			.card-warning-text.hide
+.row
+	.col-12
+		.card.card-full-head_special
+			.content-title
+				.content-titlebox_dark
+					h4 Текст + Изображение, тип "2 колонки", возможность задать фикс. текст
+			.content-title
+				.content-titlebox
+					h2 Благодарность всем сотрудникам подразделения
+		.card.card-full-head_special
+			.tag
+				.card-date
+					span 24 Сентября 2018
+			.like-card
+				button.like-button.comment-button
+					i.icon-comment
+					span.like-count 23
+				button.like-button
+					i.icon-like
+					span.like-count 1286
+.row
+	.col-xl-3
+		.card
+			.card__imgbox.card__imgbox_xs(style='background-image: url(img/block-img-01.jpg);')
+				.card-warning-text.hide
+					p
+	.col-xl-9
+		.card
+			.card__text.fix-height-135.text-ddd-135
 				p
-	.card.cardMinOther
-		.card__text.cardMinOther__text
-			p
-				| Литейно-прокатный комплекс Выксунского металлургического завода (АО «ВМЗ», Нижегородская область, входит в состав Объединенной металлургической компании, АО «ОМК») за 10 лет работы произвел более 10,6 млн тонн горячекатаного рулонного проката, став важным звеном в полностью отечественной цепочке производства труб для нефтегазового комплекса.
-			p
-				| Литейно-прокатный комплекс - уникальное для России предприятие, в котором в единый технологический
-			a.button.card__more(href='#') Читать далее
-
-	.card.cardMin
-		.cardMin__imgbox.card__imgbox(style='background-image: url(img/block-img-09.jpg);')
-			.card-warning-text.hide
+					| Литейно-прокатный комплекс Выксунского металлургического завода (АО «ВМЗ», Нижегородская область, входит в состав Объединенной металлургической компании, АО «ОМК») за 10 лет работы произвел более 10,6 млн тонн горячекатаного рулонного проката, став важным звеном в полностью отечественной цепочке производства труб для нефтегазового комплекса.
 				p
-	.card.cardMinOther
-		.card__text.cardMinOther__text
-			p
-				| Литейно-прокатный комплекс Выксунского металлургического завода (АО «ВМЗ», Нижегородская область, входит в состав Объединенной металлургической компании, АО «ОМК») за 10 лет работы произвел более 10,6 млн тонн горячекатаного рулонного проката, став важным звеном в полностью отечественной цепочке производства труб для нефтегазового комплекса.
-			p
-				| Литейно-прокатный комплекс - уникальное для России предприятие, в котором в единый технологический
-			a.button.card__more(href='#') Читать далее
+					| Литейно-прокатный комплекс - уникальное для России предприятие, в котором в единый технологический
+				a.button.card__more(href='#') Читать далее
 
-	.card.cardMin
-		.cardMin__imgbox.card__imgbox(style='background-image: url(img/block-img-04.jpg);')
-			.card-warning-text.hide
+.row
+	.col-xl-3
+		.card
+			.card__imgbox.card__imgbox_xs(style='background-image: url(img/block-img-09.jpg);')
+				.card-warning-text.hide
+					p
+
+	.col-xl-9
+		.card
+			.card__text.fix-height-135.text-ddd-135
 				p
-	.card.cardMinOther
-		.card__text.cardMinOther__text
-			p
-				| Литейно-прокатный комплекс Выксунского металлургического завода (АО «ВМЗ», Нижегородская область, входит в состав Объединенной металлургической компании, АО «ОМК») за 10 лет работы произвел более 10,6 млн тонн горячекатаного рулонного проката, став важным звеном в полностью отечественной цепочке производства труб для нефтегазового комплекса.
-			a.button.card__more(href='#') Читать далее
+					| Литейно-прокатный комплекс Выксунского металлургического завода (АО «ВМЗ», Нижегородская область, входит в состав Объединенной металлургической компании, АО «ОМК») за 10 лет работы произвел более 10,6 млн тонн горячекатаного рулонного проката, став важным звеном в полностью отечественной цепочке производства труб для нефтегазового комплекса.
+				p
+					| Литейно-прокатный комплекс - уникальное для России предприятие, в котором в единый технологический
+				a.button.card__more(href='#') Читать далее
+
+.row
+	.col-xl-3
+		.card
+			.card__imgbox.card__imgbox_xs(style='background-image: url(img/block-img-04.jpg);')
+				.card-warning-text.hide
+					p
+	.col-xl-9
+		.card
+			.card__text.fix-height-135.text-ddd-135
+				p
+					| Литейно-прокатный комплекс Выксунского металлургического завода (АО «ВМЗ», Нижегородская область, входит в состав Объединенной металлургической компании, АО «ОМК») за 10 лет работы произвел более 10,6 млн тонн горячекатаного рулонного проката, став важным звеном в полностью отечественной цепочке производства труб для нефтегазового комплекса.
+				a.button.card__more(href='#') Читать далее

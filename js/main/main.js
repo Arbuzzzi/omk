@@ -815,7 +815,9 @@ $(document).ready(function() {
 
 	/* СОКРАЩАЕМ ТЕКСТ ------------------------------------------------------------------------------ */
 	$('.card__title *').dotdotdot();
-	$('.cardTwoThirds__text').dotdotdot({
+	$('.text-ddd').dotdotdot();
+
+	$('.text-ddd-210').dotdotdot({
 		keep: '.card__more',
 		tolerance: 10,
 		callback: function () {
@@ -826,7 +828,7 @@ $(document).ready(function() {
 		}
 	});
 	
-	$('.card-half__text').dotdotdot({
+	$('.text-ddd-260').dotdotdot({
 		keep: '.card__more',
 		// tolerance: 10,
 		callback: function () {
@@ -837,7 +839,7 @@ $(document).ready(function() {
 		}
 	});
 	
-	$('.cardMinOther__text').dotdotdot({
+	$('.text-ddd-135').dotdotdot({
 		keep: '.card__more',
 		tolerance: 10,
 		callback: function () {

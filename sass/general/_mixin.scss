@@ -30,17 +30,23 @@
 }
 
 @mixin marginBottom($mb) {
-  *.margin-bottom-#{$mb} {
-    margin-bottom: #{$mb}px;
+  .margin-bottom-#{$mb} {
+    margin-bottom: #{$mb}px !important;
   }
 }
 
 @mixin fontSizeClass($fz) {
-  *.font-size-#{$fz} {
-    font-size: #{$fz}px;
+  .font-size-#{$fz} {
+    font-size: #{$fz}px !important;
     &>* {
-      font-size: #{$fz}px;
+      font-size: #{$fz}px !important;
     }
+  }
+}
+
+@mixin fixHeight($fix_height) {
+  .fix-height-#{$fix_height} {
+    max-height: #{$fix_height}px !important;
   }
 }
 
