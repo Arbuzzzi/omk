@@ -28,17 +28,8 @@
 }
 
 .link-special {
-	border-bottom: 1px dashed $link-special-border-color;
-	@include sm-block() {
-		// display: table;
-		// margin-left: auto;
-		// margin-right: auto;
-	}
-	&:focus {
-		border-bottom: 1px dashed $link-special-border-color;
-	}
 	@include hover {
-		border-bottom: 1px solid $link-special-hov-border-color;
+		color: $special-color;
 	}
 }
 
@@ -213,6 +204,38 @@
 		&_light {
 			border-color: $light-color;
 			color: $light-color;
+		}
+	}
+}
+
+.button-big {
+	&-o {
+		padding: 20px;
+		width: 100%;
+		min-width: 270px;
+		margin-bottom: 15px;
+		font-size: 16px;
+		text-transform: uppercase;
+		border: 1px solid #DDDEE0;
+		border-radius: 5px;
+		color: $dark-color;
+		transition: 0.4s;
+		@include hover {
+			border-color: #a1a3a7;
+			background-color: #F4F5F5;
+
+		}
+		&-danger {
+			@include hover {
+				border-color: $special-color;
+				color: $special-color;
+			}
+		}
+		&-special {
+			@include hover {
+				border-color: $special-color;
+				background-color: transparent;
+			}
 		}
 	}
 }

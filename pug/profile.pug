@@ -4,61 +4,149 @@ block vars
 	-var pageTitle = 'Константин Александрович Константинопольский';
 	
 block content
-	.card.margin-bottom-15
-		.content-title
-			.content-titlebox
-				h1= pageTitle
+	.row
+		.col-12
+			.card.margin-bottom-15
+				.content-title
+					.content-titlebox
+						h1= pageTitle
 	- var x;
-	.cards
-		.card.card-third
-			.card-wrap.card-third-wrap
+	.row
+		.col-xl-4
+			.card
 				.card__imgbox.card__imgbox_xl(style='background-image: url(img/photo-01.png);')
-		.card.cardTwoThirds
-			.content-text
-				h3 Главный инженер отделения трубопрокатного цеха 
-					span.small (Подразделение отдела № 1023)
+		.col-xl-8
+			.card
+				.content-text
+					h3 Главный инженер отделения трубопрокатного цеха
+						span.small (Подразделение отдела № 1023)
 
-				table.profile-info
+					table.profile-info.margin-bottom-15
+						tbody
+							tr
+								td.text-right
+									p
+										span.light Телефон:
+								td
+									p +7&nbsp;(83&nbsp;177)&nbsp;3-76-05&nbsp;доб.&nbsp;4526
+								td.text-right
+									p
+										a.special-link(href="#") Редактировать профиль
+							tr
+								td.text-right
+									p
+										span.light Email:
+								td
+									p name.surname@omk.omk.ru
+								td.text-right
+									p
+							tr
+								td(colspan='2')
+									hr
+								td
+							tr
+								td.text-right
+									p
+										span.light Skype:
+								td
+									p omk_engineer
+								td
+							tr
+								td.text-right
+									p
+										span.light Моб.:
+								td
+									p +7 (903) 924-25-27
+								td
+							tr
+								td.text-right
+									p
+										span.light VK:
+								td
+									p vk.com/omk_engineer
+								td
+
+				.content-text.margin-bottom-10
+					p Биография:
+				.content-text_special
+					p Константин Александрович Константинопольский — председатель совета директоров ОМК с июля 2017 года. Ранее А.М. Седых был председателем правления ОМК с января 2013 по июль 2017 гг. Руководящие должности в компании занимает с 1999 года. Сначала А.М. Седых возглавил Выксунский металлургический завод и вывел предприятие из кризиса. Затем был генеральным директором ОМК и председателем совета директором ВМЗ. В 2002-м выбран председателем совета директоров компании, в 2003-2006 годах был президентом ОМК.
+	.row
+		.col-xl-4
+			button.button-big-o.button-big-o-danger ГОРЯЧАЯ ЛИНИЯ ОМК
+		.col-xl-4
+			button.button-big-o.button-big-o-special ГОРЯЧАЯ ЛИНИЯ ОМК
+			button.button-big-o ДАТЬ ОБЪЯВЛЕНИЕ
+		.col-xl-4
+			button.button-big-o ДОБАВИТЬ БЛОГ
+			button.button-big-o ОТСЛЕЖИВАЕМЫЕ БЛОГИ
+	.card.margin-bottom-15
+		hr.card-hr
+	.row
+		.col-12
+			.card.margin-bottom-15
+				.content-titlebox
+					h2 Сохраненные ссылки
+	.card.margin-bottom-10
+		.card-links
+			.card-links-wrap
+				.card-links__img
+					.card-links__imgbox
+						img(src="icon-save.svg")
+				.card-links__items
+					- var items = [{type: 'Блог (25.10.19 от Русланова Михаила)', content: '"Почему так сильно перестроили расписание?"'}, {type: 'Новость от 08.02.19 (Региональные новости)', content: 'Более 10,6 млн тонн рулонного проката произвел литейно-прокатный комплек...'}, {type: 'Новость от 08.02.19 (Новости ОМК)', content: 'Применяемые технологические методы изготовления и ремонта'}, {type: 'Статья (Библиотека > Архив > Основные положения)', content: 'Типы производства по ГОСТ 14.004-83'}, {type: 'Документ (Компания > Конституция)', content: 'Конституция ОМК'}];
+					each item in items
+						.card-links__item
+							.card-links__head
+								.card-links__title
+									a.card-links__lnk.card-links__lnk_small.color-thin(href="")= item.type
+								.card-links__remove
+									a.card-links__lnk.card-links__lnk_small.link-special.color-thin(href="") Удалить
+							.card-links__lnkbox
+								a.card-links__lnk.text-ddd.color-thin(href="")= item.content
+	.row
+		.col-12
+			.card.margin-bottom-15
+				.content-titlebox
+					h2 Свои иконки меню "Системы"
+	.row
+		.col-xl-3
+			.card-icons
+				table
 					tbody
 						tr
-							td.text-right
-								p
-									span.light Телефон:
-							td
-								p +7&nbsp;(83&nbsp;177)&nbsp;3-76-05&nbsp;доб.&nbsp;4526
-							td.text-right
-								p
-									a.special-link(href="#") Редактировать профиль
+							- var items = ['icon-burg','icon-more','icon-close','icon-search']
+							each item in items
+								td
+									i(class=item)
 						tr
-							td.text-right
-								p
-									span.light Email:
-							td
-								p name.surname@omk.omk.ru
-							td.text-right
-								p
+							- var items = ['icon-shop_cart','icon-filters','icon-like','icon-fire']
+							each item in items
+								td
+									i(class=item)
 						tr
-							td(colspan='2')
-								hr
-							td
-						tr
-							td.text-right
-								p
-									span.light Skype:
-							td
-								p omk_engineer
-							td
-						tr
-							td.text-right
-								p
-									span.light Моб.:
-							td
-								p +7 (903) 924-25-27
-							td
-						tr
-							td.text-right
-								p
-									span.light VK:
-							td
-								p vk.com/omk_engineer
-							td
+							- var items = ['icon-see','icon-heart','icon-mark','icon-symbol']
+							each item in items
+								td
+									i(class=item)
+		.col-xl-2
+			i.icon-heart
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

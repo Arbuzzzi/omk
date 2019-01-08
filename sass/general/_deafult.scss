@@ -156,12 +156,14 @@ p, .section-text, .text {
 	// }
 }
 
+hr {
+	margin: 0;
+}
 
 h2, .section-title {
 	@include sm-block() {
 
 	}
-
 
 	// &:after {
 

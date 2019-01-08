@@ -2,14 +2,14 @@
 	position: relative;
 	width: 100%;
 	margin-bottom: 30px;
-	@include after {
-		bottom: 0;
-		right: 15px;
-		left: 15px;
-		height: 1px;
-		background-color: #707070;
-		opacity: 0.4;
-	}
+	//@include after {
+	//	bottom: 0;
+	//	right: 0;
+	//	left: 0;
+	//	height: 1px;
+	//	background-color: #707070;
+	//	opacity: 0.4;
+	//}
 	&:last-child {
 		margin-bottom: 0;
 		&:after {

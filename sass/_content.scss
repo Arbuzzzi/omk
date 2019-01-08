@@ -136,6 +136,14 @@
 				color: #bcbdc0;
 			}
 		}
+		&_special {
+			 p {
+				 font-family: "PT Serif", serif;
+				 font-size: 14px;
+				 color: #000000;
+				 line-height: 1.5;
+			 }
+		}
 	}
 	&-filter {
 		display: flex;
