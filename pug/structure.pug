@@ -1,0 +1,256 @@
+extends modules/_base
+
+block vars
+	- var pageTitle = 'Структура компании';
+
+	- var usersOne = [];
+	- usersOne.push({photo: 'img/users/user-photo-02.png', name: 'АНАТОЛИЙ МИХАЙЛОВИЧ', surname: 'СЕДЫХ', job: 'Председатель совета директоров'});
+	- usersOne.push({photo: 'img/users/user-photo-06.png', name: 'НАТАЛЬЯ КОНСТАНТИНОВНА', surname: 'ЕРЕМИНА', job: 'Председатель правления'});
+	- usersOne.push({photo: 'img/users/user-photo-08.png', name: 'ВЛАДИМИР СТЕПАНОВИЧ', surname: 'МАРКИН', job: 'Заместитель председателя совета директоров'});
+	- usersOne.push({photo: 'img/users/user-photo-05.png', name: 'АНАСТАСИЯ АНАТОЛЬЕВНА', surname: 'ПОЛЕТАЕВА', job: 'Адвокат Московской городской коллегии адвокатов'});
+	- usersOne.push({photo: 'img/users/user-photo-03.png', name: 'СВЕТЛАНА ЕВГЕНЬЕВНА', surname: 'ОБОЛЕНСКАЯ', job: 'Корпоративный секретарь'});
+
+	- var usersTwo = [];
+	- usersTwo.push({photo: 'img/users/user-photo-06.png', name: 'НАТАЛЬЯ КОНСТАНТИНОВНА', surname: 'ЕРЕМИНА', job: 'Председатель правления'});
+	- usersTwo.push({photo: 'img/users/user-photo-01.png', name: 'ЭДУАРД ВЛАДИМИРОВИЧ', surname: 'СТЕПАНЦОВ', job: 'Руководитель коммерческого департамента'});
+	- usersTwo.push({photo: 'img/users/user-photo-04.png', name: 'ДМИТРИЙ ВАСИЛЬЕВИЧ', surname: 'ЧЕРНЫШЕВ', job: 'Руководитель департамента по развитию активов и инвестициям'});
+	- usersTwo.push({photo: 'img/users/user-photo-09.png', name: 'ЮЛИЯ ИГОРЕВНА', surname: 'ШХИЯНЦ', job: 'Руководитель департамента по экономике и финансам'});
+	- usersTwo.push({photo: 'img/users/user-photo-10.png', name: 'ПЕТР НИКОЛАЕВИЧ', surname: 'ТРУШИН', job: 'Директор по управлению эффективностью'});
+	- usersTwo.push({photo: 'img/users/user-photo-07.png', name: 'СВЕТЛАНА ЛЕОНИДОВНА', surname: 'НИКОЛАШИНА', job: 'Руководитель департамента по управлению персоналом'});
+
+	mixin tabBasicContent(tabID, tabClass)
+		.tab-pane.fade(id= tabID, class= tabClass)
+			.row
+				.col-xl-4
+					.card
+						.logo-wrap
+							img(src="img/logo-small.svg", alt="logo")
+							img(src="img/logo-text.svg", alt="logo text")
+				.col-xl-8
+					.card
+						.card-text.font-size-14
+							p
+								strong Объединенная металлургическая компания (АО «ОМК»)
+								| – один из крупнейших российских производителей металлопродукции для ведущих энергетических, транспортных и промышленных компаний. ОМК — комплексный поставщик продукции для добычи и транспортировки газа и нефти. Выпускает трубы различного назначения, железнодорожные колеса, листовой прокат, соединительные детали трубопроводов, трубопроводную арматуру, рессоры.
+			block
+
+
+	mixin cardModal(user, num)
+		.card-modal.modal.fade(id='tabModal' + num, tabindex='-1', role='dialog', aria-hidden='true')
+			.modal-dialog(role='document')
+				.modal-content
+					.modal-header
+						button.close(type='button', data-dismiss='modal', aria-label='Close')
+							i.icon-close(aria-hidden='true')
+						.modal-title
+							h3= user.name + ' ' + user.surname
+						.modal-subtitle
+							p= user.job
+					.modal-body
+						.row
+							.col-xl-3
+								.modal-imgbox(style="background-image: url(" + user.photo + ");")
+									img(src=user.photo alt="user-photo")
+							.col-xl-9
+								.modal-text
+									p #{user.name + ' ' + user.surname} — председатель совета директоров ОМК с июля 2017 года.
+
+									p Ранее был председателем правления ОМК с января 2013 по июль 2017 гг. Руководящие должности в компании занимает с 1999 года. Сначала А.М. Седых возглавил Выксунский металлургический завод и вывел предприятие из кризиса. Затем был генеральным директором ОМК и председателем совета директором ВМЗ.
+
+									p В 2002-м выбран председателем совета директоров компании, в 2003-2006 годах был президентом ОМК.
+
+									p Окончил Московский институт стали и сплавов (МИСиС), кандидат экономических наук. Карьеру начал с должности экономиста в Центральном научно-исследовательском институте черной металлургии.
+								.modal-text
+									h3 СЕКРЕТАРИ
+								.modal-table
+									.modal-table__line
+										.modal-table__col
+											p Александра Валерьевна
+											p Константинова
+										.modal-table__col
+											p +7 (495) 423-32-52 доб. 2553
+									.modal-table__line
+										.modal-table__col
+											p Александра Валерьевна
+											p Константинова
+										.modal-table__col
+											p +7 (495) 423-32-52 доб. 2553
+									.modal-table__line
+										.modal-table__col
+											p Александра Валерьевна
+											p Константинова
+										.modal-table__col
+											p +7 (495) 423-32-52 доб. 2553
+									.modal-table__line
+										.modal-table__col
+											p Александра Валерьевна
+											p Константинова
+										.modal-table__col
+											p +7 (495) 423-32-52 доб. 2553
+
+block content
+	.row
+		.col-12
+			.card.margin-bottom-15
+				.content-title
+					.content-titlebox
+						h1= pageTitle
+	nav.card-tabs
+		.nav.nav-tabs
+			a.nav-item.nav-link.active(data-toggle='tab', href='#tab1') ОМК
+			a.nav-item.nav-link(data-toggle='tab', href='#tab2') ВМЗ
+			a.nav-item.nav-link(data-toggle='tab', href='#tab3') ТРУБОДЕТАЛЬ
+			a.nav-item.nav-link(data-toggle='tab', href='#tab4') АТЗ
+			a.nav-item.nav-link(data-toggle='tab', href='#tab5') ЧМЗ
+			a.nav-item.nav-link(data-toggle='tab', href='#tab6') БАЗ
+
+
+		.tab-content
+			+tabBasicContent('tab1', 'show active')
+				.row
+					.col-12
+						.card.margin-bottom-20
+							.content-subtitle
+								h2 Совет директоров
+					.col-xl-6
+						each user, num in usersOne
+							if num <= 2
+								.card
+									.card-user(data-toggle='modal', data-target='#tabModal'+num)
+										.card-user__photo(style="background-image: url(" + user.photo + ");")
+											img(src=user.photo alt="user-photo")
+										.card-user__info
+											.card-user__title
+												h3= user.name
+												h3= user.surname
+											.card-user__text
+												p= user.job
+									+cardModal(user, num)
+
+
+
+
+
+					.col-xl-6
+						each user, num in usersOne
+							if num > 2
+								.card.margin-bottom-20
+									.card-user
+										.card-user__photo(style="background-image: url(" + user.photo + ");")
+											img(src=user.photo alt="user-photo")
+										.card-user__info
+											.card-user__title
+												h3= user.name
+												h3= user.surname
+											.card-user__text
+												p= user.job
+								+cardModal(user, num)
+				.row
+					.col-12
+						.card
+							.content-subtitle
+								h2 Правление
+					.col-xl-6
+						each user, num in usersTwo
+							if num > 2
+								- break;
+							.card
+								.card-user
+									.card-user__photo(style="background-image: url(" + user.photo + ");")
+										img(src=user.photo alt="user-photo")
+									.card-user__info
+										.card-user__title
+											h3= user.name
+											h3= user.surname
+										.card-user__text
+											p= user.job
+					.col-xl-6
+						each user, num in usersTwo
+							if num > 2
+								.card
+									.card-user
+										.card-user__photo(style="background-image: url(" + user.photo + ");")
+											img(src=user.photo alt="user-photo")
+										.card-user__info
+											.card-user__title
+												h3= user.name
+												h3= user.surname
+											.card-user__text
+												p= user.job
+
+			+tabBasicContent('tab2')
+				.circuit
+					.circuit-item
+						a.circuit-item__link(href='') Совет директоров
+							i.line-center-bot
+					.circuit-item
+						a.circuit-item__link(href='') Правление
+							i.line-center-bot
+					.circuit-item
+						a.circuit-item__link(href='') Департаменты
+							i.line-center-bot
+					.circuit-item
+						a.circuit-item__link.circuit-item__link_line-right(href='') Управление эффективностью
+							i.line-right-top
+							i.line-right-middle
+							i.line-right-bot
+						a.circuit-item__link.circuit-item__link_line-left(href='') Развитие активов и инвестиций
+							i.line-left-middle
+					.circuit-item
+						a.circuit-item__link.circuit-item__link_line-right(href='') Управление персоналом
+							i.line-right-top
+							i.line-right-middle
+						a.circuit-item__link.circuit-item__link_line-left(href='') Маркетинг и реклама
+							i.line-left-middle
+
+
+
+			// other tabs
+			- var tabs = [{id: 'tab3'}, {id: 'tab4'}, {id: 'tab5'}, {id: 'tab6'}]
+			each tab in tabs
+				.tab-pane.fade(id=tab.id, class=tab.class)
+					.row
+						.col-xl-4
+							.card
+								.logo-wrap
+									img(src="img/logo-small.svg", alt="logo")
+									img(src="img/logo-text.svg", alt="logo text")
+						.col-xl-8
+							.card
+								.card-text.font-size-14
+									p
+										strong Объединенная металлургическая компания (АО «ОМК»)
+										| – один из крупнейших российских производителей металлопродукции для ведущих энергетических, транспортных и промышленных компаний. ОМК — комплексный поставщик продукции для добычи и транспортировки газа и нефти. Выпускает трубы различного назначения, железнодорожные колеса, листовой прокат, соединительные детали трубопроводов, трубопроводную арматуру, рессоры.
+					.row
+						.col-xl-6
+							.card.margin-bottom-0
+								.content-subtitle
+									h2 Совет директоров
+							each user, num in usersOne
+								.card
+									.card-user
+										.card-user__photo(style="background-image: url(" + user.photo + ");")
+											img(src=user.photo alt="user-photo")
+										.card-user__info
+											.card-user__title
+												h3= user.name
+												h3= user.surname
+											.card-user__text
+												p= user.job
+
+						.col-xl-6
+							.card.margin-bottom-0
+								.content-subtitle
+									h2 Правление
+							each user in usersTwo
+								.card
+									.card-user
+										.card-user__photo(style="background-image: url(" + user.photo + ");")
+											img(src=user.photo alt="user-photo")
+										.card-user__info
+											.card-user__title
+												h3= user.name
+												h3= user.surname
+											.card-user__text
+												p= user.job
+

@@ -87,7 +87,6 @@
 
 	&-subtitle {
 		float: left;
-		margin-top: 10px;
 		margin-bottom: 10px;
 		font-size: 16px;
 		font-weight: 300;
@@ -128,6 +127,9 @@
 				font-size: 12px;
 
 			}
+			.sub {
+				font-size: 17px;
+			}
 		}
 		p {
 			font-size: 17px;
@@ -143,6 +145,11 @@
 				 color: #000000;
 				 line-height: 1.5;
 			 }
+		}
+		&_thin {
+			p {
+				color: #d0d1d3;
+			}
 		}
 	}
 	&-filter {

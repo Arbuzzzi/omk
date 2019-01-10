@@ -9,10 +9,13 @@
 	@include hover {
 		color: $link-hov-color;
 	}
-	// &:focus {
-		
-
-	// }
+	&-danger {
+		color: $special-color;
+		font-weight: 300;
+	}
+	&-small {
+		font-size: 12px;
+	}
 }
 
 .link-nav {
@@ -82,6 +85,7 @@
 		position: relative;
 		text-align: center;
 	}
+
 }
 // dropdown
 .button-split {
@@ -238,4 +242,19 @@
 			}
 		}
 	}
+}
+
+.button-width-142 {
+	min-width: 142px;
+}
+.button-width-170 {
+	min-width: 170px;
+}
+.button-height-30 {
+	padding-top: 7px;
+	padding-bottom: 6px;
+}
+.button-border {
+	border: 1px solid #dddee0;
+	background-color: #f4f5f5;
 }

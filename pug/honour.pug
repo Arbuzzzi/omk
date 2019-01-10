@@ -1,0 +1,23 @@
+extends modules/_base
+
+block vars
+	- var pageTitle = 'Доска почета';
+block content
+	.card
+		.content-title
+			.content-titlebox
+				h2 Доска почета ВМЗ
+	.card.card-slider.cardFifth-slider
+		.card-wrap.card-slider-wrap.cardFifth-slider-wrap
+			- var items = [];
+			- items.push({url: 'background-image: url(img/person-photo-01.jpg);', name: 'Мариановская Анастасия Константиновна'});
+			- items.push({url: 'background-image: url(img/person-photo-02.jpg);', name: 'Андреевский Андрей Александрович'});
+			- items.push({url: 'background-image: url(img/person-photo-03.jpg);', name: 'Мариановская Анастасия Константиновн'});
+			- items.push({url: 'background-image: url(img/person-photo-02.jpg);', name: 'Андреевский Андрей Александрович'});
+			- items.push({url: 'background-image: url(img/person-photo-01.jpg);', name: 'Мариановская Анастасия Константиновн'});
+			- items.push({url: 'background-image: url(img/person-photo-03.jpg);', name: 'Андреевский Андрей Александрович'});
+			- items.push({url: 'background-image: url(img/person-photo-02.jpg);', name: 'Мариановская Анастасия Константиновн'});
+			- items.push({url: 'background-image: url(img/person-photo-01.jpg);', name: 'Андреевский Андрей Александрович'});
+			each item in items
+				.card-slider__item.cardFifth-slider__item
+					.cardFifth-slider__imgbox.card__imgbox(style=item.url)

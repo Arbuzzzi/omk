@@ -19,7 +19,7 @@ block content
 			.card
 				.content-text
 					h3 Главный инженер отделения трубопрокатного цеха
-						span.small (Подразделение отдела № 1023)
+						span.sub (Подразделение отдела № 1023)
 
 					table.profile-info.margin-bottom-15
 						tbody
@@ -31,7 +31,7 @@ block content
 									p +7&nbsp;(83&nbsp;177)&nbsp;3-76-05&nbsp;доб.&nbsp;4526
 								td.text-right
 									p
-										a.special-link(href="#") Редактировать профиль
+										a.link-danger.link-small(href="#") Редактировать профиль
 							tr
 								td.text-right
 									p
@@ -91,15 +91,15 @@ block content
 			.card-links-wrap
 				.card-links__img
 					.card-links__imgbox
-						img(src="icon-save.svg")
+						img(src="img/icon/save.svg")
 				.card-links__items
 					- var items = [{type: 'Блог (25.10.19 от Русланова Михаила)', content: '"Почему так сильно перестроили расписание?"'}, {type: 'Новость от 08.02.19 (Региональные новости)', content: 'Более 10,6 млн тонн рулонного проката произвел литейно-прокатный комплек...'}, {type: 'Новость от 08.02.19 (Новости ОМК)', content: 'Применяемые технологические методы изготовления и ремонта'}, {type: 'Статья (Библиотека > Архив > Основные положения)', content: 'Типы производства по ГОСТ 14.004-83'}, {type: 'Документ (Компания > Конституция)', content: 'Конституция ОМК'}];
 					each item in items
 						.card-links__item
 							.card-links__head
-								.card-links__title
+								.card-links__left
 									a.card-links__lnk.card-links__lnk_small.color-thin(href="")= item.type
-								.card-links__remove
+								.card-links__right
 									a.card-links__lnk.card-links__lnk_small.link-special.color-thin(href="") Удалить
 							.card-links__lnkbox
 								a.card-links__lnk.text-ddd.color-thin(href="")= item.content
@@ -128,12 +128,201 @@ block content
 							each item in items
 								td
 									i(class=item)
-		.col-xl-2
-			i.icon-heart
+		.col-xl-9
+			.card
+				.card-links
+					.card-links-wrap
+						.card-links__img
+							.card-links__imgbox
+								i.icon-heart
+						.card-links__items
+							.card-links__item.card-links__lnkbox.card-links__head
+								.card-links__left
+									a.card-links__lnk(href="") Моя любимая пиццерия
+								.card-links__right
+									a.card-links__lnk.card-links__lnk_small.link-special.color-thin(href="") Редактировать
+									a.card-links__lnk.card-links__lnk_small.link-special.color-thin(href="") Удалить
+			.card
+				.card-links
+					.card-links-wrap
+						.card-links__img
+							.card-links__imgbox
+								i.icon-fire-2
+						.card-links__items
+							.card-links__item.card-links__lnkbox.card-links__head
+								.card-links__left
+									a.card-links__lnk(href="") Сайт важного партнера
+								.card-links__right
+									a.card-links__lnk.card-links__lnk_small.link-special.color-thin(href="") Редактировать
+									a.card-links__lnk.card-links__lnk_small.link-special.color-thin(href="") Удалить
+			.card
+				.card-links
+					.card-links-wrap
+						.card-links__img
+							.card-links__imgbox
+								i.icon-aircraft
+						.card-links__items
+							.card-links__item.card-links__lnkbox.card-links__head
+								.card-links__left
+									a.card-links__lnk(href="") Моя любимая пиццерия
+								.card-links__right
+									a.card-links__lnk.card-links__lnk_small.link-special.color-thin(href="") Редактировать
+									a.card-links__lnk.card-links__lnk_small.link-special.color-thin(href="") Удалить
+			.card
+				.card-links
+					.card-links-wrap
+						.card-links__img
+							.card-links__imgbox
+								i.icon-shop_cart
+						.card-links__items
+							.card-links__item.card-links__lnkbox.card-links__head
+								.card-links__left
+									a.card-links__lnk(href="") Моя любимая пиццерия
+								.card-links__right
+									a.card-links__lnk.card-links__lnk_small.link-special.color-thin(href="") Редактировать
+									a.card-links__lnk.card-links__lnk_small.link-special.color-thin(href="") Удалить
+			.card.text-right
+				button.button.button-border.button-width-142.margin-right-30.button-height-30 Добавить
+				button.button.button-border.button-width-142.button-height-30 Применить
+	.row
+		.col-12
+			.card.margin-bottom-15
+				.content-titlebox
+					h2
+						| Дни рождения ваших друзей
+				.text-right.content-text_special.content-text_thin
+					p Список друзей
+	.margin-bottom-15
+		.row
+			- var n = 0;
+			while n < 5
+				- var n = n + 1;
+				.col-xl-4
+					.card-person.margin-bottom-15
+						.card-person__imgbox(style="background-image: url(img/widget-img-06.jpg)")
+							img(src="img/widget-img-06.jpg" alt="image")
+						.card-person__content
+							.card-person__text
+								p
+									strong Еремина
+									strong Наталья
+									strong Константиновна
+									| Председатель правления ОМК
+							button.button.button-border.button-width-142.button-height-30 Применить
+
+	.row
+		.col-12
+			.card.margin-bottom-15
+				.content-titlebox
+					h2 Добровольная Народная Дружина
+	.row
+		.col-xl-4
+			.card
+				.card__imgbox.card__imgbox_sm(style='background-image: url(img/block-img-14.jpg);')
+					.card-warning-text.hide
+						p
+		.col-xl-8
+			.card
+				.card__text.fix-height-210.text-ddd-210
+					p
+						| Литейно-прокатный комплекс Выксунского металлургического завода (АО «ВМЗ», Нижегородская область, входит в состав Объединенной металлургической компании, АО «ОМК») за 10 лет работы произвел более 10,6 млн тонн горячекатаного рулонного проката, став важным звеном в полностью отечественной цепочке производства труб для нефтегазового комплекса.
+					p
+						| Литейно-прокатный комплекс - уникальное для России предприятие, в котором в единый технологический
+					a.button.card__more(href='#') Читать далее
+	.row
+		.col-xl-4
+			.card
+				.card-third__imgbox.card__imgbox(style='background-image: url(img/block-img-13.jpg);')
+					.card-warning-text.hide
+						p
+		.col-xl-8
+			.card
+				.card__text.fix-height-210.text-ddd-210
+					p
+						| Литейно-прокатный комплекс Выксунского металлургического завода (АО «ВМЗ», Нижегородская область, входит в состав Объединенной металлургической компании, АО «ОМК») за 10 лет работы произвел более 10,6 млн тонн горячекатаного рулонного проката, став важным звеном в полностью отечественной цепочке производства труб для нефтегазового комплекса...
+					p
+						| Литейно-прокатный комплекс - уникальное для России предприятие, в котором в единый технологический процесс совмещены процесс совмещены процесс совмещены процесс совмещены процесс совмещены процесс совмещены процесс совмещены процесс совмещены процесс совмещены процесс совмещены процесс совмещены выплавка
+					a.button.card__more(href='#') Читать далее
 
 
+	.row
+		.col-12
+			.card.margin-bottom-15
+				.content-titlebox
+					h2 Отслеживаемые блоги
 
+	article.article.article-preview
+		.card
+			.article-imgwrap.article-imgwrap_slim
+				.article-imgbox.article-imgbox_slim(style='background-image: url(img/article-prev-img-01.jpg);')
+			- var text = '24 Сентября 2018, Мацинова Елена';
+			include modules/_tag-box
 
+			.content-title
+				.article-title.content-titlebox
+					h3 Хочется лета, а вокруг одни офисы! Поеду на Ямайку!
+
+			.article-text.article-preview-text
+				p
+					| Ямайка находится в зоне тропического климата с господством северо-восточных пассатов, заметно влияющих, наравне с показателем абсолютной высоты местности, на климат страны В столичном районе средняя температура за год меняется от 24 до 27 °C, а в местечке Гордон-Хилл в горах Блу-Маунтинс — от температура температура температура
+	.card
+		hr.card-hr
+
+	article.article.article-preview
+		.card
+			.article-imgwrap.article-imgwrap_slim
+				.article-imgbox.article-imgbox_slim(style='background-image: url(img/article-prev-img-02.jpg);')
+			- var text = '24 Сентября 2018, Мацинова Елена';
+			include modules/_tag-box
+			.content-title
+				.article-title.content-titlebox
+					h3 Как вам прошедший концерт?
+
+			.article-text.article-preview-text
+				p
+					| Ямайка находится в зоне тропического климата с господством северо-восточных пассатов, заметно влияющих, наравне с показателем абсолютной высоты местности, на климат страны В столичном районе средняя температура за год меняется от 24 до 27 °C, а в местечке Гордон-Хилл в горах Блу-Маунтинс — от...
+	.card
+		hr.card-hr
+
+	.row
+		.col-12
+			.card.margin-bottom-15
+				.content-titlebox
+					h2 Список друзей
+	.card
+		- var tableClass = 'table-thin-head';
+		table.table(class=tableClass)
+			thead
+				tr
+					th #
+					th ФИО
+					th Должность
+					th Подразделение
+					th Действие
+			tbody
+				tr
+					td 1
+					td Константин Александрович Константинопольский
+					td Главный инженер отделения трубопрокатного цеха
+					td Подразделение ВМЗ по настройке технических решений
+					td
+						a.link-special.color-thin.d-block(href="") Удалить
+				tr
+					td 2
+					td Константин Александрович Константинопольский
+					td Главный инженер отделения трубопрокатного цеха
+					td Подразделение ВМЗ по настройке технических решений
+					td
+						a.link-special.color-thin.d-block(href="") Удалить
+						a.link-special.color-thin.d-block(href="") Поздравить
+				tr
+					td 3
+					td Константин Александрович Константинопольский
+					td Главный инженер отделения трубопрокатного цеха
+					td Подразделение ВМЗ по настройке технических решений
+					td
+						a.link-special.color-thin.d-block(href="") Удалить
+						a.link-special.color-thin.d-block(href="") Поздравить
 
 
 

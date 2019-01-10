@@ -29,9 +29,27 @@
   background-image: url(#{$url+$name});
 }
 
+@mixin marginTop($mb) {
+  .margin-top-#{$mb} {
+    margin-top: #{$mb}px !important;
+  }
+}
+
 @mixin marginBottom($mb) {
   .margin-bottom-#{$mb} {
     margin-bottom: #{$mb}px !important;
+  }
+}
+
+@mixin marginLeft($mb) {
+  .margin-left-#{$mb} {
+    margin-left: #{$mb}px !important;
+  }
+}
+
+@mixin marginRight($mb) {
+  .margin-right-#{$mb} {
+    margin-right: #{$mb}px !important;
   }
 }
 
@@ -47,6 +65,15 @@
 @mixin fixHeight($fix_height) {
   .fix-height-#{$fix_height} {
     max-height: #{$fix_height}px !important;
+  }
+}
+@mixin fontInherit {
+  > * {
+    font-size: inherit;
+    font-weight: inherit;
+    line-height: inherit;
+    font-family: inherit;
+    @content
   }
 }
 

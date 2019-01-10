@@ -1,0 +1,96 @@
+.circuit {
+	&-item {
+		position: relative;
+		text-align: center;
+		margin-bottom: 15px;
+		&__link {
+			position: relative;
+			z-index: 10;
+			width: 370px;
+			padding: 7px 30px 9px;
+			border-radius: 5px;
+			border: 1px solid $thin-color;
+			background-color: #eeefef;
+			display: inline-block;
+			text-align: center;
+			vertical-align: middle;
+
+			color: $tooltip-bg;
+			font-family: Roboto, sans-serif;
+			font-size: 20px;
+			font-weight: 400;
+			line-height: 17px;
+			transition: 0.4s;
+			@include hover {
+				border: 1px solid $basic-color;
+				background-color: $light-color;
+			}
+			&_line-right {
+				margin-right: 30px;
+			}
+			&_line-left{
+				margin-left: 30px;
+			}
+			.line {
+				&-center {
+					&-bot, &-top {
+						position: absolute;
+						z-index: 1;
+						left: 50%;
+						display: block;
+						height: 16px;
+						width: 0.9px;
+						transform: translateX(-50%);
+						background-color: $thin-color;
+					}
+					&-top {
+						top: -16px;
+					}
+					&-bot {
+						bottom: -16px;
+					}
+				}
+
+				&-right-middle, &-left-middle {
+					position: absolute;
+					top: 50%;
+					display: block;
+					height: 0.9px;
+					width: 31px;
+					transform: translateY(-50%);
+					background-color: $thin-color;
+				}
+				&-right-middle{
+					right: -31.5px;
+				}
+				&-left-middle {
+					left: -31.5px;
+				}
+
+				&-right-top, &-left-top, &-right-bot, &-left-bot {
+					position: absolute;
+					display: block;
+					height: 31px;
+					width: 0.9px;
+					background-color: $thin-color;
+				}
+				&-right-top {
+					bottom: 50%;
+					right: -31.5px;
+				}
+				&-left-top {
+					bottom: 50%;
+					left: -31.5px;
+				}
+				&-right-bot {
+					top: 50%;
+					right: -31.5px;
+				}
+				&-left-bot {
+					top: 50%;
+					left: -31.5px;
+				}
+			}
+		}
+	}
+}

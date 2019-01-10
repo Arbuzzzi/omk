@@ -587,7 +587,205 @@
 			}
 		}
 	}
+	&-user {
+		font-size: 0;
+		cursor: pointer;
+		@include hover {
+			.card-user__photo {
+				border-color: $special-color;
+			}
+		}
+		&__photo {
+			display: inline-block;
+			width: 90px;
+			height: 90px;
+			margin-right: 15px;
+			vertical-align: middle;
+
+			font-size: 16px;
+			border: 1px solid $thin-color;
+			border-radius: 50%;
+			overflow: hidden;
+			background: center no-repeat;
+			background-size: contain;
+
+			img {
+				display: none;
+			}
+		}
+
+		&__info {
+			display: inline-block;
+			width: calc(100% - 105px);
+			vertical-align: middle;
+
+			font-size: 16px;
+		}
+
+		&__title {
+			color: $tooltip-bg;
+			font-size: 16px;
+			font-weight: 500;
+			line-height: 17px;
+			> * {
+				font-family: Roboto, sans-serif;
+				color: $tooltip-bg;
+				font-size: 16px;
+				font-weight: 500;
+				line-height: 17px;
+			}
+			span {
+				display: block;
+			}
+		}
+		&__text {
+			max-width: 250px;
+			color: $tooltip-bg;
+			font-size: 16px;
+			font-weight: 300;
+			line-height: 17px;
+		}
+	}
+
+
+	&-modal {
+		font-size: 16px;
+		.modal {
+			&-content {
+				border-radius: 5px;
+				border: 1px solid #dddee0;
+				padding: 30px;
+			}
+			&-dialog {
+				@media (min-width: 1024px) {
+					max-width: 810px;
+				}
+			}
+			&-header {
+				position: relative;
+				display: block;
+				margin-bottom: 30px;
+				padding: 0;
+				border: none;
+				.close {
+					position: absolute;
+					top: -20px;
+					right: -20px;
+					padding: 0;
+					margin: 0;
+					font-size: 14px;
+					color: #d0d1d3;
+				}
+			}
+			&-title {
+				margin-bottom: 10px;
+				color: $tooltip-bg;
+				font-family: Roboto, sans-serif;
+				font-size: 22px;
+				font-weight: 500;
+				line-height: 17px;
+				@include fontInherit {
+					margin: 0;
+				}
+			}
+			&-subtitle {
+				color: $tooltip-bg;
+				font-family: Roboto, sans-serif;
+				font-size: 16px;
+				font-weight: 300;
+				line-height: 17px;
+				@include fontInherit {
+					margin: 0;
+				}
+			}
+			&-body {
+				margin: 0;
+				padding: 0;
+			}
+			&-imgbox {
+				width: 170px;
+				height: 200px;
+				background: center no-repeat;
+				background-size: contain;
+				border-radius: 5px;
+				border: 1px solid #dddee0;
+				img {
+					display: none;
+				}
+			}
+			&-text {
+				p {
+					margin-bottom: 15px;
+					color: $basic-color;
+					font-family: Roboto, sans-serif;
+					font-size: 14px;
+					font-weight: 400;
+				}
+				h3 {
+					margin-bottom: 5px;
+					color: $tooltip-bg;
+					font-family: Roboto, sans-serif;
+					font-size: 14px;
+					font-weight: 400;
+					line-height: 17px;
+					text-transform: uppercase;
+				}
+			}
+			&-table {
+				&__line {
+					font-size: 0;
+					&:nth-child(2n) {
+						background-color: #f4f5f5;
+					}
+				}
+				&__col {
+					display: inline-block;
+					width: 50%;
+					padding: 10px;
+					vertical-align: top;
+					font-size: 16px;
+				}
+			}
+		}
+	}
+
+
+	&-tabs {
+		.nav {
+			&-tabs {
+				.nav-link {
+					border: 1px solid #dddee0;
+					border-radius: 5px 5px 0 0;
+					border-bottom: none;
+					&.active {
+						padding-top: 2px;
+						padding-bottom: 4px;
+						background-color: #f4f5f5;
+						border-bottom: 1px solid #f4f5f5;
+					}
+				}
+			}
+
+			&-link {
+				padding: 3px 30px;
+			}
+			&-tabs {
+				//max-width: calc(100% - 4px);
+				//border-bottom: 1px solid #dddee0;
+				border-bottom: none;
+			}
+		}
+		.tab-content {
+			min-height: 957px;
+			padding: 30px;
+			background-color: #f4f5f5;
+			border-radius: 0 5px 5px 5px;
+			border: 1px solid #dddee0;
+			//border-top: none;
+		}
+	}
 }
+
 .card-number-elem {
 	cursor: pointer;
 	@include hover {
@@ -603,6 +801,19 @@
 		padding-left: 15px;
 		padding-right: 15px;
 		text-align: center;
+	}
+	&__imgbox {
+		min-width: 30px;
+		font-size: 30px;
+		color: #d0d1d3;
+		text-align: center;
+		vertical-align: middle;
+		i {
+			transition: 0.4s;
+			@include hover {
+				color: #757575;
+			}
+		}
 	}
 	&__items {
 		width: 100%;
@@ -623,11 +834,14 @@
 		margin-bottom: 5px;
 		@include clearfix;
 	}
-	&__title {
+	&__left {
 		float: left;
 	}
-	&__remove {
+	&__right {
 		text-align: right;
+		.link-special {
+			margin-left: 15px;
+		}
 	}
 	&__lnkbox {
 		color: $dark-color;
@@ -667,4 +881,36 @@
 		}
 	}
 
+}
+.card-person {
+	@include clearfix;
+	&__imgbox {
+		float: left;
+		width: 113px;
+		height: 130px;
+		background-size: cover;
+		background-position: center	;
+		background-repeat: no-repeat;
+		margin-right: 15px;
+	}
+	&__content {
+		display: flex;
+		flex-direction: column;
+		min-height: 130px;
+		button {
+			margin-top: auto;
+		}
+	}
+	&__text {
+		color: $tooltip-bg;
+		font-size: 12px;
+		font-weight: 400;
+		line-height: 14px;
+		p {
+			strong {
+				display: block;
+				font-weight: 700;
+			}
+		}
+	}
 }
