@@ -138,6 +138,12 @@
 				color: #bcbdc0;
 			}
 		}
+		a {
+			text-decoration: underline;
+			@include hover {
+				text-decoration: none;
+			}
+		}
 		&_special {
 			 p {
 				 font-family: "PT Serif", serif;

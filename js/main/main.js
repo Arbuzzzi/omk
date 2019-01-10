@@ -897,7 +897,7 @@ $(document).ready(function() {
 		nextArrow: '<div class="slider-arrow slider-arrow__right"></div>',
 	});
 
-	$('.cardFifth-slider-wrap').slick({
+	$('.card-fifth-slider-wrap').slick({
 		slidesToShow: 5,
 		slidesToScroll: 1,
 		prevArrow: '<div class="slider-arrow slider-arrow__left"></div>',

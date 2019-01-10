@@ -3475,6 +3475,10 @@ h2 span,
   color: #bcbdc0;
 }
 
+.content-text a {
+  text-decoration: underline;
+}
+
 .content-text_special p {
   font-family: "PT Serif", serif;
   font-size: 14px;
@@ -4014,6 +4018,21 @@ h2 span,
   font-size: 22px;
 }
 
+.card__text a {
+  text-decoration: underline;
+}
+
+.card__text_404 {
+  color: #bcbdc0;
+  font-family: "PT Serif", serif;
+  font-size: 104px;
+  font-weight: 400;
+}
+
+.card__text_thin {
+  font-weight: 300;
+}
+
 .card-date {
   margin-top: auto;
   color: #a1a3a7;
@@ -4330,25 +4349,40 @@ h2 span,
   max-height: 132px;
 }
 
-.cardFifth-slider-wrap {
+.card-fifth-slider-wrap {
   margin-left: -7.5px;
   margin-right: -7.5px;
 }
 
-.cardFifth-slider__item {
+.card-fifth-slider__item {
   padding-left: 7.5px;
   padding-right: 7.5px;
 }
 
-.cardFifth-slider__imgbox {
+.card-fifth-slider__imgbox {
   min-height: 210px;
 }
 
-.cardFifth-slider .slider-arrow__left {
+.card-fifth-slider__title {
+  color: #000000;
+  font-family: Roboto, sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  text-align: center;
+}
+
+.card-fifth-slider__title > * {
+  font-size: inherit;
+  font-weight: inherit;
+  line-height: inherit;
+  font-family: inherit;
+}
+
+.card-fifth-slider .slider-arrow__left {
   left: 7.5px;
 }
 
-.cardFifth-slider .slider-arrow__right {
+.card-fifth-slider .slider-arrow__right {
   right: 7.5px;
 }
 
@@ -6239,6 +6273,10 @@ h2 span,
     background-color: inherit;
   }
 
+  .content-text a:hover {
+    text-decoration: none;
+  }
+
   .like-button:hover {
     color: #2f3033;
   }
@@ -6269,6 +6307,10 @@ h2 span,
 
   .card__title a:hover {
     text-decoration: underline;
+  }
+
+  .card__text a:hover {
+    text-decoration: none;
   }
 
   .card-logo__imgbox:hover {

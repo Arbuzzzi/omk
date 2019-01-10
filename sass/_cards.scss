@@ -274,6 +274,21 @@
 			margin-bottom: 18px;
 			font-size: 22px;
 		}
+		a {
+			text-decoration: underline;
+			@include hover {
+				text-decoration: none;
+			}
+		}
+		&_404 {
+			color: #bcbdc0;
+			font-family: "PT Serif", serif;
+			font-size: 104px;
+			font-weight: 400;
+		}
+		&_thin {
+			font-weight: 300;
+		}
 	}
 	&-date {
 		margin-top: auto;
@@ -542,7 +557,7 @@
 			
 		}
 	}
-	&Fifth {
+	&-fifth {
 		&-slider {
 			&-wrap {
 				margin-left: -7.5px;
@@ -554,6 +569,14 @@
 			}
 			&__imgbox {
 				min-height: 210px;
+			}
+			&__title {
+				color: #000000;
+				font-family: Roboto, sans-serif;
+				font-size: 16px;
+				font-weight: 400;
+				text-align: center;
+				@include fontInherit
 			}
 			.slider-arrow {
 				&__left {
