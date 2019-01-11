@@ -280,6 +280,10 @@
   content: "\e91e";
 }
 
+.icon-save:before {
+  content: "\e920";
+}
+
 .tooltip {
   position: absolute;
   z-index: 1070;
@@ -1440,6 +1444,33 @@ h2 span,
   font-size: 12px;
 }
 
+.link-icon-save {
+  position: relative;
+}
+
+.link-icon-save:before {
+  content: "";
+  position: absolute;
+  display: block;
+  top: 50%;
+  left: -30px;
+  -webkit-transform: translateY(-50%);
+      -ms-transform: translateY(-50%);
+          transform: translateY(-50%);
+  font-family: 'icomoon' !important;
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  color: #bcbdc0;
+  opacity: 0;
+}
+
 .link-nav {
   color: #a1a3a7;
   letter-spacing: 0.2px;
@@ -1622,6 +1653,10 @@ h2 span,
   -webkit-transition: 0.4s;
   -o-transition: 0.4s;
   transition: 0.4s;
+}
+
+.button-big-o-danger {
+  border-color: #ee3124;
 }
 
 .button-width-142 {
@@ -2634,13 +2669,15 @@ h2 span,
 }
 
 .header-question {
-  background-color: #efefef;
   background: transparent url("../img/omk_question.png") center no-repeat;
   -webkit-background-size: contain;
           background-size: contain;
   padding: 18px 20px 16px;
   margin-right: -10px;
   margin-bottom: 3px;
+  -webkit-border-radius: 5px;
+          border-radius: 5px;
+  border: 1px solid #dfdfdf;
 }
 
 .header-question a {
@@ -4021,10 +4058,6 @@ h2 span,
   font-size: 22px;
 }
 
-.card__text a {
-  text-decoration: underline;
-}
-
 .card__text_404 {
   color: #bcbdc0;
   font-family: "PT Serif", serif;
@@ -4594,6 +4627,11 @@ h2 span,
   -webkit-border-radius: 5px 5px 0 0;
           border-radius: 5px 5px 0 0;
   border-bottom: none;
+  border-right: none;
+}
+
+.card-tabs .nav-tabs .nav-link:last-child {
+  border-right: 1px solid #dddee0;
 }
 
 .card-tabs .nav-tabs .nav-link.active {
@@ -4633,8 +4671,7 @@ h2 span,
 
 .card-links__img {
   max-width: 100px;
-  padding-left: 15px;
-  padding-right: 15px;
+  padding-right: 30px;
   text-align: center;
 }
 
@@ -6157,6 +6194,17 @@ h2 span,
     color: #484a4d;
   }
 
+  .link-icon-save:hover:before {
+    opacity: 1;
+    -webkit-transition: 0.3s;
+    -o-transition: 0.3s;
+    transition: 0.3s;
+  }
+
+  .link-icon-save:hover:active:before {
+    color: #ee3124;
+  }
+
   .link-nav:hover {
     font-weight: 700;
     letter-spacing: 0;
@@ -6310,10 +6358,6 @@ h2 span,
 
   .card__title a:hover {
     text-decoration: underline;
-  }
-
-  .card__text a:hover {
-    text-decoration: none;
   }
 
   .card-logo__imgbox:hover {

@@ -1039,7 +1039,10 @@ $(document).ready(function() {
 	/* modals -------------------------------------------------------------------------------- */
 
 	$('.modal').on('show.bs.modal', function(event) {
-		$('.header').css('padding-right', '17px');
+		var position = $(document).scrollTop();
+		if (position > 0)  {
+			$('.header').css('padding-right', '17px');
+		}
 	});
 	$('.modal').on('hidden.bs.modal', function(event) {
 		$('.header').css('padding-right', '');

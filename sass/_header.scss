@@ -119,12 +119,14 @@
 		}
 	}
 	&-question {
-		background-color: #efefef;
+		//background-color: #efefef;
 		background: transparent url('../img/omk_question.png') center no-repeat;
 		background-size: contain;
 		padding: 18px 20px 16px;
 		margin-right: -10px;
 		margin-bottom: 3px;
+		border-radius: 5px;
+		border: 1px solid #dfdfdf;
 		a {
 			font-size: 13px;
 			line-height: 16px;

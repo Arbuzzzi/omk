@@ -274,12 +274,12 @@
 			margin-bottom: 18px;
 			font-size: 22px;
 		}
-		a {
-			text-decoration: underline;
-			@include hover {
-				text-decoration: none;
-			}
-		}
+		//a {
+		//	text-decoration: underline;
+		//	@include hover {
+		//		text-decoration: none;
+		//	}
+		//}
 		&_404 {
 			color: #bcbdc0;
 			font-family: "PT Serif", serif;
@@ -780,6 +780,10 @@
 					border: 1px solid #dddee0;
 					border-radius: 5px 5px 0 0;
 					border-bottom: none;
+					border-right: none;
+					&:last-child {
+						border-right: 1px solid #dddee0;
+					}
 					&.active {
 						padding-top: 2px;
 						padding-bottom: 4px;
@@ -821,8 +825,8 @@
 	}
 	&__img {
 		max-width: 100px;
-		padding-left: 15px;
-		padding-right: 15px;
+		//padding-left: 15px;
+		padding-right: 30px;
 		text-align: center;
 	}
 	&__imgbox {
