@@ -364,3 +364,45 @@
 .label-valid {
 	color: $valid-color;
 }
+
+.form-filters {
+	display: flex;
+	justify-content: flex-end;
+	align-items: center;
+	margin-right: 10px;
+	font-size: 12px;
+	vertical-align: middle;
+	&__title{
+		margin-right: 5px;
+	}
+	&__date {
+		width: 132px;
+		min-width: 132px;
+		margin-right: 10px;
+	}
+	&__label {
+		position: relative;
+		@include clearfix;
+		i {
+			position: absolute;
+			top: 50%;
+			right: 5px;
+			margin-top: -3px;
+			color: $dark-color;
+			font-size: 8px;
+			&:before {
+				color: inherit;
+			}
+		}
+	}
+	// &__searchbox {
+
+	// }
+	&__search {
+		float: left;
+	}
+	&__submit {
+		font-size: 10px;
+		color: #797C82;
+	}
+}

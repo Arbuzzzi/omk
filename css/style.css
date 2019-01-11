@@ -252,6 +252,7 @@
 }
 
 .icon-filters1:before {
+  color: #797C82;
   content: "\e919";
 }
 
@@ -2121,6 +2122,66 @@ h2 span,
   color: #39b54a;
 }
 
+.form-filters {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: end;
+  -webkit-justify-content: flex-end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-right: 10px;
+  font-size: 12px;
+  vertical-align: middle;
+}
+
+.form-filters__title {
+  margin-right: 5px;
+}
+
+.form-filters__date {
+  width: 132px;
+  min-width: 132px;
+  margin-right: 10px;
+}
+
+.form-filters__label {
+  position: relative;
+}
+
+.form-filters__label::after {
+  display: block;
+  content: "";
+  clear: both;
+}
+
+.form-filters__label i {
+  position: absolute;
+  top: 50%;
+  right: 5px;
+  margin-top: -3px;
+  color: #797c82;
+  font-size: 8px;
+}
+
+.form-filters__label i:before {
+  color: inherit;
+}
+
+.form-filters__search {
+  float: left;
+}
+
+.form-filters__submit {
+  font-size: 10px;
+  color: #797C82;
+}
+
 .modal-backdrop.show {
   opacity: 0.7;
 }
@@ -3521,65 +3582,7 @@ h2 span,
   font-size: 16px;
   line-height: 44px;
   vertical-align: middle;
-}
-
-.form-filters {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: end;
-  -webkit-justify-content: flex-end;
-      -ms-flex-pack: end;
-          justify-content: flex-end;
-  -webkit-box-align: center;
-  -webkit-align-items: center;
-      -ms-flex-align: center;
-          align-items: center;
-  margin-right: 10px;
-  font-size: 12px;
-  vertical-align: middle;
-}
-
-.form-filters__title {
-  margin-right: 5px;
-}
-
-.form-filters__date {
-  width: 132px;
-  min-width: 132px;
-  margin-right: 10px;
-}
-
-.form-filters__label {
-  position: relative;
-}
-
-.form-filters__label::after {
-  display: block;
-  content: "";
-  clear: both;
-}
-
-.form-filters__label i {
-  position: absolute;
-  top: 50%;
-  right: 5px;
-  margin-top: -3px;
-  color: #797c82;
-  font-size: 8px;
-}
-
-.form-filters__label i:before {
-  color: inherit;
-}
-
-.form-filters__search {
-  float: left;
-}
-
-.form-filters__submit {
-  font-size: 10px;
+  color: #797C82;
 }
 
 .tag {
