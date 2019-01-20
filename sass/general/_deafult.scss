@@ -331,7 +331,7 @@ section, .section {
 	height: 100%;
 	cursor: pointer;
 	transition: 0.4s;
-	@include sm-block {
+	@include md-block {
 		width: 15px;
 	}
 	&__left {
@@ -342,7 +342,7 @@ section, .section {
 		@include hover {
 			background-color: rgba($light-color, 0.35);
 		}
-		@include sm-block {
+		@include md-block {
 			left: 7.5px;
 		}
 
@@ -355,7 +355,7 @@ section, .section {
 		@include hover {
 			background-color: rgba($light-color, 0.35);
 		}
-		@include sm-block {
+		@include md-block {
 			right: 7.5px;
 		}
 	}

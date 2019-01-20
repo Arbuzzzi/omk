@@ -101,16 +101,17 @@ $(document).ready(function() {
 
 	/* ПОДМЕНЮ "СИСТЕМЫ" ----------------------------------------------------------------------------- */
 	var mobile = false;
-	if ($(window).outerWidth()< 576) {
+	if ($(window).outerWidth() < 768) {
 		mobile = true;
 	}
 	$(window).on('resize', function (e){
-		if ($(this).outerWidth()< 576) {
+		if ($(this).outerWidth() < 768) {
 			mobile = true;
 		}
-		console.log(mobile);
 	});
-	console.log(mobile);
+	if (mobile) {
+		$('#header-nav').collapse()
+	}
 	// системы показываются
 	$('#header-nav').on('show.bs.collapse', function () {
 		var btn = $('#header-navControl');

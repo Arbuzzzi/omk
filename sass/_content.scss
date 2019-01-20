@@ -212,7 +212,7 @@
 			margin-left: 2px;
 			font-size: 10px;
 		}
-		@include sm-block {
+		@include md-block {
 			font-size: 8px;
 			line-height: 1.4;
 			vertical-align: middle;
@@ -222,7 +222,7 @@
 			display: inline-block;
 			transform: translateY(2px);
 			color: inherit;
-			@include sm-block {
+			@include md-block {
 				transform: translateY(1.5px);
 			}
 		}

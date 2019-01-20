@@ -12,7 +12,7 @@
 	//height: 100%;
 	margin-bottom: 30px;
 	background-color: transparent;
-	@include sm-block {
+	@include md-block {
 		margin-bottom: 15px;
 	}
   @include clearfix;
@@ -40,7 +40,7 @@
 	}
 	&_advant-news {
 		border-bottom: 3px solid $dark-color;
-		@include sm-block {
+		@include md-block {
 			border-bottom-width: 2px;
 		}
 	}
@@ -100,7 +100,7 @@
 		@include lg-block {
 			min-height: 180px;
 		}
-		@include sm-block {
+		@include md-block {
 			min-height: 125px;
 		}
 		&[data-toggle="modal"] {
@@ -123,7 +123,7 @@
 			@include lg-block {
 				height: 180px;
 			}
-			@include sm-block {
+			@include md-block {
 				height: 125px;
 			}
 		}
@@ -175,13 +175,13 @@
 		color: $light-color;
 		font-size: 11px;
 		font-weight: 400;
-		@include sm-block {
+		@include md-block {
 			padding: 2px 10px;
 		}
 		p {
 			font-size: 11px;
 			margin-bottom: 0;
-			@include sm-block {
+			@include md-block {
 				font-size: 8px;
 			}
 		}
@@ -196,13 +196,13 @@
 		color: $light-color;
 		font-size: 11px;
 		font-weight: 400;
-		@include sm-block {
+		@include md-block {
 			padding: 2px 10px;
 		}
 		p {
 			font-size: 11px;
 			margin-bottom: 0;
-			@include sm-block {
+			@include md-block {
 				font-size: 8px;
 			}
 		}
@@ -217,13 +217,13 @@
 		color: $light-color;
 		font-size: 11px;
 		font-weight: 400;
-		@include sm-block {
+		@include md-block {
 			padding: 2px 10px;
 		}
 		p {
 			font-size: 11px;
 			margin-bottom: 0;
-			@include sm-block {
+			@include md-block {
 				font-size: 8px;
 			}
 		}
@@ -237,7 +237,7 @@
 		@include lg-block {
 			padding: 15px;
 		}
-		@include sm-block {
+		@include md-block {
 			padding: 10px;
 		}
 		&_sm {
@@ -246,13 +246,13 @@
 			@include lg-block {
 				margin-top: 180px;
 			}
-			@include sm-block {
+			@include md-block {
 				margin-top: 125px;
 			}
 		}
 		.tagbox {
 			margin-bottom: 20px;
-			@include sm-block {
+			@include md-block {
 				margin-bottom: 10px;
 			}
 		}
@@ -290,7 +290,7 @@
 		margin-bottom: 15px;
 		font-family: "PT Serif", serif;
 		font-size: 17px;
-		@include sm-block {
+		@include md-block {
 			margin-bottom: 10px;
 			min-height: 30px;
 			font-size: 9px;
@@ -308,7 +308,7 @@
 			@include hover {
 				text-decoration: underline;
 			}
-			@include sm-block {
+			@include md-block {
 				max-height: 30px;
 			}
 		}
@@ -326,7 +326,7 @@
 		p {
 			font-size: 17px;
 			margin-bottom: 15px;
-			@include sm-block {
+			@include md-block {
 				font-size: 9px;
 			}
 			&:last-child {
@@ -358,7 +358,7 @@
 		color: $thin-color;
 		font-size: 12px;
 		font-weight: 400;
-		@include sm-block {
+		@include md-block {
 			font-size: 8px;
 		}
 		&_light {
@@ -429,7 +429,7 @@
 			background-color: transparent;
 			font-size: 0;
 			overflow: hidden;
-			@include sm-block {
+			@include md-block {
 				margin-left: -7.5px;
 				margin-right: -7.5px;
 			}
@@ -437,7 +437,7 @@
 		&__item {
 			padding-left: 15px;
 			padding-right: 15px;
-			@include sm-block {
+			@include md-block {
 				padding-left: -7.5px;
 				padding-right: -7.5px;
 			}
@@ -465,7 +465,7 @@
 			@include lg-block {
 				height: 300px;
 			}
-			@include sm-block {
+			@include md-block {
 				height: 206px;
 			}
 		}
@@ -473,14 +473,14 @@
 			font-size: 40px;
 			margin-top: -15px;
 			margin-bottom: 5px;
-			@include sm-block {
+			@include md-block {
 				margin-bottom: 0;
 				font-size: 20px;
 				margin-top: -5px;
 			}
 			a {
 				max-height: none;
-				@include sm-block {
+				@include md-block {
 					max-height: none;
 				}
 			}		
@@ -489,7 +489,7 @@
 			margin-bottom: 15px;
 			font-family: "PT Serif", serif;
 			font-size: 17px;
-			@include sm-block {
+			@include md-block {
 				margin-bottom: 10px;
 			}
 		}
@@ -502,7 +502,7 @@
 				@include lg-block {
 					margin-top: 245px;
 				}
-				@include sm-block {
+				@include md-block {
 					margin-top: 150px;
 				}
 			}
@@ -522,7 +522,7 @@
 				background-color: transparent;
 				font-size: 0;
 				overflow: hidden;
-				@include sm-block {
+				@include md-block {
 					margin-left: -7.5px;
 					margin-right: -7.5px;
 				}
@@ -530,7 +530,7 @@
 			&__item {
 				padding-left: 15px;
 				padding-right: 15px;
-				@include sm-block {
+				@include md-block {
 					padding-left: 7.5px;
 					padding-right: 7.5px;
 				}
@@ -592,7 +592,7 @@
 			@include lg-block {
 				min-height: 230px;
 			}
-			@include sm-block {
+			@include md-block {
 				min-height: 205px;
 			}
 		}
@@ -605,7 +605,7 @@
 				@include lg-block {
 					margin-top: 230px;
 				}
-				@include sm-block {
+				@include md-block {
 					margin-top: 205px;
 				}
 			}
@@ -629,7 +629,7 @@
 				background-color: transparent;
 				font-size: 0;
 				overflow: hidden;
-				@include sm-block {
+				@include md-block {
 					margin-left: -7.5px;
 					margin-right: -7.5px;
 				}
@@ -637,7 +637,7 @@
 			&__item {
 				padding-left: 15px;
 				padding-right: 15px;
-				@include sm-block {
+				@include md-block {
 					padding-left: 7.5px;
 					padding-right: 7.5px;
 				}
@@ -647,7 +647,7 @@
 				@include lg-block {
 					min-height: 290px;
 				}
-				@include sm-block {
+				@include md-block {
 					min-height: 235px;
 				}
 			}

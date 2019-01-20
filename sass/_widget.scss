@@ -10,7 +10,7 @@
 		@include lg-block {
 			height: 185px;
 		}
-		@include sm-block {
+		@include md-block {
 			height: 140px;
 		}
 	}
@@ -97,7 +97,7 @@
 			@include lg-block {
 				height: 150px;
 			}
-			@include sm-block {
+			@include md-block {
 				height: 100px;
 			}
 		}
@@ -149,7 +149,7 @@
 			@include lg-block {
 				min-height: 275px;
 			}
-			@include sm-block {
+			@include md-block {
 				min-height: 175px;
 			}
 		}
@@ -204,7 +204,7 @@
 			font-size: 9px;
 			line-height: 1.2;
 		}
-		@include sm-block {
+		@include md-block {
 			margin-top: 5px;
 			margin-bottom: 10px;
 			font-size: 8px;
@@ -239,7 +239,7 @@
 		@include lg-block {
 			font-size: 8px;
 		}
-		@include sm-block {
+		@include md-block {
 			font-size: 6px;
 		}
 		p {
@@ -252,7 +252,7 @@
 			font-family: "Roboto", sans-serif;
 			font-size: 14px;
 			font-weight: 400;
-			@include sm-block {
+			@include md-block {
 				font-size: 10px;
 			}
 		}
@@ -273,7 +273,7 @@
 			@include lg-block {
 				font-size: 14px;
 			}
-			@include sm-block {
+			@include md-block {
 				font-size: 11px;
 			}
 		}
@@ -305,7 +305,7 @@
 		@include lg-block {
 			width: 10px;
 		}
-		@include sm-block {
+		@include md-block {
 			width: 10px;
 		}
 		&__left {
