@@ -65,12 +65,12 @@ img{
 }
 
 .row {
-	@include md-block {
+	@include sm-block {
 		margin-right: -7.5px;
 		margin-left: -7.5px;
 	}
 	> [class*='col-'] {
-		@include md-block {
+		@include sm-block {
 			padding-left: 7.5px;
 			padding-right: 7.5px;
 		}

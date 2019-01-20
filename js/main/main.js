@@ -100,6 +100,17 @@ $(document).ready(function() {
 	}
 
 	/* ПОДМЕНЮ "СИСТЕМЫ" ----------------------------------------------------------------------------- */
+	var mobile = false;
+	if ($(window).outerWidth()< 576) {
+		mobile = true;
+	}
+	$(window).on('resize', function (e){
+		if ($(this).outerWidth()< 576) {
+			mobile = true;
+		}
+		console.log(mobile);
+	});
+	console.log(mobile);
 	// системы показываются
 	$('#header-nav').on('show.bs.collapse', function () {
 		var btn = $('#header-navControl');

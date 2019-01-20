@@ -308,6 +308,9 @@
 			@include hover {
 				text-decoration: underline;
 			}
+			@include sm-block {
+				max-height: 30px;
+			}
 		}
 
 	}
@@ -477,6 +480,9 @@
 			}
 			a {
 				max-height: none;
+				@include sm-block {
+					max-height: none;
+				}
 			}		
 		}
 		&__text {
