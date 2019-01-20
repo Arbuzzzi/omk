@@ -4,6 +4,9 @@
 	background-color: #eeefef;
 	// padding: 0 15px;
 	// overflow: hidden;
+	@include lg-block {
+		display: none;
+	}
 	&__list {
 		@include listUnstyle();
     display: flex;

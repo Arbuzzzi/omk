@@ -85,19 +85,20 @@
 	background-color: $btn-bg-color;
 	color: $btn-color;
 	font-size: 13px;
-	line-height: 15px;
+	line-height: 1.4;
 	text-align: center;  
 	text-transform: capitalize;
 	border-radius: 5px;
 	transition: 0.5s;
-
+	@include sm-block {
+		font-size: 12px;
+		&:not([class*='button-more-']).button-more {
+			font-size: 12px;
+		}
+	}
 	@include hover {
 		background-color: $btn-hov-bg-color;
 		color: $btn-hov-color;
-	}
-
-	@include sm-block() {
-		// @include mA();
 	}
 	&:last-child {
 		margin-right: -1px;
@@ -212,6 +213,71 @@
 	}
 }
 
+.button-more {
+	background-color: transparent;
+	color: #797C82;
+	font-size: 13px;
+	@include hover {
+		background-color: rgba($dark-color, 0.5);
+		background-color: #FFFFFF;
+		color: #797C82;
+	}
+	@include sm-block {
+		font-size: 12px;
+	}
+
+	@mixin btnMoreMin($breakpoint) {
+		$infix: breakpoint-infix($breakpoint);
+		&#{$infix}-min {
+			@include media-breakpoint-up($breakpoint) {
+				margin-right: 15px;
+				width: auto;
+				min-width: auto;
+				font-size: 0;
+			}
+		}
+	}
+
+	@mixin btnMoreFull($breakpoint) {
+		$infix: breakpoint-infix($breakpoint);
+		&#{$infix}-full {
+			@include media-breakpoint-up($breakpoint) {
+				font-size: 13px;
+				min-width: 86px;
+				margin-right: 1px;
+			}
+		}
+	}
+
+	@include btnMoreMin(xl);
+	@include btnMoreMin(lg);
+	@include btnMoreMin(md);
+	@include btnMoreMin(sm);
+	@include btnMoreMin(xs);
+
+	@include btnMoreFull(xl);
+	@include btnMoreFull(lg);
+	@include btnMoreFull(md);
+	@include btnMoreFull(sm);
+	@include btnMoreFull(xs);
+
+	&-inn {
+		height: 100%;
+		margin-left: -3px;
+		margin-top: -2px;
+		@include sm-block {
+			text-align: center;
+		}
+	}
+	i {
+		margin-left: 2px;
+		font-size: 10px;
+		&:before {
+			color: #BCBDC0;
+		}
+	}
+}
+
 .button-tag {
 	min-width: 60px;
 	max-width: 149px;
@@ -223,6 +289,16 @@
 	@include hover {
 		background: $btn-active-bg-color;
 		color: $btn-active-color;
+	}
+	@include lg-block {
+		font-size: 8px;
+	}
+	@include sm-block {
+		max-width: 79px;
+		overflow: hidden;
+		white-space: nowrap;
+		text-overflow: ellipsis;
+		font-size: 8px;
 	}
 	&_dark {
 		background-color: $basic-color;

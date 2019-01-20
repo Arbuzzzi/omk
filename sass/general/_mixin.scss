@@ -1,5 +1,4 @@
-// Миксины 
-
+// Миксины
 @mixin hover($size-lg:1024px) {
   @include minW($size-lg) {
     &:hover { 
@@ -29,9 +28,54 @@
   background-image: url(#{$url+$name});
 }
 
-@mixin marginTop($mb) {
-  .margin-top-#{$mb} {
-    margin-top: #{$mb}px !important;
+@mixin marginTop($mb, $breakpoints: $grid-breakpoints) {
+  @each $breakpoint in map-keys($breakpoints) {
+    $infix: breakpoint-infix($breakpoint);
+    .margin-top#{$infix}-#{$mb} {
+      @include media-breakpoint-up($breakpoint) {
+        margin-top: #{$mb}px !important;
+      }
+    }
+  }
+}
+
+@mixin marginClasses($margin-size, $breakpoints: $grid-breakpoints) {
+  $dir-map: (
+    top: '-top',
+    right: '-right',
+    bottom: '-bottom',
+    left: '-left',
+    all: ''
+  );
+  @each $key, $direction in $dir-map {
+    @each $breakpoint in map-keys($breakpoints) {
+      $infix: breakpoint-infix($breakpoint);
+      .margin#{$direction}#{$infix}-#{$margin-size} {
+        @include media-breakpoint-up($breakpoint) {
+          margin#{$direction}: #{$margin-size}px !important;
+        }
+      }
+    }
+  }
+}
+
+@mixin paddingClasses($padding-size, $breakpoints: $grid-breakpoints) {
+  $dir-map: (
+    top: '-top',
+    right: '-right',
+    bottom: '-bottom',
+    left: '-left',
+    all: ''
+  );
+  @each $key, $direction in $dir-map {
+    @each $breakpoint in map-keys($breakpoints) {
+      $infix: breakpoint-infix($breakpoint);
+      .padding#{$direction}#{$infix}-#{$padding-size} {
+        @include media-breakpoint-up($breakpoint) {
+          padding#{$direction}: #{$padding-size}px !important;
+        }
+      }
+    }
   }
 }
 
@@ -58,6 +102,20 @@
     font-size: #{$fz}px !important;
     &>* {
       font-size: #{$fz}px !important;
+    }
+  }
+}
+
+@mixin fontSizeClasses($fz, $breakpoints: $grid-breakpoints) {
+  @each $breakpoint in map-keys($breakpoints) {
+    $infix: breakpoint-infix($breakpoint);
+    .font-size#{$infix}-#{$fz} {
+      @include media-breakpoint-up($breakpoint) {
+        font-size: #{$fz}px !important;
+        &>* {
+          font-size: #{$fz}px !important;
+        }
+      }
     }
   }
 }

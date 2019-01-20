@@ -5,12 +5,20 @@
 	z-index: 10;
 	border-radius: 5px;
 	background-color: #fff;
+	@include lg-block {
+		display: none;
+	}
 	&-wrap {
 		background-color: #f4f5f5;
 
 	}
 	&-navigation {
 		padding-top: 15px;
+		&-pseudo {
+			@include lg-block {
+				display: none !important;
+			}
+		}
 	}
 	&-title {
 		

@@ -4,6 +4,13 @@
 	border-radius: 5px;
 	background-color: #f4f5f5;
 	height: 238px;
+	@include lg-block {
+		padding: 10px;
+		height: 190px;
+	}
+	@include sm-block {
+		height: 150px;
+	}
 	// &-change {
 	// 	height: 20px;
 	// 	background-color: red;
@@ -58,6 +65,9 @@
 	.ui-datepicker-calendar {
 		td {
 			padding: 2.5px;
+			@include sm-block {
+				padding: 1px;
+			}
 		}
 	}
 
@@ -76,11 +86,23 @@
 			background-color: $btn-hov-bg-color;
 			color: $light-color;
 		}
+		@include lg-block {
+			font-size: 11px;
+		}
+		@include sm-block {
+			font-size: 8px;
+		}
 	}
 	.ui-state-week {
 		color: #bcbdc0;
 		font-size: 10px;
 		font-weight: 300;
+		@include lg-block {
+			font-size: 8px;
+		}
+		@include sm-block {
+			font-size: 6px;
+		}
 	}
 	.ui-state-active {
 		border: 1px solid #32363f;
@@ -91,7 +113,6 @@
 	.ui-datepicker-buttonpane {
 		margin: 0;
 		button {
-			margin: 0;
 			padding: 3px 5px 4px 5px;
 			min-width: 86px;
 			margin-right: 1px;
@@ -120,8 +141,11 @@
 }
 .events {
 	display: none;
-	height: 155px;
+	height: 125px;
 	margin-top: -5px;
+	@include sm-block {
+		height: 100px;
+	}
 }
 .event {
 	display: flex;
@@ -134,11 +158,19 @@
 	}
 	&-title {
 		margin-bottom: 10px;
-		font-family: "PT Serif";
+		font-family: "PT Serif", serif;
 		color: $basic-color;
 		font-size: 18px;
 		line-height: 18px;
 		font-weight: 400;
+		@include lg-block {
+			font-size: 16px;
+		}
+		@include sm-block {
+			font-size: 9px;
+			line-height: 1.4;
+			margin-bottom: 5px;
+		}
 	}
 	&-control {
 		position: absolute;

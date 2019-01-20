@@ -7,6 +7,12 @@
 	}
 	&_fix-height-240 {
 		height: 240px;
+		@include lg-block {
+			height: 185px;
+		}
+		@include sm-block {
+			height: 140px;
+		}
 	}
 	&-items {
 		flex-wrap: nowrap;
@@ -88,6 +94,12 @@
 		&_full {
 			height: 180px;
 			margin-bottom: 10px;
+			@include lg-block {
+				height: 150px;
+			}
+			@include sm-block {
+				height: 100px;
+			}
 		}
 		&__text {
 			position: absolute;
@@ -122,6 +134,9 @@
 		border-radius: 0 0 5px 5px;
 		border: 1px solid #dddee0;
 		border-top: none;
+		@include lg-block {
+			padding: 10px;
+		}
 		&_bdtop {
 			border-radius: 5px;
 			border-top: 1px solid #dddee0;
@@ -131,6 +146,12 @@
 		}
 		&_ads {
 			min-height: 315px;
+			@include lg-block {
+				min-height: 275px;
+			}
+			@include sm-block {
+				min-height: 175px;
+			}
 		}
 		&__left {
 			display: flex;
@@ -141,6 +162,9 @@
 		&__right {
 			max-width: 114px;
 			text-align: right;
+			@include lg-block {
+				max-width: 45%;
+			}
 		}
 	}
 	&-footer {
@@ -154,6 +178,15 @@
 		font-size: 14px;
 		line-height: 17px;
 		font-weight: 300;
+		@include lg-block {
+			margin-bottom: 5px;
+			font-size: 11px;
+			line-height: 1.4;
+		}
+		@include md-block {
+			font-size: 7px;
+
+		}
 		&_link {
 			@include hover {
 				text-decoration: underline;
@@ -167,12 +200,25 @@
 		color: $dark-color;
 		font-size: 13px;
 		font-weight: 400;
+		@include lg-block {
+			font-size: 9px;
+			line-height: 1.2;
+		}
+		@include sm-block {
+			margin-top: 5px;
+			margin-bottom: 10px;
+			font-size: 8px;
+		}
 	}
 	&-link {
 		color: $dark-color;
 		font-size: 12px;
 		line-height: 14px;
 		font-weight: 400;
+		@include lg-block {
+			font-size: 9px;
+			line-height: 1.2;
+		}
 	}
 	&-group {
 		display: flex;
@@ -190,7 +236,12 @@
 		color: $dark-color;
 		font-size: 12px;
 		font-weight: 400;
-		// line-height: 14px;
+		@include lg-block {
+			font-size: 8px;
+		}
+		@include sm-block {
+			font-size: 6px;
+		}
 		p {
 			margin-bottom: 2px;
 			&:last-child {
@@ -201,6 +252,9 @@
 			font-family: "Roboto", sans-serif;
 			font-size: 14px;
 			font-weight: 400;
+			@include sm-block {
+				font-size: 10px;
+			}
 		}
 		&_small {
 			color: #9a9da1;
@@ -216,6 +270,12 @@
 		&_big {
 			font-size: 18px;
 			font-weight: 400;
+			@include lg-block {
+				font-size: 14px;
+			}
+			@include sm-block {
+				font-size: 11px;
+			}
 		}
 		&.danger {
 		  color: $special-color;
@@ -242,6 +302,12 @@
 	}
 	&-arrow	 {
 		width: 15px;
+		@include lg-block {
+			width: 10px;
+		}
+		@include sm-block {
+			width: 10px;
+		}
 		&__left {
 			left: 7.5px;
 			background-size: 50%;

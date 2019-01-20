@@ -15,6 +15,11 @@
 		background-color: #fff;
 		border-radius: 5px;
 		text-align: center;
+
+		@include lg-block {
+			margin-top: 10px;
+		}
+
 		@include after("\e90e") {
 			top: -9px;
 			right: 47px;
@@ -26,6 +31,12 @@
 	&__item {
 		color: $thin-color;
 		transition: 0.5s;
+
+		@include lg-block {
+			display: block;
+			margin: 0 -5px;
+		}
+
 		@include hover {
 			color: $special-color;
 		}
@@ -43,6 +54,14 @@
 		color: inherit;
 		width: 100%;
 		text-align: center;
+
+		@include lg-block {
+			font-size: 9px;
+		}
+		@include md-block {
+			font-size: 6px;
+		}
+
 		span {
 			display: table-cell;
 			vertical-align: middle;
@@ -203,6 +222,9 @@
 	display: inline-block;
 	&-header {
 		display: none;
+		@include lg-block {
+			display: block;
+		}
 	}
 	&__button {
 		position: relative;

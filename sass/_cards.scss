@@ -12,6 +12,9 @@
 	//height: 100%;
 	margin-bottom: 30px;
 	background-color: transparent;
+	@include sm-block {
+		margin-bottom: 15px;
+	}
   @include clearfix;
 	&-color {
 		&-light {
@@ -37,6 +40,9 @@
 	}
 	&_advant-news {
 		border-bottom: 3px solid $dark-color;
+		@include sm-block {
+			border-bottom-width: 2px;
+		}
 	}
 	&__videobox{
 		position: relative;
@@ -91,6 +97,12 @@
 		border-radius: 5px;		
 		background: $light-color center no-repeat;
 		background-size: cover;
+		@include lg-block {
+			min-height: 180px;
+		}
+		@include sm-block {
+			min-height: 125px;
+		}
 		&[data-toggle="modal"] {
 			cursor: pointer;
 		}
@@ -108,6 +120,12 @@
 		}
 		&_sm {
 			height: 210px;
+			@include lg-block {
+				height: 180px;
+			}
+			@include sm-block {
+				height: 125px;
+			}
 		}
 		&_xs {
 			height: 135px;
@@ -157,9 +175,15 @@
 		color: $light-color;
 		font-size: 11px;
 		font-weight: 400;
+		@include sm-block {
+			padding: 2px 10px;
+		}
 		p {
 			font-size: 11px;
 			margin-bottom: 0;
+			@include sm-block {
+				font-size: 8px;
+			}
 		}
 	}
 	&-succes-text {
@@ -172,9 +196,15 @@
 		color: $light-color;
 		font-size: 11px;
 		font-weight: 400;
+		@include sm-block {
+			padding: 2px 10px;
+		}
 		p {
 			font-size: 11px;
 			margin-bottom: 0;
+			@include sm-block {
+				font-size: 8px;
+			}
 		}
 	}
 	&-average-text {
@@ -187,9 +217,15 @@
 		color: $light-color;
 		font-size: 11px;
 		font-weight: 400;
+		@include sm-block {
+			padding: 2px 10px;
+		}
 		p {
 			font-size: 11px;
 			margin-bottom: 0;
+			@include sm-block {
+				font-size: 8px;
+			}
 		}
 	}
 
@@ -198,12 +234,27 @@
 		display: flex;
 		flex-direction: column;
 		height: 100%;
+		@include lg-block {
+			padding: 15px;
+		}
+		@include sm-block {
+			padding: 10px;
+		}
 		&_sm {
 			margin-top: 210px;
 			background-image: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.14) 14%, #000000 100%);
+			@include lg-block {
+				margin-top: 180px;
+			}
+			@include sm-block {
+				margin-top: 125px;
+			}
 		}
 		.tagbox {
 			margin-bottom: 20px;
+			@include sm-block {
+				margin-bottom: 10px;
+			}
 		}
 	}
 	&__info {
@@ -239,6 +290,12 @@
 		margin-bottom: 15px;
 		font-family: "PT Serif", serif;
 		font-size: 17px;
+		@include sm-block {
+			margin-bottom: 10px;
+			min-height: 30px;
+			font-size: 9px;
+
+		}
 		&>h1, &>h2, &>h3, &>h4, &>h5 {
       font-size: 38px;
 		}
@@ -262,10 +319,13 @@
 		font-family: "PT Serif", serif;
 		font-size: 16px;
 		font-weight: 400;
-		line-height: 23px;
+		line-height: 1.4;
 		p {
 			font-size: 17px;
 			margin-bottom: 15px;
+			@include sm-block {
+				font-size: 9px;
+			}
 			&:last-child {
 				margin-bottom: 0;
 			}
@@ -295,6 +355,9 @@
 		color: $thin-color;
 		font-size: 12px;
 		font-weight: 400;
+		@include sm-block {
+			font-size: 8px;
+		}
 		&_light {
 			color: $light-color;
 		}
@@ -362,11 +425,19 @@
 			margin-right: -15px;
 			background-color: transparent;
 			font-size: 0;
-			overflow: hidden;		
+			overflow: hidden;
+			@include sm-block {
+				margin-left: -7.5px;
+				margin-right: -7.5px;
+			}
 		}
 		&__item {
 			padding-left: 15px;
 			padding-right: 15px;
+			@include sm-block {
+				padding-left: -7.5px;
+				padding-right: -7.5px;
+			}
 		}
 		&-number {
 			text-align: right;
@@ -387,12 +458,23 @@
 			}
 		}
 		&__imgbox {
-			min-height: 395px;
+			height: 395px;
+			@include lg-block {
+				height: 300px;
+			}
+			@include sm-block {
+				height: 206px;
+			}
 		}
 		&__title {
 			font-size: 40px;
 			margin-top: -15px;
 			margin-bottom: 5px;
+			@include sm-block {
+				margin-bottom: 0;
+				font-size: 20px;
+				margin-top: -5px;
+			}
 			a {
 				max-height: none;
 			}		
@@ -401,6 +483,9 @@
 			margin-bottom: 15px;
 			font-family: "PT Serif", serif;
 			font-size: 17px;
+			@include sm-block {
+				margin-bottom: 10px;
+			}
 		}
 		&_imgbg {
 			.card__content {
@@ -408,6 +493,12 @@
 				padding-top: 55px;
 				background: linear-gradient(to bottom, rgba(0,0,0,0) 0%,rgba(0,0,0,0.14) 14%,rgba(0,0,0,1) 100%); 
 				filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', endColorstr='#000000',GradientType=0 );
+				@include lg-block {
+					margin-top: 245px;
+				}
+				@include sm-block {
+					margin-top: 150px;
+				}
 			}
 		}
 		&-slider {
@@ -424,11 +515,19 @@
 				margin-right: -15px;
 				background-color: transparent;
 				font-size: 0;
-				overflow: hidden;		
+				overflow: hidden;
+				@include sm-block {
+					margin-left: -7.5px;
+					margin-right: -7.5px;
+				}
 			}
 			&__item {
 				padding-left: 15px;
 				padding-right: 15px;
+				@include sm-block {
+					padding-left: 7.5px;
+					padding-right: 7.5px;
+				}
 			}
 			&__itembox {
 				&_dark {
@@ -484,13 +583,25 @@
 			min-height: 260px;
 			background: no-repeat center;
 			background-size: cover;
+			@include lg-block {
+				min-height: 230px;
+			}
+			@include sm-block {
+				min-height: 205px;
+			}
 		}
 		&_imgbg {
 			.card__content {
-				margin-top: 220px;
-				padding-top: 55px;
+				margin-top: 260px;
+				//padding-top: 55px;
 				background: linear-gradient(to bottom, rgba(0,0,0,0) 0%,rgba(0,0,0,0.14) 14%,rgba(0,0,0,1) 100%); 
 				filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', endColorstr='#000000',GradientType=0 );
+				@include lg-block {
+					margin-top: 230px;
+				}
+				@include sm-block {
+					margin-top: 205px;
+				}
 			}
 		}
 		&__text {
@@ -511,14 +622,28 @@
 				margin-right: -15px;
 				background-color: transparent;
 				font-size: 0;
-				overflow: hidden;		
+				overflow: hidden;
+				@include sm-block {
+					margin-left: -7.5px;
+					margin-right: -7.5px;
+				}
 			}
 			&__item {
 				padding-left: 15px;
 				padding-right: 15px;
+				@include sm-block {
+					padding-left: 7.5px;
+					padding-right: 7.5px;
+				}
 			}
 			&__imgbox {
 				min-height: 330px;
+				@include lg-block {
+					min-height: 290px;
+				}
+				@include sm-block {
+					min-height: 235px;
+				}
 			}
 		}
 	}

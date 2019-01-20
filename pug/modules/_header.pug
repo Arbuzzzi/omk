@@ -1,7 +1,7 @@
 header.header
 	.container
 		.header-box
-			.header-box__logo
+			.header-box__item.header-box__logo
 				.header-logowrap
 					a.logo.header-logo(href='/projects/omk/')
 						img.logo-img(src='img/logo.png', alt='Logo')
@@ -11,13 +11,13 @@ header.header
 							| РЕГИОНАЛЬНЫЕ НОВОСТИ 
 							i.icon-arrow-down
 						ul#menu-nav-headerGroup.nav-more-list.menu-nav-group.menu-nav-header-group.collapse
-							li.nav-more-list__item.menu-nav__item.menu-nav-header__item(data-toggle='collapse', data-target='#menu-nav-header-collaps-1', aria-expanded='false', aria-controls='menu-nav-header-collaps-1')
+							li.nav-more-list__item.menu-nav__item.menu-nav-header__item(data-toggle='collapse', data-target='#menu-nav-header-collapse-1', aria-expanded='false', aria-controls='menu-nav-header-collapse-1')
 								.menu-nav__textbox.menu-nav-header__textbox
 									a.menu-nav__text.menu-nav-header__text(href='#')
 										span Новости
-									button.button-split(data-toggle='collapse', data-target='#menu-nav-header-collaps-1', aria-expanded='false', aria-controls='menu-nav-header-collaps-1')
+									button.button-split(data-toggle='collapse', data-target='#menu-nav-header-collapse-1', aria-expanded='false', aria-controls='menu-nav-header-collapse-1')
 										i.icon-arrow-down
-								ul#menu-nav-header-collaps-1.collapse.show(data-parent='#menu-nav-more')
+								ul#menu-nav-header-collapse-1.collapse.show(data-parent='#menu-nav-more')
 									li.nav-more-list__item.menu-nav__item.menu-nav-header__item
 										a.menu-nav__textbox.menu-nav-header__textbox(href='#')
 											.menu-nav__text.menu-nav-header__text НОВОСТИ ОМК
@@ -40,9 +40,9 @@ header.header
 								.menu-nav__textbox.menu-nav-header__textbox.dropdown-toggle-split
 									a.menu-nav__text.menu-nav-header__text(href='#')
 										span КОМПАНИЯ
-									button.button-split(data-toggle='collapse', data-target='#menu-nav-header-collaps-2', aria-expanded='false', aria-controls='menu-nav-header-collaps-2')
+									button.button-split(data-toggle='collapse', data-target='#menu-nav-header-collapse-2', aria-expanded='false', aria-controls='menu-nav-header-collapse-2')
 										i.icon-arrow-down
-								ul#menu-nav-header-collaps-2.collapse(data-parent='#menu-nav-more')
+								ul#menu-nav-header-collapse-2.collapse(data-parent='#menu-nav-more')
 									li.nav-more-list__item.menu-nav__item.menu-nav-header__item
 										a.menu-nav__textbox.menu-nav-header__textbox(href='#')
 											.menu-nav__text.menu-nav-header__text Структура
@@ -58,13 +58,13 @@ header.header
 									li.nav-more-list__item.menu-nav__item.menu-nav-header__item
 										a.menu-nav__textbox.menu-nav-header__textbox(href='#')
 											.menu-nav__text.menu-nav-header__text Вакансии
-							li.nav-more-list__item.menu-nav__item.menu-nav-header__item(data-toggle='collapse', data-target='#menu-nav-header-collaps-3', aria-expanded='false', aria-controls='menu-nav-header-collaps-3')
+							li.nav-more-list__item.menu-nav__item.menu-nav-header__item(data-toggle='collapse', data-target='#menu-nav-header-collapse-3', aria-expanded='false', aria-controls='menu-nav-header-collapse-3')
 								.menu-nav__textbox.menu-nav-header__textbox
 									a.menu-nav__text.menu-nav-header__text(href='#')
 										span СОТРУДНИКАМ
-									button.button-split(data-toggle='collapse', data-target='#menu-nav-header-collaps-3', aria-expanded='false', aria-controls='menu-nav-header-collaps-3')
+									button.button-split(data-toggle='collapse', data-target='#menu-nav-header-collapse-3', aria-expanded='false', aria-controls='menu-nav-header-collapse-3')
 										i.icon-arrow-down
-								ul#menu-nav-header-collaps-3.collapse(data-parent='#menu-nav-more')
+								ul#menu-nav-header-collapse-3.collapse(data-parent='#menu-nav-more')
 									li.nav-more-list__item.menu-nav__item.menu-nav-header__item
 										a.menu-nav__textbox.menu-nav-header__textbox(href='#')
 											.menu-nav__text.menu-nav-header__text Зарплата
@@ -104,13 +104,20 @@ header.header
 								.menu-nav__textbox.menu-nav-header__textbox
 									a.menu-nav__text.menu-nav-header__text(href='#')
 										span КОНТАКТЫ
-			.header-box__question
+							li.nav-more-list__item.menu-nav__item.menu-nav-header__item.d-block.d-lg-none.margin-bottom-10
+								.menu-nav__textbox.menu-nav-header__textbox
+									form.form-search(action='#')
+										.form-search__box
+											.form-search__label
+												input#formSearchInput2.form-search__input(type='search')
+												button.form-search__button.icon-search(type='submit', disabled='')
+			.header-box__item.header-box__question
 				.question.header-question
 					a.link(href='#')
 						| Вопрос 
 						br
 						|                 Руководству
-			.header-box__search
+			.header-box__item.header-box__search
 				.header-visit
 					p Просмотров 1 235 666 / Посетители 257 889
 				.header-search
@@ -119,7 +126,7 @@ header.header
 							.form-search__label
 								input#formSearchInput.form-search__input(type='search')
 								button.form-search__button.icon-search(type='submit', disabled='')
-			.header-box__info
+			.header-box__item.header-box__info
 				.header-info.info
 					.header-info__time.info-wrap.info__time 09:49
 					.header-info-wrap
@@ -142,71 +149,71 @@ header.header
 						// /.header-box
 		nav.header-nav-system
 			#header-nav.header-nav-system-wrap.collapse.show
-				.row.align-items-xl-center
-					.col-xl-1.align-self-xl-start
+				.row.align-items-center
+					.col-md-1
 						a.header-nav-system__item(href='#')
 							.header-nav-system-icon-box
 								i.icon-book
 							.header-nav-system__link
 								span DOCS SAP
-					.col-xl-1.align-self-xl-start
+					.col-md-1
 						a.header-nav-system__item(href='#')
 							.header-nav-system-icon-box
 								i.icon-aircraft
 							.header-nav-system__link
 								span Реестр МИГ
-					.col-xl-1.align-self-xl-start
+					.col-md-1
 						a.header-nav-system__item(href='#')
 							.header-nav-system-icon-box
 								i.icon-barcode
 							.header-nav-system__link
 								span SAP
-					.col-xl-1.align-self-xl-start
+					.col-md-1
 						a.header-nav-system__item(href='#')
 							.header-nav-system-icon-box
 								i.icon-stat
 							.header-nav-system__link
 								span SAP PHR
-					.col-xl-1.align-self-xl-start
+					.col-md-1
 						a.header-nav-system__item(href='#')
 							.header-nav-system-icon-box
 								i.icon-production
 							.header-nav-system__link
 								span SAP PHR
-					.col-xl-1.align-self-xl-start
+					.col-md-1
 						a.header-nav-system__item(href='#')
 							.header-nav-system-icon-box
 								i.icon-chess
 							.header-nav-system__link
 								span СААРЦ
-					.col-xl-1.align-self-xl-start
+					.col-md-1
 						a.header-nav-system__item(href='#')
 							.header-nav-system-icon-box
 								i.icon-list
 							.header-nav-system__link
 								span NORMAL System 102
-					.col-xl-1.align-self-xl-start
+					.col-md-1
 						a.header-nav-system__item(href='#')
 							.header-nav-system-icon-box
 								i.icon-box
 							.header-nav-system__link
 								span Abnormal System 3367
-					.col-xl-1.align-self-xl-start
+					.col-md-1
 						a.header-nav-system__item(href='#')
 							.header-nav-system-icon-box
 								i.icon-production
 							.header-nav-system__link
 								span Стандарты РосКосмос
-					.col-xl-1.align-self-xl-start
+					.col-md-1
 						a.header-nav-system__item(href='#')
 							.header-nav-system-icon-box
 								i.icon-money
 							.header-nav-system__link
 								span РОСТЕХ
-					.col-xl-2.d-table
-						.header-nav-system-button-inn.header-button-inn.button-inn
+					.col-md-2.d-table
+						.button-more-inn.header-button-inn.button-inn
 							.nav-more.btn-group
-								button#header-navMore.button.header-button.header-nav-system-button(type='button', data-toggle='dropdown', aria-haspopup='true', aria-expanded='false')
+								button#header-navMore.button.header-button.button-more.button-more-lg-min.button-more-xl-full(type='button', data-toggle='dropdown', aria-haspopup='true', aria-expanded='false')
 									| Ещё 
 									i.icon-arrow-down
 								ul.nav-more-list.dropdown-menu.dropdown-menu-right
@@ -226,9 +233,9 @@ header.header
 										a.link.link-nav.nav-more-list__link(href='#') SAP SSH
 									li.nav-more-list__item
 										a.link.link-nav.nav-more-list__link(href='#') Ширина под самое длинное название с учетом Bold
-							button#header-navSettingControl.button.header-button.header-nav-system-button(type='button', data-toggle='collapse', data-target='#header-navSetting', aria-expanded='false', aria-controls='header-navSetting') Настройка
+							button#header-navSettingControl.button.header-button.button-more.d-none.d-lg-inline-block(type='button', data-toggle='collapse', data-target='#header-navSetting', aria-expanded='false', aria-controls='header-navSetting') Настройка
 				.row
-					.col-xl-7.offset-xl-5
+					.col-lg-7.offset-lg-5
 						#header-navSetting.nav-setting.collapse
 							h4.nav-setting__title Для настройки вашего меню, выберите нужные иконки:
 							.nav-setting__items
@@ -516,7 +523,7 @@ header.header
 									a.menu-left__item(href='#')
 										.menu-left__text
 											span КОНТАКТЫ
-				.col-xl-9
+				.col-xl-9.col-12
 					nav.menu-horizontal
 						ul.menu-horizontal__list
 							li.menu-horizontal__box
@@ -537,7 +544,7 @@ header.header
 							li.menu-horizontal__box.menu-horizontal__box-more
 								.menu-horizontal__item.menu-horizontal__item-more
 									.nav-more.btn-group
-										button.button.header-button.header-nav-system-button(type='button', data-toggle='dropdown', aria-haspopup='true', aria-expanded='false')
+										button.button.header-button.button-more(type='button', data-toggle='dropdown', aria-haspopup='true', aria-expanded='false')
 											| Ещё 
 											i.icon-arrow-down
 										ul.nav-more-list.dropdown-menu.dropdown-menu-right

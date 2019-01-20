@@ -64,45 +64,49 @@ img{
 	display: none;
 }
 
-@include marginTop(0); // .margin-top-0
-@include marginTop(5);
-@include marginTop(10);
-@include marginTop(15);
-@include marginTop(20);
-@include marginTop(30);
+.row {
+	@include md-block {
+		margin-right: -7.5px;
+		margin-left: -7.5px;
+	}
+	> [class*='col-'] {
+		@include md-block {
+			padding-left: 7.5px;
+			padding-right: 7.5px;
+		}
+	}
+}
 
-@include marginRight(0); // .margin-Right-0
-@include marginRight(5);
-@include marginRight(10);
-@include marginRight(15);
-@include marginRight(20);
-@include marginRight(30);
+$indents: 0, 5, 10, 15, 20, 25, 30;
+@each $indent in $indents {
+	@include marginClasses($indent);
+}
+// Example:
+// 		.margin-top-20
+// 		.margin-top-md-10
 
-@include marginBottom(0); // .margin-bottom-0
-@include marginBottom(5);
-@include marginBottom(10);
-@include marginBottom(15);
-@include marginBottom(20);
-@include marginBottom(30);
+@each $indent in $indents {
+	@include paddingClasses($indent);
+}
+// Example:
+// 		.padding-top-20
+// 		.padding-top-md-10
 
-@include marginLeft(0); // .margin-left-0
-@include marginLeft(5);
-@include marginLeft(10);
-@include marginLeft(15);
-@include marginLeft(20);
-@include marginLeft(30);
 
 .padding-all-15 {
 	padding: 15px !important;
 }
 
-@include fontSizeClass(14); // .font-size-14
-@include fontSizeClass(17);
-@include fontSizeClass(20);
-@include fontSizeClass(24);
-@include fontSizeClass(28);
-@include fontSizeClass(32);
-@include fontSizeClass(40);
+$font-sizes: 8, 10, 12, 14, 17, 20, 22, 24, 28, 32, 40;
+
+@each $font-size in $font-sizes {
+	@include fontSizeClasses($font-size);
+}
+// Example:
+// 		.font-size-20
+// 		.font-size-md-10
+
+
 
 @include fixHeight(135); // .fix-height-210
 @include fixHeight(210);
@@ -327,6 +331,9 @@ section, .section {
 	height: 100%;
 	cursor: pointer;
 	transition: 0.4s;
+	@include sm-block {
+		width: 15px;
+	}
 	&__left {
 		left: 15px;
 		border-radius: 5px 0 0 5px;
@@ -334,6 +341,9 @@ section, .section {
 		background-size: 65%;
 		@include hover {
 			background-color: rgba($light-color, 0.35);
+		}
+		@include sm-block {
+			left: 7.5px;
 		}
 
 	}
@@ -344,6 +354,9 @@ section, .section {
 		background-size: 65%;
 		@include hover {
 			background-color: rgba($light-color, 0.35);
+		}
+		@include sm-block {
+			right: 7.5px;
 		}
 	}
 }
