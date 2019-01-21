@@ -90,10 +90,18 @@
 	text-transform: capitalize;
 	border-radius: 5px;
 	transition: 0.5s;
+	vertical-align: middle;
 	@include md-block {
 		font-size: 12px;
 		&:not([class*='button-more-']).button-more {
 			font-size: 12px;
+		}
+	}
+	@include xs-block {
+		font-size: 10px;
+		min-width: 62px;
+		&:not([class*='button-more-']).button-more {
+			font-size: 10px;
 		}
 	}
 	@include hover {
@@ -313,7 +321,53 @@
 		}
 	}
 }
+.button-burg {
+	position: relative;
+	display: none;
+	margin-left: 0;
+	width: 18px;
+	height: 12px;
+	vertical-align: middle;
+	background-color: transparent;
+	@include sm-block {
+		display: inline-block;
+	}
+	span, span:before, span:after {
+		position: absolute;
+		left: 50%;
+		top: 50%;
+		margin-top: -1px;
+		margin-left: -9px;
+		display: block;
+		height: 2px;
+		width: 18px;
+		background-color: $tooltip-bg;
+	}
+	span:before {
+		content: '';
+		margin-top: -5px;
+		transition: all 0.2s;
+	}
+	span:after {
+		content: '';
+		margin-top: 3px;
+		transition: all 0.2s;
+	}
+	&.active {
+		span {
+			background-color: transparent;
+		}
+		span:after {
+			transform: rotate(-135deg);
+			margin-top: 0;
+		}
+		span:before {
+			transform: rotate(135deg);
+			margin-top: 0;
+		}
+	}
 
+}
 .button-big {
 	&-o {
 		padding: 20px;

@@ -14,6 +14,10 @@
 	}
 	&-navigation {
 		padding-top: 15px;
+		@include xs-block {
+			margin-left: -15px;
+			margin-right: -15px;
+		}
 		&-pseudo {
 			@include lg-block {
 				display: none !important;

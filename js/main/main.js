@@ -71,6 +71,24 @@ $(document).ready(function() {
 	// 	}
 	// });
 
+
+	// menu-burger ---------------------------------------------------------------------------------------------------
+	$('#menu-nav-headerGroup').on('show.bs.collapse', function(e) {
+		var elID = $(this).attr('id'),
+				elControl = $('button.button-burg[data-target="#'+elID+'"]');
+				// elControl = $(e.relatedTarget);
+
+		// $(elControl).addClass('active');
+
+	});
+
+	$('#menu-nav-headerGroup').on('hide.bs.collapse', function(e) {
+		var elID = $(this).attr('id'),
+				elControl = $('button.button-burg[data-target="#'+elID+'"]');
+		// $(elControl).removeClass('active');
+
+	});
+
 	$('.rollUp').on('click', function(event) {
 		$(document).trigger('scroll');		
 	});
@@ -113,13 +131,13 @@ $(document).ready(function() {
 		$('#header-nav').collapse()
 	}
 	// системы показываются
-	$('#header-nav').on('show.bs.collapse', function () {
+	$('#header-nav').on('shown.bs.collapse', function () {
 		var btn = $('#header-navControl');
 		btn.addClass('active')
 	});
 
 	// системы скрываются
-	$('#header-nav').on('hide.bs.collapse', function () {
+	$('#header-nav').on('hidden.bs.collapse', function () {
 		var btn = $('#header-navControl');
 		btn.removeClass('active')
 	});
@@ -332,7 +350,9 @@ $(document).ready(function() {
 	}
 
 	/* START СКРОЛЛИНГ ------------------------------------------------------------------------------- */
-	addClassScroll($('.header'));
+	if (!mobile) {
+		addClassScroll($('.header'));
+	}
 	// скрываем элементы во время скроллинга страницы
 	var positionContent = $('.header').actual('outerHeight'),
 			positionOne = $(window).innerHeight(),
@@ -409,7 +429,7 @@ $(document).ready(function() {
 		// }
 		// меню в обычном состоянии
 		$('*').tooltip('hide');
-		if (!$('.header').hasClass('.scroll')  && !$('#header-navSetting').hasClass('show')) {
+		if (!$('.header').hasClass('.scroll')  && !$('#header-navSetting').hasClass('show') && !mobile) {
 			addClassScroll($('.header'), 'scroll', positionThre);
 
 			// 1 брэйкпоинт 
@@ -443,7 +463,9 @@ $(document).ready(function() {
 
 		// scroll top самый верх экана
 		if (position <= 0) {
-			$('#header-nav').collapse('show');
+			if (!mobile) {
+				$('#header-nav').collapse('show');
+			}
 			$('.header').removeAttr('style');
 			addClassScroll($('.header'));
 			positionContent = $('.header').actual('outerHeight');
@@ -901,6 +923,14 @@ $(document).ready(function() {
 		slidesToScroll: 1,
 		prevArrow: '<div class="slider-arrow slider-arrow__left"></div>',
 		nextArrow: '<div class="slider-arrow slider-arrow__right"></div>',
+		responsive: [
+			{
+				breakpoint: 767,
+				settings: {
+					slidesToShow: 1,
+				}
+			}
+		]
 	});
 
 	$('.card-third-slider-wrap').slick({

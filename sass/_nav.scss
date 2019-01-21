@@ -19,6 +19,20 @@
 		@include lg-block {
 			margin-top: 10px;
 		}
+		@include sm-block {
+			position: absolute;
+			z-index: 1010;
+			width: 254px;
+			left: 15px;
+			margin-top: 50px;
+			border: 1px solid #dddee0;
+			background-image: none;
+			filter: none;
+		}
+		@include xs-block {
+			left: 0;
+			margin-top: 40px;
+		}
 
 		@include after("\e90e") {
 			top: -9px;
@@ -26,6 +40,9 @@
 			font-size: 10px;
 			@include icon;
 			color: #e4e4e4;
+			@include sm-block {
+				display: none;
+			}
 		}
 	}
 	&__item {
@@ -35,6 +52,10 @@
 		@include lg-block {
 			display: block;
 			margin: 0 -5px;
+		}
+		@include sm-block {
+			display: flex;
+			margin-bottom: 10px;
 		}
 
 		@include hover {
@@ -60,6 +81,11 @@
 		}
 		@include md-block {
 			font-size: 6px;
+		}
+		@include sm-block {
+			text-align: left;
+			margin-left: 10px;
+			font-size: 12px;
 		}
 
 		span {
@@ -198,6 +224,10 @@
 	// max-width: 155px;
   // position: relative;
   vertical-align: baseline;
+	@include sm-block {
+		display: block;
+		text-align: right;
+	}
 	&-list {
 		@include listUnstyle();
 		// top: 0;
@@ -225,6 +255,9 @@
 		@include lg-block {
 			display: block;
 		}
+		@include sm-block {
+			position: static;
+		}
 	}
 	&__button {
 		position: relative;
@@ -238,6 +271,9 @@
 		min-width: 200px;
 		text-transform: uppercase;
 		text-align: left;
+		@include sm-block {
+			display: none;
+		}
 		i {
 			position: absolute;
 			top: 50%;
@@ -258,6 +294,13 @@
 		border: 1px solid #dfdfdf;
 		background-color: $light-color;
 		min-width: 255px;
+		@include sm-block {
+			right: 15px;
+		}
+		@include xs-block {
+			right: 0;
+			margin-top: 45px;
+		}
 		ul {
 			@include listUnstyle();
 
