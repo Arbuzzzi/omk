@@ -12,10 +12,11 @@
     <link rel="stylesheet" href="jquery-ui-1.12.1.custom/jquery-ui.min.css">
     <link rel="stylesheet" href="slick/slick-theme.css">
     <link rel="stylesheet" href="slick/slick.css">
-    <link href="css/style.css?0.2.4" rel="stylesheet">
+    <link href="css/style.css?0.2.5" rel="stylesheet">
     <title>Доска почета | ОМК</title>
   </head>
   <body>
+    <!--links-->
     <header class="header">
       <div class="container">
         <div class="header-box">
@@ -23,90 +24,190 @@
             <div class="header-logowrap"><a class="logo header-logo" href="/projects/omk/"><img class="logo-img" src="img/logo.png" alt="Logo"></a></div>
             <nav class="menu-nav menu-nav-header" id="menu-nav-more">
               <div class="nav-more menu-nav-more menu-nav-header-more">
-                <button class="button header-button menu-nav__button menu-nav-header__button" data-toggle="collapse" data-target="#menu-nav-headerGroup" type="button" aria-haspopup="true" aria-expanded="false">РЕГИОНАЛЬНЫЕ НОВОСТИ <i class="icon-arrow-down"></i></button>
+                <button class="button header-button menu-nav__button menu-nav-header__button" data-toggle="collapse" data-target="#menu-nav-headerGroup" type="button" aria-haspopup="true" aria-expanded="false">РЕГИОНАЛЬНЫЕ НОВОСТИ<i class="icon-arrow-down"></i></button>
                 <ul class="nav-more-list menu-nav-group menu-nav-header-group collapse" id="menu-nav-headerGroup">
                   <li class="nav-more-list__item menu-nav__item menu-nav-header__item" data-toggle="collapse" data-target="#menu-nav-header-collapse-1" aria-expanded="false" aria-controls="menu-nav-header-collapse-1">
-                    <div class="menu-nav__textbox menu-nav-header__textbox"><a class="menu-nav__text menu-nav-header__text" href="#"><span>Новости</span></a>
+                    <div class="menu-nav__textbox menu-nav-header__textbox"><a class="menu-nav__text menu-nav-header__text" href="/projects/omk/"><span>Новости</span></a>
                       <button class="button-split" data-toggle="collapse" data-target="#menu-nav-header-collapse-1" aria-expanded="false" aria-controls="menu-nav-header-collapse-1"><i class="icon-arrow-down"></i></button>
                     </div>
                     <ul class="collapse show" id="menu-nav-header-collapse-1" data-parent="#menu-nav-more">
-                      <li class="nav-more-list__item menu-nav__item menu-nav-header__item"><a class="menu-nav__textbox menu-nav-header__textbox" href="#">
+                      <li class="nav-more-list__item menu-nav__item menu-nav-header__item"><a class="menu-nav__textbox menu-nav-header__textbox" href="/projects/omk/">
                           <div class="menu-nav__text menu-nav-header__text">НОВОСТИ ОМК</div></a></li>
-                      <li class="nav-more-list__item menu-nav__item menu-nav-header__item"><a class="menu-nav__textbox menu-nav-header__textbox current" href="#">
+                      <li class="nav-more-list__item menu-nav__item menu-nav-header__item"><a class="menu-nav__textbox menu-nav-header__textbox current" href="/projects/omk/">
                           <div class="menu-nav__text menu-nav-header__text">РЕГИОНАЛЬНЫЕ НОВОСТИ</div></a></li>
-                      <li class="nav-more-list__item menu-nav__item menu-nav-header__item"><a class="menu-nav__textbox menu-nav-header__textbox" href="#">
+                      <li class="nav-more-list__item menu-nav__item menu-nav-header__item"><a class="menu-nav__textbox menu-nav-header__textbox" href="/projects/omk/">
                           <div class="menu-nav__text menu-nav-header__text">пс омк</div></a></li>
-                      <li class="nav-more-list__item menu-nav__item menu-nav-header__item"><a class="menu-nav__textbox menu-nav-header__textbox" href="#">
+                      <li class="nav-more-list__item menu-nav__item menu-nav-header__item"><a class="menu-nav__textbox menu-nav-header__textbox" href="/projects/omk/">
                           <div class="menu-nav__text menu-nav-header__text">НОВОСТИ ПОДРАЗДЕЛЕНИЙ</div></a></li>
-                      <li class="nav-more-list__item menu-nav__item menu-nav-header__item"><a class="menu-nav__textbox menu-nav-header__textbox" href="#">
+                      <li class="nav-more-list__item menu-nav__item menu-nav-header__item"><a class="menu-nav__textbox menu-nav-header__textbox" href="/projects/omk/">
                           <div class="menu-nav__text menu-nav-header__text">НОВОСТИ ФОНДА</div></a></li>
-                      <li class="nav-more-list__item menu-nav__item menu-nav-header__item"><a class="menu-nav__textbox menu-nav-header__textbox" href="#">
+                      <li class="nav-more-list__item menu-nav__item menu-nav-header__item"><a class="menu-nav__textbox menu-nav-header__textbox" href="/projects/omk/">
                           <div class="menu-nav__text menu-nav-header__text">БЛОГ</div></a></li>
                     </ul>
                   </li>
                   <li class="nav-more-list__item menu-nav__item menu-nav-header__item">
-                    <div class="menu-nav__textbox menu-nav-header__textbox dropdown-toggle-split"><a class="menu-nav__text menu-nav-header__text" href="#"><span>КОМПАНИЯ</span></a>
+                    <div class="menu-nav__textbox menu-nav-header__textbox dropdown-toggle-split"><a class="menu-nav__text menu-nav-header__text" href="company.html"><span>КОМПАНИЯ</span></a>
                       <button class="button-split" data-toggle="collapse" data-target="#menu-nav-header-collapse-2" aria-expanded="false" aria-controls="menu-nav-header-collapse-2"><i class="icon-arrow-down"></i></button>
                     </div>
                     <ul class="collapse" id="menu-nav-header-collapse-2" data-parent="#menu-nav-more">
-                      <li class="nav-more-list__item menu-nav__item menu-nav-header__item"><a class="menu-nav__textbox menu-nav-header__textbox" href="#">
+                      <li class="nav-more-list__item menu-nav__item menu-nav-header__item"><a class="menu-nav__textbox menu-nav-header__textbox" href="structure.html">
                           <div class="menu-nav__text menu-nav-header__text">Структура</div></a></li>
-                      <li class="nav-more-list__item menu-nav__item menu-nav-header__item"><a class="menu-nav__textbox menu-nav-header__textbox" href="#">
+                      <li class="nav-more-list__item menu-nav__item menu-nav-header__item"><a class="menu-nav__textbox menu-nav-header__textbox" href="structure.html">
                           <div class="menu-nav__text menu-nav-header__text">Конституция</div></a></li>
-                      <li class="nav-more-list__item menu-nav__item menu-nav-header__item"><a class="menu-nav__textbox menu-nav-header__textbox" href="#">
+                      <li class="nav-more-list__item menu-nav__item menu-nav-header__item"><a class="menu-nav__textbox menu-nav-header__textbox" href="structure.html">
                           <div class="menu-nav__text menu-nav-header__text">Годовой цикл</div></a></li>
-                      <li class="nav-more-list__item menu-nav__item menu-nav-header__item"><a class="menu-nav__textbox menu-nav-header__textbox" href="#">
+                      <li class="nav-more-list__item menu-nav__item menu-nav-header__item"><a class="menu-nav__textbox menu-nav-header__textbox" href="structure.html">
                           <div class="menu-nav__text menu-nav-header__text">Реквизиты</div></a></li>
-                      <li class="nav-more-list__item menu-nav__item menu-nav-header__item"><a class="menu-nav__textbox menu-nav-header__textbox" href="#">
+                      <li class="nav-more-list__item menu-nav__item menu-nav-header__item"><a class="menu-nav__textbox menu-nav-header__textbox" href="structure.html">
                           <div class="menu-nav__text menu-nav-header__text">Вакансии</div></a></li>
                     </ul>
                   </li>
                   <li class="nav-more-list__item menu-nav__item menu-nav-header__item" data-toggle="collapse" data-target="#menu-nav-header-collapse-3" aria-expanded="false" aria-controls="menu-nav-header-collapse-3">
-                    <div class="menu-nav__textbox menu-nav-header__textbox"><a class="menu-nav__text menu-nav-header__text" href="#"><span>СОТРУДНИКАМ</span></a>
+                    <div class="menu-nav__textbox menu-nav-header__textbox"><a class="menu-nav__text menu-nav-header__text" href="profile.html"><span>СОТРУДНИКАМ</span></a>
                       <button class="button-split" data-toggle="collapse" data-target="#menu-nav-header-collapse-3" aria-expanded="false" aria-controls="menu-nav-header-collapse-3"><i class="icon-arrow-down"></i></button>
                     </div>
                     <ul class="collapse" id="menu-nav-header-collapse-3" data-parent="#menu-nav-more">
-                      <li class="nav-more-list__item menu-nav__item menu-nav-header__item"><a class="menu-nav__textbox menu-nav-header__textbox" href="#">
+                      <li class="nav-more-list__item menu-nav__item menu-nav-header__item"><a class="menu-nav__textbox menu-nav-header__textbox" href="profile.html">
                           <div class="menu-nav__text menu-nav-header__text">Зарплата</div></a></li>
-                      <li class="nav-more-list__item menu-nav__item menu-nav-header__item"><a class="menu-nav__textbox menu-nav-header__textbox" href="#">
+                      <li class="nav-more-list__item menu-nav__item menu-nav-header__item"><a class="menu-nav__textbox menu-nav-header__textbox" href="ads.html">
                           <div class="menu-nav__text menu-nav-header__text">Объявления</div></a></li>
-                      <li class="nav-more-list__item menu-nav__item menu-nav-header__item"><a class="menu-nav__textbox menu-nav-header__textbox" href="#">
+                      <li class="nav-more-list__item menu-nav__item menu-nav-header__item"><a class="menu-nav__textbox menu-nav-header__textbox" href="404.html">
                           <div class="menu-nav__text menu-nav-header__text">После работы</div></a></li>
-                      <li class="nav-more-list__item menu-nav__item menu-nav-header__item"><a class="menu-nav__textbox menu-nav-header__textbox" href="#">
+                      <li class="nav-more-list__item menu-nav__item menu-nav-header__item"><a class="menu-nav__textbox menu-nav-header__textbox" href="honour.html">
                           <div class="menu-nav__text menu-nav-header__text">Доска почета</div></a></li>
-                      <li class="nav-more-list__item menu-nav__item menu-nav-header__item"><a class="menu-nav__textbox menu-nav-header__textbox" href="#">
+                      <li class="nav-more-list__item menu-nav__item menu-nav-header__item"><a class="menu-nav__textbox menu-nav-header__textbox" href="structure.html">
                           <div class="menu-nav__text menu-nav-header__text">Профком</div></a></li>
                     </ul>
                   </li>
                   <li class="nav-more-list__item menu-nav__item menu-nav-header__item">
-                    <div class="menu-nav__textbox menu-nav-header__textbox"><a class="menu-nav__text menu-nav-header__text" href="#"><span>БАТАШЕВСКАЯ ПРЕМИЯ</span></a></div>
-                  </li>
-                  <li class="nav-more-list__item menu-nav__item menu-nav-header__item">
-                    <div class="menu-nav__textbox menu-nav-header__textbox"><a class="menu-nav__text menu-nav-header__text" href="#"><span>ПРОИЗВОДСТВЕННАЯ СИСТЕМА</span></a></div>
-                  </li>
-                  <li class="nav-more-list__item menu-nav__item menu-nav-header__item">
-                    <div class="menu-nav__textbox menu-nav-header__textbox"><a class="menu-nav__text menu-nav-header__text" href="#"><span>БИБЛИОТЕКА</span></a></div>
-                  </li>
-                  <li class="nav-more-list__item menu-nav__item menu-nav-header__item">
-                    <div class="menu-nav__textbox menu-nav-header__textbox"><a class="menu-nav__text menu-nav-header__text" href="#"><span>ГАЛЕРЕЯ</span></a></div>
-                  </li>
-                  <li class="nav-more-list__item menu-nav__item menu-nav-header__item">
-                    <div class="menu-nav__textbox menu-nav-header__textbox"><a class="menu-nav__text menu-nav-header__text" href="#"><span>СПОРТ</span></a></div>
-                  </li>
-                  <li class="nav-more-list__item menu-nav__item menu-nav-header__item">
-                    <div class="menu-nav__textbox menu-nav-header__textbox"><a class="menu-nav__text menu-nav-header__text" href="#"><span>КОНТАКТЫ</span></a></div>
-                  </li>
-                  <li class="nav-more-list__item menu-nav__item menu-nav-header__item d-block d-lg-none margin-bottom-10">
-                    <div class="menu-nav__textbox menu-nav-header__textbox">
-                      <form class="form-search" action="#">
-                        <div class="form-search__box">
-                          <div class="form-search__label">
-                            <input class="form-search__input" id="formSearchInput2" type="search">
-                            <button class="form-search__button icon-search" type="submit" disabled=""></button>
-                          </div>
-                        </div>
-                      </form>
+                    <div class="menu-nav__textbox menu-nav-header__textbox"><a class="menu-nav__text menu-nav-header__text" href="batashevskaya_premiya.html"><span>БАТАШЕВСКАЯ ПРЕМИЯ</span></a>
+                      <button class="button-split" data-toggle="collapse" data-target="#menu-nav-header-collapse-4" aria-expanded="false" aria-controls="menu-nav-header-collapse-4"><i class="icon-arrow-down"></i></button>
                     </div>
+                    <ul class="collapse" id="menu-nav-header-collapse-4" data-parent="#menu-nav-more">
+                      <li class="nav-more-list__item menu-nav__item menu-nav-header__item"><a class="menu-nav__textbox menu-nav-header__textbox" href="others.html">
+                          <div class="menu-nav__text menu-nav-header__text">Заявка на участие</div></a></li>
+                      <li class="nav-more-list__item menu-nav__item menu-nav-header__item"><a class="menu-nav__textbox menu-nav-header__textbox" href="404.html">
+                          <div class="menu-nav__text menu-nav-header__text">Лауреаты</div></a></li>
+                      <li class="nav-more-list__item menu-nav__item menu-nav-header__item"><a class="menu-nav__textbox menu-nav-header__textbox" href="404.html">
+                          <div class="menu-nav__text menu-nav-header__text">Номинанты</div></a></li>
+                    </ul>
+                  </li>
+                  <li class="nav-more-list__item menu-nav__item menu-nav-header__item">
+                    <div class="menu-nav__textbox menu-nav-header__textbox"><a class="menu-nav__text menu-nav-header__text" href="productions-system.html"><span>ПРОИЗВОДСТВЕННАЯ СИСТЕМА</span></a>
+                      <button class="button-split" data-toggle="collapse" data-target="#menu-nav-header-collapse-5" aria-expanded="false" aria-controls="menu-nav-header-collapse-5"><i class="icon-arrow-down"></i></button>
+                    </div>
+                    <ul class="collapse" id="menu-nav-header-collapse-5" data-parent="#menu-nav-more">
+                      <li class="nav-more-list__item menu-nav__item menu-nav-header__item"><a class="menu-nav__textbox menu-nav-header__textbox" href="productions-system.html">
+                          <div class="menu-nav__text menu-nav-header__text">Новости</div></a></li>
+                      <li class="nav-more-list__item menu-nav__item menu-nav-header__item"><a class="menu-nav__textbox menu-nav-header__textbox" href="productions-system.html">
+                          <div class="menu-nav__text menu-nav-header__text">Обходы</div></a></li>
+                      <li class="nav-more-list__item menu-nav__item menu-nav-header__item"><a class="menu-nav__textbox menu-nav-header__textbox" href="productions-system.html">
+                          <div class="menu-nav__text menu-nav-header__text">Лучшие практики</div></a></li>
+                      <li class="nav-more-list__item menu-nav__item menu-nav-header__item"><a class="menu-nav__textbox menu-nav-header__textbox" href="productions-system.html">
+                          <div class="menu-nav__text menu-nav-header__text">Инновации</div></a></li>
+                      <li class="nav-more-list__item menu-nav__item menu-nav-header__item"><a class="menu-nav__textbox menu-nav-header__textbox" href="productions-system.html">
+                          <div class="menu-nav__text menu-nav-header__text">Безопасность</div></a></li>
+                    </ul>
+                  </li>
+                  <li class="nav-more-list__item menu-nav__item menu-nav-header__item">
+                    <div class="menu-nav__textbox menu-nav-header__textbox"><a class="menu-nav__text menu-nav-header__text" href="lib.html"><span>Благотворительность</span></a>
+                      <button class="button-split" data-toggle="collapse" data-target="#menu-nav-header-collapse-6" aria-expanded="false" aria-controls="menu-nav-header-collapse-6"><i class="icon-arrow-down"></i></button>
+                    </div>
+                    <ul class="collapse" id="menu-nav-header-collapse-6" data-parent="#menu-nav-more">
+                      <li class="nav-more-list__item menu-nav__item menu-nav-header__item"><a class="menu-nav__textbox menu-nav-header__textbox" href="gallery.html">
+                          <div class="menu-nav__text menu-nav-header__text">ОМК участие</div></a></li>
+                      <li class="nav-more-list__item menu-nav__item menu-nav-header__item"><a class="menu-nav__textbox menu-nav-header__textbox" href="gallery.html">
+                          <div class="menu-nav__text menu-nav-header__text">ОМК партнерство</div></a></li>
+                      <li class="nav-more-list__item menu-nav__item menu-nav-header__item"><a class="menu-nav__textbox menu-nav-header__textbox" href="gallery.html">
+                          <div class="menu-nav__text menu-nav-header__text">Заявка</div></a></li>
+                      <li class="nav-more-list__item menu-nav__item menu-nav-header__item"><a class="menu-nav__textbox menu-nav-header__textbox" href="gallery.html">
+                          <div class="menu-nav__text menu-nav-header__text">Контакты</div></a></li>
+                    </ul>
+                  </li>
+                  <li class="nav-more-list__item menu-nav__item menu-nav-header__item">
+                    <div class="menu-nav__textbox menu-nav-header__textbox"><a class="menu-nav__text menu-nav-header__text" href="lib.html"><span>Библиотека</span></a>
+                      <button class="button-split" data-toggle="collapse" data-target="#menu-nav-header-collapse-7" aria-expanded="false" aria-controls="menu-nav-header-collapse-7"><i class="icon-arrow-down"></i></button>
+                    </div>
+                    <ul class="collapse" id="menu-nav-header-collapse-7" data-parent="#menu-nav-more">
+                      <li class="nav-more-list__item menu-nav__item menu-nav-header__item"><a class="menu-nav__textbox menu-nav-header__textbox" href="gallery.html">
+                          <div class="menu-nav__text menu-nav-header__text">Инструкции и документы</div></a></li>
+                      <li class="nav-more-list__item menu-nav__item menu-nav-header__item"><a class="menu-nav__textbox menu-nav-header__textbox" href="gallery.html">
+                          <div class="menu-nav__text menu-nav-header__text">Интервью</div></a></li>
+                      <li class="nav-more-list__item menu-nav__item menu-nav-header__item"><a class="menu-nav__textbox menu-nav-header__textbox" href="gallery.html">
+                          <div class="menu-nav__text menu-nav-header__text">Годовой отсчет</div></a></li>
+                      <li class="nav-more-list__item menu-nav__item menu-nav-header__item"><a class="menu-nav__textbox menu-nav-header__textbox" href="gallery.html">
+                          <div class="menu-nav__text menu-nav-header__text">Обучение</div></a></li>
+                      <li class="nav-more-list__item menu-nav__item menu-nav-header__item"><a class="menu-nav__textbox menu-nav-header__textbox" href="gallery.html">
+                          <div class="menu-nav__text menu-nav-header__text">Архив</div></a></li>
+                      <li class="nav-more-list__item menu-nav__item menu-nav-header__item" id="menu-nav-more-item">
+                        <div class="menu-nav__textbox menu-nav-header__textbox"><a class="menu-nav__text menu-nav-header__text" href="gallery.html"><span>Помощь</span></a>
+                          <button class="button-split" data-toggle="collapse" data-target="#menu-nav-header-collapse-7_1" aria-expanded="false" aria-controls="menu-nav-header-collapse-7_1"><i class="icon-arrow-down"></i></button>
+                        </div>
+                        <ul class="collapse menu-nav-header__textbox" id="menu-nav-header-collapse-7_1" data-parent="#menu-nav-more-item">
+                          <li class="nav-more-list__item menu-nav__item menu-nav-header__item"><a class="menu-nav__textbox menu-nav-header__textbox" href="404.html">
+                              <div class="menu-nav__text menu-nav-header__text">Карта портала</div></a></li>
+                        </ul>
+                      </li>
+                    </ul>
+                  </li>
+                  <li class="nav-more-list__item menu-nav__item menu-nav-header__item">
+                    <div class="menu-nav__textbox menu-nav-header__textbox"><a class="menu-nav__text menu-nav-header__text" href="gallery.html"><span>ГАЛЕРЕЯ</span></a>
+                      <button class="button-split" data-toggle="collapse" data-target="#menu-nav-header-collapse-8" aria-expanded="false" aria-controls="menu-nav-header-collapse-8"><i class="icon-arrow-down"></i></button>
+                    </div>
+                    <ul class="collapse" id="menu-nav-header-collapse-8" data-parent="#menu-nav-more">
+                      <li class="nav-more-list__item menu-nav__item menu-nav-header__item"><a class="menu-nav__textbox menu-nav-header__textbox" href="404.html">
+                          <div class="menu-nav__text menu-nav-header__text">Москва</div></a></li>
+                      <li class="nav-more-list__item menu-nav__item menu-nav-header__item"><a class="menu-nav__textbox menu-nav-header__textbox" href="404.html">
+                          <div class="menu-nav__text menu-nav-header__text">Выкса</div></a></li>
+                      <li class="nav-more-list__item menu-nav__item menu-nav-header__item"><a class="menu-nav__textbox menu-nav-header__textbox" href="404.html">
+                          <div class="menu-nav__text menu-nav-header__text">Челябинск</div></a></li>
+                      <li class="nav-more-list__item menu-nav__item menu-nav-header__item"><a class="menu-nav__textbox menu-nav-header__textbox" href="404.html">
+                          <div class="menu-nav__text menu-nav-header__text">Чусовой</div></a></li>
+                      <li class="nav-more-list__item menu-nav__item menu-nav-header__item"><a class="menu-nav__textbox menu-nav-header__textbox" href="404.html">
+                          <div class="menu-nav__text menu-nav-header__text">Благовещенск</div></a></li>
+                      <li class="nav-more-list__item menu-nav__item menu-nav-header__item"><a class="menu-nav__textbox menu-nav-header__textbox" href="404.html">
+                          <div class="menu-nav__text menu-nav-header__text">Альметьевск</div></a></li>
+                    </ul>
+                  </li>
+                  <li class="nav-more-list__item menu-nav__item menu-nav-header__item">
+                    <div class="menu-nav__textbox menu-nav-header__textbox"><a class="menu-nav__text menu-nav-header__text" href="sport.html"><span>СПОРТ</span></a>
+                      <button class="button-split" data-toggle="collapse" data-target="#menu-nav-header-collapse-9" aria-expanded="false" aria-controls="menu-nav-header-collapse-9"><i class="icon-arrow-down"></i></button>
+                    </div>
+                    <ul class="collapse" id="menu-nav-header-collapse-9" data-parent="#menu-nav-more">
+                      <li class="nav-more-list__item menu-nav__item menu-nav-header__item"><a class="menu-nav__textbox menu-nav-header__textbox" href="404.html">
+                          <div class="menu-nav__text menu-nav-header__text">ВМЗ</div></a></li>
+                      <li class="nav-more-list__item menu-nav__item menu-nav-header__item"><a class="menu-nav__textbox menu-nav-header__textbox" href="404.html">
+                          <div class="menu-nav__text menu-nav-header__text">Трубодеталь</div></a></li>
+                      <li class="nav-more-list__item menu-nav__item menu-nav-header__item"><a class="menu-nav__textbox menu-nav-header__textbox" href="404.html">
+                          <div class="menu-nav__text menu-nav-header__text">АТЗ</div></a></li>
+                      <li class="nav-more-list__item menu-nav__item menu-nav-header__item"><a class="menu-nav__textbox menu-nav-header__textbox" href="404.html">
+                          <div class="menu-nav__text menu-nav-header__text">ЧМЗ</div></a></li>
+                      <li class="nav-more-list__item menu-nav__item menu-nav-header__item"><a class="menu-nav__textbox menu-nav-header__textbox" href="404.html">
+                          <div class="menu-nav__text menu-nav-header__text">БАЗ</div></a></li>
+                      <li class="nav-more-list__item menu-nav__item menu-nav-header__item"><a class="menu-nav__textbox menu-nav-header__textbox" href="404.html">
+                          <div class="menu-nav__text menu-nav-header__text">ОМК</div></a></li>
+                    </ul>
+                  </li>
+                  <li class="nav-more-list__item menu-nav__item menu-nav-header__item">
+                    <div class="menu-nav__textbox menu-nav-header__textbox"><a class="menu-nav__text menu-nav-header__text" href="others.html"><span>КОНТАКТЫ</span></a>
+                      <button class="button-split" data-toggle="collapse" data-target="#menu-nav-header-collapse-10" aria-expanded="false" aria-controls="menu-nav-header-collapse-10"><i class="icon-arrow-down"></i></button>
+                    </div>
+                    <ul class="collapse" id="menu-nav-header-collapse-10" data-parent="#menu-nav-more">
+                      <li class="nav-more-list__item menu-nav__item menu-nav-header__item"><a class="menu-nav__textbox menu-nav-header__textbox" href="others.html">
+                          <div class="menu-nav__text menu-nav-header__text">Вопрос руководству</div></a></li>
+                      <li class="nav-more-list__item menu-nav__item menu-nav-header__item"><a class="menu-nav__textbox menu-nav-header__textbox" href="others.html">
+                          <div class="menu-nav__text menu-nav-header__text">Поддержка</div></a></li>
+                      <li class="nav-more-list__item menu-nav__item menu-nav-header__item"><a class="menu-nav__textbox menu-nav-header__textbox" href="others.html">
+                          <div class="menu-nav__text menu-nav-header__text">Горячая линия ОМК</div></a></li>
+                      <li class="nav-more-list__item menu-nav__item menu-nav-header__item"><a class="menu-nav__textbox menu-nav-header__textbox" href="others.html">
+                          <div class="menu-nav__text menu-nav-header__text">Сотрудники</div></a></li>
+                      <li class="nav-more-list__item menu-nav__item menu-nav-header__item"><a class="menu-nav__textbox menu-nav-header__textbox" href="others.html">
+                          <div class="menu-nav__text menu-nav-header__text">Секретари</div></a></li>
+                      <li class="nav-more-list__item menu-nav__item menu-nav-header__item"><a class="menu-nav__textbox menu-nav-header__textbox" href="others.html">
+                          <div class="menu-nav__text menu-nav-header__text">Благотворительность</div></a></li>
+                      <li class="nav-more-list__item menu-nav__item menu-nav-header__item"><a class="menu-nav__textbox menu-nav-header__textbox" href="others.html">
+                          <div class="menu-nav__text menu-nav-header__text">Полезные номера</div></a></li>
+                    </ul>
                   </li>
                 </ul>
               </div>
@@ -195,7 +296,7 @@
                       <li class="nav-more-list__item"><a class="link link-nav nav-more-list__link" href="#">Стандарты РосКосмос</a></li>
                       <li class="nav-more-list__item"><a class="link link-nav nav-more-list__link" href="#">Газпром Системы</a></li>
                       <li class="nav-more-list__item"><a class="link link-nav nav-more-list__link" href="#">SAP Super Tasks</a></li>
-                      <li class="nav-more-list__item"><a class="link link-nav nav-more-list__link" href="#">Производственные</a></li>
+                      <li class="nav-more-list__item"><a class="link link-nav nav-more-list__link" href="productions-system.html">Производственные</a></li>
                       <li class="nav-more-list__item"><a class="link link-nav nav-more-list__link" href="#">Системы Всех Систем</a></li>
                       <li class="nav-more-list__item"><a class="link link-nav nav-more-list__link" href="#">Логистика</a></li>
                       <li class="nav-more-list__item"><a class="link link-nav nav-more-list__link" href="#">SAP SSH</a></li>
@@ -459,7 +560,7 @@
                               <div class="menu-left__text menu-left-more__link"><span>СОТРУДНИКАМ</span></div></a></li>
                           <li class="nav-more-list__item menu-left-more__box menu-left__box"><a class="menu-left__item menu-left-more__item" href="#">
                               <div class="menu-left__text menu-left-more__link"><span>БАТАШЕВСКАЯ ПРЕМИЯ</span></div></a></li>
-                          <li class="nav-more-list__item menu-left-more__box menu-left__box"><a class="menu-left__item menu-left-more__item" href="#">
+                          <li class="nav-more-list__item menu-left-more__box menu-left__box"><a class="menu-left__item menu-left-more__item" href="productions-system.html">
                               <div class="menu-left__text menu-left-more__link"><span>ПРОИЗВОДСТВЕННАЯ СИСТЕМА</span></div></a></li>
                           <li class="nav-more-list__item menu-left-more__box menu-left__box"><a class="menu-left__item menu-left-more__item" href="#">
                               <div class="menu-left__text menu-left-more__link"><span>БИБЛИОТЕКА</span></div></a></li>
@@ -482,7 +583,7 @@
                         <div class="menu-left__text"><span>СОТРУДНИКАМ</span></div></a></li>
                     <li class="menu-left__box"><a class="menu-left__item" href="#">
                         <div class="menu-left__text"><span>БАТАШЕВСКАЯ ПРЕМИЯ</span></div></a></li>
-                    <li class="menu-left__box"><a class="menu-left__item" href="#">
+                    <li class="menu-left__box"><a class="menu-left__item" href="productions-system.html">
                         <div class="menu-left__text"><span>ПРОИЗВОДСТВЕННАЯ СИСТЕМА</span></div></a></li>
                     <li class="menu-left__box"><a class="menu-left__item" href="#">
                         <div class="menu-left__text"><span>БЛАГОТВОРИТЕЛЬНОСТЬ</span></div></a></li>
@@ -1069,7 +1170,7 @@
     <script src="js/libs/validate/jquery.validate.min.js"></script>
     <script src="js/libs/jquery.maskedinput.min.js"></script>
     <!-- main script-->
-    <script src="js/main/main.js?0.2.4"></script>
+    <script src="js/main/main.js?0.2.5"></script>
     <!--if lte IE 9
     link(href='ie9/css/bootstrap-ie9.css', rel='stylesheet')
     link(rel='stylesheet', href='ie9/css/style-ie9.css')

@@ -147,7 +147,7 @@
 				color: #bcbdc0;
 			}
 		}
-		a {
+		a:not([class]) {
 			text-decoration: underline;
 			@include hover {
 				text-decoration: none;

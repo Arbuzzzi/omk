@@ -39,7 +39,7 @@
 						left: 50%;
 						display: block;
 						height: 16px;
-						width: 0.9px;
+						width: 1px;
 						transform: translateX(-50%);
 						background-color: $thin-color;
 					}
@@ -55,7 +55,7 @@
 					position: absolute;
 					top: 50%;
 					display: block;
-					height: 0.9px;
+					height: 1px;
 					width: 31px;
 					transform: translateY(-50%);
 					background-color: $thin-color;
@@ -71,7 +71,7 @@
 					position: absolute;
 					display: block;
 					height: 31px;
-					width: 0.9px;
+					width: 1px;
 					background-color: $thin-color;
 				}
 				&-right-top {

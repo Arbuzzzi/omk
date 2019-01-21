@@ -1705,6 +1705,20 @@ h2 span,
   line-height: 40px;
 }
 
+.link-search {
+  display: block;
+  width: 289px;
+  margin-bottom: 10px;
+  color: #008330;
+  font-size: 16px;
+  font-weight: 400;
+  overflow: hidden;
+  white-space: nowrap;
+  -o-text-overflow: ellipsis;
+     text-overflow: ellipsis;
+  text-decoration: none;
+}
+
 .button {
   display: inline-block;
   padding: 3px 5px 4px 5px;
@@ -3852,7 +3866,7 @@ h2 span,
   color: #bcbdc0;
 }
 
-.content-text a {
+.content-text a:not([class]) {
   text-decoration: underline;
 }
 
@@ -3975,6 +3989,14 @@ h2 span,
   width: 100%;
   margin-bottom: 30px;
   background-color: transparent;
+}
+
+.card.collapse {
+  display: none;
+}
+
+.card.collapse.show {
+  display: block;
 }
 
 .card::after {
@@ -4212,6 +4234,41 @@ h2 span,
 .card-average-text p {
   font-size: 11px;
   margin-bottom: 0;
+}
+
+.card__list {
+  margin-bottom: 15px;
+}
+
+.card__list li {
+  font-family: "PT Serif", serif;
+  font-size: 17px;
+  font-weight: 400;
+  line-height: 23px;
+}
+
+.card__list ul {
+  list-style-type: disc;
+  padding-left: 30px;
+}
+
+.card__list > ul {
+  margin-left: -15px;
+}
+
+.card__list ol {
+  list-style: none;
+  counter-reset: li;
+  padding-left: 30px;
+}
+
+.card__list ol li:before {
+  content: counters(li, ".") ". ";
+  counter-increment: li;
+}
+
+.card__list > ol {
+  padding-left: 0;
 }
 
 .card__content {
@@ -6356,7 +6413,7 @@ h2 span,
   left: 50%;
   display: block;
   height: 16px;
-  width: 0.9px;
+  width: 1px;
   -webkit-transform: translateX(-50%);
       -ms-transform: translateX(-50%);
           transform: translateX(-50%);
@@ -6376,7 +6433,7 @@ h2 span,
   position: absolute;
   top: 50%;
   display: block;
-  height: 0.9px;
+  height: 1px;
   width: 31px;
   -webkit-transform: translateY(-50%);
       -ms-transform: translateY(-50%);
@@ -6399,7 +6456,7 @@ h2 span,
   position: absolute;
   display: block;
   height: 31px;
-  width: 0.9px;
+  width: 1px;
   background-color: #a1a3a7;
 }
 
@@ -7641,6 +7698,11 @@ h2 span,
     color: #2d2f32;
   }
 
+  .link-search:hover {
+    text-decoration: underline;
+    color: #00501d;
+  }
+
   .button:hover {
     background-color: #BCBDC0;
     color: #ffffff;
@@ -7752,7 +7814,7 @@ h2 span,
     background-color: inherit;
   }
 
-  .content-text a:hover {
+  .content-text a:not([class]):hover {
     text-decoration: none;
   }
 

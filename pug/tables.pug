@@ -1,0 +1,26 @@
+extends modules/_base
+
+block vars
+	- var pageTitle = '404';
+block content
+	.card.margin-bottom-15
+		.content-title
+			.content-titlebox
+				h2 Таблица наименований регулярных мероприятий
+
+	- var tableClass = 'table-horizontal-line';
+	include tables/_table-01
+
+	.card.margin-bottom-15
+		.content-title
+			.content-titlebox
+				h2 Другие стили таблиц
+
+	- var tableClass = 'table-all-line';
+	include tables/_table-01
+
+	- var tableClass = 'table-thin-head';
+	include tables/_table-01
+
+	- var tableClass = 'table-thin-head table-light table-all-line';
+	include tables/_table-01

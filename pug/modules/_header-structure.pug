@@ -8,7 +8,6 @@
 - links.not_found = '404.html';
 - links.post = 'post.html';
 - links.profile = 'profile.html';
-- links.productions_system = 'productions-system.html';
 - links.batashevskaya_premiya = 'batashevskaya_premiya.html';
 - links.blocks = 'blocks.html';
 - links.charity = 'charity.html';
@@ -20,9 +19,9 @@
 header.header
 	.container
 		.header-box
-			.header-box__item.header-box__logo
+			.header-box__logo
 				.header-logowrap
-					a.logo.header-logo(href='/projects/omk/')
+					a.logo.header-logo(href= links.home)
 						img.logo-img(src='img/logo.png', alt='Logo')
 				nav#menu-nav-more.menu-nav.menu-nav-header
 					.nav-more.menu-nav-more.menu-nav-header-more
@@ -126,25 +125,25 @@ header.header
 
 							li.nav-more-list__item.menu-nav__item.menu-nav-header__item
 								.menu-nav__textbox.menu-nav-header__textbox
-									a.menu-nav__text.menu-nav-header__text(href= links.productions_system)
+									a.menu-nav__text.menu-nav-header__text(href= links.blocks)
 										span ПРОИЗВОДСТВЕННАЯ СИСТЕМА
 									button.button-split(data-toggle='collapse', data-target='#menu-nav-header-collapse-5', aria-expanded='false', aria-controls='menu-nav-header-collapse-5')
 										i.icon-arrow-down
 								ul#menu-nav-header-collapse-5.collapse(data-parent='#menu-nav-more')
 									li.nav-more-list__item.menu-nav__item.menu-nav-header__item
-										a.menu-nav__textbox.menu-nav-header__textbox(href= links.productions_system)
+										a.menu-nav__textbox.menu-nav-header__textbox(href= links.post)
 											.menu-nav__text.menu-nav-header__text Новости
 									li.nav-more-list__item.menu-nav__item.menu-nav-header__item
-										a.menu-nav__textbox.menu-nav-header__textbox(href= links.productions_system)
+										a.menu-nav__textbox.menu-nav-header__textbox(href= links.post)
 											.menu-nav__text.menu-nav-header__text Обходы
 									li.nav-more-list__item.menu-nav__item.menu-nav-header__item
-										a.menu-nav__textbox.menu-nav-header__textbox(href= links.productions_system)
+										a.menu-nav__textbox.menu-nav-header__textbox(href= links.post)
 											.menu-nav__text.menu-nav-header__text Лучшие практики
 									li.nav-more-list__item.menu-nav__item.menu-nav-header__item
-										a.menu-nav__textbox.menu-nav-header__textbox(href= links.productions_system)
+										a.menu-nav__textbox.menu-nav-header__textbox(href= links.post)
 											.menu-nav__text.menu-nav-header__text Инновации
 									li.nav-more-list__item.menu-nav__item.menu-nav-header__item
-										a.menu-nav__textbox.menu-nav-header__textbox(href= links.productions_system)
+										a.menu-nav__textbox.menu-nav-header__textbox(href= links.post)
 											.menu-nav__text.menu-nav-header__text Безопасность
 
 
@@ -287,13 +286,13 @@ header.header
 										a.menu-nav__textbox.menu-nav-header__textbox(href= links.others)
 											.menu-nav__text.menu-nav-header__text Полезные номера
 
-			.header-box__item.header-box__question
+			.header-box__question
 				.question.header-question
-					a.link(href='#')
-						| Вопрос 
+					a.link(href= links.others)
+						| Вопрос
 						br
-						|                 Руководству
-			.header-box__item.header-box__search
+						| Руководству
+			.header-box__search
 				.header-visit
 					p Просмотров 1 235 666 / Посетители 257 889
 				.header-search
@@ -302,7 +301,7 @@ header.header
 							.form-search__label
 								input#formSearchInput.form-search__input(type='search')
 								button.form-search__button.icon-search(type='submit', disabled='')
-			.header-box__item.header-box__info
+			.header-box__info
 				.header-info.info
 					.header-info__time.info-wrap.info__time 09:49
 					.header-info-wrap
@@ -312,87 +311,85 @@ header.header
 					.header-user__box.user__box
 						.header-user__avatar.user__avatar
 							img(src='img/icon/men.svg', alt='no-avatar')
-						a.header-user__name.user__name(href='#')
+						a.header-user__name.user__name(href= links.profile)
 							span Константин
 							span Константинопольский
 						button.rollUp
 							i.icon-arrow-down
 					.header-button-inn.button-inn
 						button.header-button.button.button-help помощь
-						button#header-navControl.header-button.button.active(data-toggle='collapse', data-target='#header-nav') Системы
+						button#header-navControl.header-button.button.active(data-toggle='collapse', data-target='#header-nav', aria-expanded='false', aria-controls='header-nav') Системы
 						button#btnDeploy.header-button.button.button-deploy Развернуть
 						// <button id="btnToTop" class="header-button button button-toTop">Наверх</button>
 						// /.header-box
-						button.button-burg.margin-left-20(data-toggle='collapse', data-target='#menu-nav-headerGroup', type='button')
-							span
 		nav.header-nav-system
 			#header-nav.header-nav-system-wrap.collapse.show
-				.row.align-items-center
-					.col-12.col-md-1
+				.row.align-items-xl-center
+					.col-xl-1.align-self-xl-start
 						a.header-nav-system__item(href='#')
 							.header-nav-system-icon-box
 								i.icon-book
 							.header-nav-system__link
 								span DOCS SAP
-					.col-12.col-md-1
+					.col-xl-1.align-self-xl-start
 						a.header-nav-system__item(href='#')
 							.header-nav-system-icon-box
 								i.icon-aircraft
 							.header-nav-system__link
 								span Реестр МИГ
-					.col-12.col-md-1
+					.col-xl-1.align-self-xl-start
 						a.header-nav-system__item(href='#')
 							.header-nav-system-icon-box
 								i.icon-barcode
 							.header-nav-system__link
 								span SAP
-					.col-12.col-md-1
+					.col-xl-1.align-self-xl-start
 						a.header-nav-system__item(href='#')
 							.header-nav-system-icon-box
 								i.icon-stat
 							.header-nav-system__link
 								span SAP PHR
-					.col-12.col-md-1
+					.col-xl-1.align-self-xl-start
 						a.header-nav-system__item(href='#')
 							.header-nav-system-icon-box
 								i.icon-production
 							.header-nav-system__link
 								span SAP PHR
-					.col-12.col-md-1
+					.col-xl-1.align-self-xl-start
 						a.header-nav-system__item(href='#')
 							.header-nav-system-icon-box
 								i.icon-chess
 							.header-nav-system__link
 								span СААРЦ
-					.col-12.col-md-1
+					.col-xl-1.align-self-xl-start
 						a.header-nav-system__item(href='#')
 							.header-nav-system-icon-box
 								i.icon-list
 							.header-nav-system__link
 								span NORMAL System 102
-					.col-12.col-md-1
+					.col-xl-1.align-self-xl-start
 						a.header-nav-system__item(href='#')
 							.header-nav-system-icon-box
 								i.icon-box
 							.header-nav-system__link
 								span Abnormal System 3367
-					.col-12.col-md-1
+					.col-xl-1.align-self-xl-start
 						a.header-nav-system__item(href='#')
 							.header-nav-system-icon-box
 								i.icon-production
 							.header-nav-system__link
 								span Стандарты РосКосмос
-					.col-12.col-md-1
+					.col-xl-1.align-self-xl-start
 						a.header-nav-system__item(href='#')
 							.header-nav-system-icon-box
 								i.icon-money
 							.header-nav-system__link
 								span РОСТЕХ
-					.col-12.col-md-2.d-table
-						.button-more-inn.header-button-inn.button-inn
+					.col-xl-2.d-table
+						.header-nav-system-button-inn.header-button-inn.button-inn
 							.nav-more.btn-group
-								button#header-navMore.button.header-button.button-more.button-more-lg-min.button-more-xl-full(type='button', data-toggle='dropdown', aria-haspopup='true', aria-expanded='false')
-									| Ещё 
+								button#header-navMore.button.header-button.header-nav-system-button(type='button', data-toggle='dropdown', aria-haspopup='true', aria-expanded='false')
+									| Ещё
 									i.icon-arrow-down
 								ul.nav-more-list.dropdown-menu.dropdown-menu-right
 									li.nav-more-list__item
@@ -402,7 +399,7 @@ header.header
 									li.nav-more-list__item
 										a.link.link-nav.nav-more-list__link(href='#') SAP Super Tasks
 									li.nav-more-list__item
-										a.link.link-nav.nav-more-list__link(href= links.productions_system) Производственные
+										a.link.link-nav.nav-more-list__link(href='#') Производственные
 									li.nav-more-list__item
 										a.link.link-nav.nav-more-list__link(href='#') Системы Всех Систем
 									li.nav-more-list__item
@@ -411,9 +408,9 @@ header.header
 										a.link.link-nav.nav-more-list__link(href='#') SAP SSH
 									li.nav-more-list__item
 										a.link.link-nav.nav-more-list__link(href='#') Ширина под самое длинное название с учетом Bold
-							button#header-navSettingControl.button.header-button.button-more.d-none.d-lg-inline-block(type='button', data-toggle='collapse', data-target='#header-navSetting', aria-expanded='false', aria-controls='header-navSetting') Настройка
+							button#header-navSettingControl.button.header-button.header-nav-system-button(type='button', data-toggle='collapse', data-target='#header-navSetting', aria-expanded='false', aria-controls='header-navSetting') Настройка
 				.row
-					.col-lg-7.offset-lg-5
+					.col-xl-7.offset-xl-5
 						#header-navSetting.nav-setting.collapse
 							h4.nav-setting__title Для настройки вашего меню, выберите нужные иконки:
 							.nav-setting__items
@@ -526,20 +523,7 @@ header.header
 												i.icon-box
 											.header-nav-system__link
 												span Больше систем
-									//
-										<div class="ui-state-default nav-setting__item-inn" data-control="formCheckbox-18">
-										<div class="header-nav-system__item nav-setting__item">
-										<div class="header-nav-system-icon-box"><i class="icon-production"></i></div>
-										<div class="header-nav-system__link"><span>Стандарты РосКосмос</span></div>
-										</div>
-										</div>
-									//
-										<div class="ui-state-default nav-setting__item-inn" data-control="formCheckbox-19">
-										<div class="header-nav-system__item nav-setting__item">
-										<div class="header-nav-system-icon-box"><i class="icon-money"></i></div>
-										<div class="header-nav-system__link"><span>РОСТЕХ</span></div>
-										</div>
-										</div>
+
 							form#settingForm.form.setting-form(action='#')
 								.form-chekbox-wrap.setting-form-wrap
 									.form-checkbox.setting-form-checkbox.active
@@ -627,119 +611,115 @@ header.header
 								.menu-left__item.menu-left__item-head
 									.nav-more.menu-left-more.btn-group
 										button#navMoreListControl.menu-left-more__button(type='button', aria-haspopup='true', aria-expanded='false')
-											| Новости 
+											| Новости
 											i.icon-arrow-down
 										ul.nav-more-list.menu-left-more__list.dropdown-menu
 											li.nav-more-list__item.menu-left-more__box.menu-left__box
-												a.menu-left__item.menu-left-more__item(href='#')
+												a.menu-left__item.menu-left-more__item(href= links.company)
 													.menu-left__text.menu-left-more__link
 														span КОМПАНИЯ
 											li.nav-more-list__item.menu-left-more__box.menu-left__box
-												a.menu-left__item.menu-left-more__item(href='#')
+												a.menu-left__item.menu-left-more__item(href= links.profile)
 													.menu-left__text.menu-left-more__link
 														span СОТРУДНИКАМ
 											li.nav-more-list__item.menu-left-more__box.menu-left__box
-												a.menu-left__item.menu-left-more__item(href='#')
+												a.menu-left__item.menu-left-more__item(href= links.batashevskaya_premiya)
 													.menu-left__text.menu-left-more__link
 														span БАТАШЕВСКАЯ ПРЕМИЯ
 											li.nav-more-list__item.menu-left-more__box.menu-left__box
-												a.menu-left__item.menu-left-more__item(href= links.productions_system)
+												a.menu-left__item.menu-left-more__item(href= links.blocks)
 													.menu-left__text.menu-left-more__link
 														span ПРОИЗВОДСТВЕННАЯ СИСТЕМА
 											li.nav-more-list__item.menu-left-more__box.menu-left__box
-												a.menu-left__item.menu-left-more__item(href='#')
+												a.menu-left__item.menu-left-more__item(href= links.lib)
 													.menu-left__text.menu-left-more__link
 														span БИБЛИОТЕКА
 											li.nav-more-list__item.menu-left-more__box.menu-left__box
-												a.menu-left__item.menu-left-more__item(href='#')
+												a.menu-left__item.menu-left-more__item(href= links.gallery)
 													.menu-left__text.menu-left-more__link
 														span ГАЛЕРЕЯ
 											li.nav-more-list__item.menu-left-more__box.menu-left__box
-												a.menu-left__item.menu-left-more__item(href='#')
+												a.menu-left__item.menu-left-more__item(href= links.sport)
 													.menu-left__text.menu-left-more__link
 														span СПОРТ
 											li.nav-more-list__item.menu-left-more__box.menu-left__box
-												a.menu-left__item.menu-left-more__item(href='#')
+												a.menu-left__item.menu-left-more__item(href= links.others)
 													.menu-left__text.menu-left-more__link
 														span КОНТАКТЫ
 									button#menuLeftListControl.menu-left-control.active(type='button', data-toggle='collapse', data-target='#menuLeftList', aria-expanded='false', aria-controls='menuLeftList')
 								#menuLeftItemCurrent.menu-left__item.menu-left__item-current
 							ul#menuLeftList.menu-left__list.collapse.menuLeftList-group.show
 								li.menu-left__box
-									a.menu-left__item(href='#')
+									a.menu-left__item(href= links.company)
 										.menu-left__text
 											span КОМПАНИЯ
 								li.menu-left__box
-									a.menu-left__item(href='#')
+									a.menu-left__item(href= links.profile)
 										.menu-left__text
 											span СОТРУДНИКАМ
 								li.menu-left__box
-									a.menu-left__item(href='#')
+									a.menu-left__item(href= links.batashevskaya_premiya)
 										.menu-left__text
 											span БАТАШЕВСКАЯ ПРЕМИЯ
 								li.menu-left__box
-									a.menu-left__item(href= links.productions_system)
+									a.menu-left__item(href= links.blocks)
 										.menu-left__text
 											span ПРОИЗВОДСТВЕННАЯ СИСТЕМА
 								li.menu-left__box
-									a.menu-left__item(href='#')
+									a.menu-left__item(href= links.charity)
 										.menu-left__text
 											span БЛАГОТВОРИТЕЛЬНОСТЬ
 								li.menu-left__box
-									a.menu-left__item(href='#')
+									a.menu-left__item(href= links.lib)
 										.menu-left__text
 											span БИБЛИОТЕКА
 								li.menu-left__box
-									a.menu-left__item(href='#')
+									a.menu-left__item(href= links.gallery)
 										.menu-left__text
 											span ГАЛЕРЕЯ
 								li.menu-left__box
-									a.menu-left__item(href='#')
+									a.menu-left__item(href= links.sport)
 										.menu-left__text
 											span СПОРТ
 								li.menu-left__box
-									a.menu-left__item(href='#')
+									a.menu-left__item(href= links.others)
 										.menu-left__text
 											span КОНТАКТЫ
-				.col-xl-9.col-12
+				.col-xl-9
 					nav.menu-horizontal
 						ul.menu-horizontal__list
 							li.menu-horizontal__box
-								a.menu-horizontal__item(href='#')
+								a.menu-horizontal__item(href= links.home)
 									span.menu-horizontal__text НОВОСТИ ОМК
 							li.menu-horizontal__box
-								a.menu-horizontal__item.current(href='#')
+								a.menu-horizontal__item.current(href= links.home)
 									span.menu-horizontal__text РЕГИОНАЛЬНЫЕ НОВОСТИ
 							li.menu-horizontal__box
-								a.menu-horizontal__item(href='#')
+								a.menu-horizontal__item(href= links.home)
 									span.menu-horizontal__text ПС ОМК
 							li.menu-horizontal__box
-								a.menu-horizontal__item(href='#')
+								a.menu-horizontal__item(href= links.home)
 									span.menu-horizontal__text НОВОСТИ ПОДРАЗДЕЛЕНИЙ
 							li.menu-horizontal__box
-								a.menu-horizontal__item(href='#')
+								a.menu-horizontal__item(href= links.home)
 									span.menu-horizontal__text НОВОСТИ ФОНДА
 							li.menu-horizontal__box.menu-horizontal__box-more
 								.menu-horizontal__item.menu-horizontal__item-more
 									.nav-more.btn-group
-										button.button.header-button.button-more(type='button', data-toggle='dropdown', aria-haspopup='true', aria-expanded='false')
-											| Ещё 
+										button.button.header-button.header-nav-system-button(type='button', data-toggle='dropdown', aria-haspopup='true', aria-expanded='false')
+											| Ещё
 											i.icon-arrow-down
 										ul.nav-more-list.dropdown-menu.dropdown-menu-right
 											li.nav-more-list__item
-												a.link.link-nav.nav-more-list__link(href='#') Блоги
+												a.link.link-nav.nav-more-list__link(href= links.blocks) Блоги
 											li.nav-more-list__item
-												a.link.link-nav.nav-more-list__link(href='#') Газпром новости
+												a.link.link-nav.nav-more-list__link(href= links.blocks) Отслеживаемые блоги
 											li.nav-more-list__item
-												a.link.link-nav.nav-more-list__link(href='#') SAP новости
+												a.link.link-nav.nav-more-list__link(href= links.blocks) Результаты поиска
 											li.nav-more-list__item
-												a.link.link-nav.nav-more-list__link(href='#') Производственные новости
+												a.link.link-nav.nav-more-list__link(href= links.blocks) Все пользователи
 											li.nav-more-list__item
-												a.link.link-nav.nav-more-list__link(href='#') Системы Всех новостей
-											li.nav-more-list__item
-												a.link.link-nav.nav-more-list__link(href='#') SAP SSH
-											li.nav-more-list__item
-												a.link.link-nav.nav-more-list__link(href='#') Ширина под самое длинное название с учетом Bold
+												a.link.link-nav.nav-more-list__link(href= links.blocks) Статья (Новость / Блог)
 					.breadcrumb-wrap
 						.breadcrumb
 							.breadcrumb-group

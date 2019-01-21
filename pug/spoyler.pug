@@ -1,0 +1,26 @@
+extends modules/_base
+
+block vars
+	- var pageTitle = 'Спойоеры';
+block content
+	.card.margin-bottom-15.margin-top-xl-15
+		.content-title
+			.content-titlebox_dark.content-titlebox_collapse(data-toggle="collapse" data-target="#articleCollapse01")
+				h4 Это заголовок-спойлер и под ним скрывается текстовый блок или галерея
+	- var ID = 'articleCollapse01';
+	- var articleClass = 'collapse';
+	include articles/_article-04
+	.card.margin-bottom-15
+		.content-title
+			.content-titlebox_dark.content-titlebox_collapse.active(data-toggle="collapse" data-target="#articleCollapseSlider01")
+				h4 Контент-слайдер - это многостраничный спойлер
+	#articleCollapseSlider01.card.card-full.card-full-slider.collapse.show
+		.card-full-slider-wrap.card-wrap.card-full-wrap
+			.card-full-slider__item
+				- var articleClass = 'article-slider';
+				- var ID = '';
+				include articles/_article-01
+			.card-full-slider__item
+				include articles/_article-04
+			.card-full-slider__item
+				include articles/_article-03

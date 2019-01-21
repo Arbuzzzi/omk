@@ -12,6 +12,12 @@
 	//height: 100%;
 	margin-bottom: 30px;
 	background-color: transparent;
+	&.collapse {
+		display: none;
+		&.show {
+			display: block;
+		}
+	}
 	@include md-block {
 		margin-bottom: 15px;
 	}
@@ -226,6 +232,34 @@
 			@include md-block {
 				font-size: 8px;
 			}
+		}
+	}
+	&__list {
+		margin-bottom: 15px;
+		li {
+			font-family: "PT Serif", serif;
+			font-size: 17px;
+			font-weight: 400;
+			line-height: 23px;
+		}
+		ul {
+			list-style-type: disc;
+			padding-left: 30px;
+		}
+		&>ul {
+			margin-left: -15px;
+		}
+		ol {
+			list-style: none;
+			counter-reset: li;
+			padding-left: 30px;
+			li:before {
+				content: counters(li,".") ". ";
+				counter-increment: li;
+			}
+		}
+		&>ol {
+			padding-left: 0;
 		}
 	}
 
