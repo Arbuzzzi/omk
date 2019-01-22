@@ -5008,7 +5008,7 @@ h2 span,
 
 .card-links__img {
   max-width: 100px;
-  padding-right: 30px;
+  padding: 0 15px;
   text-align: center;
 }
 

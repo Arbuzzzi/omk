@@ -1015,7 +1015,7 @@
 	&__img {
 		max-width: 100px;
 		//padding-left: 15px;
-		padding-right: 30px;
+		padding: 0 15px;
 		text-align: center;
 		@include md-block {
 			padding-right: 0;
