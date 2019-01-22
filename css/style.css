@@ -1657,6 +1657,7 @@ h2 span,
 }
 
 .link-small {
+  display: inline-block;
   font-size: 12px;
 }
 
@@ -3854,6 +3855,7 @@ h2 span,
 }
 
 .content-text h3 .sub {
+  display: block;
   font-size: 17px;
 }
 
@@ -5095,6 +5097,7 @@ h2 span,
 
 .card-links__lnk_small {
   font-size: 14px;
+  line-height: 1.4;
 }
 
 .card-person::after {
@@ -6247,6 +6250,10 @@ h2 span,
           border-radius: 5px;
   width: 100%;
   border-spacing: 0px;
+}
+
+.table-inn {
+  overflow-x: scroll;
 }
 
 .table thead {
@@ -8355,6 +8362,11 @@ h2 span,
     font-size: 8px;
   }
 
+  .button-big-o {
+    min-width: 159px;
+    font-size: 12px;
+  }
+
   .header.scroll .button-deploy {
     display: none;
   }
@@ -8548,6 +8560,24 @@ h2 span,
     margin-top: 0;
   }
 
+  .content-text {
+    font-size: 12px;
+  }
+
+  .content-text h3 {
+    margin-bottom: 10px;
+    font-size: 18px;
+  }
+
+  .content-text h3 .sub {
+    font-size: inherit;
+  }
+
+  .content-text p {
+    font-size: 12px;
+    margin-bottom: 0;
+  }
+
   .like-count {
     margin-left: 2px;
   }
@@ -8591,6 +8621,18 @@ h2 span,
 
   .card-half-slider__imgbox {
     min-height: 290px;
+  }
+
+  .card-icons table {
+    border-spacing: 0 20px;
+  }
+
+  .card-links__lnk {
+    font-size: 12px;
+  }
+
+  .card-links__lnk_small {
+    font-size: 12px;
   }
 
   .widget-calendar {
@@ -8682,6 +8724,12 @@ h2 span,
     right: 7.5px;
   }
 
+  .link-small {
+    font-size: 9px;
+    max-height: 10px;
+    overflow: hidden;
+  }
+
   .button {
     font-size: 12px;
   }
@@ -8705,6 +8753,11 @@ h2 span,
     -o-text-overflow: ellipsis;
        text-overflow: ellipsis;
     font-size: 8px;
+  }
+
+  .button-big-o {
+    padding: 12px 15px;
+    font-size: 10px;
   }
 
   .header-box__item {
@@ -8743,6 +8796,23 @@ h2 span,
     font-size: 22px;
   }
 
+  .content-text {
+    font-size: 8px;
+  }
+
+  .content-text h3 {
+    margin-bottom: 5px;
+    font-size: 11px;
+  }
+
+  .content-text p {
+    font-size: 8px;
+  }
+
+  .content-text_special p {
+    font-size: 8px;
+  }
+
   .like-button {
     font-size: 8px;
     line-height: 1.4;
@@ -8765,6 +8835,10 @@ h2 span,
 
   .card__imgbox {
     min-height: 125px;
+  }
+
+  .card__imgbox_xl {
+    height: 205px;
   }
 
   .card__imgbox_sm {
@@ -8899,8 +8973,49 @@ h2 span,
     min-height: 235px;
   }
 
+  .card-icons table {
+    border-spacing: 0 15px;
+  }
+
+  .card-icons tr {
+    margin-bottom: 15px;
+  }
+
+  .card-icons td {
+    font-size: 10px;
+  }
+
+  .card-links__img {
+    padding-right: 0;
+    padding-left: 15px;
+  }
+
+  .card-links__imgbox {
+    min-width: auto;
+    max-width: 27px;
+    font-size: 27px;
+  }
+
+  .card-links__item {
+    padding: 0;
+    margin-bottom: 5px;
+  }
+
+  .card-links__head {
+    margin-bottom: 0;
+    font-size: 10px;
+  }
+
+  .card-links__lnkbox {
+    font-size: 10px;
+  }
+
   .card-links__lnk {
-    font-size: 16px;
+    font-size: 11px;
+  }
+
+  .card-links__lnk_small {
+    font-size: 10px;
   }
 
   .widget-calendar {
@@ -8966,11 +9081,20 @@ h2 span,
   .widget-slider-arrow {
     width: 10px;
   }
+
+  .profile-info tr td {
+    min-width: 122px;
+  }
 }
 
 @media screen and (max-width: 767px) {
   .button-burg {
     display: inline-block;
+  }
+
+  .button-big-o {
+    min-width: 148px;
+    font-size: 9px;
   }
 
   .header:before {
@@ -9041,7 +9165,11 @@ h2 span,
   }
 
   .card-links__lnk {
-    font-size: 12px;
+    font-size: 10px;
+  }
+
+  .card-links__lnk_small {
+    font-size: 8px;
   }
 }
 

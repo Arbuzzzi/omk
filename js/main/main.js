@@ -1260,9 +1260,13 @@ $(document).ready(function() {
 		event.preventDefault();
 	});
 
+	/* Main icons ------------------------------------------------------------------------------------- */
+	$('.main-icons').on('click', function (event){
+
+	})
+
 	/* Forms ------------------------------------------------------------------------------------------ */
 	var deafultTextBtn = $('#formMoreInputsControl').text();
-
 	$('#formMoreInputs').on('show.bs.collapse', function(event) {
 		var elControl = $('#formMoreInputsControl'),
 				elControlAltText = elControl.data('alt-text');

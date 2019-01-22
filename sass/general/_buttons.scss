@@ -14,7 +14,13 @@
 		font-weight: 300;
 	}
 	&-small {
+		display: inline-block;
 		font-size: 12px;
+		@include md-block {
+			font-size: 9px;
+			max-height: 10px;
+			overflow: hidden;
+		}
 	}
 	&-icon {
 		&-save {
@@ -399,7 +405,18 @@
 		@include hover {
 			border-color: #a1a3a7;
 			background-color: #F4F5F5;
-
+		}
+		@include lg-block {
+			min-width: 159px;
+			font-size: 12px;
+		}
+		@include md-block {
+			padding: 12px 15px;
+			font-size: 10px;
+		}
+		@include sm-block {
+			min-width: 148px;
+			font-size: 9px;
 		}
 		&-danger {
 			border-color: $special-color;

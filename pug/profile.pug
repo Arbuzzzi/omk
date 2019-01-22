@@ -6,22 +6,22 @@ block vars
 block content
 	.row
 		.col-12
-			.card.margin-bottom-15
+			.card.margin-bottom-10.margin-bottom-lg-15
 				.content-title
 					.content-titlebox
-						h1= pageTitle
+						h1.font-size-lg32.font-size-20= pageTitle
 	- var x;
 	.row
-		.col-xl-4
+		.col-6.col-sm-4.order-0
 			.card
 				.card__imgbox.card__imgbox_xl(style='background-image: url(img/photo-01.png);')
-		.col-xl-8
+		.col-12.col-sm-8.order-2.order-sm-1
 			.card
 				.content-text
 					h3 Главный инженер отделения трубопрокатного цеха
 						span.sub (Подразделение отдела № 1023)
 
-					table.profile-info.margin-bottom-15
+					table.profile-info.margin-bottom-lg-15.margin-bottom-10
 						tbody
 							tr
 								td.text-right
@@ -66,24 +66,26 @@ block content
 									p vk.com/omk_engineer
 								td
 
-				.content-text.margin-bottom-10
+				.content-text.margin-bottom-lg-10
 					p Биография:
 				.content-text_special
 					p Константин Александрович Константинопольский — председатель совета директоров ОМК с июля 2017 года. Ранее А.М. Седых был председателем правления ОМК с января 2013 по июль 2017 гг. Руководящие должности в компании занимает с 1999 года. Сначала А.М. Седых возглавил Выксунский металлургический завод и вывел предприятие из кризиса. Затем был генеральным директором ОМК и председателем совета директором ВМЗ. В 2002-м выбран председателем совета директоров компании, в 2003-2006 годах был президентом ОМК.
-	.row
-		.col-xl-4
+		.col-sm-4.d-none.d-sm-block.order-sm-2
 			//button.button-big-o.button-big-o-danger ГОРЯЧАЯ ЛИНИЯ ОМК
-		.col-xl-4
-			button.button-big-o.button-big-o-danger ГОРЯЧАЯ ЛИНИЯ ОМК
-			button.button-big-o ДАТЬ ОБЪЯВЛЕНИЕ
-		.col-xl-4
-			button.button-big-o.button-big-o-special ДОБАВИТЬ БЛОГ
-			button.button-big-o ОТСЛЕЖИВАЕМЫЕ БЛОГИ
-	.card.margin-bottom-15
+		.col-6.col-sm-8.order-1.order-sm-3
+			.row
+				.col-12.col-sm-6
+					button.button-big-o.button-big-o-danger ГОРЯЧАЯ ЛИНИЯ ОМК
+					button.button-big-o ДАТЬ ОБЪЯВЛЕНИЕ
+				.col-12.col-sm-6
+					button.button-big-o.button-big-o-special ДОБАВИТЬ БЛОГ
+					button.button-big-o ОТСЛЕЖИВАЕМЫЕ БЛОГИ
+
+	.card.margin-bottom-lg-15.margin-bottom-10
 		hr.card-hr
 	.row
 		.col-12
-			.card.margin-bottom-15
+			.card.margin-bottom-lg-15.margin-bottom-5
 				.content-titlebox
 					h2 Сохраненные ссылки
 	.card.margin-bottom-10
@@ -103,87 +105,7 @@ block content
 									a.card-links__lnk.card-links__lnk_small.link-special.color-thin(href="") Удалить
 							.card-links__lnkbox
 								a.card-links__lnk.text-ddd.color-thin(href="")= item.content
-	.row
-		.col-12
-			.card.margin-bottom-15
-				.content-titlebox
-					h2 Свои иконки меню "Системы"
-	.row
-		.col-xl-3
-			.card-icons
-				table
-					tbody
-						tr
-							- var items = ['icon-burg','icon-more','icon-close','icon-search']
-							each item in items
-								td
-									i(class=item)
-						tr
-							- var items = ['icon-shop_cart','icon-filters','icon-like','icon-fire']
-							each item in items
-								td
-									i(class=item)
-						tr
-							- var items = ['icon-see','icon-heart','icon-mark','icon-symbol']
-							each item in items
-								td
-									i(class=item)
-		.col-xl-9
-			.card
-				.card-links
-					.card-links-wrap
-						.card-links__img
-							.card-links__imgbox
-								i.icon-heart
-						.card-links__items
-							.card-links__item.card-links__lnkbox.card-links__head
-								.card-links__left
-									a.card-links__lnk(href="") Моя любимая пиццерия
-								.card-links__right
-									a.card-links__lnk.card-links__lnk_small.link-special.color-thin(href="") Редактировать
-									a.card-links__lnk.card-links__lnk_small.link-special.color-thin(href="") Удалить
-			.card
-				.card-links
-					.card-links-wrap
-						.card-links__img
-							.card-links__imgbox
-								i.icon-fire-2
-						.card-links__items
-							.card-links__item.card-links__lnkbox.card-links__head
-								.card-links__left
-									a.card-links__lnk(href="") Сайт важного партнера
-								.card-links__right
-									a.card-links__lnk.card-links__lnk_small.link-special.color-thin(href="") Редактировать
-									a.card-links__lnk.card-links__lnk_small.link-special.color-thin(href="") Удалить
-			.card
-				.card-links
-					.card-links-wrap
-						.card-links__img
-							.card-links__imgbox
-								i.icon-aircraft
-						.card-links__items
-							.card-links__item.card-links__lnkbox.card-links__head
-								.card-links__left
-									a.card-links__lnk(href="") Моя любимая пиццерия
-								.card-links__right
-									a.card-links__lnk.card-links__lnk_small.link-special.color-thin(href="") Редактировать
-									a.card-links__lnk.card-links__lnk_small.link-special.color-thin(href="") Удалить
-			.card
-				.card-links
-					.card-links-wrap
-						.card-links__img
-							.card-links__imgbox
-								i.icon-shop_cart
-						.card-links__items
-							.card-links__item.card-links__lnkbox.card-links__head
-								.card-links__left
-									a.card-links__lnk(href="") Моя любимая пиццерия
-								.card-links__right
-									a.card-links__lnk.card-links__lnk_small.link-special.color-thin(href="") Редактировать
-									a.card-links__lnk.card-links__lnk_small.link-special.color-thin(href="") Удалить
-			.card.text-right
-				button.button.button-border.button-width-142.margin-right-30.button-height-30 Добавить
-				button.button.button-border.button-width-142.button-height-30 Применить
+	include modules/_main-icons
 	.row
 		.col-12
 			.card.margin-bottom-15
@@ -286,43 +208,44 @@ block content
 
 	.row
 		.col-12
-			.card.margin-bottom-15
+			.card.margin-bottom-lg-15
 				.content-titlebox
 					h2 Список друзей
 	.card
 		- var tableClass = 'table-thin-head';
-		table.table(class=tableClass)
-			thead
-				tr
-					th #
-					th ФИО
-					th Должность
-					th Подразделение
-					th Действие
-			tbody
-				tr
-					td 1
-					td Константин Александрович Константинопольский
-					td Главный инженер отделения трубопрокатного цеха
-					td Подразделение ВМЗ по настройке технических решений
-					td
-						a.link-special.color-thin.d-block(href="") Удалить
-				tr
-					td 2
-					td Константин Александрович Константинопольский
-					td Главный инженер отделения трубопрокатного цеха
-					td Подразделение ВМЗ по настройке технических решений
-					td
-						a.link-special.color-thin.d-block(href="") Удалить
-						a.link-special.color-thin.d-block(href="") Поздравить
-				tr
-					td 3
-					td Константин Александрович Константинопольский
-					td Главный инженер отделения трубопрокатного цеха
-					td Подразделение ВМЗ по настройке технических решений
-					td
-						a.link-special.color-thin.d-block(href="") Удалить
-						a.link-special.color-thin.d-block(href="") Поздравить
+		.table-inn
+			table.table(class=tableClass)
+				thead
+					tr
+						th #
+						th ФИО
+						th Должность
+						th Подразделение
+						th Действие
+				tbody
+					tr
+						td 1
+						td Константин Александрович Константинопольский
+						td Главный инженер отделения трубопрокатного цеха
+						td Подразделение ВМЗ по настройке технических решений
+						td
+							a.link-special.color-thin.d-block(href="") Удалить
+					tr
+						td 2
+						td Константин Александрович Константинопольский
+						td Главный инженер отделения трубопрокатного цеха
+						td Подразделение ВМЗ по настройке технических решений
+						td
+							a.link-special.color-thin.d-block(href="") Удалить
+							a.link-special.color-thin.d-block(href="") Поздравить
+					tr
+						td 3
+						td Константин Александрович Константинопольский
+						td Главный инженер отделения трубопрокатного цеха
+						td Подразделение ВМЗ по настройке технических решений
+						td
+							a.link-special.color-thin.d-block(href="") Удалить
+							a.link-special.color-thin.d-block(href="") Поздравить
 
 
 

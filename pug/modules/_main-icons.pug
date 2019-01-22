@@ -1,0 +1,49 @@
+mixin iconLinksBlock($icon, $text)
+	.card
+		.card-links
+			.card-links-wrap
+				.card-links__img
+					.card-links__imgbox
+						i(class= $icon, data-icon= $icon)
+				.card-links__items
+					.card-links__item.card-links__lnkbox.card-links__head
+						.card-links__left
+							a.card-links__lnk(href="")= $text
+						.card-links__right
+							a.card-links__lnk.card-links__lnk_small.link-special.color-thin(href="") Редактировать
+							a.card-links__lnk.card-links__lnk_small.link-special.color-thin(href="") Удалить
+.main-icons
+	.row
+		.col-12
+			.card.margin-bottom-15
+				.content-titlebox
+					h2 Свои иконки меню "Системы"
+	.row
+		.col-sm-3
+			.card-icons
+				table
+					tbody
+						tr
+							- var items = ['icon-burg','icon-more','icon-close','icon-search']
+							each item in items
+								td
+									i(class= item, data-icon= item)
+						tr
+							- var items = ['icon-shop_cart','icon-filters','icon-like','icon-fire']
+							each item in items
+								td
+									i(class= item, data-icon= item)
+						tr
+							- var items = ['icon-see','icon-heart','icon-mark','icon-symbol']
+							each item in items
+								td
+									i(class= item, data-icon= item)
+		.col-sm-9
+			+iconLinksBlock('icon-heart', 'Моя любимая пиццерия')
+			+iconLinksBlock('icon-fire-2', 'Сайт важного партнера')
+			+iconLinksBlock('icon-aircraft', 'Моя любимая пиццерия')
+			+iconLinksBlock('icon-shop_cart', 'Моя любимая пиццерия')
+
+			.card.text-right
+				button.button.button-border.button-width-142.margin-right-30.button-height-30 Добавить
+				button.button.button-border.button-width-142.button-height-30 Применить
