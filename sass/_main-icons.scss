@@ -1,0 +1,13 @@
+.main-icon {
+	&__title {
+		min-height: 26px;
+	}
+	&__input {
+		width: 350px;
+		height: 25px;
+		padding: 0 10px;
+		font-size: 12px;
+		line-height: 1.4;
+		background-color: $light-color;
+	}
+}

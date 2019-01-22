@@ -1089,7 +1089,9 @@
                   </div>
                 </div>
               </div>
-              <div class="main-icons">
+              <!-- mixins -------------------------------------------------------------------------------------------------------------->
+              <!-- content ------------------------------------------------------------------------------------------------------------->
+              <form class="form main-icon">
                 <div class="row">
                   <div class="col-12">
                     <div class="card margin-bottom-15">
@@ -1105,95 +1107,119 @@
                       <table>
                         <tbody>
                           <tr>
-                            <td><i class="icon-burg" data-icon="icon-burg"></i></td>
-                            <td><i class="icon-more" data-icon="icon-more"></i></td>
-                            <td><i class="icon-close" data-icon="icon-close"></i></td>
-                            <td><i class="icon-search" data-icon="icon-search"></i></td>
+                                          <td><i class="icon-burg" data-icon-item="icon-burg"></i></td>
+                                          <td><i class="icon-more" data-icon-item="icon-more"></i></td>
+                                          <td><i class="icon-close" data-icon-item="icon-close"></i></td>
+                                          <td><i class="icon-search" data-icon-item="icon-search"></i></td>
                           </tr>
                           <tr>
-                            <td><i class="icon-shop_cart" data-icon="icon-shop_cart"></i></td>
-                            <td><i class="icon-filters" data-icon="icon-filters"></i></td>
-                            <td><i class="icon-like" data-icon="icon-like"></i></td>
-                            <td><i class="icon-fire" data-icon="icon-fire"></i></td>
+                                          <td><i class="icon-shop_cart" data-icon-item="icon-shop_cart"></i></td>
+                                          <td><i class="icon-filters" data-icon-item="icon-filters"></i></td>
+                                          <td><i class="icon-like" data-icon-item="icon-like"></i></td>
+                                          <td><i class="icon-fire" data-icon-item="icon-fire"></i></td>
                           </tr>
                           <tr>
-                            <td><i class="icon-see" data-icon="icon-see"></i></td>
-                            <td><i class="icon-heart" data-icon="icon-heart"></i></td>
-                            <td><i class="icon-mark" data-icon="icon-mark"></i></td>
-                            <td><i class="icon-symbol" data-icon="icon-symbol"></i></td>
+                                          <td><i class="icon-see" data-icon-item="icon-see"></i></td>
+                                          <td><i class="icon-heart" data-icon-item="icon-heart"></i></td>
+                                          <td><i class="icon-mark" data-icon-item="icon-mark"></i></td>
+                                          <td><i class="icon-symbol" data-icon-item="icon-symbol"></i></td>
                           </tr>
                         </tbody>
                       </table>
                     </div>
                   </div>
                   <div class="col-sm-9">
-                                  <div class="card">
-                                    <div class="card-links">
-                                      <div class="card-links-wrap">
-                                        <div class="card-links__img">
-                                          <div class="card-links__imgbox"><i class="icon-heart" data-icon="icon-heart"></i></div>
-                                        </div>
-                                        <div class="card-links__items">
-                                          <div class="card-links__item card-links__lnkbox card-links__head">
-                                            <div class="card-links__left"><a class="card-links__lnk" href="">Моя любимая пиццерия</a></div>
-                                            <div class="card-links__right"><a class="card-links__lnk card-links__lnk_small link-special color-thin" href="">Редактировать</a><a class="card-links__lnk card-links__lnk_small link-special color-thin" href="">Удалить</a></div>
+                                  <div class="card card-links margin-bottom-0 padding-bottom-xl-30">
+                                    <div class="card-links-wrap">
+                                      <div class="card-links__img">
+                                        <div class="card-links__imgbox"><i class="icon-heart" data-icon="icon-heart"></i></div>
+                                      </div>
+                                      <div class="card-links__items">
+                                        <div class="card-links__item card-links__lnkbox card-links__head">
+                                          <div class="card-links__left">
+                                            <button class="card-links__lnk main-icon__title" type="button" data-edit="true" data-target="#mainIconsTitle-01">Моя любимая пиццерия</button>
+                                            <input class="form__input main-icon__input hide" name="title" maxlength="24">
+                                          </div>
+                                          <div class="card-links__right">
+                                            <button class="card-links__lnk card-links__lnk_small link-special color-thin main-icon__button" type="button" data-edit>Редактировать</button>
+                                            <button class="card-links__lnk card-links__lnk_small link-special color-thin main-icon__button" type="button" data-remove>Удалить</button>
+                                            <button class="card-links__lnk card-links__lnk_small link-special color-thin main-icon__button hide" type="button" data-save>Сохранить</button>
+                                            <button class="card-links__lnk card-links__lnk_small link-special color-thin main-icon__button hide" type="button" data-cancel>Отменить</button>
                                           </div>
                                         </div>
                                       </div>
                                     </div>
                                   </div>
-                                  <div class="card">
-                                    <div class="card-links">
-                                      <div class="card-links-wrap">
-                                        <div class="card-links__img">
-                                          <div class="card-links__imgbox"><i class="icon-fire-2" data-icon="icon-fire-2"></i></div>
-                                        </div>
-                                        <div class="card-links__items">
-                                          <div class="card-links__item card-links__lnkbox card-links__head">
-                                            <div class="card-links__left"><a class="card-links__lnk" href="">Сайт важного партнера</a></div>
-                                            <div class="card-links__right"><a class="card-links__lnk card-links__lnk_small link-special color-thin" href="">Редактировать</a><a class="card-links__lnk card-links__lnk_small link-special color-thin" href="">Удалить</a></div>
+                                  <div class="card card-links margin-bottom-0 padding-bottom-xl-30">
+                                    <div class="card-links-wrap">
+                                      <div class="card-links__img">
+                                        <div class="card-links__imgbox"><i class="icon-fire-2" data-icon="icon-fire-2"></i></div>
+                                      </div>
+                                      <div class="card-links__items">
+                                        <div class="card-links__item card-links__lnkbox card-links__head">
+                                          <div class="card-links__left">
+                                            <button class="card-links__lnk main-icon__title" type="button" data-edit="true" data-target="#mainIconsTitle-02">Сайт важного партнера</button>
+                                            <input class="form__input main-icon__input hide" name="title" maxlength="24">
+                                          </div>
+                                          <div class="card-links__right">
+                                            <button class="card-links__lnk card-links__lnk_small link-special color-thin main-icon__button" type="button" data-edit>Редактировать</button>
+                                            <button class="card-links__lnk card-links__lnk_small link-special color-thin main-icon__button" type="button" data-remove>Удалить</button>
+                                            <button class="card-links__lnk card-links__lnk_small link-special color-thin main-icon__button hide" type="button" data-save>Сохранить</button>
+                                            <button class="card-links__lnk card-links__lnk_small link-special color-thin main-icon__button hide" type="button" data-cancel>Отменить</button>
                                           </div>
                                         </div>
                                       </div>
                                     </div>
                                   </div>
-                                  <div class="card">
-                                    <div class="card-links">
-                                      <div class="card-links-wrap">
-                                        <div class="card-links__img">
-                                          <div class="card-links__imgbox"><i class="icon-aircraft" data-icon="icon-aircraft"></i></div>
-                                        </div>
-                                        <div class="card-links__items">
-                                          <div class="card-links__item card-links__lnkbox card-links__head">
-                                            <div class="card-links__left"><a class="card-links__lnk" href="">Моя любимая пиццерия</a></div>
-                                            <div class="card-links__right"><a class="card-links__lnk card-links__lnk_small link-special color-thin" href="">Редактировать</a><a class="card-links__lnk card-links__lnk_small link-special color-thin" href="">Удалить</a></div>
+                                  <div class="card card-links margin-bottom-0 padding-bottom-xl-30">
+                                    <div class="card-links-wrap">
+                                      <div class="card-links__img">
+                                        <div class="card-links__imgbox"><i class="icon-aircraft" data-icon="icon-aircraft"></i></div>
+                                      </div>
+                                      <div class="card-links__items">
+                                        <div class="card-links__item card-links__lnkbox card-links__head">
+                                          <div class="card-links__left">
+                                            <button class="card-links__lnk main-icon__title" type="button" data-edit="true" data-target="#mainIconsTitle-03">Моя любимая пиццерия</button>
+                                            <input class="form__input main-icon__input hide" name="title" maxlength="24">
+                                          </div>
+                                          <div class="card-links__right">
+                                            <button class="card-links__lnk card-links__lnk_small link-special color-thin main-icon__button" type="button" data-edit>Редактировать</button>
+                                            <button class="card-links__lnk card-links__lnk_small link-special color-thin main-icon__button" type="button" data-remove>Удалить</button>
+                                            <button class="card-links__lnk card-links__lnk_small link-special color-thin main-icon__button hide" type="button" data-save>Сохранить</button>
+                                            <button class="card-links__lnk card-links__lnk_small link-special color-thin main-icon__button hide" type="button" data-cancel>Отменить</button>
                                           </div>
                                         </div>
                                       </div>
                                     </div>
                                   </div>
-                                  <div class="card">
-                                    <div class="card-links">
-                                      <div class="card-links-wrap">
-                                        <div class="card-links__img">
-                                          <div class="card-links__imgbox"><i class="icon-shop_cart" data-icon="icon-shop_cart"></i></div>
-                                        </div>
-                                        <div class="card-links__items">
-                                          <div class="card-links__item card-links__lnkbox card-links__head">
-                                            <div class="card-links__left"><a class="card-links__lnk" href="">Моя любимая пиццерия</a></div>
-                                            <div class="card-links__right"><a class="card-links__lnk card-links__lnk_small link-special color-thin" href="">Редактировать</a><a class="card-links__lnk card-links__lnk_small link-special color-thin" href="">Удалить</a></div>
+                                  <div class="card card-links margin-bottom-0 padding-bottom-xl-30">
+                                    <div class="card-links-wrap">
+                                      <div class="card-links__img">
+                                        <div class="card-links__imgbox"><i class="icon-shop_cart" data-icon="icon-shop_cart"></i></div>
+                                      </div>
+                                      <div class="card-links__items">
+                                        <div class="card-links__item card-links__lnkbox card-links__head">
+                                          <div class="card-links__left">
+                                            <button class="card-links__lnk main-icon__title" type="button" data-edit="true" data-target="#mainIconsTitle-04">Моя любимая пиццерия</button>
+                                            <input class="form__input main-icon__input hide" name="title" maxlength="24">
+                                          </div>
+                                          <div class="card-links__right">
+                                            <button class="card-links__lnk card-links__lnk_small link-special color-thin main-icon__button" type="button" data-edit>Редактировать</button>
+                                            <button class="card-links__lnk card-links__lnk_small link-special color-thin main-icon__button" type="button" data-remove>Удалить</button>
+                                            <button class="card-links__lnk card-links__lnk_small link-special color-thin main-icon__button hide" type="button" data-save>Сохранить</button>
+                                            <button class="card-links__lnk card-links__lnk_small link-special color-thin main-icon__button hide" type="button" data-cancel>Отменить</button>
                                           </div>
                                         </div>
                                       </div>
                                     </div>
                                   </div>
                     <div class="card text-right">
-                      <button class="button button-border button-width-142 margin-right-30 button-height-30">Добавить</button>
-                      <button class="button button-border button-width-142 button-height-30">Применить</button>
+                      <button class="button button-border button-width-142 margin-right-30 button-height-30" type="button">Добавить</button>
+                      <button class="button button-border button-width-142 button-height-30" type="submit">Применить</button>
                     </div>
                   </div>
                 </div>
-              </div>
+              </form>
               <div class="row">
                 <div class="col-12">
                   <div class="card margin-bottom-15">

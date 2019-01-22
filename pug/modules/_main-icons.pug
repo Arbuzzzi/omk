@@ -1,18 +1,28 @@
-mixin iconLinksBlock($icon, $text)
-	.card
-		.card-links
-			.card-links-wrap
-				.card-links__img
-					.card-links__imgbox
-						i(class= $icon, data-icon= $icon)
-				.card-links__items
-					.card-links__item.card-links__lnkbox.card-links__head
-						.card-links__left
-							a.card-links__lnk(href="")= $text
-						.card-links__right
-							a.card-links__lnk.card-links__lnk_small.link-special.color-thin(href="") Редактировать
-							a.card-links__lnk.card-links__lnk_small.link-special.color-thin(href="") Удалить
-.main-icons
+// mixins ------------------------------------------------------------------------------------------------------------
+mixin iconItemsTabel($items)
+	each $item in $items
+		td
+			i(class= $item, data-icon-item= $item)
+
+mixin iconLinksBlock($icon, $text, $element)
+	.card.card-links.margin-bottom-0.padding-bottom-xl-30
+		.card-links-wrap
+			.card-links__img
+				.card-links__imgbox
+					i(class= $icon, data-icon= $icon)
+			.card-links__items
+				.card-links__item.card-links__lnkbox.card-links__head
+					.card-links__left
+						button.card-links__lnk.main-icon__title(type="button", data-edit="true", data-target="#" + $element)= $text
+						input.form__input.main-icon__input.hide(name="title" maxlength="24")
+					.card-links__right
+						button.card-links__lnk.card-links__lnk_small.link-special.color-thin.main-icon__button(type="button", data-edit) Редактировать
+						button.card-links__lnk.card-links__lnk_small.link-special.color-thin.main-icon__button(type="button", data-remove) Удалить
+						button.card-links__lnk.card-links__lnk_small.link-special.color-thin.main-icon__button.hide(type="button", data-save) Сохранить
+						button.card-links__lnk.card-links__lnk_small.link-special.color-thin.main-icon__button.hide(type="button", data-cancel) Отменить
+
+// content -----------------------------------------------------------------------------------------------------------
+form.form.main-icon
 	.row
 		.col-12
 			.card.margin-bottom-15
@@ -25,25 +35,20 @@ mixin iconLinksBlock($icon, $text)
 					tbody
 						tr
 							- var items = ['icon-burg','icon-more','icon-close','icon-search']
-							each item in items
-								td
-									i(class= item, data-icon= item)
+							+iconItemsTabel(items)
 						tr
 							- var items = ['icon-shop_cart','icon-filters','icon-like','icon-fire']
-							each item in items
-								td
-									i(class= item, data-icon= item)
+							+iconItemsTabel(items)
 						tr
 							- var items = ['icon-see','icon-heart','icon-mark','icon-symbol']
-							each item in items
-								td
-									i(class= item, data-icon= item)
+							+iconItemsTabel(items)
+
 		.col-sm-9
-			+iconLinksBlock('icon-heart', 'Моя любимая пиццерия')
-			+iconLinksBlock('icon-fire-2', 'Сайт важного партнера')
-			+iconLinksBlock('icon-aircraft', 'Моя любимая пиццерия')
-			+iconLinksBlock('icon-shop_cart', 'Моя любимая пиццерия')
+			+iconLinksBlock('icon-heart', 'Моя любимая пиццерия', 'mainIconsTitle-01')
+			+iconLinksBlock('icon-fire-2', 'Сайт важного партнера', 'mainIconsTitle-02')
+			+iconLinksBlock('icon-aircraft', 'Моя любимая пиццерия', 'mainIconsTitle-03')
+			+iconLinksBlock('icon-shop_cart', 'Моя любимая пиццерия', 'mainIconsTitle-04')
 
 			.card.text-right
-				button.button.button-border.button-width-142.margin-right-30.button-height-30 Добавить
-				button.button.button-border.button-width-142.button-height-30 Применить
+				button.button.button-border.button-width-142.margin-right-30.button-height-30(type="button") Добавить
+				button.button.button-border.button-width-142.button-height-30(type="submit") Применить

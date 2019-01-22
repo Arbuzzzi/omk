@@ -6487,6 +6487,19 @@ h2 span,
   left: -31.5px;
 }
 
+.main-icon__title {
+  min-height: 26px;
+}
+
+.main-icon__input {
+  width: 350px;
+  height: 25px;
+  padding: 0 10px;
+  font-size: 12px;
+  line-height: 1.4;
+  background-color: #ffffff;
+}
+
 @media (min-width: 576px) {
   .modal-dialog {
     max-width: 500px;

@@ -1261,9 +1261,73 @@ $(document).ready(function() {
 	});
 
 	/* Main icons ------------------------------------------------------------------------------------- */
-	$('.main-icons').on('click', function (event){
+	$('.main-icon').on('click', function (event){
+		var elClick = event.target,
+				el = this,
+				block = $($(elClick).parents('.card-links')),
+				title = block.find('.main-icon__title'),
+				input = block.find('.main-icon__input'),
+				buttonRemove = block.find('[data-remove].main-icon__button'),
+				buttonSave = block.find('[data-save].main-icon__button'),
+				buttonCancel = block.find('[data-cancel].main-icon__button'),
+				buttonEdit = block.find('[data-edit].main-icon__button');
 
-	})
+		// edit
+		if ($(elClick).hasAttr('data-edit')) {
+
+			$(title).fadeOut(200, function (){
+				$(this).addClass('hide');
+				$(input).val($(title).text());
+				$(input).removeClass('hide').fadeIn(200).focus();
+			});
+
+			toggleElement(buttonEdit, buttonSave);
+			toggleElement(buttonRemove, buttonCancel);
+
+
+		}
+
+		// save
+		if ($(elClick).hasAttr('data-save')) {
+			$(input).fadeOut(200, function (){
+				$(this).addClass('hide');
+				$(title).text($(this).val());
+				$(title).removeClass('hide').fadeIn(200);
+			});
+
+			toggleElement(buttonSave, buttonEdit);
+			toggleElement(buttonCancel, buttonRemove);
+
+		}
+
+		//	remove
+		if ($(elClick).hasAttr('data-remove')) {
+			$(block).hide('blind', function (){
+				$(this).detach()
+			});
+		}
+		// cancel
+		if ($(elClick).hasAttr('data-cancel')) {
+			$(input).fadeOut(200, function (){
+				$(this).addClass('hide');
+				$(input).val($(title).text());
+				$(title).removeClass('hide').fadeIn(200);
+			});
+
+			toggleElement(buttonSave, buttonEdit);
+			toggleElement(buttonCancel, buttonRemove);
+		}
+
+		function toggleElement($elementHide, $elementShow){
+			$($elementHide).fadeOut(200, function (){
+				$(this).addClass('hide');
+
+				$($elementShow).fadeIn(200, function (){
+					$(this).removeClass('hide');
+				})
+			});
+		}
+	});
 
 	/* Forms ------------------------------------------------------------------------------------------ */
 	var deafultTextBtn = $('#formMoreInputsControl').text();
@@ -1314,4 +1378,7 @@ $(document).ready(function() {
 		$('[data-target="#'+ $(this).attr('id') +'"]').removeClass('active');
 		
 	});
+	$.fn.hasAttr = function(name) {
+		return this.attr(name) !== undefined;
+	};
 });
