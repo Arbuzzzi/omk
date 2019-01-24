@@ -1739,6 +1739,12 @@ h2 span,
   vertical-align: middle;
 }
 
+.button[disabled] {
+  cursor: no-drop;
+  background-color: #f4f5f5;
+  color: #5e6167;
+}
+
 .button:last-child {
   margin-right: -1px;
 }
@@ -4764,7 +4770,6 @@ h2 span,
   -webkit-border-radius: 5px;
           border-radius: 5px;
   border: 1px solid #a1a3a7;
-  background-color: rgba(244, 245, 245, 0.8);
   text-align: center;
 }
 
@@ -5054,6 +5059,7 @@ h2 span,
 
 .card-links__left {
   float: left;
+  width: 320px;
 }
 
 .card-links__right {
@@ -6252,10 +6258,6 @@ h2 span,
   border-spacing: 0px;
 }
 
-.table-inn {
-  overflow-x: scroll;
-}
-
 .table thead {
   -webkit-border-radius: 5px 0 0 5px;
           border-radius: 5px 0 0 5px;
@@ -6487,17 +6489,67 @@ h2 span,
   left: -31.5px;
 }
 
+.main-icon {
+  margin-bottom: 30px;
+}
+
+.main-icon__card {
+  background-color: #fff;
+}
+
+.main-icon__card.edits .main-icon__img {
+  cursor: pointer;
+}
+
+.main-icon__card.disabled * {
+  cursor: no-drop;
+  color: #d0d1d3;
+}
+
 .main-icon__title {
   min-height: 26px;
 }
 
 .main-icon__input {
-  width: 350px;
+  width: 310px;
   height: 25px;
   padding: 0 10px;
   font-size: 12px;
   line-height: 1.4;
   background-color: #ffffff;
+}
+
+.main-icon__imgbox {
+  width: 60px;
+}
+
+.main-icon__imgbox > * {
+  vertical-align: middle;
+}
+
+.main-icon__img {
+  color: #d0d1d3;
+}
+
+.main-icon__img.active {
+  color: #757575;
+}
+
+.main-icon__images {
+  background-color: rgba(244, 245, 245, 0.8);
+}
+
+.main-icon__images.active {
+  background-color: transparent;
+}
+
+.main-icon__images.active .main-icon__img {
+  cursor: pointer;
+  color: #b6b7ba;
+}
+
+.main-icon__images.active .main-icon__img.active {
+  color: #757575;
 }
 
 @media (min-width: 576px) {
@@ -7728,6 +7780,12 @@ h2 span,
     color: #ffffff;
   }
 
+  .button[disabled]:hover {
+    cursor: no-drop;
+    background-color: #f4f5f5;
+    color: #5e6167;
+  }
+
   .button-split:hover {
     border-color: #bcbdc0;
   }
@@ -7887,7 +7945,7 @@ h2 span,
     color: #ffffff;
   }
 
-  .card-links__imgbox i:hover {
+  .card-links__imgbox:hover {
     color: #757575;
   }
 
@@ -7940,6 +7998,34 @@ h2 span,
   .circuit-item__link:hover {
     border: 1px solid #5e6167;
     background-color: #ffffff;
+  }
+
+  .main-icon__card.edits .main-icon__img:hover {
+    color: #757575;
+  }
+
+  .main-icon__card.disabled *:hover {
+    cursor: no-drop;
+    color: #d0d1d3;
+    background-color: transparent;
+    border-color: transparent;
+    text-decoration: none;
+  }
+
+  .main-icon__img:hover {
+    color: #d0d1d3;
+  }
+
+  .main-icon__img.active:hover {
+    color: #757575;
+  }
+
+  .main-icon__images.active .main-icon__img:hover {
+    color: #ee3124;
+  }
+
+  .main-icon__images.active .main-icon__img.active:hover {
+    color: #757575;
   }
 }
 
@@ -8711,6 +8797,10 @@ h2 span,
 
   .widget-slider-arrow {
     width: 10px;
+  }
+
+  .table-inn {
+    overflow-x: scroll;
   }
 }
 

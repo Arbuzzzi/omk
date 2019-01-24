@@ -2,19 +2,20 @@
 mixin iconItemsTabel($items)
 	each $item in $items
 		td
-			i(class= $item, data-icon-item= $item)
+			i.main-icon__img(class= $item, data-icon= $item, data-icon-item)
 
 mixin iconLinksBlock($icon, $text, $element)
-	.card.card-links.margin-bottom-0.padding-bottom-xl-30
+	.card.card-links.main-icon__card.margin-bottom-0.padding-bottom-xl-30
 		.card-links-wrap
 			.card-links__img
-				.card-links__imgbox
-					i(class= $icon, data-icon= $icon)
-			.card-links__items
-				.card-links__item.card-links__lnkbox.card-links__head
+				.card-links__imgbox.main-icon__imgbox
+					i.main-icon__img(class= $icon, data-icon= $icon)
+			.card-links__items.main-icon__items
+				.card-links__item.card-links__lnkbox.card-links__head.main-icon__item
 					.card-links__left
 						button.card-links__lnk.main-icon__title(type="button", data-edit="true", data-target="#" + $element)= $text
-						input.form__input.main-icon__input.hide(name="title" maxlength="24")
+						input.form__input.main-icon__input.margin-bottom-10.current.hide(name="title", maxlength="24", placeholder="Название системы")
+						input.form__input.main-icon__input.hide(name="title", placeholder="Введите ссылку")
 					.card-links__right
 						button.card-links__lnk.card-links__lnk_small.link-special.color-thin.main-icon__button(type="button", data-edit) Редактировать
 						button.card-links__lnk.card-links__lnk_small.link-special.color-thin.main-icon__button(type="button", data-remove) Удалить
@@ -30,14 +31,14 @@ form.form.main-icon
 					h2 Свои иконки меню "Системы"
 	.row
 		.col-sm-3
-			.card-icons
+			.card-icons.main-icon__images
 				table
 					tbody
 						tr
 							- var items = ['icon-burg','icon-more','icon-close','icon-search']
 							+iconItemsTabel(items)
 						tr
-							- var items = ['icon-shop_cart','icon-filters','icon-like','icon-fire']
+							- var items = ['icon-shop_cart','icon-filters','icon-like','icon-fire-2']
 							+iconItemsTabel(items)
 						tr
 							- var items = ['icon-see','icon-heart','icon-mark','icon-symbol']
@@ -49,6 +50,6 @@ form.form.main-icon
 			+iconLinksBlock('icon-aircraft', 'Моя любимая пиццерия', 'mainIconsTitle-03')
 			+iconLinksBlock('icon-shop_cart', 'Моя любимая пиццерия', 'mainIconsTitle-04')
 
-			.card.text-right
-				button.button.button-border.button-width-142.margin-right-30.button-height-30(type="button") Добавить
-				button.button.button-border.button-width-142.button-height-30(type="submit") Применить
+			.card.text-right.margin-bottom-0.bg-color-light.main-icon__buttons
+				button.button.button-border.button-width-142.margin-right-30.button-height-30.main-icon__button_primary(type="button", data-add) Добавить
+				button.button.button-border.button-width-142.button-height-30.main-icon__button_primary(type="submit") Применить

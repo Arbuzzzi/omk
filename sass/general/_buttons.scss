@@ -130,6 +130,16 @@
 		background-color: $btn-hov-bg-color;
 		color: $btn-hov-color;
 	}
+	&[disabled] {
+		cursor: no-drop;
+		background-color: #f4f5f5;
+		color: #5e6167;
+		@include hover {
+			cursor: no-drop;
+			background-color: #f4f5f5;
+			color: #5e6167;
+		}
+	}
 	&:last-child {
 		margin-right: -1px;
 	}

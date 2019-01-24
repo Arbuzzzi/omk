@@ -1261,25 +1261,39 @@ $(document).ready(function() {
 	});
 
 	/* Main icons ------------------------------------------------------------------------------------- */
-	$('.main-icon').on('click', function (event){
+	$('.main-icon').on('click keyup', function (event){
 		var elClick = event.target,
 				el = this,
-				block = $($(elClick).parents('.card-links')),
-				title = block.find('.main-icon__title'),
-				input = block.find('.main-icon__input'),
-				buttonRemove = block.find('[data-remove].main-icon__button'),
-				buttonSave = block.find('[data-save].main-icon__button'),
-				buttonCancel = block.find('[data-cancel].main-icon__button'),
-				buttonEdit = block.find('[data-edit].main-icon__button');
+				block = $($(elClick).parents('.main-icon__card')),
+				blocks = ('.main-icon__card'),
+				blocksNotEdits = ('.main-icon__card:not(.edits)'),
+				title = $(block).find('.main-icon__title'),
+				inputCurrent = $(block).find('.main-icon__input.current'),
+				inputs = $(block).find('.main-icon__input'),
+				buttonRemove = $(block).find('[data-remove].main-icon__button'),
+				images = $(el).find('.main-icon__img'),
+				blockImages = $(el).find('.main-icon__images'),
+				blockImagesItems = $(el).find('[data-icon-item]'),
+				buttonIcon = $(block).find('[data-icon].main-icon__img'),
+				currentBlock = $(el).find('.card-links.edits'),
+				currentIconBox = $(el).find('.main-icon__imgbox:has(.main-icon__img.active)'),
+				buttonSave = $(block).find('[data-save].main-icon__button'),
+				buttonCancel = $(block).find('[data-cancel].main-icon__button'),
+				buttonEdit = $(block).find('[data-edit].main-icon__button'),
+				buttonAddPrimary = $(el).find('.main-icon__button_primary'),
+				buttonGroup = $(el).find('.main-icon__buttons'),
+				buttonAdd = $(el).find('[data-add].main-icon__button_primary');
 
 		// edit
-		if ($(elClick).hasAttr('data-edit')) {
+		if ($(elClick).hasAttr('data-edit') && !$(blocks).hasClass('edits')) {
 
 			$(title).fadeOut(200, function (){
 				$(this).addClass('hide');
-				$(input).val($(title).text());
-				$(input).removeClass('hide').fadeIn(200).focus();
+				$(inputs).removeClass('hide').fadeIn(200);
+				$(inputCurrent).val($(title).text()).focus();
 			});
+
+			editsBlock();
 
 			toggleElement(buttonEdit, buttonSave);
 			toggleElement(buttonRemove, buttonCancel);
@@ -1287,17 +1301,48 @@ $(document).ready(function() {
 
 		}
 
+		// edit icon
+		if ($(elClick).hasAttr('data-icon-item') && $(blockImages).hasClass('active')) {
+			var icon = $(elClick).clone().addClass('active').removeAttr('data-icon-item');
+			$(currentIconBox).html(icon);
+
+			$(blockImagesItems).map(function (key, val){
+				if (val !== elClick) {
+					$(val).removeClass('active')
+				} else {
+					$(elClick).addClass('active');
+				}
+			});
+
+		}
+
+		// save keypress"Enter"
+		$(inputs).keyup(function(e){
+			if(e.keyCode == 13) {
+				$(buttonSave).trigger('click');
+			}
+		});
+
 		// save
 		if ($(elClick).hasAttr('data-save')) {
-			$(input).fadeOut(200, function (){
+			$(inputs).fadeOut(200, function (){
 				$(this).addClass('hide');
-				$(title).text($(this).val());
+				$(title).text($(inputCurrent).val());
 				$(title).removeClass('hide').fadeIn(200);
+				$(blockImages).removeClass('active');
 			});
 
 			toggleElement(buttonSave, buttonEdit);
 			toggleElement(buttonCancel, buttonRemove);
 
+
+
+			$(blocks).removeClass('disabled');
+			$(block).removeClass('edits');
+			$(block).removeClass('adds');
+			$(images).removeClass('active');
+			$('.'+$(buttonIcon).data('icon')).removeClass('active');
+			$(buttonAddPrimary).prop('disabled', false);
 		}
 
 		//	remove
@@ -1306,18 +1351,80 @@ $(document).ready(function() {
 				$(this).detach()
 			});
 		}
+
 		// cancel
 		if ($(elClick).hasAttr('data-cancel')) {
-			$(input).fadeOut(200, function (){
-				$(this).addClass('hide');
-				$(input).val($(title).text());
-				$(title).removeClass('hide').fadeIn(200);
-			});
+			if ($(block).hasClass('adds')) {
+				$(block).hide('blind', function (){
+					$(this).detach()
+				});
+			} else {
+				$(inputs).fadeOut(200, function (){
+					$(this).addClass('hide');
+					$(inputCurrent).val($(title).text());
+					$(title).removeClass('hide').fadeIn(200);
+					$(blockImages).removeClass('active');
+				});
+				toggleElement(buttonSave, buttonEdit);
+				toggleElement(buttonCancel, buttonRemove);
 
-			toggleElement(buttonSave, buttonEdit);
-			toggleElement(buttonCancel, buttonRemove);
+			}
+
+			$(blocks).removeClass('disabled');
+			$(block).removeClass('edits');
+
+			$('.'+$(buttonIcon).data('icon')).removeClass('active');
+
+			$(images).removeClass('active');
+			$(buttonAddPrimary).prop('disabled', false);
+
 		}
 
+		// add
+		if ($(elClick).hasAttr('data-add') && !$(elClick).hasAttr('disabled')) {
+			$(buttonAdd).prop('disabled', true);
+			editsBlock();
+			$(blockImages).find('.icon-symbol').addClass('active');
+
+			var btnGroup = $(buttonGroup).before(`
+				<div class="card card-links main-icon__card margin-bottom-0 padding-bottom-xl-30 edits adds">
+          <div class="card-links-wrap">
+            <div class="card-links__img">
+              <div class="card-links__imgbox main-icon__imgbox">
+                <i class="main-icon__img icon-symbol active" data-icon="icon-symbol"></i>
+              </div>
+            </div>
+            <div class="card-links__items main-icon__items">
+              <div class="card-links__item card-links__lnkbox card-links__head main-icon__item">
+                <div class="card-links__left">
+                  <button class="card-links__lnk main-icon__title hide" type="button" data-edit="true" data-target="#mainIconsTitle-04"></button>
+                  <input class="form__input main-icon__input margin-bottom-10 current" name="title" maxlength="24" placeholder="Название системы">
+                  <input class="form__input main-icon__input" name="title" placeholder="Введите ссылку">
+                </div>
+                <div class="card-links__right">
+                  <button class="card-links__lnk card-links__lnk_small link-special color-thin main-icon__button hide" type="button" data-edit="">Редактировать</button>
+                  <button class="card-links__lnk card-links__lnk_small link-special color-thin main-icon__button hide" type="button" data-remove="">Удалить</button>
+                  <button class="card-links__lnk card-links__lnk_small link-special color-thin main-icon__button" type="button" data-save="">Сохранить</button>
+                  <button class="card-links__lnk card-links__lnk_small link-special color-thin main-icon__button" type="button" data-cancel="">Отменить</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+			`);
+			var blockUppend = $(btnGroup).prev();
+			$(blockUppend).find('.main-icon__input.current').val('Название системы').focus();
+
+		}
+		function editsBlock(){
+			$(buttonAddPrimary).prop('disabled', true);
+			$(block).addClass('edits');
+			$(blocksNotEdits).addClass('disabled');
+			$(blockImages).addClass('active');
+			$(buttonIcon).addClass('active');
+			$('.'+$(buttonIcon).data('icon')).addClass('active');
+
+		}
 		function toggleElement($elementHide, $elementShow){
 			$($elementHide).fadeOut(200, function (){
 				$(this).addClass('hide');

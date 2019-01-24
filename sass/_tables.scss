@@ -5,7 +5,10 @@
 	width: 100%;
 	border-spacing: 0px;
 	&-inn {
-		overflow-x: scroll;
+		@include lg-block {
+			overflow-x: scroll;
+
+		}
 	}
 	thead {
 		border-radius: 5px 0 0 5px;

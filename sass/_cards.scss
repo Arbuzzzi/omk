@@ -769,7 +769,6 @@
 		padding: 0 15px;
 		border-radius: 5px;
 		border: 1px solid $thin-color;
-		background-color: rgba(#f4f5f5, 0.8);
 		text-align: center;
 		table {
 			width: 100%;
@@ -1028,6 +1027,9 @@
 		color: #d0d1d3;
 		text-align: center;
 		vertical-align: middle;
+		@include hover {
+			color: #757575;
+		}
 		@include md-block {
 			min-width: auto;
 			max-width: 27px;
@@ -1035,9 +1037,6 @@
 		}
 		i {
 			transition: 0.4s;
-			@include hover {
-				color: #757575;
-			}
 		}
 	}
 	&__items {
@@ -1069,6 +1068,7 @@
 	}
 	&__left {
 		float: left;
+		width: 320px;
 	}
 	&__right {
 		text-align: right;

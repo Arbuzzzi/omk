@@ -1,13 +1,84 @@
 .main-icon {
+	margin-bottom: 30px;
+	&__card {
+		//transition: 0.4s;
+		background-color: #fff;
+		&.edits {
+			.main-icon__img {
+				cursor: pointer;
+				@include hover {
+					color: #757575;
+				}
+			}
+		}
+		&.disabled {
+			* {
+				cursor: no-drop;
+				color: #d0d1d3;
+				@include hover {
+					cursor: no-drop;
+					color: #d0d1d3;
+					background-color: transparent;
+					border-color: transparent;
+					text-decoration: none;
+				}
+			}
+
+			//.main-icon__title {
+			//	cursor: default;
+			//	@include hover {
+			//		text-decoration: none;
+			//		cursor: no-drop;
+			//	}
+			//}
+		}
+	}
 	&__title {
 		min-height: 26px;
 	}
 	&__input {
-		width: 350px;
+		width: 310px;
 		height: 25px;
 		padding: 0 10px;
 		font-size: 12px;
 		line-height: 1.4;
 		background-color: $light-color;
+	}
+	&__imgbox {
+		width: 60px;
+		&>* {
+			vertical-align: middle;
+		}
+	}
+	&__img {
+		color: #d0d1d3;
+		@include hover {
+			color: #d0d1d3;
+		}
+		&.active {
+			color: #757575;
+			@include hover {
+				color: #757575;
+			}
+		}
+	}
+	&__images {
+		background-color: rgba(#f4f5f5, 0.8);
+		&.active {
+			background-color: transparent;
+			.main-icon__img {
+				cursor: pointer;
+				color: darken(#d0d1d3, 10);
+				@include hover {
+					color: $special-color;
+				}
+				&.active {
+					color: #757575;
+					@include hover {
+						color: #757575;
+					}
+				}
+			}
+		}
 	}
 }
