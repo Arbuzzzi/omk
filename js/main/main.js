@@ -1270,6 +1270,7 @@ $(document).ready(function() {
 				title = $(block).find('.main-icon__title'),
 				inputCurrent = $(block).find('.main-icon__input.current'),
 				inputs = $(block).find('.main-icon__input'),
+				inputsBlock = $(block).find('.main-icon__inputs'),
 				buttonRemove = $(block).find('[data-remove].main-icon__button'),
 				images = $(el).find('.main-icon__img'),
 				blockImages = $(el).find('.main-icon__images'),
@@ -1289,11 +1290,12 @@ $(document).ready(function() {
 
 			$(title).fadeOut(200, function (){
 				$(this).addClass('hide');
-				$(inputs).removeClass('hide').fadeIn(200);
+				$(inputsBlock).removeClass('hide').fadeIn(200);
 				$(inputCurrent).val($(title).text()).focus();
 			});
 
 			editsBlock();
+			$(buttonIcon).addClass('active');
 
 			toggleElement(buttonEdit, buttonSave);
 			toggleElement(buttonRemove, buttonCancel);
@@ -1325,7 +1327,7 @@ $(document).ready(function() {
 
 		// save
 		if ($(elClick).hasAttr('data-save')) {
-			$(inputs).fadeOut(200, function (){
+			$(inputsBlock).fadeOut(200, function (){
 				$(this).addClass('hide');
 				$(title).text($(inputCurrent).val());
 				$(title).removeClass('hide').fadeIn(200);
@@ -1346,7 +1348,7 @@ $(document).ready(function() {
 		}
 
 		//	remove
-		if ($(elClick).hasAttr('data-remove')) {
+		if ($(elClick).hasAttr('data-remove') && !$(blocks).hasClass('edits')) {
 			$(block).hide('blind', function (){
 				$(this).detach()
 			});
@@ -1359,7 +1361,7 @@ $(document).ready(function() {
 					$(this).detach()
 				});
 			} else {
-				$(inputs).fadeOut(200, function (){
+				$(inputsBlock).fadeOut(200, function (){
 					$(this).addClass('hide');
 					$(inputCurrent).val($(title).text());
 					$(title).removeClass('hide').fadeIn(200);
@@ -1379,27 +1381,30 @@ $(document).ready(function() {
 			$(buttonAddPrimary).prop('disabled', false);
 
 		}
-
+		console.log($(blocks).length);
+		console.log($(blocks));
 		// add
 		if ($(elClick).hasAttr('data-add') && !$(elClick).hasAttr('disabled')) {
 			$(buttonAdd).prop('disabled', true);
 			editsBlock();
 			$(blockImages).find('.icon-symbol').addClass('active');
-
+			var nID = $(blocks).length + 1;
 			var btnGroup = $(buttonGroup).before(`
 				<div class="card card-links main-icon__card margin-bottom-0 padding-bottom-xl-30 edits adds">
           <div class="card-links-wrap">
             <div class="card-links__img">
-              <div class="card-links__imgbox main-icon__imgbox">
-                <i class="main-icon__img icon-symbol active" data-icon="icon-symbol"></i>
-              </div>
+              <div class="card-links__imgbox main-icon__imgbox"><i class="main-icon__img icon-symbol active" data-icon="icon-symbol"></i></div>
             </div>
             <div class="card-links__items main-icon__items">
               <div class="card-links__item card-links__lnkbox card-links__head main-icon__item">
                 <div class="card-links__left">
-                  <button class="card-links__lnk main-icon__title hide" type="button" data-edit="true" data-target="#mainIconsTitle-04"></button>
-                  <input class="form__input main-icon__input margin-bottom-10 current" name="title" maxlength="24" placeholder="Название системы">
-                  <input class="form__input main-icon__input" name="title" placeholder="Введите ссылку">
+                  <button class="card-links__lnk main-icon__title hide" type="button" data-edit="true" style=""></button>
+                  <div class="main-icon__inputs">
+                    <label class="form-label margin-bottom-5 font-size-14" for="mainIconInputTitle-${nID}">Название</label>
+                    <input class="form__input main-icon__input margin-bottom-15 current" id="mainIconInputTitle-${nID}" name="title" maxlength="24" placeholder="Название системы">
+                    <label class="form-label margin-bottom-5 font-size-14" for="mainIconInputLink-${nID}">Ссылка</label>
+                    <input class="form__input main-icon__input margin-bottom-5" id="mainIconInputLink-${nID}" name="title" placeholder="Введите ссылку">
+                  </div>
                 </div>
                 <div class="card-links__right">
                   <button class="card-links__lnk card-links__lnk_small link-special color-thin main-icon__button hide" type="button" data-edit="">Редактировать</button>
@@ -1421,9 +1426,8 @@ $(document).ready(function() {
 			$(block).addClass('edits');
 			$(blocksNotEdits).addClass('disabled');
 			$(blockImages).addClass('active');
-			$(buttonIcon).addClass('active');
-			$('.'+$(buttonIcon).data('icon')).addClass('active');
-
+			// $(buttonIcon).addClass('active');
+			$(blockImages).find($('.'+$(buttonIcon).data('icon'))).addClass('active');
 		}
 		function toggleElement($elementHide, $elementShow){
 			$($elementHide).fadeOut(200, function (){

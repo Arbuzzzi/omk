@@ -4,7 +4,7 @@ mixin iconItemsTabel($items)
 		td
 			i.main-icon__img(class= $item, data-icon= $item, data-icon-item)
 
-mixin iconLinksBlock($icon, $text, $element)
+mixin iconLinksBlock($icon, $text, $id)
 	.card.card-links.main-icon__card.margin-bottom-0.padding-bottom-xl-30
 		.card-links-wrap
 			.card-links__img
@@ -13,9 +13,12 @@ mixin iconLinksBlock($icon, $text, $element)
 			.card-links__items.main-icon__items
 				.card-links__item.card-links__lnkbox.card-links__head.main-icon__item
 					.card-links__left
-						button.card-links__lnk.main-icon__title(type="button", data-edit="true", data-target="#" + $element)= $text
-						input.form__input.main-icon__input.margin-bottom-10.current.hide(name="title", maxlength="24", placeholder="Название системы")
-						input.form__input.main-icon__input.hide(name="title", placeholder="Введите ссылку")
+						button.card-links__lnk.main-icon__title(type="button", data-edit="true")= $text
+						.main-icon__inputs.hide
+							label.form-label.margin-bottom-5.font-size-14(for="mainIconInputTitle-"+$id) Название
+							input.form__input.main-icon__input.margin-bottom-15.current(id="mainIconInputTitle-" + $id, name="title", maxlength="24", placeholder="Название системы")
+							label.form-label.margin-bottom-5.font-size-14(for="mainIconInputLink-"+$id) Ссылка
+							input.form__input.main-icon__input.margin-bottom-5(id="mainIconInputLink-"+$id,name="title", placeholder="Введите ссылку")
 					.card-links__right
 						button.card-links__lnk.card-links__lnk_small.link-special.color-thin.main-icon__button(type="button", data-edit) Редактировать
 						button.card-links__lnk.card-links__lnk_small.link-special.color-thin.main-icon__button(type="button", data-remove) Удалить
@@ -45,10 +48,10 @@ form.form.main-icon
 							+iconItemsTabel(items)
 
 		.col-sm-9
-			+iconLinksBlock('icon-heart', 'Моя любимая пиццерия', 'mainIconsTitle-01')
-			+iconLinksBlock('icon-fire-2', 'Сайт важного партнера', 'mainIconsTitle-02')
-			+iconLinksBlock('icon-aircraft', 'Моя любимая пиццерия', 'mainIconsTitle-03')
-			+iconLinksBlock('icon-shop_cart', 'Моя любимая пиццерия', 'mainIconsTitle-04')
+			+iconLinksBlock('icon-heart', 'Моя любимая пиццерия', '1')
+			+iconLinksBlock('icon-fire-2', 'Сайт важного партнера', '2')
+			+iconLinksBlock('icon-aircraft', 'Моя любимая пиццерия', '3')
+			+iconLinksBlock('icon-shop_cart', 'Моя любимая пиццерия', '4')
 
 			.card.text-right.margin-bottom-0.bg-color-light.main-icon__buttons
 				button.button.button-border.button-width-142.margin-right-30.button-height-30.main-icon__button_primary(type="button", data-add) Добавить
