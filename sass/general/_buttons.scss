@@ -446,6 +446,12 @@
 
 .button-width-142 {
 	min-width: 142px;
+	@include lg-block {
+		min-width: 100px;
+	}
+	@include md-block {
+		min-width: 80px;
+	}
 }
 .button-width-170 {
 	min-width: 170px;
@@ -453,6 +459,10 @@
 .button-height-30 {
 	padding-top: 7px;
 	padding-bottom: 6px;
+	@include lg-block {
+		padding-top: 3px;
+		padding-bottom: 3px;
+	}
 }
 .button-border {
 	border: 1px solid #dddee0;

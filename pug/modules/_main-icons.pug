@@ -1,11 +1,7 @@
 // mixins ------------------------------------------------------------------------------------------------------------
-mixin iconItemsTabel($items)
-	each $item in $items
-		td
-			i.main-icon__img(class= $item, data-icon= $item, data-icon-item)
 
 mixin iconLinksBlock($icon, $text, $id)
-	.card.card-links.main-icon__card.margin-bottom-0.padding-bottom-xl-30
+	.card.card-links.main-icon__card.margin-bottom-0.padding-bottom-lg-30.padding-bottom-sm-10
 		.card-links-wrap
 			.card-links__img
 				.card-links__imgbox.main-icon__imgbox
@@ -33,21 +29,15 @@ form.form.main-icon
 				.content-titlebox
 					h2 Свои иконки меню "Системы"
 	.row
-		.col-sm-3
-			.card-icons.main-icon__images
-				table
-					tbody
-						tr
-							- var items = ['icon-burg','icon-more','icon-close','icon-search']
-							+iconItemsTabel(items)
-						tr
-							- var items = ['icon-shop_cart','icon-filters','icon-like','icon-fire-2']
-							+iconItemsTabel(items)
-						tr
-							- var items = ['icon-see','icon-heart','icon-mark','icon-symbol']
-							+iconItemsTabel(items)
+		.col-12.col-md-3
+			.card-icons.main-icon__images.margin-bottom-10
+				.card-icons__container
+					- var $items = ['icon-burg','icon-more','icon-close','icon-search', 'icon-shop_cart','icon-filters','icon-like','icon-fire-2', 'icon-see','icon-heart','icon-mark','icon-symbol'];
+					each $item in $items
+						.card-icons__iconbox
+							i.main-icon__img(class= $item, data-icon= $item, data-icon-item)
 
-		.col-sm-9
+		.col-12.col-md-9
 			+iconLinksBlock('icon-heart', 'Моя любимая пиццерия', '1')
 			+iconLinksBlock('icon-fire-2', 'Сайт важного партнера', '2')
 			+iconLinksBlock('icon-aircraft', 'Моя любимая пиццерия', '3')

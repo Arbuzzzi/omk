@@ -950,7 +950,47 @@ $(document).ready(function() {
 
 	/* Show long comment ----------------------------------------------------------------------------- */
 	
-	var commentBox = $('.comment-box');
+	var commentBox = $('.comment-box'),
+			commentHasComment = $('.comment:has(.comment)'),
+			commentButtons = $(commentHasComment).find('.comment__link'),
+			commentButtonsMore = $(commentHasComment).find('.comment__link.more'),
+			commentButtonsLess = $(commentHasComment).find('.comment__link.less');
+
+	$(commentHasComment).each(function ($key, $item){
+		$($item).find('.comment__link.more').first().removeClass('hide')
+	});
+
+	$(commentHasComment).on('click', function (e){
+		var elTarget = e.target,
+				commentButton = $(elTarget).parent('.comment__link'),
+				commentButtonBox = $(commentButton).parent('.comment__links'),
+				commentButtonLess = $(commentButtonBox).find('.comment__link.less'),
+				commentButtonMore = $(commentButtonBox).find('.comment__link.more'),
+				commentButtonTarget = $($(commentButton).data('target'));
+
+		$(commentButtonTarget).on('show.bs.collapse', function (e){
+			e.stopPropagation();
+			$(commentButtonMore).fadeOut(150, function (){
+				$(this).addClass('hide');
+				$(commentButtonLess).fadeIn(150, function (){
+					$(this).removeClass('hide');
+				})
+			})
+		});
+
+		$(commentButtonTarget).on('hide.bs.collapse', function (e){
+			e.stopPropagation();
+			// $('.form-duplicate').collapse('hide');
+			// $('.comment').collapse('hide');
+			$(commentButtonLess).fadeOut(150, function (){
+				$(this).addClass('hide');
+				$(commentButtonMore).fadeIn(150, function (){
+					$(this).removeClass('hide');
+				})
+			})
+		});
+	});
+
 	for (var i = 0; i < commentBox.length; i++) {
 		var	text = $(commentBox[i]).find('.comment__text > *'),
 				textBlock = $(commentBox[i]).find('.comment__text'),
@@ -959,10 +999,12 @@ $(document).ready(function() {
 			textHeight = textHeight + $(text[x]).actual('outerHeight')
 		};
 		if (textHeight > 170) {
-			$(commentBox[i]).append('<button class="comment-long__showbtn">\
-																	<span>Развернуть</span>\
-																	<i class="icon-arrow-down"></i>\
-																</button>')
+			$(commentBox[i]).append(
+				'<button class="comment-long__showbtn">\
+						<span>Развернуть</span>\
+						<i class="icon-arrow-down"></i>\
+					</button>\
+			')
 		}
 	}
 	var elControlDeafultText;
@@ -1021,6 +1063,16 @@ $(document).ready(function() {
 			formDuplicateShow = false;
 			$(this).remove();
 		});
+
+		// $('.comment').on('hide.bs.collapse', function (e){
+		// 	$('.comment__reply').text(elControlDeafultText);
+		// 	$('.comment__reply').removeClass('form-active');
+		// 	$('.comment__reply').removeAttr('data-target');
+		// 	$('.comment').removeClass('show-form');
+		// 	$(this).collapse('dispose');
+		// 	formDuplicateShow = false;
+		// 	$(this).remove();
+		// });
 
 		$(commentFormboxAppend).on('shown.bs.collapse', function(event) {
 			elControl.addClass('form-active');
@@ -1381,8 +1433,7 @@ $(document).ready(function() {
 			$(buttonAddPrimary).prop('disabled', false);
 
 		}
-		console.log($(blocks).length);
-		console.log($(blocks));
+
 		// add
 		if ($(elClick).hasAttr('data-add') && !$(elClick).hasAttr('disabled')) {
 			$(buttonAdd).prop('disabled', true);
@@ -1390,7 +1441,7 @@ $(document).ready(function() {
 			$(blockImages).find('.icon-symbol').addClass('active');
 			var nID = $(blocks).length + 1;
 			var btnGroup = $(buttonGroup).before(`
-				<div class="card card-links main-icon__card margin-bottom-0 padding-bottom-xl-30 edits adds">
+				<div class="card card-links main-icon__card margin-bottom-0 padding-bottom-lg-30 padding-bottom-sm-10 edits adds">
           <div class="card-links-wrap">
             <div class="card-links__img">
               <div class="card-links__imgbox main-icon__imgbox"><i class="main-icon__img icon-symbol active" data-icon="icon-symbol"></i></div>

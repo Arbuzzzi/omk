@@ -766,37 +766,66 @@
 		}
 	}
 	&-icons {
-		padding: 0 15px;
+		//padding: 0 15px;
+		padding: 10px 5px;
 		border-radius: 5px;
 		border: 1px solid $thin-color;
 		text-align: center;
-		table {
-			width: 100%;
-			border-collapse: separate;
-			border-spacing: 0 30px;
-			@include lg-block {
-				border-spacing: 0 20px;
-				}
-			@include md-block {
-				border-spacing: 0 15px;
-			}
+		font-size: 0;
+		@include xs-block {
+		    padding: 5px;
 		}
-		tr {
-			margin-bottom: 30px;
-			@include md-block {
-				margin-bottom: 15px;
-			}
-		}
-		td {
+		&__iconbox {
 			width: 25%;
-			color: #bcbdc0;
-			@include hover {
-				color: $basic-color;
+			display: inline-block;
+			padding: 12px;
+			font-size: 16px;
+			text-align: center;
+			@include lg-block {
+				font-size: 12px;
+				padding: 8px;
 			}
-			@include md-block {
+			//@include md-block {
+			//	font-size: 10px;
+			//	padding: 4px;
+			//}
+			@include sm-block {
+				font-size: 16px;
+				width: 8.33333%;
+			}
+			@include xs-block {
 				font-size: 10px;
+				padding: 6px;
 			}
 		}
+		//table {
+		//	display: none;
+		//	width: 100%;
+		//	border-collapse: separate;
+		//	border-spacing: 0 30px;
+		//	@include lg-block {
+		//		border-spacing: 0 20px;
+		//		}
+		//	@include md-block {
+		//		border-spacing: 0 15px;
+		//	}
+		//}
+		//tr {
+		//	margin-bottom: 30px;
+		//	@include md-block {
+		//		margin-bottom: 15px;
+		//	}
+		//}
+		//td {
+		//	width: 25%;
+		//	color: #bcbdc0;
+		//	@include hover {
+		//		color: $basic-color;
+		//	}
+		//	@include md-block {
+		//		font-size: 10px;
+		//	}
+		//}
 	}
 	&-user {
 		font-size: 0;
@@ -983,6 +1012,14 @@
 
 			&-link {
 				padding: 3px 30px;
+				@include md-block {
+					@include pdLR(18px);
+					font-size: 10px;
+				}
+				@include xs-block {
+					font-size: 8px;
+					@include pdLR(10px);
+				}
 			}
 			&-tabs {
 				//max-width: calc(100% - 4px);
@@ -1020,6 +1057,9 @@
 			padding-right: 0;
 			padding-left: 15px;
 		}
+		@include sm-block {
+			vertical-align: middle;
+		}
 	}
 	&__imgbox {
 		min-width: 30px;
@@ -1034,6 +1074,15 @@
 			min-width: auto;
 			max-width: 27px;
 			font-size: 27px;
+		}
+		@include sm-block {
+			display: inline-block;
+			font-size: 16px;
+			max-width: 16px;
+		}
+		@include xs-block {
+			font-size: 12px;
+			max-width: 12px;
 		}
 		i {
 			transition: 0.4s;
@@ -1072,6 +1121,9 @@
 		@include lg-block {
 			width: 210px;
 		}
+		@include sm-block {
+			width: 120px;
+		}
 	}
 	&__right {
 		text-align: right;
@@ -1109,6 +1161,10 @@
 		@include sm-block {
 			font-size: 10px;
 		}
+
+		@include sm-block {
+			font-size: 8px;
+		}
 		&.color-thin {
 			color: #a1a3a7;
 		}
@@ -1137,6 +1193,9 @@
 			@include sm-block {
 				font-size: 8px;
 			}
+			@include xs-block {
+				font-size: 6px;
+			}
 		}
 	}
 
@@ -1151,13 +1210,31 @@
 		background-position: center	;
 		background-repeat: no-repeat;
 		margin-right: 15px;
+
+		@include md-block {
+			width: 70px;
+			height: 85px;
+			margin-right: 10px;
+		}
+
+		img {
+			display: none;
+		}
 	}
 	&__content {
 		display: flex;
 		flex-direction: column;
+		justify-content: flex-start;
 		min-height: 130px;
+		@include md-block {
+		    min-height: auto;
+			max-width: 90px;
+		}
 		button {
 			margin-top: auto;
+			@include md-block {
+				font-size: 8px;
+			}
 		}
 	}
 	&__text {
@@ -1165,6 +1242,11 @@
 		font-size: 12px;
 		font-weight: 400;
 		line-height: 14px;
+		@include md-block {
+			font-size: 8px;
+			line-height: 1.4;
+			margin-bottom: 10px;
+		}
 		p {
 			strong {
 				display: block;

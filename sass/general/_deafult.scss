@@ -183,6 +183,11 @@ p, .section-text, .text {
 	// }
 }
 
+*.icon-rotate-180 {
+	display: inline-block;
+	transform: rotate(180deg);
+}
+
 hr {
 	margin: 0;
 }

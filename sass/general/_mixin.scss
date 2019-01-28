@@ -17,6 +17,17 @@
   margin-right: auto;
 }
 
+@mixin mrLR($mr){
+  margin-left: $mr;
+  margin-right: $mr;
+}
+
+@mixin pdLR($pd){
+  padding-left: $pd;
+  padding-right: $pd;
+}
+
+
 @mixin sqwerMaxSize($size) {
   width: 100%;
   height: $size;

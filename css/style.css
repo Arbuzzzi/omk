@@ -1485,6 +1485,13 @@ p,
   margin-bottom: 0;
 }
 
+*.icon-rotate-180 {
+  display: inline-block;
+  -webkit-transform: rotate(180deg);
+      -ms-transform: rotate(180deg);
+          transform: rotate(180deg);
+}
+
 hr {
   margin: 0;
 }
@@ -4766,26 +4773,20 @@ h2 span,
 }
 
 .card-icons {
-  padding: 0 15px;
+  padding: 10px 5px;
   -webkit-border-radius: 5px;
           border-radius: 5px;
   border: 1px solid #a1a3a7;
   text-align: center;
+  font-size: 0;
 }
 
-.card-icons table {
-  width: 100%;
-  border-collapse: separate;
-  border-spacing: 0 30px;
-}
-
-.card-icons tr {
-  margin-bottom: 30px;
-}
-
-.card-icons td {
+.card-icons__iconbox {
   width: 25%;
-  color: #bcbdc0;
+  display: inline-block;
+  padding: 12px;
+  font-size: 16px;
+  text-align: center;
 }
 
 .card-user {
@@ -5123,6 +5124,10 @@ h2 span,
   margin-right: 15px;
 }
 
+.card-person__imgbox img {
+  display: none;
+}
+
 .card-person__content {
   display: -webkit-box;
   display: -webkit-flex;
@@ -5133,6 +5138,10 @@ h2 span,
   -webkit-flex-direction: column;
       -ms-flex-direction: column;
           flex-direction: column;
+  -webkit-box-pack: start;
+  -webkit-justify-content: flex-start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
   min-height: 130px;
 }
 
@@ -5883,14 +5892,13 @@ h2 span,
 
 .article-blockquote {
   position: relative;
-  padding: 15px;
-  padding-left: 72px;
+  padding: 15px 15px 15px 72px;
   margin-bottom: 15px;
   -webkit-border-radius: 5px;
           border-radius: 5px;
   background-color: #eeefef;
   color: #5e6167;
-  font-family: "PT Serif";
+  font-family: "PT Serif", serif;
   font-size: 17px;
   font-weight: 400;
   line-height: 23px;
@@ -5911,7 +5919,7 @@ h2 span,
 
 .article-text {
   color: #5e6167;
-  font-family: "PT Serif";
+  font-family: "PT Serif", serif;
   font-size: 16px;
   font-weight: 400;
   line-height: 23px;
@@ -5920,6 +5928,7 @@ h2 span,
 .article-text p {
   font-size: 17px;
   margin-bottom: 15px;
+  line-height: 1.4;
 }
 
 .article-text h3 {
@@ -5934,7 +5943,7 @@ h2 span,
           border-radius: 5px;
   background-color: #fbfbfb;
   color: #5e6167;
-  font-family: "PT Serif";
+  font-family: "PT Serif", serif;
   font-size: 17px;
   font-weight: 400;
 }
@@ -6056,17 +6065,58 @@ h2 span,
   font-weight: 400;
 }
 
-.comment__link {
+.comment__links {
   color: #5e6167;
   font-size: 14px;
   text-align: right;
   font-weight: 300;
 }
 
-.comment__link > * {
+.comment__links::after {
+  display: block;
+  content: "";
+  clear: both;
+}
+
+.comment__link,
+.comment__reply {
+  display: inline-block;
+  float: left;
+  color: #5e6167;
+  font-size: 14px;
+  text-align: right;
+  font-weight: 300;
+  cursor: pointer;
+}
+
+.comment__link.hide,
+.comment__reply.hide {
+  display: none;
+}
+
+.comment__link i,
+.comment__reply i {
+  font-size: 10px;
+  vertical-align: middle;
+  color: inherit;
+  margin-left: 4px;
+  opacity: 0.6;
+}
+
+.comment__link > *,
+.comment__reply > * {
   color: inherit;
   font-size: 14px;
   font-weight: inherit;
+}
+
+.comment__link_left {
+  text-align: left;
+}
+
+.comment__link_right {
+  float: none;
+  text-align: right;
 }
 
 .comment-long__showbtn {
@@ -7933,10 +7983,6 @@ h2 span,
     padding: 14px;
   }
 
-  .card-icons td:hover {
-    color: #5e6167;
-  }
-
   .card-user:hover .card-user__photo {
     border-color: #ee3124;
   }
@@ -7982,7 +8028,13 @@ h2 span,
     background-color: rgba(0, 185, 31, 0.1);
   }
 
-  .comment__link:hover {
+  .comment__link:hover,
+  .comment__reply:hover {
+    font-weight: 400;
+  }
+
+  .comment__link > *:hover,
+  .comment__reply > *:hover {
     font-weight: 400;
   }
 
@@ -8466,6 +8518,15 @@ h2 span,
     font-size: 12px;
   }
 
+  .button-width-142 {
+    min-width: 100px;
+  }
+
+  .button-height-30 {
+    padding-top: 3px;
+    padding-bottom: 3px;
+  }
+
   .header.scroll .button-deploy {
     display: none;
   }
@@ -8722,8 +8783,9 @@ h2 span,
     min-height: 290px;
   }
 
-  .card-icons table {
-    border-spacing: 0 20px;
+  .card-icons__iconbox {
+    font-size: 12px;
+    padding: 8px;
   }
 
   .card-links__left {
@@ -8867,6 +8929,10 @@ h2 span,
     font-size: 10px;
   }
 
+  .button-width-142 {
+    min-width: 80px;
+  }
+
   .header-box__item {
     width: auto;
     -webkit-box-flex: 1;
@@ -8923,7 +8989,7 @@ h2 span,
   .like-button {
     font-size: 8px;
     line-height: 1.4;
-    vertical-align: middle;
+    vertical-align: top;
   }
 
   .like-button .icon-comment {
@@ -9080,15 +9146,9 @@ h2 span,
     min-height: 235px;
   }
 
-  .card-icons table {
-    border-spacing: 0 15px;
-  }
-
-  .card-icons tr {
-    margin-bottom: 15px;
-  }
-
-  .card-icons td {
+  .card-tabs .nav-link {
+    padding-left: 18px;
+    padding-right: 18px;
     font-size: 10px;
   }
 
@@ -9123,6 +9183,27 @@ h2 span,
 
   .card-links__lnk_small {
     font-size: 10px;
+  }
+
+  .card-person__imgbox {
+    width: 70px;
+    height: 85px;
+    margin-right: 10px;
+  }
+
+  .card-person__content {
+    min-height: auto;
+    max-width: 90px;
+  }
+
+  .card-person__content button {
+    font-size: 8px;
+  }
+
+  .card-person__text {
+    font-size: 8px;
+    line-height: 1.4;
+    margin-bottom: 10px;
   }
 
   .widget-calendar {
@@ -9187,6 +9268,89 @@ h2 span,
 
   .widget-slider-arrow {
     width: 10px;
+  }
+
+  .article-imgwrap {
+    margin-bottom: 15px;
+  }
+
+  .article-imgbox_full {
+    height: 205px;
+  }
+
+  .article-imgbox_third {
+    height: 155px;
+  }
+
+  .article-imgbox_head {
+    height: 205px;
+  }
+
+  .article-blockquote {
+    font-size: 14px;
+  }
+
+  .article-text p {
+    font-size: 14px;
+    margin-bottom: 10px;
+  }
+
+  .article-text h3 {
+    font-size: 16px;
+    margin-bottom: 10px;
+  }
+
+  .article-author {
+    margin-top: 15px;
+    font-size: 10px;
+  }
+
+  .article-author__left {
+    font-size: 12px;
+  }
+
+  .article-author__username {
+    font-size: 10px;
+  }
+
+  .comment-box {
+    padding-left: 30px;
+  }
+
+  .comment__avatar {
+    width: 60px;
+    height: 60px;
+    left: -30px;
+  }
+
+  .comment__date {
+    font-size: 10px;
+    margin-bottom: 10px;
+  }
+
+  .comment__date:before {
+    width: 12px;
+    height: 13px;
+  }
+
+  .comment__text p {
+    font-size: 12px;
+    margin-bottom: 10px;
+  }
+
+  .comment__link,
+  .comment__reply {
+    font-size: 12px;
+  }
+
+  .comment__link > *,
+  .comment__reply > * {
+    font-size: 12px;
+  }
+
+  .comment-form__textarea {
+    padding: 15px;
+    font-size: 12px;
   }
 
   .profile-info tr td {
@@ -9271,8 +9435,31 @@ h2 span,
     right: 15px;
   }
 
+  .card-icons__iconbox {
+    font-size: 16px;
+    width: 8.33333%;
+  }
+
+  .card-links__img {
+    vertical-align: middle;
+  }
+
+  .card-links__imgbox {
+    display: inline-block;
+    font-size: 16px;
+    max-width: 16px;
+  }
+
+  .card-links__left {
+    width: 120px;
+  }
+
   .card-links__lnk {
     font-size: 10px;
+  }
+
+  .card-links__lnk {
+    font-size: 8px;
   }
 
   .card-links__lnk_small {
@@ -9343,5 +9530,77 @@ h2 span,
   .menu-left-navigation {
     margin-left: -15px;
     margin-right: -15px;
+  }
+
+  .content-titlebox h1,
+  .content-titlebox h2,
+  .content-titlebox h3,
+  .content-titlebox h4,
+  .content-titlebox h5,
+  .content-titlebox p,
+  .content-titlebox div,
+  .content-titlebox span {
+    font-size: 20px;
+  }
+
+  .card-icons {
+    padding: 5px;
+  }
+
+  .card-icons__iconbox {
+    font-size: 10px;
+    padding: 6px;
+  }
+
+  .card-tabs .nav-link {
+    font-size: 8px;
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+
+  .card-links__imgbox {
+    font-size: 12px;
+    max-width: 12px;
+  }
+
+  .card-links__lnk_small {
+    font-size: 6px;
+  }
+
+  .article-imgbox_full {
+    height: 180px;
+  }
+
+  .article-imgbox_third {
+    width: 100%;
+    margin-bottom: 15px;
+  }
+
+  .article-imgbox_head {
+    height: 180px;
+  }
+
+  .article-blockquote {
+    padding-left: 58px;
+    margin: 0 -15px 15px;
+  }
+
+  .article-author p {
+    display: inline-block;
+    margin-top: 5px;
+  }
+
+  .comment {
+    padding-left: 20px;
+  }
+
+  .comment-box {
+    padding-left: 25px;
+  }
+
+  .comment__avatar {
+    width: 45px;
+    height: 45px;
+    left: -22.5px;
   }
 }
