@@ -10,7 +10,10 @@
 			border: 1px solid #dfdfdf;
 			border-radius: 6px;
 			cursor: text;
-
+			@include md-block {
+				padding: 3px 10px 3px;
+				font-size: 12px;
+			}
 		}
 		&__input {
 			display: block;

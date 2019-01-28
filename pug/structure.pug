@@ -21,14 +21,14 @@ block vars
 	mixin tabBasicContent(tabID, tabClass)
 		.tab-pane.fade(id= tabID, class= tabClass)
 			.row
-				.col-xl-4
+				.col-12.col-sm-3.col-lg-4
 					.card
 						.logo-wrap
 							img(src="img/logo-small.svg", alt="logo")
 							img(src="img/logo-text.svg", alt="logo text")
-				.col-xl-8
+				.col-12.col-sm-9.col-lg-8
 					.card
-						.card-text.font-size-14
+						.card-text.font-size-10.font-size-lg-14
 							p
 								strong Объединенная металлургическая компания (АО «ОМК»)
 								| – один из крупнейших российских производителей металлопродукции для ведущих энергетических, транспортных и промышленных компаний. ОМК — комплексный поставщик продукции для добычи и транспортировки газа и нефти. Выпускает трубы различного назначения, железнодорожные колеса, листовой прокат, соединительные детали трубопроводов, трубопроводную арматуру, рессоры.
@@ -48,10 +48,10 @@ block vars
 							p= user.job
 					.modal-body
 						.row
-							.col-xl-3
+							.col-sm-3
 								.modal-imgbox(style="background-image: url(" + user.photo + ");")
 									img(src=user.photo alt="user-photo")
-							.col-xl-9
+							.col-sm-9
 								.modal-text
 									p #{user.name + ' ' + user.surname} — председатель совета директоров ОМК с июля 2017 года.
 
@@ -109,10 +109,10 @@ block content
 			+tabBasicContent('tab1', 'show active')
 				.row
 					.col-12
-						.card.margin-bottom-20
+						.card.margin-bottom-10.margin-bottom-lg-20
 							.content-subtitle
 								h2 Совет директоров
-					.col-xl-6
+					.col-12.col-sm-6
 						each user, num in usersOne
 							if num <= 2
 								.card
@@ -131,7 +131,7 @@ block content
 
 
 
-					.col-xl-6
+					.col-12.col-sm-6
 						each user, num in usersOne
 							if num > 2
 								.card.margin-bottom-20
@@ -150,7 +150,7 @@ block content
 						.card
 							.content-subtitle
 								h2 Правление
-					.col-xl-6
+					.col-12.col-sm-6
 						each user, num in usersTwo
 							if num > 2
 								- break;
@@ -164,7 +164,7 @@ block content
 											h3= user.surname
 										.card-user__text
 											p= user.job
-					.col-xl-6
+					.col-12.col-sm-6
 						each user, num in usersTwo
 							if num > 2
 								.card
@@ -210,19 +210,19 @@ block content
 			each tab in tabs
 				.tab-pane.fade(id=tab.id, class=tab.class)
 					.row
-						.col-xl-4
+						.col-12.col-sm-4
 							.card
 								.logo-wrap
 									img(src="img/logo-small.svg", alt="logo")
 									img(src="img/logo-text.svg", alt="logo text")
-						.col-xl-8
+						.col-12.col-sm-8
 							.card
-								.card-text.font-size-14
+								.card-text.font-size-10.font-size-lg-14
 									p
 										strong Объединенная металлургическая компания (АО «ОМК»)
 										| – один из крупнейших российских производителей металлопродукции для ведущих энергетических, транспортных и промышленных компаний. ОМК — комплексный поставщик продукции для добычи и транспортировки газа и нефти. Выпускает трубы различного назначения, железнодорожные колеса, листовой прокат, соединительные детали трубопроводов, трубопроводную арматуру, рессоры.
 					.row
-						.col-xl-6
+						.col-12.col-sm-6
 							.card.margin-bottom-0
 								.content-subtitle
 									h2 Совет директоров
@@ -238,7 +238,7 @@ block content
 											.card-user__text
 												p= user.job
 
-						.col-xl-6
+						.col-12.col-sm-6
 							.card.margin-bottom-0
 								.content-subtitle
 									h2 Правление

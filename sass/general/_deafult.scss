@@ -108,8 +108,24 @@ $font-sizes: 8, 10, 12, 14, 17, 20, 22, 24, 28, 32, 40;
 
 
 
-@include fixHeight(135); // .fix-height-210
+@include fixHeight(135); // .fix-height-135
+.fix-height-135 {
+	@include md-block {
+		max-height: 100px !important;
+	}
+	@include xs-block {
+		max-height: 135px !important;
+	}
+}
 @include fixHeight(210);
+.fix-height-210 {
+	@include md-block {
+		max-height: 130px !important;
+	}
+	@include xs-block {
+		max-height: 210px !important;
+	}
+}
 @include fixHeight(260);
 
 .bg-color {

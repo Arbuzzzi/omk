@@ -889,7 +889,7 @@ $(document).ready(function() {
 	$('.calendar__day').tooltip();
 	$('.sliderBlog').slick();
 
-	/* СЛАЙДЕРЫ -------------------------------------------------------------------------------------*/
+	/* СЛАЙДЕРЫ sliders ------------------------------------------------------------------------------*/
 	$('.widget-slider').slick({
 		autoplay: true,
 		prevArrow: '<div class="slider-arrow slider-arrow__left \
@@ -938,6 +938,14 @@ $(document).ready(function() {
 		slidesToScroll: 1,
 		prevArrow: '<div class="slider-arrow slider-arrow__left"></div>',
 		nextArrow: '<div class="slider-arrow slider-arrow__right"></div>',
+		responsive: [
+			{
+				breakpoint: 767,
+				settings: {
+					slidesToShow: 1,
+				}
+			}
+		]
 	});
 
 	$('.card-fifth-slider-wrap').slick({

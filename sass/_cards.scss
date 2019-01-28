@@ -118,14 +118,21 @@
 		&_xl {
 			height: 360px;
 			@include md-block {
-				height: 205px;
+				height: 180px;
 			}
+
 		}
 		&_lg {
 			height: 300px;
+			@include md-block {
+				height: 165px;
+			}
 		}
 		&_md {
 			height: 280px;
+			@include md-block {
+				height: 140px;
+			}
 		}
 		&_sm {
 			height: 210px;
@@ -139,6 +146,17 @@
 		&_xs {
 			height: 135px;
 			min-height: 135px;
+			@include lg-block {
+				height: 120px;
+				min-height: 120px;
+			}
+			@include md-block {
+				height: 80px;
+				min-height: 80px;
+			}
+			@include xs-block {
+				height: 180px;
+			}
 		}
 		&_full {
 			height: 300px;
@@ -298,6 +316,9 @@
 		padding: 15px 30px 30px;
 		&_xl{
 			margin-top: 360px;
+			@include md-block {
+				margin-top: 180px;
+			}
 		}
 		&_light {
 			position: relative;
@@ -366,6 +387,9 @@
 			@include md-block {
 				font-size: 9px;
 			}
+			@include xs-block {
+				font-size: 12px;
+			}
 			&:last-child {
 				margin-bottom: 0;
 			}
@@ -413,6 +437,10 @@
 		padding-left: 44px;
 		padding-right: 44px;
 		font-family: "Roboto", sans-serif;
+		@include md-block {
+			@include pdLR(25px);
+			font-size: 10px;
+		}
 	}
 
 	&-logos{
@@ -504,6 +532,9 @@
 			&_special {
 				width: 100%;
 				margin-bottom: 15px;
+				@include md-block {
+					margin-bottom: 5px;
+				}
 			}
 		}
 		&__imgbox {
@@ -848,7 +879,10 @@
 			overflow: hidden;
 			background: center no-repeat;
 			background-size: contain;
-
+			@include md-block {
+				width: 55px;
+				height: 55px;
+			}
 			img {
 				display: none;
 			}
@@ -860,19 +894,29 @@
 			vertical-align: middle;
 
 			font-size: 16px;
+			@include md-block {
+				width: auto;
+				max-width: 140px;
+			}
 		}
 
 		&__title {
 			color: $tooltip-bg;
 			font-size: 16px;
 			font-weight: 500;
-			line-height: 17px;
+			line-height: 1.4;
 			> * {
 				font-family: Roboto, sans-serif;
 				color: $tooltip-bg;
 				font-size: 16px;
 				font-weight: 500;
-				line-height: 17px;
+				line-height: 1.4;
+				@include lg-block {
+					font-size: 14px;
+				}
+				@include md-block {
+					font-size: 9px;
+				}
 			}
 			span {
 				display: block;
@@ -883,7 +927,13 @@
 			color: $tooltip-bg;
 			font-size: 16px;
 			font-weight: 300;
-			line-height: 17px;
+			line-height: 1.4;
+			@include lg-block {
+				font-size: 14px;
+			}
+			@include md-block {
+				font-size: 9px;
+			}
 		}
 	}
 
@@ -895,6 +945,9 @@
 				border-radius: 5px;
 				border: 1px solid #dddee0;
 				padding: 30px;
+				@include md-block {
+				    padding: 18px;
+				}
 			}
 			&-dialog {
 				@media (min-width: 1024px) {
@@ -915,6 +968,10 @@
 					margin: 0;
 					font-size: 14px;
 					color: #d0d1d3;
+					@include md-block {
+						top: -10px;
+						right: -10px;
+					}
 				}
 			}
 			&-title {
@@ -949,6 +1006,10 @@
 				background-size: contain;
 				border-radius: 5px;
 				border: 1px solid #dddee0;
+				@include md-block {
+					width: 100px;
+					height: 120px;
+				}
 				img {
 					display: none;
 				}
@@ -1034,6 +1095,9 @@
 			border-radius: 0 5px 5px 5px;
 			border: 1px solid #dddee0;
 			//border-top: none;
+			@include md-block {
+				padding: 15px;
+			}
 		}
 	}
 }

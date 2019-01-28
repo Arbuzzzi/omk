@@ -4826,7 +4826,7 @@ h2 span,
   color: #797c82;
   font-size: 16px;
   font-weight: 500;
-  line-height: 17px;
+  line-height: 1.4;
 }
 
 .card-user__title > * {
@@ -4834,7 +4834,7 @@ h2 span,
   color: #797c82;
   font-size: 16px;
   font-weight: 500;
-  line-height: 17px;
+  line-height: 1.4;
 }
 
 .card-user__title span {
@@ -4846,7 +4846,7 @@ h2 span,
   color: #797c82;
   font-size: 16px;
   font-weight: 300;
-  line-height: 17px;
+  line-height: 1.4;
 }
 
 .card-modal {
@@ -8755,6 +8755,11 @@ h2 span,
     height: 180px;
   }
 
+  .card__imgbox_xs {
+    height: 120px;
+    min-height: 120px;
+  }
+
   .card__content {
     padding: 15px;
   }
@@ -8786,6 +8791,14 @@ h2 span,
   .card-icons__iconbox {
     font-size: 12px;
     padding: 8px;
+  }
+
+  .card-user__title > * {
+    font-size: 14px;
+  }
+
+  .card-user__text {
+    font-size: 14px;
   }
 
   .card-links__left {
@@ -8868,6 +8881,12 @@ h2 span,
   .table-inn {
     overflow-x: scroll;
   }
+
+  .circuit-item__link {
+    width: 205px;
+    font-size: 11px;
+    padding: 5px 10px;
+  }
 }
 
 @media screen and (max-width: 991px) {
@@ -8879,6 +8898,14 @@ h2 span,
   .row > [class*='col-'] {
     padding-left: 7.5px;
     padding-right: 7.5px;
+  }
+
+  .fix-height-135 {
+    max-height: 100px !important;
+  }
+
+  .fix-height-210 {
+    max-height: 130px !important;
   }
 
   .slider-arrow {
@@ -8933,6 +8960,11 @@ h2 span,
     min-width: 80px;
   }
 
+  .form-search__label {
+    padding: 3px 10px 3px;
+    font-size: 12px;
+  }
+
   .header-box__item {
     width: auto;
     -webkit-box-flex: 1;
@@ -8966,7 +8998,15 @@ h2 span,
   .content-titlebox p,
   .content-titlebox div,
   .content-titlebox span {
-    font-size: 22px;
+    font-size: 20px;
+  }
+
+  .content-subtitle h2 {
+    font-size: 14px;
+  }
+
+  .content-subtitle h3 {
+    font-size: 10px;
   }
 
   .content-text {
@@ -9011,11 +9051,24 @@ h2 span,
   }
 
   .card__imgbox_xl {
-    height: 205px;
+    height: 180px;
+  }
+
+  .card__imgbox_lg {
+    height: 165px;
+  }
+
+  .card__imgbox_md {
+    height: 140px;
   }
 
   .card__imgbox_sm {
     height: 125px;
+  }
+
+  .card__imgbox_xs {
+    height: 80px;
+    min-height: 80px;
   }
 
   .card-warning-text {
@@ -9054,6 +9107,10 @@ h2 span,
     margin-bottom: 10px;
   }
 
+  .card__info_xl {
+    margin-top: 180px;
+  }
+
   .card__title {
     margin-bottom: 10px;
     min-height: 30px;
@@ -9070,6 +9127,12 @@ h2 span,
 
   .card-date {
     font-size: 8px;
+  }
+
+  .card__more {
+    padding-left: 25px;
+    padding-right: 25px;
+    font-size: 10px;
   }
 
   .card-logo {
@@ -9090,6 +9153,10 @@ h2 span,
   .card-slider__item {
     padding-left: -7.5px;
     padding-right: -7.5px;
+  }
+
+  .card-full-head_special {
+    margin-bottom: 5px;
   }
 
   .card-full__imgbox {
@@ -9146,10 +9213,46 @@ h2 span,
     min-height: 235px;
   }
 
+  .card-user__photo {
+    width: 55px;
+    height: 55px;
+  }
+
+  .card-user__info {
+    width: auto;
+    max-width: 140px;
+  }
+
+  .card-user__title > * {
+    font-size: 9px;
+  }
+
+  .card-user__text {
+    font-size: 9px;
+  }
+
+  .card-modal .modal-content {
+    padding: 18px;
+  }
+
+  .card-modal .modal-header .close {
+    top: -10px;
+    right: -10px;
+  }
+
+  .card-modal .modal-imgbox {
+    width: 100px;
+    height: 120px;
+  }
+
   .card-tabs .nav-link {
     padding-left: 18px;
     padding-right: 18px;
     font-size: 10px;
+  }
+
+  .card-tabs .tab-content {
+    padding: 15px;
   }
 
   .card-links__img {
@@ -9474,6 +9577,14 @@ h2 span,
 }
 
 @media screen and (max-width: 575px) {
+  .fix-height-135 {
+    max-height: 135px !important;
+  }
+
+  .fix-height-210 {
+    max-height: 210px !important;
+  }
+
   .button {
     font-size: 10px;
     min-width: 62px;
@@ -9543,6 +9654,14 @@ h2 span,
     font-size: 20px;
   }
 
+  .card__imgbox_xs {
+    height: 180px;
+  }
+
+  .card__text p {
+    font-size: 12px;
+  }
+
   .card-icons {
     padding: 5px;
   }
@@ -9602,5 +9721,11 @@ h2 span,
     width: 45px;
     height: 45px;
     left: -22.5px;
+  }
+
+  .circuit-item__link {
+    width: 90px;
+    font-size: 9px;
+    line-height: 1.4;
   }
 }
