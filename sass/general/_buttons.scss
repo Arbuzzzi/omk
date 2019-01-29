@@ -46,6 +46,13 @@
 				opacity: 0;
 				//transition: 0.4s;
 			}
+			@include md-block {
+				&:before {
+					opacity: 1;
+					left: -10px;
+					font-size: 6px;
+				}
+			}
 		}
 	}
 }

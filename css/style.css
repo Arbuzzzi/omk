@@ -5076,8 +5076,8 @@ h2 span,
   font-family: "PT Serif", serif;
   font-size: 20px;
   font-weight: 400;
-  line-height: 20px;
   margin-bottom: 5px;
+  line-height: 1.4;
 }
 
 .card-links__lnkbox:last-child {
@@ -8926,6 +8926,12 @@ h2 span,
     overflow: hidden;
   }
 
+  .link-icon-save:before {
+    opacity: 1;
+    left: -10px;
+    font-size: 6px;
+  }
+
   .button {
     font-size: 12px;
   }
@@ -9278,6 +9284,7 @@ h2 span,
 
   .card-links__lnkbox {
     font-size: 10px;
+    line-height: 1.2;
   }
 
   .card-links__lnk {
@@ -9658,8 +9665,21 @@ h2 span,
     height: 180px;
   }
 
+  .card__title {
+    min-height: auto;
+  }
+
   .card__text p {
     font-size: 12px;
+  }
+
+  .card-logo__imgbox {
+    width: 88px;
+    height: 65px;
+  }
+
+  .card-fifth-slider__imgbox {
+    height: 180px;
   }
 
   .card-icons {
@@ -9677,9 +9697,12 @@ h2 span,
     padding-right: 10px;
   }
 
+  .card-links__img {
+    padding-left: 0;
+  }
+
   .card-links__imgbox {
     font-size: 12px;
-    max-width: 12px;
   }
 
   .card-links__lnk_small {

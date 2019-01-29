@@ -953,6 +953,14 @@ $(document).ready(function() {
 		slidesToScroll: 1,
 		prevArrow: '<div class="slider-arrow slider-arrow__left"></div>',
 		nextArrow: '<div class="slider-arrow slider-arrow__right"></div>',
+		responsive: [
+			{
+				breakpoint: 767,
+				settings: {
+					slidesToShow: 2,
+				}
+			}
+		]
 	});
 
 
