@@ -5,6 +5,9 @@
 	margin-bottom: 30px;
 	border-radius: 5px;
 	background-color: $basic-color;
+	@include lg-block {
+		padding: 15px 30px;
+	}
 	.content-titlebox {
 		color: #eeefef;
 	}

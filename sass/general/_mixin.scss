@@ -131,9 +131,20 @@
   }
 }
 
+@mixin widthClasses($width, $breakpoints: $grid-breakpoints) {
+  @each $breakpoint in map-keys($breakpoints) {
+    $infix: breakpoint-infix($breakpoint);
+    .w#{$infix}-#{$width} {
+      @include media-breakpoint-up($breakpoint) {
+        width: #{$width} !important;
+      }
+    }
+  }
+}
+
 @mixin fixHeight($fix_height) {
   .fix-height-#{$fix_height} {
-    max-height: #{$fix_height}px !important;
+    height: #{$fix_height}px !important;
   }
 }
 @mixin fontInherit {

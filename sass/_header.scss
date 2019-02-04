@@ -269,6 +269,9 @@
 		@media (max-width: 767px){
 			display: none;
 		}
+		@media (max-width: 767.98px){
+			display: none;
+		}
 		@include sm-block {
 		}
 		&-wrap {

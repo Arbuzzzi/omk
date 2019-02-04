@@ -102,6 +102,9 @@ $font-sizes: 8, 10, 12, 14, 17, 20, 22, 24, 28, 32, 40;
 @each $font-size in $font-sizes {
 	@include fontSizeClasses($font-size);
 }
+
+@include widthClasses(auto);
+
 // Example:
 // 		.font-size-20
 // 		.font-size-md-10
@@ -111,32 +114,76 @@ $font-sizes: 8, 10, 12, 14, 17, 20, 22, 24, 28, 32, 40;
 @include fixHeight(135); // .fix-height-135
 .fix-height-135 {
 	@include md-block {
-		max-height: 100px !important;
+		height: 100px !important;
 	}
 	@include xs-block {
-		max-height: 135px !important;
+		height: 135px !important;
 	}
+}
+.height-65 {
+	height: 65px;
 }
 @include fixHeight(210);
 .fix-height-210 {
 	@include md-block {
-		max-height: 130px !important;
+		height: 130px !important;
 	}
 	@include xs-block {
-		max-height: 210px !important;
+		height: 210px !important;
 	}
 }
 @include fixHeight(260);
-
+.box {
+	min-width: 80px;
+}
 .bg-color {
   &-light {
     background-color: $light-color !important;
 	}
+  &-light-1 {
+    background-color: #FBFBFB !important;
+	}
 	&-dark-1 {
-		background: #eeefef !important;
+		background-color: #eeefef !important;
 	}
 	&-dark-2 {
-		background-color: #f4f5f5 !important;
+		background-color: #E0E1E2 !important;
+	}
+	&-dark-3 {
+		background-color: #DDDEE0 !important;
+	}
+	&-dark-4 {
+		background-color: #D0D1D3 !important;
+	}
+	&-dark-5 {
+		background-color: #BCBDC0 !important;
+	}
+	&-dark-6 {
+		background-color: #A5A6AA !important;
+	}
+	&-dark-7 {
+		background-color: #A1A3A7 !important;
+	}
+	&-dark-8 {
+		background-color: #797C82 !important;
+	}
+	&-dark-9 {
+		background-color: #797C82 !important;
+	}
+	&-dark-10 {
+		background-color: #000000 !important;
+	}
+	&-danger {
+		background-color: #EE3124 !important;
+	}
+	&-success {
+		background-color: #008330 !important;
+	}
+	&-blue {
+		background-color: #008ACC !important;
+	}
+	&-warning {
+		background-color: #EE9800 !important;
 	}
 }
 

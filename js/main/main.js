@@ -128,7 +128,7 @@ $(document).ready(function() {
 		}
 	});
 	if (mobile) {
-		$('#header-nav').collapse()
+		$('#header-nav').collapse('hide');
 	}
 	// системы показываются
 	$('#header-nav').on('shown.bs.collapse', function () {
@@ -140,6 +140,14 @@ $(document).ready(function() {
 	$('#header-nav').on('hidden.bs.collapse', function () {
 		var btn = $('#header-navControl');
 		btn.removeClass('active')
+	});
+	$(document).on('click', function(e){
+		var el = e.target;
+		var headerNav = $(el).parents('#header-nav');
+
+		if (mobile && !$(headerNav).hasClass('header-nav-system-wrap')) {
+			$('#header-nav').collapse('hide');
+		}
 	});
 	
 	// разворачиваем меню
@@ -540,6 +548,9 @@ $(document).ready(function() {
 			event.preventDefault();			
 		}
 	});
+
+
+
 	var myHash = location.hash; //получаем значение хеша
 	//location.hash = ''; //очищаем хеш
 	$(window).on('load', function() {
@@ -752,7 +763,7 @@ $(document).ready(function() {
 	
 	var setTimer;
 	setInterval(function(){ // открываем событие на текущей дате по таймеру
-		if (!$('#calendarwidgetBox').hasClass('show-event')) {
+		if (!$('#calendarwidgetBox').hasClass('show-event') && !mobile) {
 			$('#calendarwidgetBox .ui-datepicker-today.selected a.ui-state-default').trigger('click')
 			setTimer = setTimeout(function () {
 				$('.event-control').trigger('click');
@@ -846,7 +857,8 @@ $(document).ready(function() {
 
 		});
 	});
-	
+
+	$('#pageCalendar').datepicker();
 
 	/* СОКРАЩАЕМ ТЕКСТ ------------------------------------------------------------------------------ */
 	$('.card__title *').dotdotdot();
@@ -1240,8 +1252,9 @@ $(document).ready(function() {
 		$('#modalMainSliderTop').slick({
 			slidesToShow: 1,
 			slidesToScroll: 1,
+			infinite: false,
 			initialSlide: elControlCurrent,
-			// asNavFor: '#modalMainSliderBottom',
+			asNavFor: '#modalMainSliderBottom',
 			prevArrow: '<div class="slider-arrow \
 															slider-arrow__left \
 															modalMain-slider-arrow \
@@ -1257,10 +1270,12 @@ $(document).ready(function() {
 			slidesToScroll: 1,
 			initialSlide: elControlCurrent,
 			focusOnSelect: true,
+			// focusOnChange: true,
 			// centerMode: true,
-			// centerPadding: '0px',
-			waitForAnimate: false,
-			// asNavFor: '#modalMainSliderTop',
+			centerPadding: '0px',
+			// waitForAnimate: false,
+			infinite: false,
+			asNavFor: '#modalMainSliderTop',
 			prevArrow: '<div class="slider-arrow \
 															slider-arrow__left \
 															modalMain-slider-arrow \
@@ -1304,7 +1319,7 @@ $(document).ready(function() {
 					textAreaPositionTop = textArea.position().top;
 
 					modalDialog = $('#modalContentSlider').find('.modal-dialog');
-			console.log(textArea);
+
 			// $('.form-duplicate').collapse('hide');
 			$('#modalContentSlider')
 				.animate({

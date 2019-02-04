@@ -1397,28 +1397,92 @@ img {
   font-size: 40px !important;
 }
 
+.w-auto {
+  width: auto !important;
+}
+
 .fix-height-135 {
-  max-height: 135px !important;
+  height: 135px !important;
+}
+
+.height-65 {
+  height: 65px;
 }
 
 .fix-height-210 {
-  max-height: 210px !important;
+  height: 210px !important;
 }
 
 .fix-height-260 {
-  max-height: 260px !important;
+  height: 260px !important;
+}
+
+.box {
+  min-width: 80px;
 }
 
 .bg-color-light {
   background-color: #ffffff !important;
 }
 
+.bg-color-light-1 {
+  background-color: #FBFBFB !important;
+}
+
 .bg-color-dark-1 {
-  background: #eeefef !important;
+  background-color: #eeefef !important;
 }
 
 .bg-color-dark-2 {
-  background-color: #f4f5f5 !important;
+  background-color: #E0E1E2 !important;
+}
+
+.bg-color-dark-3 {
+  background-color: #DDDEE0 !important;
+}
+
+.bg-color-dark-4 {
+  background-color: #D0D1D3 !important;
+}
+
+.bg-color-dark-5 {
+  background-color: #BCBDC0 !important;
+}
+
+.bg-color-dark-6 {
+  background-color: #A5A6AA !important;
+}
+
+.bg-color-dark-7 {
+  background-color: #A1A3A7 !important;
+}
+
+.bg-color-dark-8 {
+  background-color: #797C82 !important;
+}
+
+.bg-color-dark-9 {
+  background-color: #797C82 !important;
+}
+
+.bg-color-dark-10 {
+  background-color: #000000 !important;
+}
+
+.bg-color-danger {
+  background-color: #EE3124 !important;
+}
+
+.bg-color-success {
+  background-color: #008330 !important;
+}
+
+.bg-color-blue {
+  background-color: #008ACC !important;
+}
+
+.bg-color-warning {
+  background-color: #EE9800 !important;
 }
 
 .border-default {
@@ -3881,8 +3945,12 @@ h2 span,
   color: #bcbdc0;
 }
 
-.content-text a:not([class]) {
+.content-text > a:not([class]) {
   text-decoration: underline;
+}
+
+.content-text > * a {
+  text-decoration: none;
 }
 
 .content-text_special p {
@@ -4025,6 +4093,7 @@ h2 span,
 }
 
 .card-wrap {
+  position: relative;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -4047,6 +4116,13 @@ h2 span,
   background-color: transparent;
   padding: 0;
   margin-bottom: 5px;
+}
+
+.card-wrap__imglnk {
+  position: absolute;
+  z-index: 1;
+  height: 100%;
+  width: 100%;
 }
 
 .card_slim {
@@ -4117,6 +4193,7 @@ h2 span,
 }
 
 .card__imgbox {
+  display: block;
   position: relative;
   min-height: 210px;
   overflow: hidden;
@@ -4287,6 +4364,8 @@ h2 span,
 }
 
 .card__content {
+  position: relative;
+  z-index: 10;
   padding: 15px 20px 20px;
   display: -webkit-box;
   display: -webkit-flex;
@@ -4355,7 +4434,7 @@ h2 span,
 }
 
 .card__title {
-  min-height: 38px;
+  min-height: 44px;
   margin-bottom: 15px;
   font-family: "PT Serif", serif;
   font-size: 17px;
@@ -4407,6 +4486,10 @@ h2 span,
 .card__text h3 {
   margin-bottom: 18px;
   font-size: 22px;
+}
+
+.card__text a:not(.card__more) {
+  text-decoration: none;
 }
 
 .card__text_404 {
@@ -5034,7 +5117,7 @@ h2 span,
 
 .card-links__items {
   width: 100%;
-  padding-left: 15px;
+  padding-left: 28px;
 }
 
 .card-links__item {
@@ -6255,7 +6338,7 @@ h2 span,
   float: left;
   max-width: 970px;
   font-size: 22px;
-  line-height: 20px;
+  line-height: 1.4;
   font-weight: 400;
   color: #ffffff;
   text-align: left;
@@ -6985,6 +7068,10 @@ h2 span,
     font-size: 40px !important;
   }
 
+  .w-sm-auto {
+    width: auto !important;
+  }
+
   .button-more-sm-min {
     margin-right: 15px;
     width: auto;
@@ -7368,6 +7455,10 @@ h2 span,
     font-size: 40px !important;
   }
 
+  .w-md-auto {
+    width: auto !important;
+  }
+
   .button-more-md-min {
     margin-right: 15px;
     width: auto;
@@ -7379,6 +7470,10 @@ h2 span,
     font-size: 13px;
     min-width: 86px;
     margin-right: 1px;
+  }
+
+  .modalMain .modal-dialog {
+    max-width: 560px;
   }
 }
 
@@ -7755,6 +7850,10 @@ h2 span,
     font-size: 40px !important;
   }
 
+  .w-lg-auto {
+    width: auto !important;
+  }
+
   .button-more-lg-min {
     margin-right: 15px;
     width: auto;
@@ -7766,6 +7865,10 @@ h2 span,
     font-size: 13px;
     min-width: 86px;
     margin-right: 1px;
+  }
+
+  .modalMain .modal-dialog {
+    max-width: 960px;
   }
 }
 
@@ -7942,8 +8045,16 @@ h2 span,
     background-color: inherit;
   }
 
-  .content-text a:not([class]):hover {
+  .content-title a:hover {
+    text-decoration: underline;
+  }
+
+  .content-text > a:not([class]):hover {
     text-decoration: none;
+  }
+
+  .content-text > * a:hover {
+    text-decoration: underline;
   }
 
   .like-button:hover {
@@ -7975,6 +8086,10 @@ h2 span,
   }
 
   .card__title a:hover {
+    text-decoration: underline;
+  }
+
+  .card__text a:not(.card__more):hover {
     text-decoration: underline;
   }
 
@@ -8456,6 +8571,10 @@ h2 span,
     font-size: 40px !important;
   }
 
+  .w-xl-auto {
+    width: auto !important;
+  }
+
   .button-more-xl-min {
     margin-right: 15px;
     width: auto;
@@ -8525,6 +8644,10 @@ h2 span,
   .button-height-30 {
     padding-top: 3px;
     padding-bottom: 3px;
+  }
+
+  .modalMain-slider-bottom .modalMain-slider__imgbox {
+    height: 85px;
   }
 
   .header.scroll .button-deploy {
@@ -8878,6 +9001,14 @@ h2 span,
     width: 10px;
   }
 
+  .comments-dark {
+    padding: 15px 30px;
+  }
+
+  .post-info__title {
+    font-size: 17px;
+  }
+
   .table-inn {
     overflow-x: scroll;
   }
@@ -8901,11 +9032,11 @@ h2 span,
   }
 
   .fix-height-135 {
-    max-height: 100px !important;
+    height: 100px !important;
   }
 
   .fix-height-210 {
-    max-height: 130px !important;
+    height: 130px !important;
   }
 
   .slider-arrow {
@@ -8969,6 +9100,14 @@ h2 span,
   .form-search__label {
     padding: 3px 10px 3px;
     font-size: 12px;
+  }
+
+  .modalMain-slider-wrap {
+    padding: 0 15px;
+  }
+
+  .modalMain-slider__item .card-image {
+    height: 205px;
   }
 
   .header-box__item {
@@ -9463,6 +9602,11 @@ h2 span,
     font-size: 12px;
   }
 
+  .post-info__title {
+    font-size: 12px;
+    max-width: 350px;
+  }
+
   .profile-info tr td {
     min-width: 122px;
   }
@@ -9583,13 +9727,23 @@ h2 span,
   }
 }
 
+@media (max-width: 767.98px) {
+  .header-info {
+    display: none;
+  }
+
+  .menu-nav-header {
+    display: none;
+  }
+}
+
 @media screen and (max-width: 575px) {
   .fix-height-135 {
-    max-height: 135px !important;
+    height: 135px !important;
   }
 
   .fix-height-210 {
-    max-height: 210px !important;
+    height: 210px !important;
   }
 
   .button {

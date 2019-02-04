@@ -255,6 +255,9 @@
 		@include lg-block {
 			display: block;
 		}
+		@media (max-width: 767.98px) {
+			display: none;
+		}
 		@include sm-block {
 			position: static;
 		}

@@ -1,0 +1,96 @@
+extends modules/_base
+
+block vars
+	- var pageTitle = 'Стайлгайд';
+block content
+	.row
+		.col-12
+			.card.padding-top-15
+				.content-titlebox_dark
+					h4 ПАЛИТРА
+		- var colors = [];
+		- colors.push({code: '#FFFFFF', class: 'bg-color-light'});
+		- colors.push({code: '#FBFBFB', class: 'bg-color-light-1'});
+		- colors.push({code: '#EEEFEF', class: 'bg-color-dark-1'});
+		- colors.push({code: '#E0E1E2', class: 'bg-color-dark-2'});
+		- colors.push({code: '#DDDEE0', class: 'bg-color-dark-3'});
+		- colors.push({code: '#D0D1D3', class: 'bg-color-dark-4'});
+		- colors.push({code: '#BCBDC0', class: 'bg-color-dark-5'});
+		- colors.push({code: '#A5A6AA', class: 'bg-color-dark-6'});
+		- colors.push({code: '#A1A3A7', class: 'bg-color-dark-7'});
+		- colors.push({code: '#797C82', class: 'bg-color-dark-8'});
+		- colors.push({code: '#5E6167', class: 'bg-color-dark-9'});
+		- colors.push({code: '#000000', class: 'bg-color-dark-10'});
+		- colors.push({code: '#008330', class: 'bg-color-danger'});
+		- colors.push({code: '#008330', class: 'bg-color-success'});
+		- colors.push({code: '#008ACC', class: 'bg-color-blue'});
+		- colors.push({code: '#EE9800', class: 'bg-color-warning'});
+
+		each color in colors
+			.col
+				.card
+					.box.height-65.bg-color-light(class= color.class)
+					.card__text.text-center
+						p= color.code
+
+	.row
+		.col-12
+			.card
+				.content-titlebox_dark
+					h4 ШРИФТЫ
+		.col-6.clearfix
+			.card.margin-right-20.float-left.w-auto
+				.content__title
+					h2.font-size-40 Aa
+				.card__text
+					p PT Serif
+			.card.margin-right-20.float-left.w-auto
+				.card__text
+					p.margin-bottom-0 Regular
+					p.margin-bottom-0
+						i Regular Italic
+					p.margin-bottom-0
+						b Bold
+					p.margin-bottom-0
+						b
+							i Bold Italic
+					p.margin-bottom-0
+						u Underline
+
+			.card.w-auto
+				.card__text
+					p Основной шрифт для заголовков, текста новостей, и большинства текстовых блоков
+
+		.col-6.clearfix
+			.card.margin-right-20.float-left.w-auto
+				.content-text.margin-bottom-0
+					h2.font-size-40 Aa
+				.content-text
+					p Roboto
+			.card.margin-right-20.float-left.w-auto
+				.content-text
+					p.margin-bottom-0 Regular
+					p.margin-bottom-0
+						i Regular Italic
+					p.margin-bottom-0
+						b Bold
+					p.margin-bottom-0
+						b
+							i Bold Italic
+					p.margin-bottom-0
+						u Underline
+
+			.card.w-auto
+				.content-text
+					p Более системный шрифт, чаще используется для информационных элементов типа кнопок, меню и т.п.
+	.row
+		.col-12
+			.card
+				.content-titlebox_dark
+					h4 КНОПКИ
+	.row
+		.col-6
+
+
+
+

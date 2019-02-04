@@ -18,6 +18,11 @@
 	&-title {
 		// background-color: $light-color;	
 		@include clearfix;
+		a {
+			@include hover {
+				text-decoration: underline;
+			}
+		}
 	}
 
 	&-titlebox {
@@ -136,6 +141,7 @@
 		@include md-block {
 			font-size: 8px;
 		}
+
 		h2 {
 			font-size: 24px;
 			font-family: "Roboto", sans-serif;
@@ -183,12 +189,20 @@
 				color: #bcbdc0;
 			}
 		}
-		a:not([class]) {
+
+		&>a:not([class]) {
 			text-decoration: underline;
 			@include hover {
 				text-decoration: none;
 			}
 		}
+		&>* a {
+			text-decoration: none;
+			@include hover {
+				text-decoration: underline;
+			}
+		}
+
 		&_special {
 			 p {
 				 font-family: "PT Serif", serif;

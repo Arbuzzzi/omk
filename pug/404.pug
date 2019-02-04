@@ -3,9 +3,11 @@ extends modules/_base
 block vars
 	- var pageTitle = '404';
 block content
-	.card
-		.card__text_404 404
+	.card.margin-top-15.text-center.padding-lg-30.padding-15.bg-color-dark-3
+		img.notfound.margin-top-lg-30(src="img/404_1200.png", alt="404 страница не найдена")
 		.content-text
 			p
-				| Страница не найдена. <br> Перейти на #{' '}
+				strong Ошибка 404
+			p.padding-bottom-lg-30
+				| Страница не найдена. Перейти на #{' '}
 				a(href="/") Главную.
