@@ -5873,6 +5873,134 @@ h2 span,
   font-weight: 300;
 }
 
+.card-calendar {
+  display: block;
+  width: 100%;
+  border-collapse: collapse;
+  border-spacing: 0px;
+}
+
+.card-calendar .ui-datepicker {
+  width: 100%;
+}
+
+.card-calendar thead {
+  display: block;
+}
+
+.card-calendar thead tr {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  width: 100%;
+}
+
+.card-calendar thead tr th {
+  margin-bottom: 5px;
+  display: block;
+  width: -webkit-calc(100% / 7);
+  width: calc(100% / 7);
+  color: #797c82;
+  font-size: 14px;
+  font-weight: 300;
+  line-height: 17px;
+  text-align: right;
+}
+
+.card-calendar tbody {
+  display: block;
+  border: 1px solid #bcbdc0;
+  -webkit-border-radius: 5px;
+          border-radius: 5px;
+  overflow: hidden;
+}
+
+.card-calendar tbody tr {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  width: 100%;
+  border-bottom: 1px solid #bcbdc0;
+}
+
+.card-calendar tbody tr:last-child {
+  border-bottom: 0;
+}
+
+.card-calendar td.card-calendar__day {
+  display: block;
+  width: -webkit-calc(100% / 7);
+  width: calc(100% / 7);
+  min-height: 124px;
+  padding: 11px 9px;
+  font-size: 49px;
+  font-weight: 300;
+  text-align: right;
+  border-right: 1px solid #bcbdc0;
+  color: #797c82;
+}
+
+.card-calendar td.card-calendar__day:last-child {
+  border-right: 0;
+}
+
+.card-calendar td.card-calendar__day a,
+.card-calendar td.card-calendar__day div {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  height: 100%;
+  padding: 0;
+  color: inherit;
+}
+
+.card-calendar td.card-calendar__day a p,
+.card-calendar td.card-calendar__day div p {
+  font-weight: 700;
+  color: inherit;
+}
+
+.card-calendar td.card-calendar__day a span,
+.card-calendar td.card-calendar__day div span {
+  font-size: 12px;
+  font-weight: 300;
+  color: inherit;
+}
+
+.card-calendar__day_major {
+  color: #ee3124;
+}
+
+.card-calendar__today {
+  background-color: rgba(238, 49, 36, 0.1);
+}
+
+.card-calendar__today div p {
+  color: #a1a3a7;
+}
+
+.card-calendar__weekend {
+  background-color: #f4f5f5;
+}
+
+.card-calendar__caption {
+  display: block;
+  margin-top: auto;
+  text-align: left;
+  vertical-align: bottom;
+  color: #bcbdc0;
+  font-size: 12px;
+  font-weight: 300;
+}
+
 .article {
   position: relative;
   width: 100%;
@@ -8140,6 +8268,10 @@ h2 span,
   }
 
   .calendar__day:hover {
+    background-color: rgba(0, 185, 31, 0.1);
+  }
+
+  .card-calendar__day:hover {
     background-color: rgba(0, 185, 31, 0.1);
   }
 

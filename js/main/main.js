@@ -857,8 +857,87 @@ $(document).ready(function() {
 
 		});
 	});
+	/* datepicker --------------------------------------------------------------------------------------------- */
 
-	$('#pageCalendar').datepicker();
+	// fix datepicker beforeShow
+	$.extend($.datepicker, {
+		// Reference the original function so we can override it and call it later
+		_inlineDatepicker2: $.datepicker._inlineDatepicker,
+		// Override the _inlineDatepicker method
+		_inlineDatepicker: function (target, inst) {
+			// Call the original
+			this._inlineDatepicker2(target, inst);
+			var beforeShow = $.datepicker._get(inst, 'beforeShow');
+			if (beforeShow) {
+				beforeShow.apply(target, [target, inst]);
+			}
+		}
+	});
+	var $fndatepicker = $.fn.datepicker;
+	$.fn.datepicker = function( options ) {
+		$( this ).trigger( "datepickercreate" );
+		options && options.create && options.create();
+		return $fndatepicker.apply( this, arguments );
+	};
+
+	var eventDate = new Date();
+
+	// eventDate.setDate(20);
+	// eventDate.setDate(18);
+	eventDate.setHours(0, 0, 0, 0);
+	//
+	var eventsDates = [10, 18, 20];
+
+	$('#pageCalendar').datepicker({
+		showOtherMonths: true,
+		selectOtherMonths: true,
+		inline: true,
+
+		create: function ($calendar, $inst){
+			console.log($calendar);
+			console.log($inst);
+			console.log(this);
+
+			var cells = $($calendar).find('td');
+
+			$(cells).addClass('card-calendar__day');
+			$(cells).attr('data-placement', 'right');
+			$(cells).attr('data-toggle', 'tooltip');
+			$(cells).attr('data-html', 'true');
+
+		},
+		beforeShowDay:function (date) {
+			var tooltipDate = "This date is DISABLED!!";
+
+			for (var i = 0; i < eventsDates.length; i++)  {
+				var dateCurrent = eventsDates[i];
+				eventDate.setDate(dateCurrent);
+				if (date.getTime() == eventDate.getTime()) {
+					return [true, 'redday', tooltipDate];
+				}
+			}
+			return [true, '', ''];
+		}
+	}).on("change", function (e){
+		// $(this).datepicker()
+	});
+
+	$('body').append('<style type="text/css">\n' +
+		'    td.redday, table.ui-datepicker-calendar tbody td.redday a {\n' +
+		'      background: none !important;\n' +
+		'      background-color : red !important;\n' +
+		'      background-image : none !important;\n' +
+		'      color: White !important;\n' +
+		'    }\n' +
+		'</style>');
+
+	// function beforeShowFunc ($calendar, $inst){
+	// 	console.log('test');
+	// 	console.log($calendar);
+	// };
+	// var beforeShow = $.datepicker._get(inst, 'beforeShow');
+	// if(beforeShow)
+	// 	beforeShow.apply();
 
 	/* СОКРАЩАЕМ ТЕКСТ ------------------------------------------------------------------------------ */
 	$('.card__title *').dotdotdot();
@@ -899,6 +978,7 @@ $(document).ready(function() {
 
 	/* TOOLTIPS ------------------------------------------------------------------------------------ */
 	$('.calendar__day').tooltip();
+	$('.card-calendar__day').tooltip();
 	$('.sliderBlog').slick();
 
 	/* СЛАЙДЕРЫ sliders ------------------------------------------------------------------------------*/
