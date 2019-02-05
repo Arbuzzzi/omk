@@ -858,7 +858,7 @@ $(document).ready(function() {
 		});
 	});
 
-	$('#pageCalendar').datepicker();
+	// $('#pageCalendar').datepicker();
 
 	/* СОКРАЩАЕМ ТЕКСТ ------------------------------------------------------------------------------ */
 	$('.card__title *').dotdotdot();
