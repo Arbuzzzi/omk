@@ -1,95 +1,67 @@
-extends modules/_base
+- var pageTitle = 'Стайлгайд';
+- var version = '0.2.6';
 
-block vars
-	- var pageTitle = 'Стайлгайд';
-block content
-	.row
-		.col-12
-			.card.padding-top-15
-				.content-titlebox_dark
-					h4 ПАЛИТРА
-		- var colors = [];
-		- colors.push({code: '#FFFFFF', class: 'bg-color-light'});
-		- colors.push({code: '#FBFBFB', class: 'bg-color-light-1'});
-		- colors.push({code: '#EEEFEF', class: 'bg-color-dark-1'});
-		- colors.push({code: '#E0E1E2', class: 'bg-color-dark-2'});
-		- colors.push({code: '#DDDEE0', class: 'bg-color-dark-3'});
-		- colors.push({code: '#D0D1D3', class: 'bg-color-dark-4'});
-		- colors.push({code: '#BCBDC0', class: 'bg-color-dark-5'});
-		- colors.push({code: '#A5A6AA', class: 'bg-color-dark-6'});
-		- colors.push({code: '#A1A3A7', class: 'bg-color-dark-7'});
-		- colors.push({code: '#797C82', class: 'bg-color-dark-8'});
-		- colors.push({code: '#5E6167', class: 'bg-color-dark-9'});
-		- colors.push({code: '#000000', class: 'bg-color-dark-10'});
-		- colors.push({code: '#008330', class: 'bg-color-danger'});
-		- colors.push({code: '#008330', class: 'bg-color-success'});
-		- colors.push({code: '#008ACC', class: 'bg-color-blue'});
-		- colors.push({code: '#EE9800', class: 'bg-color-warning'});
+html(lang='ru')
+	head
+		meta(charset='utf-8')
+		meta(name='viewport', content='width=device-width, initial-scale=1, shrink-to-fit=no')
+		//meta(name='viewport', content='width=device-width')
+		meta(name='description', content='')
+		meta(name='author', content='')
+		link(rel='stylesheet', href='css/normalize.css')
+		//- link(rel='stylesheet', href='css/bootstrap/bootstrap-grid.css')
+		link(rel='stylesheet', href='css/bootstrap/bootstrap.css')
+		link(rel='stylesheet', href='jquery-ui-1.12.1.custom/jquery-ui.structure.min.css')
+		link(rel='stylesheet', href='jquery-ui-1.12.1.custom/jquery-ui.min.css')
+		link(rel='stylesheet', href='slick/slick-theme.css')
+		link(rel='stylesheet', href='slick/slick.css')
 
-		each color in colors
-			.col
-				.card
-					.box.height-65.bg-color-light(class= color.class)
-					.card__text.text-center
-						p= color.code
+		link(href='css/style.css?'+version, rel='stylesheet')
+		if pageTitle !== undefined
+			title=pageTitle+' | ОМК'
+		else
+			title='ОМК'
+	body(style="background-color: #f6f6f6;")
+		.container
+			include stylegide/_stylegide__colors
+			include stylegide/_stylegide__fonts
+			include stylegide/_stylegide__buttons
+			include stylegide/_stylegide__progress
+			include stylegide/_stylegide__forms
+			include stylegide/_stylegide__text
+			include stylegide/_stylegide__tables
 
-	.row
-		.col-12
-			.card
-				.content-titlebox_dark
-					h4 ШРИФТЫ
-		.col-6.clearfix
-			.card.margin-right-20.float-left.w-auto
-				.content__title
-					h2.font-size-40 Aa
-				.card__text
-					p PT Serif
-			.card.margin-right-20.float-left.w-auto
-				.card__text
-					p.margin-bottom-0 Regular
-					p.margin-bottom-0
-						i Regular Italic
-					p.margin-bottom-0
-						b Bold
-					p.margin-bottom-0
-						b
-							i Bold Italic
-					p.margin-bottom-0
-						u Underline
+		footer.footer(style="padding: 1000px 0")
+			.upp
+				.container
+					.row
+						.col-12
+							button#btnUp.button.button-up
+								i.icon-arrow-down
 
-			.card.w-auto
-				.card__text
-					p Основной шрифт для заголовков, текста новостей, и большинства текстовых блоков
-
-		.col-6.clearfix
-			.card.margin-right-20.float-left.w-auto
-				.content-text.margin-bottom-0
-					h2.font-size-40 Aa
-				.content-text
-					p Roboto
-			.card.margin-right-20.float-left.w-auto
-				.content-text
-					p.margin-bottom-0 Regular
-					p.margin-bottom-0
-						i Regular Italic
-					p.margin-bottom-0
-						b Bold
-					p.margin-bottom-0
-						b
-							i Bold Italic
-					p.margin-bottom-0
-						u Underline
-
-			.card.w-auto
-				.content-text
-					p Более системный шрифт, чаще используется для информационных элементов типа кнопок, меню и т.п.
-	.row
-		.col-12
-			.card
-				.content-titlebox_dark
-					h4 КНОПКИ
-	.row
-		.col-6
+			// /.container
+			// /.footer
+			// jQuery
+			script(src='js/libs/jquery.min.js')
+			// jQuery-UI
+			script(src='jquery-ui-1.12.1.custom/jquery-ui.min.js')
+			script(src='jquery-ui-1.12.1.custom/datepicker-ru.js')
+			script(src='jquery-ui-1.12.1.custom/datepicker.extension.range.min.js')
+			script(src='js/libs/jquery.dotdotdot.js')
+			// slick
+			script(src='slick/slick.min.js')
+			// Bootstrap
+			script(src='js/libs/bootstrap/bootstrap.bundle.min.js')
+			script(src='js/libs/jquery.actual.min.js')
+			// Валидация
+			script(src='js/libs/validate/jquery.validate.min.js')
+			script(src='js/libs/jquery.maskedinput.min.js')
+			// main script
+			script(src='js/main/main.js?' + version)
+			//if lte IE 9
+				link(href='ie9/css/bootstrap-ie9.css', rel='stylesheet')
+				link(rel='stylesheet', href='ie9/css/style-ie9.css')
+				script(src='ie9/js/bootstrap-ie9.js')
 
 
 

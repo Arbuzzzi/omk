@@ -57,6 +57,19 @@ $(document).ready(function() {
 		$(this)[0].setSelectionRange(0, 0);
 	});
 
+	// multiple select
+	$("select[multiple]").mousedown(function(e){
+		e.preventDefault();
+
+		var select = this;
+		var scroll = select.scrollTop;
+
+		e.target.selected = !e.target.selected;
+
+		setTimeout(function(){select.scrollTop = scroll;}, 0);
+
+		$(select).focus();
+	}).mousemove(function(e){e.preventDefault()});
 
 	// подпункты меню раскрывается при наведении
 	// $('.menu-nav-header__item').on('mouseenter', function(event) {

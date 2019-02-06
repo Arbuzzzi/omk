@@ -1,0 +1,152 @@
+mixin radioButton($n)
+	.form-radio
+		label.form-radio__label(for='formRadio'+$n)
+			input.form-radio__input(id='formRadio'+$n, type='radio', name='formRadio')
+			span.form-radio__text= 'Radio-кнопка '+ $n
+
+.row
+	.col-12
+		.card
+			.content-titlebox_dark
+				h4 КНОПКИ
+.bg-color-light.padding-30.margin-bottom-30
+	.row
+		.col-6
+			.row
+				.col-12.col-sm-6
+					button.button-big-o.button-big-o-danger ГОРЯЧАЯ ЛИНИЯ ОМК
+					button.button-big-o ДАТЬ ОБЪЯВЛЕНИЕ
+				.col-12.col-sm-6
+					button.button-big-o.button-big-o-special ДОБАВИТЬ БЛОГ
+					button.button-big-o ОТСЛЕЖИВАЕМЫЕ БЛОГИ
+			.card.margin-bottom-15
+				.row
+					.col-6.text-right
+						button.button.button-width-170.margin-bottom-15 Отправить
+						button.button.button-border.button-width-142 Поздравить
+					.col-6.text-right
+						button.button.button-width-170.margin-bottom-15 Отправить
+						button.button.button-width-142 Поздравить
+
+			.card
+				form.form(action='#')
+					label.form-label_select.margin-bottom-10(for="formSelect") Выбор
+						select#formSelect.button-o.form-select(name='number')
+							option(selected='selected') Москва
+							option Выкса
+							option Челябинск
+							option Чусовой
+							option Благовещенск
+							option Альтемьевск
+
+					label.form-label_select.margin-bottom-10(for="formMultiSelect") Пример множественного выбора
+						select#formMultiSelect.button-o.form-select.form-select-multiple(name='number' multiple)
+							option(selected='selected') Москва
+							option Выкса
+							option Челябинск
+							option Чусовой
+
+		.col-6
+			.card
+				.row
+					.col-6
+						form.form
+							+radioButton(1)
+							+radioButton(2)
+							+radioButton(3)
+							+radioButton(4)
+
+					.col-6
+						form.form
+							.form-checkbox.margin-bottom-10
+								label.form-checkbox__label(for='formCheckbox1')
+									input#formCheckbox1.form-checkbox__input(type='checkbox', name='formCheckbox1')
+									span.form-checkbox__text Чекбокс тип 1
+							.form-checkbox.margin-bottom-10
+								label.form-checkbox__label(for='formCheckbox2')
+									input#formCheckbox2.form-checkbox__input(type='checkbox', name='formCheckbox2', disabled)
+									span.form-checkbox__text Чекбокс тип 1 disabled
+							.form-checkbox.margin-bottom-10
+								label.form-checkbox__label(for='formCheckbox3')
+									input#formCheckbox3.form-checkbox__input(type='checkbox', name='formCheckbox3')
+									span.form-checkbox__text.form-checkbox__text_thin Чекбокс тип 2
+							.form-checkbox.margin-bottom-10
+								label.form-checkbox__label(for='formCheckbox4')
+									input#formCheckbox4.form-checkbox__input(type='checkbox', name='formCheckbox4', disabled)
+									span.form-checkbox__text.form-checkbox__text_thin Чекбокс тип 2 disabled
+			.card
+				.row
+					.col-6
+						.btn-group
+							button.button-dropdown(data-toggle='dropdown')
+								span Список
+								span.button-split
+							.dropdown-menu
+								a.dropdown-item(href='#') Ниспадающий
+								a.dropdown-item(href='#') Стандартный
+								a.dropdown-item(href='#') Как доп. элемент
+								.dropdown-divider
+								button.dropdown-item(href='#', disabled) Неактив. #D0D1D3
+								a.dropdown-item(href='#') #5E6167
+					.col-6
+						.btn-group
+							button.button-dropdown(data-toggle='dropdown')
+								span Список: другой тип
+								span.button-split.button-split_light
+							.dropdown-menu
+								a.dropdown-item(href='#') Ниспадающий
+								a.dropdown-item(href='#') Стандартный
+								a.dropdown-item(href='#') Как доп. элемент
+								.dropdown-divider
+								button.dropdown-item(href='#', disabled) Неактив. #D0D1D3
+								a.dropdown-item(href='#') #5E6167
+			.card
+				.row
+					.col-12
+						.like-card.text-left
+							button.like-button.comment-button
+								i.icon-comment
+								span.like-count 23
+							button.like-button
+								i.icon-like
+								span.like-count 1286
+						.like-card.text-left.margin-bottom-15
+							button.like-button.comment-button.active
+								i.icon-comment
+								span.like-count 23
+							button.like-button.active
+								i.icon-like
+								span.like-count 1286
+						.card
+							a.link-icon.margin-right-10(href="#")
+								i.icon-save
+							a.link-icon.font-size-17.margin-right-10(href="#")
+								i.icon-save
+							a.link-icon.font-size-20.margin-right-10(href="#")
+								i.icon-save
+							a.link-icon.font-size-22.margin-right-10(href="#")
+								i.icon-save
+							a.link-icon.font-size-28.margin-right-10(href="#")
+								i.icon-save
+							a.link-icon.font-size-32.margin-right-10(href="#")
+								i.icon-save
+							a.link-icon.font-size-40.margin-right-10(href="#")
+								i.icon-save
+						.card.margin-bottom-0
+							form
+								.form-group
+									label.margin-bottom-15(for='exampleFormControlFile1') Загрузка файла
+									input#exampleFormControlFile1.form-control-file(type='file')
+
+								.form-group
+									.form-row.align-items-center
+										.col-auto
+											label.mr-sm-2(for='inlineFormCustomSelect') Выбор формы
+										.col-4
+											select#inlineFormCustomSelect.custom-select.mr-sm-2
+												option(selected='') Выбор опций
+												option(value='1') One
+												option(value='2') Two
+												option(value='3') Three
+
+
