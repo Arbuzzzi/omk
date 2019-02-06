@@ -142,19 +142,25 @@
 		color: #000000;
 		font-size: 16px;
 		font-weight: 400;
+
+
 		
 		&::placeholder {
 			font-size: 12px;
 			font-weight: 300;
 
-			text-indent: 0px; // анимация для placeholder
-			transition: text-indent 400ms; // анимация для placeholder
+			//text-indent: 0px; // анимация для placeholder
+			//transition: text-indent 400ms; // анимация для placeholder
+			opacity: 1;
+			transition: opacity 0.4s;
 		}
 
 		&:focus {
 			&::placeholder {
-				text-indent: -500px; // анимация для placeholder
+				//text-indent: -500px; // анимация для placeholder
+				opacity: 0;
 			}
+
 		}
 		&.success {
 			border-color: $valid-color;
@@ -172,6 +178,7 @@
 	&__textarea {
 		min-height: 210px;
 		resize: vertical;
+		background-color: $light-color;
 	}
 	&__input {
 		&_slim {

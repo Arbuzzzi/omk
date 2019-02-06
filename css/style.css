@@ -243,7 +243,7 @@
   content: "\e916";
 }
 
-.icon-symbol:before {
+.icon-sybol:before {
   content: "\e917";
 }
 
@@ -252,16 +252,11 @@
 }
 
 .icon-filters1:before {
-  color: #797C82;
   content: "\e919";
 }
 
 .icon-fire:before {
   content: "\e91a";
-}
-
-.icon-fire-2:before {
-  content: "\e91f";
 }
 
 .icon-heart:before {
@@ -280,8 +275,303 @@
   content: "\e91e";
 }
 
+.icon-fire-2:before {
+  content: "\e91f";
+}
+
 .icon-save:before {
   content: "\e920";
+}
+
+.icon-15:before {
+  content: "\e921";
+}
+
+.icon-16:before {
+  content: "\e922";
+}
+
+.icon-17:before {
+  content: "\e923";
+}
+
+.icon-18:before {
+  content: "\e924";
+}
+
+.icon-19:before {
+  content: "\e925";
+}
+
+.icon-20:before {
+  content: "\e926";
+}
+
+.icon-21:before {
+  content: "\e927";
+}
+
+.icon-22:before {
+  content: "\e928";
+}
+
+.icon-23:before {
+  content: "\e929";
+}
+
+.icon-24:before {
+  content: "\e92a";
+}
+
+.icon-25:before {
+  content: "\e92b";
+}
+
+.icon-26:before {
+  content: "\e92c";
+}
+
+.icon-27:before {
+  content: "\e92d";
+}
+
+.icon-28:before {
+  content: "\e92e";
+}
+
+.icon-29:before {
+  content: "\e92f";
+}
+
+.icon-30:before {
+  content: "\e930";
+}
+
+.icon-31:before {
+  content: "\e931";
+}
+
+.icon-32:before {
+  content: "\e932";
+}
+
+.icon-33:before {
+  content: "\e933";
+}
+
+.icon-37:before {
+  content: "\e934";
+}
+
+.icon-38:before {
+  content: "\e935";
+}
+
+.icon-39:before {
+  content: "\e936";
+}
+
+.icon-40:before {
+  content: "\e937";
+}
+
+.icon-41:before {
+  content: "\e938";
+}
+
+.icon-42:before {
+  content: "\e939";
+}
+
+.icon-43:before {
+  content: "\e93a";
+}
+
+.icon-44:before {
+  content: "\e93b";
+}
+
+.icon-45:before {
+  content: "\e93c";
+}
+
+.icon-46:before {
+  content: "\e93d";
+}
+
+.icon-47:before {
+  content: "\e93e";
+}
+
+.icon-48:before {
+  content: "\e93f";
+}
+
+.icon-49:before {
+  content: "\e940";
+}
+
+.icon-50:before {
+  content: "\e941";
+}
+
+.icon-51:before {
+  content: "\e942";
+}
+
+.icon-52:before {
+  content: "\e943";
+}
+
+.icon-53:before {
+  content: "\e944";
+}
+
+.icon-54:before {
+  content: "\e945";
+}
+
+.icon-55:before {
+  content: "\e946";
+}
+
+.icon-56:before {
+  content: "\e947";
+}
+
+.icon-57:before {
+  content: "\e948";
+}
+
+.icon-58:before {
+  content: "\e949";
+}
+
+.icon-59:before {
+  content: "\e94a";
+}
+
+.icon-60:before {
+  content: "\e94b";
+}
+
+.icon-61:before {
+  content: "\e94c";
+}
+
+.icon-62:before {
+  content: "\e94d";
+}
+
+.icon-63:before {
+  content: "\e94e";
+}
+
+.icon-64:before {
+  content: "\e94f";
+}
+
+.icon-65:before {
+  content: "\e950";
+}
+
+.icon-66:before {
+  content: "\e951";
+}
+
+.icon-67:before {
+  content: "\e952";
+}
+
+.icon-68:before {
+  content: "\e953";
+}
+
+.icon-69:before {
+  content: "\e954";
+}
+
+.icon-70:before {
+  content: "\e955";
+}
+
+.icon-71:before {
+  content: "\e956";
+}
+
+.icon-72:before {
+  content: "\e957";
+}
+
+.icon-73:before {
+  content: "\e958";
+}
+
+.icon-74:before {
+  content: "\e959";
+}
+
+.icon-75:before {
+  content: "\e95a";
+}
+
+.icon-76:before {
+  content: "\e95b";
+}
+
+.icon-77:before {
+  content: "\e95c";
+}
+
+.icon-1:before {
+  content: "\e95d";
+}
+
+.icon-2:before {
+  content: "\e95e";
+}
+
+.icon-3 .path1:before {
+  content: "\e95f";
+}
+
+.icon-3 .path2:before {
+  content: "\e960";
+  margin-left: -1em;
+}
+
+.icon-3 .path3:before {
+  content: "\e961";
+  margin-left: -1em;
+}
+
+.icon-3 .path4:before {
+  content: "\e962";
+  margin-left: -1em;
+}
+
+.icon-4:before {
+  content: "\e963";
+}
+
+.icon-5:before {
+  content: "\e964";
+}
+
+.icon-6:before {
+  content: "\e965";
+}
+
+.icon-7:before {
+  content: "\e966";
+}
+
+.icon-8:before {
+  content: "\e967";
+}
+
+.icon-14:before {
+  content: "\e968";
 }
 
 .preloader {
@@ -869,6 +1159,10 @@ img {
 
 .bg-color-warning {
   background-color: #EE9800 !important;
+}
+
+.color-icons-grey-1 {
+  color: #bdbec0;
 }
 
 .border-default {
@@ -1705,75 +1999,75 @@ h2 span,
 .form__textarea::-webkit-input-placeholder {
   font-size: 12px;
   font-weight: 300;
-  text-indent: 0px;
-  -webkit-transition: text-indent 400ms;
-  -o-transition: text-indent 400ms;
-  transition: text-indent 400ms;
+  opacity: 1;
+  -webkit-transition: opacity 0.4s;
+  -o-transition: opacity 0.4s;
+  transition: opacity 0.4s;
 }
 
 .form__input::-moz-placeholder,
 .form__textarea::-moz-placeholder {
   font-size: 12px;
   font-weight: 300;
-  text-indent: 0px;
-  -webkit-transition: text-indent 400ms;
-  -o-transition: text-indent 400ms;
-  transition: text-indent 400ms;
+  opacity: 1;
+  -webkit-transition: opacity 0.4s;
+  -o-transition: opacity 0.4s;
+  transition: opacity 0.4s;
 }
 
 .form__input:-ms-input-placeholder,
 .form__textarea:-ms-input-placeholder {
   font-size: 12px;
   font-weight: 300;
-  text-indent: 0px;
-  -webkit-transition: text-indent 400ms;
-  -o-transition: text-indent 400ms;
-  transition: text-indent 400ms;
+  opacity: 1;
+  -webkit-transition: opacity 0.4s;
+  -o-transition: opacity 0.4s;
+  transition: opacity 0.4s;
 }
 
 .form__input::-ms-input-placeholder,
 .form__textarea::-ms-input-placeholder {
   font-size: 12px;
   font-weight: 300;
-  text-indent: 0px;
-  -webkit-transition: text-indent 400ms;
-  -o-transition: text-indent 400ms;
-  transition: text-indent 400ms;
+  opacity: 1;
+  -webkit-transition: opacity 0.4s;
+  -o-transition: opacity 0.4s;
+  transition: opacity 0.4s;
 }
 
 .form__input::placeholder,
 .form__textarea::placeholder {
   font-size: 12px;
   font-weight: 300;
-  text-indent: 0px;
-  -webkit-transition: text-indent 400ms;
-  -o-transition: text-indent 400ms;
-  transition: text-indent 400ms;
+  opacity: 1;
+  -webkit-transition: opacity 0.4s;
+  -o-transition: opacity 0.4s;
+  transition: opacity 0.4s;
 }
 
 .form__input:focus::-webkit-input-placeholder,
 .form__textarea:focus::-webkit-input-placeholder {
-  text-indent: -500px;
+  opacity: 0;
 }
 
 .form__input:focus::-moz-placeholder,
 .form__textarea:focus::-moz-placeholder {
-  text-indent: -500px;
+  opacity: 0;
 }
 
 .form__input:focus:-ms-input-placeholder,
 .form__textarea:focus:-ms-input-placeholder {
-  text-indent: -500px;
+  opacity: 0;
 }
 
 .form__input:focus::-ms-input-placeholder,
 .form__textarea:focus::-ms-input-placeholder {
-  text-indent: -500px;
+  opacity: 0;
 }
 
 .form__input:focus::placeholder,
 .form__textarea:focus::placeholder {
-  text-indent: -500px;
+  opacity: 0;
 }
 
 .form__input.success,
@@ -1796,6 +2090,7 @@ h2 span,
 .form__textarea {
   min-height: 210px;
   resize: vertical;
+  background-color: #ffffff;
 }
 
 .form__input_slim {
@@ -4761,7 +5056,7 @@ h2 span,
 }
 
 .card-links__lnk.text-ddd {
-  max-height: 25px;
+  max-height: 30px;
 }
 
 .card-links__lnk_small {
