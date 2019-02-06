@@ -23,6 +23,10 @@
 		}
 	}
 	&-icon {
+		transition: 0.3s;
+		@include hover {
+			color: $special-color;
+		}
 		&-save {
 			position: relative;
 			@include hover {
@@ -188,6 +192,43 @@
 		}
 	}
 
+}
+
+.button-dropdown {
+	width: 100%;
+	min-width: 190px;
+	padding: 10px 30px 10px 10px;
+	border-radius: 5px;
+	border: 1px solid #dddddd;
+	text-align: left;
+	.button-split {
+		top: 0;
+		right: 0;
+		width: 30px;
+		height: 100%;
+		max-height: none;
+		border-radius: 0 5px 5px 0;
+		border: 1px solid #dddddd;
+		background-color: #fbfbfb;
+		@include hover {
+			border-color: inherit;
+
+		}
+
+		@include before('\e901') {
+			top: 50%;
+			left: 50%;
+			margin-top: 2px;
+			transform: translate(-50%, -50%);
+			color: #373a3c;
+			font-size: 8px;
+			@include icon;
+		}
+		&_light {
+			border-left: none;
+			background-color: transparent;
+		}
+	}
 }
 
 .rollUp {

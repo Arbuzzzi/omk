@@ -1,0 +1,16 @@
+.row
+	.col-12
+		.card
+			.content-titlebox_dark
+				h4 ТАБЛИЦЫ
+.bg-color-light.padding-30.margin-bottom-30
+	.row
+		.col-9
+			- var tableClass = 'table-all-line';
+			include ../tables/_table-01
+
+			- var tableClass = 'table-thin-head';
+			include ../tables/_table-01
+
+			- var tableClass = 'table-thin-head table-light table-all-line';
+			include ../tables/_table-01

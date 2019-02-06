@@ -1,0 +1,77 @@
+.row
+	.col-12
+		.card
+			.content-titlebox_dark
+				h4 ФОРМЫ
+.card.bg-color-light.padding-top-15.padding-bottom-15
+	.col-9
+		form.form
+			.form__box.form__box_title
+				h3.form__title.form__title_main Заполните форму обращения
+				h3.form__title.form__title_alt Отправить форму от другого имени
+			.form__box
+				label.form-label.form-label_special(for="formSubject") Тема
+				input#formSubject.form__input(type="text", placeholder="Введите тему обращения")
+			.form__box.text-right
+			#formMoreInputs.form__group
+				.form__box
+					label.form-label(for="formFulName")
+						span Ф.И.О.
+					input#formFulName.form__input(type="text", placeholder="Ваши Ф.И.О.")
+
+				.form__box
+					label.form-label(for="formDepartment")
+						span Подразделение
+					input#formDepartment.form__input(type="text", placeholder="Введите наименование подразделения")
+
+				.form__box.form__box_small
+					label.form-label(for="formEmail1")
+						span Email
+					input#formEmail1.form__input.success(type="email", placeholder="Введите ваш Email")
+
+				.form__box.form__box_small
+					label.form-label(for="formEmail2")
+						span Email
+					input#formEmail2.form__input.error(type="email", placeholder="Введите ваш Email")
+
+				.form__box.form__box_small
+					label.form-label(for="formEmail3")
+						span Email
+					input#formEmail3.form__input.warning(type="email", placeholder="Введите ваш Email")
+			.form__box
+				label.form-label(for="formTextarea")
+					span Текст обращения
+				textarea#formTextarea.form__textarea(placeholder="Введите текст обращения")
+			.form__box.form__box_flex
+				.form-checkbox
+					label.form-checkbox__label(for='formCheckbox')
+						input#formCheckbox.form-checkbox__input(type='checkbox', name='form_copy')
+						span.form-checkbox__text.form-checkbox__text_thin Отправить себе копию сообщения
+
+					label.form-label.form-label_slim(for="formEmailCopy")
+						span Дополнительный Email (необяз.):
+						input#formEmailCopy.form__input.form__input_slim.success(type="email", placeholder="konstantinopolskiy.k@yandex.ru")
+				.form__buttonbox
+					button.button.form__button(type="submit") Отправить
+			.form__box.form__box_flex
+				.form-checkbox
+					label.form-checkbox__label(for='formCheckbox1')
+						input#formCheckbox1.form-checkbox__input(type='checkbox', name='form_copy')
+						span.form-checkbox__text.form-checkbox__text_thin Отправить себе копию сообщения
+
+					label.form-label.form-label_slim(for="formEmailCopy1")
+						span Дополнительный Email (необяз.):
+						input#formEmailCopy1.form__input.form__input_slim.error(type="email", placeholder="konstantinopolskiy.k@yandex.ru")
+				.form__buttonbox
+					button.button.form__button(type="submit") Отправить
+			.form__box.form__box_flex
+				.form-checkbox
+					label.form-checkbox__label(for='formCheckbox2')
+						input#formCheckbox2.form-checkbox__input(type='checkbox', name='form_copy')
+						span.form-checkbox__text.form-checkbox__text_thin Отправить себе копию сообщения
+
+					label.form-label.form-label_slim(for="formEmailCopy2")
+						span Дополнительный Email (необяз.):
+						input#formEmailCopy2.form__input.form__input_slim.warning(type="email", placeholder="konstantinopolskiy.k@yandex.ru")
+				.form__buttonbox
+					button.button.form__button(type="submit") Отправить

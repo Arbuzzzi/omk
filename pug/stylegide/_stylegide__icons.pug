@@ -1,0 +1,83 @@
+.row
+	.col-12
+		.card
+			.content-titlebox_dark
+				h4 Иконки для меню Системы
+mixin icon($iconClass)
+	a.link-icon.margin-right-10.font-size-32.color-icons-grey-1(href="#")= ' '
+		i(class= $iconClass)
+
+- var $classes = [];
+
+- $classes.push('icon-15');
+- $classes.push('icon-16');
+- $classes.push('icon-17');
+- $classes.push('icon-18');
+- $classes.push('icon-19');
+- $classes.push('icon-20');
+- $classes.push('icon-21');
+- $classes.push('icon-22');
+- $classes.push('icon-23');
+- $classes.push('icon-24');
+- $classes.push('icon-25');
+- $classes.push('icon-26');
+- $classes.push('icon-27');
+- $classes.push('icon-28');
+- $classes.push('icon-29');
+- $classes.push('icon-30');
+- $classes.push('icon-31');
+- $classes.push('icon-32');
+- $classes.push('icon-33');
+- $classes.push('icon-37');
+- $classes.push('icon-38');
+- $classes.push('icon-39');
+- $classes.push('icon-40');
+- $classes.push('icon-41');
+- $classes.push('icon-42');
+- $classes.push('icon-43');
+- $classes.push('icon-44');
+- $classes.push('icon-45');
+- $classes.push('icon-46');
+- $classes.push('icon-47');
+- $classes.push('icon-48');
+- $classes.push('icon-49');
+- $classes.push('icon-50');
+- $classes.push('icon-51');
+- $classes.push('icon-52');
+- $classes.push('icon-53');
+- $classes.push('icon-54');
+- $classes.push('icon-55');
+- $classes.push('icon-56');
+- $classes.push('icon-57');
+- $classes.push('icon-58');
+- $classes.push('icon-59');
+- $classes.push('icon-60');
+- $classes.push('icon-61');
+- $classes.push('icon-62');
+- $classes.push('icon-63');
+- $classes.push('icon-64');
+- $classes.push('icon-65');
+- $classes.push('icon-66');
+- $classes.push('icon-67');
+- $classes.push('icon-68');
+- $classes.push('icon-69');
+- $classes.push('icon-70');
+- $classes.push('icon-71');
+- $classes.push('icon-72');
+- $classes.push('icon-73');
+- $classes.push('icon-74');
+- $classes.push('icon-75');
+- $classes.push('icon-76');
+- $classes.push('icon-77');
+- $classes.push('icon-1');
+- $classes.push('icon-2');
+- $classes.push('icon-4');
+- $classes.push('icon-5');
+- $classes.push('icon-6');
+- $classes.push('icon-7');
+- $classes.push('icon-8');
+- $classes.push('icon-14');
+
+.bg-color-light.padding-30.margin-bottom-30
+	each $class in $classes
+		+icon($class)

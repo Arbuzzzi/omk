@@ -1,1213 +1,787 @@
-<!DOCTYPE html>
+
 <html lang="ru">
   <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
     <!--meta(name='viewport', content='width=device-width')-->
-    <meta name="description" content="">
-    <meta name="author" content="">
-    <link rel="stylesheet" href="css/normalize.css">
-    <link rel="stylesheet" href="css/bootstrap/bootstrap.css">
-    <link rel="stylesheet" href="jquery-ui-1.12.1.custom/jquery-ui.structure.min.css">
-    <link rel="stylesheet" href="jquery-ui-1.12.1.custom/jquery-ui.min.css">
-    <link rel="stylesheet" href="slick/slick-theme.css">
-    <link rel="stylesheet" href="slick/slick.css">
-    <link href="css/style.css?0.2.6" rel="stylesheet">
+    <meta name="description" content=""/>
+    <meta name="author" content=""/>
+    <link rel="stylesheet" href="css/normalize.css"/>
+    <link rel="stylesheet" href="css/bootstrap/bootstrap.css"/>
+    <link rel="stylesheet" href="jquery-ui-1.12.1.custom/jquery-ui.structure.min.css"/>
+    <link rel="stylesheet" href="jquery-ui-1.12.1.custom/jquery-ui.min.css"/>
+    <link rel="stylesheet" href="slick/slick-theme.css"/>
+    <link rel="stylesheet" href="slick/slick.css"/>
+    <link href="css/style.css?0.2.6" rel="stylesheet"/>
     <title>Стайлгайд | ОМК</title>
   </head>
-  <body>
-    <!--links-->
-    <header class="header">
-      <div class="container">
-        <div class="header-box">
-          <div class="header-box__item header-box__logo">
-            <div class="header-logowrap"><a class="logo header-logo" href="/projects/omk/"><img class="logo-img" src="img/logo.png" alt="Logo"></a></div>
-            <nav class="menu-nav menu-nav-header" id="menu-nav-more">
-              <div class="nav-more menu-nav-more menu-nav-header-more">
-                <button class="button header-button menu-nav__button menu-nav-header__button" data-toggle="collapse" data-target="#menu-nav-headerGroup" type="button" aria-haspopup="true" aria-expanded="false">РЕГИОНАЛЬНЫЕ НОВОСТИ<i class="icon-arrow-down"></i></button>
-                <ul class="nav-more-list menu-nav-group menu-nav-header-group collapse" id="menu-nav-headerGroup">
-                  <li class="nav-more-list__item menu-nav__item menu-nav-header__item" data-toggle="collapse" data-target="#menu-nav-header-collapse-1" aria-expanded="false" aria-controls="menu-nav-header-collapse-1">
-                    <div class="menu-nav__textbox menu-nav-header__textbox"><a class="menu-nav__text menu-nav-header__text" href="/projects/omk/"><span>Новости</span></a>
-                      <button class="button-split" data-toggle="collapse" data-target="#menu-nav-header-collapse-1" aria-expanded="false" aria-controls="menu-nav-header-collapse-1"><i class="icon-arrow-down"></i></button>
-                    </div>
-                    <ul class="collapse show" id="menu-nav-header-collapse-1" data-parent="#menu-nav-more">
-                      <li class="nav-more-list__item menu-nav__item menu-nav-header__item"><a class="menu-nav__textbox menu-nav-header__textbox" href="/projects/omk/">
-                          <div class="menu-nav__text menu-nav-header__text">НОВОСТИ ОМК</div></a></li>
-                      <li class="nav-more-list__item menu-nav__item menu-nav-header__item"><a class="menu-nav__textbox menu-nav-header__textbox current" href="/projects/omk/">
-                          <div class="menu-nav__text menu-nav-header__text">РЕГИОНАЛЬНЫЕ НОВОСТИ</div></a></li>
-                      <li class="nav-more-list__item menu-nav__item menu-nav-header__item"><a class="menu-nav__textbox menu-nav-header__textbox" href="/projects/omk/">
-                          <div class="menu-nav__text menu-nav-header__text">пс омк</div></a></li>
-                      <li class="nav-more-list__item menu-nav__item menu-nav-header__item"><a class="menu-nav__textbox menu-nav-header__textbox" href="/projects/omk/">
-                          <div class="menu-nav__text menu-nav-header__text">НОВОСТИ ПОДРАЗДЕЛЕНИЙ</div></a></li>
-                      <li class="nav-more-list__item menu-nav__item menu-nav-header__item"><a class="menu-nav__textbox menu-nav-header__textbox" href="/projects/omk/">
-                          <div class="menu-nav__text menu-nav-header__text">НОВОСТИ ФОНДА</div></a></li>
-                      <li class="nav-more-list__item menu-nav__item menu-nav-header__item"><a class="menu-nav__textbox menu-nav-header__textbox" href="/projects/omk/">
-                          <div class="menu-nav__text menu-nav-header__text">БЛОГ</div></a></li>
-                    </ul>
-                  </li>
-                  <li class="nav-more-list__item menu-nav__item menu-nav-header__item">
-                    <div class="menu-nav__textbox menu-nav-header__textbox dropdown-toggle-split"><a class="menu-nav__text menu-nav-header__text" href="company.html"><span>КОМПАНИЯ</span></a>
-                      <button class="button-split" data-toggle="collapse" data-target="#menu-nav-header-collapse-2" aria-expanded="false" aria-controls="menu-nav-header-collapse-2"><i class="icon-arrow-down"></i></button>
-                    </div>
-                    <ul class="collapse" id="menu-nav-header-collapse-2" data-parent="#menu-nav-more">
-                      <li class="nav-more-list__item menu-nav__item menu-nav-header__item"><a class="menu-nav__textbox menu-nav-header__textbox" href="structure.html">
-                          <div class="menu-nav__text menu-nav-header__text">Структура</div></a></li>
-                      <li class="nav-more-list__item menu-nav__item menu-nav-header__item"><a class="menu-nav__textbox menu-nav-header__textbox" href="structure.html">
-                          <div class="menu-nav__text menu-nav-header__text">Конституция</div></a></li>
-                      <li class="nav-more-list__item menu-nav__item menu-nav-header__item"><a class="menu-nav__textbox menu-nav-header__textbox" href="structure.html">
-                          <div class="menu-nav__text menu-nav-header__text">Годовой цикл</div></a></li>
-                      <li class="nav-more-list__item menu-nav__item menu-nav-header__item"><a class="menu-nav__textbox menu-nav-header__textbox" href="structure.html">
-                          <div class="menu-nav__text menu-nav-header__text">Реквизиты</div></a></li>
-                      <li class="nav-more-list__item menu-nav__item menu-nav-header__item"><a class="menu-nav__textbox menu-nav-header__textbox" href="structure.html">
-                          <div class="menu-nav__text menu-nav-header__text">Вакансии</div></a></li>
-                    </ul>
-                  </li>
-                  <li class="nav-more-list__item menu-nav__item menu-nav-header__item" data-toggle="collapse" data-target="#menu-nav-header-collapse-3" aria-expanded="false" aria-controls="menu-nav-header-collapse-3">
-                    <div class="menu-nav__textbox menu-nav-header__textbox"><a class="menu-nav__text menu-nav-header__text" href="profile.html"><span>СОТРУДНИКАМ</span></a>
-                      <button class="button-split" data-toggle="collapse" data-target="#menu-nav-header-collapse-3" aria-expanded="false" aria-controls="menu-nav-header-collapse-3"><i class="icon-arrow-down"></i></button>
-                    </div>
-                    <ul class="collapse" id="menu-nav-header-collapse-3" data-parent="#menu-nav-more">
-                      <li class="nav-more-list__item menu-nav__item menu-nav-header__item"><a class="menu-nav__textbox menu-nav-header__textbox" href="profile.html">
-                          <div class="menu-nav__text menu-nav-header__text">Зарплата</div></a></li>
-                      <li class="nav-more-list__item menu-nav__item menu-nav-header__item"><a class="menu-nav__textbox menu-nav-header__textbox" href="ads.html">
-                          <div class="menu-nav__text menu-nav-header__text">Объявления</div></a></li>
-                      <li class="nav-more-list__item menu-nav__item menu-nav-header__item"><a class="menu-nav__textbox menu-nav-header__textbox" href="404.html">
-                          <div class="menu-nav__text menu-nav-header__text">После работы</div></a></li>
-                      <li class="nav-more-list__item menu-nav__item menu-nav-header__item"><a class="menu-nav__textbox menu-nav-header__textbox" href="honour.html">
-                          <div class="menu-nav__text menu-nav-header__text">Доска почета</div></a></li>
-                      <li class="nav-more-list__item menu-nav__item menu-nav-header__item"><a class="menu-nav__textbox menu-nav-header__textbox" href="structure.html">
-                          <div class="menu-nav__text menu-nav-header__text">Профком</div></a></li>
-                    </ul>
-                  </li>
-                  <li class="nav-more-list__item menu-nav__item menu-nav-header__item">
-                    <div class="menu-nav__textbox menu-nav-header__textbox"><a class="menu-nav__text menu-nav-header__text" href="batashevskaya_premiya.html"><span>БАТАШЕВСКАЯ ПРЕМИЯ</span></a>
-                      <button class="button-split" data-toggle="collapse" data-target="#menu-nav-header-collapse-4" aria-expanded="false" aria-controls="menu-nav-header-collapse-4"><i class="icon-arrow-down"></i></button>
-                    </div>
-                    <ul class="collapse" id="menu-nav-header-collapse-4" data-parent="#menu-nav-more">
-                      <li class="nav-more-list__item menu-nav__item menu-nav-header__item"><a class="menu-nav__textbox menu-nav-header__textbox" href="others.html">
-                          <div class="menu-nav__text menu-nav-header__text">Заявка на участие</div></a></li>
-                      <li class="nav-more-list__item menu-nav__item menu-nav-header__item"><a class="menu-nav__textbox menu-nav-header__textbox" href="404.html">
-                          <div class="menu-nav__text menu-nav-header__text">Лауреаты</div></a></li>
-                      <li class="nav-more-list__item menu-nav__item menu-nav-header__item"><a class="menu-nav__textbox menu-nav-header__textbox" href="404.html">
-                          <div class="menu-nav__text menu-nav-header__text">Номинанты</div></a></li>
-                    </ul>
-                  </li>
-                  <li class="nav-more-list__item menu-nav__item menu-nav-header__item">
-                    <div class="menu-nav__textbox menu-nav-header__textbox"><a class="menu-nav__text menu-nav-header__text" href="productions-system.html"><span>ПРОИЗВОДСТВЕННАЯ СИСТЕМА</span></a>
-                      <button class="button-split" data-toggle="collapse" data-target="#menu-nav-header-collapse-5" aria-expanded="false" aria-controls="menu-nav-header-collapse-5"><i class="icon-arrow-down"></i></button>
-                    </div>
-                    <ul class="collapse" id="menu-nav-header-collapse-5" data-parent="#menu-nav-more">
-                      <li class="nav-more-list__item menu-nav__item menu-nav-header__item"><a class="menu-nav__textbox menu-nav-header__textbox" href="productions-system.html">
-                          <div class="menu-nav__text menu-nav-header__text">Новости</div></a></li>
-                      <li class="nav-more-list__item menu-nav__item menu-nav-header__item"><a class="menu-nav__textbox menu-nav-header__textbox" href="productions-system.html">
-                          <div class="menu-nav__text menu-nav-header__text">Обходы</div></a></li>
-                      <li class="nav-more-list__item menu-nav__item menu-nav-header__item"><a class="menu-nav__textbox menu-nav-header__textbox" href="productions-system.html">
-                          <div class="menu-nav__text menu-nav-header__text">Лучшие практики</div></a></li>
-                      <li class="nav-more-list__item menu-nav__item menu-nav-header__item"><a class="menu-nav__textbox menu-nav-header__textbox" href="productions-system.html">
-                          <div class="menu-nav__text menu-nav-header__text">Инновации</div></a></li>
-                      <li class="nav-more-list__item menu-nav__item menu-nav-header__item"><a class="menu-nav__textbox menu-nav-header__textbox" href="productions-system.html">
-                          <div class="menu-nav__text menu-nav-header__text">Безопасность</div></a></li>
-                    </ul>
-                  </li>
-                  <li class="nav-more-list__item menu-nav__item menu-nav-header__item">
-                    <div class="menu-nav__textbox menu-nav-header__textbox"><a class="menu-nav__text menu-nav-header__text" href="lib.html"><span>Благотворительность</span></a>
-                      <button class="button-split" data-toggle="collapse" data-target="#menu-nav-header-collapse-6" aria-expanded="false" aria-controls="menu-nav-header-collapse-6"><i class="icon-arrow-down"></i></button>
-                    </div>
-                    <ul class="collapse" id="menu-nav-header-collapse-6" data-parent="#menu-nav-more">
-                      <li class="nav-more-list__item menu-nav__item menu-nav-header__item"><a class="menu-nav__textbox menu-nav-header__textbox" href="gallery.html">
-                          <div class="menu-nav__text menu-nav-header__text">ОМК участие</div></a></li>
-                      <li class="nav-more-list__item menu-nav__item menu-nav-header__item"><a class="menu-nav__textbox menu-nav-header__textbox" href="gallery.html">
-                          <div class="menu-nav__text menu-nav-header__text">ОМК партнерство</div></a></li>
-                      <li class="nav-more-list__item menu-nav__item menu-nav-header__item"><a class="menu-nav__textbox menu-nav-header__textbox" href="gallery.html">
-                          <div class="menu-nav__text menu-nav-header__text">Заявка</div></a></li>
-                      <li class="nav-more-list__item menu-nav__item menu-nav-header__item"><a class="menu-nav__textbox menu-nav-header__textbox" href="gallery.html">
-                          <div class="menu-nav__text menu-nav-header__text">Контакты</div></a></li>
-                    </ul>
-                  </li>
-                  <li class="nav-more-list__item menu-nav__item menu-nav-header__item">
-                    <div class="menu-nav__textbox menu-nav-header__textbox"><a class="menu-nav__text menu-nav-header__text" href="lib.html"><span>Библиотека</span></a>
-                      <button class="button-split" data-toggle="collapse" data-target="#menu-nav-header-collapse-7" aria-expanded="false" aria-controls="menu-nav-header-collapse-7"><i class="icon-arrow-down"></i></button>
-                    </div>
-                    <ul class="collapse" id="menu-nav-header-collapse-7" data-parent="#menu-nav-more">
-                      <li class="nav-more-list__item menu-nav__item menu-nav-header__item"><a class="menu-nav__textbox menu-nav-header__textbox" href="gallery.html">
-                          <div class="menu-nav__text menu-nav-header__text">Инструкции и документы</div></a></li>
-                      <li class="nav-more-list__item menu-nav__item menu-nav-header__item"><a class="menu-nav__textbox menu-nav-header__textbox" href="gallery.html">
-                          <div class="menu-nav__text menu-nav-header__text">Интервью</div></a></li>
-                      <li class="nav-more-list__item menu-nav__item menu-nav-header__item"><a class="menu-nav__textbox menu-nav-header__textbox" href="gallery.html">
-                          <div class="menu-nav__text menu-nav-header__text">Годовой отсчет</div></a></li>
-                      <li class="nav-more-list__item menu-nav__item menu-nav-header__item"><a class="menu-nav__textbox menu-nav-header__textbox" href="gallery.html">
-                          <div class="menu-nav__text menu-nav-header__text">Обучение</div></a></li>
-                      <li class="nav-more-list__item menu-nav__item menu-nav-header__item"><a class="menu-nav__textbox menu-nav-header__textbox" href="gallery.html">
-                          <div class="menu-nav__text menu-nav-header__text">Архив</div></a></li>
-                      <li class="nav-more-list__item menu-nav__item menu-nav-header__item" id="menu-nav-more-item">
-                        <div class="menu-nav__textbox menu-nav-header__textbox"><a class="menu-nav__text menu-nav-header__text" href="gallery.html"><span>Помощь</span></a>
-                          <button class="button-split" data-toggle="collapse" data-target="#menu-nav-header-collapse-7_1" aria-expanded="false" aria-controls="menu-nav-header-collapse-7_1"><i class="icon-arrow-down"></i></button>
-                        </div>
-                        <ul class="collapse menu-nav-header__textbox" id="menu-nav-header-collapse-7_1" data-parent="#menu-nav-more-item">
-                          <li class="nav-more-list__item menu-nav__item menu-nav-header__item"><a class="menu-nav__textbox menu-nav-header__textbox" href="404.html">
-                              <div class="menu-nav__text menu-nav-header__text">Карта портала</div></a></li>
-                        </ul>
-                      </li>
-                    </ul>
-                  </li>
-                  <li class="nav-more-list__item menu-nav__item menu-nav-header__item">
-                    <div class="menu-nav__textbox menu-nav-header__textbox"><a class="menu-nav__text menu-nav-header__text" href="gallery.html"><span>ГАЛЕРЕЯ</span></a>
-                      <button class="button-split" data-toggle="collapse" data-target="#menu-nav-header-collapse-8" aria-expanded="false" aria-controls="menu-nav-header-collapse-8"><i class="icon-arrow-down"></i></button>
-                    </div>
-                    <ul class="collapse" id="menu-nav-header-collapse-8" data-parent="#menu-nav-more">
-                      <li class="nav-more-list__item menu-nav__item menu-nav-header__item"><a class="menu-nav__textbox menu-nav-header__textbox" href="404.html">
-                          <div class="menu-nav__text menu-nav-header__text">Москва</div></a></li>
-                      <li class="nav-more-list__item menu-nav__item menu-nav-header__item"><a class="menu-nav__textbox menu-nav-header__textbox" href="404.html">
-                          <div class="menu-nav__text menu-nav-header__text">Выкса</div></a></li>
-                      <li class="nav-more-list__item menu-nav__item menu-nav-header__item"><a class="menu-nav__textbox menu-nav-header__textbox" href="404.html">
-                          <div class="menu-nav__text menu-nav-header__text">Челябинск</div></a></li>
-                      <li class="nav-more-list__item menu-nav__item menu-nav-header__item"><a class="menu-nav__textbox menu-nav-header__textbox" href="404.html">
-                          <div class="menu-nav__text menu-nav-header__text">Чусовой</div></a></li>
-                      <li class="nav-more-list__item menu-nav__item menu-nav-header__item"><a class="menu-nav__textbox menu-nav-header__textbox" href="404.html">
-                          <div class="menu-nav__text menu-nav-header__text">Благовещенск</div></a></li>
-                      <li class="nav-more-list__item menu-nav__item menu-nav-header__item"><a class="menu-nav__textbox menu-nav-header__textbox" href="404.html">
-                          <div class="menu-nav__text menu-nav-header__text">Альметьевск</div></a></li>
-                    </ul>
-                  </li>
-                  <li class="nav-more-list__item menu-nav__item menu-nav-header__item">
-                    <div class="menu-nav__textbox menu-nav-header__textbox"><a class="menu-nav__text menu-nav-header__text" href="sport.html"><span>СПОРТ</span></a>
-                      <button class="button-split" data-toggle="collapse" data-target="#menu-nav-header-collapse-9" aria-expanded="false" aria-controls="menu-nav-header-collapse-9"><i class="icon-arrow-down"></i></button>
-                    </div>
-                    <ul class="collapse" id="menu-nav-header-collapse-9" data-parent="#menu-nav-more">
-                      <li class="nav-more-list__item menu-nav__item menu-nav-header__item"><a class="menu-nav__textbox menu-nav-header__textbox" href="404.html">
-                          <div class="menu-nav__text menu-nav-header__text">ВМЗ</div></a></li>
-                      <li class="nav-more-list__item menu-nav__item menu-nav-header__item"><a class="menu-nav__textbox menu-nav-header__textbox" href="404.html">
-                          <div class="menu-nav__text menu-nav-header__text">Трубодеталь</div></a></li>
-                      <li class="nav-more-list__item menu-nav__item menu-nav-header__item"><a class="menu-nav__textbox menu-nav-header__textbox" href="404.html">
-                          <div class="menu-nav__text menu-nav-header__text">АТЗ</div></a></li>
-                      <li class="nav-more-list__item menu-nav__item menu-nav-header__item"><a class="menu-nav__textbox menu-nav-header__textbox" href="404.html">
-                          <div class="menu-nav__text menu-nav-header__text">ЧМЗ</div></a></li>
-                      <li class="nav-more-list__item menu-nav__item menu-nav-header__item"><a class="menu-nav__textbox menu-nav-header__textbox" href="404.html">
-                          <div class="menu-nav__text menu-nav-header__text">БАЗ</div></a></li>
-                      <li class="nav-more-list__item menu-nav__item menu-nav-header__item"><a class="menu-nav__textbox menu-nav-header__textbox" href="404.html">
-                          <div class="menu-nav__text menu-nav-header__text">ОМК</div></a></li>
-                    </ul>
-                  </li>
-                  <li class="nav-more-list__item menu-nav__item menu-nav-header__item">
-                    <div class="menu-nav__textbox menu-nav-header__textbox"><a class="menu-nav__text menu-nav-header__text" href="others.html"><span>КОНТАКТЫ</span></a>
-                      <button class="button-split" data-toggle="collapse" data-target="#menu-nav-header-collapse-10" aria-expanded="false" aria-controls="menu-nav-header-collapse-10"><i class="icon-arrow-down"></i></button>
-                    </div>
-                    <ul class="collapse" id="menu-nav-header-collapse-10" data-parent="#menu-nav-more">
-                      <li class="nav-more-list__item menu-nav__item menu-nav-header__item"><a class="menu-nav__textbox menu-nav-header__textbox" href="others.html">
-                          <div class="menu-nav__text menu-nav-header__text">Вопрос руководству</div></a></li>
-                      <li class="nav-more-list__item menu-nav__item menu-nav-header__item"><a class="menu-nav__textbox menu-nav-header__textbox" href="others.html">
-                          <div class="menu-nav__text menu-nav-header__text">Поддержка</div></a></li>
-                      <li class="nav-more-list__item menu-nav__item menu-nav-header__item"><a class="menu-nav__textbox menu-nav-header__textbox" href="others.html">
-                          <div class="menu-nav__text menu-nav-header__text">Горячая линия ОМК</div></a></li>
-                      <li class="nav-more-list__item menu-nav__item menu-nav-header__item"><a class="menu-nav__textbox menu-nav-header__textbox" href="others.html">
-                          <div class="menu-nav__text menu-nav-header__text">Сотрудники</div></a></li>
-                      <li class="nav-more-list__item menu-nav__item menu-nav-header__item"><a class="menu-nav__textbox menu-nav-header__textbox" href="others.html">
-                          <div class="menu-nav__text menu-nav-header__text">Секретари</div></a></li>
-                      <li class="nav-more-list__item menu-nav__item menu-nav-header__item"><a class="menu-nav__textbox menu-nav-header__textbox" href="others.html">
-                          <div class="menu-nav__text menu-nav-header__text">Благотворительность</div></a></li>
-                      <li class="nav-more-list__item menu-nav__item menu-nav-header__item"><a class="menu-nav__textbox menu-nav-header__textbox" href="others.html">
-                          <div class="menu-nav__text menu-nav-header__text">Полезные номера</div></a></li>
-                    </ul>
-                  </li>
-                </ul>
-              </div>
-            </nav>
-          </div>
-          <div class="header-box__item header-box__question">
-            <div class="question header-question"><a class="link" href="#">Вопрос <br>                Руководству</a></div>
-          </div>
-          <div class="header-box__item header-box__search">
-            <div class="header-visit">
-              <p>Просмотров 1 235 666 / Посетители 257 889</p>
-            </div>
-            <div class="header-search">
-              <form class="form-search" action="#">
-                <div class="form-search__box">
-                  <div class="form-search__label">
-                    <input class="form-search__input" id="formSearchInput" type="search">
-                    <button class="form-search__button icon-search" type="submit" disabled=""></button>
-                  </div>
-                </div>
-              </form>
-            </div>
-          </div>
-          <div class="header-box__item header-box__info">
-            <div class="header-info info">
-              <div class="header-info__time info-wrap info__time">09:49</div>
-              <div class="header-info-wrap">
-                <div class="header-info__weather info__weather">Ясно, +26 С</div>
-                <div class="header-info__location info__location">Челябинск</div>
-              </div>
-            </div>
-            <div class="header-user user">
-              <div class="header-user__box user__box">
-                <div class="header-user__avatar user__avatar"><img src="img/icon/men.svg" alt="no-avatar"></div><a class="header-user__name user__name" href="#"><span>Константин</span><span>Константинопольский</span></a>
-                <button class="rollUp"><i class="icon-arrow-down"></i></button>
-              </div>
-              <div class="header-button-inn button-inn">
-                <button class="header-button button button-help">помощь</button>
-                <button class="header-button button active" id="header-navControl" data-toggle="collapse" data-target="#header-nav">Системы</button>
-                <button class="header-button button button-deploy" id="btnDeploy">Развернуть</button>
-                <!-- <button id="btnToTop" class="header-button button button-toTop">Наверх</button>-->
-                <!-- /.header-box-->
-                <button class="button-burg margin-left-20" data-toggle="collapse" data-target="#menu-nav-headerGroup" type="button"><span></span></button>
-              </div>
+  <body style="background-color: #f6f6f6;">
+    <div class="container">
+      <div class="row">
+        <div class="col-12">
+          <div class="card padding-top-15">
+            <div class="content-titlebox_dark">
+              <h4>ПАЛИТРА</h4>
             </div>
           </div>
         </div>
-        <nav class="header-nav-system">
-          <div class="header-nav-system-wrap collapse show" id="header-nav">
-            <div class="row align-items-center">
-              <div class="col-12 col-md-1"><a class="header-nav-system__item" href="#">
-                  <div class="header-nav-system-icon-box"><i class="icon-book"></i></div>
-                  <div class="header-nav-system__link"><span>DOCS SAP</span></div></a></div>
-              <div class="col-12 col-md-1"><a class="header-nav-system__item" href="#">
-                  <div class="header-nav-system-icon-box"><i class="icon-aircraft"></i></div>
-                  <div class="header-nav-system__link"><span>Реестр МИГ</span></div></a></div>
-              <div class="col-12 col-md-1"><a class="header-nav-system__item" href="#">
-                  <div class="header-nav-system-icon-box"><i class="icon-barcode"></i></div>
-                  <div class="header-nav-system__link"><span>SAP</span></div></a></div>
-              <div class="col-12 col-md-1"><a class="header-nav-system__item" href="#">
-                  <div class="header-nav-system-icon-box"><i class="icon-stat"></i></div>
-                  <div class="header-nav-system__link"><span>SAP PHR</span></div></a></div>
-              <div class="col-12 col-md-1"><a class="header-nav-system__item" href="#">
-                  <div class="header-nav-system-icon-box"><i class="icon-production"></i></div>
-                  <div class="header-nav-system__link"><span>SAP PHR</span></div></a></div>
-              <div class="col-12 col-md-1"><a class="header-nav-system__item" href="#">
-                  <div class="header-nav-system-icon-box"><i class="icon-chess"></i></div>
-                  <div class="header-nav-system__link"><span>СААРЦ</span></div></a></div>
-              <div class="col-12 col-md-1"><a class="header-nav-system__item" href="#">
-                  <div class="header-nav-system-icon-box"><i class="icon-list"></i></div>
-                  <div class="header-nav-system__link"><span>NORMAL System 102</span></div></a></div>
-              <div class="col-12 col-md-1"><a class="header-nav-system__item" href="#">
-                  <div class="header-nav-system-icon-box"><i class="icon-box"></i></div>
-                  <div class="header-nav-system__link"><span>Abnormal System 3367</span></div></a></div>
-              <div class="col-12 col-md-1"><a class="header-nav-system__item" href="#">
-                  <div class="header-nav-system-icon-box"><i class="icon-production"></i></div>
-                  <div class="header-nav-system__link"><span>Стандарты РосКосмос</span></div></a></div>
-              <div class="col-12 col-md-1"><a class="header-nav-system__item" href="#">
-                  <div class="header-nav-system-icon-box"><i class="icon-money"></i></div>
-                  <div class="header-nav-system__link"><span>РОСТЕХ</span></div></a></div>
-              <div class="col-12 col-md-2 d-table">
-                <div class="button-more-inn header-button-inn button-inn">
-                  <div class="nav-more btn-group">
-                    <button class="button header-button button-more button-more-lg-min button-more-xl-full" id="header-navMore" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Ещё <i class="icon-arrow-down"></i></button>
-                    <ul class="nav-more-list dropdown-menu dropdown-menu-right">
-                      <li class="nav-more-list__item"><a class="link link-nav nav-more-list__link" href="#">Стандарты РосКосмос</a></li>
-                      <li class="nav-more-list__item"><a class="link link-nav nav-more-list__link" href="#">Газпром Системы</a></li>
-                      <li class="nav-more-list__item"><a class="link link-nav nav-more-list__link" href="#">SAP Super Tasks</a></li>
-                      <li class="nav-more-list__item"><a class="link link-nav nav-more-list__link" href="productions-system.html">Производственные</a></li>
-                      <li class="nav-more-list__item"><a class="link link-nav nav-more-list__link" href="#">Системы Всех Систем</a></li>
-                      <li class="nav-more-list__item"><a class="link link-nav nav-more-list__link" href="#">Логистика</a></li>
-                      <li class="nav-more-list__item"><a class="link link-nav nav-more-list__link" href="#">SAP SSH</a></li>
-                      <li class="nav-more-list__item"><a class="link link-nav nav-more-list__link" href="#">Ширина под самое длинное название с учетом Bold</a></li>
-                    </ul>
-                  </div>
-                  <button class="button header-button button-more d-none d-lg-inline-block" id="header-navSettingControl" type="button" data-toggle="collapse" data-target="#header-navSetting" aria-expanded="false" aria-controls="header-navSetting">Настройка</button>
+        <div class="col-2">
+          <div class="card">
+            <div class="box height-65 bg-color-light bg-color-light"></div>
+            <div class="card__text text-center h-auto">
+              <p>#FFFFFF</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-2">
+          <div class="card">
+            <div class="box height-65 bg-color-light bg-color-light-1"></div>
+            <div class="card__text text-center h-auto">
+              <p>#FBFBFB</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-2">
+          <div class="card">
+            <div class="box height-65 bg-color-light bg-color-dark-1"></div>
+            <div class="card__text text-center h-auto">
+              <p>#EEEFEF</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-2">
+          <div class="card">
+            <div class="box height-65 bg-color-light bg-color-dark-2"></div>
+            <div class="card__text text-center h-auto">
+              <p>#E0E1E2</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-2">
+          <div class="card">
+            <div class="box height-65 bg-color-light bg-color-dark-3"></div>
+            <div class="card__text text-center h-auto">
+              <p>#DDDEE0</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-2">
+          <div class="card">
+            <div class="box height-65 bg-color-light bg-color-dark-4"></div>
+            <div class="card__text text-center h-auto">
+              <p>#D0D1D3</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-2">
+          <div class="card">
+            <div class="box height-65 bg-color-light bg-color-dark-5"></div>
+            <div class="card__text text-center h-auto">
+              <p>#BCBDC0</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-2">
+          <div class="card">
+            <div class="box height-65 bg-color-light bg-color-dark-6"></div>
+            <div class="card__text text-center h-auto">
+              <p>#A5A6AA</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-2">
+          <div class="card">
+            <div class="box height-65 bg-color-light bg-color-dark-7"></div>
+            <div class="card__text text-center h-auto">
+              <p>#A1A3A7</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-2">
+          <div class="card">
+            <div class="box height-65 bg-color-light bg-color-dark-8"></div>
+            <div class="card__text text-center h-auto">
+              <p>#797C82</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-2">
+          <div class="card">
+            <div class="box height-65 bg-color-light bg-color-dark-9"></div>
+            <div class="card__text text-center h-auto">
+              <p>#5E6167</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-2">
+          <div class="card">
+            <div class="box height-65 bg-color-light bg-color-dark-10"></div>
+            <div class="card__text text-center h-auto">
+              <p>#000000</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-2">
+          <div class="card">
+            <div class="box height-65 bg-color-light bg-color-danger"></div>
+            <div class="card__text text-center h-auto">
+              <p>#008330</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-2">
+          <div class="card">
+            <div class="box height-65 bg-color-light bg-color-success"></div>
+            <div class="card__text text-center h-auto">
+              <p>#008330</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-2">
+          <div class="card">
+            <div class="box height-65 bg-color-light bg-color-blue"></div>
+            <div class="card__text text-center h-auto">
+              <p>#008ACC</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-2">
+          <div class="card">
+            <div class="box height-65 bg-color-light bg-color-warning"></div>
+            <div class="card__text text-center h-auto">
+              <p>#EE9800</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-12">
+          <div class="card">
+            <div class="content-titlebox_dark">
+              <h4>ШРИФТЫ</h4>
+            </div>
+          </div>
+        </div>
+        <div class="col-6 clearfix">
+          <div class="card margin-right-20 float-left w-auto">
+            <div class="content__title">
+              <h2 class="font-size-40">Aa</h2>
+            </div>
+            <div class="card__text h-auto">
+              <p>PT Serif</p>
+            </div>
+          </div>
+          <div class="card margin-right-20 float-left w-auto">
+            <div class="card__text h-auto">
+              <p class="margin-bottom-0">Regular</p>
+              <p class="margin-bottom-0"><i>Regular Italic</i></p>
+              <p class="margin-bottom-0"><b>Bold</b></p>
+              <p class="margin-bottom-0"><b><i>Bold Italic</i></b></p>
+              <p class="margin-bottom-0">
+                <u>Underline</u>
+              </p>
+            </div>
+          </div>
+          <div class="card w-auto">
+            <div class="card__text h-auto">
+              <p>Основной шрифт для заголовков, текста новостей, и большинства текстовых блоков</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-6 clearfix">
+          <div class="card margin-right-20 float-left w-auto">
+            <div class="content-text margin-bottom-0">
+              <h2 class="font-size-40">Aa</h2>
+            </div>
+            <div class="content-text">
+              <p>Roboto</p>
+            </div>
+          </div>
+          <div class="card margin-right-20 float-left w-auto">
+            <div class="content-text">
+              <p class="margin-bottom-0">Regular</p>
+              <p class="margin-bottom-0"><i>Regular Italic</i></p>
+              <p class="margin-bottom-0"><b>Bold</b></p>
+              <p class="margin-bottom-0"><b><i>Bold Italic</i></b></p>
+              <p class="margin-bottom-0">
+                <u>Underline</u>
+              </p>
+            </div>
+          </div>
+          <div class="card w-auto">
+            <div class="content-text">
+              <p>Более системный шрифт, чаще используется для информационных элементов типа кнопок, меню и т.п.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-12">
+          <div class="card">
+            <div class="content-titlebox_dark">
+              <h4>КНОПКИ</h4>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="bg-color-light padding-30 margin-bottom-30">
+        <div class="row">
+          <div class="col-6">
+            <div class="row">
+              <div class="col-12 col-sm-6">
+                <button class="button-big-o button-big-o-danger">ГОРЯЧАЯ ЛИНИЯ ОМК</button>
+                <button class="button-big-o">ДАТЬ ОБЪЯВЛЕНИЕ</button>
+              </div>
+              <div class="col-12 col-sm-6">
+                <button class="button-big-o button-big-o-special">ДОБАВИТЬ БЛОГ</button>
+                <button class="button-big-o">ОТСЛЕЖИВАЕМЫЕ БЛОГИ</button>
+              </div>
+            </div>
+            <div class="card margin-bottom-15">
+              <div class="row">
+                <div class="col-6 text-right">
+                  <button class="button button-width-170 margin-bottom-15">Отправить</button>
+                  <button class="button button-border button-width-142">Поздравить</button>
+                </div>
+                <div class="col-6 text-right">
+                  <button class="button button-width-170 margin-bottom-15">Отправить</button>
+                  <button class="button button-width-142">Поздравить</button>
                 </div>
               </div>
             </div>
-            <div class="row">
-              <div class="col-lg-7 offset-lg-5">
-                <div class="nav-setting collapse" id="header-navSetting">
-                  <h4 class="nav-setting__title">Для настройки вашего меню, выберите нужные иконки:</h4>
-                  <div class="nav-setting__items">
-                    <div class="nav-setting-wrap" id="sortable">
-                      <div class="ui-state-default nav-setting__item-inn" data-control="formCheckbox-0">
-                        <div class="header-nav-system__item nav-setting__item">
-                          <div class="header-nav-system-icon-box"><i class="icon-book"></i></div>
-                          <div class="header-nav-system__link"><span>DOCS SAP</span></div>
-                        </div>
-                      </div>
-                      <div class="ui-state-default nav-setting__item-inn" data-control="formCheckbox-1">
-                        <div class="header-nav-system__item nav-setting__item">
-                          <div class="header-nav-system-icon-box"><i class="icon-aircraft"></i></div>
-                          <div class="header-nav-system__link"><span>NORMAL System 102</span></div>
-                        </div>
-                      </div>
-                      <div class="ui-state-default nav-setting__item-inn" data-control="formCheckbox-2">
-                        <div class="header-nav-system__item nav-setting__item">
-                          <div class="header-nav-system-icon-box"><i class="icon-barcode"></i></div>
-                          <div class="header-nav-system__link"><span>SAP Super Tasks</span></div>
-                        </div>
-                      </div>
-                      <div class="ui-state-default nav-setting__item-inn" data-control="formCheckbox-3">
-                        <div class="header-nav-system__item nav-setting__item">
-                          <div class="header-nav-system-icon-box"><i class="icon-stat"></i></div>
-                          <div class="header-nav-system__link"><span>Реестр МИГ</span></div>
-                        </div>
-                      </div>
-                      <div class="ui-state-default nav-setting__item-inn" data-control="formCheckbox-4">
-                        <div class="header-nav-system__item nav-setting__item">
-                          <div class="header-nav-system-icon-box"><i class="icon-production"></i></div>
-                          <div class="header-nav-system__link"><span>Стандарты РосКосмос</span></div>
-                        </div>
-                      </div>
-                      <div class="ui-state-default nav-setting__item-inn" data-control="formCheckbox-5">
-                        <div class="header-nav-system__item nav-setting__item">
-                          <div class="header-nav-system-icon-box"><i class="icon-chess"></i></div>
-                          <div class="header-nav-system__link"><span>Производственные</span></div>
-                        </div>
-                      </div>
-                      <div class="ui-state-default nav-setting__item-inn" data-control="formCheckbox-6">
-                        <div class="header-nav-system__item nav-setting__item">
-                          <div class="header-nav-system-icon-box"><i class="icon-list"></i></div>
-                          <div class="header-nav-system__link"><span>SAP</span></div>
-                        </div>
-                      </div>
-                      <div class="ui-state-default nav-setting__item-inn" data-control="formCheckbox-7">
-                        <div class="header-nav-system__item nav-setting__item">
-                          <div class="header-nav-system-icon-box"><i class="icon-box"></i></div>
-                          <div class="header-nav-system__link"><span>Abnormal System 3367</span></div>
-                        </div>
-                      </div>
-                      <div class="ui-state-default nav-setting__item-inn" data-control="formCheckbox-8">
-                        <div class="header-nav-system__item nav-setting__item">
-                          <div class="header-nav-system-icon-box"><i class="icon-production"></i></div>
-                          <div class="header-nav-system__link"><span>Системы Всех Систем</span></div>
-                        </div>
-                      </div>
-                      <div class="ui-state-default nav-setting__item-inn" data-control="formCheckbox-9">
-                        <div class="header-nav-system__item nav-setting__item">
-                          <div class="header-nav-system-icon-box"><i class="icon-money"></i></div>
-                          <div class="header-nav-system__link"><span>SAP PHR</span></div>
-                        </div>
-                      </div>
-                      <div class="ui-state-default nav-setting__item-inn" data-control="formCheckbox-10">
-                        <div class="header-nav-system__item nav-setting__item">
-                          <div class="header-nav-system-icon-box"><i class="icon-book"></i></div>
-                          <div class="header-nav-system__link"><span>РОСТЕХ</span></div>
-                        </div>
-                      </div>
-                      <div class="ui-state-default nav-setting__item-inn" data-control="formCheckbox-11">
-                        <div class="header-nav-system__item nav-setting__item">
-                          <div class="header-nav-system-icon-box"><i class="icon-aircraft"></i></div>
-                          <div class="header-nav-system__link"><span>Логистика</span></div>
-                        </div>
-                      </div>
-                      <div class="ui-state-default nav-setting__item-inn" data-control="formCheckbox-12">
-                        <div class="header-nav-system__item nav-setting__item">
-                          <div class="header-nav-system-icon-box"><i class="icon-barcode"></i></div>
-                          <div class="header-nav-system__link"><span>SAP PHR</span></div>
-                        </div>
-                      </div>
-                      <div class="ui-state-default nav-setting__item-inn" data-control="formCheckbox-13">
-                        <div class="header-nav-system__item nav-setting__item">
-                          <div class="header-nav-system-icon-box"><i class="icon-stat"></i></div>
-                          <div class="header-nav-system__link"><span>Стандарты РосКосмос</span></div>
-                        </div>
-                      </div>
-                      <div class="ui-state-default nav-setting__item-inn" data-control="formCheckbox-14">
-                        <div class="header-nav-system__item nav-setting__item">
-                          <div class="header-nav-system-icon-box"><i class="icon-production"></i></div>
-                          <div class="header-nav-system__link"><span>SAP SSH</span></div>
-                        </div>
-                      </div>
-                      <div class="ui-state-default nav-setting__item-inn" data-control="formCheckbox-15">
-                        <div class="header-nav-system__item nav-setting__item">
-                          <div class="header-nav-system-icon-box"><i class="icon-chess"></i></div>
-                          <div class="header-nav-system__link"><span>СААРЦ</span></div>
-                        </div>
-                      </div>
-                      <div class="ui-state-default nav-setting__item-inn" data-control="formCheckbox-16">
-                        <div class="header-nav-system__item nav-setting__item">
-                          <div class="header-nav-system-icon-box"><i class="icon-list"></i></div>
-                          <div class="header-nav-system__link"><span>Газпром Системы</span></div>
-                        </div>
-                      </div>
-                      <div class="ui-state-default nav-setting__item-inn" data-control="formCheckbox-17">
-                        <div class="header-nav-system__item nav-setting__item">
-                          <div class="header-nav-system-icon-box"><i class="icon-box"></i></div>
-                          <div class="header-nav-system__link"><span>Больше систем</span></div>
-                        </div>
-                      </div>
-                      <!--
-                      <div class="ui-state-default nav-setting__item-inn" data-control="formCheckbox-18">
-                      <div class="header-nav-system__item nav-setting__item">
-                      <div class="header-nav-system-icon-box"><i class="icon-production"></i></div>
-                      <div class="header-nav-system__link"><span>Стандарты РосКосмос</span></div>
-                      </div>
-                      </div>
-                      -->
-                      <!--
-                      <div class="ui-state-default nav-setting__item-inn" data-control="formCheckbox-19">
-                      <div class="header-nav-system__item nav-setting__item">
-                      <div class="header-nav-system-icon-box"><i class="icon-money"></i></div>
-                      <div class="header-nav-system__link"><span>РОСТЕХ</span></div>
-                      </div>
-                      </div>
-                      -->
+            <div class="card">
+              <form class="form" action="#">
+                <label class="form-label_select margin-bottom-10" for="formSelect">Выбор
+                  <select class="button-o form-select" id="formSelect" name="number">
+                    <option selected="selected">Москва</option>
+                    <option>Выкса</option>
+                    <option>Челябинск</option>
+                    <option>Чусовой</option>
+                    <option>Благовещенск</option>
+                    <option>Альтемьевск</option>
+                  </select>
+                </label>
+                <label class="form-label_select margin-bottom-10" for="formMultiSelect">Пример множественного выбора
+                  <select class="button-o form-select form-select-multiple" id="formMultiSelect" name="number" multiple="multiple">
+                    <option selected="selected">Москва</option>
+                    <option>Выкса</option>
+                    <option>Челябинск</option>
+                    <option>Чусовой</option>
+                  </select>
+                </label>
+              </form>
+            </div>
+          </div>
+          <div class="col-6">
+            <div class="card">
+              <div class="row">
+                <div class="col-6">
+                  <form class="form">
+                          <div class="form-radio">
+                            <label class="form-radio__label" for="formRadio1">
+                              <input class="form-radio__input" id="formRadio1" type="radio" name="formRadio"/><span class="form-radio__text">Radio-кнопка 1</span>
+                            </label>
+                          </div>
+                          <div class="form-radio">
+                            <label class="form-radio__label" for="formRadio2">
+                              <input class="form-radio__input" id="formRadio2" type="radio" name="formRadio"/><span class="form-radio__text">Radio-кнопка 2</span>
+                            </label>
+                          </div>
+                          <div class="form-radio">
+                            <label class="form-radio__label" for="formRadio3">
+                              <input class="form-radio__input" id="formRadio3" type="radio" name="formRadio"/><span class="form-radio__text">Radio-кнопка 3</span>
+                            </label>
+                          </div>
+                          <div class="form-radio">
+                            <label class="form-radio__label" for="formRadio4">
+                              <input class="form-radio__input" id="formRadio4" type="radio" name="formRadio"/><span class="form-radio__text">Radio-кнопка 4</span>
+                            </label>
+                          </div>
+                  </form>
+                </div>
+                <div class="col-6">
+                  <form class="form">
+                    <div class="form-checkbox margin-bottom-10">
+                      <label class="form-checkbox__label" for="formCheckbox1">
+                        <input class="form-checkbox__input" id="formCheckbox1" type="checkbox" name="formCheckbox1"/><span class="form-checkbox__text">Чекбокс тип 1</span>
+                      </label>
                     </div>
-                  </div>
-                  <form class="form setting-form" id="settingForm" action="#">
-                    <div class="form-chekbox-wrap setting-form-wrap">
-                      <div class="form-checkbox setting-form-checkbox active">
-                        <label class="form-checkbox__label setting-form-checkbox__label" for="formCheckbox-0" data-placement="right" title="Пункт будет находится в «Системы» → «Ещё»" data-toggle="tooltip">
-                          <input class="form-checkbox__input setting-form-checkbox__input" id="formCheckbox-0" type="checkbox" name="checkbox_nav_item0" checked=""><span class="form-checkbox__text setting-form-checkbox__text">DOCS SAP</span>
-                        </label>
-                      </div>
-                      <div class="form-checkbox setting-form-checkbox">
-                        <label class="form-checkbox__label setting-form-checkbox__label" for="formCheckbox-1" data-placement="right" title="Пункт будет находится в «Системы» → «Ещё»" data-toggle="tooltip">
-                          <input class="form-checkbox__input setting-form-checkbox__input" id="formCheckbox-1" type="checkbox" name="checkbox_nav_item1" checked=""><span class="form-checkbox__text setting-form-checkbox__text">NORMAL System 102</span>
-                        </label>
-                      </div>
-                      <div class="form-checkbox setting-form-checkbox">
-                        <label class="form-checkbox__label setting-form-checkbox__label" for="formCheckbox-2" data-placement="right" title="Пункт будет находится в «Системы» → «Ещё»" data-toggle="tooltip">
-                          <input class="form-checkbox__input setting-form-checkbox__input" id="formCheckbox-2" type="checkbox" name="checkbox_nav_item2"><span class="form-checkbox__text setting-form-checkbox__text">SAP Super Tasks</span>
-                        </label>
-                      </div>
-                      <div class="form-checkbox setting-form-checkbox">
-                        <label class="form-checkbox__label setting-form-checkbox__label" for="formCheckbox-3" data-placement="right" title="Пункт будет находится в «Системы» → «Ещё»" data-toggle="tooltip">
-                          <input class="form-checkbox__input setting-form-checkbox__input" id="formCheckbox-3" type="checkbox" name="checkbox_nav_item3" checked=""><span class="form-checkbox__text setting-form-checkbox__text">Реестр МИГ</span>
-                        </label>
-                      </div>
-                      <div class="form-checkbox setting-form-checkbox">
-                        <label class="form-checkbox__label setting-form-checkbox__label" for="formCheckbox-4" data-placement="right" title="Пункт будет находится в «Системы» → «Ещё»" data-toggle="tooltip">
-                          <input class="form-checkbox__input setting-form-checkbox__input" id="formCheckbox-4" type="checkbox" name="checkbox_nav_item4" checked=""><span class="form-checkbox__text setting-form-checkbox__text">Стандарты РосКосмос</span>
-                        </label>
-                      </div>
-                      <div class="form-checkbox setting-form-checkbox">
-                        <label class="form-checkbox__label setting-form-checkbox__label" for="formCheckbox-5" data-placement="right" title="Пункт будет находится в «Системы» → «Ещё»" data-toggle="tooltip">
-                          <input class="form-checkbox__input setting-form-checkbox__input" id="formCheckbox-5" type="checkbox" name="checkbox_nav_item5"><span class="form-checkbox__text setting-form-checkbox__text">Производственные</span>
-                        </label>
-                      </div>
-                      <div class="form-checkbox setting-form-checkbox">
-                        <label class="form-checkbox__label setting-form-checkbox__label" for="formCheckbox-6" data-placement="right" title="Пункт будет находится в «Системы» → «Ещё»" data-toggle="tooltip">
-                          <input class="form-checkbox__input setting-form-checkbox__input" id="formCheckbox-6" type="checkbox" name="checkbox_nav_item6" checked=""><span class="form-checkbox__text setting-form-checkbox__text">SAP</span>
-                        </label>
-                      </div>
-                      <div class="form-checkbox setting-form-checkbox">
-                        <label class="form-checkbox__label setting-form-checkbox__label" for="formCheckbox-7" data-placement="right" title="Пункт будет находится в «Системы» → «Ещё»" data-toggle="tooltip">
-                          <input class="form-checkbox__input setting-form-checkbox__input" id="formCheckbox-7" type="checkbox" name="checkbox_nav_item7" checked=""><span class="form-checkbox__text setting-form-checkbox__text">Abnormal System 3367</span>
-                        </label>
-                      </div>
-                      <div class="form-checkbox setting-form-checkbox">
-                        <label class="form-checkbox__label setting-form-checkbox__label" for="formCheckbox-8" data-placement="right" title="Пункт будет находится в «Системы» → «Ещё»" data-toggle="tooltip">
-                          <input class="form-checkbox__input setting-form-checkbox__input" id="formCheckbox-8" type="checkbox" name="checkbox_nav_item8"><span class="form-checkbox__text setting-form-checkbox__text">Системы Всех Систем</span>
-                        </label>
-                      </div>
-                      <div class="form-checkbox setting-form-checkbox">
-                        <label class="form-checkbox__label setting-form-checkbox__label" for="formCheckbox-9" data-placement="right" title="Пункт будет находится в «Системы» → «Ещё»" data-toggle="tooltip">
-                          <input class="form-checkbox__input setting-form-checkbox__input" id="formCheckbox-9" type="checkbox" name="checkbox_nav_item9" checked=""><span class="form-checkbox__text setting-form-checkbox__text">SAP PHR</span>
-                        </label>
-                      </div>
-                      <div class="form-checkbox setting-form-checkbox">
-                        <label class="form-checkbox__label setting-form-checkbox__label" for="formCheckbox-10" data-placement="right" title="Пункт будет находится в «Системы» → «Ещё»" data-toggle="tooltip">
-                          <input class="form-checkbox__input setting-form-checkbox__input" id="formCheckbox-10" type="checkbox" name="checkbox_nav_item10" checked=""><span class="form-checkbox__text setting-form-checkbox__text">РОСТЕХ</span>
-                        </label>
-                      </div>
-                      <div class="form-checkbox setting-form-checkbox">
-                        <label class="form-checkbox__label setting-form-checkbox__label" for="formCheckbox-11" data-placement="right" title="Пункт будет находится в «Системы» → «Ещё»" data-toggle="tooltip">
-                          <input class="form-checkbox__input setting-form-checkbox__input" id="formCheckbox-11" type="checkbox" name="checkbox_nav_item11"><span class="form-checkbox__text setting-form-checkbox__text">Логистика</span>
-                        </label>
-                      </div>
-                      <div class="form-checkbox setting-form-checkbox">
-                        <label class="form-checkbox__label setting-form-checkbox__label" for="formCheckbox-12" data-placement="right" title="Пункт будет находится в «Системы» → «Ещё»" data-toggle="tooltip">
-                          <input class="form-checkbox__input setting-form-checkbox__input" id="formCheckbox-12" type="checkbox" name="checkbox_nav_item12" checked=""><span class="form-checkbox__text setting-form-checkbox__text">SAP PHR</span>
-                        </label>
-                      </div>
-                      <div class="form-checkbox setting-form-checkbox">
-                        <label class="form-checkbox__label setting-form-checkbox__label" for="formCheckbox-13" data-placement="right" title="Пункт будет находится в «Системы» → «Ещё»" data-toggle="tooltip">
-                          <input class="form-checkbox__input setting-form-checkbox__input" id="formCheckbox-13" type="checkbox" name="checkbox_nav_item13"><span class="form-checkbox__text setting-form-checkbox__text">Стандарты РосКосмос</span>
-                        </label>
-                      </div>
-                      <div class="form-checkbox setting-form-checkbox">
-                        <label class="form-checkbox__label setting-form-checkbox__label" for="formCheckbox-14" data-placement="right" title="Пункт будет находится в «Системы» → «Ещё»" data-toggle="tooltip">
-                          <input class="form-checkbox__input setting-form-checkbox__input" id="formCheckbox-14" type="checkbox" name="checkbox_nav_item14"><span class="form-checkbox__text setting-form-checkbox__text">SAP SSH</span>
-                        </label>
-                      </div>
-                      <div class="form-checkbox setting-form-checkbox">
-                        <label class="form-checkbox__label setting-form-checkbox__label" for="formCheckbox-15" data-placement="right" title="Пункт будет находится в «Системы» → «Ещё»" data-toggle="tooltip">
-                          <input class="form-checkbox__input setting-form-checkbox__input" id="formCheckbox-15" type="checkbox" name="checkbox_nav_item15" checked=""><span class="form-checkbox__text setting-form-checkbox__text">СААРЦ</span>
-                        </label>
-                      </div>
-                      <div class="form-checkbox setting-form-checkbox">
-                        <label class="form-checkbox__label setting-form-checkbox__label" for="formCheckbox-16" data-placement="right" title="Пункт будет находится в «Системы» → «Ещё»" data-toggle="tooltip">
-                          <input class="form-checkbox__input setting-form-checkbox__input" id="formCheckbox-16" type="checkbox" name="checkbox_nav_item16"><span class="form-checkbox__text setting-form-checkbox__text">Газпром Системы</span>
-                        </label>
-                      </div>
-                      <div class="form-checkbox setting-form-checkbox">
-                        <label class="form-checkbox__label setting-form-checkbox__label" for="formCheckbox-17" data-placement="right" title="Пункт будет находится в «Системы» → «Ещё»" data-toggle="tooltip">
-                          <input class="form-checkbox__input setting-form-checkbox__input" id="formCheckbox-17" type="checkbox" name="checkbox_nav_item17" disabled=""><span class="form-checkbox__text setting-form-checkbox__text">Больше систем</span>
-                        </label>
-                      </div>
+                    <div class="form-checkbox margin-bottom-10">
+                      <label class="form-checkbox__label" for="formCheckbox2">
+                        <input class="form-checkbox__input" id="formCheckbox2" type="checkbox" name="formCheckbox2" disabled="disabled"/><span class="form-checkbox__text">Чекбокс тип 1 disabled</span>
+                      </label>
                     </div>
-                    <div class="form-checkbox-button-wrap">
-                      <button class="button form-setting-button" type="reset" data-toggle="collapse" data-target="#header-navSetting">Отмена</button>
-                      <button class="button form-setting-button" type="submit" data-toggle="collapse" data-target="#header-navSetting">Применить</button>
+                    <div class="form-checkbox margin-bottom-10">
+                      <label class="form-checkbox__label" for="formCheckbox3">
+                        <input class="form-checkbox__input" id="formCheckbox3" type="checkbox" name="formCheckbox3"/><span class="form-checkbox__text form-checkbox__text_thin">Чекбокс тип 2</span>
+                      </label>
+                    </div>
+                    <div class="form-checkbox margin-bottom-10">
+                      <label class="form-checkbox__label" for="formCheckbox4">
+                        <input class="form-checkbox__input" id="formCheckbox4" type="checkbox" name="formCheckbox4" disabled="disabled"/><span class="form-checkbox__text form-checkbox__text_thin">Чекбокс тип 2 disabled</span>
+                      </label>
                     </div>
                   </form>
                 </div>
               </div>
             </div>
+            <div class="card">
+              <div class="row">
+                <div class="col-6">
+                  <div class="btn-group">
+                    <button class="button-dropdown" data-toggle="dropdown"><span>Список</span><span class="button-split"></span></button>
+                    <div class="dropdown-menu"><a class="dropdown-item" href="#">Ниспадающий</a><a class="dropdown-item" href="#">Стандартный</a><a class="dropdown-item" href="#">Как доп. элемент</a>
+                      <div class="dropdown-divider"></div>
+                      <button class="dropdown-item" href="#" disabled="disabled">Неактив. #D0D1D3</button><a class="dropdown-item" href="#">#5E6167</a>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-6">
+                  <div class="btn-group">
+                    <button class="button-dropdown" data-toggle="dropdown"><span>Список: другой тип</span><span class="button-split button-split_light"></span></button>
+                    <div class="dropdown-menu"><a class="dropdown-item" href="#">Ниспадающий</a><a class="dropdown-item" href="#">Стандартный</a><a class="dropdown-item" href="#">Как доп. элемент</a>
+                      <div class="dropdown-divider"></div>
+                      <button class="dropdown-item" href="#" disabled="disabled">Неактив. #D0D1D3</button><a class="dropdown-item" href="#">#5E6167</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="card">
+              <div class="row">
+                <div class="col-12">
+                  <div class="like-card text-left">
+                    <button class="like-button comment-button"><i class="icon-comment"></i><span class="like-count">23</span></button>
+                    <button class="like-button"><i class="icon-like"></i><span class="like-count">1286</span></button>
+                  </div>
+                  <div class="like-card text-left margin-bottom-15">
+                    <button class="like-button comment-button active"><i class="icon-comment"></i><span class="like-count">23</span></button>
+                    <button class="like-button active"><i class="icon-like"></i><span class="like-count">1286</span></button>
+                  </div>
+                  <div class="card"><a class="link-icon margin-right-10" href="#"><i class="icon-save"></i></a><a class="link-icon font-size-17 margin-right-10" href="#"><i class="icon-save"></i></a><a class="link-icon font-size-20 margin-right-10" href="#"><i class="icon-save"></i></a><a class="link-icon font-size-22 margin-right-10" href="#"><i class="icon-save"></i></a><a class="link-icon font-size-28 margin-right-10" href="#"><i class="icon-save"></i></a><a class="link-icon font-size-32 margin-right-10" href="#"><i class="icon-save"></i></a><a class="link-icon font-size-40 margin-right-10" href="#"><i class="icon-save"></i></a></div>
+                  <div class="card margin-bottom-0">
+                    <form>
+                      <div class="form-group">
+                        <label class="margin-bottom-15" for="exampleFormControlFile1">Загрузка файла</label>
+                        <input class="form-control-file" id="exampleFormControlFile1" type="file"/>
+                      </div>
+                      <div class="form-group">
+                        <div class="form-row align-items-center">
+                          <div class="col-auto">
+                            <label class="mr-sm-2" for="inlineFormCustomSelect">Выбор формы</label>
+                          </div>
+                          <div class="col-4">
+                            <select class="custom-select mr-sm-2" id="inlineFormCustomSelect">
+                              <option selected="">Выбор опций</option>
+                              <option value="1">One</option>
+                              <option value="2">Two</option>
+                              <option value="3">Three</option>
+                            </select>
+                          </div>
+                        </div>
+                      </div>
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
-        </nav>
+        </div>
       </div>
-      <div class="menu-left-navigation">
+      <div class="row">
+        <div class="col-12">
+          <div class="card">
+            <div class="content-titlebox_dark">
+              <h4>ПРОГРЕСС</h4>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="bg-color-light padding-30 margin-bottom-30">
+        <div class="row">
+          <div class="col-5">
+            <div class="card">
+              <div class="progress" style="height: 3px;">
+                <div class="progress-bar" role="progressbar" style="width: 25%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+              </div>
+            </div>
+            <div class="card">
+              <div class="progress" style="height: 17px;">
+                <div class="progress-bar" role="progressbar" style="width: 25%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+              </div>
+            </div>
+            <div class="card">
+              <div class="progress" style="height: 17px;">
+                <div class="progress-bar" role="progressbar" style="width: 50%;" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100">50%</div>
+              </div>
+            </div>
+          </div>
+          <div class="col-6 offset-1">
+            <div class="card">
+              <div class="progress" style="height: 17px;">
+                <div class="progress-bar bg-color-danger" role="progressbar" style="width: 90%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100">90%</div>
+              </div>
+            </div>
+            <div class="card">
+              <div class="progress">
+                <div class="progress-bar bg-color-dark-9" role="progressbar" style="width: 20%" aria-valuenow="15" aria-valuemin="0" aria-valuemax="100"></div>
+                <div class="progress-bar bg-color-dark-8" role="progressbar" style="width: 20%" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100"></div>
+                <div class="progress-bar bg-color-dark-7" role="progressbar" style="width: 20%" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"></div>
+              </div>
+            </div>
+            <div class="card">
+              <div class="progress">
+                <div class="progress-bar progress-bar-striped" role="progressbar" style="width: 80%" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-12">
+          <div class="card">
+            <div class="content-titlebox_dark">
+              <h4>ФОРМЫ</h4>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card bg-color-light padding-top-15 padding-bottom-15">
+        <div class="col-9">
+          <form class="form">
+            <div class="form__box form__box_title">
+              <h3 class="form__title form__title_main">Заполните форму обращения</h3>
+              <h3 class="form__title form__title_alt">Отправить форму от другого имени</h3>
+            </div>
+            <div class="form__box">
+              <label class="form-label form-label_special" for="formSubject">Тема</label>
+              <input class="form__input" id="formSubject" type="text" placeholder="Введите тему обращения"/>
+            </div>
+            <div class="form__box text-right"></div>
+            <div class="form__group" id="formMoreInputs">
+              <div class="form__box">
+                <label class="form-label" for="formFulName"><span>Ф.И.О.</span></label>
+                <input class="form__input" id="formFulName" type="text" placeholder="Ваши Ф.И.О."/>
+              </div>
+              <div class="form__box">
+                <label class="form-label" for="formDepartment"><span>Подразделение</span></label>
+                <input class="form__input" id="formDepartment" type="text" placeholder="Введите наименование подразделения"/>
+              </div>
+              <div class="form__box form__box_small">
+                <label class="form-label" for="formEmail1"><span>Email</span></label>
+                <input class="form__input success" id="formEmail1" type="email" placeholder="Введите ваш Email"/>
+              </div>
+              <div class="form__box form__box_small">
+                <label class="form-label" for="formEmail2"><span>Email</span></label>
+                <input class="form__input error" id="formEmail2" type="email" placeholder="Введите ваш Email"/>
+              </div>
+              <div class="form__box form__box_small">
+                <label class="form-label" for="formEmail3"><span>Email</span></label>
+                <input class="form__input warning" id="formEmail3" type="email" placeholder="Введите ваш Email"/>
+              </div>
+            </div>
+            <div class="form__box">
+              <label class="form-label" for="formTextarea"><span>Текст обращения</span></label>
+              <textarea class="form__textarea" id="formTextarea" placeholder="Введите текст обращения"></textarea>
+            </div>
+            <div class="form__box form__box_flex">
+              <div class="form-checkbox">
+                <label class="form-checkbox__label" for="formCheckbox">
+                  <input class="form-checkbox__input" id="formCheckbox" type="checkbox" name="form_copy"/><span class="form-checkbox__text form-checkbox__text_thin">Отправить себе копию сообщения</span>
+                </label>
+                <label class="form-label form-label_slim" for="formEmailCopy"><span>Дополнительный Email (необяз.):</span>
+                  <input class="form__input form__input_slim success" id="formEmailCopy" type="email" placeholder="konstantinopolskiy.k@yandex.ru"/>
+                </label>
+              </div>
+              <div class="form__buttonbox">
+                <button class="button form__button" type="submit">Отправить</button>
+              </div>
+            </div>
+            <div class="form__box form__box_flex">
+              <div class="form-checkbox">
+                <label class="form-checkbox__label" for="formCheckbox1">
+                  <input class="form-checkbox__input" id="formCheckbox1" type="checkbox" name="form_copy"/><span class="form-checkbox__text form-checkbox__text_thin">Отправить себе копию сообщения</span>
+                </label>
+                <label class="form-label form-label_slim" for="formEmailCopy1"><span>Дополнительный Email (необяз.):</span>
+                  <input class="form__input form__input_slim error" id="formEmailCopy1" type="email" placeholder="konstantinopolskiy.k@yandex.ru"/>
+                </label>
+              </div>
+              <div class="form__buttonbox">
+                <button class="button form__button" type="submit">Отправить</button>
+              </div>
+            </div>
+            <div class="form__box form__box_flex">
+              <div class="form-checkbox">
+                <label class="form-checkbox__label" for="formCheckbox2">
+                  <input class="form-checkbox__input" id="formCheckbox2" type="checkbox" name="form_copy"/><span class="form-checkbox__text form-checkbox__text_thin">Отправить себе копию сообщения</span>
+                </label>
+                <label class="form-label form-label_slim" for="formEmailCopy2"><span>Дополнительный Email (необяз.):</span>
+                  <input class="form__input form__input_slim warning" id="formEmailCopy2" type="email" placeholder="konstantinopolskiy.k@yandex.ru"/>
+                </label>
+              </div>
+              <div class="form__buttonbox">
+                <button class="button form__button" type="submit">Отправить</button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-12">
+          <div class="card">
+            <div class="content-titlebox_dark">
+              <h4>ТЕКСТ</h4>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="bg-color-light padding-30 margin-bottom-30">
+        <div class="row">
+          <div class="col-9">
+            <div class="card">
+              <div class="card__title">
+                <h2 class="font-size-32 margin-bottom-15">Заголовок с тегом h2, PT Serif, 32, Regular</h2>
+                <h3 class="font-size-28 margin-bottom-15">Заголовок с тегом h3, PT Serif, 28, Regular</h3>
+                <h3 class="font-size-24 margin-bottom-15">Заголовок с тегом h4, PT Serif, 24, Regular</h3>
+              </div>
+            </div>
+            <div class="card">
+              <div class="card__list">
+                <ul>
+                  <li>Пункт списка</li>
+                  <li>Пункт списка</li>
+                  <ul>
+                    <li>Пункт списка</li>
+                    <li>Пункт списка</li>
+                  </ul>
+                </ul>
+              </div>
+              <div class="card__list">
+                <ol>
+                  <li>Пункт списка</li>
+                  <li>Пункт списка</li>
+                  <ol>
+                    <li>Пункт списка</li>
+                    <li>Пункт списка</li>
+                    <ol>
+                      <li>Пункт списка</li>
+                      <li>Пункт списка</li>
+                      <ol>
+                        <li>Пункт списка</li>
+                      </ol>
+                    </ol>
+                  </ol>
+                </ol>
+              </div>
+            </div>
+            <div class="article margin-bottom-15">
+              <div class="article-quote">
+                <blockquote class="article-blockquote">«Металлургия – базовая отрасль промышленности, одна из основных. Не развивая производство продукции из стали, не развивая производство листа, труб, колес для железнодорожных вагонов мы будем не конкурентоспособны. Такие предприятия, где используются современные технологии и оборудование, где оптимизированы все бизнес-процессы, где активно применяются цифровые технологии, позволяют развивать всю нашу промышленность. ВМЗ выпускает конкурентоспособную продукцию, аналогов которой в мире не так много. Можно только пожелать успехов предприятию, порадоваться за регион. Что еще важно: предприятие выполняет социальные обязательства, развивая территории, на которых оно работает», - отметил после посещения ВМЗ заместитель министра промышленности и торговли России Виктор Евтухов.</blockquote>
+              </div>
+              <div class="article-text">
+                <p>Если в названии или описании йогурта написано, что он термизированный или стерилизованный, то можно с уверенностью сказать, что данный продукт в ходе его производства подвергался термической обработке (это так называемый «неживой» йогурт). В процессе такой обработки погибли не только вредные, но и полезные микроорганизмы, так необходимые нашему организму. В результате чего срок годности такого йогурта может достигать 30 дней и более.</p>
+                <p>Однако хоть в ходе термообработки и погибают все полезные биологические культуры, «неживой» йогурт может принести определенную пользу вашему организму, ведь он богат белками, углеводами и жирами, витаминами и минералами.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-12">
+          <div class="card">
+            <div class="content-titlebox_dark">
+              <h4>ТАБЛИЦЫ</h4>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="bg-color-light padding-30 margin-bottom-30">
+        <div class="row">
+          <div class="col-9">
+            <div class="card">
+              <div class="table-inn">
+                <table class="table table-all-line">
+                  <thead>
+                    <tr>
+                      <th>#</th>
+                      <th>Наименование</th>
+                      <th>Подразделение</th>
+                      <th>Описание</th>
+                      <th>Дата</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td># 10</td>
+                      <td>Система "Айсберг 34-М18-Т"</td>
+                      <td>Подразделение ВМЗ по настройке технических решений</td>
+                      <td>Программно-аппаратный комплекс для производства сложных изделий из металла</td>
+                      <td>23.12.2019</td>
+                    </tr>
+                    <tr>
+                      <td># 2451 отступ слева 15px</td>
+                      <td>База данных "МИГ"</td>
+                      <td>Подразделение ВМЗ по настройке технических решений</td>
+                      <td>Актуальная база для решений программного комплекса ТШГ-251, редакция 6250</td>
+                      <td>23.12.2019 Учитывается отступ в 15px справа</td>
+                    </tr>
+                    <tr>
+                      <td># 10</td>
+                      <td>Система "Айсберг 34-М18-Т"</td>
+                      <td>Подразделение ВМЗ по настройке технических решений</td>
+                      <td>Программно-аппаратный комплекс для производства сложных изделий из металла</td>
+                      <td>23.12.2019</td>
+                    </tr>
+                    <tr>
+                      <td># 2451 отступ слева 15px</td>
+                      <td>База данных "МИГ"</td>
+                      <td>Подразделение ВМЗ по настройке технических решений</td>
+                      <td>Актуальная база для решений программного комплекса ТШГ-251, редакция 6250</td>
+                      <td>23.12.2019 Учитывается отступ в 15px справа</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            <div class="card">
+              <div class="table-inn">
+                <table class="table table-thin-head">
+                  <thead>
+                    <tr>
+                      <th>#</th>
+                      <th>Наименование</th>
+                      <th>Подразделение</th>
+                      <th>Описание</th>
+                      <th>Дата</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td># 10</td>
+                      <td>Система "Айсберг 34-М18-Т"</td>
+                      <td>Подразделение ВМЗ по настройке технических решений</td>
+                      <td>Программно-аппаратный комплекс для производства сложных изделий из металла</td>
+                      <td>23.12.2019</td>
+                    </tr>
+                    <tr>
+                      <td># 2451 отступ слева 15px</td>
+                      <td>База данных "МИГ"</td>
+                      <td>Подразделение ВМЗ по настройке технических решений</td>
+                      <td>Актуальная база для решений программного комплекса ТШГ-251, редакция 6250</td>
+                      <td>23.12.2019 Учитывается отступ в 15px справа</td>
+                    </tr>
+                    <tr>
+                      <td># 10</td>
+                      <td>Система "Айсберг 34-М18-Т"</td>
+                      <td>Подразделение ВМЗ по настройке технических решений</td>
+                      <td>Программно-аппаратный комплекс для производства сложных изделий из металла</td>
+                      <td>23.12.2019</td>
+                    </tr>
+                    <tr>
+                      <td># 2451 отступ слева 15px</td>
+                      <td>База данных "МИГ"</td>
+                      <td>Подразделение ВМЗ по настройке технических решений</td>
+                      <td>Актуальная база для решений программного комплекса ТШГ-251, редакция 6250</td>
+                      <td>23.12.2019 Учитывается отступ в 15px справа</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            <div class="card">
+              <div class="table-inn">
+                <table class="table table-thin-head table-light table-all-line">
+                  <thead>
+                    <tr>
+                      <th>#</th>
+                      <th>Наименование</th>
+                      <th>Подразделение</th>
+                      <th>Описание</th>
+                      <th>Дата</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td># 10</td>
+                      <td>Система "Айсберг 34-М18-Т"</td>
+                      <td>Подразделение ВМЗ по настройке технических решений</td>
+                      <td>Программно-аппаратный комплекс для производства сложных изделий из металла</td>
+                      <td>23.12.2019</td>
+                    </tr>
+                    <tr>
+                      <td># 2451 отступ слева 15px</td>
+                      <td>База данных "МИГ"</td>
+                      <td>Подразделение ВМЗ по настройке технических решений</td>
+                      <td>Актуальная база для решений программного комплекса ТШГ-251, редакция 6250</td>
+                      <td>23.12.2019 Учитывается отступ в 15px справа</td>
+                    </tr>
+                    <tr>
+                      <td># 10</td>
+                      <td>Система "Айсберг 34-М18-Т"</td>
+                      <td>Подразделение ВМЗ по настройке технических решений</td>
+                      <td>Программно-аппаратный комплекс для производства сложных изделий из металла</td>
+                      <td>23.12.2019</td>
+                    </tr>
+                    <tr>
+                      <td># 2451 отступ слева 15px</td>
+                      <td>База данных "МИГ"</td>
+                      <td>Подразделение ВМЗ по настройке технических решений</td>
+                      <td>Актуальная база для решений программного комплекса ТШГ-251, редакция 6250</td>
+                      <td>23.12.2019 Учитывается отступ в 15px справа</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-12">
+          <div class="card">
+            <div class="content-titlebox_dark">
+              <h4>Иконки для меню Системы</h4>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="bg-color-light padding-30 margin-bottom-30"><a class="link-icon margin-right-10 font-size-32 color-icons-grey-1" href="#"> <i class="icon-15"></i></a><a class="link-icon margin-right-10 font-size-32 color-icons-grey-1" href="#"> <i class="icon-16"></i></a><a class="link-icon margin-right-10 font-size-32 color-icons-grey-1" href="#"> <i class="icon-17"></i></a><a class="link-icon margin-right-10 font-size-32 color-icons-grey-1" href="#"> <i class="icon-18"></i></a><a class="link-icon margin-right-10 font-size-32 color-icons-grey-1" href="#"> <i class="icon-19"></i></a><a class="link-icon margin-right-10 font-size-32 color-icons-grey-1" href="#"> <i class="icon-20"></i></a><a class="link-icon margin-right-10 font-size-32 color-icons-grey-1" href="#"> <i class="icon-21"></i></a><a class="link-icon margin-right-10 font-size-32 color-icons-grey-1" href="#"> <i class="icon-22"></i></a><a class="link-icon margin-right-10 font-size-32 color-icons-grey-1" href="#"> <i class="icon-23"></i></a><a class="link-icon margin-right-10 font-size-32 color-icons-grey-1" href="#"> <i class="icon-24"></i></a><a class="link-icon margin-right-10 font-size-32 color-icons-grey-1" href="#"> <i class="icon-25"></i></a><a class="link-icon margin-right-10 font-size-32 color-icons-grey-1" href="#"> <i class="icon-26"></i></a><a class="link-icon margin-right-10 font-size-32 color-icons-grey-1" href="#"> <i class="icon-27"></i></a><a class="link-icon margin-right-10 font-size-32 color-icons-grey-1" href="#"> <i class="icon-28"></i></a><a class="link-icon margin-right-10 font-size-32 color-icons-grey-1" href="#"> <i class="icon-29"></i></a><a class="link-icon margin-right-10 font-size-32 color-icons-grey-1" href="#"> <i class="icon-30"></i></a><a class="link-icon margin-right-10 font-size-32 color-icons-grey-1" href="#"> <i class="icon-31"></i></a><a class="link-icon margin-right-10 font-size-32 color-icons-grey-1" href="#"> <i class="icon-32"></i></a><a class="link-icon margin-right-10 font-size-32 color-icons-grey-1" href="#"> <i class="icon-33"></i></a><a class="link-icon margin-right-10 font-size-32 color-icons-grey-1" href="#"> <i class="icon-37"></i></a><a class="link-icon margin-right-10 font-size-32 color-icons-grey-1" href="#"> <i class="icon-38"></i></a><a class="link-icon margin-right-10 font-size-32 color-icons-grey-1" href="#"> <i class="icon-39"></i></a><a class="link-icon margin-right-10 font-size-32 color-icons-grey-1" href="#"> <i class="icon-40"></i></a><a class="link-icon margin-right-10 font-size-32 color-icons-grey-1" href="#"> <i class="icon-41"></i></a><a class="link-icon margin-right-10 font-size-32 color-icons-grey-1" href="#"> <i class="icon-42"></i></a><a class="link-icon margin-right-10 font-size-32 color-icons-grey-1" href="#"> <i class="icon-43"></i></a><a class="link-icon margin-right-10 font-size-32 color-icons-grey-1" href="#"> <i class="icon-44"></i></a><a class="link-icon margin-right-10 font-size-32 color-icons-grey-1" href="#"> <i class="icon-45"></i></a><a class="link-icon margin-right-10 font-size-32 color-icons-grey-1" href="#"> <i class="icon-46"></i></a><a class="link-icon margin-right-10 font-size-32 color-icons-grey-1" href="#"> <i class="icon-47"></i></a><a class="link-icon margin-right-10 font-size-32 color-icons-grey-1" href="#"> <i class="icon-48"></i></a><a class="link-icon margin-right-10 font-size-32 color-icons-grey-1" href="#"> <i class="icon-49"></i></a><a class="link-icon margin-right-10 font-size-32 color-icons-grey-1" href="#"> <i class="icon-50"></i></a><a class="link-icon margin-right-10 font-size-32 color-icons-grey-1" href="#"> <i class="icon-51"></i></a><a class="link-icon margin-right-10 font-size-32 color-icons-grey-1" href="#"> <i class="icon-52"></i></a><a class="link-icon margin-right-10 font-size-32 color-icons-grey-1" href="#"> <i class="icon-53"></i></a><a class="link-icon margin-right-10 font-size-32 color-icons-grey-1" href="#"> <i class="icon-54"></i></a><a class="link-icon margin-right-10 font-size-32 color-icons-grey-1" href="#"> <i class="icon-55"></i></a><a class="link-icon margin-right-10 font-size-32 color-icons-grey-1" href="#"> <i class="icon-56"></i></a><a class="link-icon margin-right-10 font-size-32 color-icons-grey-1" href="#"> <i class="icon-57"></i></a><a class="link-icon margin-right-10 font-size-32 color-icons-grey-1" href="#"> <i class="icon-58"></i></a><a class="link-icon margin-right-10 font-size-32 color-icons-grey-1" href="#"> <i class="icon-59"></i></a><a class="link-icon margin-right-10 font-size-32 color-icons-grey-1" href="#"> <i class="icon-60"></i></a><a class="link-icon margin-right-10 font-size-32 color-icons-grey-1" href="#"> <i class="icon-61"></i></a><a class="link-icon margin-right-10 font-size-32 color-icons-grey-1" href="#"> <i class="icon-62"></i></a><a class="link-icon margin-right-10 font-size-32 color-icons-grey-1" href="#"> <i class="icon-63"></i></a><a class="link-icon margin-right-10 font-size-32 color-icons-grey-1" href="#"> <i class="icon-64"></i></a><a class="link-icon margin-right-10 font-size-32 color-icons-grey-1" href="#"> <i class="icon-65"></i></a><a class="link-icon margin-right-10 font-size-32 color-icons-grey-1" href="#"> <i class="icon-66"></i></a><a class="link-icon margin-right-10 font-size-32 color-icons-grey-1" href="#"> <i class="icon-67"></i></a><a class="link-icon margin-right-10 font-size-32 color-icons-grey-1" href="#"> <i class="icon-68"></i></a><a class="link-icon margin-right-10 font-size-32 color-icons-grey-1" href="#"> <i class="icon-69"></i></a><a class="link-icon margin-right-10 font-size-32 color-icons-grey-1" href="#"> <i class="icon-70"></i></a><a class="link-icon margin-right-10 font-size-32 color-icons-grey-1" href="#"> <i class="icon-71"></i></a><a class="link-icon margin-right-10 font-size-32 color-icons-grey-1" href="#"> <i class="icon-72"></i></a><a class="link-icon margin-right-10 font-size-32 color-icons-grey-1" href="#"> <i class="icon-73"></i></a><a class="link-icon margin-right-10 font-size-32 color-icons-grey-1" href="#"> <i class="icon-74"></i></a><a class="link-icon margin-right-10 font-size-32 color-icons-grey-1" href="#"> <i class="icon-75"></i></a><a class="link-icon margin-right-10 font-size-32 color-icons-grey-1" href="#"> <i class="icon-76"></i></a><a class="link-icon margin-right-10 font-size-32 color-icons-grey-1" href="#"> <i class="icon-77"></i></a><a class="link-icon margin-right-10 font-size-32 color-icons-grey-1" href="#"> <i class="icon-1"></i></a><a class="link-icon margin-right-10 font-size-32 color-icons-grey-1" href="#"> <i class="icon-2"></i></a><a class="link-icon margin-right-10 font-size-32 color-icons-grey-1" href="#"> <i class="icon-4"></i></a><a class="link-icon margin-right-10 font-size-32 color-icons-grey-1" href="#"> <i class="icon-5"></i></a><a class="link-icon margin-right-10 font-size-32 color-icons-grey-1" href="#"> <i class="icon-6"></i></a><a class="link-icon margin-right-10 font-size-32 color-icons-grey-1" href="#"> <i class="icon-7"></i></a><a class="link-icon margin-right-10 font-size-32 color-icons-grey-1" href="#"> <i class="icon-8"></i></a><a class="link-icon margin-right-10 font-size-32 color-icons-grey-1" href="#"> <i class="icon-14"></i></a>
+      </div>
+    </div>
+    <footer class="footer" style="padding: 1000px 0">
+      <div class="upp">
         <div class="container">
           <div class="row">
-            <div class="col-xl-3">
-              <nav class="menu-left">
-                <div class="menu-left-wrap">
-                  <div class="menu-left__list">
-                    <div class="menu-left__item menu-left__item-head">
-                      <div class="nav-more menu-left-more btn-group">
-                        <button class="menu-left-more__button" id="navMoreListControl" type="button" aria-haspopup="true" aria-expanded="false">Новости <i class="icon-arrow-down"></i></button>
-                        <ul class="nav-more-list menu-left-more__list dropdown-menu">
-                          <li class="nav-more-list__item menu-left-more__box menu-left__box"><a class="menu-left__item menu-left-more__item" href="#">
-                              <div class="menu-left__text menu-left-more__link"><span>КОМПАНИЯ</span></div></a></li>
-                          <li class="nav-more-list__item menu-left-more__box menu-left__box"><a class="menu-left__item menu-left-more__item" href="#">
-                              <div class="menu-left__text menu-left-more__link"><span>СОТРУДНИКАМ</span></div></a></li>
-                          <li class="nav-more-list__item menu-left-more__box menu-left__box"><a class="menu-left__item menu-left-more__item" href="#">
-                              <div class="menu-left__text menu-left-more__link"><span>БАТАШЕВСКАЯ ПРЕМИЯ</span></div></a></li>
-                          <li class="nav-more-list__item menu-left-more__box menu-left__box"><a class="menu-left__item menu-left-more__item" href="productions-system.html">
-                              <div class="menu-left__text menu-left-more__link"><span>ПРОИЗВОДСТВЕННАЯ СИСТЕМА</span></div></a></li>
-                          <li class="nav-more-list__item menu-left-more__box menu-left__box"><a class="menu-left__item menu-left-more__item" href="#">
-                              <div class="menu-left__text menu-left-more__link"><span>БИБЛИОТЕКА</span></div></a></li>
-                          <li class="nav-more-list__item menu-left-more__box menu-left__box"><a class="menu-left__item menu-left-more__item" href="#">
-                              <div class="menu-left__text menu-left-more__link"><span>ГАЛЕРЕЯ</span></div></a></li>
-                          <li class="nav-more-list__item menu-left-more__box menu-left__box"><a class="menu-left__item menu-left-more__item" href="#">
-                              <div class="menu-left__text menu-left-more__link"><span>СПОРТ</span></div></a></li>
-                          <li class="nav-more-list__item menu-left-more__box menu-left__box"><a class="menu-left__item menu-left-more__item" href="#">
-                              <div class="menu-left__text menu-left-more__link"><span>КОНТАКТЫ</span></div></a></li>
-                        </ul>
-                      </div>
-                      <button class="menu-left-control active" id="menuLeftListControl" type="button" data-toggle="collapse" data-target="#menuLeftList" aria-expanded="false" aria-controls="menuLeftList"></button>
-                    </div>
-                    <div class="menu-left__item menu-left__item-current" id="menuLeftItemCurrent"></div>
-                  </div>
-                  <ul class="menu-left__list collapse menuLeftList-group show" id="menuLeftList">
-                    <li class="menu-left__box"><a class="menu-left__item" href="#">
-                        <div class="menu-left__text"><span>КОМПАНИЯ</span></div></a></li>
-                    <li class="menu-left__box"><a class="menu-left__item" href="#">
-                        <div class="menu-left__text"><span>СОТРУДНИКАМ</span></div></a></li>
-                    <li class="menu-left__box"><a class="menu-left__item" href="#">
-                        <div class="menu-left__text"><span>БАТАШЕВСКАЯ ПРЕМИЯ</span></div></a></li>
-                    <li class="menu-left__box"><a class="menu-left__item" href="productions-system.html">
-                        <div class="menu-left__text"><span>ПРОИЗВОДСТВЕННАЯ СИСТЕМА</span></div></a></li>
-                    <li class="menu-left__box"><a class="menu-left__item" href="#">
-                        <div class="menu-left__text"><span>БЛАГОТВОРИТЕЛЬНОСТЬ</span></div></a></li>
-                    <li class="menu-left__box"><a class="menu-left__item" href="#">
-                        <div class="menu-left__text"><span>БИБЛИОТЕКА</span></div></a></li>
-                    <li class="menu-left__box"><a class="menu-left__item" href="#">
-                        <div class="menu-left__text"><span>ГАЛЕРЕЯ</span></div></a></li>
-                    <li class="menu-left__box"><a class="menu-left__item" href="#">
-                        <div class="menu-left__text"><span>СПОРТ</span></div></a></li>
-                    <li class="menu-left__box"><a class="menu-left__item" href="#">
-                        <div class="menu-left__text"><span>КОНТАКТЫ</span></div></a></li>
-                  </ul>
-                </div>
-              </nav>
-            </div>
-            <div class="col-xl-9 col-12">
-              <nav class="menu-horizontal">
-                <ul class="menu-horizontal__list">
-                  <li class="menu-horizontal__box"><a class="menu-horizontal__item" href="#"><span class="menu-horizontal__text">НОВОСТИ ОМК</span></a></li>
-                  <li class="menu-horizontal__box"><a class="menu-horizontal__item current" href="#"><span class="menu-horizontal__text">РЕГИОНАЛЬНЫЕ НОВОСТИ</span></a></li>
-                  <li class="menu-horizontal__box"><a class="menu-horizontal__item" href="#"><span class="menu-horizontal__text">ПС ОМК</span></a></li>
-                  <li class="menu-horizontal__box"><a class="menu-horizontal__item" href="#"><span class="menu-horizontal__text">НОВОСТИ ПОДРАЗДЕЛЕНИЙ</span></a></li>
-                  <li class="menu-horizontal__box"><a class="menu-horizontal__item" href="#"><span class="menu-horizontal__text">НОВОСТИ ФОНДА</span></a></li>
-                  <li class="menu-horizontal__box menu-horizontal__box-more">
-                    <div class="menu-horizontal__item menu-horizontal__item-more">
-                      <div class="nav-more btn-group">
-                        <button class="button header-button button-more" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Ещё <i class="icon-arrow-down"></i></button>
-                        <ul class="nav-more-list dropdown-menu dropdown-menu-right">
-                          <li class="nav-more-list__item"><a class="link link-nav nav-more-list__link" href="#">Блоги</a></li>
-                          <li class="nav-more-list__item"><a class="link link-nav nav-more-list__link" href="#">Газпром новости</a></li>
-                          <li class="nav-more-list__item"><a class="link link-nav nav-more-list__link" href="#">SAP новости</a></li>
-                          <li class="nav-more-list__item"><a class="link link-nav nav-more-list__link" href="#">Производственные новости</a></li>
-                          <li class="nav-more-list__item"><a class="link link-nav nav-more-list__link" href="#">Системы Всех новостей</a></li>
-                          <li class="nav-more-list__item"><a class="link link-nav nav-more-list__link" href="#">SAP SSH</a></li>
-                          <li class="nav-more-list__item"><a class="link link-nav nav-more-list__link" href="#">Ширина под самое длинное название с учетом Bold</a></li>
-                        </ul>
-                      </div>
-                    </div>
-                  </li>
-                </ul>
-              </nav>
-              <div class="breadcrumb-wrap">
-                <div class="breadcrumb">
-                  <div class="breadcrumb-group"><a class="breadcrumb__link" href="#">Главная</a><a class="breadcrumb__link" href="#">Новости</a></div>
-                  <div class="breadcrumb-back"><a class="breadcrumb__link" href="#">&lt;&lt;Назад</a></div>
-                </div>
-              </div>
+            <div class="col-12">
+              <button class="button button-up" id="btnUp"><i class="icon-arrow-down"></i></button>
             </div>
           </div>
         </div>
       </div>
-    </header>
-    <section class="content section">
-      <div class="container">
-        <div class="row">
-          <div class="d-none d-md-block col-md-3">
-            <div class="aside-wrap" id="aside">
-              <div class="menu-left-navigation-pseudo collapse show" id="leftNavigationPseudo"></div>
-              <!-- widget-SLIDER Пресса-->
-              <div class="widget-slider-wrap"> 
-                <div class="widget-box widget-tabbox widget-slider" data-slick="{&quot;autoplaySpeed&quot;: 4000}">
-                  <div class="widget-tab widget-slider__tab" id="widget1-tab1">
-                    <div class="widget-content widget-slider__content">
-                      <div class="widget-content__left">
-                        <div class="widget-head">
-                          <div class="widget-title">ГОДОВОЙ <br>ОТЧЕТ ОМК</div>
-                        </div>
-                        <div class="widget-footer"><a class="widget-link" href="#">Web-версия <br>Скачать PDF</a></div>
-                      </div>
-                      <div class="widget-content__right">
-                        <div class="widget-imgbox"><img src="img/widget-img-01.jpg" alt="image"></div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="widget-tab widget-slider__tab" id="widget1-tab2">
-                    <div class="widget-content widget-slider__content">
-                      <div class="widget-content__left">
-                        <div class="widget-head">
-                          <div class="widget-title">ТЕРРИТОРИЯ <br>ОМК</div>
-                        </div>
-                        <div class="widget-footer"><a class="widget-link" href="#">16.11.2018 <br>№43 (154) 2018</a></div>
-                      </div>
-                      <div class="widget-content__right">
-                        <div class="widget-imgbox"><img src="img/widget-img-02.jpg" alt="image"></div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="widget-tab widget-slider__tab" id="widget1-tab3">
-                    <div class="widget-content widget-slider__content">
-                      <div class="widget-content__left">
-                        <div class="widget-head">
-                          <div class="widget-title">КОРПОРАТИВНАЯ <br>ПРЕССА</div>
-                        </div>
-                        <div class="widget-footer"><a class="widget-link" href="#">Журнал <br>ОМК-команда <br>выпуск 34, 2018</a></div>
-                      </div>
-                      <div class="widget-content__right">
-                        <div class="widget-imgbox"><img src="img/widget-img-04.jpg" alt="image"></div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <!-- widget widget-calendar-->
-              <div class="widget-box widget-calendar" id="calendarwidgetBox"><a class="widget-title widget-title_link" href="/calendar.html">КАЛЕНДАРЬ СОБЫТИЙ 
-                  <button class="event-control"><i class="icon-arrow-down"></i></button></a>
-                <div class="widget-subtitle"><span>Сегодня 20 ноября 2018</span></div>
-                <div class="ui-datepicker-inline ui-datepicker ui-widget ui-widget-content ui-helper-clearfix ui-corner-all">
-                  <table class="ui-datepicker-calendar">
-                    <tbody>
-                      <tr>
-                        <td><a class="ui-state-deafult ui-state-week" href="#">01</a></td>
-                        <td class="ui-datepicker-other-month ui-datepicker-unselectable ui-state-disabled"> </td>
-                        <td class="ui-datepicker-other-month ui-datepicker-unselectable ui-state-disabled"> </td>
-                        <td class="ui-datepicker-other-month ui-datepicker-unselectable ui-state-disabled"> </td>
-                        <td class="first-of-month"><a class="ui-state-default" href="#">1</a></td>
-                        <td><a class="ui-state-default" href="#">2</a></td>
-                        <td class="ui-datepicker-week-end"><a class="ui-state-default" href="#">3</a></td>
-                        <td class="ui-datepicker-week-end"><a class="ui-state-default" href="#">4</a></td>
-                      </tr>
-                      <tr>
-                        <td><a class="ui-state-deafult ui-state-week" href="#">02</a></td>
-                        <td><a class="ui-state-default" href="#">5</a></td>
-                        <td><a class="ui-state-default ui-state-active" href="#event-6">6</a></td>
-                        <td><a class="ui-state-default" href="#">7</a></td>
-                        <td><a class="ui-state-default" href="#">8</a></td>
-                        <td><a class="ui-state-default" href="#">9</a></td>
-                        <td class="ui-datepicker-week-end"><a class="ui-state-default" href="#">10</a></td>
-                        <td class="ui-datepicker-week-end selected"><a class="ui-state-default" href="#event-11">11</a></td>
-                      </tr>
-                      <tr>
-                        <td><a class="ui-state-deafult ui-state-week" href="#">03</a></td>
-                        <td><a class="ui-state-default" href="#">12</a></td>
-                        <td><a class="ui-state-default" href="#">13</a></td>
-                        <td><a class="ui-state-default ui-state-active" href="#event-14">14</a></td>
-                        <td><a class="ui-state-default" href="#">15</a></td>
-                        <td><a class="ui-state-default" href="#">16</a></td>
-                        <td class="ui-datepicker-week-end"><a class="ui-state-default" href="#">17</a></td>
-                        <td class="ui-datepicker-week-end"><a class="ui-state-default" href="#">18</a></td>
-                      </tr>
-                      <tr>
-                        <td><a class="ui-state-deafult ui-state-week" href="#">04</a></td>
-                        <td><a class="ui-state-default" href="#">19</a></td>
-                        <td class="ui-datepicker-today selected"><a class="ui-state-default ui-state-active" href="#event-20">20</a></td>
-                        <td><a class="ui-state-default" href="#">21</a></td>
-                        <td><a class="ui-state-default" href="#">22</a></td>
-                        <td><a class="ui-state-default" href="#">23</a></td>
-                        <td class="ui-datepicker-week-end selected"><a class="ui-state-default ui-state-active" href="#event-24">24</a></td>
-                        <td class="ui-datepicker-week-end selected ui-datepicker-current-day"><a class="ui-state-default" href="#">25</a></td>
-                      </tr>
-                      <tr>
-                        <td><a class="ui-state-deafult ui-state-week" href="#">05</a></td>
-                        <td><a class="ui-state-default" href="#">26</a></td>
-                        <td><a class="ui-state-default" href="#">27</a></td>
-                        <td><a class="ui-state-default" href="#">28</a></td>
-                        <td><a class="ui-state-default" href="#">29</a></td>
-                        <td class="last-of-month"><a class="ui-state-default" href="#">30</a></td>
-                        <td class="ui-datepicker-week-end ui-datepicker-other-month ui-datepicker-unselectable ui-state-disabled"> </td>
-                        <td class="ui-datepicker-week-end ui-datepicker-other-month ui-datepicker-unselectable ui-state-disabled"> </td>
-                      </tr>
-                    </tbody>
-                  </table>
-                </div>
-                <div class="events" id="event-6"><a class="event calendar-lnk" href="calendar.html#events-06-10-2018">
-                    <div class="event-title"><span>День металлурга</span></div>
-                    <div class="widget-imgbox widget-imgbox_calendar" style="background-image: url(img/article-img-01.jpg);"></div></a><a class="event calendar-lnk" href="calendar.html#event2-06-10-2018">
-                    <div class="event-title"><span>День поедателей йогуртов</span></div>
-                    <div class="widget-imgbox widget-imgbox_calendar" style="background-image: url(img/article-img-01.jpg);"></div></a><a class="event calendar-lnk" href="calendar.html#event3-06-10-2018">
-                    <div class="event-title"><span>День металлурга 2</span></div>
-                    <div class="widget-imgbox widget-imgbox_calendar" style="background-image: url(img/article-img-01.jpg);"></div></a></div>
-                <div class="events" id="event-14"><a class="event calendar-lnk" href="calendar2.html#events-14-10-2018">
-                    <div class="event-title"><span>1 День великого праздника в две строки</span></div>
-                    <div class="widget-imgbox widget-imgbox_calendar" style="background-image: url(img/event-img-01.jpg);"></div></a><a class="event calendar-lnk" href="calendar2.html#event2-14-10-2018">
-                    <div class="event-title"><span>2 День великого праздника в две строки</span></div>
-                    <div class="widget-imgbox widget-imgbox_calendar" style="background-image: url(img/event-img-01.jpg);"></div></a><a class="event calendar-lnk" href="calendar2.html#event3-14-10-2018">
-                    <div class="event-title"><span>3 День великого праздника в две строки</span></div>
-                    <div class="widget-imgbox widget-imgbox_calendar" style="background-image: url(img/event-img-01.jpg);"></div></a></div>
-                <div class="events" id="event-20"><a class="event calendar-lnk" href="calendar3.html#events-24-10-2018">
-                    <div class="event-title"><span>День поедателей йогуртов</span></div>
-                    <div class="widget-imgbox widget-imgbox_calendar" style="background-image: url(img/article-img-02.jpg);"></div></a></div>
-                <div class="events" id="event-24"><a class="event calendar-lnk" href="calendar3.html#events-24-10-2018">
-                    <div class="event-title"><span>День поедателей йогуртов</span></div>
-                    <div class="widget-imgbox widget-imgbox_calendar" style="background-image: url(img/article-img-05.jpg);"></div></a></div>
-              </div>
-              <!-- widget-SLIDER Доска \ Дни \ Назначения-->
-              <div class="widget-slider-wrap"> 
-                <div class="widget-box widget-tabbox widget-slider" data-slick="{&quot;autoplaySpeed&quot;: 6000}">
-                  <div class="widget-tab widget-slider__tab" id="widget2-tab3">
-                    <div class="widget-content widget-slider__content">
-                      <div class="widget-content__left">
-                        <div class="widget-head">
-                          <div class="widget-title">ДОСКА <br>ПОЧЕТА</div>
-                        </div>
-                        <div class="widget-footer">
-                          <div class="widget-text">
-                            <p><strong>Контаревский <br>Николай <br>Константинович <br></strong>Председатель <br>подразделения 28 <br></p>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="widget-content__right">
-                        <div class="widget-imgbox"><img src="img/widget-img-07.jpg" alt="image"></div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="widget-tab widget-slider__tab" id="widget2-tab2"> 
-                    <div class="widget-content widget-slider__content">
-                      <div class="widget-content__left">
-                        <div class="widget-head">
-                          <div class="widget-title">ДЕНЬ <br>РОЖДЕНИЯ</div>
-                        </div>
-                        <div class="widget-footer">
-                          <div class="widget-text">
-                            <p><strong>Тушин <br>Петр <br>Николаевич <br></strong>Директор по <br>управлению <br>эффективностью</p>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="widget-content__right">
-                        <div class="widget-imgbox"><img src="img/widget-img-05.png" alt="image"></div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="widget-tab widget-slider__tab" id="widget2-tab1">
-                    <div class="widget-content widget-slider__content">
-                      <div class="widget-content__left">
-                        <div class="widget-head">
-                          <div class="widget-title">НАЗНАЧЕНИЕ</div>
-                        </div>
-                        <div class="widget-footer">
-                          <div class="widget-text">
-                            <p><strong>Еремина <br>Наталья <br>Константиновна <br></strong>Председатель <br>правления ОМК</p>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="widget-content__right">
-                        <div class="widget-imgbox"><img src="img/widget-img-06.jpg" alt="image"></div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <!-- TABwidget Объявления-->
-              <div class="widget-slider-wrap"> 
-                <div class="widget-box widget-tabbox widget-slider" data-slick="{&quot;autoplaySpeed&quot;: 8000}">
-                  <div class="tab-pane widget-tab widget-slider__tab" id="widget3-tab3">
-                    <div class="widget-content widget-content_ads widget-content_dblock widget-slider__content">
-                      <div class="widget-title">АКЦИИ В РЕГИОНАХ</div>
-                      <div class="widget-imgbox widget-imgbox_full" style="background-image: url(img/widget-img-09.jpg);"></div>
-                      <div class="widget-text">
-                        <h4><strong>Волонтеров берем на работу <br>в первую очередь</strong></h4>
-                        <p>Выкса</p>
-                        <p>Сегодня 15:26</p>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="tab-pane widget-tab widget-slider__tab" id="widget3-tab2">
-                    <div class="widget-content widget-content_ads widget-content_dblock widget-slider__content">
-                      <div class="widget-title">ОБЪЯВЛЕНИЯ</div>
-                      <div class="widget-imgbox widget-imgbox_full" style="background-image: url(img/widget-img-08.jpg);"></div>
-                      <div class="widget-text">
-                        <p>УАЗ 452 Буханка, 1999</p>
-                        <p><span class="widget-text_big">129 000</span>  руб.</p>
-                        <p>Выкса</p>
-                        <p>Сегодня 15:26</p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <!-- widget-->
-              <div class="widget-box widget_fix-height-240 padding-10 padding-xl-15 bg-color-dark-2 border-default">
-                <div class="widget-title">БЛАГОТВОРИТЕЛЬНОСТЬ</div>
-                <div class="widget-imgbox"><img src="img/widget-img-10.jpg" alt="image"></div>
-              </div>
-              <!-- widget-->
-              <div class="widget-box widget_fix-height-240 padding-10 padding-xl-15 bg-color-dark-2 border-default">
-                <div class="widget-title">КОНКУРСЫ</div>
-                <div class="widget-imgbox"><img src="img/widget-img-11.jpg" alt="image">
-                  <div class="widget-imgbox__text">
-                    <h3>Фотоконкурс!</h3>
-                    <p>ждем ваши фотографии</p>
-                  </div>
-                </div>
-              </div>
-              <!-- widget count-->
-              <div class="widget-box d-none d-xl-block">
-                <div class="widget-content widget-content_bdtop widget-content_dblock">
-                  <div class="widget-title">ПОСЕЩАЕМОСТЬ</div>
-                  <div class="widget-group widget-text_small">
-                    <p>Сегодня на портале <br>побывало человек:</p>
-                    <div class="widget-text widget-text_count">12 021</div>
-                  </div>
-                </div>
-              </div>
-              <!-- widget counts-->
-              <div class="widget-box d-none d-xl-block">
-                <div class="widget-content widget-content_bdtop widget-content_dblock">
-                  <div class="widget-title">ПУБЛИКАЦИЯ НОВОСТЕЙ</div>
-                  <div class="widget-group widget-group_special">
-                    <div class="widget-countbox">
-                      <div class="widget-text_small">
-                        <p>Сегодня</p>
-                      </div>
-                      <div class="widget-text widget-text_count">17</div>
-                    </div>
-                    <div class="widget-countbox">
-                      <div class="widget-text_small">
-                        <p>Неделя</p>
-                      </div>
-                      <div class="widget-text widget-text_count">84</div>
-                    </div>
-                    <div class="widget-countbox">
-                      <div class="widget-text_small">
-                        <p>Месяц</p>
-                      </div>
-                      <div class="widget-text widget-text_count">247</div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <!-- widget danger-->
-              <div class="widget-box d-none d-xl-block">
-                <div class="widget-content widget-content_bdtop widget-content_dblock">
-                  <div class="widget-title">НЕПРОЧИТАННЫЕ НОВОСТИ</div>
-                  <div class="widget-group widget-text widget-text_small danger">
-                    <p>Вы не прочитали <br>важных новостей:</p>
-                    <div class="widget-text widget-text widget-text_count danger">28</div>
-                  </div>
-                </div>
-              </div>
-              <!-- widget succes-->
-              <div class="widget-box d-none d-xl-block">
-                <div class="widget-content widget-content_bdtop widget-content_dblock">
-                  <div class="widget-title">ДНЕЙ БЕЗ ТРАВМАТИЗМА</div>
-                  <div class="widget-group widget-text widget-text_small succes">
-                    <p>На предприятиях компании <br>без происшествий, дней</p>
-                    <div class="widget-text widget-text widget-text_count succes">427</div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-12 col-md-9">
-            <div class="content-group">
-              <div class="row">
-                <div class="col-12">
-                  <div class="card padding-top-15">
-                    <div class="content-titlebox_dark">
-                      <h4>ПАЛИТРА</h4>
-                    </div>
-                  </div>
-                </div>
-                <div class="col">
-                  <div class="card">
-                    <div class="box height-65 bg-color-light bg-color-light"></div>
-                    <div class="card__text text-center">
-                      <p>#FFFFFF</p>
-                    </div>
-                  </div>
-                </div>
-                <div class="col">
-                  <div class="card">
-                    <div class="box height-65 bg-color-light bg-color-light-1"></div>
-                    <div class="card__text text-center">
-                      <p>#FBFBFB</p>
-                    </div>
-                  </div>
-                </div>
-                <div class="col">
-                  <div class="card">
-                    <div class="box height-65 bg-color-light bg-color-dark-1"></div>
-                    <div class="card__text text-center">
-                      <p>#EEEFEF</p>
-                    </div>
-                  </div>
-                </div>
-                <div class="col">
-                  <div class="card">
-                    <div class="box height-65 bg-color-light bg-color-dark-2"></div>
-                    <div class="card__text text-center">
-                      <p>#E0E1E2</p>
-                    </div>
-                  </div>
-                </div>
-                <div class="col">
-                  <div class="card">
-                    <div class="box height-65 bg-color-light bg-color-dark-3"></div>
-                    <div class="card__text text-center">
-                      <p>#DDDEE0</p>
-                    </div>
-                  </div>
-                </div>
-                <div class="col">
-                  <div class="card">
-                    <div class="box height-65 bg-color-light bg-color-dark-4"></div>
-                    <div class="card__text text-center">
-                      <p>#D0D1D3</p>
-                    </div>
-                  </div>
-                </div>
-                <div class="col">
-                  <div class="card">
-                    <div class="box height-65 bg-color-light bg-color-dark-5"></div>
-                    <div class="card__text text-center">
-                      <p>#BCBDC0</p>
-                    </div>
-                  </div>
-                </div>
-                <div class="col">
-                  <div class="card">
-                    <div class="box height-65 bg-color-light bg-color-dark-6"></div>
-                    <div class="card__text text-center">
-                      <p>#A5A6AA</p>
-                    </div>
-                  </div>
-                </div>
-                <div class="col">
-                  <div class="card">
-                    <div class="box height-65 bg-color-light bg-color-dark-7"></div>
-                    <div class="card__text text-center">
-                      <p>#A1A3A7</p>
-                    </div>
-                  </div>
-                </div>
-                <div class="col">
-                  <div class="card">
-                    <div class="box height-65 bg-color-light bg-color-dark-8"></div>
-                    <div class="card__text text-center">
-                      <p>#797C82</p>
-                    </div>
-                  </div>
-                </div>
-                <div class="col">
-                  <div class="card">
-                    <div class="box height-65 bg-color-light bg-color-dark-9"></div>
-                    <div class="card__text text-center">
-                      <p>#5E6167</p>
-                    </div>
-                  </div>
-                </div>
-                <div class="col">
-                  <div class="card">
-                    <div class="box height-65 bg-color-light bg-color-dark-10"></div>
-                    <div class="card__text text-center">
-                      <p>#000000</p>
-                    </div>
-                  </div>
-                </div>
-                <div class="col">
-                  <div class="card">
-                    <div class="box height-65 bg-color-light bg-color-danger"></div>
-                    <div class="card__text text-center">
-                      <p>#008330</p>
-                    </div>
-                  </div>
-                </div>
-                <div class="col">
-                  <div class="card">
-                    <div class="box height-65 bg-color-light bg-color-success"></div>
-                    <div class="card__text text-center">
-                      <p>#008330</p>
-                    </div>
-                  </div>
-                </div>
-                <div class="col">
-                  <div class="card">
-                    <div class="box height-65 bg-color-light bg-color-blue"></div>
-                    <div class="card__text text-center">
-                      <p>#008ACC</p>
-                    </div>
-                  </div>
-                </div>
-                <div class="col">
-                  <div class="card">
-                    <div class="box height-65 bg-color-light bg-color-warning"></div>
-                    <div class="card__text text-center">
-                      <p>#EE9800</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="row">
-                <div class="col-12">
-                  <div class="card">
-                    <div class="content-titlebox_dark">
-                      <h4>ШРИФТЫ</h4>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-6 clearfix">
-                  <div class="card margin-right-20 float-left w-auto">
-                    <div class="content__title">
-                      <h2 class="font-size-40">Aa</h2>
-                    </div>
-                    <div class="card__text">
-                      <p>PT Serif</p>
-                    </div>
-                  </div>
-                  <div class="card margin-right-20 float-left w-auto">
-                    <div class="card__text">
-                      <p class="margin-bottom-0">Regular</p>
-                      <p class="margin-bottom-0"><i>Regular Italic</i></p>
-                      <p class="margin-bottom-0"><b>Bold</b></p>
-                      <p class="margin-bottom-0"><b><i>Bold Italic</i></b></p>
-                      <p class="margin-bottom-0">
-                        <u>Underline</u>
-                      </p>
-                    </div>
-                  </div>
-                  <div class="card w-auto">
-                    <div class="card__text">
-                      <p>Основной шрифт для заголовков, текста новостей, и большинства текстовых блоков</p>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-6 clearfix">
-                  <div class="card margin-right-20 float-left w-auto">
-                    <div class="content-text margin-bottom-0">
-                      <h2 class="font-size-40">Aa</h2>
-                    </div>
-                    <div class="content-text">
-                      <p>Roboto</p>
-                    </div>
-                  </div>
-                  <div class="card margin-right-20 float-left w-auto">
-                    <div class="content-text">
-                      <p class="margin-bottom-0">Regular</p>
-                      <p class="margin-bottom-0"><i>Regular Italic</i></p>
-                      <p class="margin-bottom-0"><b>Bold</b></p>
-                      <p class="margin-bottom-0"><b><i>Bold Italic</i></b></p>
-                      <p class="margin-bottom-0">
-                        <u>Underline</u>
-                      </p>
-                    </div>
-                  </div>
-                  <div class="card w-auto">
-                    <div class="content-text">
-                      <p>Более системный шрифт, чаще используется для информационных элементов типа кнопок, меню и т.п.</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="row">
-                <div class="col-12">
-                  <div class="card">
-                    <div class="content-titlebox_dark">
-                      <h4>КНОПКИ</h4>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="row">
-                <div class="col-6"></div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-    <footer class="footer"></footer>
-    <div class="upp">
-      <div class="container">
-        <div class="row">
-          <div class="col-12">
-            <button class="button button-up" id="btnUp"><i class="icon-arrow-down"></i></button>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="modal fade modalMain" id="modalImgBox" tabindex="-1" role="dialog" aria-labelledby="modalImgBoxLabel" aria-hidden="true">
-      <div class="modal-dialog container" role="document">
-        <div class="row">
-          <div class="col-xl-12">
-            <div class="modal-content">
-              <div class="modalMain__content"></div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="modal fade modalMain" id="modalContentSlider" tabindex="-1" role="dialog" aria-labelledby="modalImgBoxLabel" aria-hidden="true">
-      <div class="modal-dialog container" role="document">
-        <div class="row">
-          <div class="col-xl-12">
-            <div class="modal-content">
-              <div class="preloader">
-                <div class="page-loader-circle"></div>
-              </div>
-              <div class="modalMain__content">
-                <div class="modalMain-slider">
-                  <div class="modalMain-slider-wrap" id="modalMainSliderTop"></div>
-                </div>
-                <div class="modalMain-slider-title"></div>
-                <div class="modalMain-slider modalMain-slider-bottom">
-                  <div class="modalMain-slider-wrap" id="modalMainSliderBottom"></div>
-                </div>
-                <div class="modalMain-comments"></div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <!-- /.container-->
-    <!-- /.footer-->
-    <!-- jQuery-->
-    <script src="js/libs/jquery.min.js"></script>
-    <!-- jQuery-UI-->
-    <script src="jquery-ui-1.12.1.custom/jquery-ui.min.js"></script>
-    <script src="jquery-ui-1.12.1.custom/datepicker-ru.js"></script>
-    <script src="jquery-ui-1.12.1.custom/datepicker.extension.range.min.js"></script>
-    <script src="js/libs/jquery.dotdotdot.js"></script>
-    <!-- slick-->
-    <script src="slick/slick.min.js"></script>
-    <!-- Bootstrap-->
-    <script src="js/libs/bootstrap/bootstrap.bundle.min.js"></script>
-    <script src="js/libs/jquery.actual.min.js"></script>
-    <!-- Валидация-->
-    <script src="js/libs/validate/jquery.validate.min.js"></script>
-    <script src="js/libs/jquery.maskedinput.min.js"></script>
-    <!-- main script-->
-    <script src="js/main/main.js?0.2.6"></script>
-    <!--if lte IE 9
-    link(href='ie9/css/bootstrap-ie9.css', rel='stylesheet')
-    link(rel='stylesheet', href='ie9/css/style-ie9.css')
-    script(src='ie9/js/bootstrap-ie9.js')
-    -->
+      <!-- /.container-->
+      <!-- /.footer-->
+      <!-- jQuery-->
+      <script src="js/libs/jquery.min.js"></script>
+      <!-- jQuery-UI-->
+      <script src="jquery-ui-1.12.1.custom/jquery-ui.min.js"></script>
+      <script src="jquery-ui-1.12.1.custom/datepicker-ru.js"></script>
+      <script src="jquery-ui-1.12.1.custom/datepicker.extension.range.min.js"></script>
+      <script src="js/libs/jquery.dotdotdot.js"></script>
+      <!-- slick-->
+      <script src="slick/slick.min.js"></script>
+      <!-- Bootstrap-->
+      <script src="js/libs/bootstrap/bootstrap.bundle.min.js"></script>
+      <script src="js/libs/jquery.actual.min.js"></script>
+      <!-- Валидация-->
+      <script src="js/libs/validate/jquery.validate.min.js"></script>
+      <script src="js/libs/jquery.maskedinput.min.js"></script>
+      <!-- main script-->
+      <script src="js/main/main.js?0.2.6"></script>
+      <!--if lte IE 9
+      link(href='ie9/css/bootstrap-ie9.css', rel='stylesheet')
+      link(rel='stylesheet', href='ie9/css/style-ie9.css')
+      script(src='ie9/js/bootstrap-ie9.js')
+      -->
+    </footer>
   </body>
 </html>

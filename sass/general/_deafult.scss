@@ -63,6 +63,9 @@ img{
 *.hide {
 	display: none;
 }
+.h-auto {
+	height: auto !important;
+}
 
 .row {
 	@include md-block {
@@ -168,7 +171,7 @@ $font-sizes: 8, 10, 12, 14, 17, 20, 22, 24, 28, 32, 40;
 		background-color: #797C82 !important;
 	}
 	&-dark-9 {
-		background-color: #797C82 !important;
+		background-color: #5E6167 !important;
 	}
 	&-dark-10 {
 		background-color: #000000 !important;
@@ -186,13 +189,23 @@ $font-sizes: 8, 10, 12, 14, 17, 20, 22, 24, 28, 32, 40;
 		background-color: #EE9800 !important;
 	}
 }
+.color-icons-grey-1 {
+	color: #bdbec0;
+}
 
 .border-default {
 	border-radius: 5px !important;
 	border: 1px solid #dddee0 !important;
 }
 
-
+.dropdown-item.active, .dropdown-item:active {
+	color: #16181b;
+	text-decoration: none;
+	background-color: #f8f9fa;
+}
+.progress-bar {
+	background-color: $dark-color;
+}
 
 h1, .h1,
 h2, .h2,
