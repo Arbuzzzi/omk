@@ -192,6 +192,9 @@
 
 .comment-form {
 	padding-bottom: 100px;
+	&_p0 {
+		padding: 0;
+	}
 	&-reply {
 		padding-bottom: 15px;
 	}

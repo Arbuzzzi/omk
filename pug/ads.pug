@@ -2,12 +2,12 @@ extends modules/_base
 
 block vars
 	- var pageTitle = 'Объявления';
-	mixin baseAds($title)
+	mixin baseAds($title, $modal)
 		.card.margin-bottom-0
 			.content-title
 				.content-titlebox
 					h2
-						a(href="#")= $title
+						a(href= $modal, data-toggle='modal', data-target= $modal)= $title
 		.card.card-full-head_special
 			.tag
 				.card-date
@@ -19,11 +19,13 @@ block vars
 				button.like-button
 					i.icon-like
 					span.like-count 1286
-	mixin contentAds($url)
+
+
+	mixin contentAds($url, $modal)
 		.row
 			.col-12.col-sm-3
 				.card
-					a.card__imgbox.card__imgbox_xs(href="#" style='background-image: url('+$url+');')
+					a.card__imgbox.card__imgbox_xs(href= $modal, data-toggle='modal', data-target= $modal style='background-image: url('+$url+');')
 						.card-warning-text.hide
 							p
 			.col-12.col-sm-9
@@ -33,25 +35,326 @@ block vars
 							| Литейно-прокатный комплекс Выксунского металлургического завода (АО «ВМЗ», Нижегородская область, входит в состав Объединенной металлургической компании, АО «ОМК») за 10 лет работы произвел более 10,6 млн тонн горячекатаного рулонного проката, став важным звеном в полностью отечественной цепочке производства труб для нефтегазового комплекса.
 						p
 							| Литейно-прокатный комплекс - уникальное для России предприятие, в котором в единый технологический
-						a.button.card__more(href='#') Читать далее
+						a.button.card__more(href= $modal, data-toggle='modal', data-target= $modal) Читать далее
+
+
+	mixin cardModal(imgUrl, id, $title)
+		.card-modal.modal.fade(id= id, tabindex='-1', role='dialog', aria-hidden='true')
+			.modal-dialog(role='document')
+				.modal-content
+					.modal-header.margin-0
+						button.close(type='button', data-dismiss='modal', aria-label='Close')
+							i.icon-close(aria-hidden='true')
+					.modal-body
+						.card
+							.content-title
+								.content-titlebox
+									h2
+										span= $title
+							.content-text
+								P 24 Сентября 2018, Москва
+						.card.margin-bottom-0
+							.row
+								.col-sm-3
+									.card__imgbox.card__imgbox_xs(style="background-image: url(" + imgUrl + ");")
+										img(src=imgUrl alt="user-photo")
+								.col-sm-9
+									.card__text.margin-bottom-30
+										p <strong>Контакты:</strong> +7 (903) 033 03 03,&nbsp;
+											a.link-deafult(href="mailto:/contact@omk.ru") contact@omk.ru
+										p Литейно-прокатный комплекс Выксунского металлургического завода (АО «ВМЗ», Нижегородская область, входит в состав Объединенной металлургической компании, АО «ОМК») за 10 лет работы произвел более 10,6 млн тонн.
+										p Литейно-прокатный комплекс Выксунского металлургического завода (АО «ВМЗ», Нижегородская область, входит в состав Объединенной металлургической компании, АО «ОМК») за 10 лет работы произвел более 10,6 млн тонн.
+								.col-12
+									.card.margin-bottom-15
+										.content-title
+											.content-titlebox
+												h2 Комментарии
+									.card.margin-bottom-15#allComentators
+										- var items = [];
+										.comment#commentator_01
+											.comment-box
+												.comment__avatar(style='background-image: url(img/person-photo-01.jpg)')
+												.comment__content.padding-10.padding-xl-15
+													.tagbox.comment__tagbox
+														.tag
+															.comment__nickname
+																span ЮЛИЯ ШХИЯНЦ
+														.like-card
+															button.like-button.comment-button.like-button_thin
+																i #
+																span.like-count 120
+															button.like-button.like-button_thin
+																i.icon-like
+																span.like-count 86
+
+													.comment__date
+														span 12 Декабря 2018, 16:32
+													.comment__text
+														p
+															| В ходе горячих испытаний оборудования покрытие из УФ-лака было нанесено на гладкие трубы диаметром 426 мм. Параллельно с пуско-наладкой оборудования специалисты фирмы Venjakob провели теоретическое и практическое обучение работе с установкой для сотрудников ВМЗ, включая ремонтные службы, технологов и автоматчиков.
+													.comment__links
+														.comment__link.comment__link_left.less.hide(data-toggle="collapse", data-target="#commentator_02")
+															button Свернуть
+															i.icon-arrow-down.icon-rotate-180
+														.comment__link.comment__link_left.more.hide(data-toggle="collapse", data-target="#commentator_02")
+															button Развернуть
+															i.icon-arrow-down
+														.comment__reply.comment__link_right
+															button Ответить
+											.comment.collapse#commentator_02
+												.comment-box
+													.comment__avatar(style='background-image: url(img/person-photo-02.jpg)')
+													.comment__content.padding-10.padding-xl-15
+														.tagbox.comment__tagbox
+															.tag
+																.comment__nickname
+																	span ПЕТР ТУШИН
+															.like-card
+																button.like-button.comment-button.like-button_thin
+																	i #
+																	span.like-count 120
+																button.like-button.like-button_thin
+																	i.icon-like
+																	span.like-count 86
+
+														.comment__date
+															span 12 Декабря 2018, 16:32
+														.comment__text
+															p
+																| ЮЛИЯ ШХИЯНЦ, Параллельно с пуско-наладкой оборудования специалисты фирмы Venjakob провели теоретическое и практическое обучение работе с установкой для сотрудников ВМЗ.
+														.comment__links
+															.comment__link.comment__link_left.less.hide(data-toggle="collapse", data-target="#commentator_03")
+																button Свернуть
+																i.icon-arrow-down.icon-rotate-180
+															.comment__link.comment__link_left.more.hide(data-toggle="collapse", data-target="#commentator_03")
+																button Развернуть
+																i.icon-arrow-down
+															.comment__reply.comment__link_right
+																button Ответить
+												.comment.collapse#commentator_03
+													.comment-box
+														.comment__avatar(style='background-image: url(img/person-photo-03.jpg)')
+														.comment__content.padding-10.padding-xl-15
+															.tagbox.comment__tagbox
+																.tag
+																	.comment__nickname
+																		span СВЕТЛАНА НИКОЛАШИНА
+																.like-card
+																	button.like-button.comment-button.like-button_thin
+																		i #
+																		span.like-count 120
+																	button.like-button.like-button_thin
+																		i.icon-like
+																		span.like-count 86
+
+															.comment__date
+																span 12 Декабря 2018, 16:32
+															.comment__text
+																p
+																	| ПЕТР ТУШИН, Мы стремимся к тому, чтобы работа в ОМК помогала сотрудникам компании реализовывать свой потенциал и раскрывать свои способности Активно развиваясь, Компания делает реальными перспективы профессионального и карьерного роста. Для обеспечения взаимовыгодного партнерства и соблюдения трудовых прав мы активно поддерживаем и развиваем социальный диалог с сотрудниками и их представителями. Читать подробнее о работе с персоналом.
+																p
+																	| Мы разработали специальную форму − Приложение к договору «Требование о соблюдении законодательства в области охраны труда, промышленной, пожарной безопасности, охраны окружающей среды». Подписывая его, подрядчик обязуется следовать процедурам, правилам и инструкциям ОМК в области охраны труда, промышленной, экологической и экономической безопасности с целью исключения или минимизации возможного ущерба, наносимого окружающей среде, здоровью сотрудников ОМК, посетителей и третьих лиц.
+															.comment__links
+																.comment__link.comment__link_left.less.hide(data-toggle="collapse", data-target="#commentator_04")
+																	button Свернуть
+																	i.icon-arrow-down.icon-rotate-180
+																.comment__link.comment__link_left.more.hide(data-toggle="collapse", data-target="#commentator_04")
+																	button Развернуть
+																	i.icon-arrow-down
+																.comment__reply.comment__link_right
+																	button Ответить
+													.comment.collapse#commentator_04
+														.comment-box
+															.comment__avatar(style='background-image: url(img/person-photo-03.jpg)')
+															.comment__content.padding-10.padding-xl-15
+																.tagbox.comment__tagbox
+																	.tag
+																		.comment__nickname
+																			span СВЕТЛАНА НИКОЛАШИНА
+																	.like-card
+																		button.like-button.comment-button.like-button_thin
+																			i #
+																			span.like-count 120
+																		button.like-button.like-button_thin
+																			i.icon-like
+																			span.like-count 86
+
+																.comment__date
+																	span 12 Декабря 2018, 16:32
+																.comment__text
+																	p
+																		| ПЕТР ТУШИН, Мы стремимся к тому, чтобы работа в ОМК помогала сотрудникам компании реализовывать свой потенциал и раскрывать свои способности Активно развиваясь, Компания делает реальными перспективы профессионального и карьерного роста. Для обеспечения взаимовыгодного партнерства и соблюдения трудовых прав мы активно поддерживаем и развиваем социальный диалог с сотрудниками и их представителями. Читать подробнее о работе с персоналом.
+																	p
+																		| Мы разработали специальную форму − Приложение к договору «Требование о соблюдении законодательства в области охраны труда, промышленной, пожарной безопасности, охраны окружающей среды». Подписывая его, подрядчик обязуется следовать процедурам, правилам и инструкциям ОМК в области охраны труда, промышленной, экологической и экономической безопасности с целью исключения или минимизации возможного ущерба, наносимого окружающей среде, здоровью сотрудников ОМК, посетителей и третьих лиц.
+																.comment__links
+																	.comment__link.comment__link_left.less.hide(data-toggle="collapse", data-target="#commentator_05")
+																		button Свернуть
+																		i.icon-arrow-down.icon-rotate-180
+																	.comment__link.comment__link_left.more.hide(data-toggle="collapse", data-target="#commentator_05")
+																		button Развернуть
+																		i.icon-arrow-down
+																	.comment__reply.comment__link_right
+																		button Ответить
+														.comment.collapse#commentator_05
+															.comment-box
+																.comment__avatar(style='background-image: url(img/person-photo-01.jpg)')
+																.comment__content.padding-10.padding-xl-15
+																	.tagbox.comment__tagbox
+																		.tag
+																			.comment__nickname
+																				span ЮЛИЯ ШХИЯНЦ
+																		.like-card
+																			button.like-button.comment-button.like-button_thin
+																				i #
+																				span.like-count 120
+																			button.like-button.like-button_thin
+																				i.icon-like
+																				span.like-count 86
+
+																	.comment__date
+																		span 12 Декабря 2018, 16:32
+																	.comment__text
+																		p
+																			| В ходе горячих испытаний оборудования покрытие из УФ-лака было нанесено на гладкие трубы диаметром 426 мм. Параллельно с пуско-наладкой оборудования специалисты фирмы Venjakob провели теоретическое и практическое обучение работе с установкой для сотрудников ВМЗ, включая ремонтные службы, технологов и автоматчиков.
+																	.comment__links
+																		.comment__link.comment__link_left.less.hide(data-toggle="collapse", data-target="#commentator_06")
+																			button Свернуть
+																			i.icon-arrow-down.icon-rotate-180
+																		.comment__link.comment__link_left.more.hide(data-toggle="collapse", data-target="#commentator_06")
+																			button Развернуть
+																			i.icon-arrow-down
+																		.comment__reply.comment__link_right
+																			button Ответить
+															.comment.collapse#commentator_06
+																.comment-box
+																	.comment__avatar(style='background-image: url(img/person-photo-05.jpg)')
+																	.comment__content.padding-10.padding-xl-15
+																		.tagbox.comment__tagbox
+																			.tag
+																				.comment__nickname
+																					span
+																						| ЕЛЕНА МАЦИНОВА
+																			.like-card
+																				button.like-button.comment-button.like-button_thin
+																					i #
+																					span.like-count 120
+																				button.like-button.like-button_thin
+																					i.icon-like
+																					span.like-count 86
+
+																		.comment__date
+																			span 12 Декабря 2018, 16:32
+																		.comment__text
+																			p
+																				| Коллеги, у нас будет самый лучший корпоративный портал. Без сомнения!
+																		.comment__links
+																			.comment__link.comment__link_left.less.hide(data-toggle="collapse", data-target="")
+																				button Свернуть
+																				i.icon-arrow-down.icon-rotate-180
+																			.comment__link.comment__link_left.more.hide(data-toggle="collapse", data-target="")
+																				button Развернуть
+																				i.icon-arrow-down
+																			.comment__reply.comment__link_right
+																				button Ответить
+										.comment
+											.comment-box
+												.comment__avatar(style='background-image: url(img/person-photo-04.jpg)')
+												.comment__content.padding-10.padding-xl-15
+													.tagbox.comment__tagbox
+														.tag
+															.comment__nickname
+																span
+																	| ДМИТРИЙ ЧЕРНЫШЕВ
+														.like-card
+															button.like-button.comment-button.like-button_thin
+																i #
+																span.like-count 120
+															button.like-button.like-button_thin
+																i.icon-like
+																span.like-count 86
+
+													.comment__date
+														span 12 Декабря 2018, 16:32
+													.comment__text
+														p
+															| Особое внимание мы уделяем недопущению детского и принудительного труда, дискриминации любых форм. Мы уважаем право сотрудников на формирование ассоциаций и других совместных организаций по представлению их интересов и общению с работодателем.
+													.comment__links
+														.comment__link.comment__link_left.less.hide(data-toggle="collapse", data-target="")
+															button Свернуть
+															i.icon-arrow-down.icon-rotate-180
+														.comment__link.comment__link_left.more.hide(data-toggle="collapse", data-target="")
+															button Развернуть
+															i.icon-arrow-down
+														.comment__reply.comment__link_right
+															button Ответить
+										.comment
+											.comment-box
+												.comment__avatar(style='background-image: url(img/person-photo-05.jpg)')
+												.comment__content.padding-10.padding-xl-15
+													.tagbox.comment__tagbox
+														.tag
+															.comment__nickname
+																span
+																	| ЕЛЕНА МАЦИНОВА
+														.like-card
+															button.like-button.comment-button.like-button_thin
+																i #
+																span.like-count 120
+															button.like-button.like-button_thin
+																i.icon-like
+																span.like-count 86
+
+													.comment__date
+														span 12 Декабря 2018, 16:32
+													.comment__text
+														p
+															| Коллеги, у нас будет самый лучший корпоративный портал. Без сомнения!
+													.comment__links
+														.comment__link.comment__link_left.less.hide(data-toggle="collapse", data-target="")
+															button Свернуть
+															i.icon-arrow-down.icon-rotate-180
+														.comment__link.comment__link_left.more.hide(data-toggle="collapse", data-target="")
+															button Развернуть
+															i.icon-arrow-down
+														.comment__reply.comment__link_right
+															button Ответить
+										#commentFormbox.comment-form-inn.colapse.show
+											.comment.comment_special
+												.article-author
+													p.article-author__left Оставить комментарий:
+													p.article-author__username от Константина Константинопольского
+											.comment
+												form.comment-form.comment-form_p0
+													.comment-form__textareabox
+														textarea.comment-form__textarea(placeholder="Комментарий")
+													.comment-form__btnbox
+														button.button.comment-form__button(type="submit") Отправить
+
 block content
-	+baseAds('Продается гараж 18 м2')
-	+contentAds('img/block-img-01.jpg')
+	+baseAds('Продается гараж 18 м2', '#tabModal1')
+	+contentAds('img/block-img-01.jpg', '#tabModal1')
+	+cardModal('img/block-img-01.jpg', 'tabModal1', 'Продается гараж 18 м2')
 
-	+baseAds('Недорогой компьютер б\\у')
-	+contentAds('img/block-img-02.jpg')
+	+baseAds('Недорогой компьютер б\\у', '#tabModal2')
+	+contentAds('img/block-img-02.jpg', '#tabModal2')
+	+cardModal('img/block-img-02.jpg', 'tabModal2', 'Недорогой компьютер б\\у')
 
-	+baseAds('Вывоз мусора, недорого!')
-	+contentAds('img/noimage.png')
+	+baseAds('Вывоз мусора, недорого!', '#tabModal3')
+	+contentAds('img/noimage.png', '#tabModal3')
+	+cardModal('img/noimage.png', 'tabModal3', 'Вывоз мусора, недорого!')
 
-	+baseAds('Сдам в аренду инструмент для ремонта')
-	+contentAds('img/block-img-03.jpg')
+	+baseAds('Сдам в аренду инструмент для ремонта', '#tabModal4')
+	+contentAds('img/block-img-03.jpg', '#tabModal4')
+	+cardModal('img/block-img-03.jpg', 'tabModal4', 'Сдам в аренду инструмент для ремонта')
 
-	+baseAds('Несколько хороших книг')
-	+contentAds('img/block-img-04.jpg')
+	+baseAds('Несколько хороших книг', '#tabModal5')
+	+contentAds('img/block-img-04.jpg', '#tabModal5')
+	+cardModal('img/block-img-04.jpg', 'tabModal5', 'Несколько хороших книг')
 
-	+baseAds('Продам 2к квартиру')
-	+contentAds('img/block-img-05.jpg')
+	+baseAds('Продам 2к квартиру', '#tabModal6')
+	+contentAds('img/block-img-05.jpg', '#tabModal6')
+	+cardModal('img/block-img-05.jpg', 'tabModal6', 'Продам 2к квартиру')
 
-	+baseAds('Отдам даром скотят')
-	+contentAds('img/block-img-06.jpg')
+	+baseAds('Отдам даром скотят', '#tabModal7')
+	+contentAds('img/block-img-06.jpg', '#tabModal7')
+	+cardModal('img/block-img-06.jpg', 'tabModal7', 'Отдам даром скотят')

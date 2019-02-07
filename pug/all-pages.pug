@@ -1,0 +1,67 @@
+- var pageTitle = 'Стайлгайд';
+- var version = '0.3.8';
+
+html(lang='ru')
+	head
+		meta(charset='utf-8')
+		meta(name='viewport', content='width=device-width, initial-scale=1, shrink-to-fit=no')
+		//meta(name='viewport', content='width=device-width')
+		meta(name='description', content='')
+		meta(name='author', content='')
+		link(rel='stylesheet', href='css/normalize.css')
+		//- link(rel='stylesheet', href='css/bootstrap/bootstrap-grid.css')
+		link(rel='stylesheet', href='css/bootstrap/bootstrap.css')
+		link(rel='stylesheet', href='jquery-ui-1.12.1.custom/jquery-ui.structure.min.css')
+		link(rel='stylesheet', href='jquery-ui-1.12.1.custom/jquery-ui.min.css')
+		link(rel='stylesheet', href='slick/slick-theme.css')
+		link(rel='stylesheet', href='slick/slick.css')
+
+		link(href='css/style.css?' + version, rel='stylesheet')
+		if pageTitle !== undefined
+			title=pageTitle + ' | ОМК'
+		else
+			title='ОМК'
+	- var items=[];
+	- items.push({title: 'Модульная Сетка Новостей', link: 'index.html'});
+	- items.push({title: 'Личный кабинет', link: 'profile.html'});
+	- items.push({title: 'Структура компании', link: 'structure.html'});
+	- items.push({title: 'Производственная Система', link: 'productions-system.html'});
+	- items.push({title: 'Новость / Статья / Блог', link: 'post.html'});
+	- items.push({title: 'Календарь', link: 'calendar.html'});
+	- items.push({title: 'Объявления', link: 'ads.html'});
+	- items.push({title: 'Галереи', link: 'gallery.html'});
+	- items.push({title: 'Галереи-слайдеры', link: 'gallery.html'});
+	- items.push({title: 'Галереи, Видео', link: 'video.html'});
+	- items.push({title: 'Страница ошибки 404', link: '404.html'});
+	- items.push({title: 'Результаты поиска', link: 'search-result.html'});
+	- items.push({title: 'Текст', link: 'text.html'});
+	- items.push({title: 'Текст + Изображение', link: 'blocks.html'});
+	- items.push({title: 'Форма, логотипы, документы', link: 'blocks.html'});
+	- items.push({title: 'Таблицы', link: 'tables.html'});
+	- items.push({title: 'Спойлер, контент-слайдер', link: 'spoyler.html'});
+	- items.push({title: 'Модули блогов, доска почета', link: 'blocks.html'});
+	- items.push({title: 'Стайлгайд', link: 'stylegide.html'});
+	body
+		.container
+			.row
+				.col-9.m-auto
+					.card.padding-top-30
+						.content-titlebox_dark
+							h4 Список страниц
+			.row
+				.col-9.m-auto
+					.card
+						- var tableClass = 'table-thin-head table-light table-all-line';
+						.table-inn
+							table.table(class=tableClass)
+								thead
+									tr
+										th #
+										th Страница
+								tbody
+									each item, i in items
+
+										tr
+											td= i+1
+											td
+												a.link-special(href= item.link target="_blank")= item.title
