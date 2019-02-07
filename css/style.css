@@ -5758,6 +5758,10 @@ h2 span,
   width: 100%;
 }
 
+.card-calendar .ui-datepicker-header {
+  display: none !important;
+}
+
 .card-calendar thead {
   display: block;
 }
@@ -5803,7 +5807,7 @@ h2 span,
   border-bottom: 0;
 }
 
-.card-calendar td.card-calendar__day {
+.card-calendar td {
   display: block;
   width: -webkit-calc(100% / 7);
   width: calc(100% / 7);
@@ -5816,12 +5820,12 @@ h2 span,
   color: #797c82;
 }
 
-.card-calendar td.card-calendar__day:last-child {
+.card-calendar td:last-child {
   border-right: 0;
 }
 
-.card-calendar td.card-calendar__day a,
-.card-calendar td.card-calendar__day div {
+.card-calendar td a,
+.card-calendar td div {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -5836,39 +5840,48 @@ h2 span,
   color: inherit;
 }
 
-.card-calendar td.card-calendar__day a p,
-.card-calendar td.card-calendar__day div p {
+.card-calendar td a p,
+.card-calendar td div p {
   font-weight: 700;
   color: inherit;
 }
 
-.card-calendar td.card-calendar__day a span,
-.card-calendar td.card-calendar__day div span {
+.card-calendar td a span,
+.card-calendar td div span {
   font-size: 12px;
   font-weight: 300;
   color: inherit;
 }
 
-.card-calendar__day_major {
+.card-calendar td.card-calendar__event {
+  font-weight: 700;
+  color: inherit;
+}
+
+.card-calendar td.major {
   color: #ee3124;
 }
 
-.card-calendar__today {
+.card-calendar .ui-datepicker-today {
   background-color: rgba(238, 49, 36, 0.1);
-}
-
-.card-calendar__today div p {
   color: #a1a3a7;
+  font-weight: 700;
 }
 
-.card-calendar__weekend {
+.card-calendar .ui-datepicker-today p {
+  color: #a1a3a7;
+  font-weight: 700;
+}
+
+.card-calendar td.ui-datepicker-week-end {
   background-color: #f4f5f5;
 }
 
 .card-calendar__caption {
   display: block;
+  width: 100%;
   margin-top: auto;
-  text-align: left;
+  text-align: left !important;
   vertical-align: bottom;
   color: #bcbdc0;
   font-size: 12px;
@@ -8139,7 +8152,7 @@ h2 span,
     background-color: rgba(0, 185, 31, 0.1);
   }
 
-  .card-calendar__day:hover {
+  .card-calendar td:hover {
     background-color: rgba(0, 185, 31, 0.1);
   }
 

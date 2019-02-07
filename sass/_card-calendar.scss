@@ -6,6 +6,9 @@
 	.ui-datepicker {
 		width: 100%;
 	}
+	.ui-datepicker-header {
+		display: none !important;
+	}
 	thead {
 		display: block;
 		tr {
@@ -37,7 +40,7 @@
 			}
 		}
 	}
-	 td.card-calendar__day {
+	 td {
 		display: block;
 		width: calc(100% / 7);
 		min-height: 124px;
@@ -66,8 +69,12 @@
 				color: inherit;
 			}
 		}
+		 &.card-calendar__event {
+			 font-weight: 700;
+			 color: inherit;
+		 }
 	}
-	&__day {
+	td {
 		@include hover {
 			background-color: rgba(0, 185, 31, 0.1);
 
@@ -75,25 +82,28 @@
 		&_special {
 
 		}
-		&_major {
+		&.major {
 			color: $special-color;
 		}
 	}
-	&__today {
+	.ui-datepicker-today {
 		background-color: rgba($special-color, 0.1);
-		div {
-			p {
-				color: $thin-color;
-			}
+		color: $thin-color;
+		font-weight: 700;
+		p {
+			color: $thin-color;
+			font-weight: 700;
 		}
 	}
-	&__weekend {
+	td.ui-datepicker-week-end {
 		background-color: #f4f5f5;
 	}
+
 	&__caption {
 		display: block;
+		width: 100%;
 		margin-top: auto;
-		text-align: left;
+		text-align: left !important;
 		vertical-align: bottom;
 		color: #bcbdc0;
 		font-size: 12px;

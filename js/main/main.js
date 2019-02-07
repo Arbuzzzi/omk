@@ -22,7 +22,7 @@ $(document).ready(function() {
 						}
 					},
 					errorPlacement: function(error, element){},
-					
+
 	};
 	$("#form1").validate(x);
 	$("#form2").validate(x);
@@ -48,7 +48,7 @@ $(document).ready(function() {
 
 
 		}
-		
+
 	})
 
 	// маска для телефона
@@ -71,7 +71,7 @@ $(document).ready(function() {
 		$(select).focus();
 	}).mousemove(function(e){e.preventDefault()});
 
-	
+
 	// подпункты меню раскрывается при наведении
 	// $('.menu-nav-header__item').on('mouseenter', function(event) {
 	// 	var element = $(event.target).parents('.menu-nav-header__item'),
@@ -104,9 +104,9 @@ $(document).ready(function() {
 	});
 
 	$('.rollUp').on('click', function(event) {
-		$(document).trigger('scroll');		
+		$(document).trigger('scroll');
 	});
-	
+
 	$('.btn-group').on('show.bs.dropdown', function() {
 		$('.header').css('transform', 'none');
 	});
@@ -124,7 +124,7 @@ $(document).ready(function() {
 				}
 				$('#menu-nav-headerGroup').collapse('hide');
 			}
-		}		
+		}
 	});
 
 	function cahgeTrueFalse(argument) {
@@ -163,7 +163,7 @@ $(document).ready(function() {
 			$('#header-nav').collapse('hide');
 		}
 	});
-	
+
 	// разворачиваем меню
 	$('#btnDeploy').click(function(event) {
 		// var header = $('.header'),
@@ -178,7 +178,7 @@ $(document).ready(function() {
 
 		$('.rollUp').addClass('show');
 		return false;
-	});	
+	});
 
 	// настройки показываются
 	$('#header-navSetting').on('show.bs.collapse', function () {
@@ -194,7 +194,7 @@ $(document).ready(function() {
 		$('.overlay').animate({opacity: 'show'}, 400);
 
 		$('#header-navSettingControl').css({
-			position: 'relative', 
+			position: 'relative',
 			zIndex: '1000'
 		}).addClass('active');
 
@@ -203,12 +203,12 @@ $(document).ready(function() {
 				overflow: 'hidden',
 				paddingRight: '17px',
 				paddingTop: headerHeight
-			});			
+			});
 		} else {
 			$('body').css({
 				overflow: 'hidden',
 				paddingRight: '17px',
-			});			
+			});
 		}
 
 		var headerPositionDeafult = $('.header').css('position')
@@ -255,21 +255,21 @@ $(document).ready(function() {
 
 		$('.nav-setting-wrap').html(deafultSettingBoxes);
 		checkboxDisabl($(this), 10, deafultCheckboxCheckd, 0);
-	
+
 	});
 
 	// изменеие checkbox
 	$('.setting-form').on('change', checkboxs, function(event) {
 		var checkbox   = $(event.target),
 				checkboxID = checkbox.attr('id');
-		
+
 		if (checkbox.prop('checked')) {
 			var el = $('[data-control='+checkboxID+']'),
 					elParent = el.parent();
 
 			el.appendTo(elParent).show('400');
 			// $('[data-control='+checkboxID+']').show('400');
-			
+
 		} else {
 			$('[data-control='+checkboxID+']').hide('400');
 		}
@@ -297,7 +297,7 @@ $(document).ready(function() {
 			alert('Ошибка! Обратитесь к администратору.');
 		});
 		//отмена действия по умолчанию для кнопки submit
-		e.preventDefault(); 
+		e.preventDefault();
 	});
 
 	function checkboxDisabl(form, max, checkboxArrDeafult, speed) {
@@ -324,11 +324,11 @@ $(document).ready(function() {
 			checkboxCheckd = checkboxArrDeafult['deafultCheckboxCheckd'];
 			checkboxNotCheckd = checkboxArrDeafult['deafultCheckboxNotCheckdInch'];
 		}
-		
+
 		checkboxArrDeafult = {
 			deafultCheckboxCheckd: form.find('input[type="checkbox"]:checked'),
 			deafultCheckboxNotCheckdInch: form.find('input[type="checkbox"]:not(:checked)'),
-			
+
 		}
 
 		checkboxCheckdInch    = checkboxCheckd.length
@@ -342,12 +342,12 @@ $(document).ready(function() {
 			return $(element).attr("id");
 		});
 
-		if (checkboxCheckdInch >= max) {      
+		if (checkboxCheckdInch >= max) {
 			// если болшье max выключаем не отмеченые checkbox
 			// checkboxNotCheckd.prop("disabled", true);
 
 			// скрываем не отмечене блоки drag & drop
-			for (var i = checkboxNotCheckdArrID.length - 1; i >= 0; i--) {        
+			for (var i = checkboxNotCheckdArrID.length - 1; i >= 0; i--) {
 				$('[data-control='+checkboxNotCheckdArrID[i]+']').hide(speed);
 				$('#'+checkboxNotCheckdArrID[i]).prop("disabled", true);
 				$('#'+checkboxNotCheckdArrID[i]).parent().tooltip('enable');
@@ -362,11 +362,11 @@ $(document).ready(function() {
 
 		} else {
 			// если меньше max включаем не отмеченые checkbox
-			checkboxNotCheckd.prop("disabled", false);  
+			checkboxNotCheckd.prop("disabled", false);
 			checkboxNotCheckd.parent().tooltip('disable');
 			checkboxCheckd.parent().tooltip('disable');
 
-		} 
+		}
 		return checkboxArrDeafult;
 
 	}
@@ -434,9 +434,9 @@ $(document).ready(function() {
 
 			} else if (position <= 0) {
 				$('#aside').removeAttr('style')
-			}	
+			}
 		}
-		
+
 		// var positionScrollBottom = position+positionOne,
 		// 		asidePositionBottom = parseInt($('#aside').css('margin-top'))+$('#aside').outerHeight();
 
@@ -550,16 +550,16 @@ $(document).ready(function() {
 			event.preventDefault();
 			$('html:not(:animated),body:not(:animated)').animate({scrollTop: elementToScrollPos}, 800);
 		}
-	});	
+	});
 
-	
+
 
 	// заказчик попросил чтобы при клике на пустую ссылку ничего не происходило
 	$(document).on('click', 'a', function(event) {
 		var el = event.target,
 				elHref = $(el).attr('href');
 		if (elHref === undefined || elHref === '#' || elHref === '') {
-			event.preventDefault();			
+			event.preventDefault();
 		}
 	});
 
@@ -580,10 +580,10 @@ $(document).ready(function() {
 
 			$('html:not(:animated),body:not(:animated)').animate({scrollTop: elementToScrolling}, 800,
 				function () {
-					
+
 				});
-		};	
-		
+		};
+
 	});
 
 	$('#btnUp').click(function() {
@@ -596,7 +596,7 @@ $(document).ready(function() {
 		// }
 		$('html:not(:animated),body:not(:animated)').animate({
 			scrollTop: destination
-		}, 800, function () {			
+		}, 800, function () {
 		});
 		return false;
 	});
@@ -615,7 +615,7 @@ $(document).ready(function() {
 			element.removeClass($class);
 		}
 		return position;
-	}	
+	}
 
 	function removeClassScroll(element, $class) {
 		var position = $(this).scrollTop();
@@ -683,7 +683,7 @@ $(document).ready(function() {
 	$('#menuLeftList').on('show.bs.collapse', function() {
 		var btn = $('#menuLeftListControl');
 		var position = $(document).scrollTop();
-		
+
 		btn.addClass('active');
 		$('.menu-left-more__list').removeClass('show');
 		$('#navMoreListControl').removeAttr('data-toggle');
@@ -702,7 +702,7 @@ $(document).ready(function() {
 		$('#navMoreListControl').attr('data-toggle', 'dropdown')
 		$('.menu-left-more__button>i').animate({opacity: 'show'}, 400);
 		if (position < positionOne) {
-			$('#leftNavigationPseudo').animate({height: 0}, 300)	
+			$('#leftNavigationPseudo').animate({height: 0}, 300)
 		}
 	});
 	var menuLeftList = $('#menuLeftList').actual('outerHeight');
@@ -714,7 +714,7 @@ $(document).ready(function() {
 	// ставим лайки
 	$(document).on('click', '.like-button:not(.comment-button)', function(event) {
 		$(this).toggleClass('active');
-		console.log('test');		
+		console.log('test');
 	});
 
 	// скрываем показываем фильтры
@@ -732,7 +732,7 @@ $(document).ready(function() {
 			$('[name="period_date_buffer"]').datepicker($.datepicker.regional[ "ru" ]);
 			$('[name="period_date_buffer"]').datepicker('widget').addClass('widget-calendar');
 			$('[name="period_date_buffer"]').datepicker('show');
-			
+
 		}
 	});
 	$('[name="period_date_buffer"]').on('change', function(event) {
@@ -744,7 +744,7 @@ $(document).ready(function() {
 	});
 
 	/* ВИДЖЕТЫ -------------------------------------------------------------------------------------- */
-	
+
 	// hover на виджете с табами
 	$('.widget-tabbox').on('mousemove', '.widget-item', function(event) {
 		var box = $(event.delegateTarget),
@@ -758,7 +758,7 @@ $(document).ready(function() {
 		items.click(function() {
 			$('.widget-item[data-current="true"]').removeAttr('data-current')
 		});
-		
+
 	});
 
 	// подсветка текущего дня в виджете календарь
@@ -774,7 +774,7 @@ $(document).ready(function() {
 	// }
 
 	/* СОБЫТИЯ В ВИДЖЕТЕ "КАЛЕНДАРЬ" ----------------------------------------------------------------- */
-	
+
 	var setTimer;
 	setInterval(function(){ // открываем событие на текущей дате по таймеру
 		if (!$('#calendarwidgetBox').hasClass('show-event') && !mobile) {
@@ -796,7 +796,7 @@ $(document).ready(function() {
 				subtitle = element.find('.widget-subtitle span'),
 				calendar = element.find('.ui-datepicker-calendar'),
 				eventElementControl = element.find('.event-control');
-				
+
 		element.addClass('show-event');
 
 		eventElementArr.hide();
@@ -811,7 +811,7 @@ $(document).ready(function() {
 		// показываем события выбраной даты
 		$(eventElementArr[0]).show().addClass('current');
 		for (var i = 0; i < eventElementArr.length; i++) {
-			$(eventElementArr[i]).attr('data-count', i);			
+			$(eventElementArr[i]).attr('data-count', i);
 		}
 
 		// если событий больше 1 то делаем их ввиде слайдера
@@ -871,6 +871,8 @@ $(document).ready(function() {
 
 		});
 	});
+
+
 	/* datepicker --------------------------------------------------------------------------------------------- */
 
 	// fix datepicker beforeShow
@@ -887,55 +889,132 @@ $(document).ready(function() {
 			}
 		}
 	});
-	var $fndatepicker = $.fn.datepicker;
-	$.fn.datepicker = function( options ) {
-		$( this ).trigger( "datepickercreate" );
-		options && options.create && options.create();
-		return $fndatepicker.apply( this, arguments );
-	};
+	// var $fndatepicker = $.fn.datepicker;
+	// $.fn.datepicker = function( options ) {
+	// 	$( this ).trigger( "datepickercreate" );
+	// 	options && options.create && options.create();
+	// 	return $fndatepicker.apply( this, arguments );
+	// };
 
-	var eventDate = new Date();
+	// var eventDate = new Date();
 
-	// eventDate.setDate(20);
-	// eventDate.setDate(18);
-	eventDate.setHours(0, 0, 0, 0);
-	//
-	var eventsDates = [10, 18, 20];
+	var eventsDates = [{
+			date: '10.02.2019',
+			tooltip: "<p>День металлурга</p>",
+			link: "/calendar2.html"
+		},
+		{
+			date: '18.02.2019',
+			tooltip: "<p>День металлурга</p><p>День металлурга 2</p>"
+		},
+		{
+			date: '28.02.2019',
+			tooltip: "<p>День металлурга3</p><p>День металлурга 5</p>"
+		},
+
+	];
+
+	// eventDate.setHours(0, 0, 0, 0);
 
 	$('#pageCalendar').datepicker({
 		showOtherMonths: true,
 		selectOtherMonths: true,
 		inline: true,
+		nextText: '>',
+		prevText: '<',
+		// showButtonPanel: true,
+		// currentText: "Сегодня",
 
-		create: function ($calendar, $inst){
-			console.log($calendar);
-			console.log($inst);
-			console.log(this);
-
+		beforeShow: function ($calendar, $inst){
 			var cells = $($calendar).find('td');
+			var today = $($calendar).find('.ui-datepicker-today a');
+			var header = $($calendar).find('.ui-datepicker-header');
+			var prev = $(header).find('.ui-datepicker-prev');
+			var next = $(header).find('.ui-datepicker-next');
+			$(prev).text($(prev).attr('title')).removeAttr('title');
+			$(next).text($(next).attr('title')).removeAttr('title');
 
-			$(cells).addClass('card-calendar__day');
+			$(today).append('<span class="card-calendar__caption">Сегодня</span>');
+
 			$(cells).attr('data-placement', 'right');
 			$(cells).attr('data-toggle', 'tooltip');
 			$(cells).attr('data-html', 'true');
 
+			$('table.ui-datepicker-calendar tbody td', $inst.dpDiv).each(function(){
+				var calendarText = $(this).attr('title');
+				if (calendarText !== undefined){
+					switch($(calendarText).length) {
+						case 1:
+							$(this).find('a').append('<span class="card-calendar__caption">1 событие<span>');
+							break;
+						case 2:
+						case 3:
+						case 4:
+							$(this).find('a').append('<span class="card-calendar__caption">'+$(calendarText).length+' события<span>');
+							break;
+						case 5:
+						case 6:
+						case 7:
+						case 8:
+						case 9:
+						case 10:
+							$(this).find('a').append('<span class="card-calendar__caption">'+$(calendarText).length+' событий<span>');
+							break;
+					}
+				}
+			});
 		},
-		beforeShowDay:function (date) {
-			var tooltipDate = "This date is DISABLED!!";
+
+		onSelect: function (dateString, item) {
+			var currentDate = $(this).datepicker("getDate");
+			console.log(dateString);
+			for (var i = 0; i < eventsDates.length; i++)  {
+				var event = eventsDates[i];
+				// var event = eventsDates[i];
+				if (dateString === event.date) {
+					document.location.href = event.link;
+					console.log(event.link);
+				}
+			}
+			item.inline = false;
+		},
+
+		beforeShowDay: function (date, item) {
+			var dateTime = date.getTime();
 
 			for (var i = 0; i < eventsDates.length; i++)  {
-				var dateCurrent = eventsDates[i];
-				eventDate.setDate(dateCurrent);
-				if (date.getTime() == eventDate.getTime()) {
-					return [true, 'redday', tooltipDate];
+				var dateItem = eventsDates[i];
+				var dateArr = dateItem.date.split('.');
+				var day = Number(dateArr[0]);
+				var month = Number(dateArr[1]) - 1;
+				var year = Number(dateArr[2]);
+
+				eventDate = new Date(year, month, day, 0, 0, 0, 0);
+				// eventDate.setFullYear(year, month, day);
+				// var eventTime = getEventTime(year, month, day);
+
+				if (dateTime === eventDate.getTime()) {
+					return [true, 'card-calendar__event', dateItem.tooltip];
 				}
 			}
 			return [true, '', ''];
-		}
-	}).on("change", function (e){
-		// $(this).datepicker()
-	});
+		},
+		onChangeMonthYear: function (year, month, item){
 
+		}
+
+	}).on('click', function (){
+		var header = $(this).find('.ui-datepicker-header');
+		var prev = $(header).find('.ui-datepicker-prev');
+		var next = $(header).find('.ui-datepicker-next');
+		$(prev).text($(prev).attr('title')).removeAttr('title');
+		$(next).text($(next).attr('title')).removeAttr('title');
+		console.log(this);
+	});
+	function getEventTime(year, month, day) {
+		eventDate = new Date(year, month, day, 0, 0, 0, 0);
+		return eventDate.getTime();
+	}
 	$('body').append('<style type="text/css">\n' +
 		'    td.redday, table.ui-datepicker-calendar tbody td.redday a {\n' +
 		'      background: none !important;\n' +
@@ -968,7 +1047,7 @@ $(document).ready(function() {
 			}
 		}
 	});
-	
+
 	$('.text-ddd-260').dotdotdot({
 		keep: '.card__more',
 		// tolerance: 10,
@@ -993,7 +1072,7 @@ $(document).ready(function() {
 
 	/* TOOLTIPS ------------------------------------------------------------------------------------ */
 	$('.calendar__day').tooltip();
-	$('.card-calendar__day').tooltip();
+	$('.card-calendar td').tooltip();
 	$('.sliderBlog').slick();
 
 	/* СЛАЙДЕРЫ sliders ------------------------------------------------------------------------------*/
