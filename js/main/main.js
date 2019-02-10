@@ -761,31 +761,19 @@ $(document).ready(function() {
 
 	});
 
-	// подсветка текущего дня в виджете календарь
-	// var nowDay = $.datepicker.formatDate('dd', new Date());
-	// var dateArr = $('#calendarwidgetBox .ui-state-default');
-
-	// for (var i = 0; i < dateArr.length; i++) {
-	// 	if ($(dateArr[i]).text() == nowDay) {
-	// 		$(dateArr[i]).parent().addClass('ui-datepicker-today');
-	// 	} else {
-	// 		$(dateArr[i]).parent().removeClass('ui-datepicker-today');
-	// 	}
-	// }
-
 	/* СОБЫТИЯ В ВИДЖЕТЕ "КАЛЕНДАРЬ" ----------------------------------------------------------------- */
 
-	var setTimer;
-	var setTimerTimeOut = 10000;
-	setInterval(function(){ // открываем событие на текущей дате по таймеру
-		if (!$('#widgetCalendar').hasClass('show-event') && !mobile) {
-			$('#widgetCalendar .ui-datepicker-today.selected a.ui-state-default').trigger('click');
-			setTimer = setTimeout(function () {
-				$('.event-control').trigger('click');
-				$('#widgetCalendar').removeClass('show-event');
-			}, 5000)
-		}
-	}, 10000);
+	// var setTimer;
+	// var setTimerTimeOut = 10000;
+	// setInterval(function(){ // открываем событие на текущей дате по таймеру
+	// 	if (!$('#widgetCalendar').hasClass('show-event') && !mobile) {
+	// 		$('#widgetCalendar .ui-datepicker-today.selected a.ui-state-default').trigger('click');
+	// 		setTimer = setTimeout(function () {
+	// 			$('.event-control').trigger('click');
+	// 			$('#widgetCalendar').removeClass('show-event');
+	// 		}, 5000)
+	// 	}
+	// }, 10000);
 
 	// открываем события на выбранной дате
 	// $('#calendarwidgetBox').on('click', 'a.ui-state-default', function(e) {
@@ -894,20 +882,20 @@ $(document).ready(function() {
 	var eventsDates = [{
 			date: new Date('02/6/2019'),
 			tooltip: "<p>День металлурга</p>",
-			link: "/calendar2.html#events-14-10-2018",
+			link: "calendar.html#events-14-10-2018",
 			eventItem: '#event-6'
 		},
 		{
-			date: new Date('02/18/2019'),
-			tooltip: "<p>День металлурга</p><p>День металлурга 2</p>"
+			date: new Date('02/14/2019'),
+			tooltip: "<p>День металлурга</p><p>День металлурга 2</p>",
+			link: "calendar2.html#events-14-10-2018",
+			eventItem: '#event-14'
 		},
 		{
-			date: new Date('02/28/2019'),
-			tooltip: "<p>День металлурга3</p><p>День металлурга 5</p>"
-		},
-		{
-			date: new Date('02/23/2019'),
-			tooltip: "<p>День металлурга3</p><p>День металлурга 5</p><p>День металлурга 5</p><p>День металлурга 5</p><p>День металлурга 5</p><p>День металлурга 5</p><p>День металлурга 5</p><p>День металлурга 5</p><p>День металлурга 5</p><p>День металлурга3</p><p>День металлурга 5</p><p>День металлурга 5</p><p>День металлурга 5</p><p>День металлурга 5</p><p>День металлурга 5</p><p>День металлурга 5</p><p>День металлурга 5</p><p>День металлурга 5</p>"
+			date: new Date('02/24/2019'),
+			tooltip: "<p>День металлурга3</p><p>День металлурга 5</p><p>День металлурга 5</p><p>День металлурга 5</p><p>День металлурга 5</p><p>День металлурга 5</p><p>День металлурга 5</p><p>День металлурга 5</p><p>День металлурга 5</p><p>День металлурга3</p><p>День металлурга 5</p><p>День металлурга 5</p><p>День металлурга 5</p><p>День металлурга 5</p><p>День металлурга 5</p><p>День металлурга 5</p><p>День металлурга 5</p><p>День металлурга 5</p>",
+			link: "calendar3.html#events-24-10-2018",
+			eventItem: '#event-24'
 		},
 
 	];
