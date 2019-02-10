@@ -5125,11 +5125,29 @@ h2 span,
 
 .widget-calendar {
   padding: 15px;
-  margin-top: 25px;
   -webkit-border-radius: 5px;
           border-radius: 5px;
   background-color: #f4f5f5;
-  height: 238px;
+  min-height: 260px;
+}
+
+.widget-calendar > .show-event .widget-subtitle {
+  width: 100%;
+}
+
+.widget-calendar > .show-event .widget-subtitle .ui-datepicker-title {
+  width: 100%;
+  text-align: left;
+}
+
+.widget-calendar > .show-event .next,
+.widget-calendar > .show-event .prev {
+  font-size: 13px;
+  color: #797c82;
+}
+
+.widget-calendar thead {
+  display: none !important;
 }
 
 .widget-calendar.widget-box {
@@ -5145,7 +5163,6 @@ h2 span,
 .widget-calendar.widget-box .ui-datepicker {
   display: block;
   padding: 0;
-  margin-left: -2px;
 }
 
 .widget-calendar .ui-datepicker {
@@ -5157,10 +5174,45 @@ h2 span,
   margin-bottom: 0;
 }
 
+.widget-calendar .widget-subtitle {
+  display: inline-block;
+  text-align: center;
+}
+
+.widget-calendar .ui-datepicker-header {
+  padding: 0;
+  font-size: 0;
+}
+
 .widget-calendar .ui-datepicker-title {
+  position: relative;
+  display: inline-block;
+  margin: 0;
   color: #797c82;
-  font-size: 13px;
+  font-size: 0;
   font-weight: 400;
+  text-align: center;
+}
+
+.widget-calendar .ui-datepicker-title span {
+  font-size: 13px;
+}
+
+.widget-calendar .ui-datepicker-title .ui-datepicker-month,
+.widget-calendar .ui-datepicker-title .ui-datepicker-year {
+  display: none;
+}
+
+.widget-calendar .ui-datepicker-prev,
+.widget-calendar .ui-datepicker-next {
+  z-index: 10;
+  display: none !important;
+  width: auto;
+  height: auto;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+      -ms-transform: translateY(-50%);
+          transform: translateY(-50%);
 }
 
 .widget-calendar .ui-datepicker-prev:before,
@@ -5168,6 +5220,7 @@ h2 span,
   content: "";
   position: absolute;
   display: block;
+  display: none;
   top: 50%;
   left: 50%;
   margin-top: -6px;
@@ -5215,13 +5268,16 @@ h2 span,
   font-size: 16px;
 }
 
-.widget-calendar .ui-state-week {
+.widget-calendar .ui-state-week,
+.widget-calendar .ui-datepicker-week-col {
   color: #bcbdc0;
   font-size: 10px;
   font-weight: 300;
+  text-align: right;
+  padding-right: 4px !important;
 }
 
-.widget-calendar .ui-state-active {
+.widget-calendar .ui-state-active a {
   border: 1px solid #32363f;
 }
 
@@ -5255,7 +5311,7 @@ h2 span,
 
 .events {
   display: none;
-  height: 125px;
+  height: 168px;
   margin-top: -5px;
 }
 
@@ -5407,7 +5463,7 @@ h2 span,
 .widget-imgbox_calendar {
   margin-top: auto;
   height: 100%;
-  max-height: 115px;
+  min-height: 115px;
 }
 
 .widget-imgbox_full {
@@ -5761,10 +5817,54 @@ h2 span,
 
 .card-calendar .ui-datepicker {
   width: 100%;
+  padding: 0;
 }
 
 .card-calendar .ui-datepicker-header {
-  display: none !important;
+  padding: 0;
+}
+
+.card-calendar .ui-datepicker-header h3 {
+  position: relative;
+}
+
+.card-calendar .ui-datepicker-header .ui-datepicker-title {
+  display: inline;
+  margin: 0;
+  padding: 0 15px;
+  text-align: center;
+  font-size: 0;
+}
+
+.card-calendar .ui-datepicker-header .ui-datepicker-title * {
+  font-size: 16px;
+}
+
+.card-calendar .ui-datepicker-header .ui-datepicker-title .ui-datepicker-month,
+.card-calendar .ui-datepicker-header .ui-datepicker-title .ui-datepicker-year {
+  display: none;
+}
+
+.card-calendar .ui-datepicker-header .ui-datepicker-next {
+  display: inline;
+  width: auto;
+  height: auto;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+      -ms-transform: translateY(-50%);
+          transform: translateY(-50%);
+  color: #bcbdc0;
+}
+
+.card-calendar .ui-datepicker-header .ui-datepicker-prev {
+  display: inline;
+  width: auto;
+  height: auto;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+      -ms-transform: translateY(-50%);
+          transform: translateY(-50%);
+  color: #bcbdc0;
 }
 
 .card-calendar thead {
@@ -5781,13 +5881,14 @@ h2 span,
 
 .card-calendar thead tr th {
   margin-bottom: 5px;
+  padding: 0;
   display: block;
   width: -webkit-calc(100% / 7);
   width: calc(100% / 7);
   color: #797c82;
   font-size: 14px;
   font-weight: 300;
-  line-height: 17px;
+  line-height: 1.4;
   text-align: right;
 }
 
@@ -5813,7 +5914,15 @@ h2 span,
 }
 
 .card-calendar td {
-  display: block;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
+      -ms-flex-direction: column;
+          flex-direction: column;
   width: -webkit-calc(100% / 7);
   width: calc(100% / 7);
   min-height: 124px;
@@ -5840,7 +5949,6 @@ h2 span,
   -webkit-flex-direction: column;
       -ms-flex-direction: column;
           flex-direction: column;
-  height: 100%;
   padding: 0;
   color: inherit;
 }
@@ -5858,28 +5966,37 @@ h2 span,
   color: inherit;
 }
 
+.card-calendar td a {
+  cursor: default;
+}
+
 .card-calendar td.card-calendar__event {
   font-weight: 700;
   color: inherit;
+  cursor: pointer;
+}
+
+.card-calendar td.card-calendar__event a {
+  cursor: pointer;
 }
 
 .card-calendar td.major {
   color: #ee3124;
 }
 
-.card-calendar .ui-datepicker-today {
+.card-calendar td.ui-datepicker-week-end {
+  background-color: #f4f5f5;
+}
+
+.card-calendar td.ui-datepicker-today {
   background-color: rgba(238, 49, 36, 0.1);
   color: #a1a3a7;
   font-weight: 700;
 }
 
-.card-calendar .ui-datepicker-today p {
+.card-calendar td.ui-datepicker-today p {
   color: #a1a3a7;
   font-weight: 700;
-}
-
-.card-calendar td.ui-datepicker-week-end {
-  background-color: #f4f5f5;
 }
 
 .card-calendar__caption {
@@ -8964,19 +9081,29 @@ h2 span,
 
   .widget-calendar {
     padding: 10px;
-    height: 190px;
+    min-height: 190px;
+  }
+
+  .widget-calendar > .show-event .next,
+  .widget-calendar > .show-event .prev {
+    font-size: 10px;
+  }
+
+  .widget-calendar .ui-datepicker-title span {
+    font-size: 10px;
   }
 
   .widget-calendar .ui-state-default {
     font-size: 11px;
   }
 
-  .widget-calendar .ui-state-week {
+  .widget-calendar .ui-state-week,
+  .widget-calendar .ui-datepicker-week-col {
     font-size: 8px;
   }
 
   .event-title {
-    font-size: 16px;
+    font-size: 14px;
   }
 
   .widget_fix-height-240 {
@@ -9027,6 +9154,15 @@ h2 span,
     width: 10px;
   }
 
+  .card-calendar .ui-datepicker-header .ui-datepicker-title * {
+    font-size: 12px;
+  }
+
+  .card-calendar td {
+    min-height: 100px;
+    padding: 2px 6px 6px;
+  }
+
   .comments-dark {
     padding: 15px 30px;
   }
@@ -9063,6 +9199,14 @@ h2 span,
 
   .fix-height-210 {
     height: 130px !important;
+  }
+
+  .sign-title {
+    font-size: 12px;
+  }
+
+  .sign-title__link {
+    font-size: 10px;
   }
 
   .slider-arrow {
@@ -9482,7 +9626,20 @@ h2 span,
   }
 
   .widget-calendar {
-    height: 150px;
+    min-height: 150px;
+  }
+
+  .widget-calendar > .show-event .next,
+  .widget-calendar > .show-event .prev {
+    font-size: 7px;
+  }
+
+  .widget-calendar .widget-subtitle {
+    margin: 0 0 5px;
+  }
+
+  .widget-calendar .ui-datepicker-title span {
+    font-size: 7px;
   }
 
   .widget-calendar .ui-datepicker-calendar td {
@@ -9493,7 +9650,8 @@ h2 span,
     font-size: 8px;
   }
 
-  .widget-calendar .ui-state-week {
+  .widget-calendar .ui-state-week,
+  .widget-calendar .ui-datepicker-week-col {
     font-size: 6px;
   }
 
@@ -9509,6 +9667,10 @@ h2 span,
 
   .widget_fix-height-240 {
     height: 140px;
+  }
+
+  .widget-imgbox_calendar {
+    min-height: auto;
   }
 
   .widget-imgbox_full {
@@ -9543,6 +9705,20 @@ h2 span,
 
   .widget-slider-arrow {
     width: 10px;
+  }
+
+  .card-calendar thead tr th {
+    font-size: 10px;
+  }
+
+  .card-calendar td {
+    font-size: 29px;
+    min-height: 75px;
+    padding: 6px;
+  }
+
+  .card-calendar__caption {
+    font-size: 8px;
   }
 
   .article-imgwrap {
@@ -9745,6 +9921,10 @@ h2 span,
   .card-links__lnk_small {
     font-size: 8px;
   }
+
+  .card-calendar .ui-datepicker-header .ui-datepicker-title * {
+    font-size: 9px;
+  }
 }
 
 @media (max-width: 767px) {
@@ -9886,6 +10066,34 @@ h2 span,
   }
 
   .card-links__lnk_small {
+    font-size: 6px;
+  }
+
+  .card-calendar .ui-datepicker-header .content-subtitle {
+    margin-bottom: 5px;
+  }
+
+  .card-calendar .ui-datepicker-header .content-subtitle h2 {
+    font-size: 9px;
+    margin-bottom: 0;
+  }
+
+  .card-calendar .ui-datepicker-header .ui-datepicker-title * {
+    font-size: 8px;
+  }
+
+  .card-calendar thead tr th {
+    font-size: 8px;
+  }
+
+  .card-calendar td {
+    font-size: 20px;
+    padding: 0 4px;
+    min-height: 40px;
+  }
+
+  .card-calendar__caption {
+    padding: 0 0 2px 0 !important;
     font-size: 6px;
   }
 

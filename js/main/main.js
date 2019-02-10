@@ -776,37 +776,279 @@ $(document).ready(function() {
 	/* СОБЫТИЯ В ВИДЖЕТЕ "КАЛЕНДАРЬ" ----------------------------------------------------------------- */
 
 	var setTimer;
+	var setTimerTimeOut = 10000;
 	setInterval(function(){ // открываем событие на текущей дате по таймеру
-		if (!$('#calendarwidgetBox').hasClass('show-event') && !mobile) {
-			$('#calendarwidgetBox .ui-datepicker-today.selected a.ui-state-default').trigger('click')
+		if (!$('#widgetCalendar').hasClass('show-event') && !mobile) {
+			$('#widgetCalendar .ui-datepicker-today.selected a.ui-state-default').trigger('click');
 			setTimer = setTimeout(function () {
 				$('.event-control').trigger('click');
-				$('#calendarwidgetBox').removeClass('show-event');
+				$('#widgetCalendar').removeClass('show-event');
 			}, 5000)
 		}
 	}, 10000);
 
 	// открываем события на выбранной дате
-	$('#calendarwidgetBox').on('click', 'a.ui-state-default', function(e) {
-		e.preventDefault();
+	// $('#calendarwidgetBox').on('click', 'a.ui-state-default', function(e) {
+	// 	e.preventDefault();
+	// 	var dayCurrent = $(this),
+	// 			eventElements = $(dayCurrent.attr('href')),
+	// 			eventElementArr = eventElements.find('.event'),
+	// 			element = $(e.delegateTarget),
+	// 			subtitle = element.find('.widget-subtitle span'),
+	// 			calendar = element.find('.ui-datepicker-calendar'),
+	// 			eventElementControl = element.find('.event-control');
+	//
+	//
+	// 	element.addClass('show-event');
+	// 	eventElementArr.hide();
+	// 	// скрываем календарь
+	// 	calendar.animate({
+	// 		opacity: 'hide'},
+	// 		150, function() {
+	// 		eventElements.animate({opacity: 'show'}, 150);
+	// 		eventElementControl.animate({opacity: 'show'}, 150);
+	// 	});
+	//
+	// 	// показываем события выбраной даты
+	// 	$(eventElementArr[0]).show().addClass('current');
+	// 	for (var i = 0; i < eventElementArr.length; i++) {
+	// 		$(eventElementArr[i]).attr('data-count', i);
+	// 	}
+	//
+	// 	// если событий больше 1 то делаем их ввиде слайдера
+	// 	if (eventElementArr.length > 1) {
+	//
+	// 		subtitle.after('<div class="event-nav">'+
+	// 											'<button class="prev">&lt;&nbsp;</button>'+
+	// 											'<span class="count">'+1+'&nbsp;из&nbsp;'+eventElementArr.length+'</span>'+
+	// 											'<button class="next">&nbsp;&gt;</button>'+
+	// 										'</div>');
+	// 	}
+	// 	var eventNav = element.find('.event-nav'),
+	// 			prev = $(eventNav).find('.prev'),
+	// 			next = $(eventNav).find('.next'),
+	// 			count = $(eventNav).find('.count');
+	//
+	// 	prev.click(function() {
+	// 		var current = eventElements.find('.event.current');
+	// 		if ($(current).data('count') == 0) {
+	// 			count.text(eventElementArr.length + ' из ' + eventElementArr.length);
+	// 			$(current).fadeOut('150', function() {
+	// 				$(eventElementArr[eventElementArr.length - 1]).fadeIn('150').addClass('current');
+	// 			}).removeClass('current');
+	// 		} else {
+	// 			count.text($(current).data('count') + ' из ' + eventElementArr.length)
+	// 			$(current).fadeOut('150', function() {
+	// 				$(eventElementArr[$(current).data('count') - 1]).fadeIn('150').addClass('current');
+	// 			}).removeClass('current');
+	// 		}
+	// 	});
+	//
+	// 	next.click(function() {
+	// 		var current = eventElements.find('.event.current');
+	// 		if ($(current).data('count') == eventElementArr.length - 1) {
+	// 			count.text('1' + ' из '+eventElementArr.length)
+	// 			$(current).fadeOut('150', function() {
+	// 				$(eventElementArr[0]).fadeIn('150').addClass('current');
+	// 			}).removeClass('current');
+	// 		} else {
+	// 			count.text($(current).data('count')+2 +' из '+eventElementArr.length)
+	// 			$(current).fadeOut('150', function() {
+	// 				$(eventElementArr[$(current).data('count') + 1]).fadeIn('150').addClass('current');
+	// 			}).removeClass('current');
+	// 		}
+	// 	});
+	//
+	// 	// нажимаем на кнопку скрыть
+	// 	eventElementControl.click(function(event) {
+	// 		element.removeClass('show-event');
+	// 		clearTimeout(setTimer);
+	// 		element.find('.event-nav').detach();
+	// 		eventElements.animate({opacity: 'hide'}, 150);
+	// 		eventElementControl.animate({opacity: 'hide'}, 150, function () {
+	// 			calendar.animate({opacity: 'show'}, 150);
+	// 			eventElementArr.hide()
+	// 		});
+	//
+	// 	});
+	// });
+
+
+	/* datepicker --------------------------------------------------------------------------------------------- */
+
+	// fix datepicker beforeShow
+	$.extend($.datepicker, {
+		// Reference the original function so we can override it and call it later
+		_inlineDatepicker2: $.datepicker._inlineDatepicker,
+		// Override the _inlineDatepicker method
+		_inlineDatepicker: function (target, inst) {
+			// Call the original
+			this._inlineDatepicker2(target, inst);
+			var beforeShow = $.datepicker._get(inst, 'beforeShow');
+			if (beforeShow) {
+				beforeShow.apply(target, [target, inst]);
+			}
+		}
+	});
+
+	var eventsDates = [{
+			date: new Date('02/6/2019'),
+			tooltip: "<p>День металлурга</p>",
+			link: "/calendar2.html#events-14-10-2018",
+			eventItem: '#event-6'
+		},
+		{
+			date: new Date('02/18/2019'),
+			tooltip: "<p>День металлурга</p><p>День металлурга 2</p>"
+		},
+		{
+			date: new Date('02/28/2019'),
+			tooltip: "<p>День металлурга3</p><p>День металлурга 5</p>"
+		},
+		{
+			date: new Date('02/23/2019'),
+			tooltip: "<p>День металлурга3</p><p>День металлурга 5</p><p>День металлурга 5</p><p>День металлурга 5</p><p>День металлурга 5</p><p>День металлурга 5</p><p>День металлурга 5</p><p>День металлурга 5</p><p>День металлурга 5</p><p>День металлурга3</p><p>День металлурга 5</p><p>День металлурга 5</p><p>День металлурга 5</p><p>День металлурга 5</p><p>День металлурга 5</p><p>День металлурга 5</p><p>День металлурга 5</p><p>День металлурга 5</p>"
+		},
+
+	];
+
+	// $('#pageCalendar').datepicker($.extend({
+	// 		inline: true,
+	// 		changeYear: true,
+	// 		changeMonth: true,
+	// 	},
+	// 	$.datepicker.regional['ru_con']
+	// ));
+
+	$('#pageCalendar').datepicker({
+		showOtherMonths: true,
+		selectOtherMonths: true,
+		inline: true,
+		nextText: '>',
+		prevText: '<',
+		// showOn: "button",
+		// showButtonPanel: true,
+		// buttonText: "t",
+
+		beforeShow: addElements,
+
+		onSelect: function (dateString, item) {
+			var options = {
+				year: 'numeric',
+				month: '2-digit',
+				day: '2-digit',
+			};
+
+
+			for (var i = 0; i < eventsDates.length; i++)  {
+				var event = eventsDates[i];
+				if (dateString === event.date.toLocaleString("ru", options)) {
+					if (event.link !== undefined && event.link !== null) {
+						document.location.href = event.link;
+					}
+
+				}
+			}
+			item.inline = false;
+		},
+
+		beforeShowDay: function (date, item) {
+			var dateTime = date.getTime();
+			for (var i = 0; i < eventsDates.length; i++)  {
+				var dateItem = eventsDates[i];
+				var dateArrTime = dateItem.date.getTime();
+				if (dateTime === dateArrTime) {
+					return [true, 'card-calendar__event', dateItem.tooltip];
+				}
+			}
+			return [true, '', ''];
+		},
+		onChangeMonthYear: function (year, month, item){
+			var t = this
+			setTimeout(function (){
+				addElements($(t));
+			}, 110);
+			addPreloader(this);
+		}
+
+	}).on('click', function (){
+		addControlBtn($(this));
+	});
+
+
+	$('#widgetCalendar').datepicker({
+		showOtherMonths: false,
+		selectOtherMonths: true,
+		changeMonth: false,
+		showWeek: true,
+		nextText: '>',
+		prevText: '<',
+
+		beforeShow: function ($calendar){
+			addCustomElementsInWidget($calendar);
+		},
+
+		onChangeMonthYear: function (year, month, item){
+			var t = this
+			setTimeout(function (){
+				addCustomElementsInWidget($(t));
+			}, 110);
+			addPreloader(this);
+		},
+		onSelect: function (dateString, item) {
+			var options = {
+				year: 'numeric',
+				month: '2-digit',
+				day: '2-digit',
+			};
+
+			console.log(item);
+			console.log(this);
+			for (var i = 0; i < eventsDates.length; i++)  {
+				var event = eventsDates[i];
+				if (dateString === event.date.toLocaleString("ru", options)) {
+					if (event.link !== undefined && event.link !== null) {
+						// document.location.href = event.link;
+						showWidgetCalendarEvent(event.eventItem, this)
+					}
+
+				}
+			}
+
+			item.inline = false;
+		},
+		beforeShowDay: function (date, item) {
+			var dateTime = date.getTime();
+			for (var i = 0; i < eventsDates.length; i++)  {
+				var dateItem = eventsDates[i];
+				var dateArrTime = dateItem.date.getTime();
+				if (dateTime === dateArrTime) {
+					return [true, 'ui-state-active', ''];
+				}
+			}
+			return [true, '', ''];
+		},
+	});
+	function showWidgetCalendarEvent($itemEvent, $element){
 		var dayCurrent = $(this),
-				eventElements = $(dayCurrent.attr('href')),
-				eventElementArr = eventElements.find('.event')
-				element = $(e.delegateTarget),
-				subtitle = element.find('.widget-subtitle span'),
-				calendar = element.find('.ui-datepicker-calendar'),
-				eventElementControl = element.find('.event-control');
+			eventElements = $($itemEvent),
+			eventElementArr = eventElements.find('.event'),
+			element = $($element),
+			subtitle = element.find('.widget-subtitle span'),
+			calendar = element.find('.ui-datepicker-calendar'),
+			eventElementControl = element.parent().find('.event-control');
 
+		console.log(eventElements);
 		element.addClass('show-event');
-
+		eventElements.addClass('active');
 		eventElementArr.hide();
 		// скрываем календарь
 		calendar.animate({
-			opacity: 'hide'},
+				opacity: 'hide'},
 			150, function() {
-			eventElements.animate({opacity: 'show'}, 150);
-			eventElementControl.animate({opacity: 'show'}, 150);
-		});
+				eventElements.animate({opacity: 'show'}, 150);
+				eventElementControl.animate({opacity: 'show'}, 150);
+			});
 
 		// показываем события выбраной даты
 		$(eventElementArr[0]).show().addClass('current');
@@ -818,18 +1060,19 @@ $(document).ready(function() {
 		if (eventElementArr.length > 1) {
 
 			subtitle.after('<div class="event-nav">'+
-												'<button class="prev">&lt;&nbsp;</button>'+
-												'<span class="count">'+1+'&nbsp;из&nbsp;'+eventElementArr.length+'</span>'+
-												'<button class="next">&nbsp;&gt;</button>'+
-											'</div>');
+				'<button class="prev">&lt;&nbsp;</button>'+
+				'<span class="count">'+1+'&nbsp;из&nbsp;'+eventElementArr.length+'</span>'+
+				'<button class="next">&nbsp;&gt;</button>'+
+				'</div>');
 		}
 		var eventNav = element.find('.event-nav'),
-				prev = $(eventNav).find('.prev'),
-				next = $(eventNav).find('.next'),
-				count = $(eventNav).find('.count');
+			prev = $(eventNav).find('.prev'),
+			next = $(eventNav).find('.next'),
+			count = $(eventNav).find('.count');
 
 		prev.click(function() {
 			var current = eventElements.find('.event.current');
+			setTimerTimeOut = 5000;
 			if ($(current).data('count') == 0) {
 				count.text(eventElementArr.length + ' из ' + eventElementArr.length);
 				$(current).fadeOut('150', function() {
@@ -845,6 +1088,7 @@ $(document).ready(function() {
 
 		next.click(function() {
 			var current = eventElements.find('.event.current');
+			setTimerTimeOut = 5000;
 			if ($(current).data('count') == eventElementArr.length - 1) {
 				count.text('1' + ' из '+eventElementArr.length)
 				$(current).fadeOut('150', function() {
@@ -870,168 +1114,107 @@ $(document).ready(function() {
 			});
 
 		});
-	});
+	}
+	function addCustomElementsInWidget($item){
+		addControlBtn($item);
+		addHeader($item, false);
+		addPreloader($item)
+	}
 
+	function addCustomToday($calendar){
+		var today = $($calendar).find('.ui-datepicker-today');
 
-	/* datepicker --------------------------------------------------------------------------------------------- */
+		$(today).append('<span class="card-calendar__caption">Сегодня</span>');
+	}
+	function addDataTooltip($calendar){
+		var cells = $($calendar).find('.ui-datepicker-calendar td');
+		$(cells).attr('data-placement', 'right');
+		$(cells).attr('data-toggle', 'tooltip');
+		$(cells).attr('data-html', 'true');
 
-	// fix datepicker beforeShow
-	$.extend($.datepicker, {
-		// Reference the original function so we can override it and call it later
-		_inlineDatepicker2: $.datepicker._inlineDatepicker,
-		// Override the _inlineDatepicker method
-		_inlineDatepicker: function (target, inst) {
-			// Call the original
-			this._inlineDatepicker2(target, inst);
-			var beforeShow = $.datepicker._get(inst, 'beforeShow');
-			if (beforeShow) {
-				beforeShow.apply(target, [target, inst]);
-			}
+		setTimeout(function (){
+			$(cells).tooltip();
+		}, 110);
+	}
+
+	function addHeader($calendar, $title){
+		if ($title === undefined) {
+			var title = true;
 		}
-	});
-	// var $fndatepicker = $.fn.datepicker;
-	// $.fn.datepicker = function( options ) {
-	// 	$( this ).trigger( "datepickercreate" );
-	// 	options && options.create && options.create();
-	// 	return $fndatepicker.apply( this, arguments );
-	// };
+		var header = $($calendar).find('.ui-datepicker-header');
+		var year = $(header).find('.ui-datepicker-year').text();
+		var month = $(header).find('.ui-datepicker-month').text();
+		var headerUiBtns = $(header).find('.ui-datepicker-prev, .ui-datepicker-next, .ui-datepicker-title');
+		var todayDate = new Date();
+		var optionsDay = {day: '2-digit'};
+		var todayDateDay = todayDate.toLocaleString("ru", optionsDay);
+		var monthA = ["Января","Февраля","Марта","Апреля","Мая","Июня",
+			"Июля","Августа","Сентября","Октября","Ноября","Декабря" ];
+		var todayYear = todayDate.getFullYear();
+		var todayDateMonth = monthA[todayDate.getMonth()];
+		var uiTitle = $(header).find('.ui-datepicker-title');
 
-	// var eventDate = new Date();
+		// $(uiTitle).append('<span class="ui-datepicker-current">Сегодня: ' + todayDateDay + ' ' + todayDateMonth+'</span>');
 
-	var eventsDates = [{
-			date: '10.02.2019',
-			tooltip: "<p>День металлурга</p>",
-			link: "/calendar2.html"
-		},
-		{
-			date: '18.02.2019',
-			tooltip: "<p>День металлурга</p><p>День металлурга 2</p>"
-		},
-		{
-			date: '28.02.2019',
-			tooltip: "<p>День металлурга3</p><p>День металлурга 5</p>"
-		},
+		if (title) {
 
-	];
-
-	// eventDate.setHours(0, 0, 0, 0);
-
-	$('#pageCalendar').datepicker({
-		showOtherMonths: true,
-		selectOtherMonths: true,
-		inline: true,
-		nextText: '>',
-		prevText: '<',
-		// showButtonPanel: true,
-		// currentText: "Сегодня",
-
-		beforeShow: function ($calendar, $inst){
-			var cells = $($calendar).find('td');
-			var today = $($calendar).find('.ui-datepicker-today a');
-			var header = $($calendar).find('.ui-datepicker-header');
-			var prev = $(header).find('.ui-datepicker-prev');
-			var next = $(header).find('.ui-datepicker-next');
-			$(prev).text($(prev).attr('title')).removeAttr('title');
-			$(next).text($(next).attr('title')).removeAttr('title');
-
-			$(today).append('<span class="card-calendar__caption">Сегодня</span>');
-
-			$(cells).attr('data-placement', 'right');
-			$(cells).attr('data-toggle', 'tooltip');
-			$(cells).attr('data-html', 'true');
-
-			$('table.ui-datepicker-calendar tbody td', $inst.dpDiv).each(function(){
-				var calendarText = $(this).attr('title');
-				if (calendarText !== undefined){
-					switch($(calendarText).length) {
-						case 1:
-							$(this).find('a').append('<span class="card-calendar__caption">1 событие<span>');
-							break;
-						case 2:
-						case 3:
-						case 4:
-							$(this).find('a').append('<span class="card-calendar__caption">'+$(calendarText).length+' события<span>');
-							break;
-						case 5:
-						case 6:
-						case 7:
-						case 8:
-						case 9:
-						case 10:
-							$(this).find('a').append('<span class="card-calendar__caption">'+$(calendarText).length+' событий<span>');
-							break;
-					}
-				}
-			});
-		},
-
-		onSelect: function (dateString, item) {
-			var currentDate = $(this).datepicker("getDate");
-			console.log(dateString);
-			for (var i = 0; i < eventsDates.length; i++)  {
-				var event = eventsDates[i];
-				// var event = eventsDates[i];
-				if (dateString === event.date) {
-					document.location.href = event.link;
-					console.log(event.link);
-				}
-			}
-			item.inline = false;
-		},
-
-		beforeShowDay: function (date, item) {
-			var dateTime = date.getTime();
-
-			for (var i = 0; i < eventsDates.length; i++)  {
-				var dateItem = eventsDates[i];
-				var dateArr = dateItem.date.split('.');
-				var day = Number(dateArr[0]);
-				var month = Number(dateArr[1]) - 1;
-				var year = Number(dateArr[2]);
-
-				eventDate = new Date(year, month, day, 0, 0, 0, 0);
-				// eventDate.setFullYear(year, month, day);
-				// var eventTime = getEventTime(year, month, day);
-
-				if (dateTime === eventDate.getTime()) {
-					return [true, 'card-calendar__event', dateItem.tooltip];
-				}
-			}
-			return [true, '', ''];
-		},
-		onChangeMonthYear: function (year, month, item){
-
+			$(headerUiBtns).wrapAll('<div class="content-subtitle content-subtitle_right"><h3></h3></div>');
+			$(header).addClass('content-title');
+			$(uiTitle).append('<span class="ui-datepicker-current">Сегодня: ' + todayDateDay + ' ' + todayDateMonth+'</span>');
+			$(header).append('<div class="content-subtitle margin-0">\n' +
+				'                 <h2>'+month+',<span> '+year+'</span></h2>\n' +
+				'               </div>');
+		} else {
+			$(headerUiBtns).wrapAll('<div class="widget-subtitle"></div>');
+			$(uiTitle).append('<span class="ui-datepicker-current">Сегодня ' + todayDateDay + ' ' + todayDateMonth+''+' '+todayYear+'</span>');
 		}
+	}
 
-	}).on('click', function (){
-		var header = $(this).find('.ui-datepicker-header');
+	function addControlBtn($calendar){
+		var header = $($calendar).find('.ui-datepicker-header');
 		var prev = $(header).find('.ui-datepicker-prev');
 		var next = $(header).find('.ui-datepicker-next');
 		$(prev).text($(prev).attr('title')).removeAttr('title');
 		$(next).text($(next).attr('title')).removeAttr('title');
-		console.log(this);
-	});
-	function getEventTime(year, month, day) {
-		eventDate = new Date(year, month, day, 0, 0, 0, 0);
-		return eventDate.getTime();
-	}
-	$('body').append('<style type="text/css">\n' +
-		'    td.redday, table.ui-datepicker-calendar tbody td.redday a {\n' +
-		'      background: none !important;\n' +
-		'      background-color : red !important;\n' +
-		'      background-image : none !important;\n' +
-		'      color: White !important;\n' +
-		'    }\n' +
-		'</style>');
 
-	// function beforeShowFunc ($calendar, $inst){
-	// 	console.log('test');
-	// 	console.log($calendar);
-	// };
-	// var beforeShow = $.datepicker._get(inst, 'beforeShow');
-	// if(beforeShow)
-	// 	beforeShow.apply();
-	// $('#pageCalendar').datepicker();
+	}
+
+	function addCustomElement ($calendar, $inst) {
+		$('table.ui-datepicker-calendar tbody td').each(function(){
+			var calendarText = $(this).attr('title');
+			if (calendarText !== undefined) {
+				var word = decOfNum($(calendarText).length, ['событие', 'события', 'событий']);
+				$(this).append('<span class="card-calendar__caption">'+$(calendarText).length+' '+word+'</span>');
+			}
+		});
+	}
+	function addPreloader(item){
+
+		$(item).append('<div class="preloader" style="position: absolute"><div class="page-loader-circle"></div></div>');
+		$(item).css('position', 'relative');
+		setTimeout(function () {
+			$('.preloader').fadeOut('300', function (){
+				// $(item).css('position', '');
+			});
+
+		}, 400)
+	}
+	function decOfNum(number, titles) {
+		var decCache = [],
+				decCases = [2, 0, 1, 1, 1, 2];
+		if(!decCache[number]) decCache[number] = number % 100 > 4 && number % 100 < 20 ? 2 : decCases[Math.min(number % 10, 5)];
+		return titles[decCache[number]];
+	}
+
+	function addElements($calendar) {
+		addCustomToday($calendar);
+		addDataTooltip($calendar);
+		addControlBtn($calendar);
+		addHeader($calendar);
+		addCustomElement();
+		addPreloader($calendar);
+
+	}
 
 	/* СОКРАЩАЕМ ТЕКСТ ------------------------------------------------------------------------------ */
 	$('.card__title *').dotdotdot();

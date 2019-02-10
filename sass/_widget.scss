@@ -86,7 +86,10 @@
 		&_calendar {
 			margin-top: auto;
 			height: 100%;
-			max-height: 115px;
+			min-height: 115px;
+			@include md-block {
+				min-height: auto;
+			}
 		}
 		img {
 

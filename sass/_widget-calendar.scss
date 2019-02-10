@@ -1,20 +1,42 @@
 .widget-calendar {
 	padding: 15px;
-	margin-top: 25px;
+	//margin-top: 25px;
 	border-radius: 5px;
 	background-color: #f4f5f5;
-	height: 238px;
+	min-height: 260px;
 	@include lg-block {
 		padding: 10px;
-		height: 190px;
+		min-height: 190px;
 	}
 	@include md-block {
-		height: 150px;
+		min-height: 150px;
 	}
 	// &-change {
 	// 	height: 20px;
 	// 	background-color: red;
 	// }
+	&>.show-event {
+		.widget-subtitle {
+			width: 100%;
+			.ui-datepicker-title {
+				width: 100%;
+				text-align: left;
+			}
+		}
+		.next, .prev {
+			font-size: 13px;
+			color: #797c82;
+			@include lg-block {
+				font-size: 10px;
+			}
+			@include md-block {
+				font-size: 7px;
+			}
+		}
+	}
+	thead {
+		display: none !important;
+	}
 	&.widget-box {
 		width: auto;
 		border: 1px solid #dddee0;
@@ -25,7 +47,6 @@
 		.ui-datepicker {
 			display: block;
 			padding: 0;
-			margin-left: -2px;
 		}
 	}
 	.ui-datepicker {
@@ -35,13 +56,53 @@
 		font-size: 14px;
 		margin-bottom: 0;
 	}
+	.widget-subtitle {
+		display: inline-block;
+		//padding: 0 12px;
+		text-align: center;
+		@include md-block {
+			margin: 0 0 5px;
+		}
+	}
+	.ui-datepicker-header {
+		padding: 0;
+		font-size: 0;
+
+	}
 	.ui-datepicker-title {
+		position: relative;
+		display: inline-block;
+		margin: 0;
+
 		color: $dark-color;
-		font-size: 13px;
+		font-size: 0;
 		font-weight: 400;
+		text-align: center;
+
+	  span {
+			font-size: 13px;
+			@include lg-block {
+				font-size: 10px;
+			}
+			@include md-block {
+				font-size: 7px;
+			}
+		}
+		.ui-datepicker-month, .ui-datepicker-year {
+			display: none;
+		}
+
 	}
 	.ui-datepicker-prev, .ui-datepicker-next {
+		z-index: 10;
+		//display: inline;
+		display: none !important;
+		width: auto;
+		height: auto;
+		top: 50%;
+		transform: translateY(-50%);
 		@include before('\e901') {
+			display: none;
 			top: 50%;
 			left: 50%;
 			margin-top: -6px;
@@ -93,10 +154,13 @@
 			font-size: 8px;
 		}
 	}
-	.ui-state-week {
+
+	.ui-state-week, .ui-datepicker-week-col {
 		color: #bcbdc0;
 		font-size: 10px;
 		font-weight: 300;
+		text-align: right;
+		padding-right: 4px !important;
 		@include lg-block {
 			font-size: 8px;
 		}
@@ -104,7 +168,7 @@
 			font-size: 6px;
 		}
 	}
-	.ui-state-active {
+	.ui-state-active a {
 		border: 1px solid #32363f;
 	}
 	.ui-state-hover {
@@ -141,7 +205,7 @@
 }
 .events {
 	display: none;
-	height: 125px;
+	height: 168px;
 	margin-top: -5px;
 	@include md-block {
 		height: 100px;
@@ -164,7 +228,7 @@
 		line-height: 18px;
 		font-weight: 400;
 		@include lg-block {
-			font-size: 16px;
+			font-size: 14px;
 		}
 		@include md-block {
 			font-size: 9px;
