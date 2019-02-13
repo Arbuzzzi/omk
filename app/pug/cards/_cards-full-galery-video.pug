@@ -1,0 +1,10 @@
+- var cardSettings = {title: 'Галерея - "Видео"', cardSize: 'xl', imgUrl: 'img/img-full-360.png', advantClass: 'card__videobox'};
+.cards
+	.card.card-full-head_special
+		.content-title
+			.content-titlebox_dark
+				h2= cardSettings.title
+	.card.card-full
+		.card__imgbox(class='card__imgbox_' + cardSettings.cardSize, class=cardSettings.advantClass, style='background-image: url(' + cardSettings.imgUrl + ');', data-target="#modalVideo", data-toggle="modal",data-target-content='https://www.youtube.com/embed/FgCLm4nUcNQ')
+			img(id='image_' + cardSettings.cardSize, src=cardSettings.imgUrl, class=cardSettings.imgClass)
+			// <iframe width="560" height="315" src="https://www.youtube.com/embed/FgCLm4nUcNQ" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>

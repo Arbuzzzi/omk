@@ -530,6 +530,161 @@
         <div class="col-12">
           <div class="card">
             <div class="content-titlebox_dark">
+              <h4>ФОРМЫ BOOTSTRAP</h4>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card bg-color-light padding-top-15 padding-bottom-15">
+        <div class="col-9">
+          <form>
+            <div class="form-group">
+              <label for="exampleInputEmail1">Email address</label>
+              <input class="form-control" id="exampleInputEmail1" type="email" aria-describedby="emailHelp" placeholder="Enter email"/><small class="form-text text-muted" id="emailHelp">We'll never share your email with anyone else.</small>
+            </div>
+            <div class="form-group">
+              <label for="exampleInputPassword1">Password</label>
+              <input class="form-control" id="exampleInputPassword1" type="password" placeholder="Password"/>
+            </div>
+          </form>
+          <form>
+            <div class="form-row">
+              <div class="form-group col-md-6">
+                <label for="inputEmail4">Email</label>
+                <input class="form-control" id="inputEmail4" type="email" placeholder="Email"/>
+              </div>
+              <div class="form-group col-md-6">
+                <label for="inputPassword4">Password</label>
+                <input class="form-control" id="inputPassword4" type="password" placeholder="Password"/>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="inputAddress">Address</label>
+              <input class="form-control" id="inputAddress" type="text" placeholder="1234 Main St"/>
+            </div>
+            <div class="form-group">
+              <label for="inputAddress2">Address 2</label>
+              <input class="form-control" id="inputAddress2" type="text" placeholder="Apartment, studio, or floor"/>
+            </div>
+            <div class="form-row">
+              <div class="form-group col-md-6">
+                <label for="inputCity">City</label>
+                <input class="form-control" id="inputCity" type="text"/>
+              </div>
+              <div class="form-group col-md-4">
+                <label for="inputState">State</label>
+                <select class="form-control" id="inputState">
+                  <option selected="">Choose...</option>
+                  <option>...</option>
+                </select>
+              </div>
+              <div class="form-group col-md-2">
+                <label for="inputZip">Zip</label>
+                <input class="form-control" id="inputZip" type="text"/>
+              </div>
+            </div>
+          </form>
+          <form class="form-inline margin-bottom-15">
+            <label class="my-1 mr-2" for="inlineFormCustomSelectPref">Preference</label>
+            <select class="custom-select my-1 mr-sm-2" id="inlineFormCustomSelectPref">
+              <option selected="">Choose...</option>
+              <option value="1">One</option>
+              <option value="2">Two</option>
+              <option value="3">Three</option>
+            </select>
+          </form>
+          <form class="form-inline">
+            <div class="form-group">
+              <label for="inputPassword6">Password</label>
+              <input class="form-control mx-sm-3" id="inputPassword6" type="password" aria-describedby="passwordHelpInline"/><small class="text-muted" id="passwordHelpInline">Must be 8-20 characters long.</small>
+            </div>
+          </form>
+          <form>
+            <fieldset disabled="">
+              <div class="form-group">
+                <label for="disabledTextInput">Disabled input</label>
+                <input class="form-control" id="disabledTextInput" type="text" placeholder="Disabled input"/>
+              </div>
+              <div class="form-group">
+                <label for="disabledSelect">Disabled select menu</label>
+                <select class="form-control" id="disabledSelect">
+                  <option>Disabled select</option>
+                </select>
+              </div>
+            </fieldset>
+          </form>
+          <form class="needs-validation" novalidate="">
+            <div class="form-row">
+              <div class="form-group col-md-4 mb-3">
+                <label for="validationCustom01">First name</label>
+                <input class="form-control" id="validationCustom01" type="text" placeholder="First name" value="Mark" required=""/>
+                <div class="valid-feedback">Looks good!</div>
+              </div>
+              <div class="form-group col-md-4 mb-3">
+                <label for="validationCustom02">Last name</label>
+                <input class="form-control" id="validationCustom02" type="text" placeholder="Last name" value="Otto" required=""/>
+                <div class="valid-feedback">Looks good!</div>
+              </div>
+              <div class="form-group col-md-4 mb-3">
+                <label for="validationCustomUsername">Username</label>
+                <div class="input-group">
+                  <div class="input-group-prepend"><span class="input-group-text" id="inputGroupPrepend">@</span></div>
+                  <input class="form-control" id="validationCustomUsername" type="text" placeholder="Username" aria-describedby="inputGroupPrepend" required=""/>
+                  <div class="invalid-feedback">Please choose a username.</div>
+                </div>
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="col-md-6 mb-3">
+                <div class="form-group">
+                  <label for="validationCustom03">City</label>
+                  <input class="form-control" id="validationCustom03" type="text" placeholder="City" required=""/>
+                  <div class="invalid-feedback">Please provide a valid city.</div>
+                </div>
+              </div>
+              <div class="col-md-3 mb-3">
+                <div class="form-group">
+                  <label for="validationCustom04">State</label>
+                  <input class="form-control" id="validationCustom04" type="text" placeholder="State" required=""/>
+                  <div class="invalid-feedback">Please provide a valid state.</div>
+                </div>
+              </div>
+              <div class="col-md-3 mb-3">
+                <div class="form-group">
+                  <label for="validationCustom05">Zip</label>
+                  <input class="form-control" id="validationCustom05" type="text" placeholder="Zip" required=""/>
+                  <div class="invalid-feedback">Please provide a valid zip.</div>
+                </div>
+              </div>
+            </div>
+            <button class="button button-width-142" type="submit">Submit form</button>
+          </form>
+          <script>
+            // Example starter JavaScript for disabling form submissions if there are invalid fields
+            (function (){
+            	'use strict';
+            	window.addEventListener('load', function (){
+            		// Fetch all the forms we want to apply custom Bootstrap validation styles to
+            		var forms = document.getElementsByClassName('needs-validation');
+            		// Loop over them and prevent submission
+            		var validation = Array.prototype.filter.call(forms, function (form){
+            			form.addEventListener('submit', function (event){
+            				if (form.checkValidity() === false){
+            					event.preventDefault();
+            					event.stopPropagation();
+            				}
+            				form.classList.add('was-validated');
+            			}, false);
+            		});
+            	}, false);
+            })();
+          </script>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-12">
+          <div class="card">
+            <div class="content-titlebox_dark">
               <h4>ТЕКСТ</h4>
             </div>
           </div>

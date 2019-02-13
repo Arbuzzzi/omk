@@ -143,6 +143,12 @@ $(document).ready(function() {
 	if (mobile) {
 		$('#header-nav').collapse('hide');
 	}
+	if (mobile) {
+		$('#header-navControl').removeClass('active');
+		setTimeout(function (){
+			$('.header-nav-system-wrap').removeClass('mobile-hide');
+		}, 300)
+	}
 	// системы показываются
 	$('#header-nav').on('shown.bs.collapse', function () {
 		var btn = $('#header-navControl');
@@ -1206,8 +1212,13 @@ $(document).ready(function() {
 			}
 		});
 	}
-	function addPreloader(item){
-
+	function addPreloader(item, timeout){
+		var time;
+		if (timeout === undefined) {
+			time = 400
+		} else {
+			time = timeout;
+		}
 		$(item).append('<div class="preloader" style="position: absolute"><div class="page-loader-circle"></div></div>');
 		$(item).css('position', 'relative');
 		setTimeout(function () {
@@ -1216,7 +1227,7 @@ $(document).ready(function() {
 				$(this).remove();
 			});
 
-		}, 400)
+		}, time)
 	}
 	function decOfNum(number, titles) {
 		var decCache = [],
@@ -1371,7 +1382,6 @@ $(document).ready(function() {
 				commentButtonLess = $(commentButtonBox).find('.comment__link.less'),
 				commentButtonMore = $(commentButtonBox).find('.comment__link.more'),
 				commentButtonTarget = $($(commentButton).data('target'));
-
 		$(commentButtonTarget).on('show.bs.collapse', function (e){
 			e.stopPropagation();
 			$(commentButtonMore).fadeOut(150, function (){
@@ -1384,8 +1394,6 @@ $(document).ready(function() {
 
 		$(commentButtonTarget).on('hide.bs.collapse', function (e){
 			e.stopPropagation();
-			// $('.form-duplicate').collapse('hide');
-			// $('.comment').collapse('hide');
 			$(commentButtonLess).fadeOut(150, function (){
 				$(this).addClass('hide');
 				$(commentButtonMore).fadeIn(150, function (){
@@ -1412,12 +1420,14 @@ $(document).ready(function() {
 		}
 	}
 	var elControlDeafultText;
+
 	$(document).on('click', '.comment-long__showbtn', function(event) {
 		var el = $(this),
 				elParent = el.parents('.comment-box'),
 				text = $(elParent).find('.comment__text > *'),
 				textBlock = $(elParent).find('.comment__text'),
 				textHeight = 0;
+
 		for (var i = 0; i < text.length; i++) {
 			textHeight = textHeight + $(text[i]).actual('outerHeight')
 		}
@@ -1454,7 +1464,7 @@ $(document).ready(function() {
 		}
 
 		// проверяем где юзер отвечает на коммент
-		if (formDuplicateShow && $('.modalMain').hasClass('show')) { 
+		if (formDuplicateShow && $('.modal-main').hasClass('show')) {
 			$('.form-duplicate').collapse('hide');
 		}
 
@@ -1549,7 +1559,7 @@ $(document).ready(function() {
 
 	$('#modalImgBox').on('show.bs.modal', function(event) {
 		var modal 				= $(this),
-				modalContent  = modal.find('.modalMain__content'),
+				modalContent  = modal.find('.modal-main__content'),
 
 				elControl 		= $(event.relatedTarget),
 				elAdd,
@@ -1558,7 +1568,26 @@ $(document).ready(function() {
 		modalContent.html(targetContent);
 	});
 
-	$('.modalMain-slider-wrap').on('init reInit afterChange', 
+	$('#modalVideo').on('show.bs.modal', function(event) {
+		var modal = $(this),
+				modalContent = modal.find('.modal-video iframe'),
+				elControl = $(event.relatedTarget),
+				src = $(elControl).data('target-content');
+
+		$(modalContent).attr('src', src);
+		addPreloader($(modalContent).parent(), 600);
+	});
+
+	$('#modalVideo').on('hidden.bs.modal', function(event) {
+		var modal = $(this),
+			modalContent = modal.find('.modal-video iframe');
+
+		$(modalContent).attr('src', 'http://');
+	});
+
+
+
+	$('.modal-main-slider-wrap').on('init reInit afterChange',
 		function(event, slick, currentSlide, nextSlide){
 			// нумерация слайдов в модалке
 			var status = $('.slider-number'),
@@ -1572,39 +1601,38 @@ $(document).ready(function() {
 
 	$('#modalContentSlider').on('show.bs.modal', function(event) {
 		var modal 				= $(this),
-				modalContent  = modal.find('.modalMain__content'),
+				modalContent  = modal.find('.modal-main__content'),
 
 				elControl 		= $(event.relatedTarget),
 				elAdd,
 
-				targetContent 					 = $(elControl.data('target-content')).clone(),
-				targetContentSliderTitle = targetContent.find('.post-info').clone(),
-				targetComments					 = targetContent.find('.comments-dark').clone(),
+				targetContent             = $(elControl.data('target-content')).clone(),
+				targetContentSliderTitle  = targetContent.find('.post-info').clone(),
+				// targetComments            = targetContent.find('.comments-dark').clone(),
 
-				sliderModal 		= modal.find('.modalMain-slider-wrap'),
-				sliderTitle 		= modal.find('.modalMain-slider-title'),
-				sliderComments 	= modal.find('.modalMain-comments');
+				sliderModal 		= modal.find('.modal-main-slider-wrap'),
+				sliderTitle 		= modal.find('.modal-main-slider-title'),
+				sliderComments 	= modal.find('.modal-main-comments');
 
 		event.stopImmediatePropagation();
-
-		modal.addClass('modalMain-preload');
+		// modal.addClass('modal-main-preload');
 		elAdd = getElement(targetContent);
 
 		sliderModal.html(elAdd); // вставляем слайдер
 
 		sliderTitle.html(targetContentSliderTitle); // вставляем заголовок слайдера
 
-		sliderComments.html(targetComments); // вставляем блок комментариев
-
+		// sliderComments.html(targetComments); // вставляем блок комментариев
+		addPreloader(modalContent);
 
 		function getElement(el) {
 			var element = $(el),
 					elements;
 			element.find('.slick-cloned').remove();
 			elements = $(element.find('.card-image'))
-				.wrap('<div class="modalMain-slider__imgbox"></div>')
+				.wrap('<div class="modal-main-slider__imgbox"></div>')
 				.parent()
-				.wrap('<div class="modalMain-slider__item"></div>')
+				.wrap('<div class="modal-main-slider__item"></div>')
 				.parent();
 			return elements;
 		}
@@ -1612,7 +1640,8 @@ $(document).ready(function() {
 
 	$('#modalContentSlider').on('shown.bs.modal', function(event) {
 		var modal 				= $(this),
-				modalContent  = modal.find('.modalMain__content'),
+				modalContent  = modal.find('.modal-main__content'),
+				body = $('body'),
 
 				elControl 		= $(event.relatedTarget),
 				elControlCurrent = elControl.data('current-slide'),
@@ -1620,10 +1649,12 @@ $(document).ready(function() {
 
 				targetContent = $(elControl.data('target-content')).clone(),
 
-				sliderModal 	= modal.find('.modalMain-slider-wrap');
+				sliderModal 	= modal.find('.modal-main-slider-wrap');
 
-
+		$(body).addClass('modal-main-contents-open');
 		modal.css('padding-right', '');
+
+		// $('.comment').collapse();
 
 		$('#modalMainSliderTop').slick({
 			slidesToShow: 1,
@@ -1633,12 +1664,12 @@ $(document).ready(function() {
 			asNavFor: '#modalMainSliderBottom',
 			prevArrow: '<div class="slider-arrow \
 															slider-arrow__left \
-															modalMain-slider-arrow \
-															modalMain-slider-arrow__left"></div>',
+															modal-main-slider-arrow \
+															modal-main-slider-arrow__left"></div>',
 			nextArrow: '<div class="slider-arrow \
 															slider-arrow__right \
-															modalMain-slider-arrow \
-															modalMain-slider-arrow__right"></div>',
+															modal-main-slider-arrow \
+															modal-main-slider-arrow__right"></div>',
 		});
 
 		$('#modalMainSliderBottom').slick({
@@ -1654,17 +1685,18 @@ $(document).ready(function() {
 			asNavFor: '#modalMainSliderTop',
 			prevArrow: '<div class="slider-arrow \
 															slider-arrow__left \
-															modalMain-slider-arrow \
-															modalMain-slider-arrow__left"></div>',
+															modal-main-slider-arrow \
+															modal-main-slider-arrow__left"></div>',
 			nextArrow: '<div class="slider-arrow \
 															slider-arrow__right \
-															modalMain-slider-arrow \
-															modalMain-slider-arrow__right"></div>',
+															modal-main-slider-arrow \
+															modal-main-slider-arrow__right"></div>',
 		});
-		setTimeout(function () {
-			$('.preloader').fadeOut('300');
-			modal.removeClass('modalMain-preload');
-		}, 800) 
+
+		// setTimeout(function () {
+		// 	$('.preloader').fadeOut('300');
+		// 	modal.removeClass('modal-main-preload');
+		// }, 800)
 
 	});
 
@@ -1675,12 +1707,12 @@ $(document).ready(function() {
 
 	$('#modalContentSlider').on('hidden.bs.modal', function(event) {
 		var modal 				= $(this),
-				modalContent  = modal.find('.modalMain__content'),
+				modalContent  = modal.find('.modal-main__content'),
 
 				elControl 		= $(event.relatedTarget),
 				elAdd,
 
-				sliderModal 	= modal.find('.modalMain-slider-wrap'),
+				sliderModal 	= modal.find('.modal-main-slider-wrap'),
 				targetContent = $(elControl.data('target-content')).clone();
 
 		modal.modal('dispose');
@@ -1707,7 +1739,7 @@ $(document).ready(function() {
 			
 		});
 
-	$(document).on('click', '.modalMain-comments__curentImg', function(event) {
+	$(document).on('click', '.modal-main-comments__curentImg', function(event) {
 		var element = $(this);
 		$('#modalContentSlider')
 			.animate({
@@ -1926,7 +1958,7 @@ $(document).ready(function() {
 
 	$('.article.collapse, .card.collapse').on('show.bs.collapse', function(event) {
 		$(this).find('.card-full-slider-wrap').slick('unslick');
-		// $(this).addClass('modalMain-preload');
+		// $(this).addClass('modal-main-preload');
 		$('[data-target="#'+ $(this).attr('id') +'"]').addClass('active');
 		
 	});
@@ -1939,7 +1971,7 @@ $(document).ready(function() {
 		$('[data-target="#'+ $(this).attr('id') +'"]').addClass('active');
 		// setTimeout(function () {
 		// 	$('.preloader').fadeOut('300');
-		// 	element.removeClass('modalMain-preload');
+		// 	element.removeClass('modal-main-preload');
 		// }, 800)
 	});
 

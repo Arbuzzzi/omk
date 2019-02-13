@@ -1,0 +1,60 @@
+.form {
+	&-group {
+		label {
+			display: block;
+			color: #797c82;
+			font-size: 17px;
+			font-weight: 400;
+			margin-bottom: 10px;
+		}
+		select {
+			outline: none;
+			height: 41.2px;
+			&:focus {
+				outline: none;
+				box-shadow: none;
+				border: 1px solid #bcbdc0;
+			}
+		}
+	}
+	&-control {
+		border-radius: 5px;
+		border: 1px solid #bcbdc0;
+		width: 100%;
+		padding: 10px 15px;
+		color: #000000;
+		font-size: 16px;
+		font-weight: 400;
+		line-height: normal;
+
+		&::placeholder {
+			font-size: 12px;
+			font-weight: 300;
+			opacity: 1;
+			transition: opacity 0.4s;
+		}
+
+		&:focus {
+			outline: none !important;
+			box-shadow: none !important;
+			border: 1px solid #bcbdc0 !important;
+			&::placeholder {
+				opacity: 0;
+			}
+
+
+		}
+	}
+}
+.custom-select {
+	outline: none;
+	height: 41.2px;
+	&:focus {
+		outline: none;
+		box-shadow: none;
+		border: 1px solid #bcbdc0;
+	}
+}
+select.form-control:not([size]):not([multiple]) {
+	height: 41.2px;
+}

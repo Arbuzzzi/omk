@@ -4,8 +4,10 @@ block vars
 block content
 	include page/_page-special-title
 
-	- var cardSettings = {title: 'Галерея - "Видео"', cardSize: 'xl', imgUrl: 'img/img-full-360.png', advantClass: 'card__videobox'};
-	include cards/_cards-full-galery-img
+	include cards/_cards-full-galery-video
+
+	include modals/_modal-video
+
 	.cards
 		.card.card-full-head_special
 			.content-title

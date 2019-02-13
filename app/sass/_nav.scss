@@ -44,6 +44,11 @@
 				display: none;
 			}
 		}
+		&.mobile-hide {
+			@include xs-block {
+				display: none !important;
+			}
+		}
 	}
 	&__item {
 		color: $thin-color;

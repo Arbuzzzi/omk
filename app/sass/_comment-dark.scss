@@ -8,6 +8,10 @@
 	@include lg-block {
 		padding: 15px 30px;
 	}
+	@include xs-block {
+		margin-top: 15px;
+		padding: 15px 15px;
+	}
 	.content-titlebox {
 		color: #eeefef;
 	}
@@ -35,5 +39,18 @@
 		padding: 0 15px;
 		background-color: rgba(#fbfbfb, 0.3);
 		color: #eeefef;
+		font-size: 7px;
+		&__left {
+			@include xs-block {
+				font-size: 8px;
+				margin: 0;
+			}
+		}
+		&__username {
+			@include xs-block {
+				font-size: 6px;
+				margin: 0;
+			}
+		}
 	}
 }

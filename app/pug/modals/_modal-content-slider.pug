@@ -1,14 +1,15 @@
-#modalContentSlider.modal.fade.modalMain(tabindex='-1', role='dialog', aria-labelledby='modalImgBoxLabel', aria-hidden='true')
+#modalContentSlider.modal.fade.modal-main.modal-main-contents(tabindex='-1', role='dialog', aria-labelledby='modalImgBoxLabel', aria-hidden='true')
 	.modal-dialog.container(role='document')
 		.row
 			.col-xl-12
 				.modal-content
 					.preloader
 						.page-loader-circle
-					.modalMain__content
-						.modalMain-slider
-							#modalMainSliderTop.modalMain-slider-wrap
-						.modalMain-slider-title
-						.modalMain-slider.modalMain-slider-bottom
-							#modalMainSliderBottom.modalMain-slider-wrap
-						.modalMain-comments
+					.modal-main__content
+						.modal-main-slider
+							#modalMainSliderTop.modal-main-slider-wrap
+						.modal-main-slider-title
+						.modal-main-slider.modal-main-slider-bottom
+							#modalMainSliderBottom.modal-main-slider-wrap.modal-main-slider-wrap_bottom
+						.modal-main-comments
+							include _modal-content-comments

@@ -1,0 +1,124 @@
+.row
+	.col-12
+		.card
+			.content-titlebox_dark
+				h4 ФОРМЫ BOOTSTRAP
+.card.bg-color-light.padding-top-15.padding-bottom-15
+	.col-9
+		form
+			.form-group
+				label(for='exampleInputEmail1') Email address
+				input#exampleInputEmail1.form-control(type='email', aria-describedby='emailHelp', placeholder='Enter email')
+				small#emailHelp.form-text.text-muted We'll never share your email with anyone else.
+			.form-group
+				label(for='exampleInputPassword1') Password
+				input#exampleInputPassword1.form-control(type='password', placeholder='Password')
+		form
+			.form-row
+				.form-group.col-md-6
+					label(for='inputEmail4') Email
+					input#inputEmail4.form-control(type='email', placeholder='Email')
+				.form-group.col-md-6
+					label(for='inputPassword4') Password
+					input#inputPassword4.form-control(type='password', placeholder='Password')
+			.form-group
+				label(for='inputAddress') Address
+				input#inputAddress.form-control(type='text', placeholder='1234 Main St')
+			.form-group
+				label(for='inputAddress2') Address 2
+				input#inputAddress2.form-control(type='text', placeholder='Apartment, studio, or floor')
+			.form-row
+				.form-group.col-md-6
+					label(for='inputCity') City
+					input#inputCity.form-control(type='text')
+				.form-group.col-md-4
+					label(for='inputState') State
+					select#inputState.form-control
+						option(selected='') Choose...
+						option ...
+				.form-group.col-md-2
+					label(for='inputZip') Zip
+					input#inputZip.form-control(type='text')
+		form.form-inline.margin-bottom-15
+			label.my-1.mr-2(for='inlineFormCustomSelectPref') Preference
+			select#inlineFormCustomSelectPref.custom-select.my-1.mr-sm-2
+				option(selected='') Choose...
+				option(value='1') One
+				option(value='2') Two
+				option(value='3') Three
+		form.form-inline
+			.form-group
+				label(for='inputPassword6') Password
+				input#inputPassword6.form-control.mx-sm-3(type='password', aria-describedby='passwordHelpInline')
+				small#passwordHelpInline.text-muted
+					| Must be 8-20 characters long.
+		form
+			fieldset(disabled='')
+				.form-group
+					label(for='disabledTextInput') Disabled input
+					input#disabledTextInput.form-control(type='text', placeholder='Disabled input')
+				.form-group
+					label(for='disabledSelect') Disabled select menu
+					select#disabledSelect.form-control
+						option Disabled select
+
+		form.needs-validation(novalidate='')
+			.form-row
+				.form-group.col-md-4.mb-3
+					label(for='validationCustom01') First name
+					input#validationCustom01.form-control(type='text', placeholder='First name', value='Mark', required='')
+					.valid-feedback
+						| Looks good!
+				.form-group.col-md-4.mb-3
+					label(for='validationCustom02') Last name
+					input#validationCustom02.form-control(type='text', placeholder='Last name', value='Otto', required='')
+					.valid-feedback
+						| Looks good!
+				.form-group.col-md-4.mb-3
+					label(for='validationCustomUsername') Username
+					.input-group
+						.input-group-prepend
+							span#inputGroupPrepend.input-group-text @
+						input#validationCustomUsername.form-control(type='text', placeholder='Username', aria-describedby='inputGroupPrepend', required='')
+						.invalid-feedback
+							| Please choose a username.
+			.form-row
+				.col-md-6.mb-3
+					.form-group
+						label(for='validationCustom03') City
+						input#validationCustom03.form-control(type='text', placeholder='City', required='')
+						.invalid-feedback
+							| Please provide a valid city.
+				.col-md-3.mb-3
+					.form-group
+						label(for='validationCustom04') State
+						input#validationCustom04.form-control(type='text', placeholder='State', required='')
+						.invalid-feedback
+							| Please provide a valid state.
+				.col-md-3.mb-3
+					.form-group
+						label(for='validationCustom05') Zip
+						input#validationCustom05.form-control(type='text', placeholder='Zip', required='')
+						.invalid-feedback
+							| Please provide a valid zip.
+
+			button.button.button-width-142(type='submit') Submit form
+		script.
+			// Example starter JavaScript for disabling form submissions if there are invalid fields
+			(function (){
+				'use strict';
+				window.addEventListener('load', function (){
+					// Fetch all the forms we want to apply custom Bootstrap validation styles to
+					var forms = document.getElementsByClassName('needs-validation');
+					// Loop over them and prevent submission
+					var validation = Array.prototype.filter.call(forms, function (form){
+						form.addEventListener('submit', function (event){
+							if (form.checkValidity() === false){
+								event.preventDefault();
+								event.stopPropagation();
+							}
+							form.classList.add('was-validated');
+						}, false);
+					});
+				}, false);
+			})();
