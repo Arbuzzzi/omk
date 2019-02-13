@@ -82,23 +82,23 @@ gulp.task('watch', ['browser-sync'], function() {
 
 gulp.task('optimize', function () {
     gulp.src([ // Берем CSS 
-        'app/css/*.css',
-        'app/css/*.min.css',
-        '!app/css/font.css'
+        'app/css/**/**/*.css',
+        'app/css/**/**/*.min.css',
+        '!app/css/font.css',
         ])
         .pipe(gcmq()) // Группируем медиа
         //.pipe(autoprefixer(['last 15 versions', '> 1%', 'ie 8', 'ie 7'], { cascade: true })) // Создаем префиксы
         .pipe(cleanCSS({compatibility: 'ie8'})) // Минимизируем CSS
         .pipe(gulp.dest('app/min/css'));
         
-    gulp.src(['app/js/main/*.js']) // Минимизируем JS
+    gulp.src(['app/js/*.js']) // Минимизируем JS
         .pipe(jsmin())
-        .pipe(gulp.dest('app/min/js/main'));
+        .pipe(gulp.dest('app/min/js'));
 
 });
 
 gulp.task('minjs', function () {
-    gulp.src('app/**/*.js')
+    gulp.src('app/js/**/*.js')
         .pipe(jsmin())
         .pipe(gulp.dest('app/min/js'));
 });
@@ -106,21 +106,24 @@ gulp.task('minjs', function () {
 gulp.task('clean', function() {
     return del.sync('dist'); // Удаляем папку dist перед сборкой
 });
+gulp.task('clean-min', function() {
+    return del.sync('app/min'); // Удаляем папку min перед сборкой
+});
 
 gulp.task('tinypng', function () {
     gulp.src([
         'app/img/**/*',
         '!app/img/**/*.svg'])
-        .pipe(tingpng('CUGSOlLz2kMP92hbJnXAM8gVHI461wLZ'))
+        .pipe(tingpng(''))
         .pipe(gulp.dest('app/min/img'));
     gulp.src('app/img/**/*.svg')
         .pipe(gulp.dest('app/min/img'));
 });
 
-gulp.task('build', ['clean', 'font', 'optimize'], function() {
+gulp.task('build', ['clean', 'optimize'], function() {
     var buildCss = gulp.src([ // Переносим библиотеки в продакшен
-        'app/min/css/*.css',
-        'app/min/css/*.min.css',
+        'app/min/css/**/*.css',
+        'app/min/css/**/*.min.css',
         '!app//min/css/font.css'
         ])
     .pipe(gulp.dest('dist/css'));
@@ -131,28 +134,24 @@ gulp.task('build', ['clean', 'font', 'optimize'], function() {
     var buildHtml = gulp.src('app/*.html') // Переносим HTML в продакшен
     .pipe(gulp.dest('dist'));
 
-    var buildJs = gulp.src('app/js/**/*') // Переносим js в продакшен
-    .pipe(gulp.dest('dist/js'));    
+    // var buildJs = gulp.src('app/js/**/*') // Переносим js в продакшен
+    // .pipe(gulp.dest('dist/js'));
 
     var buildSlick = gulp.src('app/slick/**/*') // Переносим slick в продакшен
     .pipe(gulp.dest('dist/slick'));
 
-    var buildJs = gulp.src('app/min/js/main/**/*') // Переносим js в продакшен
-    .pipe(gulp.dest('dist/js/main'));
+    var buildJs = gulp.src('app/min/js/**/*') // Переносим js в продакшен
+    .pipe(gulp.dest('dist/js'));
 
-    var buildImg = gulp.src('app/min/img/**/*') // Переносим IMG в продакшен
+    var buildImg = gulp.src('app/img/**/*') // Переносим IMG в продакшен
     .pipe(gulp.dest('dist/img'));
 
-});
+    var buildImg = gulp.src('app/ie9/**/*') // Переносим ie9 в продакшен
+    .pipe(gulp.dest('dist/ie9'));
 
-gulp.task('ftp', function () {
-    return gulp.src('dist/**/*')
-        .pipe(ftp({
-            host: '88.99.148.81',
-            user: 'safon116',
-            pass: 'mRhJ064zwv',
-            remotePath: '/www/safonov-vladimir.ru/les_16'
-        }))
+    var buildImg = gulp.src('app/jquery-ui-1.12.1.custom/**/*') // Переносим jquery-ui-1.12.1.custom в продакшен
+    .pipe(gulp.dest('dist/jquery-ui-1.12.1.custom'));
+
 });
 
 gulp.task('clear', function () {
@@ -164,4 +163,3 @@ gulp.task('default', ['watch']);
 //  Команды в окне команд:
 //  "gulp" - запускаем watch
 //  "gulp build" - выгружаем готовый проект в папку dist
-//  "gulp ftp" - заливаем папку dist по ftp на хостинг
