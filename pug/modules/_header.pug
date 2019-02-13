@@ -292,7 +292,7 @@ header.header
 					a.link(href='#')
 						| Вопрос 
 						br
-						|                 Руководству
+						|	Руководству
 			.header-box__item.header-box__search
 				.header-visit
 					p Просмотров 1 235 666 / Посетители 257 889
@@ -307,7 +307,7 @@ header.header
 					.header-info__time.info-wrap.info__time 09:49
 					.header-info-wrap
 						.header-info__weather.info__weather Ясно, +26 С
-						.header-info__location.info__location Челябинск
+						.header-info__location.info__location Нижний новгород
 				.header-user.user
 					.header-user__box.user__box
 						.header-user__avatar.user__avatar
@@ -323,7 +323,7 @@ header.header
 						button#btnDeploy.header-button.button.button-deploy Развернуть
 						// <button id="btnToTop" class="header-button button button-toTop">Наверх</button>
 						// /.header-box
-						button.button-burg.margin-left-20(data-toggle='collapse', data-target='#menu-nav-headerGroup', type='button')
+						button.button-burg.margin-left-20(data-toggle='collapse', data-target='#menu-nav-headerGroup', type='button', aria-haspopup='true', aria-expanded='false')
 							span
 		nav.header-nav-system
 			#header-nav.header-nav-system-wrap.collapse.show

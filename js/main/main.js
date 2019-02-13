@@ -88,18 +88,17 @@ $(document).ready(function() {
 
 	// menu-burger ---------------------------------------------------------------------------------------------------
 	$('#menu-nav-headerGroup').on('show.bs.collapse', function(e) {
-		var elID = $(this).attr('id'),
-				elControl = $('button.button-burg[data-target="#'+elID+'"]');
-				// elControl = $(e.relatedTarget);
+		var menuNavHeader = $(this).parents('.menu-nav-header');
 
-		// $(elControl).addClass('active');
+		$(menuNavHeader).addClass('show');
+
 
 	});
 
-	$('#menu-nav-headerGroup').on('hide.bs.collapse', function(e) {
-		var elID = $(this).attr('id'),
-				elControl = $('button.button-burg[data-target="#'+elID+'"]');
-		// $(elControl).removeClass('active');
+	$('#menu-nav-headerGroup').on('hidden.bs.collapse', function(e) {
+		var menuNavHeader = $(this).parents('.menu-nav-header');
+
+		$(menuNavHeader).removeClass('show');
 
 	});
 
@@ -115,17 +114,17 @@ $(document).ready(function() {
 		$('.header').css('transform', '');
 	});
 
-	$(document).click(function() {
-		if (event !== undefined) {
-			if (!$(event.target).is("#menu-nav-more *")) {
-				var current = $('#menu-nav-more').find('.current');
-				if ($('#menu-nav-headerGroup').hasClass('show')) {
-					current.parents('.collapse').collapse('show');
-				}
-				$('#menu-nav-headerGroup').collapse('hide');
-			}
-		}
-	});
+	// $(document).click(function(event) {
+	// 	if (event !== undefined) {
+	// 		if (!$(event.target).is("#menu-nav-more *")) {
+	// 			var current = $('#menu-nav-more').find('.current');
+	// 			if ($('#menu-nav-headerGroup').hasClass('show')) {
+	// 				current.parents('.collapse').collapse('show');
+	// 			}
+	// 			$('#menu-nav-headerGroup').collapse('hide');
+	// 		}
+	// 	}
+	// });
 
 	function cahgeTrueFalse(argument) {
 		return !argument;
@@ -155,6 +154,7 @@ $(document).ready(function() {
 		var btn = $('#header-navControl');
 		btn.removeClass('active')
 	});
+
 	$(document).on('click', function(e){
 		var el = e.target;
 		var headerNav = $(el).parents('#header-nav');
@@ -163,6 +163,7 @@ $(document).ready(function() {
 			$('#header-nav').collapse('hide');
 		}
 	});
+
 
 	// разворачиваем меню
 	$('#btnDeploy').click(function(event) {
@@ -539,6 +540,26 @@ $(document).ready(function() {
 	$(document).on('click', 'a.event, a.calendar__link', function(event) {
 		var link = $(this).attr('href');
 		var elementToScroll = $('#' + link.split('#')[1]);
+
+		if (elementToScroll !== undefined && elementToScroll !== null && elementToScroll !== '') {
+			scrollTo(elementToScroll);
+		}
+		// var elementToScrollPos = elementToScroll.offset().top;
+		// var headerHeight = $('.header').outerHeight(); // высота хэдера
+		// if (elementToScrollPos < positionTwo) {
+		// 	elementToScrollPos = elementToScroll.offset().top - headerHeight - 45;
+		// } else {
+		// 	elementToScrollPos = elementToScroll.offset().top - 90;
+		// }
+		//
+		// if (elementToScroll !== undefined) {
+		// 	$('html:not(:animated),body:not(:animated)').animate({scrollTop: elementToScrollPos}, 800);
+		// 	// event.preventDefault();
+		// 	return false;
+		// }
+	});
+	function scrollTo ($elementToScroll) {
+		var elementToScroll = $($elementToScroll);
 		var elementToScrollPos = elementToScroll.offset().top;
 		var headerHeight = $('.header').outerHeight(); // высота хэдера
 		if (elementToScrollPos < positionTwo) {
@@ -546,12 +567,13 @@ $(document).ready(function() {
 		} else {
 			elementToScrollPos = elementToScroll.offset().top - 90;
 		}
-		if (elementToScroll !== undefined) {
-			event.preventDefault();
-			$('html:not(:animated),body:not(:animated)').animate({scrollTop: elementToScrollPos}, 800);
-		}
-	});
 
+		if (elementToScroll !== undefined) {
+			$('html:not(:animated),body:not(:animated)').animate({scrollTop: elementToScrollPos}, 800);
+			// event.preventDefault();
+			return false;
+		}
+	}
 
 
 	// заказчик попросил чтобы при клике на пустую ссылку ничего не происходило
@@ -569,7 +591,6 @@ $(document).ready(function() {
 	//location.hash = ''; //очищаем хеш
 	$(window).on('load', function() {
 		var headerHeight = $('.header').outerHeight(); // высота хэдера
-
 		if(myHash[1] !== undefined && myHash[1] !== '#'){ //проверяем, есть ли в хеше какое-то значение
 			var elementToScrolling = $(myHash).offset().top;
 			if (elementToScrolling < positionTwo) {
@@ -714,7 +735,7 @@ $(document).ready(function() {
 	// ставим лайки
 	$(document).on('click', '.like-button:not(.comment-button)', function(event) {
 		$(this).toggleClass('active');
-		console.log('test');
+
 	});
 
 	// скрываем показываем фильтры
@@ -882,20 +903,23 @@ $(document).ready(function() {
 	var eventsDates = [{
 			date: new Date('02/6/2019'),
 			tooltip: "<p>День металлурга</p>",
-			link: "calendar.html#events-14-10-2018",
-			eventItem: '#event-6'
+			link: "calendar.html",
+			eventItem: '#event-6',
+			generalItem: '#events-06-10-2018'
 		},
 		{
 			date: new Date('02/14/2019'),
 			tooltip: "<p>День металлурга</p><p>День металлурга 2</p>",
-			link: "calendar2.html#events-14-10-2018",
-			eventItem: '#event-14'
+			link: "calendar2.html",
+			eventItem: '#event-14',
+			generalItem: '#events-14-10-2018',
 		},
 		{
 			date: new Date('02/24/2019'),
 			tooltip: "<p>День металлурга3</p><p>День металлурга 5</p><p>День металлурга 5</p><p>День металлурга 5</p><p>День металлурга 5</p><p>День металлурга 5</p><p>День металлурга 5</p><p>День металлурга 5</p><p>День металлурга 5</p><p>День металлурга3</p><p>День металлурга 5</p><p>День металлурга 5</p><p>День металлурга 5</p><p>День металлурга 5</p><p>День металлурга 5</p><p>День металлурга 5</p><p>День металлурга 5</p><p>День металлурга 5</p>",
-			link: "calendar3.html#events-24-10-2018",
-			eventItem: '#event-24'
+			link: "calendar3.html",
+			eventItem: '#event-24',
+			generalItem: '#events-24-10-2018'
 		},
 
 	];
@@ -926,13 +950,20 @@ $(document).ready(function() {
 				month: '2-digit',
 				day: '2-digit',
 			};
-
+			var locationHash = document.location.hash;
+			var locationPathname = document.location.pathname;
 
 			for (var i = 0; i < eventsDates.length; i++)  {
 				var event = eventsDates[i];
 				if (dateString === event.date.toLocaleString("ru", options)) {
 					if (event.link !== undefined && event.link !== null) {
-						document.location.href = event.link;
+						if (locationPathname === '/'+event.link) {
+							scrollTo(event.generalItem);
+						} else {
+							document.location.href = event.link+event.generalItem;
+						}
+
+
 					}
 
 				}
@@ -990,8 +1021,7 @@ $(document).ready(function() {
 				day: '2-digit',
 			};
 
-			console.log(item);
-			console.log(this);
+
 			for (var i = 0; i < eventsDates.length; i++)  {
 				var event = eventsDates[i];
 				if (dateString === event.date.toLocaleString("ru", options)) {
@@ -1026,7 +1056,7 @@ $(document).ready(function() {
 			calendar = element.find('.ui-datepicker-calendar'),
 			eventElementControl = element.parent().find('.event-control');
 
-		console.log(eventElements);
+
 		element.addClass('show-event');
 		eventElements.addClass('active');
 		eventElementArr.hide();
@@ -1093,7 +1123,7 @@ $(document).ready(function() {
 		// нажимаем на кнопку скрыть
 		eventElementControl.click(function(event) {
 			element.removeClass('show-event');
-			clearTimeout(setTimer);
+			// clearTimeout(setTimer);
 			element.find('.event-nav').detach();
 			eventElements.animate({opacity: 'hide'}, 150);
 			eventElementControl.animate({opacity: 'hide'}, 150, function () {
@@ -1183,6 +1213,7 @@ $(document).ready(function() {
 		setTimeout(function () {
 			$('.preloader').fadeOut('300', function (){
 				// $(item).css('position', '');
+				$(this).remove();
 			});
 
 		}, 400)

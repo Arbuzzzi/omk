@@ -257,6 +257,9 @@
 		}
 		@media (max-width: 767.98px) {
 			display: none;
+			&.show {
+				display: block;
+			}
 		}
 		@include sm-block {
 			position: static;
