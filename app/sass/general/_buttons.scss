@@ -115,6 +115,15 @@
 		color: darken(#008330, 10);
 	}
 }
+.page-link {
+	color: #5e6167;
+	@include hover {
+		color: #5e6167;
+	}
+	&:focus {
+		box-shadow: none;
+	}
+}
 
 // кнопка с заливкой
 .button {
