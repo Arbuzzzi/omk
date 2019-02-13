@@ -80,8 +80,8 @@ gulp.task('watch', ['browser-sync'], function() {
 });
 
 
-gulp.task('optimize', function () {
-    gulp.src([ // Берем CSS 
+gulp.task('optimize', ['clean-min', 'minjs'], function () {
+    return gulp.src([ // Берем CSS
         'app/css/**/**/*.css',
         'app/css/**/**/*.min.css',
         '!app/css/font.css',
@@ -91,14 +91,14 @@ gulp.task('optimize', function () {
         .pipe(cleanCSS({compatibility: 'ie8'})) // Минимизируем CSS
         .pipe(gulp.dest('app/min/css'));
         
-    gulp.src(['app/js/*.js']) // Минимизируем JS
-        .pipe(jsmin())
-        .pipe(gulp.dest('app/min/js'));
+    // gulp.src(['app/js/**/*.js']) // Минимизируем JS
+    //     .pipe(jsmin())
+    //     .pipe(gulp.dest('app/min/js'));
 
 });
 
 gulp.task('minjs', function () {
-    gulp.src('app/js/**/*.js')
+    return gulp.src('app/js/**/*.js')
         .pipe(jsmin())
         .pipe(gulp.dest('app/min/js'));
 });
@@ -114,7 +114,7 @@ gulp.task('tinypng', function () {
     gulp.src([
         'app/img/**/*',
         '!app/img/**/*.svg'])
-        .pipe(tingpng(''))
+        .pipe(tingpng('')) // вставьте свой api_key
         .pipe(gulp.dest('app/min/img'));
     gulp.src('app/img/**/*.svg')
         .pipe(gulp.dest('app/min/img'));
@@ -146,10 +146,13 @@ gulp.task('build', ['clean', 'optimize'], function() {
     var buildImg = gulp.src('app/img/**/*') // Переносим IMG в продакшен
     .pipe(gulp.dest('dist/img'));
 
-    var buildImg = gulp.src('app/ie9/**/*') // Переносим ie9 в продакшен
+    var buildImgMin = gulp.src('app/min/img/**/*') // Переносим IMG в продакшен
+    .pipe(gulp.dest('dist/img'));
+
+    var buildIe9 = gulp.src('app/ie9/**/*') // Переносим ie9 в продакшен
     .pipe(gulp.dest('dist/ie9'));
 
-    var buildImg = gulp.src('app/jquery-ui-1.12.1.custom/**/*') // Переносим jquery-ui-1.12.1.custom в продакшен
+    var buildUi = gulp.src('app/jquery-ui-1.12.1.custom/**/*') // Переносим jquery-ui-1.12.1.custom в продакшен
     .pipe(gulp.dest('dist/jquery-ui-1.12.1.custom'));
 
 });
