@@ -12,7 +12,7 @@ var gulp 		 		 = require('gulp'), // Подключаем Gulp
     jsmin        = require('gulp-jsmin'), // Минимизируем JS
     gcmq 		 		 = require('gulp-group-css-media-queries'), // Группируем media-queries
     notify       = require('gulp-notify'), // Обработка ошибок
-    tingpng      = require('gulp-tinypng'), // Сжимаем изображения
+    //tingpng      = require('gulp-tinypng'), // Сжимаем изображения
     sourcemaps   = require('gulp-sourcemaps'),
     pug          = require('gulp-pug');
      
@@ -109,16 +109,16 @@ gulp.task('clean', function() {
 gulp.task('clean-min', function() {
     return del.sync('app/min'); // Удаляем папку min перед сборкой
 });
-
-gulp.task('tinypng', function () {
-    gulp.src([
-        'app/img/**/*',
-        '!app/img/**/*.svg'])
-        .pipe(tingpng('')) // вставьте свой api_key
-        .pipe(gulp.dest('app/min/img'));
-    gulp.src('app/img/**/*.svg')
-        .pipe(gulp.dest('app/min/img'));
-});
+//
+// gulp.task('tinypng', function () {
+//     gulp.src([
+//         'app/img/**/*',
+//         '!app/img/**/*.svg'])
+//         .pipe(tingpng('')) // вставьте свой api_key
+//         .pipe(gulp.dest('app/min/img'));
+//     gulp.src('app/img/**/*.svg')
+//         .pipe(gulp.dest('app/min/img'));
+// });
 
 gulp.task('build', ['clean', 'optimize'], function() {
     var buildCss = gulp.src([ // Переносим библиотеки в продакшен
