@@ -9,27 +9,26 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "browser-sync": "^2.18.13",
+    "browser-sync": "^2.26.3",
     "del": "^3.0.0",
-    "gulp": "^3.9.1",
+    "gulp": "^4.0.0",
     "gulp-autoprefixer": "^6.0.0",
-    "gulp-cache": "^1.0.1",
-    "gulp-clean-css": "^3.9.4",
+    "gulp-cache": "^1.1.1",
+    "gulp-clean-css": "^4.0.0",
     "gulp-concat": "^2.6.1",
     "gulp-ftp": "^1.1.0",
     "gulp-group-css-media-queries": "^1.2.2",
     "gulp-jsmin": "^0.1.5",
     "gulp-notify": "^3.2.0",
     "gulp-pug": "^4.0.1",
-    "gulp-rename": "^1.2.2",
+    "gulp-rename": "^1.4.0",
     "gulp-sass": "^4.0.2",
-    "gulp-tinypng": "^1.0.2",
     "gulp-uglifyjs": "^0.6.2",
-    "smart-grid": "^2.0.1"
+    "smart-grid": "^2.1.2"
   },
   "dependencies": {
     "gulp-sourcemaps": "^2.6.4",
     "jquery": "^3.3.1",
-    "popper.js": "^1.14.5"
+    "popper.js": "^1.14.7"
   }
 }
