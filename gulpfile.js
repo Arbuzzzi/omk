@@ -83,35 +83,35 @@ gulp.task('watch', function() {
     gulp.watch('app/**/*.js', browserSync.reload);   // Наблюдение за JS файлами в папке js
 });
 
-gulp.task('minjs', function () {
+gulp.task('min-js', function () {
     return gulp.src('app/js/**/*.js')
       .pipe(jsmin())
       .pipe(gulp.dest('app/min/js'));
 });
 
-gulp.task('clean', function() {
-    return del.sync('dist'); // Удаляем папку dist перед сборкой
+gulp.task('clean', function(done) {
+    del.sync('dist'); // Удаляем папку dist перед сборкой
+    done();
 });
-gulp.task('clean-min', function() {
-    return del.sync('app/min'); // Удаляем папку min перед сборкой
+gulp.task('clean-min', function(done) {
+    del.sync('app/min'); // Удаляем папку min перед сборкой
+    done();
 });
 
-gulp.task('optimize', gulp.series('clean-min', 'minjs'), function () {
-    return gulp.src([ // Берем CSS
+gulp.task('min-css', function(done) {
+    gulp.src([ // Берем CSS
         'app/css/**/**/*.css',
         'app/css/**/**/*.min.css',
         '!app/css/font.css',
-        ])
-        .pipe(gcmq()) // Группируем медиа
-        //.pipe(autoprefixer(['last 15 versions', '> 1%', 'ie 8', 'ie 7'], { cascade: true })) // Создаем префиксы
-        .pipe(cleanCSS({compatibility: 'ie8'})) // Минимизируем CSS
-        .pipe(gulp.dest('app/min/css'));
-        
-    // gulp.src(['app/js/**/*.js']) // Минимизируем JS
-    //     .pipe(jsmin())
-    //     .pipe(gulp.dest('app/min/js'));
-
+    ])
+      .pipe(gcmq()) // Группируем медиа
+      //.pipe(autoprefixer(['last 15 versions', '> 1%', 'ie 8', 'ie 7'], { cascade: true })) // Создаем префиксы
+      .pipe(cleanCSS({compatibility: 'ie8'})) // Минимизируем CSS
+      .pipe(gulp.dest('app/min/css'));
+    done();
 });
+
+gulp.task('optimize', gulp.series('clean-min', 'min-js', 'min-css'));
 
 
 //
@@ -125,42 +125,44 @@ gulp.task('optimize', gulp.series('clean-min', 'minjs'), function () {
 //         .pipe(gulp.dest('app/min/img'));
 // });
 
-gulp.task('build', gulp.series('clean', 'optimize'), function() {
-    var buildCss = gulp.src([ // Переносим библиотеки в продакшен
+gulp.task('build', gulp.series('clean', 'optimize', function(done) {
+    gulp.src([ // Переносим библиотеки в продакшен
         'app/min/css/**/*.css',
         'app/min/css/**/*.min.css',
-        '!app//min/css/font.css'
+        '!app/min/css/font.css'
         ])
     .pipe(gulp.dest('dist/css'));
 
-    var buildFonts = gulp.src('app/fonts/**/*') // Переносим шрифты в продакшен
+    gulp.src('app/fonts/**/*') // Переносим шрифты в продакшен
     .pipe(gulp.dest('dist/fonts'));
 
-    var buildHtml = gulp.src('app/*.html') // Переносим HTML в продакшен
+    gulp.src('app/*.html') // Переносим HTML в продакшен
     .pipe(gulp.dest('dist'));
 
     // var buildJs = gulp.src('app/js/**/*') // Переносим js в продакшен
     // .pipe(gulp.dest('dist/js'));
 
-    var buildSlick = gulp.src('app/slick/**/*') // Переносим slick в продакшен
+    gulp.src('app/slick/**/*') // Переносим slick в продакшен
     .pipe(gulp.dest('dist/slick'));
 
-    var buildJs = gulp.src('app/min/js/**/*') // Переносим js в продакшен
+    gulp.src('app/min/js/**/*') // Переносим js в продакшен
     .pipe(gulp.dest('dist/js'));
 
-    var buildImg = gulp.src('app/img/**/*') // Переносим IMG в продакшен
+    gulp.src('app/img/**/*') // Переносим IMG в продакшен
     .pipe(gulp.dest('dist/img'));
 
-    var buildImgMin = gulp.src('app/min/img/**/*') // Переносим IMG в продакшен
+    gulp.src('app/min/img/**/*') // Переносим IMG в продакшен
     .pipe(gulp.dest('dist/img'));
 
-    var buildIe9 = gulp.src('app/ie9/**/*') // Переносим ie9 в продакшен
+    gulp.src('app/ie9/**/*') // Переносим ie9 в продакшен
     .pipe(gulp.dest('dist/ie9'));
 
-    var buildUi = gulp.src('app/jquery-ui-1.12.1.custom/**/*') // Переносим jquery-ui-1.12.1.custom в продакшен
+    gulp.src('app/jquery-ui-1.12.1.custom/**/*') // Переносим jquery-ui-1.12.1.custom в продакшен
     .pipe(gulp.dest('dist/jquery-ui-1.12.1.custom'));
 
-});
+    done();
+
+}));
 
 gulp.task('clear', function () {
     return cache.clearAll();
