@@ -14,8 +14,11 @@ var gulp 		 		 = require('gulp'), // Подключаем Gulp
     notify       = require('gulp-notify'), // Обработка ошибок
     //tingpng      = require('gulp-tinypng'), // Сжимаем изображения
     sourcemaps   = require('gulp-sourcemaps'),
-    pug          = require('gulp-pug');
-     
+    pug          = require('gulp-pug'),
+
+    pugUse       = true, // если не исползуется pug поставить false
+    sassUse      = true; // если не исползуется sass поставить false
+
 
 
 gulp.task('sass', function(){ // Создаем таск Sass
@@ -33,7 +36,7 @@ gulp.task('sass', function(){ // Создаем таск Sass
         
 });
 
-gulp.task('sass-watch', ['sass'], function (done) {
+gulp.task('sass-watch', gulp.series('sass'), function (done) {
     browserSync.reload();
     done();
 });
@@ -48,9 +51,10 @@ gulp.task('pug-w', function buildHTML() {
         title  : "pug Error!"
       })) )
   .pipe(gulp.dest('app'))
+  .pipe(browserSync.reload({stream: true}))
 });
 
-gulp.task('pug-watch', ['pug-w'], function (done) {
+gulp.task('pug-watch', gulp.series('pug-w'), function (done) {
     browserSync.reload();
     done();
 });
@@ -70,17 +74,29 @@ gulp.task('ie9', function() {
     gulp.src('app/css/style-ie9.css').pipe(gulp.dest('app/ie9/css'));
 });
 
-gulp.task('watch', ['browser-sync'], function() {
-    gulp.watch('app/css/style-ie9.css', ['ie9']);
-    gulp.watch('app/sass/**/**/*.+(scss|sass)', ['sass-watch']); // Наблюдение за sass файлами в папке sass
-    gulp.watch('app/**/*.pug', ['pug-watch']); // Наблюдение за PUG файлами в корне проекта
-    // gulp.watch('app/*.html', browserSync.reload); // Наблюдение за HTML файлами в корне проекта
-    // gulp.watch('app/**/*.css', browserSync.reload); // Наблюдение за CSS файлами в корне проекта
+gulp.task('watch', function() {
+    if (sassUse) gulp.watch('app/css/style-ie9.css', gulp.series('ie9'));
+    if (sassUse) gulp.watch('app/sass/**/**/*.+(scss|sass)', gulp.series('sass-watch')); // Наблюдение за sass файлами в папке sass
+    if (pugUse) gulp.watch('app/**/*.pug', gulp.series('pug-watch')); // Наблюдение за PUG файлами в корне проекта
+    if (!pugUse) gulp.watch('app/*.html', browserSync.reload); // Наблюдение за HTML файлами в корне проекта
+    if (!sassUse) gulp.watch('app/**/*.css', browserSync.reload); // Наблюдение за CSS файлами в корне проекта
     gulp.watch('app/**/*.js', browserSync.reload);   // Наблюдение за JS файлами в папке js
 });
 
+gulp.task('minjs', function () {
+    return gulp.src('app/js/**/*.js')
+      .pipe(jsmin())
+      .pipe(gulp.dest('app/min/js'));
+});
 
-gulp.task('optimize', ['clean-min', 'minjs'], function () {
+gulp.task('clean', function() {
+    return del.sync('dist'); // Удаляем папку dist перед сборкой
+});
+gulp.task('clean-min', function() {
+    return del.sync('app/min'); // Удаляем папку min перед сборкой
+});
+
+gulp.task('optimize', gulp.series('clean-min', 'minjs'), function () {
     return gulp.src([ // Берем CSS
         'app/css/**/**/*.css',
         'app/css/**/**/*.min.css',
@@ -97,18 +113,7 @@ gulp.task('optimize', ['clean-min', 'minjs'], function () {
 
 });
 
-gulp.task('minjs', function () {
-    return gulp.src('app/js/**/*.js')
-        .pipe(jsmin())
-        .pipe(gulp.dest('app/min/js'));
-});
 
-gulp.task('clean', function() {
-    return del.sync('dist'); // Удаляем папку dist перед сборкой
-});
-gulp.task('clean-min', function() {
-    return del.sync('app/min'); // Удаляем папку min перед сборкой
-});
 //
 // gulp.task('tinypng', function () {
 //     gulp.src([
@@ -120,7 +125,7 @@ gulp.task('clean-min', function() {
 //         .pipe(gulp.dest('app/min/img'));
 // });
 
-gulp.task('build', ['clean', 'optimize'], function() {
+gulp.task('build', gulp.series('clean', 'optimize'), function() {
     var buildCss = gulp.src([ // Переносим библиотеки в продакшен
         'app/min/css/**/*.css',
         'app/min/css/**/*.min.css',
@@ -159,9 +164,9 @@ gulp.task('build', ['clean', 'optimize'], function() {
 
 gulp.task('clear', function () {
     return cache.clearAll();
-})
+});
 
-gulp.task('default', ['watch']);
+gulp.task('default', gulp.parallel('watch', 'browser-sync'));
 
 //  Команды в окне команд:
 //  "gulp" - запускаем watch
