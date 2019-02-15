@@ -37,7 +37,7 @@ gulp.task('sass', function(){ // Создаем таск Sass
 });
 
 gulp.task('sass-watch', gulp.series('sass'), function (done) {
-    browserSync.reload();
+    // browserSync.reload();
     done();
 });
 
@@ -55,7 +55,7 @@ gulp.task('pug-w', function buildHTML() {
 });
 
 gulp.task('pug-watch', gulp.series('pug-w'), function (done) {
-    browserSync.reload();
+    // browserSync.reload();
     done();
 });
 
