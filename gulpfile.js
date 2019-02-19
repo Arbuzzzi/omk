@@ -111,7 +111,7 @@ gulp.task('min-css', function(done) {
     done();
 });
 
-gulp.task('optimize', gulp.series('clean-min', 'min-js', 'min-css'));
+gulp.task('optimize', gulp.series('clean-min', 'min-css', 'min-js'));
 
 
 //
@@ -126,12 +126,6 @@ gulp.task('optimize', gulp.series('clean-min', 'min-js', 'min-css'));
 // });
 
 gulp.task('build', gulp.series('clean', 'optimize', function(done) {
-    gulp.src([ // Переносим библиотеки в продакшен
-        'app/min/css/**/*.css',
-        'app/min/css/**/*.min.css',
-        '!app/min/css/font.css'
-        ])
-    .pipe(gulp.dest('dist/css'));
 
     gulp.src('app/fonts/**/*') // Переносим шрифты в продакшен
     .pipe(gulp.dest('dist/fonts'));
@@ -156,6 +150,9 @@ gulp.task('build', gulp.series('clean', 'optimize', function(done) {
 
     gulp.src('app/ie9/**/*') // Переносим ie9 в продакшен
     .pipe(gulp.dest('dist/ie9'));
+
+    gulp.src('app/min/css/**/*') // Переносим css в продакшен
+      .pipe(gulp.dest('dist/css'));
 
     gulp.src('app/jquery-ui-1.12.1.custom/**/*') // Переносим jquery-ui-1.12.1.custom в продакшен
     .pipe(gulp.dest('dist/jquery-ui-1.12.1.custom'));
