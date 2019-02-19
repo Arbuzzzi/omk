@@ -149,6 +149,10 @@ $(document).ready(function() {
 			$('.header-nav-system-wrap').removeClass('mobile-hide');
 		}, 300)
 	}
+	if (!mobile) {
+		$('.header-nav-system-wrap').addClass('show')
+		$('#header-navControl').addClass('active');
+	}
 	// системы показываются
 	$('#header-nav').on('shown.bs.collapse', function () {
 		var btn = $('#header-navControl');
@@ -402,6 +406,10 @@ $(document).ready(function() {
 		var position = $(this).scrollTop(),
 				heightHeader = $('.header:not(.header.scroll)').outerHeight(),
 				positionContentEvent = $('.content').offset().top;
+		
+		if (mobile && $('#header-nav').hasClass('show')) {
+			$('#header-nav').collapse('hide');
+		}
 
 		if (position > currentScroll) { //скроллим вниз
 			if ($('#aside').css('margin-top') == '1px') {
