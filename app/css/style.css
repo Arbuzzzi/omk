@@ -1403,6 +1403,11 @@ h2 span,
   text-align: right;
 }
 
+[class*=text-ddd],
+.card__title {
+  overflow: hidden;
+}
+
 .link {
   display: inline-block;
   color: #797c82;
@@ -1721,7 +1726,7 @@ h2 span,
 
 .button-tag {
   min-width: 60px;
-  max-width: 149px;
+  max-width: 150px;
   padding: 2px 6px 2px;
   background-color: #bcbdc0;
   color: #ffffff;
@@ -2019,16 +2024,6 @@ h2 span,
   transition: opacity 0.4s;
 }
 
-.form__input::-moz-placeholder,
-.form__textarea::-moz-placeholder {
-  font-size: 12px;
-  font-weight: 300;
-  opacity: 1;
-  -webkit-transition: opacity 0.4s;
-  -o-transition: opacity 0.4s;
-  transition: opacity 0.4s;
-}
-
 .form__input:-ms-input-placeholder,
 .form__textarea:-ms-input-placeholder {
   font-size: 12px;
@@ -2061,11 +2056,6 @@ h2 span,
 
 .form__input:focus::-webkit-input-placeholder,
 .form__textarea:focus::-webkit-input-placeholder {
-  opacity: 0;
-}
-
-.form__input:focus::-moz-placeholder,
-.form__textarea:focus::-moz-placeholder {
   opacity: 0;
 }
 
@@ -2547,15 +2537,6 @@ h2 span,
   transition: opacity 0.4s;
 }
 
-.form-control::-moz-placeholder {
-  font-size: 12px;
-  font-weight: 300;
-  opacity: 1;
-  -webkit-transition: opacity 0.4s;
-  -o-transition: opacity 0.4s;
-  transition: opacity 0.4s;
-}
-
 .form-control:-ms-input-placeholder {
   font-size: 12px;
   font-weight: 300;
@@ -2591,10 +2572,6 @@ h2 span,
 }
 
 .form-control:focus::-webkit-input-placeholder {
-  opacity: 0;
-}
-
-.form-control:focus::-moz-placeholder {
   opacity: 0;
 }
 
@@ -2990,10 +2967,10 @@ select.form-control:not([size]):not([multiple]) {
           align-items: center;
   width: 100%;
   -webkit-box-flex: 0;
-  -webkit-flex: 0 0 25%;
-      -ms-flex: 0 0 25%;
-          flex: 0 0 25%;
-  max-width: 25%;
+  -webkit-flex: 0 0 24%;
+      -ms-flex: 0 0 24%;
+          flex: 0 0 24%;
+  max-width: 24%;
 }
 
 .header-box__question {
@@ -3028,10 +3005,10 @@ select.form-control:not([size]):not([multiple]) {
           align-items: center;
   width: 100%;
   -webkit-box-flex: 0;
-  -webkit-flex: 0 0 28%;
-      -ms-flex: 0 0 28%;
-          flex: 0 0 28%;
-  max-width: 28%;
+  -webkit-flex: 0 0 29%;
+      -ms-flex: 0 0 29%;
+          flex: 0 0 29%;
+  max-width: 29%;
 }
 
 .header-logowrap {
@@ -9395,7 +9372,7 @@ select.form-control:not([size]):not([multiple]) {
   }
 
   .button-tag {
-    max-width: 79px;
+    max-width: 70px;
     overflow: hidden;
     white-space: nowrap;
     -o-text-overflow: ellipsis;

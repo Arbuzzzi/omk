@@ -453,3 +453,6 @@ section, .section {
 .text-right {
 	text-align: right;
 }
+[class*=text-ddd], .card__title {
+	overflow: hidden;
+}

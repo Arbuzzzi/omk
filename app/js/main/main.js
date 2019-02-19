@@ -910,21 +910,21 @@ $(document).ready(function() {
 	var eventsDates = [{
 			date: new Date('02/6/2019'),
 			tooltip: "<p>День металлурга</p>",
-			link: "calendar.html",
+			link: "/calendar.html",
 			eventItem: '#event-6',
 			generalItem: '#events-06-10-2018'
 		},
 		{
 			date: new Date('02/14/2019'),
 			tooltip: "<p>День металлурга</p><p>День металлурга 2</p>",
-			link: "calendar2.html",
+			link: "/calendar2.html",
 			eventItem: '#event-14',
 			generalItem: '#events-14-10-2018',
 		},
 		{
 			date: new Date('02/24/2019'),
 			tooltip: "<p>День металлурга3</p><p>День металлурга 5</p><p>День металлурга 5</p><p>День металлурга 5</p><p>День металлурга 5</p><p>День металлурга 5</p><p>День металлурга 5</p><p>День металлурга 5</p><p>День металлурга 5</p><p>День металлурга3</p><p>День металлурга 5</p><p>День металлурга 5</p><p>День металлурга 5</p><p>День металлурга 5</p><p>День металлурга 5</p><p>День металлурга 5</p><p>День металлурга 5</p><p>День металлурга 5</p>",
-			link: "calendar3.html",
+			link: "/calendar3.html",
 			eventItem: '#event-24',
 			generalItem: '#events-24-10-2018'
 		},
@@ -952,27 +952,31 @@ $(document).ready(function() {
 		beforeShow: addElements,
 
 		onSelect: function (dateString, item) {
-			var options = {
-				year: 'numeric',
-				month: '2-digit',
-				day: '2-digit',
-			};
-			var locationHash = document.location.hash;
-			var locationPathname = document.location.pathname;
+			var dateStringArr = dateString.split('.');
+			var dateFormat = dateStringArr[1]+'/'+dateStringArr[0]+'/'+dateStringArr[2];
 
+			var curDate = new Date(dateFormat);
+
+			var locationPathname = document.location.pathname;
 			for (var i = 0; i < eventsDates.length; i++)  {
 				var event = eventsDates[i];
-				if (dateString === event.date.toLocaleString("ru", options)) {
+				var dayDate = event.date;
+
+				if (curDate.getTime() === dayDate.getTime()) {
 					if (event.link !== undefined && event.link !== null) {
-						if (locationPathname === '/'+event.link) {
+						if (locationPathname === event.link) {
 							scrollTo(event.generalItem);
+							return false
 						} else {
-							document.location.href = event.link+event.generalItem;
+							window.location.href = event.link+event.generalItem;
+							return false
 						}
 
 
 					}
 
+				} else {
+					// window.location.href = event.link+event.generalItem;
 				}
 			}
 			item.inline = false;
@@ -1028,10 +1032,16 @@ $(document).ready(function() {
 				day: '2-digit',
 			};
 
+			var dateStringArr = dateString.split('.');
+			var dateFormat = dateStringArr[1]+'/'+dateStringArr[0]+'/'+dateStringArr[2];
+
+			var curDate = new Date(dateFormat);
 
 			for (var i = 0; i < eventsDates.length; i++)  {
 				var event = eventsDates[i];
-				if (dateString === event.date.toLocaleString("ru", options)) {
+				var dayDate = event.date;
+
+				if (curDate.getTime() === dayDate.getTime()) {
 					if (event.link !== undefined && event.link !== null) {
 						// document.location.href = event.link;
 						showWidgetCalendarEvent(event.eventItem, this)
@@ -1053,7 +1063,9 @@ $(document).ready(function() {
 			}
 			return [true, '', ''];
 		},
+
 	});
+
 	function showWidgetCalendarEvent($itemEvent, $element){
 		var dayCurrent = $(this),
 			eventElements = $($itemEvent),
@@ -1172,7 +1184,7 @@ $(document).ready(function() {
 		var headerUiBtns = $(header).find('.ui-datepicker-prev, .ui-datepicker-next, .ui-datepicker-title');
 		var todayDate = new Date();
 		var optionsDay = {day: '2-digit'};
-		var todayDateDay = todayDate.toLocaleString("ru", optionsDay);
+		var todayDateDay = todayDate.toLocaleString("ru", optionsDay).slice(0, 2);
 		var monthA = ["Января","Февраля","Марта","Апреля","Мая","Июня",
 			"Июля","Августа","Сентября","Октября","Ноября","Декабря" ];
 		var todayYear = todayDate.getFullYear();
@@ -1254,6 +1266,7 @@ $(document).ready(function() {
 	$('.text-ddd-210').dotdotdot({
 		keep: '.card__more',
 		tolerance: 10,
+		height: 210,
 		callback: function () {
 			if ($(this).hasClass('ddd-truncated')) {
 				$(this).find('.card__more').css('display', 'table');
@@ -1265,6 +1278,7 @@ $(document).ready(function() {
 	$('.text-ddd-260').dotdotdot({
 		keep: '.card__more',
 		// tolerance: 10,
+		height: 260,
 		callback: function () {
 			if ($(this).hasClass('ddd-truncated')) {
 				$(this).find('.card__more').css('display', 'table');
@@ -1276,6 +1290,7 @@ $(document).ready(function() {
 	$('.text-ddd-135').dotdotdot({
 		keep: '.card__more',
 		tolerance: 10,
+		height: 135,
 		callback: function () {
 			if ($(this).hasClass('ddd-truncated')) {
 				$(this).find('.card__more').css('display', 'table');
