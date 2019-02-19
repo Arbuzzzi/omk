@@ -194,6 +194,7 @@ $(document).ready(function() {
 		// инициализация drag & drop
 		$( "#sortable" ).sortable();
 		$( "#sortable" ).disableSelection();
+		$( "#sortable" ).draggable();
 
 		$('.header').css('transform', 'none');
 
@@ -1879,34 +1880,32 @@ $(document).ready(function() {
 			editsBlock();
 			$(blockImages).find('.icon-symbol').addClass('active');
 			var nID = $(blocks).length + 1;
-			var btnGroup = $(buttonGroup).before(`
-				<div class="card card-links main-icon__card margin-bottom-0 padding-bottom-lg-30 padding-bottom-sm-10 edits adds">
-          <div class="card-links-wrap">
-            <div class="card-links__img">
-              <div class="card-links__imgbox main-icon__imgbox"><i class="main-icon__img icon-symbol active" data-icon="icon-symbol"></i></div>
-            </div>
-            <div class="card-links__items main-icon__items">
-              <div class="card-links__item card-links__lnkbox card-links__head main-icon__item">
-                <div class="card-links__left">
-                  <button class="card-links__lnk main-icon__title hide" type="button" data-edit="true" style=""></button>
-                  <div class="main-icon__inputs">
-                    <label class="form-label margin-bottom-5 font-size-14" for="mainIconInputTitle-${nID}">Название</label>
-                    <input class="form__input main-icon__input margin-bottom-15 current" id="mainIconInputTitle-${nID}" name="title" maxlength="24" placeholder="Название системы">
-                    <label class="form-label margin-bottom-5 font-size-14" for="mainIconInputLink-${nID}">Ссылка</label>
-                    <input class="form__input main-icon__input margin-bottom-5" id="mainIconInputLink-${nID}" name="title" placeholder="Введите ссылку">
-                  </div>
-                </div>
-                <div class="card-links__right">
-                  <button class="card-links__lnk card-links__lnk_small link-special color-thin main-icon__button hide" type="button" data-edit="">Редактировать</button>
-                  <button class="card-links__lnk card-links__lnk_small link-special color-thin main-icon__button hide" type="button" data-remove="">Удалить</button>
-                  <button class="card-links__lnk card-links__lnk_small link-special color-thin main-icon__button" type="button" data-save="">Сохранить</button>
-                  <button class="card-links__lnk card-links__lnk_small link-special color-thin main-icon__button" type="button" data-cancel="">Отменить</button>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-			`);
+			var btnGroup = $(buttonGroup).before('<div class="card card-links main-icon__card margin-bottom-0 padding-bottom-lg-30 padding-bottom-sm-10 edits adds">\n' +
+				'          <div class="card-links-wrap">\n' +
+				'            <div class="card-links__img">\n' +
+				'              <div class="card-links__imgbox main-icon__imgbox"><i class="main-icon__img icon-symbol active" data-icon="icon-symbol"></i></div>\n' +
+				'            </div>\n' +
+				'            <div class="card-links__items main-icon__items">\n' +
+				'              <div class="card-links__item card-links__lnkbox card-links__head main-icon__item">\n' +
+				'                <div class="card-links__left">\n' +
+				'                  <button class="card-links__lnk main-icon__title hide" type="button" data-edit="true" style=""></button>\n' +
+				'                  <div class="main-icon__inputs">\n' +
+				'                    <label class="form-label margin-bottom-5 font-size-14" for="mainIconInputTitle-${nID}">Название</label>\n' +
+				'                    <input class="form__input main-icon__input margin-bottom-15 current" id="mainIconInputTitle-${nID}" name="title" maxlength="24" placeholder="Название системы">\n' +
+				'                    <label class="form-label margin-bottom-5 font-size-14" for="mainIconInputLink-${nID}">Ссылка</label>\n' +
+				'                    <input class="form__input main-icon__input margin-bottom-5" id="mainIconInputLink-${nID}" name="title" placeholder="Введите ссылку">\n' +
+				'                  </div>\n' +
+				'                </div>\n' +
+				'                <div class="card-links__right">\n' +
+				'                  <button class="card-links__lnk card-links__lnk_small link-special color-thin main-icon__button hide" type="button" data-edit="">Редактировать</button>\n' +
+				'                  <button class="card-links__lnk card-links__lnk_small link-special color-thin main-icon__button hide" type="button" data-remove="">Удалить</button>\n' +
+				'                  <button class="card-links__lnk card-links__lnk_small link-special color-thin main-icon__button" type="button" data-save="">Сохранить</button>\n' +
+				'                  <button class="card-links__lnk card-links__lnk_small link-special color-thin main-icon__button" type="button" data-cancel="">Отменить</button>\n' +
+				'                </div>\n' +
+				'              </div>\n' +
+				'            </div>\n' +
+				'          </div>\n' +
+				'        </div>');
 			var blockUppend = $(btnGroup).prev();
 			$(blockUppend).find('.main-icon__input.current').val('Название системы').focus();
 
