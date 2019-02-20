@@ -98,7 +98,7 @@ $(document).ready(function() {
 	$('#menu-nav-headerGroup').on('hidden.bs.collapse', function(e) {
 		var menuNavHeader = $(this).parents('.menu-nav-header');
 
-		$(menuNavHeader).removeClass('show');
+		if (!mobile) $(menuNavHeader).removeClass('show');
 
 	});
 
@@ -389,6 +389,7 @@ $(document).ready(function() {
 	}
 	// скрываем элементы во время скроллинга страницы
 	var positionContent = $('.header').actual('outerHeight'),
+			chekPosContent,
 			positionOne = $(window).innerHeight(),
 			menuLeftListDeafult = $('#menuLeftList').hasClass('show'),
 			positionTwo = positionOne * 2;
@@ -412,6 +413,7 @@ $(document).ready(function() {
 		if (mobile && $('#header-nav').hasClass('show')) {
 			$('#header-nav').collapse('hide');
 		}
+
 		if (!asideBig) {
 			if (position > currentScroll) { //скроллим вниз
 				if ($('#aside').css('margin-top') == '1px') {
@@ -455,10 +457,11 @@ $(document).ready(function() {
 				}
 			}
 
-			if (mobile && position > 0) {
-				$('.header + *').css('padding-top', positionContent);
+			if (position > 0) {
+				if (mobile) $('.header + *').css('padding-top', positionContent);
+
 			} else {
-				$('.header + *').css('padding-top', '');
+				if (mobile) $('.header + *').css('padding-top', '');
 			}
 		}
 
@@ -478,9 +481,6 @@ $(document).ready(function() {
 		// }
 		// меню в обычном состоянии
 
-
-
-
 		if (!$('.header').hasClass('.scroll')  && !$('#header-navSetting').hasClass('show') && !mobile) {
 			addClassScroll($('.header'), 'scroll', positionThre);
 
@@ -494,13 +494,23 @@ $(document).ready(function() {
 			}
 
 			// сохраняем отступ
+
 			if (position > 0) {
-				$('.header + *').css('padding-top', positionContent);
+				if (chekPosContent !== positionContent) {
+					$('.header + *').css('padding-top', positionContent);
+					setTimeout(function (){
+						chekPosContent = positionContent;
+					},100)
+
+				}
+
 				$('#btnUp').animate({bottom: 'show'}, 500);
 				$('.header .breadcrumb').css({
 					paddingBottom: '15px'});
 
+
 			} else {
+				console.log('test');
 				$('.header + *').css('padding-top', '');
 				$('#btnUp').animate({bottom: 'hide', opacity: 'hide'}, 500);
 				$('.header .breadcrumb').removeAttr('style')
@@ -562,7 +572,7 @@ $(document).ready(function() {
 		if (position <= 0 && menuLeftListDeafult && !meuLeftShown) {
 			$('#menuLeftList').collapse('show');
 		}
-	}, 3000)
+	}, 2000)
 
 
 	// плавный скролл до элемента

@@ -4619,8 +4619,8 @@ select.form-control:not([size]):not([multiple]) {
 }
 
 .card-full_imgbg .card__content {
-  margin-top: 355px;
-  padding-top: 55px;
+  margin-top: 400px;
+  padding-top: 10px;
   background: -webkit-gradient(linear, left top, left bottom, from(rgba(0, 0, 0, 0)), color-stop(14%, rgba(0, 0, 0, 0.14)), to(black));
   background: -webkit-linear-gradient(top, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.14) 14%, black 100%);
   background: -o-linear-gradient(top, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.14) 14%, black 100%);

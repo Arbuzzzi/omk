@@ -590,8 +590,8 @@
 		}
 		&_imgbg {
 			.card__content {
-				margin-top: 355px;
-				padding-top: 55px;
+				margin-top: 400px;
+				padding-top: 10px;
 				background: linear-gradient(to bottom, rgba(0,0,0,0) 0%,rgba(0,0,0,0.14) 14%,rgba(0,0,0,1) 100%); 
 				filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', endColorstr='#000000',GradientType=0 );
 				@include lg-block {
