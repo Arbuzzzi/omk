@@ -405,53 +405,64 @@ $(document).ready(function() {
 	$(document).on('scroll', function(event) {
 		var position = $(this).scrollTop(),
 				heightHeader = $('.header:not(.header.scroll)').outerHeight(),
-				positionContentEvent = $('.content').offset().top;
-		
+				positionContentEvent = $('.content').offset().top,
+				asideBig = $('#aside').outerHeight() > $('#content').outerHeight();
+		$('*').tooltip('hide');
+
 		if (mobile && $('#header-nav').hasClass('show')) {
 			$('#header-nav').collapse('hide');
 		}
+		if (!asideBig) {
+			if (position > currentScroll) { //скроллим вниз
+				if ($('#aside').css('margin-top') == '1px') {
+					$('#aside').css({
+						position: '',
+						marginTop: $('#aside').offset().top-(position-currentScroll)-$('.header').outerHeight(),
+					});
+				}
 
-		if (position > currentScroll) { //скроллим вниз
-			if ($('#aside').css('margin-top') == '1px') {
-				$('#aside').css({
-					position: '',
-					marginTop: $('#aside').offset().top-(position-currentScroll)-$('.header').outerHeight(),
-				});
+				if (position>=$('#aside').offset().top+$('#aside').outerHeight()-positionOne) {
+					$('#aside').css({
+						position: 'fixed',
+						bottom: '0px',
+						width: $('#aside').parent().width(),
+						marginTop: '',
+						top: ''
+					});
+
+				}
+			} else { // скроллим вверх
+
+				if($('#aside').css('margin') == '0px' && position > positionTwo){
+					$('#leftNavigationPseudo').height(0)
+					$('#aside').css({
+						position: '',
+						marginTop: $('#aside').offset().top-(position-currentScroll)-$('.header').outerHeight(),
+					});
+
+				} else if($('#aside').offset().top+200 >= position && position > 300) {
+					$('#leftNavigationPseudo').height(0)
+					$('#aside').css({
+						position: 'fixed',
+						top: $('.header').outerHeight(),
+						bottom: '',
+						marginTop: '1px',
+						width: $('#aside').parent().width(),
+					});
+
+				} else if (position <= 0) {
+					$('#aside').removeAttr('style')
+				}
 			}
 
-			if (position>=$('#aside').offset().top+$('#aside').outerHeight()-positionOne) {
-				$('#aside').css({
-					position: 'fixed',
-					bottom: '0px',
-					width: $('#aside').parent().width(),
-					marginTop: '',
-					top: ''
-				});
-
-			}
-		} else { // скроллим вверх
-
-			if($('#aside').css('margin') == '0px' && position > positionTwo){
-				$('#leftNavigationPseudo').height(0)
-				$('#aside').css({
-					position: '',
-					marginTop: $('#aside').offset().top-(position-currentScroll)-$('.header').outerHeight(),
-				});
-
-			} else if($('#aside').offset().top+200 >= position && position > 300) {
-				$('#leftNavigationPseudo').height(0)
-				$('#aside').css({
-					position: 'fixed',
-					top: $('.header').outerHeight(),
-					bottom: '',
-					marginTop: '1px',
-					width: $('#aside').parent().width(),
-				});
-
-			} else if (position <= 0) {
-				$('#aside').removeAttr('style')
+			if (mobile && position > 0) {
+				$('.header + *').css('padding-top', positionContent);
+			} else {
+				$('.header + *').css('padding-top', '');
 			}
 		}
+
+
 
 		// var positionScrollBottom = position+positionOne,
 		// 		asidePositionBottom = parseInt($('#aside').css('margin-top'))+$('#aside').outerHeight();
@@ -466,11 +477,14 @@ $(document).ready(function() {
 		// 	});
 		// }
 		// меню в обычном состоянии
-		$('*').tooltip('hide');
+
+
+
+
 		if (!$('.header').hasClass('.scroll')  && !$('#header-navSetting').hasClass('show') && !mobile) {
 			addClassScroll($('.header'), 'scroll', positionThre);
 
-			// 1 брэйкпоинт 
+			// 1 брэйкпоинт
 			if (position > 0) {
 				collapseItemScrollHide($('#menuLeftListControl'), 0);
 			} else {
@@ -512,7 +526,7 @@ $(document).ready(function() {
 		// 	$('#menuLeftList').collapse('show');
 		// }
 
-		// scroll bottom 
+		// scroll bottom
 		if (position > 0) {
 			$('.menu-left').removeAttr('style');
 			$('#menu-nav-headerGroup').collapse('hide');
@@ -573,6 +587,7 @@ $(document).ready(function() {
 		// 	return false;
 		// }
 	});
+
 	function scrollTo ($elementToScroll) {
 		var elementToScroll = $($elementToScroll);
 		var elementToScrollPos = elementToScroll.offset().top;

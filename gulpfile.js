@@ -20,7 +20,10 @@ var gulp 		 		 = require('gulp'), // Подключаем Gulp
     sassUse      = true; // если не исползуется sass поставить false
 
 
-
+gulp.task ('reload', function (done){
+    browserSync.reload();
+    done();
+});
 gulp.task('sass', function(){ // Создаем таск Sass
     return gulp.src('app/sass/**/*.+(scss|sass)') // Берем источник
         .pipe(sass()
@@ -80,7 +83,7 @@ gulp.task('watch', function() {
     if (pugUse) gulp.watch('app/**/*.pug', gulp.series('pug-watch')); // Наблюдение за PUG файлами в корне проекта
     if (!pugUse) gulp.watch('app/*.html', browserSync.reload); // Наблюдение за HTML файлами в корне проекта
     if (!sassUse) gulp.watch('app/**/*.css', browserSync.reload); // Наблюдение за CSS файлами в корне проекта
-    gulp.watch('app/**/*.js', browserSync.reload);   // Наблюдение за JS файлами в папке js
+    gulp.watch('app/**/*.js', gulp.series('reload'));   // Наблюдение за JS файлами в папке js
 });
 
 gulp.task('min-js', function () {
