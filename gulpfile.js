@@ -73,12 +73,13 @@ gulp.task('browser-sync', function() { // Создаем таск browser-sync
     });
 });
 
-gulp.task('ie9', function() {
+gulp.task('ie9', function(done) {
     gulp.src('app/css/style-ie9.css').pipe(gulp.dest('app/ie9/css'));
+    done();
 });
 
 gulp.task('watch', function() {
-    if (sassUse) gulp.watch('app/css/style-ie9.css', gulp.series('ie9'));
+    if (sassUse) gulp.watch('app/css/style-ie9.css', gulp.series('ie9', 'reload'));
     if (sassUse) gulp.watch('app/sass/**/**/*.+(scss|sass)', gulp.series('sass-watch')); // Наблюдение за sass файлами в папке sass
     if (pugUse) gulp.watch('app/**/*.pug', gulp.series('pug-watch')); // Наблюдение за PUG файлами в корне проекта
     if (!pugUse) gulp.watch('app/*.html', browserSync.reload); // Наблюдение за HTML файлами в корне проекта

@@ -1,3 +1,5 @@
+mixin ie(condition, content)
+	| <!--[!{condition}]>!{content}<![endif]-->
 block vars
 - var version = '?0.3.8';
 - var pageTitle;
@@ -61,6 +63,7 @@ html(lang='ru')
 		// slick
 		script(src='slick/slick.min.js')
 		// Bootstrap
+		//+ie('if ! IE 9', '<script src="js/libs/bootstrap/bootstrap.bundle.min.js"></script>')
 		script(src='js/libs/bootstrap/bootstrap.bundle.min.js')
 		script(src='js/libs/jquery.actual.min.js')
 		// Валидация
@@ -68,7 +71,12 @@ html(lang='ru')
 		script(src='js/libs/jquery.maskedinput.min.js')
 		// main script
 		script(src='js/main/main.js'+version)
-		//if lte IE 9
-			link(href='ie9/css/bootstrap-ie9.css', rel='stylesheet')
-			link(rel='stylesheet', href='ie9/css/style-ie9.css')
-			script(src='ie9/js/bootstrap-ie9.js')
+
+		+ie('if lte IE 8', '<link href="ie9/css/bootstrap-ie8.css" rel="stylesheet" />')
+		+ie('if IE 9', '<link href="ie9/css/bootstrap-ie9.css" rel="stylesheet" />')
+		+ie('if lte IE 9', '<link href="ie9/css/style-ie9.css" rel="stylesheet" />')
+
+		+ie('if lte IE 8', '<script src="ie9/js/bootstrap-ie8.js"></script>')
+		+ie('if IE 9', '<script src="ie9/js/bootstrap-ie9.js"></script>')
+		+ie('if lte IE 9', '<script src="ie9/js/main-ie9.js"></script>')
+		+ie('if lte IE 10', '<script src="ie9/js/main-ie10.js"></script>')

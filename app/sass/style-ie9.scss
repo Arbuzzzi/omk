@@ -42,6 +42,9 @@
 		&__logo {
 			@include clearfix;
 		}
+		&__item {
+			display: inline-block;
+		}
 	}
 	&-user {
 		display: inline-block;
@@ -109,7 +112,7 @@
 	&-control {
 		&.active{
 			&:before {
-				content: '\e906';
+				//content: '\e906';
 				color: $basic-color;
 			}
 		}
@@ -140,5 +143,97 @@
 			}
 		}
 	}	
+}
+.card-calendar {
+	td {
+		vertical-align: top;
+		span {
+			margin-top: 15px;
+		}
+	}
+}
+.card-person__text {
+	margin-bottom: 10px;
+}
+.card-links {
+	&-wrap {
+		@include clearfix;
+	}
+	&__img {
+		//float: left;
+		display: inline-block;
+		vertical-align: top;
+	}
+
+	&__items {
+		display: inline-block;
+		vertical-align: top;
+		width: calc(100% - 100px);
+	}
+}
+.card-tabs .tab-content {
+	padding-top: 60px;
+}
+.card-tabs .nav-tabs .nav-link {
+	background-color: #fff;
+}
+.content {
+	&-filter {
+		&__formbox {
+			float: left;
+			margin-left: 15px;
+		}
+	}
+}
+.form-filters {
+
+	&__title {
+		display: inline-block;
+	}
+}
+.card {
+	border: 0;
+}
+.widget {
+	&-content {
+		@include clearfix;
+		&__left, &__right {
+			display: inline-block;
+			vertical-align: top;
+		}
+		&__left {
+			min-width: 110px;
+		}
+	}
+	&-imgbox {
+
+	}
+	&-text {
+		&_small {
+			@include clearfix;
+			p {
+				display: inline-block;
+				float: left;
+
+			}
+		}
+		&_count {
+			text-align: right;
+			margin-right: 5px;
+		}
+	}
+	&-group_special {
+		.widget-text_small,.widget-text_small p, .widget-text_count {
+			text-align: center;
+		}
+		.widget-text_small p {
+			float: none;
+		}
+	}
+	&-countbox {
+		display: inline-block;
+		width: 32%;
+		text-align: center;
+	}
 }
 

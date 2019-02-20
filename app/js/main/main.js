@@ -1,4 +1,6 @@
 $(document).ready(function() {
+	var ua = window.navigator.userAgent.toLowerCase(), 
+		ie = (/trident/gi).test(ua) || (/msie/gi).test(ua);
 	/* Валидация ------------------------------------------------------------------------------------ */
 	var x = {
 				rules: {
@@ -402,7 +404,9 @@ $(document).ready(function() {
 			menuLeftListDeafult = cahgeTrueFalse(menuLeftListDeafult);
 		}
 	});
+  if (!ie) {
 
+  }
 	$(document).on('scroll', function(event) {
 		var position = $(this).scrollTop(),
 				heightHeader = $('.header:not(.header.scroll)').outerHeight(),
@@ -414,7 +418,7 @@ $(document).ready(function() {
 			$('#header-nav').collapse('hide');
 		}
 
-		if (!asideBig) {
+		if (!asideBig && !ie) {
 			if (position > currentScroll) { //скроллим вниз
 				if ($('#aside').css('margin-top') == '1px') {
 					$('#aside').css({
@@ -494,7 +498,6 @@ $(document).ready(function() {
 			}
 
 			// сохраняем отступ
-
 			if (position > 0) {
 				if (chekPosContent !== positionContent) {
 					$('.header + *').css('padding-top', positionContent);
@@ -510,7 +513,6 @@ $(document).ready(function() {
 
 
 			} else {
-				console.log('test');
 				$('.header + *').css('padding-top', '');
 				$('#btnUp').animate({bottom: 'hide', opacity: 'hide'}, 500);
 				$('.header .breadcrumb').removeAttr('style')
@@ -942,21 +944,21 @@ $(document).ready(function() {
 
 	var eventsDates = [{
 			date: new Date('02/6/2019'),
-			tooltip: "<p>День металлурга</p>",
+			tooltip: "<p>День металлурга </p>",
 			link: "/calendar.html",
 			eventItem: '#event-6',
 			generalItem: '#events-06-10-2018'
 		},
 		{
 			date: new Date('02/14/2019'),
-			tooltip: "<p>День металлурга</p><p>День металлурга 2</p>",
+			tooltip: "<p>День металлурга </p><p>День металлурга 2 </p>",
 			link: "/calendar2.html",
 			eventItem: '#event-14',
 			generalItem: '#events-14-10-2018',
 		},
 		{
 			date: new Date('02/24/2019'),
-			tooltip: "<p>День металлурга3</p><p>День металлурга 5</p><p>День металлурга 5</p><p>День металлурга 5</p><p>День металлурга 5</p><p>День металлурга 5</p><p>День металлурга 5</p><p>День металлурга 5</p><p>День металлурга 5</p><p>День металлурга3</p><p>День металлурга 5</p><p>День металлурга 5</p><p>День металлурга 5</p><p>День металлурга 5</p><p>День металлурга 5</p><p>День металлурга 5</p><p>День металлурга 5</p><p>День металлурга 5</p>",
+			tooltip: "<p>День металлурга3 </p><p>День металлурга 5 </p><p>День металлурга 5 </p><p>День металлурга 5 </p><p>День металлурга 5 </p><p>День металлурга 5 </p><p>День металлурга 5 </p><p>День металлурга 5 </p><p>День металлурга 5 </p><p>День металлурга3 </p><p>День металлурга 5 </p><p>День металлурга 5 </p><p>День металлурга 5 </p><p>День металлурга 5 </p><p>День металлурга 5 </p><p>День металлурга 5 </p><p>День металлурга 5 </p><p>День металлурга 5 </p>",
 			link: "/calendar3.html",
 			eventItem: '#event-24',
 			generalItem: '#events-24-10-2018'
@@ -1801,23 +1803,30 @@ $(document).ready(function() {
 	});
 
 	/* Main icons ------------------------------------------------------------------------------------- */
+	var iconDefault;
 	$('.main-icon').on('click keyup', function (event){
 		var elClick = event.target,
 				el = this,
+
 				block = $($(elClick).parents('.main-icon__card')),
 				blocks = ('.main-icon__card'),
 				blocksNotEdits = ('.main-icon__card:not(.edits)'),
+				blockImages = $(el).find('.main-icon__images'),
+				blockImagesItems = $(el).find('[data-icon-item]'),
+
 				title = $(block).find('.main-icon__title'),
+
 				inputCurrent = $(block).find('.main-icon__input.current'),
 				inputs = $(block).find('.main-icon__input'),
 				inputsBlock = $(block).find('.main-icon__inputs'),
-				buttonRemove = $(block).find('[data-remove].main-icon__button'),
+
 				images = $(el).find('.main-icon__img'),
-				blockImages = $(el).find('.main-icon__images'),
-				blockImagesItems = $(el).find('[data-icon-item]'),
-				buttonIcon = $(block).find('[data-icon].main-icon__img'),
+
 				currentBlock = $(el).find('.card-links.edits'),
 				currentIconBox = $(el).find('.main-icon__imgbox:has(.main-icon__img.active)'),
+
+				buttonRemove = $(block).find('[data-remove].main-icon__button'),
+				buttonIcon = $(block).find('[data-icon].main-icon__img'),
 				buttonSave = $(block).find('[data-save].main-icon__button'),
 				buttonCancel = $(block).find('[data-cancel].main-icon__button'),
 				buttonEdit = $(block).find('[data-edit].main-icon__button'),
@@ -1827,7 +1836,7 @@ $(document).ready(function() {
 
 		// edit
 		if ($(elClick).hasAttr('data-edit') && !$(blocks).hasClass('edits')) {
-
+			iconDefault = buttonIcon;
 			$(title).fadeOut(200, function (){
 				$(this).addClass('hide');
 				$(inputsBlock).removeClass('hide').fadeIn(200);
@@ -1896,6 +1905,8 @@ $(document).ready(function() {
 
 		// cancel
 		if ($(elClick).hasAttr('data-cancel')) {
+			$(iconDefault).removeClass('active');
+			$(currentIconBox).html(iconDefault);
 			if ($(block).hasClass('adds')) {
 				$(block).hide('blind', function (){
 					$(this).detach()
@@ -1931,7 +1942,7 @@ $(document).ready(function() {
 			var btnGroup = $(buttonGroup).before('<div class="card card-links main-icon__card margin-bottom-0 padding-bottom-lg-30 padding-bottom-sm-10 edits adds">\n' +
 				'          <div class="card-links-wrap">\n' +
 				'            <div class="card-links__img">\n' +
-				'              <div class="card-links__imgbox main-icon__imgbox"><i class="main-icon__img icon-symbol active" data-icon="icon-symbol"></i></div>\n' +
+				'              <div class="card-links__imgbox main-icon__imgbox"><i class="main-icon__img icon-57 active" data-icon="icon-57"></i></div>\n' +
 				'            </div>\n' +
 				'            <div class="card-links__items main-icon__items">\n' +
 				'              <div class="card-links__item card-links__lnkbox card-links__head main-icon__item">\n' +
@@ -2029,4 +2040,5 @@ $(document).ready(function() {
 	$.fn.hasAttr = function(name) {
 		return this.attr(name) !== undefined;
 	};
+
 });

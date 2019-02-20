@@ -55,6 +55,10 @@
   content: "";
 }
 
+.header-box__item {
+  display: inline-block;
+}
+
 .header-user {
   display: inline-block;
   margin-left: 10px;
@@ -124,7 +128,6 @@
 }
 
 .menu-left-control.active:before {
-  content: '\e906';
   color: #5e6167;
 }
 
@@ -153,4 +156,103 @@
 .header.scroll .header-info__time {
   float: left;
   margin-right: 10px;
+}
+
+.card-calendar td {
+  vertical-align: top;
+}
+
+.card-calendar td span {
+  margin-top: 15px;
+}
+
+.card-person__text {
+  margin-bottom: 10px;
+}
+
+.card-links-wrap::after {
+  display: block;
+  clear: both;
+  content: "";
+}
+
+.card-links__img {
+  display: inline-block;
+  vertical-align: top;
+}
+
+.card-links__items {
+  display: inline-block;
+  vertical-align: top;
+  width: -webkit-calc(100% - 100px);
+  width: calc(100% - 100px);
+}
+
+.card-tabs .tab-content {
+  padding-top: 60px;
+}
+
+.card-tabs .nav-tabs .nav-link {
+  background-color: #fff;
+}
+
+.content-filter__formbox {
+  float: left;
+  margin-left: 15px;
+}
+
+.form-filters__title {
+  display: inline-block;
+}
+
+.card {
+  border: 0;
+}
+
+.widget-content::after {
+  display: block;
+  clear: both;
+  content: "";
+}
+
+.widget-content__left,
+.widget-content__right {
+  display: inline-block;
+  vertical-align: top;
+}
+
+.widget-content__left {
+  min-width: 110px;
+}
+
+.widget-text_small::after {
+  display: block;
+  clear: both;
+  content: "";
+}
+
+.widget-text_small p {
+  display: inline-block;
+  float: left;
+}
+
+.widget-text_count {
+  text-align: right;
+  margin-right: 5px;
+}
+
+.widget-group_special .widget-text_small,
+.widget-group_special .widget-text_small p,
+.widget-group_special .widget-text_count {
+  text-align: center;
+}
+
+.widget-group_special .widget-text_small p {
+  float: none;
+}
+
+.widget-countbox {
+  display: inline-block;
+  width: 32%;
+  text-align: center;
 }
