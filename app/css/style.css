@@ -4439,6 +4439,7 @@ select.form-control:not([size]):not([multiple]) {
 
 .card__title {
   min-height: 44px;
+  max-height: 45px;
   margin-bottom: 15px;
   font-family: "PT Serif", serif;
   font-size: 17px;
@@ -4450,14 +4451,6 @@ select.form-control:not([size]):not([multiple]) {
 .card__title > h4,
 .card__title > h5 {
   font-size: 38px;
-}
-
-.card__title a {
-  display: block;
-  max-height: 45px;
-  overflow: hidden;
-  -o-text-overflow: ellipsis;
-     text-overflow: ellipsis;
 }
 
 .card__text {
@@ -9586,6 +9579,7 @@ select.form-control:not([size]):not([multiple]) {
   .card__title {
     margin-bottom: 10px;
     min-height: 30px;
+    max-height: 30px;
     font-size: 9px;
   }
 
