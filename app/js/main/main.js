@@ -489,7 +489,7 @@ $(document).ready(function() {
 			addClassScroll($('.header'), 'scroll', positionThre);
 
 			// 1 брэйкпоинт
-			if (position > 0) {
+			if (position > 0 && !asideBig) {
 				collapseItemScrollHide($('#menuLeftListControl'), 0);
 			} else {
 				// if (position <= 300) {
@@ -499,13 +499,13 @@ $(document).ready(function() {
 
 			// сохраняем отступ
 			if (position > 0) {
-				if (chekPosContent !== positionContent) {
-					$('.header + *').css('padding-top', positionContent);
-					setTimeout(function (){
-						chekPosContent = positionContent;
-					},100)
-
-				}
+				$('.header + *').css('padding-top', positionContent);
+				// if (chekPosContent !== positionContent) {
+				// 	// setTimeout(function (){
+				// 	// 	chekPosContent = positionContent;
+				// 	// },100)
+				//
+				// }
 
 				$('#btnUp').animate({bottom: 'show'}, 500);
 				$('.header .breadcrumb').css({
