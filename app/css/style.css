@@ -3341,6 +3341,11 @@ select.form-control:not([size]):not([multiple]) {
   display: inline-block;
 }
 
+.menu-nav a[href=""],
+.menu-nav a[href="#"] {
+  cursor: default;
+}
+
 .menu-nav-header {
   display: none;
 }
@@ -3446,6 +3451,11 @@ select.form-control:not([size]):not([multiple]) {
   vertical-align: middle;
   text-transform: uppercase;
   text-align: left;
+}
+
+.menu-nav__text a {
+  display: inline-block;
+  width: 100%;
 }
 
 .menu-left {

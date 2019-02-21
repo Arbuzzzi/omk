@@ -255,6 +255,9 @@
 .menu-nav {
 	position: relative;
 	display: inline-block;
+	a[href=""],	a[href="#"] {
+		cursor: default;
+	}
 	&-header {
 		display: none;
 		@include lg-block {
@@ -371,6 +374,10 @@
 		vertical-align: middle;
 		text-transform: uppercase;
 		text-align: left;
+		a {
+			display: inline-block;
+			width: 100%;
+		}
 	}
 
 }
