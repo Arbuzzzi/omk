@@ -395,15 +395,34 @@ $(document).ready(function() {
 			positionOne = $(window).innerHeight(),
 			menuLeftListDeafult = $('#menuLeftList').hasClass('show'),
 			positionTwo = positionOne * 2,
+			asideHeight,
 			positionThre =  positionTwo + positionOne,
 			asideWidth = $('#aside').parent().width(),
+			windowHeight = $(window).outerHeight(),
+			windowMoreAside,
 			currentScroll = 0;
 
 	$(window).resize(function (){
+		var position = $(this).scrollTop();
+		var menuLeft = $('#menuLeftList');
+		var meuLeftShown = menuLeft.hasClass('show');
+		
+		windowHeight = $(window).outerHeight(),
 		asideWidth = $('#aside').parent().width();
+
+		if (position <= 0 && menuLeftListDeafult && !meuLeftShown) {
+			setTimeout(function (){
+				$('#menuLeftList').collapse('show');
+				$('#leftNavigationPseudo').css('display', 'block')
+			}, 1000)
+
+
+			// console.log('test');
+		}
 		$('#aside').css({
 			width: asideWidth,
 		})
+
 	});
 
 	$('#menuLeftListControl').on('click', function() {
@@ -420,6 +439,8 @@ $(document).ready(function() {
 				heightHeader = $('.header:not(.header.scroll)').outerHeight(),
 				positionContentEvent = $('.content').offset().top,
 				asideBig = $('#aside').outerHeight() > $('#content').outerHeight();
+		asideHeight = $('#aside').actual('outerHeight') + $('.header').actual('outerHeight');
+		windowMoreAside = asideHeight < windowHeight;
 		$('*').tooltip('hide');
 
 		if (mobile && $('#header-nav').hasClass('show')) {
@@ -431,18 +452,29 @@ $(document).ready(function() {
 				if ($('#aside').css('margin-top') == '1px') {
 					$('#aside').css({
 						position: '',
-						marginTop: $('#aside').offset().top-(position-currentScroll)-$('.header').outerHeight(),
+						marginTop: $('#aside').offset().top-(position-currentScroll)-$('.header').actual('outerHeight'),
 					});
 				}
 
-				if (position>=$('#aside').offset().top+$('#aside').outerHeight()-positionOne) {
-					$('#aside').css({
-						position: 'fixed',
-						bottom: '0px',
-						width: asideWidth,
-						marginTop: '',
-						top: ''
-					});
+				if (position>=$('#aside').offset().top+$('#aside').actual('outerHeight')-positionOne) {
+
+					if (windowMoreAside) {
+						$('#aside').css({
+							position: 'fixed',
+							top: $('.header').actual('outerHeight'),
+							width: asideWidth,
+							marginTop: '',
+						});
+					} else {
+						$('#aside').css({
+							position: 'fixed',
+							bottom: '0px',
+							width: asideWidth,
+							marginTop: '',
+							top: ''
+						});
+					}
+
 
 				}
 			} else { // скроллим вверх
@@ -451,7 +483,7 @@ $(document).ready(function() {
 					$('#leftNavigationPseudo').height(0)
 					$('#aside').css({
 						position: '',
-						marginTop: $('#aside').offset().top-(position-currentScroll)-$('.header').outerHeight(),
+						marginTop: $('#aside').offset().top-(position-currentScroll)-$('.header').actual('outerHeight'),
 					});
 
 				} else if($('#aside').offset().top+200 >= position && position > 300) {
