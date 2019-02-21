@@ -2040,7 +2040,7 @@ $(document).ready(function() {
 	$.fn.hasAttr = function(name) {
 		return this.attr(name) !== undefined;
 	};
-	
+
 	$(window).resize(function (){
 		$(document).triggerHandler('ready');
 
