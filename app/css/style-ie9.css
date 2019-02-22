@@ -158,6 +158,12 @@
   margin-right: 10px;
 }
 
+.header-nav-system__content {
+  background-color: #e4e4e4;
+  -webkit-filter: none;
+          filter: none;
+}
+
 .card-calendar td {
   vertical-align: top;
 }

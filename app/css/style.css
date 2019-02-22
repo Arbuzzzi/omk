@@ -4464,7 +4464,6 @@ select.form-control:not([size]):not([multiple]) {
   -webkit-flex-direction: column;
       -ms-flex-direction: column;
           flex-direction: column;
-  height: 100%;
   font-family: "PT Serif", serif;
   font-size: 16px;
   font-weight: 400;

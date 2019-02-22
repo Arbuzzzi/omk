@@ -558,7 +558,7 @@ $(document).ready(function() {
 					if (!mobile) {
 						$('#header-nav').collapse('show');
 					}
-					$('.header').removeAttr('style');
+					if (!edge) $('.header').removeAttr('style');
 					addClassScroll($('.header'));
 					positionContent = $('.header').actual('outerHeight');
 				}
