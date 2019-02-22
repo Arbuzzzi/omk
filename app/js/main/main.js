@@ -429,15 +429,20 @@ $(document).ready(function() {
 				heightHeader = $('.header:not(.header.scroll)').outerHeight(),
 				positionContentEvent = $('.content').offset().top,
 				asideBig = $('#aside').outerHeight() > $('#content').outerHeight();
+
+		if (mobile && $('#header-nav').hasClass('show')) {
+			$('#header-nav').collapse('hide');
+		}
+
+		if ($('#menu-nav-headerGroup').hasClass('show')) {
+			$('#menu-nav-headerGroup').collapse('hide');
+		}
+
+		$('*').tooltip('hide');
+
 		if (!mobile) {
 			asideHeight = $('#aside').actual('outerHeight') + $('.header').actual('outerHeight'); // странное поведение
 			windowMoreAside = asideHeight < windowHeight;
-
-			// $('*').tooltip('hide');
-
-			if (mobile && $('#header-nav').hasClass('show')) {
-				$('#header-nav').collapse('hide');
-			}
 
 
 
@@ -493,13 +498,6 @@ $(document).ready(function() {
 					} else if (position <= 0) {
 						$('#aside').removeAttr('style')
 					}
-				}
-
-				if (position > 0) {
-					if (mobile) $('.header + *').css('padding-top', positionContent);
-
-				} else {
-					if (mobile) $('.header + *').css('padding-top', '');
 				}
 			}
 
@@ -575,7 +573,7 @@ $(document).ready(function() {
 			// scroll bottom
 			if (position > 0) {
 				$('.menu-left').removeAttr('style');
-				$('#menu-nav-headerGroup').collapse('hide');
+				// $('#menu-nav-headerGroup').collapse('hide');
 				$('.header').css('padding-bottom', '')
 
 				// развернуть
@@ -591,6 +589,15 @@ $(document).ready(function() {
 
 			} else {
 				$('.rollUp').removeClass('show');
+			}
+		} else {
+			if (position > 0) {
+				$('.header').css({'position': 'fixed'});
+				$('.header + *').css('padding-top', positionContent);
+
+			} else {
+				$('.header').css({'position': ''});
+				$('.header + *').css('padding-top', '');
 			}
 		}
 
