@@ -73,7 +73,17 @@ $(document).ready(function() {
 		$(select).focus();
 	}).mousemove(function(e){e.preventDefault()});
 
-
+	var mobile = false;
+	if ($(window).outerWidth() < 768) {
+		mobile = true;
+	}
+	$(window).resize(function (e){
+		if ($(this).outerWidth() < 768) {
+			mobile = true;
+		} else {
+			mobile = false;
+		}
+	});
 	// подпункты меню раскрывается при наведении
 	// $('.menu-nav-header__item').on('mouseenter', function(event) {
 	// 	var element = $(event.target).parents('.menu-nav-header__item'),
@@ -116,37 +126,18 @@ $(document).ready(function() {
 		$('.header').css('transform', '');
 	});
 
-	// $(document).click(function(event) {
-	// 	if (event !== undefined) {
-	// 		if (!$(event.target).is("#menu-nav-more *")) {
-	// 			var current = $('#menu-nav-more').find('.current');
-	// 			if ($('#menu-nav-headerGroup').hasClass('show')) {
-	// 				current.parents('.collapse').collapse('show');
-	// 			}
-	// 			$('#menu-nav-headerGroup').collapse('hide');
-	// 		}
-	// 	}
-	// });
+	if (mobile) $('#menu-nav-headerGroup').hideClickAway('collapse');
 
-	function cahgeTrueFalse(argument) {
-		return !argument;
-	}
 
 	/* ПОДМЕНЮ "СИСТЕМЫ" ----------------------------------------------------------------------------- */
-	var mobile = false;
-	if ($(window).outerWidth() < 768) {
-		mobile = true;
-	}
-	$(window).on('resize', function (e){
-		if ($(this).outerWidth() < 768) {
-			mobile = true;
-		}
-	});
+	// мобильные
 	if (mobile) {
 		$('#header-nav').collapse('hide');
 	}
 	if (mobile) {
 		$('#header-navControl').removeClass('active');
+		$('#header-nav').hideClickAway('collapse');
+
 		setTimeout(function (){
 			$('.header-nav-system-wrap').removeClass('mobile-hide');
 		}, 300)
@@ -155,6 +146,7 @@ $(document).ready(function() {
 		$('.header-nav-system-wrap').addClass('show')
 		$('#header-navControl').addClass('active');
 	}
+
 	// системы показываются
 	$('#header-nav').on('shown.bs.collapse', function () {
 		var btn = $('#header-navControl');
@@ -428,175 +420,178 @@ $(document).ready(function() {
 	$('#menuLeftListControl').on('click', function() {
 		var position = $(window).scrollTop();
 		if (position < positionOne) {
-			menuLeftListDeafult = cahgeTrueFalse(menuLeftListDeafult);
+			menuLeftListDeafult = !menuLeftListDeafult;
 		}
 	});
-  if (!ie) {
 
-  }
 	$(document).on('scroll', function(event) {
 		var position = $(this).scrollTop(),
 				heightHeader = $('.header:not(.header.scroll)').outerHeight(),
 				positionContentEvent = $('.content').offset().top,
 				asideBig = $('#aside').outerHeight() > $('#content').outerHeight();
-		asideHeight = $('#aside').actual('outerHeight') + $('.header').actual('outerHeight');
-		windowMoreAside = asideHeight < windowHeight;
-		$('*').tooltip('hide');
+		if (!mobile) {
+			asideHeight = $('#aside').actual('outerHeight') + $('.header').actual('outerHeight'); // странное поведение
+			windowMoreAside = asideHeight < windowHeight;
 
-		if (mobile && $('#header-nav').hasClass('show')) {
-			$('#header-nav').collapse('hide');
-		}
+			// $('*').tooltip('hide');
 
-		if (!asideBig && !ie) {
-			if (position > currentScroll) { //скроллим вниз
-				if ($('#aside').css('margin-top') == '1px') {
-					$('#aside').css({
-						position: '',
-						marginTop: $('#aside').offset().top-(position-currentScroll)-$('.header').actual('outerHeight'),
-					});
-				}
+			if (mobile && $('#header-nav').hasClass('show')) {
+				$('#header-nav').collapse('hide');
+			}
 
-				if (position>=$('#aside').offset().top+$('#aside').actual('outerHeight')-positionOne) {
 
-					if (windowMoreAside) {
+
+			if (!asideBig && !ie) {
+				if (position > currentScroll) { //скроллим вниз
+					if ($('#aside').css('margin-top') == '1px') {
 						$('#aside').css({
-							position: 'fixed',
-							top: $('.header').actual('outerHeight'),
-							width: asideWidth,
-							marginTop: '',
-						});
-					} else {
-						$('#aside').css({
-							position: 'fixed',
-							bottom: '0px',
-							width: asideWidth,
-							marginTop: '',
-							top: ''
+							position: '',
+							marginTop: $('#aside').offset().top-(position-currentScroll)-$('.header').actual('outerHeight'),
 						});
 					}
 
+					if (position>=$('#aside').offset().top+$('#aside').actual('outerHeight')-positionOne) {
 
+						if (windowMoreAside) {
+							$('#aside').css({
+								position: 'fixed',
+								top: $('.header').actual('outerHeight'),
+								width: asideWidth,
+								marginTop: '',
+							});
+						} else {
+							$('#aside').css({
+								position: 'fixed',
+								bottom: '0px',
+								width: asideWidth,
+								marginTop: '',
+								top: ''
+							});
+						}
+
+
+					}
+				} else { // скроллим вверх
+
+					if($('#aside').css('margin') == '0px' && position > positionTwo){
+						$('#leftNavigationPseudo').height(0)
+						$('#aside').css({
+							position: '',
+							marginTop: $('#aside').offset().top-(position-currentScroll)-$('.header').actual('outerHeight'),
+						});
+
+					} else if($('#aside').offset().top+200 >= position && position > 300) {
+						$('#leftNavigationPseudo').height(0)
+						$('#aside').css({
+							position: 'fixed',
+							top: $('.header').outerHeight(),
+							bottom: '',
+							marginTop: '1px',
+							width: $('#aside').parent().width(),
+						});
+
+					} else if (position <= 0) {
+						$('#aside').removeAttr('style')
+					}
 				}
-			} else { // скроллим вверх
 
-				if($('#aside').css('margin') == '0px' && position > positionTwo){
-					$('#leftNavigationPseudo').height(0)
-					$('#aside').css({
-						position: '',
-						marginTop: $('#aside').offset().top-(position-currentScroll)-$('.header').actual('outerHeight'),
-					});
+				if (position > 0) {
+					if (mobile) $('.header + *').css('padding-top', positionContent);
 
-				} else if($('#aside').offset().top+200 >= position && position > 300) {
-					$('#leftNavigationPseudo').height(0)
-					$('#aside').css({
-						position: 'fixed',
-						top: $('.header').outerHeight(),
-						bottom: '',
-						marginTop: '1px',
-						width: $('#aside').parent().width(),
-					});
-
-				} else if (position <= 0) {
-					$('#aside').removeAttr('style')
+				} else {
+					if (mobile) $('.header + *').css('padding-top', '');
 				}
 			}
 
+
+
+			// var positionScrollBottom = position+positionOne,
+			// 		asidePositionBottom = parseInt($('#aside').css('margin-top'))+$('#aside').outerHeight();
+
+			// if (positionScrollBottom < asidePositionBottom && currentScroll > position) {
+			// 	$('#aside').css({
+			// 		position: 'fixed',
+			// 		bottom: 0,
+			// 		top: 'auto',
+			// 		marginTop: 0,
+			// 		width: '270px',
+			// 	});
+			// }
+			// меню в обычном состоянии
+
+			if (!$('.header').hasClass('.scroll')  && !$('#header-navSetting').hasClass('show') && !mobile) {
+				addClassScroll($('.header'), 'scroll', positionThre);
+
+				// 1 брэйкпоинт
+				if (position > 0 && !asideBig) {
+					collapseItemScrollHide($('#menuLeftListControl'), 0);
+				} else {
+					// if (position <= 300) {
+					// 	collapseItemScrollShow($('#menuLeftListControl'), positionOne);
+					// }
+				}
+
+				// сохраняем отступ
+				if (position > 0) {
+					$('.header + *').css('padding-top', positionContent);
+					// if (chekPosContent !== positionContent) {
+					// 	// setTimeout(function (){
+					// 	// 	chekPosContent = positionContent;
+					// 	// },100)
+					//
+					// }
+
+					$('#btnUp').animate({bottom: 'show'}, 500);
+					$('.header .breadcrumb').css({
+						paddingBottom: '15px'});
+
+
+				} else {
+					$('.header + *').css('padding-top', '');
+					$('#btnUp').animate({bottom: 'hide', opacity: 'hide'}, 500);
+					$('.header .breadcrumb').removeAttr('style')
+				}
+			}
+
+			// меню свернуто
+			if ($('.header').hasClass('scroll')) {
+				$('#header-nav').collapse('hide');
+				$('#header-navControl').removeClass('active');
+			}
+
+			// scroll top самый верх экана
+			if (position <= 0) {
+				if (!mobile) {
+					$('#header-nav').collapse('show');
+				}
+				$('.header').removeAttr('style');
+				addClassScroll($('.header'));
+				positionContent = $('.header').actual('outerHeight');
+			}
+			// if (position <= 0 && menuLeftListDeafult) {
+			// 	$('#menuLeftList').collapse('show');
+			// }
+
+			// scroll bottom
 			if (position > 0) {
-				if (mobile) $('.header + *').css('padding-top', positionContent);
+				$('.menu-left').removeAttr('style');
+				$('#menu-nav-headerGroup').collapse('hide');
+				$('.header').css('padding-bottom', '')
 
-			} else {
-				if (mobile) $('.header + *').css('padding-top', '');
-			}
-		}
+				// развернуть
+				if (!$('.rollUp').hasClass('show') && $('.header').hasClass('scroll')) {
+					$('.rollUp').addClass('show');
+				} else {
+					$('.rollUp').removeClass('show');
+				}
 
+				if (!$('.header').hasClass('scroll')) {
+					$('.header').css({'position': 'fixed'});
+				}
 
-
-		// var positionScrollBottom = position+positionOne,
-		// 		asidePositionBottom = parseInt($('#aside').css('margin-top'))+$('#aside').outerHeight();
-
-		// if (positionScrollBottom < asidePositionBottom && currentScroll > position) {
-		// 	$('#aside').css({
-		// 		position: 'fixed',
-		// 		bottom: 0,
-		// 		top: 'auto',
-		// 		marginTop: 0,
-		// 		width: '270px',
-		// 	});
-		// }
-		// меню в обычном состоянии
-
-		if (!$('.header').hasClass('.scroll')  && !$('#header-navSetting').hasClass('show') && !mobile) {
-			addClassScroll($('.header'), 'scroll', positionThre);
-
-			// 1 брэйкпоинт
-			if (position > 0 && !asideBig) {
-				collapseItemScrollHide($('#menuLeftListControl'), 0);
-			} else {
-				// if (position <= 300) {
-				// 	collapseItemScrollShow($('#menuLeftListControl'), positionOne);
-				// }
-			}
-
-			// сохраняем отступ
-			if (position > 0) {
-				$('.header + *').css('padding-top', positionContent);
-				// if (chekPosContent !== positionContent) {
-				// 	// setTimeout(function (){
-				// 	// 	chekPosContent = positionContent;
-				// 	// },100)
-				//
-				// }
-
-				$('#btnUp').animate({bottom: 'show'}, 500);
-				$('.header .breadcrumb').css({
-					paddingBottom: '15px'});
-
-
-			} else {
-				$('.header + *').css('padding-top', '');
-				$('#btnUp').animate({bottom: 'hide', opacity: 'hide'}, 500);
-				$('.header .breadcrumb').removeAttr('style')
-			}
-		}
-
-		// меню свернуто
-		if ($('.header').hasClass('scroll')) {
-			$('#header-nav').collapse('hide');
-			$('#header-navControl').removeClass('active');
-		}
-
-		// scroll top самый верх экана
-		if (position <= 0) {
-			if (!mobile) {
-				$('#header-nav').collapse('show');
-			}
-			$('.header').removeAttr('style');
-			addClassScroll($('.header'));
-			positionContent = $('.header').actual('outerHeight');
-		}
-		// if (position <= 0 && menuLeftListDeafult) {
-		// 	$('#menuLeftList').collapse('show');
-		// }
-
-		// scroll bottom
-		if (position > 0) {
-			$('.menu-left').removeAttr('style');
-			$('#menu-nav-headerGroup').collapse('hide');
-			$('.header').css('padding-bottom', '')
-
-			// развернуть
-			if (!$('.rollUp').hasClass('show') && $('.header').hasClass('scroll')) {
-				$('.rollUp').addClass('show');
 			} else {
 				$('.rollUp').removeClass('show');
 			}
-
-			if (!$('.header').hasClass('scroll')) {
-				$('.header').css({'position': 'fixed'});
-			}
-
-		} else {
-			$('.rollUp').removeClass('show');
 		}
 
 		// скрываем dropdown при скролле
@@ -2083,8 +2078,39 @@ $(document).ready(function() {
 		$('[data-target="#'+ $(this).attr('id') +'"]').removeClass('active');
 		
 	});
-	$.fn.hasAttr = function(name) {
-		return this.attr(name) !== undefined;
+
+	$.fn.hasAttr = function($attrName) {
+		return this.attr($attrName) !== undefined;
 	};
+
 });
+
+(function($){
+	jQuery.fn.hideClickAway = function($bootstrapEvent){
+		var el = $(this);
+		var make = function (){
+			$(document).mouseup(function (e){ // событие клика по веб-документу
+				console.log(el);
+				if (!el.is(e.target) // если клик был не по нашему блоку
+					&& el.has(e.target).length === 0) { // не по его дочерним элементам
+					switch ($bootstrapEvent){ // проверяем событие
+						case 'collapse':
+							el.collapse('hide');
+							break;
+						case 'tooltip':
+							el.tooltip('hide');
+							break;
+						default:
+							el.collapse('hide');
+							break;
+					}
+				}
+			});
+		};
+
+		return this.each(make)
+
+		
+	};
+})(jQuery);
 
