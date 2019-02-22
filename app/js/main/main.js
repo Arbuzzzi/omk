@@ -84,6 +84,8 @@ $(document).ready(function() {
 			mobile = false;
 		}
 	});
+
+
 	// подпункты меню раскрывается при наведении
 	// $('.menu-nav-header__item').on('mouseenter', function(event) {
 	// 	var element = $(event.target).parents('.menu-nav-header__item'),
@@ -131,22 +133,27 @@ $(document).ready(function() {
 
 	/* ПОДМЕНЮ "СИСТЕМЫ" ----------------------------------------------------------------------------- */
 	// мобильные
+
 	if (mobile) {
 		$('#header-nav').collapse('hide');
-	}
-	if (mobile) {
 		$('#header-navControl').removeClass('active');
 		$('#header-nav').hideClickAway('collapse');
 
 		setTimeout(function (){
 			$('.header-nav-system-wrap').removeClass('mobile-hide');
 		}, 300)
-	}
-	if (!mobile) {
+	} else {
 		$('.header-nav-system-wrap').addClass('show')
 		$('#header-navControl').addClass('active');
 	}
 
+	$(window).resize(function (){
+		if (mobile) {
+			$('#header-nav').collapse('hide');
+		} else {
+			$('#header-nav').collapse('show');
+		}
+	});
 	// системы показываются
 	$('#header-nav').on('shown.bs.collapse', function () {
 		var btn = $('#header-navControl');
@@ -156,17 +163,17 @@ $(document).ready(function() {
 	// системы скрываются
 	$('#header-nav').on('hidden.bs.collapse', function () {
 		var btn = $('#header-navControl');
-		btn.removeClass('active')
+		btn.removeClass('active');
 	});
 
-	$(document).on('click', function(e){
-		var el = e.target;
-		var headerNav = $(el).parents('#header-nav');
-
-		if (mobile && !$(headerNav).hasClass('header-nav-system-wrap')) {
-			$('#header-nav').collapse('hide');
-		}
-	});
+	// $(document).on('click', function(e){
+	// 	var el = e.target;
+	// 	var headerNav = $(el).parents('#header-nav');
+	//
+	// 	if (mobile && !$(headerNav).hasClass('header-nav-system-wrap')) {
+	// 		$('#header-nav').collapse('hide');
+	// 	}
+	// });
 
 
 	// разворачиваем меню
@@ -409,7 +416,6 @@ $(document).ready(function() {
 			}, 1000)
 
 
-			// console.log('test');
 		}
 		$('#aside').css({
 			width: asideWidth,
@@ -2097,7 +2103,6 @@ $(document).ready(function() {
 		var el = $(this);
 		var make = function (){
 			$(document).mouseup(function (e){ // событие клика по веб-документу
-				console.log(el);
 				if (!el.is(e.target) // если клик был не по нашему блоку
 					&& el.has(e.target).length === 0) { // не по его дочерним элементам
 					switch ($bootstrapEvent){ // проверяем событие
