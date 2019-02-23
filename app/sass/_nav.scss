@@ -5,16 +5,23 @@
 	margin-left: -15px;
 	margin-right: -15px;
 	// @include mA();
-
 	&__content {
-		position: relative;
-		margin-top: 5px;
 		padding: 5px 15px 4px;
 		background-image: linear-gradient(180deg, #e4e4e4 0%, rgba(212, 212, 212, 0.24) 22%, #ececec 100%);
 		filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e4e4e4', endColorstr='#ececec',GradientType=0 );
 		background-color: #fff;
 		border-radius: 5px;
 		text-align: center;
+		@include sm-block {
+			position: static;
+			border: 1px solid #dddee0;
+			background-image: none;
+			filter: none;
+		}
+	}
+	&-wrap {
+		position: relative;
+		margin-top: 5px;
 
 		@include lg-block {
 			margin-top: 10px;
