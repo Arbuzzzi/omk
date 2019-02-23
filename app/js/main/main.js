@@ -135,11 +135,9 @@ $(document).ready(function() {
 	$(window).resize(function (){
 		setTimeout(function (){
 			if (mobile) {
-				console.log('test1');
 				$('#header-nav').hideClickAway('collapse');
 				$('#menu-nav-headerGroup').hideClickAway('collapse');
 			} else {
-				console.log('test2');
 				$('#header-nav').hideClickAway();
 				$('#menu-nav-headerGroup').hideClickAway();
 			}
@@ -408,6 +406,7 @@ $(document).ready(function() {
 		var position = $(this).scrollTop();
 		var menuLeft = $('#menuLeftList');
 		var meuLeftShown = menuLeft.hasClass('show');
+		positionOne = $(window).innerHeight(),
 		
 		windowHeight = $(window).outerHeight();
 		asideWidth = $('#aside').parent().width();
@@ -906,7 +905,6 @@ $(document).ready(function() {
 	$('#filtersCalendarPeriod').on('change click', function(event) {
 		if ($(this).val() == 'true-date') {
 			$(this).val('');
-			console.log($.datepicker);
 			$('[name="period_date_buffer"]').datepicker($.datepicker.regional[ "ru" ]);
 			$('[name="period_date_buffer"]').datepicker('widget').addClass('widget-calendar widget-calendar_filter');
 			$('[name="period_date_buffer"]').datepicker('option',{
@@ -1456,6 +1454,9 @@ $(document).ready(function() {
 	$(window).resize(function (){
 		setTimeout(function (){
 			$('.ddd-truncated').dotdotdot();
+			$('.card__title').dotdotdot();
+			$('.text-ddd').dotdotdot();
+
 			$('.text-ddd-135').dotdotdot({
 				keep: '.card__more',
 				tolerance: 10,
