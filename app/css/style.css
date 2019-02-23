@@ -3344,11 +3344,6 @@ select.form-control:not([size]):not([multiple]) {
   display: inline-block;
 }
 
-.menu-nav a[href=""],
-.menu-nav a[href="#"] {
-  cursor: default;
-}
-
 .menu-nav-header {
   display: none;
 }
