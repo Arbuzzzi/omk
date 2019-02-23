@@ -129,16 +129,30 @@ $(document).ready(function() {
 		$('.header').css('transform', '');
 	});
 
-	if (mobile) $('#menu-nav-headerGroup').hideClickAway('collapse');
-
 
 	/* ПОДМЕНЮ "СИСТЕМЫ" ----------------------------------------------------------------------------- */
 	// мобильные
+	$(window).resize(function (){
+		setTimeout(function (){
+			if (mobile) {
+				console.log('test1');
+				$('#header-nav').hideClickAway('collapse');
+				$('#menu-nav-headerGroup').hideClickAway('collapse');
+			} else {
+				console.log('test2');
+				$('#header-nav').hideClickAway();
+				$('#menu-nav-headerGroup').hideClickAway();
+			}
+		},500)
 
+	})
 	if (mobile) {
 		$('#header-nav').collapse('hide');
 		$('#header-navControl').removeClass('active');
 		$('#header-nav').hideClickAway('collapse');
+		$('#menu-nav-headerGroup').hideClickAway('collapse');
+
+
 
 		setTimeout(function (){
 			$('.header-nav-system-wrap').removeClass('mobile-hide');
@@ -390,7 +404,6 @@ $(document).ready(function() {
 			windowHeight = $(window).outerHeight(),
 			windowMoreAside,
 			currentScroll = 0;
-
 	$(window).resize(function (){
 		var position = $(this).scrollTop();
 		var menuLeft = $('#menuLeftList');
@@ -402,14 +415,42 @@ $(document).ready(function() {
 		if (position <= 0 && menuLeftListDeafult && !meuLeftShown) {
 			setTimeout(function (){
 				$('#menuLeftList').collapse('show');
-				$('#leftNavigationPseudo').css('display', 'block')
+				$('#leftNavigationPseudo').css('display', 'block');
 			}, 1000)
 
-
 		}
-		$('#aside').css({
+		if (position > 0) {
+			setTimeout(function (){
+				$('#header-nav').collapse('hide');
+				if ($(aside).hasClass('positionTop')) {
+					setTimeout(function (){
+						var headerHeight = $('.header').actual('outerHeight');
+						$(aside).css('top', headerHeight).removeClass('scrollingTop scrollingBottom ');
+
+						asideHeight = $(aside).actual('outerHeight') + $(header).actual('outerHeight'); // бывает вызыв события scroll
+						windowMoreAside = asideHeight < windowHeight;
+						if (windowMoreAside) {
+							$(aside).css('bottom:', '').addClass('positionTop');
+						}
+					}, 500)
+				}
+			},500)
+		}
+		$(aside).css({
 			width: asideWidth,
-		})
+		});
+		if (!mobile) {
+			setTimeout(function (){
+				$(aside).css({
+					position: '',
+					top: '',
+					bottom: '',
+					width: '',
+					marginTop: '',
+				}).removeClass('positionTop positionBottom scrollingTop scrollingBottom')
+					.addClass('positionStatic');
+			}, 600)
+		}
 
 	});
 
@@ -420,187 +461,240 @@ $(document).ready(function() {
 		}
 	});
 	if (!ie) {
-		$(document).on('scroll', function(event) {
-			var position = $(this).scrollTop(),
-					heightHeader = $('.header:not(.header.scroll)').outerHeight(),
-					positionContentEvent = $('.content').offset().top,
-					asideBig = $('#aside').outerHeight() > $('#content').outerHeight();
+		var header = $('.header');
+		var content = $('.header + *');
+		var headerBread = $('.header .breadcrumb');
+		var headerNavSystem = $('#header-nav');
+		var menuLeft = $('#menuLeftList');
+		var aside = $('#aside');
+
+		var asideHeight;
+
+		$(document).on('scroll', function(e) {
+			var windowHeight = $(window).outerHeight();
+			var position = $(this).scrollTop();
+			var positionBottom = position + windowHeight;
+			var positionContentEvent = $('.content').offset().top;
+			var asideBig = $('#aside').outerHeight() > $('#content').outerHeight();
+			var asideOfsetTop;
+			var headerHeight;
+			var contentPadding;
+			var positionContent = $(header).actual('outerHeight');
+
 
 			if (mobile && $('#header-nav').hasClass('show')) {
 				$('#header-nav').collapse('hide');
 			}
 
-			if ($('#menu-nav-headerGroup').hasClass('show')) {
+			if ($('#menu-nav-headerGroup').hasClass('show')
+				|| $('.menu-left-navigation-pseudo').hasClass('show')) {
 				$('#menu-nav-headerGroup').collapse('hide');
 			}
 
 			$('*').tooltip('hide');
-
-			if (!mobile) {
-				asideHeight = $('#aside').actual('outerHeight') + $('.header').actual('outerHeight'); // бывает вызыв события scroll
-				windowMoreAside = asideHeight < windowHeight;
-
-
-
-				if (!asideBig && !ie) {
-					if (position > currentScroll) { //скроллим вниз
-						if ($('#aside').css('margin-top') == '1px') {
-							$('#aside').css({
-								position: '',
-								marginTop: $('#aside').offset().top-(position-currentScroll)-$('.header').actual('outerHeight'),
-							});
-						}
-
-						if (position>=$('#aside').offset().top+$('#aside').actual('outerHeight')-positionOne) {
-
-							if (windowMoreAside) {
-								$('#aside').css({
-									position: 'fixed',
-									top: $('.header').actual('outerHeight'),
-									width: asideWidth,
-									marginTop: '',
-								});
-							} else {
-								$('#aside').css({
-									position: 'fixed',
-									bottom: '0px',
-									width: asideWidth,
-									marginTop: '',
-									top: ''
-								});
-							}
-
-
-						}
-					} else { // скроллим вверх
-
-						if($('#aside').css('margin') == '0px' && position > positionTwo){
-							$('#leftNavigationPseudo').height(0)
-							$('#aside').css({
-								position: '',
-								marginTop: $('#aside').offset().top-(position-currentScroll)-$('.header').actual('outerHeight'),
-							});
-
-						} else if($('#aside').offset().top+200 >= position && position > 300) {
-							$('#leftNavigationPseudo').height(0)
-							$('#aside').css({
-								position: 'fixed',
-								top: $('.header').outerHeight(),
-								bottom: '',
-								marginTop: '1px',
-								width: $('#aside').parent().width(),
-							});
-
-						} else if (position <= 0) {
-							$('#aside').removeAttr('style')
-						}
-					}
-				}
-
-
-
-				// var positionScrollBottom = position+positionOne,
-				// 		asidePositionBottom = parseInt($('#aside').css('margin-top'))+$('#aside').outerHeight();
-
-				// if (positionScrollBottom < asidePositionBottom && currentScroll > position) {
-				// 	$('#aside').css({
-				// 		position: 'fixed',
-				// 		bottom: 0,
-				// 		top: 'auto',
-				// 		marginTop: 0,
-				// 		width: '270px',
-				// 	});
-				// }
-				// меню в обычном состоянии
-
-				if (!$('.header').hasClass('.scroll')  && !$('#header-navSetting').hasClass('show') && !mobile) {
-					addClassScroll($('.header'), 'scroll', positionThree);
-
-					// 1 брэйкпоинт
-					if (position > 0 /*&& !asideBig*/) {
-						collapseItemScrollHide($('#menuLeftListControl'), 0);
-					} else {
-						// if (position <= 300) {
-						// 	collapseItemScrollShow($('#menuLeftListControl'), positionOne);
-						// }
-					}
-
-					// сохраняем отступ
-					if (position > 0) {
-						$('.header + *').css('padding-top', positionContent);
-						// if (chekPosContent !== positionContent) {
-						// 	// setTimeout(function (){
-						// 	// 	chekPosContent = positionContent;
-						// 	// },100)
-						//
-						// }
-
-						$('#btnUp').animate({bottom: 'show'}, 500);
-						$('.header .breadcrumb').css({
-							paddingBottom: '15px'});
-
-
-					} else {
-						$('.header + *').css('padding-top', '');
-						$('#btnUp').animate({bottom: 'hide', opacity: 'hide'}, 500);
-						$('.header .breadcrumb').removeAttr('style')
-					}
-				}
-
-				// меню свернуто
-				if ($('.header').hasClass('scroll')) {
-					$('#header-nav').collapse('hide');
-					$('#header-navControl').removeClass('active');
-				}
-
-				// scroll top самый верх экана
-				if (position <= 0) {
-					if (!mobile) {
-						$('#header-nav').collapse('show');
-					}
-					if (!edge) $('.header').removeAttr('style');
-					addClassScroll($('.header'));
-					positionContent = $('.header').actual('outerHeight');
-				}
-				// if (position <= 0 && menuLeftListDeafult) {
-				// 	$('#menuLeftList').collapse('show');
-				// }
-
-				// scroll bottom
-				if (position > 0) {
-					$('.menu-left').removeAttr('style');
-					// $('#menu-nav-headerGroup').collapse('hide');
-					$('.header').css('padding-bottom', '')
-
-					// развернуть
-					if (!$('.rollUp').hasClass('show') && $('.header').hasClass('scroll')) {
-						$('.rollUp').addClass('show');
-					} else {
-						$('.rollUp').removeClass('show');
-					}
-
-					if (!$('.header').hasClass('scroll')) {
-						if (!edge) $('.header').css({'position': 'fixed'});
-					}
-
-				} else {
-					$('.rollUp').removeClass('show');
-				}
-			} else { // !mobile
-				if (position > 0) {
-					if (!edge) $('.header').css({'position': 'fixed'});
-
-					if (!edge) $('.header + *').css('padding-top', positionContent);
-
-				} else {
-					if (!edge) $('.header').css({'position': ''});
-					if (!edge) $('.header + *').css('padding-top', '');
-				}
-			}
-
 			// скрываем dropdown при скролле
 			if ($('.dropdown-menu').hasClass('show')) {
 				$('.dropdown-menu').removeClass('show');
+			}
+
+			// header
+			if (!mobile) {
+				if (position > 0) {
+					if (!edge) $(header).css({'position': 'fixed'});
+					$('#header-nav').collapse('hide');
+					if (!edge) $(content).css('padding-top', positionContent);
+
+				} else {
+					if (!edge) $(header).css({'position': ''});
+					if (!edge) $(content).css('padding-top', '');
+					$('#header-nav').collapse('show');
+				}
+			}
+
+
+			// aside
+			if (!mobile) {
+					asideHeight = $(aside).actual('outerHeight') + $(header).actual('outerHeight'); // бывает вызыв события scroll
+					windowMoreAside = asideHeight < windowHeight;
+
+				if (!asideBig) { // боковая меньше контента
+
+					if (position > currentScroll) { // скроллим вниз
+
+						var hasAsideTop;
+						hasAsideTop = $(aside).hasClass('scrollingTop');
+
+						if (position > 0) {
+							$(aside).removeClass('scrollingTop');
+
+							if (!$(aside).hasClass('scrollingBottom')) {
+								asideOfsetTop = $(aside).offset().top;
+								headerHeight = $('.header').actual('outerHeight');
+								contentPadding = parseInt($('.header + *').css('padding-top'));
+
+								$(aside).addClass('scrollingBottom');
+								if (!$(aside).hasClass('positionStatic')/*
+									&& $(aside).hasClass('scrollingBottom')
+									&& !$(aside).hasClass('scrollingTop')*/) {
+									$(aside).css({
+										position: '',
+										top: '',
+										bottom: '',
+										marginTop: asideOfsetTop - contentPadding,
+									}).removeClass('positionTop positionBottom').addClass('positionStatic');
+								}
+
+							}
+
+							asideOfsetTop = $(aside).offset().top;
+							asideHeight = $(aside).actual('outerHeight') + $(aside).offset().top;
+
+							if (windowMoreAside) {
+								$(aside).css({
+									position: 'fixed',
+									top: $(header).actual('outerHeight'),
+									bottom: '',
+									marginTop: '',
+									width: $('#aside').parent().width(),
+								}).addClass('positionTop').removeClass('positionStatic positionBottom');
+							}
+
+							if (positionBottom >= asideHeight) { // прилепляем асайд к низу
+								if (!windowMoreAside) {
+									$(aside).css({
+										position: 'fixed',
+										top: '',
+										bottom: '0px',
+										marginTop: '',
+										width: $('#aside').parent().width(),
+									}).addClass('positionBottom').removeClass('positionTop positionStatic');
+								}
+							}
+						}
+
+					} else { // скролл вверх
+
+						contentPadding = parseInt($('.header + *').css('padding-top'));
+
+						asideOfsetTop = $(aside).offset().top;
+						headerHeight = $(header).actual('outerHeight');
+
+						hasAsideTop = $(aside).hasClass('scrollingTop');
+
+
+
+						if (position > 0) {
+
+							if (!$(header).hasClass('scroll') && $(aside).hasClass('positionTop')) {
+								headerHeight = $(header).actual('outerHeight');
+								$(aside).css({
+									position: '',
+									top: headerHeight,
+									bottom: '',
+									marginTop: '',
+								});
+							}
+
+							$(aside).removeClass('scrollingBottom');
+							$(aside).addClass('scrollingTop');
+
+							asideOfsetTop = $(aside).offset().top;
+							headerHeight = $(header).actual('outerHeight');
+
+							if (asideOfsetTop < position + headerHeight) {
+
+								if ($(aside).hasClass('positionBottom')) {
+									$(aside).css({
+										position: '',
+										top: '',
+										bottom: '',
+										marginTop: asideOfsetTop - contentPadding,
+									}).removeClass('positionBottom positionTop').addClass('positionStatic');
+								}
+
+							} else {
+								$(aside).css({
+									position: 'fixed',
+									top: $(header).actual('outerHeight'),
+									bottom: '',
+									width: asideWidth,
+									marginTop: '',
+								}).addClass('positionTop').removeClass('positionStatic');
+							}
+
+						} else {
+							$(aside).css({
+								position: '',
+								top: '',
+								bottom: '',
+								width: '',
+								marginTop: '',
+							}).removeClass('positionTop positionBottom scrollingTop scrollingBottom')
+								.addClass('positionStatic');
+						}
+					}
+				}
+			}
+			// header
+			if (!$(header).hasClass('.scroll') && !$('#header-navSetting').hasClass('show') && !mobile){
+				addClassScroll($(header), 'scroll', positionThree);
+
+				// 1 брэйкпоинт
+				if (position > 0 /*&& !asideBig*/){
+					collapseItemScrollHide($('#menuLeftListControl'), 0);
+				}
+
+				// сохраняем отступ
+				if (position > 0){
+					$(content).css('padding-top', positionContent);
+					$('#btnUp').animate({bottom: 'show'}, 500);
+					$('.header .breadcrumb').css({
+						paddingBottom: '15px'
+					});
+
+
+				}else {
+					$(content).css('padding-top', '');
+					$('#btnUp').animate({bottom: 'hide', opacity: 'hide'}, 500);
+					$('.header .breadcrumb').removeAttr('style')
+				}
+			}
+
+			// меню свернуто
+			if ($(header).hasClass('scroll')){
+				$('#header-nav').collapse('hide');
+				$('#header-navControl').removeClass('active');
+			}
+
+			// scroll top самый верх экана
+			if (position <= 0){
+				if (!mobile){
+					$('#header-nav').collapse('show');
+				}
+				if (!edge) $(header).removeAttr('style');
+				addClassScroll($(header));
+				positionContent = $(header).actual('outerHeight');
+			}
+
+			// scroll bottom
+			if (position > 0){
+				$('.menu-left').removeAttr('style');
+				// $('#menu-nav-headerGroup').collapse('hide');
+				$(header).css('padding-bottom', '')
+
+				// развернуть
+				if (!$('.rollUp').hasClass('show') && $(header).hasClass('scroll')){
+					$('.rollUp').addClass('show');
+				}else {
+					$('.rollUp').removeClass('show');
+				}
+
+				if (!$(header).hasClass('scroll')){
+					if (!edge) $(header).css({'position': 'fixed'});
+				}
+
+			}else {
+				$('.rollUp').removeClass('show');
 			}
 			currentScroll = position;
 		});
@@ -624,19 +718,6 @@ $(document).ready(function() {
 		if (elementToScroll !== undefined && elementToScroll !== null && elementToScroll !== '') {
 			scrollTo(elementToScroll);
 		}
-		// var elementToScrollPos = elementToScroll.offset().top;
-		// var headerHeight = $('.header').outerHeight(); // высота хэдера
-		// if (elementToScrollPos < positionTwo) {
-		// 	elementToScrollPos = elementToScroll.offset().top - headerHeight - 45;
-		// } else {
-		// 	elementToScrollPos = elementToScroll.offset().top - 90;
-		// }
-		//
-		// if (elementToScroll !== undefined) {
-		// 	$('html:not(:animated),body:not(:animated)').animate({scrollTop: elementToScrollPos}, 800);
-		// 	// event.preventDefault();
-		// 	return false;
-		// }
 	});
 
 	function scrollTo ($elementToScroll) {
@@ -690,12 +771,7 @@ $(document).ready(function() {
 
 	$('#btnUp').click(function() {
 		var destination = 0;
-		// 		element = $(this).attr('href');
-		// 		headerHeight = $('.header').outerHeight();
-		// if ($(element).offset() !== undefined) {
-		// 	destination = $(element).offset().top - headerHeight;
 
-		// }
 		$('html:not(:animated),body:not(:animated)').animate({
 			scrollTop: destination
 		}, 800, function () {
@@ -803,15 +879,10 @@ $(document).ready(function() {
 		btn.removeClass('active');
 		$('#navMoreListControl').attr('data-toggle', 'dropdown')
 		$('.menu-left-more__button>i').animate({opacity: 'show'}, 400);
-		if (position < positionOne) {
-			$('#leftNavigationPseudo').animate({height: 0}, 300)
-		}
+		$('#leftNavigationPseudo').animate({height: 0}, 300)
 	});
 	var menuLeftList = $('#menuLeftList').actual('outerHeight');
 	$('#leftNavigationPseudo').html('<div style="height:'+menuLeftList+'px;"></div>');
-	// $('#menuLeftListControl').on('click', function(event) {
-	// 	$('#leftNavigationPseudo').collapse('toggle');
-	// });
 
 	// ставим лайки
 	$(document).on('click', '.like-button:not(.comment-button)', function(event) {
@@ -1363,7 +1434,7 @@ $(document).ready(function() {
 	$('.text-ddd-135').dotdotdot({
 		keep: '.card__more',
 		tolerance: 10,
-		height: 135,
+		// height: 135,
 		callback: function () {
 			if ($(this).hasClass('ddd-truncated')) {
 				$(this).find('.card__more').css('display', 'table');
@@ -1375,6 +1446,17 @@ $(document).ready(function() {
 	$(window).resize(function (){
 		setTimeout(function (){
 			$('.ddd-truncated').dotdotdot();
+			$('.text-ddd-135').dotdotdot({
+				keep: '.card__more',
+				tolerance: 10,
+				// height: 135,
+				callback: function () {
+					if ($(this).hasClass('ddd-truncated')) {
+						$(this).find('.card__more').css('display', 'table');
+						$(this).dotdotdot({tolerance: 0})
+					}
+				}
+			});
 		}, 1000)
 
 	});
@@ -2093,22 +2175,26 @@ $(document).ready(function() {
 	jQuery.fn.hideClickAway = function($bootstrapEvent){
 		var el = $(this);
 		var make = function (){
-			$(document).mouseup(function (e){ // событие клика по веб-документу
-				if (!el.is(e.target) // если клик был не по нашему блоку
-					&& el.has(e.target).length === 0) { // не по его дочерним элементам
-					switch ($bootstrapEvent){ // проверяем событие
-						case 'collapse':
-							el.collapse('hide');
-							break;
-						case 'tooltip':
-							el.tooltip('hide');
-							break;
-						default:
-							el.collapse('hide');
-							break;
+			if (!!$bootstrapEvent){
+				$(document).mouseup(function (e){ // событие клика по веб-документу
+					if (!el.is(e.target) // если клик был не по нашему блоку
+						&& el.has(e.target).length === 0) { // не по его дочерним элементам
+						switch ($bootstrapEvent){ // проверяем событие
+							case 'collapse':
+								el.collapse('hide');
+								break;
+							case 'tooltip':
+								el.tooltip('hide');
+								break;
+							default:
+								el.collapse('hide');
+								return false;
+						}
 					}
-				}
-			});
+				});
+			} else {
+				$(document).unbind('mouseup');
+			}
 		};
 
 		return this.each(make)

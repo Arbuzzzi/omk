@@ -33,10 +33,6 @@ $(document).ready(function (){
 				positionContentEvent = $('.content').offset().top,
 				asideBig = $('#aside').outerHeight() > $('#content').outerHeight();
 
-			// if (positionContent !== $(header).actual('outerHeight')
-			// 	&& position <= $(header).actual('outerHeight')) {
-			// 	$(content).animate({paddingTop: $(header).actual('outerHeight')},300)
-			// }
 
 			if (position > 0 && !header.hasClass('scroll-ie')) {
 				$(header).css({'position': 'fixed'});
@@ -50,11 +46,6 @@ $(document).ready(function (){
 				$(header).removeClass('scroll-ie');
 				$(menuLeft).collapse('show');
 				$(headerNavSystem).collapse('show');
-
-				// positionContent = $(header).actual('outerHeight');
-				//
-				// $(content).css('padding-top', positionContent);
-				// $(content).animate({paddingTop: positionContentDefault}, 300);
 				$(headerBread).css('padding-bottom', '');
 			}
 
@@ -62,6 +53,10 @@ $(document).ready(function (){
 				$(headerNavSystem).collapse('hide');
 			}
 			addClassScroll($('.header'), 'scroll', positionThree);
+
+			if ($(header).hasClass('scroll-ie') && $(menuLeft).hasClass('show')) {
+				$(menuLeft).collapse('hide');
+			}
 		});
 
 

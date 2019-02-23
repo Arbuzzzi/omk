@@ -48,8 +48,12 @@
 		padding-bottom: 0;
 	}
 	@include xs-block {
+		position: fixed;
 		padding-left: 15px;
 		padding-right: 15px;
+		& + * {
+			padding-top: 80px;
+		}
 	}
 	@include before {
 		top: 10px;

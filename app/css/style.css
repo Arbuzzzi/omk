@@ -4051,6 +4051,24 @@ select.form-control:not([size]):not([multiple]) {
   font-size: 14px;
 }
 
+.aside-wrap.positionTop {
+  position: fixed;
+  top: 0;
+  bottom: auto;
+}
+
+.aside-wrap.positionBottom {
+  position: fixed;
+  bottom: 0;
+  top: auto;
+}
+
+.aside-wrap.positionStatic {
+  position: static;
+  top: auto;
+  bottom: auto;
+}
+
 .cards {
   display: -webkit-box;
   display: -webkit-flex;
@@ -4468,6 +4486,10 @@ select.form-control:not([size]):not([multiple]) {
   font-size: 16px;
   font-weight: 400;
   line-height: 1.4;
+}
+
+.card__text.text-ddd-135 {
+  max-height: 135px;
 }
 
 .card__text p {
@@ -9586,6 +9608,10 @@ select.form-control:not([size]):not([multiple]) {
     max-height: 30px;
   }
 
+  .card__text.text-ddd-135 {
+    max-height: 100px;
+  }
+
   .card__text p {
     font-size: 9px;
   }
@@ -10140,8 +10166,13 @@ select.form-control:not([size]):not([multiple]) {
   }
 
   .header {
+    position: fixed;
     padding-left: 15px;
     padding-right: 15px;
+  }
+
+  .header + * {
+    padding-top: 80px;
   }
 
   .header:before {
@@ -10209,6 +10240,10 @@ select.form-control:not([size]):not([multiple]) {
 
   .card__title {
     min-height: auto;
+  }
+
+  .card__text.text-ddd-135 {
+    max-height: 110px;
   }
 
   .card__text p {

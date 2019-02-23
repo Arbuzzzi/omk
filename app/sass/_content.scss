@@ -325,4 +325,21 @@
 		}
 	}
 }
+.aside-wrap {
+	&.positionTop {
+		position: fixed;
+		top: 0;
+		bottom: auto;
+	}
+	&.positionBottom {
+		position: fixed;
+		bottom: 0;
+		top: auto;
+	}
+	&.positionStatic {
+		position: static;
+		top: auto;
+		bottom: auto;
+	}
+}
 

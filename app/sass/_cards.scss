@@ -400,6 +400,15 @@
 		font-size: 16px;
 		font-weight: 400;
 		line-height: 1.4;
+		&.text-ddd-135 {
+			max-height: 135px;
+			@include md-block {
+				max-height: 100px;
+			}
+			@include xs-block {
+				max-height: 110px;
+			}
+		}
 		p {
 			font-size: 17px;
 			margin-bottom: 15px;
