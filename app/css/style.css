@@ -2113,9 +2113,10 @@ h2 span,
   text-indent: 0.01px;
   -o-text-overflow: '';
      text-overflow: '';
+  cursor: pointer;
 }
 
-.form-select:-ms-expand {
+.form-select::-ms-expand {
   display: none;
 }
 
@@ -2494,6 +2495,10 @@ h2 span,
 .form-filters__submit {
   font-size: 10px;
   color: #797C82;
+}
+
+select::-ms-expand {
+  display: none !important;
 }
 
 .form-group label {
@@ -5445,6 +5450,51 @@ select.form-control:not([size]):not([multiple]) {
   margin-right: auto;
   display: block;
   margin-top: 40px;
+}
+
+.widget-calendar_filter {
+  margin-top: 30px;
+  min-height: auto;
+}
+
+.widget-calendar_filter .ui-datepicker-prev,
+.widget-calendar_filter .ui-datepicker-next {
+  display: inline-block !important;
+  font-size: 14px;
+  width: auto;
+  height: auto;
+}
+
+.widget-calendar_filter .ui-datepicker-prev span,
+.widget-calendar_filter .ui-datepicker-next span {
+  width: auto;
+  height: auto;
+  text-indent: unset;
+}
+
+.widget-calendar_filter .ui-datepicker-prev span {
+  left: 0;
+  margin-left: 0;
+}
+
+.widget-calendar_filter .ui-datepicker-next span {
+  right: 0;
+}
+
+.widget-calendar_filter .ui-datepicker-header {
+  font-size: 14px;
+  margin-bottom: 10px;
+}
+
+.widget-calendar_filter .ui-datepicker-title {
+  display: block;
+  text-align: center;
+  font-size: 14px;
+}
+
+.widget-calendar_filter .ui-datepicker-title .ui-datepicker-month,
+.widget-calendar_filter .ui-datepicker-title .ui-datepicker-year {
+  display: inline;
 }
 
 .events {

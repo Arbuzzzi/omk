@@ -202,6 +202,43 @@
 		display: block;
 		margin-top: 40px;
 	}
+	&_filter {
+		margin-top: 30px;
+		min-height: auto;
+		.ui-datepicker-prev, .ui-datepicker-next {
+			display: inline-block !important;
+			font-size: 14px;
+			width: auto;
+			height: auto;
+
+			span {
+				width: auto;
+				height: auto;
+				text-indent: unset;
+
+			}
+		}
+		.ui-datepicker-prev span {
+			left: 0;
+			margin-left: 0;
+		}
+		.ui-datepicker-next span {
+			right: 0;
+		}
+		.ui-datepicker-header {
+			font-size: 14px;
+			margin-bottom: 10px;
+		}
+		.ui-datepicker-title {
+			display: block;
+			text-align: center;
+			font-size: 14px;
+		}
+		.ui-datepicker-title .ui-datepicker-month,
+		.ui-datepicker-title .ui-datepicker-year {
+			display: inline;
+		}
+	}
 }
 .events {
 	display: none;

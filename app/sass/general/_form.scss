@@ -200,7 +200,8 @@
 		appearance: none !important;
 		text-indent: 0.01px; 
 		text-overflow: '';
-		&:-ms-expand {
+		cursor: pointer;
+		&::-ms-expand {
   		display: none;
 		}
 
@@ -521,4 +522,7 @@
 		font-size: 10px;
 		color: #797C82;
 	}
+}
+select::-ms-expand {
+	display: none !important;
 }

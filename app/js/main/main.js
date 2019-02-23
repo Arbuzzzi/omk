@@ -902,14 +902,19 @@ $(document).ready(function() {
 		}
 		$('.content-filter__formbox').toggle('slide', options);
 	});
-
 	// ставим текущую дату в фильтре
 	$('#filtersCalendarPeriod').on('change click', function(event) {
 		if ($(this).val() == 'true-date') {
 			$(this).val('');
+			console.log($.datepicker);
 			$('[name="period_date_buffer"]').datepicker($.datepicker.regional[ "ru" ]);
-			$('[name="period_date_buffer"]').datepicker('widget').addClass('widget-calendar');
+			$('[name="period_date_buffer"]').datepicker('widget').addClass('widget-calendar widget-calendar_filter');
+			$('[name="period_date_buffer"]').datepicker('option',{
+				nextText: '>',
+				prevText: '<',
+			});
 			$('[name="period_date_buffer"]').datepicker('show');
+
 
 		}
 	});
