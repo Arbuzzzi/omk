@@ -501,8 +501,13 @@ $(document).ready(function() {
 			if (!mobile) {
 				if (position > 0) {
 					if (!edge) $(header).css({'position': 'fixed'});
-					$('#header-nav').collapse('hide');
 					if (!edge) $(content).css('padding-top', positionContent);
+					if (position >= positionTwo) {
+
+						$('#header-nav').collapse('hide');
+					} else {
+						$('#header-nav').collapse('show');
+					}
 
 				} else {
 					if (!edge) $(header).css({'position': ''});
