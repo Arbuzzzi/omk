@@ -693,7 +693,6 @@ body.modal-open .header {
   -webkit-transform: translateX(-8px);
       -ms-transform: translateX(-8px);
           transform: translateX(-8px);
-  padding-right: 0px !important;
 }
 
 img {
@@ -7500,6 +7499,10 @@ select.form-control:not([size]):not([multiple]) {
 }
 
 @media (min-width: 768px) {
+  body.modal-open .header {
+    padding-right: 0px !important;
+  }
+
   .margin-top-md-0 {
     margin-top: 0px !important;
   }

@@ -57,7 +57,10 @@ body {
 	&.modal-open {
 		.header {
 			transform: translateX(-8px);
-			padding-right: 0px !important;
+
+			@media (min-width: 768px) {
+				padding-right: 0px !important;
+			}
 			@include md-block {
 				transform: none;
 			}
