@@ -54,6 +54,15 @@ body {
 	font-weight: 400;
   overflow-x: hidden;
   line-height: normal;
+	&.modal-open {
+		.header {
+			transform: translateX(-8px);
+			padding-right: 0px !important;
+			@include md-block {
+				transform: none;
+			}
+		}
+	}
 }
 
 img{

@@ -2,6 +2,7 @@ $(document).ready(function (){
 	var ua = window.navigator.userAgent.toLowerCase();
 	var ie = (/trident/gi).test(ua) || (/msie/gi).test(ua);
 	var edge = ((/edge/).test(ua));
+	var ie9 = 	document.all && !window.atob;
 
 	if (ie) {
 		var header = $('.header');
@@ -101,6 +102,7 @@ $(document).ready(function (){
 				content.css('padding-top', positionContent);
 			}
 		});
+
 	}
 
 	function addClassScroll(element, $class, positionMax) {

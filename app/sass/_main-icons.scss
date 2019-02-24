@@ -34,7 +34,7 @@
 		}
 	}
 	&__title {
-		min-height: 26px;
+		//min-height: 26px;
 	}
 	&__input {
 		width: 310px;
@@ -46,8 +46,15 @@
 	}
 	&__imgbox {
 		width: 60px;
+		@include md-block {
+			max-width: 19px;
+			font-size: 19px;
+		}
 		&>* {
 			vertical-align: middle;
+			@include md-block {
+				vertical-align: top;
+			}
 		}
 	}
 	&__img {
