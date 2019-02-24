@@ -48,3 +48,49 @@
 		.card.w-auto
 			.content-text
 				p Более системный шрифт, чаще используется для информационных элементов типа кнопок, меню и т.п.
+	- var $sizes = [8, 10, 12, 14, 17, 20, 22, 24, 28, 32, 40];
+	.col-4
+		.card
+			.content-titlebox_dark
+				h4
+					strong Extra small
+				h4 .font-size-
+		each $size in $sizes
+			.card
+				.card__text(class= 'font-size-'+$size)= '.font-size-' + $size
+	.col-4
+		.card
+			.content-titlebox_dark
+				h4
+					strong Small
+				h4 .font-size-sm-
+		each $size in $sizes
+			.card
+				.card__text(class= 'font-size-sm-'+$size)= '.font-size-sm-' + $size
+	.col-4
+		.card
+			.content-titlebox_dark
+				h4
+					strong Medium
+				h4 .font-size-md-
+		each $size in $sizes
+			.card
+				.card__text(class= 'font-size-md-'+$size)= '.font-size-md-' + $size
+	.col-4
+		.card
+			.content-titlebox_dark
+				h4
+					strong Large
+				h4 .font-size-lg-
+		each $size in $sizes
+			.card
+				.card__text(class= 'font-size-lg-'+$size)= '.font-size-lg-' + $size
+	.col-4
+		.card
+			.content-titlebox_dark
+				h4
+					strong Extra large
+				h4 .font-size-xl-
+		each $size in $sizes
+			.card
+				.card__text(class= 'font-size-xl-'+$size)= '.font-size-xl-' + $size

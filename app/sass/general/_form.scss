@@ -64,6 +64,9 @@
 		&_flex {
 			display: flex;
 			vertical-align: middle;
+			@include xs-block {
+				display: block;
+			}
 		}
 		&_small {
 			max-width: 270px;
@@ -102,6 +105,13 @@
 				color: #bcbdc0;
 				transform: rotate(-90deg);
 			}
+			@include xs-block {
+				margin-bottom: 5px;
+				padding-left: 0;
+				&:after {
+					display: none;
+				}
+			}
 		}
 		&_select {
 			width: 100%;
@@ -114,6 +124,9 @@
 	}
 	&-sender {
 		text-align: right;
+		@include xs-block {
+			margin-bottom: 10px;
+		}
 	}
 	&__text {
 		margin-right: 20px;
@@ -255,10 +268,16 @@
 		// float: left;
 		display: flex;
 		align-items: center;
+		@include xs-block {
+			display: block;
+		}
 		&__label {
 			display: flex;
 			align-items: center;
 			//height: 100%;
+			@include xs-block {
+				margin-bottom: 10px;
+			}
 		}
 	
 		&__input { // стилизуем checkbox

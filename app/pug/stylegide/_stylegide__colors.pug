@@ -4,26 +4,28 @@
 			.content-titlebox_dark
 				h4 ПАЛИТРА
 	- var colors = [];
-	- colors.push({code: '#FFFFFF', class: 'bg-color-light'});
-	- colors.push({code: '#FBFBFB', class: 'bg-color-light-1'});
-	- colors.push({code: '#EEEFEF', class: 'bg-color-dark-1'});
-	- colors.push({code: '#E0E1E2', class: 'bg-color-dark-2'});
-	- colors.push({code: '#DDDEE0', class: 'bg-color-dark-3'});
-	- colors.push({code: '#D0D1D3', class: 'bg-color-dark-4'});
-	- colors.push({code: '#BCBDC0', class: 'bg-color-dark-5'});
-	- colors.push({code: '#A5A6AA', class: 'bg-color-dark-6'});
-	- colors.push({code: '#A1A3A7', class: 'bg-color-dark-7'});
-	- colors.push({code: '#797C82', class: 'bg-color-dark-8'});
-	- colors.push({code: '#5E6167', class: 'bg-color-dark-9'});
-	- colors.push({code: '#000000', class: 'bg-color-dark-10'});
-	- colors.push({code: '#008330', class: 'bg-color-danger'});
-	- colors.push({code: '#008330', class: 'bg-color-success'});
-	- colors.push({code: '#008ACC', class: 'bg-color-blue'});
-	- colors.push({code: '#EE9800', class: 'bg-color-warning'});
-
+	- colors.push({code: '#FFFFFF', bgClass: 'bg-color-light', colorClass: 'color-light'});
+	- colors.push({code: '#FBFBFB', bgClass: 'bg-color-light-1', colorClass: 'color-light-1'});
+	- colors.push({code: '#EEEFEF', bgClass: 'bg-color-dark-1', colorClass: 'color-dark-1'});
+	- colors.push({code: '#E0E1E2', bgClass: 'bg-color-dark-2', colorClass: 'color-dark-2'});
+	- colors.push({code: '#DDDEE0', bgClass: 'bg-color-dark-3', colorClass: 'color-dark-3'});
+	- colors.push({code: '#D0D1D3', bgClass: 'bg-color-dark-4', colorClass: 'color-dark-4'});
+	- colors.push({code: '#BCBDC0', bgClass: 'bg-color-dark-5', colorClass: 'color-dark-5'});
+	- colors.push({code: '#A5A6AA', bgClass: 'bg-color-dark-6', colorClass: 'color-dark-6'});
+	- colors.push({code: '#A1A3A7', bgClass: 'bg-color-dark-7', colorClass: 'color-dark-7'});
+	- colors.push({code: '#797C82', bgClass: 'bg-color-dark-8', colorClass: 'color-dark-8'});
+	- colors.push({code: '#5E6167', bgClass: 'bg-color-dark-9', colorClass: 'color-dark-9'});
+	- colors.push({code: '#000000', bgClass: 'bg-color-dark-10', colorClass: 'color-dark-10'});
+	- colors.push({code: '#008330', bgClass: 'bg-color-danger', colorClass: 'color-danger'});
+	- colors.push({code: '#008330', bgClass: 'bg-color-success', colorClass: 'color-success'});
+	- colors.push({code: '#008ACC', bgClass: 'bg-color-blue', colorClass: 'color-blue'});
+	- colors.push({code: '#EE9800', bgClass: 'bg-color-warning', colorClass: 'color-warning'});
 	each color in colors
 		.col-2
 			.card
-				.box.height-65.bg-color-light(class= color.class)
+				.box.height-65.bg-color-light(class= color.bgClass)
 				.card__text.text-center.h-auto
 					p= color.code
+					p= '.' + color.bgClass
+					p= '.' + color.colorClass
+					p(class= color.colorClass) example

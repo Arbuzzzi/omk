@@ -220,6 +220,9 @@
 			@include md-block {
 				font-size: 8px;
 			}
+			@include xs-block {
+				font-size: 14px;
+			}
 		}
 	}
 	&-succes-text {
@@ -241,6 +244,9 @@
 			@include md-block {
 				font-size: 8px;
 			}
+			@include xs-block {
+				font-size: 14px;
+			}
 		}
 	}
 	&-average-text {
@@ -261,6 +267,9 @@
 			margin-bottom: 0;
 			@include md-block {
 				font-size: 8px;
+			}
+			@include xs-block {
+				font-size: 14px;
 			}
 		}
 	}
@@ -371,6 +380,8 @@
 
 		}
 		@include xs-block {
+			max-height: 67px;
+			font-size: 20px;
 			min-height: auto;
 		}
 		&>h1, &>h2, &>h3, &>h4, &>h5 {
@@ -403,12 +414,13 @@
 		&.text-ddd-135 {
 			max-height: 135px;
 			@include md-block {
-				max-height: 100px;
-			}
-			@include xs-block {
 				max-height: 110px;
 			}
+			@include xs-block {
+				max-height: 135px;
+			}
 		}
+
 		p {
 			font-size: 17px;
 			margin-bottom: 15px;
@@ -432,6 +444,22 @@
 				text-decoration: underline;
 			}
 		}
+		&_mobile {
+			@include md-block {
+				font-size: 10px;
+			}
+			@include xs-block {
+				font-size: 14px;
+			}
+			p {
+				@include md-block {
+					font-size: 10px;
+				}
+				@include xs-block {
+					font-size: 14px;
+				}
+			}
+		}
 		&_404 {
 			color: #bcbdc0;
 			font-family: "PT Serif", serif;
@@ -449,6 +477,9 @@
 		font-weight: 400;
 		@include md-block {
 			font-size: 8px;
+		}
+		@include xs-block {
+			font-size: 12px;
 		}
 		&_light {
 			color: $light-color;
@@ -1270,9 +1301,6 @@
 			font-size: 10px;
 		}
 
-		@include sm-block {
-			font-size: 8px;
-		}
 		&.color-thin {
 			color: #a1a3a7;
 		}
@@ -1300,9 +1328,6 @@
 			}
 			@include sm-block {
 				font-size: 8px;
-			}
-			@include xs-block {
-				font-size: 6px;
 			}
 		}
 	}

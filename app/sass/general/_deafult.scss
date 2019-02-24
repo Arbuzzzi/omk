@@ -189,6 +189,57 @@ $font-sizes: 8, 10, 12, 14, 17, 20, 22, 24, 28, 32, 40;
 		background-color: #EE9800 !important;
 	}
 }
+.color {
+  &-light {
+    color: $light-color !important;
+	}
+  &-light-1 {
+    color: #FBFBFB !important;
+	}
+	&-dark-1 {
+		color: #eeefef !important;
+	}
+	&-dark-2 {
+		color: #E0E1E2 !important;
+	}
+	&-dark-3 {
+		color: #DDDEE0 !important;
+	}
+	&-dark-4 {
+		color: #D0D1D3 !important;
+	}
+	&-dark-5 {
+		color: #BCBDC0 !important;
+	}
+	&-dark-6 {
+		color: #A5A6AA !important;
+	}
+	&-dark-7 {
+		color: #A1A3A7 !important;
+	}
+	&-dark-8 {
+		color: #797C82 !important;
+	}
+	&-dark-9 {
+		color: #5E6167 !important;
+	}
+	&-dark-10 {
+		color: #000000 !important;
+	}
+	&-danger {
+		color: #EE3124 !important;
+	}
+	&-success {
+		color: #008330 !important;
+	}
+	&-blue {
+		color: #008ACC !important;
+	}
+	&-warning {
+		color: #EE9800 !important;
+	}
+}
+
 .color-icons-grey-1 {
 	color: #bdbec0;
 }
@@ -397,6 +448,9 @@ section, .section {
 	@include hover {
 		color: $basic-color;
 		text-decoration: underline;
+	}
+	@include xs-block {
+		float: right;
 	}
 }
 .logo-wrap {

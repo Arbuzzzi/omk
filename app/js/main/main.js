@@ -2129,28 +2129,47 @@ $(document).ready(function() {
 
 	/* Forms ------------------------------------------------------------------------------------------ */
 	var deafultTextBtn = $('#formMoreInputsControl').text();
-	$('#formMoreInputs').on('show.bs.collapse', function(event) {
+	var formMoreInputs = $('#formMoreInputs');
+
+	formMoreInputs.on('show.bs.collapse', function(event) {
 		var elControl = $('#formMoreInputsControl'),
 				elControlAltText = elControl.data('alt-text');
 
 		elControl.text(elControlAltText);
-		$('.form-sender').fadeOut('400');
+		if (mobile) {
+			$('.form-sender').animate({height: 'hide'},'400');
+		} else {
+			$('.form-sender').fadeOut('400');
+		}
+
 		$('.form__title_main').fadeOut('400');
-		$('.form__title_alt').fadeIn('400');
+		$('.form__title_alt').fadeIn('400', function (){
+			$(this).css('position', 'static')
+		});
 		
 	});
 
-	$('#formMoreInputs').on('hide.bs.collapse', function(event) {
+	formMoreInputs.on('hide.bs.collapse', function(event) {
 		var elControl = $('#formMoreInputsControl');
 
 		elControl.text(deafultTextBtn);
-		$('.form-sender').fadeIn('400');
-		$('.form__title_alt').fadeOut('400');
+		if (mobile) {
+			$('.form-sender').animate({height: 'show'},'400');
+		} else {
+			$('.form-sender').fadeIn('400');
+		}
+
+		$('.form__title_alt').fadeOut('400').css('position', '');
 		$('.form__title_main').fadeIn('400');
-		
+
 	});
 	$('#formCheckbox').on('change', function() {
-			$('.form-slide-input').toggle('slide')
+		if (mobile)  {
+			$('.form-slide-input').animate({height: 'toggle'}, '400')
+		} else {
+			$('.form-slide-input').toggle('slide');
+		}
+
 	});
 
 	$('.article.collapse, .card.collapse').on('show.bs.collapse', function(event) {

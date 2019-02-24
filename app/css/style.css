@@ -1161,6 +1161,70 @@ img {
   background-color: #EE9800 !important;
 }
 
+.color-light {
+  color: #ffffff !important;
+}
+
+.color-light-1 {
+  color: #FBFBFB !important;
+}
+
+.color-dark-1 {
+  color: #eeefef !important;
+}
+
+.color-dark-2 {
+  color: #E0E1E2 !important;
+}
+
+.color-dark-3 {
+  color: #DDDEE0 !important;
+}
+
+.color-dark-4 {
+  color: #D0D1D3 !important;
+}
+
+.color-dark-5 {
+  color: #BCBDC0 !important;
+}
+
+.color-dark-6 {
+  color: #A5A6AA !important;
+}
+
+.color-dark-7 {
+  color: #A1A3A7 !important;
+}
+
+.color-dark-8 {
+  color: #797C82 !important;
+}
+
+.color-dark-9 {
+  color: #5E6167 !important;
+}
+
+.color-dark-10 {
+  color: #000000 !important;
+}
+
+.color-danger {
+  color: #EE3124 !important;
+}
+
+.color-success {
+  color: #008330 !important;
+}
+
+.color-blue {
+  color: #008ACC !important;
+}
+
+.color-warning {
+  color: #EE9800 !important;
+}
+
 .color-icons-grey-1 {
   color: #bdbec0;
 }
@@ -6363,6 +6427,10 @@ select.form-control:not([size]):not([multiple]) {
   clear: both;
 }
 
+.article-author .article-author__username {
+  margin-top: 0.5px;
+}
+
 .article-author__left {
   vertical-align: middle;
   float: left;
@@ -9443,6 +9511,10 @@ select.form-control:not([size]):not([multiple]) {
     font-size: 6px;
   }
 
+  .link-search {
+    font-size: 9px;
+  }
+
   .button {
     font-size: 12px;
   }
@@ -9658,11 +9730,19 @@ select.form-control:not([size]):not([multiple]) {
   }
 
   .card__text.text-ddd-135 {
-    max-height: 100px;
+    max-height: 110px;
   }
 
   .card__text p {
     font-size: 9px;
+  }
+
+  .card__text_mobile {
+    font-size: 10px;
+  }
+
+  .card__text_mobile p {
+    font-size: 10px;
   }
 
   .card-date {
@@ -10127,6 +10207,10 @@ select.form-control:not([size]):not([multiple]) {
     right: 15px;
   }
 
+  .like-button {
+    font-size: 12px;
+  }
+
   .card-icons__iconbox {
     font-size: 16px;
     width: 8.33333%;
@@ -10148,10 +10232,6 @@ select.form-control:not([size]):not([multiple]) {
 
   .card-links__lnk {
     font-size: 10px;
-  }
-
-  .card-links__lnk {
-    font-size: 8px;
   }
 
   .card-links__lnk_small {
@@ -10192,6 +10272,10 @@ select.form-control:not([size]):not([multiple]) {
     height: 210px !important;
   }
 
+  .hashtag {
+    float: right;
+  }
+
   .button {
     font-size: 10px;
     min-width: 62px;
@@ -10199,6 +10283,36 @@ select.form-control:not([size]):not([multiple]) {
 
   .button:not([class*='button-more-']).button-more {
     font-size: 10px;
+  }
+
+  .button-tag {
+    font-size: 10px;
+    max-width: 130px;
+  }
+
+  .form__box_flex {
+    display: block;
+  }
+
+  .form-label_slim {
+    margin-bottom: 5px;
+    padding-left: 0;
+  }
+
+  .form-label_slim:after {
+    display: none;
+  }
+
+  .form-sender {
+    margin-bottom: 10px;
+  }
+
+  .form-checkbox {
+    display: block;
+  }
+
+  .form-checkbox__label {
+    margin-bottom: 10px;
   }
 
   .modal-main .modal-video iframe {
@@ -10294,19 +10408,54 @@ select.form-control:not([size]):not([multiple]) {
     font-size: 20px;
   }
 
+  .content-text h3 {
+    font-size: 13px;
+  }
+
+  .content-text p {
+    font-size: 10px;
+    margin-bottom: 10px;
+  }
+
   .card__imgbox_xs {
     height: 180px;
   }
 
+  .card-warning-text p {
+    font-size: 14px;
+  }
+
+  .card-succes-text p {
+    font-size: 14px;
+  }
+
+  .card-average-text p {
+    font-size: 14px;
+  }
+
   .card__title {
+    max-height: 67px;
+    font-size: 20px;
     min-height: auto;
   }
 
   .card__text.text-ddd-135 {
-    max-height: 110px;
+    max-height: 135px;
   }
 
   .card__text p {
+    font-size: 12px;
+  }
+
+  .card__text_mobile {
+    font-size: 14px;
+  }
+
+  .card__text_mobile p {
+    font-size: 14px;
+  }
+
+  .card-date {
     font-size: 12px;
   }
 
@@ -10340,10 +10489,6 @@ select.form-control:not([size]):not([multiple]) {
 
   .card-links__imgbox {
     font-size: 12px;
-  }
-
-  .card-links__lnk_small {
-    font-size: 6px;
   }
 
   .card-calendar .ui-datepicker-header .content-subtitle {
@@ -10395,6 +10540,26 @@ select.form-control:not([size]):not([multiple]) {
   .article-author p {
     display: inline-block;
     margin-top: 5px;
+  }
+
+  .article-author .article-author__left {
+    margin-top: 0;
+  }
+
+  .article-author .article-author__username {
+    margin-top: -4px;
+  }
+
+  .article-author__left {
+    font-size: 10px;
+  }
+
+  .article-author__username {
+    font-size: 8px;
+  }
+
+  .article-preview-text {
+    height: 75px;
   }
 
   .comment {

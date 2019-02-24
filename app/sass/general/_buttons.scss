@@ -114,6 +114,9 @@
 		text-decoration: underline;
 		color: darken(#008330, 10);
 	}
+	@include md-block {
+		font-size: 9px;
+	}
 }
 .page-link {
 	color: #5e6167;
@@ -403,6 +406,10 @@
 		white-space: nowrap;
 		text-overflow: ellipsis;
 		font-size: 8px;
+	}
+	@include xs-block {
+		font-size: 10px;
+		max-width: 130px;
 	}
 	&_dark {
 		background-color: $basic-color;

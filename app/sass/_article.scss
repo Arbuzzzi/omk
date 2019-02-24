@@ -172,8 +172,20 @@
 			@include xs-block {
 				display: inline-block;
 				margin-top: 5px;
-
 			}
+		}
+		.article-author__left {
+			@include xs-block {
+				margin-top: 0;
+			}
+
+		}
+		.article-author__username {
+			margin-top: 0.5px;
+			@include xs-block {
+				margin-top: -4px;
+			}
+
 		}
 		&__left {
 			vertical-align: middle;
@@ -184,6 +196,9 @@
 			font-weight: 400;
 			@include md-block {
 				font-size: 12px;
+			}
+			@include xs-block {
+				font-size: 10px;
 			}
 		}
 
@@ -196,12 +211,18 @@
 			@include md-block {
 				font-size: 10px;
 			}
+			@include xs-block {
+				font-size: 8px;
+			}
 		}
 	}
 	&-preview {
 		&-text {
 			height: 70px;
 			overflow: hidden;
+			@include xs-block {
+				height: 75px;
+			}
 		}
 		.tagbox {
 			margin-bottom: 15px;

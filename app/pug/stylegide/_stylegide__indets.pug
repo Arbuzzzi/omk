@@ -1,0 +1,53 @@
+.row
+	.col-12
+		.card
+			.content-titlebox_dark
+				h4 Отступы
+		.card
+			.card__text
+				h2 Размеры отступов в пикселях: 0, 5, 10, 15, 20, 25, 30
+		.table-inn
+			table.table.table-all-line
+				thead
+					tr
+						th #
+						th Extra small
+						th Small
+						th Medium
+						th Large
+						th Extra large
+				tbody
+					- var $styles = [];
+					- $styles.push('padding');
+					- $styles.push('padding-top');
+					- $styles.push('padding-right');
+					- $styles.push('padding-left');
+					- $styles.push('padding-bottom');
+					- $styles.push('margin');
+					- $styles.push('margin-top');
+					- $styles.push('margin-right');
+					- $styles.push('margin-left');
+					- $styles.push('margin-bottom');
+					each $style in $styles
+						tr
+							td= $style
+							td
+								p.margin-bottom-10=$style+'-'
+								p.ma= 'example: '
+								p= '.'+$style+'-5'
+							td
+								p.margin-bottom-10=$style+'-sm-'
+								p.ma= 'example: '
+								p= '.'+$style+'-sm-5'
+							td
+								p.margin-bottom-10=$style+'-md-'
+								p.ma= 'example: '
+								p= '.'+$style+'-md-5'
+							td
+								p.margin-bottom-10=$style+'-lg-'
+								p.ma= 'example: '
+								p= '.'+$style+'-lg-5'
+							td
+								p.margin-bottom-10=$style+'-xl-'
+								p.ma= 'example: '
+								p= '.'+$style+'-xl-5'
