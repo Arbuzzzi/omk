@@ -53,6 +53,7 @@ $(document).ready(function (){
 			}
 			addClassScroll($('.header'), 'scroll', positionThree);
 
+
 			if ($(header).hasClass('scroll-ie') && $(menuLeft).hasClass('show')) {
 				$(menuLeft).collapse('hide');
 			}
