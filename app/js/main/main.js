@@ -3,8 +3,6 @@ $(document).ready(function() {
 	var ie = (/trident/gi).test(ua) || (/msie/gi).test(ua);
 	var	edge = ((/edge/).test(ua));
 
-	console.log('test');
-	console.log(safari);
 	/* Валидация ------------------------------------------------------------------------------------ */
 	var x = {
 				rules: {
