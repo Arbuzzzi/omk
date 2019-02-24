@@ -402,6 +402,7 @@ $(document).ready(function() {
 			windowHeight = $(window).outerHeight(),
 			windowMoreAside,
 			currentScroll = 0;
+
 	$(window).resize(function (){
 		var position = $(this).scrollTop();
 		var menuLeft = $('#menuLeftList');
@@ -411,7 +412,7 @@ $(document).ready(function() {
 		windowHeight = $(window).outerHeight();
 		asideWidth = $('#aside').parent().width();
 
-		if (position <= 0 && menuLeftListDeafult && !meuLeftShown) {
+		if (position <= 0) {
 			setTimeout(function (){
 				$('#menuLeftList').collapse('show');
 				$('#leftNavigationPseudo').css('display', 'block');
