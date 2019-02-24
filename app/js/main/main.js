@@ -1,7 +1,10 @@
 $(document).ready(function() {
-	var ua = window.navigator.userAgent.toLowerCase(), 
-		ie = (/trident/gi).test(ua) || (/msie/gi).test(ua),
-		edge = ((/edge/).test(ua));
+	var ua = window.navigator.userAgent.toLowerCase();
+	var ie = (/trident/gi).test(ua) || (/msie/gi).test(ua);
+	var	edge = ((/edge/).test(ua));
+
+	console.log('test');
+	console.log(safari);
 	/* Валидация ------------------------------------------------------------------------------------ */
 	var x = {
 				rules: {
@@ -516,6 +519,68 @@ $(document).ready(function() {
 				}
 			}
 
+			// header
+			if (!$(header).hasClass('.scroll') && !$('#header-navSetting').hasClass('show') && !mobile){
+				addClassScroll($(header), 'scroll', positionThree);
+
+				// 1 брэйкпоинт
+				if (position > 0 /*&& !asideBig*/){
+					collapseItemScrollHide($('#menuLeftListControl'), 0);
+				}
+
+				// сохраняем отступ
+				if (position > 0){
+					$(content).css('padding-top', positionContent);
+					$('#btnUp').animate({bottom: 'show'}, 500);
+					$('.header .breadcrumb').css({
+						paddingBottom: '15px'
+					});
+
+
+				}else {
+					$(content).css('padding-top', '');
+					$('#btnUp').animate({bottom: 'hide', opacity: 'hide'}, 500);
+					$('.header .breadcrumb').removeAttr('style')
+				}
+			}
+
+			// меню свернуто
+			if ($(header).hasClass('scroll')){
+				$('#header-nav').collapse('hide');
+				$('#header-navControl').removeClass('active');
+			}
+
+			// scroll top самый верх экана
+			if (position <= 0){
+				if (!mobile){
+					$('#header-nav').collapse('show');
+				}
+				if (!edge) $(header).removeAttr('style');
+				addClassScroll($(header));
+				positionContent = $(header).actual('outerHeight');
+			}
+
+			// scroll bottom
+			if (position > 0){
+				$('.menu-left').removeAttr('style');
+				// $('#menu-nav-headerGroup').collapse('hide');
+				// $(header).css('padding-bottom', '');
+
+				// развернуть
+				if (!$('.rollUp').hasClass('show') && $(header).hasClass('scroll')){
+					$('.rollUp').addClass('show');
+				}else {
+					$('.rollUp').removeClass('show');
+				}
+
+				if (!$(header).hasClass('scroll')){
+					if (!edge) $(header).css({'position': 'fixed'});
+				}
+
+			}else {
+				$('.rollUp').removeClass('show');
+			}
+
 
 			// aside
 			if (!mobile) {
@@ -640,67 +705,7 @@ $(document).ready(function() {
 					}
 				}
 			}
-			// header
-			if (!$(header).hasClass('.scroll') && !$('#header-navSetting').hasClass('show') && !mobile){
-				addClassScroll($(header), 'scroll', positionThree);
 
-				// 1 брэйкпоинт
-				if (position > 0 /*&& !asideBig*/){
-					collapseItemScrollHide($('#menuLeftListControl'), 0);
-				}
-
-				// сохраняем отступ
-				if (position > 0){
-					$(content).css('padding-top', positionContent);
-					$('#btnUp').animate({bottom: 'show'}, 500);
-					$('.header .breadcrumb').css({
-						paddingBottom: '15px'
-					});
-
-
-				}else {
-					$(content).css('padding-top', '');
-					$('#btnUp').animate({bottom: 'hide', opacity: 'hide'}, 500);
-					$('.header .breadcrumb').removeAttr('style')
-				}
-			}
-
-			// меню свернуто
-			if ($(header).hasClass('scroll')){
-				$('#header-nav').collapse('hide');
-				$('#header-navControl').removeClass('active');
-			}
-
-			// scroll top самый верх экана
-			if (position <= 0){
-				if (!mobile){
-					$('#header-nav').collapse('show');
-				}
-				if (!edge) $(header).removeAttr('style');
-				addClassScroll($(header));
-				positionContent = $(header).actual('outerHeight');
-			}
-
-			// scroll bottom
-			if (position > 0){
-				$('.menu-left').removeAttr('style');
-				// $('#menu-nav-headerGroup').collapse('hide');
-				$(header).css('padding-bottom', '')
-
-				// развернуть
-				if (!$('.rollUp').hasClass('show') && $(header).hasClass('scroll')){
-					$('.rollUp').addClass('show');
-				}else {
-					$('.rollUp').removeClass('show');
-				}
-
-				if (!$(header).hasClass('scroll')){
-					if (!edge) $(header).css({'position': 'fixed'});
-				}
-
-			}else {
-				$('.rollUp').removeClass('show');
-			}
 			currentScroll = position;
 		});
 	}

@@ -4,7 +4,6 @@ $(document).ready(function (){
 	var edge = ((/edge/).test(ua));
 
 	if (ie) {
-
 		var header = $('.header');
 		var content = $('.header + *');
 		var headerBread = $('.header .breadcrumb');
