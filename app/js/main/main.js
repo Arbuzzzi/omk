@@ -406,7 +406,7 @@ $(document).ready(function() {
 		var position = $(this).scrollTop();
 		var menuLeft = $('#menuLeftList');
 		var meuLeftShown = menuLeft.hasClass('show');
-		positionOne = $(window).innerHeight(),
+		positionOne = $(window).innerHeight();
 		
 		windowHeight = $(window).outerHeight();
 		asideWidth = $('#aside').parent().width();

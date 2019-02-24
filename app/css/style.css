@@ -8993,6 +8993,10 @@ select.form-control:not([size]):not([multiple]) {
     height: 85px;
   }
 
+  .header.scroll .header-question a {
+    font-size: 0;
+  }
+
   .header.scroll .button-deploy {
     display: none;
   }
@@ -9087,7 +9091,13 @@ select.form-control:not([size]):not([multiple]) {
   }
 
   .header-question a {
-    font-size: 12px;
+    font-size: 0;
+    display: block;
+    width: 100%;
+    background: transparent url("../img/group2151@2x.png") center no-repeat;
+    height: 25px;
+    -webkit-background-size: contain;
+            background-size: contain;
   }
 
   .header-question a br {
@@ -9484,11 +9494,6 @@ select.form-control:not([size]):not([multiple]) {
     height: 205px;
   }
 
-  .header.scroll .header-question a {
-    font-size: 10px;
-    line-height: 1.25;
-  }
-
   .header-box__item {
     width: auto;
     -webkit-box-flex: 1;
@@ -9500,6 +9505,7 @@ select.form-control:not([size]):not([multiple]) {
 
   .header-box__question {
     max-width: 80px;
+    min-width: 40px;
   }
 
   .header-box__search {
@@ -9513,11 +9519,6 @@ select.form-control:not([size]):not([multiple]) {
   .header-question {
     margin-left: -15px;
     margin-bottom: 0;
-  }
-
-  .header-question a {
-    font-size: 10px;
-    line-height: 1.25;
   }
 
   .header-nav-system__link {
@@ -10068,12 +10069,7 @@ select.form-control:not([size]):not([multiple]) {
     margin-left: 0;
     margin-bottom: 0;
     max-width: 60px;
-    font-size: 8px;
-  }
-
-  .header-question a {
-    font-size: 8px;
-    line-height: 1.4;
+    font-size: 0px;
   }
 
   .header-nav-system__content {
@@ -10251,8 +10247,16 @@ select.form-control:not([size]):not([multiple]) {
     padding-left: 15px;
   }
 
+  .header-box__question {
+    padding-left: 0;
+  }
+
   .header-box__info {
     padding-right: 15px;
+  }
+
+  .header-user {
+    padding-left: 15px;
   }
 
   .header .breadcrumb {
