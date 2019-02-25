@@ -1417,64 +1417,64 @@ $(document).ready(function() {
 	}
 
 	/* СОКРАЩАЕМ ТЕКСТ ------------------------------------------------------------------------------ */
-	$('.card__title').dotdotdot();
-	$('.text-ddd').dotdotdot();
-	$('.text-ddd-210').dotdotdot({
-		keep: '.card__more',
-		tolerance: 10,
-		height: 210,
-		callback: function () {
-			if ($(this).hasClass('ddd-truncated')) {
-				$(this).find('.card__more').css('display', 'table');
-				$(this).dotdotdot({tolerance: 0})
-			}
-		}
-	});
-
-	$('.text-ddd-260').dotdotdot({
-		keep: '.card__more',
-		// tolerance: 10,
-		height: 260,
-		callback: function () {
-			if ($(this).hasClass('ddd-truncated')) {
-				$(this).find('.card__more').css('display', 'table');
-				// $(this).dotdotdot({tolerance: 0})
-			}
-		}
-	});
-
-	$('.text-ddd-135').dotdotdot({
-		keep: '.card__more',
-		tolerance: 10,
-		// height: 135,
-		callback: function () {
-			if ($(this).hasClass('ddd-truncated')) {
-				$(this).find('.card__more').css('display', 'table');
-				$(this).dotdotdot({tolerance: 0})
-			}
-		}
-	});
-
-	$(window).resize(function (){
-		setTimeout(function (){
-			$('.ddd-truncated').dotdotdot();
-			$('.card__title').dotdotdot();
-			$('.text-ddd').dotdotdot();
-
-			$('.text-ddd-135').dotdotdot({
-				keep: '.card__more',
-				tolerance: 10,
-				// height: 135,
-				callback: function () {
-					if ($(this).hasClass('ddd-truncated')) {
-						$(this).find('.card__more').css('display', 'table');
-						$(this).dotdotdot({tolerance: 0})
-					}
-				}
-			});
-		}, 1000)
-
-	});
+	// $('.card__title').dotdotdot();
+	// $('.text-ddd').dotdotdot();
+	// $('.text-ddd-210').dotdotdot({
+	// 	keep: '.card__more',
+	// 	tolerance: 10,
+	// 	height: 210,
+	// 	callback: function () {
+	// 		if ($(this).hasClass('ddd-truncated')) {
+	// 			$(this).find('.card__more').css('display', 'table');
+	// 			$(this).dotdotdot({tolerance: 0})
+	// 		}
+	// 	}
+	// });
+	//
+	// $('.text-ddd-260').dotdotdot({
+	// 	keep: '.card__more',
+	// 	// tolerance: 10,
+	// 	height: 260,
+	// 	callback: function () {
+	// 		if ($(this).hasClass('ddd-truncated')) {
+	// 			$(this).find('.card__more').css('display', 'table');
+	// 			// $(this).dotdotdot({tolerance: 0})
+	// 		}
+	// 	}
+	// });
+	//
+	// $('.text-ddd-135').dotdotdot({
+	// 	keep: '.card__more',
+	// 	tolerance: 10,
+	// 	// height: 135,
+	// 	callback: function () {
+	// 		if ($(this).hasClass('ddd-truncated')) {
+	// 			$(this).find('.card__more').css('display', 'table');
+	// 			$(this).dotdotdot({tolerance: 0})
+	// 		}
+	// 	}
+	// });
+	//
+	// $(window).resize(function (){
+	// 	setTimeout(function (){
+	// 		$('.ddd-truncated').dotdotdot();
+	// 		$('.card__title').dotdotdot();
+	// 		$('.text-ddd').dotdotdot();
+	//
+	// 		$('.text-ddd-135').dotdotdot({
+	// 			keep: '.card__more',
+	// 			tolerance: 10,
+	// 			// height: 135,
+	// 			callback: function () {
+	// 				if ($(this).hasClass('ddd-truncated')) {
+	// 					$(this).find('.card__more').css('display', 'table');
+	// 					$(this).dotdotdot({tolerance: 0})
+	// 				}
+	// 			}
+	// 		});
+	// 	}, 1000)
+	//
+	// });
 
 	/* TOOLTIPS ------------------------------------------------------------------------------------ */
 	$('.calendar__day').tooltip();
