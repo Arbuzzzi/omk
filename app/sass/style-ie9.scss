@@ -198,6 +198,28 @@
 		display: inline-block;
 	}
 }
+.form-checkbox {
+	float: left;
+	height: 24px;
+	@include clearfix;
+	&__label {
+		display: inline-block;
+		background-color: #fff;
+	}
+}
+.form-slide-input {
+	//display: inline-block;
+	max-width: 445px;
+	height: 15px;
+	z-index: 1000;
+}
+.form-checkbox__label {
+	//height: 15px;
+}
+.form__box_flex {
+	@include clearfix;
+}
+
 .card {
 	border: 0;
 }

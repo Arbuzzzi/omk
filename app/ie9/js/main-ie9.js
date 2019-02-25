@@ -9,7 +9,7 @@ $(document).ready(function (){
 			$(this).attr('title', title)
 		})
 	});
-
+	$('.form-slide-input').css('display', 'inline-block').hide();
 	// hide select arrow
  	var selectWrapper = '<div/>';
 	var selectHide = '<span/>';

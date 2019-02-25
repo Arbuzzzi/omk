@@ -215,6 +215,34 @@
   display: inline-block;
 }
 
+.form-checkbox {
+  float: left;
+  height: 24px;
+}
+
+.form-checkbox::after {
+  display: block;
+  clear: both;
+  content: "";
+}
+
+.form-checkbox__label {
+  display: inline-block;
+  background-color: #fff;
+}
+
+.form-slide-input {
+  max-width: 445px;
+  height: 15px;
+  z-index: 1000;
+}
+
+.form__box_flex::after {
+  display: block;
+  clear: both;
+  content: "";
+}
+
 .card {
   border: 0;
 }

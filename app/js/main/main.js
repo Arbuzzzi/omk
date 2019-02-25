@@ -2187,6 +2187,7 @@ $(document).ready(function() {
 		$('.form__title_main').fadeIn('400');
 
 	});
+
 	$('#formCheckbox').on('change', function() {
 		if (mobile)  {
 			$('.form-slide-input').animate({height: 'toggle'}, '400')

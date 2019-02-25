@@ -1,5 +1,8 @@
 @import "_variables.scss";
-
+input, textarea {
+	font-size: 12px;
+	line-height: 1;
+}
 .form { 
 
 	&-search {
@@ -76,6 +79,7 @@
 	&-slide {
 		&-input {
 			display: none;
+			width: 100%;
 		}
 	}
 	&-label {
@@ -153,7 +157,7 @@
 		width: 100%;
 		padding: 10px 15px;
 		color: #000000;
-		font-size: 16px;
+		//font-size: 16px;
 		font-weight: 400;
 
 
@@ -268,12 +272,15 @@
 		// float: left;
 		display: flex;
 		align-items: center;
+		width: 100%;
+		max-width: 700px;
 		@include xs-block {
 			display: block;
 		}
 		&__label {
 			display: flex;
 			align-items: center;
+			min-width: 240px;
 			//height: 100%;
 			@include xs-block {
 				margin-bottom: 10px;
