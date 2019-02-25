@@ -502,7 +502,13 @@ $(document).ready(function() {
 			if (!mobile) {
 				if (position > 0) {
 					if (!edge) $(header).css({'position': 'fixed'});
-					if (!edge) $(content).css('padding-top', positionContent);
+
+					if (!$(header).hasClass('fixed')) {
+						if (!edge) $(content).css('padding-top', positionContent);
+					}
+
+					$(header).addClass('fixed');
+
 					if (position >= positionTwo) {
 
 						$('#header-nav').collapse('hide');
@@ -513,6 +519,7 @@ $(document).ready(function() {
 				} else {
 					if (!edge) $(header).css({'position': ''});
 					if (!edge) $(content).css('padding-top', '');
+					$(header).removeClass('fixed');
 					$('#header-nav').collapse('show');
 				}
 			}
@@ -528,7 +535,7 @@ $(document).ready(function() {
 
 				// сохраняем отступ
 				if (position > 0){
-					$(content).css('padding-top', positionContent);
+					// $(content).css('padding-top', positionContent);
 					$('#btnUp').animate({bottom: 'show'}, 500);
 					$('.header .breadcrumb').css({
 						paddingBottom: '15px'
