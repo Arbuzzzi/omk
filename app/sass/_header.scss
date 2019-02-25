@@ -355,6 +355,9 @@
 	}
 	&-button {
 		// padding: 4px;
+		@include md-block {
+			border: 1px solid #DDDEE0;
+		}
 		&-inn {
 			text-align: left;
 			font-size: 0;

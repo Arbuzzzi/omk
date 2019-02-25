@@ -9650,6 +9650,10 @@ select.form-control:not([size]):not([multiple]) {
     margin-bottom: 0;
   }
 
+  .header-button {
+    border: 1px solid #DDDEE0;
+  }
+
   .header-nav-system__link {
     font-size: 6px;
   }
