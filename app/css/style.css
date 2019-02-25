@@ -4806,6 +4806,7 @@ select.form-control:not([size]):not([multiple]) {
   padding-top: 75px;
   padding-left: 30px;
   padding-right: 5px;
+  max-width: 440px;
 }
 
 .card-modern__content .content-titlebox {
@@ -9999,6 +10000,7 @@ select.form-control:not([size]):not([multiple]) {
     padding-top: 20px;
     padding-left: 0;
     vertical-align: bottom;
+    max-width: 270px;
   }
 
   .card-modern__content .content-titlebox {
