@@ -2838,8 +2838,8 @@ select.form-control:not([size]):not([multiple]) {
   width: 100%;
   height: 25px;
   background: transparent url("../img/group2151@2x.png") center left no-repeat;
-  -webkit-background-size: contain;
-          background-size: contain;
+  -webkit-background-size: cover;
+          background-size: cover;
   border: 1px solid #DDDEE0;
   -webkit-border-radius: 5px;
           border-radius: 5px;
@@ -9207,8 +9207,8 @@ select.form-control:not([size]):not([multiple]) {
     display: block;
     height: 25px;
     background: transparent url("../img/group2151@2x.png") center no-repeat;
-    -webkit-background-size: contain;
-            background-size: contain;
+    -webkit-background-size: cover;
+            background-size: cover;
     border: 1px solid #DDDEE0;
     -webkit-border-radius: 5px;
             border-radius: 5px;
