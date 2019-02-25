@@ -227,12 +227,17 @@ $(document).ready(function() {
 			});
 		}
 
-		var headerPositionDeafult = $('.header').css('position')
-		$('.header').wrap('<div class="extra-wrapper"></div>')
+		var headerPositionDeafult = $('.header').css('position');
+		$('.header').wrap('<div class="extra-wrapper"></div>');
 		$('.header').css({
 			position: '',
 			// 'padding-right': '17px'
 		});
+		// if (ie) {
+		// 	$('.header').css({
+		// 		paddingRight: '17px'
+		// 	})
+		// }
 
 		checkboxDisabl($(this), 10)
 		// настройки скрываются
@@ -257,9 +262,17 @@ $(document).ready(function() {
 
 			$('#header-navSettingControl').removeClass('active').removeAttr('style');
 		})
-	})
+	});
+	$('#header-navSetting').on('shown.bs.collapse', function (){
+		if (ie) {
+			$('.header').css({
+				paddingRight: ''
+			});
+			return false;
+		}
+	});
 
-	var checkboxs = $('input[type="checkbox"].setting-form-checkbox__input');
+	var checkboxs = $('input[type="checkbox"].setting-form-checkbox__input'),
 			checkboxCheckd        = $('.setting-form').find('input[type="checkbox"]:checked'),
 			checkboxCheckdInch    = checkboxCheckd.length,
 			deafultCheckboxCheckd = checkboxDisabl($('.setting-form'), 10),
@@ -1630,13 +1643,13 @@ $(document).ready(function() {
 				textHeight = 0;
 
 		for (var i = 0; i < text.length; i++) {
-			textHeight = textHeight + $(text[i]).actual('outerHeight')
+			textHeight = textHeight + $(text[i]).actual('outerHeight',{ includeMargin : true })
 		}
 		el.hide();
 		textBlock.css('height', 170);
 		textBlock.css('max-height', 'none');
 		textBlock.animate({
-			height: textHeight + 25
+			height: textHeight
 		}, 400)
 	});
 

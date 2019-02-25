@@ -9,7 +9,9 @@ $(document).ready(function (){
 			$(this).attr('title', title)
 		})
 	});
-	var selectWrapper = '<div/>';
+
+	// hide select arrow
+ 	var selectWrapper = '<div/>';
 	var selectHide = '<span/>';
 	var select = $('select');
 	var selectInnerHeight = $(select).actual('innerHeight', { display: 'inline-block' });
