@@ -489,10 +489,11 @@
 		}
 	}
 	&__more {
-		//display: none;
-		// visibility: hidden;
+		display: block;
+		align-self: flex-end;
 		margin-left: auto;
 		margin-top: auto;
+		max-width: 180px;
 		padding-left: 44px;
 		padding-right: 44px;
 		font-family: "Roboto", sans-serif;

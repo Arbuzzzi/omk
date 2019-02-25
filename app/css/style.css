@@ -4630,8 +4630,13 @@ select.form-control:not([size]):not([multiple]) {
 }
 
 .card__more {
+  display: block;
+  -webkit-align-self: flex-end;
+      -ms-flex-item-align: end;
+          align-self: flex-end;
   margin-left: auto;
   margin-top: auto;
+  max-width: 180px;
   padding-left: 44px;
   padding-right: 44px;
   font-family: "Roboto", sans-serif;
