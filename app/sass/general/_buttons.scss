@@ -36,27 +36,27 @@
 		}
 		&-save {
 			position: relative;
-			@include hover {
-				&:before {
-					opacity: 1;
-					transition: 0.3s;
-				}
-				&:active {
-					&:before {
-						color: $special-color;
-
-					}
-				}
-			}
-			@include before('\e920') {
-				top: 50%;
-				left: -30px;
-				transform: translateY(-50%);
-				@include icon;
-				color: #bcbdc0;
-				opacity: 0;
-				//transition: 0.4s;
-			}
+			//@include hover {
+			//	&:before {
+			//		opacity: 1;
+			//		transition: 0.3s;
+			//	}
+			//	&:active {
+			//		&:before {
+			//			color: $special-color;
+			//
+			//		}
+			//	}
+			//}
+			//@include before('\e920') {
+			//	top: 50%;
+			//	left: -30px;
+			//	transform: translateY(-50%);
+			//	@include icon;
+			//	color: #bcbdc0;
+			//	opacity: 0;
+			//	//transition: 0.4s;
+			//}
 			@include md-block {
 				&:before {
 					opacity: 1;

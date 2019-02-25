@@ -158,6 +158,10 @@
   margin-right: 10px;
 }
 
+.header.scroll .form-search__input {
+  max-width: 92%;
+}
+
 .header-nav-system__content {
   background-color: #e4e4e4;
   -webkit-filter: none;

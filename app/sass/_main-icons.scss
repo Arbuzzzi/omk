@@ -33,6 +33,20 @@
 			//}
 		}
 	}
+	&__items {
+		@include xs-block {
+			padding-left: 14px;
+		}
+
+	}
+	&__item {
+
+		@include lg-block {
+			padding-left: 0;
+			margin-left: 0;
+		}
+
+	}
 	&__title {
 		//min-height: 26px;
 	}

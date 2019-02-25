@@ -1285,13 +1285,16 @@
 			margin-left: 15px;
 		}
 		.card-links__lnk_small {
-			margin-top: 8px;
-			@include md-block {
-				margin-top: 2px;
+			margin-top: 6px;
+			@include lg-block {
+				margin-top: 0;
 			}
 		}
 	}
 	&__lnkbox {
+		position: relative;
+		margin-left: -28px;
+		padding-left: 28px;
 		color: $dark-color;
 		font-family: "PT Serif", serif;
 		font-size: 20px;
@@ -1306,6 +1309,63 @@
 			font-size: 10px;
 			line-height: 1.2;
 		}
+		.link-icon-save {
+
+			position: absolute;
+			display: inline-block;
+			height: 100%;
+			left: 0;
+			top: 0;
+			color: #bcbdc0;
+			opacity: 0;
+			transition: 0.3s;
+			vertical-align: top;
+			@include hover {
+				color: $special-color;
+				opacity: 1;
+			}
+			@include lg-block {
+				opacity: 1;
+				font-size: 14px;
+			}
+			@include before('\e920') {
+				top: 50%;
+				left: 0;
+				transform: translateY(-50%);
+				@include icon;
+				color: inherit;
+				@include lg-block {
+					top: 1px;
+					transform: none;
+				}
+				@include md-block {
+					left: 12px;
+					top: 3px;
+				}
+				//opacity: 0;
+				//transition: 0.4s;
+			}
+
+			//&:before {
+			//	@include hover {
+			//		color: $special-color;
+			//	}
+			//}
+
+		}
+		@include hover {
+			.card-links__lnk {
+				//text-decoration: underline;
+			}
+			.link-icon-save {
+				opacity: 1;
+				//&:before {
+				//	opacity: 1;
+				//	left: 0;
+				//}
+			}
+		}
+
 	}
 	&__lnk {
 		color: inherit;
