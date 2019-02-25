@@ -1624,7 +1624,8 @@ $(document).ready(function() {
 		for (var x = 0; x < text.length; x++) {
 			textHeight = textHeight + $(text[x]).actual('outerHeight')
 		};
-		if (textHeight > 170) {
+		console.log(textHeight);
+		if (textHeight > 180) {
 			$(commentBox[i]).append(
 				'<button class="comment-long__showbtn">\
 						<span>Развернуть</span>\
@@ -1633,7 +1634,17 @@ $(document).ready(function() {
 			')
 		}
 	}
+	// var commentText = $('.comment__text');
+	// // var commentTextHeight = $('.comment__text').actual('outerHeight');
+	// $(commentText).each(function ($key, $item){
+	// 	var commentTextHeight = $($item).actual('outerHeight',{includeMargin : true});
+	// 	console.log($item);
+	// 	console.log(commentTextHeight);
+	// });
+
+	// if ($('.comment__text'))
 	var elControlDeafultText;
+
 
 	$(document).on('click', '.comment-long__showbtn', function(event) {
 		var el = $(this),
@@ -1645,10 +1656,11 @@ $(document).ready(function() {
 		for (var i = 0; i < text.length; i++) {
 			textHeight = textHeight + $(text[i]).actual('outerHeight',{ includeMargin : true })
 		}
+		console.log(textHeight);
 		el.hide();
-		textBlock.css('height', 170);
-		textBlock.css('max-height', 'none');
-		textBlock.animate({
+		textBlock.css('height', textBlock.actual('outerHeight'))
+		.css('max-height', 'none')
+		.animate({
 			height: textHeight
 		}, 400)
 	});
