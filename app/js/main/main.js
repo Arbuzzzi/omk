@@ -579,9 +579,9 @@ $(document).ready(function() {
 					$('.rollUp').removeClass('show');
 				}
 
-				if (!$(header).hasClass('scroll')){
-					if (!edge) $(header).css({'position': 'fixed'});
-				}
+				// if (!$(header).hasClass('scroll')){
+				// 	if (!edge) $(header).css({'position': 'fixed'});
+				// }
 
 			}else {
 				$('.rollUp').removeClass('show');
