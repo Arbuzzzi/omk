@@ -4768,6 +4768,71 @@ select.form-control:not([size]):not([multiple]) {
   min-height: 210px;
 }
 
+.card-modern__inn {
+  position: relative;
+  z-index: 10;
+}
+
+.card-modern__imgbox {
+  height: 520px;
+}
+
+.card-modern__imgbox:after {
+  content: "";
+  position: absolute;
+  display: block;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  display: block;
+  background-color: rgba(0, 0, 0, 0.3);
+  z-index: 1;
+}
+
+.card-modern__info {
+  display: table;
+  height: 520px;
+  background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(0, 0, 0, 0)), color-stop(5%, rgba(0, 0, 0, 0.14)), to(#000000));
+  background-image: -webkit-linear-gradient(top, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.14) 5%, #000000 100%);
+  background-image: -o-linear-gradient(top, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.14) 5%, #000000 100%);
+  background-image: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.14) 5%, #000000 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', endColorstr='#000000',GradientType=0 );
+}
+
+.card-modern__content {
+  display: table-cell;
+  color: #ffffff;
+  padding-top: 75px;
+  padding-left: 30px;
+  padding-right: 5px;
+}
+
+.card-modern__content .content-titlebox {
+  margin-bottom: 30px;
+  font-size: 48px;
+  color: inherit;
+}
+
+.card-modern__content .content-titlebox * {
+  font-size: inherit;
+  color: inherit;
+  line-height: 1.05;
+}
+
+.card-modern__content .card__text {
+  margin-bottom: 15px;
+}
+
+.card-modern__content .card__text p {
+  margin-bottom: 15px;
+  font-weight: 400;
+}
+
+.card-modern__content_bottom {
+  vertical-align: bottom;
+}
+
 .card-third {
   max-width: 33.333333%;
   -webkit-box-flex: 0;
@@ -9391,6 +9456,10 @@ select.form-control:not([size]):not([multiple]) {
     margin-top: 245px;
   }
 
+  .card-modern__content .content-titlebox {
+    font-size: 32px;
+  }
+
   .card-half-imgbox {
     min-height: 230px;
   }
@@ -9915,6 +9984,39 @@ select.form-control:not([size]):not([multiple]) {
   .card-full-slider__item {
     padding-left: 7.5px;
     padding-right: 7.5px;
+  }
+
+  .card-modern__imgbox {
+    height: 310px;
+  }
+
+  .card-modern__info {
+    height: 310px;
+    padding-left: 15px;
+  }
+
+  .card-modern__content {
+    padding-top: 20px;
+    padding-left: 0;
+    vertical-align: bottom;
+  }
+
+  .card-modern__content .content-titlebox {
+    margin-bottom: 15px;
+    font-size: 28px;
+  }
+
+  .card-modern__content .card__text {
+    margin-bottom: 5px;
+  }
+
+  .card-modern__content .card__text p {
+    font-size: 10px;
+    margin-bottom: 10px;
+  }
+
+  .card-modern__content .card-slider-number {
+    font-size: 10px;
   }
 
   .card-half-imgbox {
@@ -10591,6 +10693,26 @@ select.form-control:not([size]):not([multiple]) {
   .card-logo__imgbox {
     width: 88px;
     height: 65px;
+  }
+
+  .card-modern__imgbox {
+    height: 340px;
+  }
+
+  .card-modern__imgbox:after {
+    opacity: 0;
+  }
+
+  .card-modern__info {
+    height: 340px;
+  }
+
+  .card-modern__content {
+    padding-left: 5px;
+  }
+
+  .card-modern__content .content-titlebox {
+    font-size: 20px;
   }
 
   .card-fifth-slider__imgbox {

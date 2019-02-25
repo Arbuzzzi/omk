@@ -690,6 +690,104 @@
 			}
 		}
 	}
+	&-modern {
+		&__inn {
+			position: relative;
+			z-index: 10;
+		}
+		&__imgbox{
+			height: 520px;
+			@include md-block {
+				height: 310px;
+			}
+			@include xs-block {
+				height: 340px;
+			}
+			@include after() {
+				top: 0;
+				right: 0;
+				bottom: 0;
+				left: 0;
+				display: block;
+				background-color: rgba(#000, 0.3);
+				z-index: 1;
+				@include xs-block {
+					opacity: 0;
+				}
+
+			}
+		}
+		&__info {
+			display: table;
+			height: 520px;
+			background-image: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.14) 5%, #000000 100%);
+			filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', endColorstr='#000000',GradientType=0 );
+			@include md-block {
+				height: 310px;
+				padding-left: 15px;
+			}
+			@include xs-block {
+				height: 340px;
+			}
+		}
+		&__content {
+			display: table-cell;
+			color: $light-color;
+			padding-top: 75px;
+			padding-left: 30px;
+			padding-right: 5px;
+			@include md-block {
+				padding-top: 20px;
+				padding-left: 0;
+				vertical-align: bottom;
+			}
+			@include xs-block {
+				padding-left: 5px;
+			}
+			.content-titlebox {
+				margin-bottom: 30px;
+				font-size: 48px;
+				color: inherit;
+				@include lg-block {
+					font-size: 32px;
+				}
+				@include md-block {
+					margin-bottom: 15px;
+					font-size: 28px;
+				}
+				@include xs-block {
+					font-size: 20px;
+				}
+				* {
+					font-size: inherit;
+					color: inherit;
+					line-height: 1.05;
+				}
+			}
+			.card__text {
+				margin-bottom: 15px;
+				@include md-block {
+					margin-bottom: 5px;
+				}
+				p {
+					margin-bottom: 15px;
+					font-weight: 400;
+					@include md-block {
+						font-size: 10px;
+						margin-bottom: 10px;
+					}
+				}
+			}
+			.card-slider-number {
+				@include md-block {
+					font-size: 10px;
+				}
+			}
+			&_bottom {
+				vertical-align: bottom;
+			}
+		}
+	}
 	&-third {
 		max-width: 33.333333%;
 		flex: 0 0 33.333333%;
