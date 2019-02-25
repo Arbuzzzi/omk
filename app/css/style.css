@@ -10225,7 +10225,6 @@ select.form-control:not([size]):not([multiple]) {
     width: 254px;
     left: 15px;
     margin-top: 50px;
-    border: 1px solid #dddee0;
     background-image: none;
     -webkit-filter: none;
             filter: none;
