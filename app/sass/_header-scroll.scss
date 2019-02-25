@@ -59,15 +59,21 @@
 			margin-right: -20px;
 			border: none;
 			a {
-				font-size: 0;
 				display: block;
+				margin-left: auto;
+				margin-right: auto;
+				max-width: 65px;
 				width: 100%;
-				background: transparent url('../img/group2151@2x.png') center left no-repeat;
 				height: 25px;
+				background: transparent url('../img/group2151@2x.png') center left no-repeat;
 				background-size: contain;
+				border: 1px solid #DDDEE0;
+				border-radius: 5px;
+				font-size: 0;
 				@include lg-block {
-					font-size: 0;
-					//line-height: 1.25;
+					margin-left: auto;
+					margin-right: auto;
+					max-width: 65px;
 				}
 
 			}

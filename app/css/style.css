@@ -2831,13 +2831,19 @@ select.form-control:not([size]):not([multiple]) {
 }
 
 .header.scroll .header-question a {
-  font-size: 0;
   display: block;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 65px;
   width: 100%;
-  background: transparent url("../img/group2151@2x.png") center left no-repeat;
   height: 25px;
+  background: transparent url("../img/group2151@2x.png") center left no-repeat;
   -webkit-background-size: contain;
           background-size: contain;
+  border: 1px solid #DDDEE0;
+  -webkit-border-radius: 5px;
+          border-radius: 5px;
+  font-size: 0;
 }
 
 .header.scroll .header-question br {
@@ -9096,7 +9102,9 @@ select.form-control:not([size]):not([multiple]) {
   }
 
   .header.scroll .header-question a {
-    font-size: 0;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 65px;
   }
 
   .header.scroll .button-deploy {
@@ -9193,13 +9201,18 @@ select.form-control:not([size]):not([multiple]) {
   }
 
   .header-question a {
-    font-size: 0;
+    max-width: 65px;
+    margin-left: auto;
+    margin-right: auto;
     display: block;
-    width: 100%;
-    background: transparent url("../img/group2151@2x.png") center no-repeat;
     height: 25px;
+    background: transparent url("../img/group2151@2x.png") center no-repeat;
     -webkit-background-size: contain;
             background-size: contain;
+    border: 1px solid #DDDEE0;
+    -webkit-border-radius: 5px;
+            border-radius: 5px;
+    font-size: 0;
   }
 
   .header-question a br {

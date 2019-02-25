@@ -504,10 +504,11 @@ $(document).ready(function() {
 					if (!edge) $(header).css({'position': 'fixed'});
 
 					if (!$(header).hasClass('fixed')) {
+						$(header).addClass('fixed');
 						if (!edge) $(content).css('padding-top', positionContent);
 					}
 
-					$(header).addClass('fixed');
+
 
 					if (position >= positionTwo) {
 
