@@ -74,8 +74,11 @@
 			max-width: 990px;
 			width: calc(100% - 30px);
 		}
+		@include md-block {
+			max-width: 738px;
+		}
 		@include sm-block {
-			max-width: 720px;
+			max-width: 550px;
 
 		}
 		@include xs-block {

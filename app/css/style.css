@@ -9606,6 +9606,10 @@ select.form-control:not([size]):not([multiple]) {
     height: 205px;
   }
 
+  .header:before {
+    max-width: 738px;
+  }
+
   .header-box__item {
     width: auto;
     -webkit-box-flex: 1;
@@ -10197,7 +10201,7 @@ select.form-control:not([size]):not([multiple]) {
   }
 
   .header:before {
-    max-width: 720px;
+    max-width: 550px;
   }
 
   .header-logowrap {
