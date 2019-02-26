@@ -951,15 +951,15 @@ $(document).ready(function() {
 		$('#navMoreListControl').removeAttr('data-toggle');
 		$('#navMoreListControl').dropdown('dispose');
 		$('.menu-left-more__button>i').animate({opacity: 'hide'}, 400);
-		// if (position < positionThree && !safari) {
-		// 	// $('#leftNavigationPseudo').animate({height: $(this).actual('innerHeight')}, 300)
-		// 	$('#leftNavigationPseudo').collapse('show')
-		// }
-		// if (safari) {
-		// 	if (position <= 0) {
-		// 		$('#leftNavigationPseudo').collapse('show')
-		// 	}
-		// }
+		if (position < positionThree && !safari) {
+			// $('#leftNavigationPseudo').animate({height: $(this).actual('innerHeight')}, 300)
+			$('#leftNavigationPseudo').collapse('show')
+		}
+		if (safari) {
+			if (position <= 0) {
+				$('#leftNavigationPseudo').collapse('show')
+			}
+		}
 		if (position <= 0) {
 			$('#leftNavigationPseudo').collapse('show')
 		}
