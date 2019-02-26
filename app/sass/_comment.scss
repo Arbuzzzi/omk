@@ -8,6 +8,19 @@
 		margin-bottom: 15px;
 		.article-author {
 			margin-top: 0;
+			padding: 3px 0;
+		}
+		.article-author__left {
+			display: block;
+			line-height: 20px;
+			margin: 0;
+
+		}
+		.article-author__username {
+			display: block;
+			line-height: 20px;
+			margin: 0;
+
 		}
 	}
 	&-box {

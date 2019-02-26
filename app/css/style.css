@@ -6601,6 +6601,19 @@ select.form-control:not([size]):not([multiple]) {
 
 .comment_special .article-author {
   margin-top: 0;
+  padding: 3px 0;
+}
+
+.comment_special .article-author__left {
+  display: block;
+  line-height: 20px;
+  margin: 0;
+}
+
+.comment_special .article-author__username {
+  display: block;
+  line-height: 20px;
+  margin: 0;
 }
 
 .comment-box {
@@ -6848,6 +6861,10 @@ select.form-control:not([size]):not([multiple]) {
   background-color: rgba(251, 251, 251, 0.3);
   color: #eeefef;
   font-size: 7px;
+}
+
+.comments-dark .article-author__username {
+  margin-top: 2.5px;
 }
 
 .post-info {
