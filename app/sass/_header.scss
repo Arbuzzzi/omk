@@ -369,6 +369,11 @@
 				display: none;
 			}
 		}
+		&-more {
+			@include md-block {
+				border: none;
+			}
+		}
 	}
 	.breadcrumb {
 		position: absolute;

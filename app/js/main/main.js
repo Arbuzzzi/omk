@@ -2,6 +2,10 @@ $(document).ready(function() {
 	var ua = window.navigator.userAgent.toLowerCase();
 	var ie = (/trident/gi).test(ua) || (/msie/gi).test(ua);
 	var	edge = ((/edge/).test(ua));
+	var safari = /Safari/.test(navigator.userAgent) && /Apple Computer/.test(navigator.vendor);
+	var scrollbarWidth = $(document).scrollbarWidth();
+
+
 
 	/* Валидация ------------------------------------------------------------------------------------ */
 	var x = {
@@ -217,13 +221,13 @@ $(document).ready(function() {
 		if ($(document).scrollTop() <= 0) {
 			$('body').css({
 				overflow: 'hidden',
-				paddingRight: '17px',
+				paddingRight: scrollbarWidth,
 				paddingTop: headerHeight
 			});
 		} else {
 			$('body').css({
 				overflow: 'hidden',
-				paddingRight: '17px',
+				paddingRight: scrollbarWidth,
 			});
 		}
 
@@ -231,11 +235,11 @@ $(document).ready(function() {
 		$('.header').wrap('<div class="extra-wrapper"></div>');
 		$('.header').css({
 			position: '',
-			// 'padding-right': '17px'
+			// 'padding-right': scrollbarWidth'
 		});
 		// if (ie) {
 		// 	$('.header').css({
-		// 		paddingRight: '17px'
+		// 		paddingRight: scrollbarWidth'
 		// 	})
 		// }
 
@@ -467,13 +471,17 @@ $(document).ready(function() {
 		}
 
 	});
-
+	// safari = true;
 	$('#menuLeftListControl').on('click', function() {
 		var position = $(window).scrollTop();
-		if (position < positionOne) {
+		if (position <= 0 && !safari) {
+			menuLeftListDeafult = !menuLeftListDeafult;
+		}
+		if (position < positionThree && safari) {
 			menuLeftListDeafult = !menuLeftListDeafult;
 		}
 	});
+
 	if (!ie) {
 		var header = $('.header');
 		var content = $('.header + *');
@@ -521,10 +529,10 @@ $(document).ready(function() {
 						if (!edge) $(content).css('padding-top', positionContent);
 					}
 
-
-
-					if (position >= positionTwo) {
-
+					//
+					// if (!safari) {
+					// }
+					if (position >= positionThree) {
 						$('#header-nav').collapse('hide');
 					} else {
 						$('#header-nav').collapse('show');
@@ -539,16 +547,30 @@ $(document).ready(function() {
 			}
 
 			// header
-			if (!$(header).hasClass('.scroll') && !$('#header-navSetting').hasClass('show') && !mobile){
-				addClassScroll($(header), 'scroll', positionThree);
+			addClassScroll($(header), 'scroll', positionThree);
 
-				// 1 брэйкпоинт
-				if (position > 0 /*&& !asideBig*/){
-					collapseItemScrollHide($('#menuLeftListControl'), 0);
+			if (safari) {
+				if (position >= positionThree) {
+					$('#menuLeftList').collapse('hide');
+				} else if(menuLeftListDeafult) {
+					$('#menuLeftList').collapse('show');
+					if ($(aside).hasClass('positionTop')) $('#leftNavigationPseudo').collapse('show')
+					if (position <=0) {
+						$('#leftNavigationPseudo').collapse('show')
+					}
 				}
+			}
 
-				// сохраняем отступ
-				if (position > 0){
+
+			if (!$(header).hasClass('scroll') && !$('#header-navSetting').hasClass('show') && !mobile){
+
+
+
+				if (position > 0 /*&& !asideBig*/){
+					// collapseItemScrollHide($('#menuLeftListControl'), 0);
+					if (!safari) $('#menuLeftList').collapse('hide')
+
+
 					// $(content).css('padding-top', positionContent);
 					$('#btnUp').animate({bottom: 'show'}, 500);
 					$('.header .breadcrumb').css({
@@ -633,7 +655,32 @@ $(document).ready(function() {
 									}).removeClass('positionTop positionBottom').addClass('positionStatic');
 								}
 
+								// if ($(aside).hasClass('positionStatic')) {
+								// 	asideOfsetTop = $(aside).offset().top;
+								// 	headerHeight = $(header).actual('outerHeight');
+								//
+								// 	$(aside).css({
+								// 		position: 'fixed',
+								// 		top: $(header).actual('outerHeight'),
+								// 		bottom: '',
+								// 		width: asideWidth,
+								// 		marginTop: '',
+								// 	}).addClass('positionTop').removeClass('positionStatic');
+								// }
 							}
+
+							// if ($(aside).hasClass('positionTop')) {
+							// 	asideOfsetTop = $(aside).offset().top;
+							// 	headerHeight = $(header).actual('outerHeight');
+							//
+							// 	$(aside).css({
+							// 		position: '',
+							// 		top: '',
+							// 		bottom: '',
+							// 		width: '',
+							// 		marginTop: asideOfsetTop - position,
+							// 	}).addClass('positionStatic').removeClass('positionTop');
+							// }
 
 							asideOfsetTop = $(aside).offset().top;
 							asideHeight = $(aside).actual('outerHeight') + $(aside).offset().top;
@@ -659,6 +706,8 @@ $(document).ready(function() {
 									}).addClass('positionBottom').removeClass('positionTop positionStatic');
 								}
 							}
+
+
 						}
 
 					} else { // скролл вверх
@@ -728,6 +777,12 @@ $(document).ready(function() {
 			currentScroll = position;
 		});
 	}
+	//
+	// $('#leftNavigationPseudo').on('hide.bs.collapse', function (){
+	// 	$(this).css('display', 'none');
+	//
+	//
+	// });
 	setInterval(function() {
 		var position = $(document).scrollTop(),
 				menuLeft = $('#menuLeftList'),
@@ -896,8 +951,17 @@ $(document).ready(function() {
 		$('#navMoreListControl').removeAttr('data-toggle');
 		$('#navMoreListControl').dropdown('dispose');
 		$('.menu-left-more__button>i').animate({opacity: 'hide'}, 400);
-		if (position < positionOne) {
-			$('#leftNavigationPseudo').animate({height: $(this).actual('innerHeight')}, 300)
+		// if (position < positionThree && !safari) {
+		// 	// $('#leftNavigationPseudo').animate({height: $(this).actual('innerHeight')}, 300)
+		// 	$('#leftNavigationPseudo').collapse('show')
+		// }
+		// if (safari) {
+		// 	if (position <= 0) {
+		// 		$('#leftNavigationPseudo').collapse('show')
+		// 	}
+		// }
+		if (position <= 0) {
+			$('#leftNavigationPseudo').collapse('show')
 		}
 	});
 
@@ -908,8 +972,11 @@ $(document).ready(function() {
 		btn.removeClass('active');
 		$('#navMoreListControl').attr('data-toggle', 'dropdown')
 		$('.menu-left-more__button>i').animate({opacity: 'show'}, 400);
-		$('#leftNavigationPseudo').animate({height: 0}, 300)
+		// $('#leftNavigationPseudo').animate({height: 0}, 300)
+		$('#leftNavigationPseudo').collapse('hide')
+
 	});
+
 	var menuLeftList = $('#menuLeftList').actual('outerHeight');
 	$('#leftNavigationPseudo').html('<div style="height:'+menuLeftList+'px;"></div>');
 
@@ -1629,7 +1696,7 @@ $(document).ready(function() {
 		for (var x = 0; x < text.length; x++) {
 			textHeight = textHeight + $(text[x]).actual('outerHeight')
 		};
-		console.log(textHeight);
+		
 		if (textHeight > 180) {
 			$(commentBox[i]).append(
 				'<button class="comment-long__showbtn">\
@@ -1643,8 +1710,6 @@ $(document).ready(function() {
 	// // var commentTextHeight = $('.comment__text').actual('outerHeight');
 	// $(commentText).each(function ($key, $item){
 	// 	var commentTextHeight = $($item).actual('outerHeight',{includeMargin : true});
-	// 	console.log($item);
-	// 	console.log(commentTextHeight);
 	// });
 
 	// if ($('.comment__text'))
@@ -1661,7 +1726,6 @@ $(document).ready(function() {
 		for (var i = 0; i < text.length; i++) {
 			textHeight = textHeight + $(text[i]).actual('outerHeight',{ includeMargin : true })
 		}
-		console.log(textHeight);
 		el.hide();
 		textBlock.css('height', textBlock.actual('outerHeight'))
 		.css('max-height', 'none')
@@ -1778,10 +1842,19 @@ $(document).ready(function() {
 
 	/* modals -------------------------------------------------------------------------------- */
 
+	// header fix bug
+	$($('[data-toggle="modal"]').data('target')).on('show.bs.modal', function (){
+		if ($(header).hasClass('fixed')){
+			$(header).css({
+				paddingRight: scrollbarWidth,
+			})
+		}
+	});
+
 	$('.modal').on('show.bs.modal', function(event) {
 		var position = $(document).scrollTop();
 		if (position > 0)  {
-			$('.header').css('padding-right', '17px');
+			$('.header').css('padding-right', scrollbarWidth);
 		}
 	});
 	$('.modal').on('hidden.bs.modal', function(event) {
@@ -2273,6 +2346,17 @@ $(document).ready(function() {
 		return this.each(make)
 
 		
+	};
+	jQuery.fn.scrollbarWidth = function() {
+		var block = $('<div>').css({'height':'50px','width':'50px'}),
+			indicator = $('<div>').css({'height':'200px'});
+
+		$('body').append(block.append(indicator));
+		var w1 = $('div', block).innerWidth();
+		block.css('overflow-y', 'scroll');
+		var w2 = $('div', block).innerWidth();
+		$(block).remove();
+		return (w1 - w2);
 	};
 })(jQuery);
 

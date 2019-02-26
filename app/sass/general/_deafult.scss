@@ -59,10 +59,10 @@ body {
 			//transform: translateX(-8px);
 
 			@media (min-width: 768px) {
-				padding-right: 0px !important;
+				//padding-right: 0px !important;
 			}
 			@include md-block {
-				transform: none;
+				//transform: none;
 			}
 		}
 	}

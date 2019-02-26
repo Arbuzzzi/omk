@@ -7596,10 +7596,6 @@ select.form-control:not([size]):not([multiple]) {
 }
 
 @media (min-width: 768px) {
-  body.modal-open .header {
-    padding-right: 0px !important;
-  }
-
   .margin-top-md-0 {
     margin-top: 0px !important;
   }
@@ -9623,12 +9619,6 @@ select.form-control:not([size]):not([multiple]) {
 }
 
 @media screen and (max-width: 991.98px) {
-  body.modal-open .header {
-    -webkit-transform: none;
-        -ms-transform: none;
-            transform: none;
-  }
-
   .row {
     margin-right: -7.5px;
     margin-left: -7.5px;
@@ -9767,6 +9757,10 @@ select.form-control:not([size]):not([multiple]) {
 
   .header-button {
     border: 1px solid #DDDEE0;
+  }
+
+  .header .button-more {
+    border: none;
   }
 
   .header-nav-system__link {
