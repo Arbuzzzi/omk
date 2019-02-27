@@ -4,7 +4,7 @@ $(document).ready(function() {
 	var	edge = ((/edge/).test(ua));
 	var safari = /Safari/.test(navigator.userAgent) && /Apple Computer/.test(navigator.vendor);
 	var scrollbarWidth = $(document).scrollbarWidth();
-
+	// safari = true;
 
 
 	/* Валидация ------------------------------------------------------------------------------------ */
@@ -218,7 +218,7 @@ $(document).ready(function() {
 			zIndex: '1000'
 		}).addClass('active');
 
-		if ($(document).scrollTop() <= 0) {
+		if ($(document).scrollTop() <= 0 && !safari) {
 			$('body').css({
 				overflow: 'hidden',
 				paddingRight: scrollbarWidth,
@@ -471,7 +471,7 @@ $(document).ready(function() {
 		}
 
 	});
-	// safari = true;
+
 	$('#menuLeftListControl').on('click', function() {
 		var position = $(window).scrollTop();
 		if (position <= 0 && !safari) {
@@ -491,6 +491,10 @@ $(document).ready(function() {
 		var aside = $('#aside');
 
 		var asideHeight;
+		// if (safari) {
+		// 	$(header).css({'position': 'fixed'}).addClass('fixed');
+		// 	$(content).css('padding-top', positionContent);
+		// }
 
 		$(document).on('scroll', function(e) {
 			var windowHeight = $(window).outerHeight();
@@ -554,7 +558,7 @@ $(document).ready(function() {
 					$('#menuLeftList').collapse('hide');
 				} else if(menuLeftListDeafult) {
 					$('#menuLeftList').collapse('show');
-					if ($(aside).hasClass('positionTop')) $('#leftNavigationPseudo').collapse('show')
+					if ($(aside).hasClass('positionTop')) $('#leftNavigationPseudo').collapse('show');
 					if (position <=0) {
 						$('#leftNavigationPseudo').collapse('show')
 					}
@@ -568,7 +572,7 @@ $(document).ready(function() {
 
 				if (position > 0 /*&& !asideBig*/){
 					// collapseItemScrollHide($('#menuLeftListControl'), 0);
-					if (!safari) $('#menuLeftList').collapse('hide')
+					if (!safari) $('#menuLeftList').collapse('hide');
 
 
 					// $(content).css('padding-top', positionContent);

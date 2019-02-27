@@ -3002,6 +3002,8 @@ select.form-control:not([size]):not([multiple]) {
           transform: translateZ(0);
   background-color: #fff;
   padding-bottom: 15px;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
 }
 
 .header:before {
