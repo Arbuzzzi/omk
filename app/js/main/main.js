@@ -547,7 +547,7 @@ $(document).ready(function() {
 			}
 
 			// header
-			addClassScroll($(header), 'scroll', positionThree);
+			if (!mobile) addClassScroll($(header), 'scroll', positionThree);
 
 			if (safari) {
 				if (position >= positionThree) {
