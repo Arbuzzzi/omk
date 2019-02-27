@@ -589,6 +589,30 @@
 			font-family: "Roboto", sans-serif;
 			font-size: 16px;
 			font-weight: 400;
+			&_modern {
+				text-align: right;
+				color: #797C82;
+				font-family: "Roboto", sans-serif;
+				font-size: 14px;
+				font-weight: 400;
+				@include md-block {
+					font-size: 8px;
+				}
+				@include xs-block {
+					font-size: 10px;
+				}
+				strong {
+					font-size: 18px;
+					font-weight: 400;
+					color: #d0d1d3;
+					@include md-block {
+						font-size: 10px;
+					}
+					@include xs-block {
+						font-size: 12px;
+					}
+				}
+			}
 		}
 	}
 

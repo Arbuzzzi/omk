@@ -4708,6 +4708,20 @@ select.form-control:not([size]):not([multiple]) {
   font-weight: 400;
 }
 
+.card-slider-number_modern {
+  text-align: right;
+  color: #797C82;
+  font-family: "Roboto", sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+}
+
+.card-slider-number_modern strong {
+  font-size: 18px;
+  font-weight: 400;
+  color: #d0d1d3;
+}
+
 .card-full-head {
   background-color: #fff;
   margin-bottom: 0;
@@ -9977,6 +9991,14 @@ select.form-control:not([size]):not([multiple]) {
     padding-right: -7.5px;
   }
 
+  .card-slider-number_modern {
+    font-size: 8px;
+  }
+
+  .card-slider-number_modern strong {
+    font-size: 10px;
+  }
+
   .card-full-head_special {
     margin-bottom: 5px;
   }
@@ -10717,6 +10739,14 @@ select.form-control:not([size]):not([multiple]) {
   .card-logo__imgbox {
     width: 88px;
     height: 65px;
+  }
+
+  .card-slider-number_modern {
+    font-size: 10px;
+  }
+
+  .card-slider-number_modern strong {
+    font-size: 12px;
   }
 
   .card-modern__imgbox {

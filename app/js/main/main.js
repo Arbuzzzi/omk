@@ -1589,6 +1589,25 @@ $(document).ready(function() {
 			
 	});
 
+	$('.card-modern-slider-wrap').on('init reInit afterChange',
+		function(event, slick, currentSlide, nextSlide){
+			var status = $(this).find('.card-slider-number_modern span'),
+					slide = $(this).find('.card__imgbox');
+			slide.attr('data-current-slide', currentSlide);
+			//currentSlide is undefined on init -- set it to 0 in this case (currentSlide is 0 based)
+			var i = slick.currentSlide;
+			var slidesLength = slick.slideCount;
+			var numberSlide1 = i + 1 <= slidesLength ? i + 1 : i - (slidesLength - 1);
+			var numberSlide2 = i + 2 <= slidesLength ? i + 2 : i - (slidesLength - 2);
+			var numberSlide3 = i + 3 <= slidesLength ? i + 3 : i - (slidesLength - 3);
+			var numberSlide4 = i + 4 <= slidesLength ? i + 4 : i - (slidesLength - 4);
+
+			status.html('<strong>'+numberSlide1+'</strong>' + ' ' +
+				numberSlide2 + ' ' +
+				numberSlide3 + ' ' +
+				numberSlide4 + '...');
+	});
+
 	$('.card-full-slider-wrap').slick({
 		// onInit: function() {
 		// 	$('.card-slider-number span').text(i + '/' + slick.slideCount);
