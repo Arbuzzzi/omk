@@ -1105,6 +1105,10 @@ img {
   background-color: #FBFBFB !important;
 }
 
+.bg-color-light-2 {
+  background-color: #F4F5F5 !important;
+}
+
 .bg-color-dark-1 {
   background-color: #eeefef !important;
 }
@@ -1167,6 +1171,10 @@ img {
 
 .color-light-1 {
   color: #FBFBFB !important;
+}
+
+.color-light-2 {
+  color: #F4F5F5 !important;
 }
 
 .color-dark-1 {

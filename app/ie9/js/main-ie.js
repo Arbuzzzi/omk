@@ -66,8 +66,17 @@ $(document).ready(function (){
 			$(headerNavSystem).collapse('hide');
 			$(headerBread).css('padding-bottom', '15px');
 		}
-		$(header).css({'position': 'fixed'});
+		$(header).css({'position': 'fixed'}).addClass('fixed');
 		$(content).css('padding-top', positionContent);
+
+		$($('[data-toggle="modal"]').data('target')).on('show.bs.modal', function (){
+			var scrollbarWidth = $(document).scrollbarWidth();
+			if ($(header).hasClass('fixed')){
+				$(header).css({
+					paddingRight: scrollbarWidth,
+				})
+			}
+		});
 
 		$(headerNavSystem).on('show.bs.collapse', function (){
 			var position = $(document).scrollTop();
