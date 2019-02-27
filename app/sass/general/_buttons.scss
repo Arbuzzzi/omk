@@ -68,6 +68,7 @@
 	}
 }
 
+
 .link-nav {
 	color: $thin-color;
 	letter-spacing: 0.2px;
@@ -423,6 +424,12 @@
 			color: $light-color;
 		}
 	}
+}
+.button-ads {
+	height: 35px;
+	width: 158px;
+	font-size: 10px;
+	text-transform: uppercase;
 }
 .button-burg {
 	position: relative;
