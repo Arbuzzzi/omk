@@ -1,4 +1,5 @@
 $(document).ready(function() {
+	//todo в инете полно библиотек, которые умеют определять браузер https://github.com/lancedikson/bowser
 	var ua = window.navigator.userAgent.toLowerCase();
 	var ie = (/trident/gi).test(ua) || (/msie/gi).test(ua);
 	var	edge = ((/edge/).test(ua));
@@ -8,6 +9,7 @@ $(document).ready(function() {
 
 
 	/* Валидация ------------------------------------------------------------------------------------ */
+	//todo валидация на что?
 	var x = {
 				rules: {
 						name: {
@@ -32,10 +34,13 @@ $(document).ready(function() {
 					errorPlacement: function(error, element){},
 
 	};
+
+	//todo что это за формы?
 	$("#form1").validate(x);
 	$("#form2").validate(x);
 	$("#form3").validate(x);
 
+	//todo а это что за обработчик? какая страница, что оно делает?
 	$('input[type="checkbox"].policy-chekbox').on('click change', function() {
 		var thisInp = $(this);
 				inputId = thisInp.attr('id');
@@ -66,6 +71,7 @@ $(document).ready(function() {
 	});
 
 	// multiple select
+	// todo для чего этот обработчик? не для всего же сайта, правильно?
 	$("select[multiple]").mousedown(function(e){
 		e.preventDefault();
 
@@ -78,6 +84,7 @@ $(document).ready(function() {
 
 		$(select).focus();
 	}).mousemove(function(e){e.preventDefault()});
+
 
 	var mobile = false;
 	if ($(window).outerWidth() < 768) {
@@ -92,6 +99,7 @@ $(document).ready(function() {
 	});
 
 
+	//todo удалить все комментарии в коде
 	// подпункты меню раскрывается при наведении
 	// $('.menu-nav-header__item').on('mouseenter', function(event) {
 	// 	var element = $(event.target).parents('.menu-nav-header__item'),
@@ -122,14 +130,17 @@ $(document).ready(function() {
 
 	});
 
+	//todo rollUp -> roll-up. По стандарту.
 	$('.rollUp').on('click', function(event) {
 		$(document).trigger('scroll');
 	});
 
+	// todo - а если мне понадобится .btn-group в контенте, это ведь тоже сработает. заменить селектор
 	$('.btn-group').on('show.bs.dropdown', function() {
 		$('.header').css('transform', 'none');
 	});
 
+    // todo - а если мне понадобится .btn-group в контенте, это ведь тоже сработает. заменить селектор
 	$('.btn-group').on('hide.bs.dropdown', function() {
 		$('.header').css('transform', '');
 	});
@@ -151,8 +162,10 @@ $(document).ready(function() {
 	})
 	if (mobile) {
 		$('#header-nav').collapse('hide');
+		//todo header-navControl -> header-nav-control
 		$('#header-navControl').removeClass('active');
 		$('#header-nav').hideClickAway('collapse');
+        //todo menu-nav-headerGroup -> menu-nav-header-group
 		$('#menu-nav-headerGroup').hideClickAway('collapse');
 
 
@@ -162,6 +175,7 @@ $(document).ready(function() {
 		}, 300)
 	} else {
 		$('.header-nav-system-wrap').addClass('show')
+        //todo дальше писать не буду. Все селекторы не по стандарту нужно привести к одному виду.
 		$('#header-navControl').addClass('active');
 	}
 
@@ -186,6 +200,7 @@ $(document).ready(function() {
 	});
 
 	// разворачиваем меню
+	//todo btnDeploy заменить по стандарту на btn-deploy.
 	$('#btnDeploy').click(function(event) {
 		$('.header').removeClass('scroll').css({
 			'position': 'fixed',
@@ -193,17 +208,22 @@ $(document).ready(function() {
 		});
 
 		$('#header-nav').collapse('show');
+
+		//todo по стандарту наименование
 		$('#menuLeftList').collapse('show');
 
+        //todo по стандарту наименование
 		$('.rollUp').addClass('show');
 		return false;
 	});
 
 	// настройки показываются
+	//todo ниже много кода, который непонятно что делает и зачем. нужно расписать хотя бы комментами, если кодом не получается
 	$('#header-navSetting').on('show.bs.collapse', function () {
 		var headerHeight = $('.header').actual('outerHeight');
 
 		// инициализация drag & drop
+		//todo заменить селектор. название не очевидное.
 		$( "#sortable" ).sortable();
 		$( "#sortable" ).disableSelection();
 		$( "#sortable" ).draggable();
@@ -237,6 +257,7 @@ $(document).ready(function() {
 			position: '',
 			// 'padding-right': scrollbarWidth'
 		});
+		//todo убрать все комменты
 		// if (ie) {
 		// 	$('.header').css({
 		// 		paddingRight: scrollbarWidth'
@@ -276,6 +297,7 @@ $(document).ready(function() {
 		}
 	});
 
+	//todo англисйкий - тут и ниже со всеми переменными
 	var checkboxs = $('input[type="checkbox"].setting-form-checkbox__input'),
 			checkboxCheckd        = $('.setting-form').find('input[type="checkbox"]:checked'),
 			checkboxCheckdInch    = checkboxCheckd.length,
@@ -333,13 +355,15 @@ $(document).ready(function() {
 		e.preventDefault();
 	});
 
+	//todo что за название? checkboxDisable может быть?
+	//todo и что делает эта функция?
 	function checkboxDisabl(form, max, checkboxArrDeafult, speed) {
 		// form - елемент в котором ищем активные чекбоксы
 		// max - максимальное количество input со значение checked
 		// checkboxArrDeafult - изначальное положение элементов
 		// speed - скорость анимации
 		var checkbox = form.find('input[type="checkbox"]'),
-				checkboxCheckd,
+				checkboxCheckd,  //todo это и все что ниже - ошибки в анлг языке - checkboxChecked - вот так правильно.
 				checkboxNotCheckd,
 				checkboxCheckdInch,
 				checkboxNotCheckdInch,
@@ -359,9 +383,10 @@ $(document).ready(function() {
 		}
 
 		checkboxArrDeafult = {
+			//todo английский, исправить
 			deafultCheckboxCheckd: form.find('input[type="checkbox"]:checked'),
+			//todo английский, исправить
 			deafultCheckboxNotCheckdInch: form.find('input[type="checkbox"]:not(:checked)'),
-
 		}
 
 		checkboxCheckdInch    = checkboxCheckd.length
@@ -382,6 +407,8 @@ $(document).ready(function() {
 			// скрываем не отмечене блоки drag & drop
 			for (var i = checkboxNotCheckdArrID.length - 1; i >= 0; i--) {
 				$('[data-control='+checkboxNotCheckdArrID[i]+']').hide(speed);
+
+				//todo тут и везде по коду ниже - ты очень сильно грузишь DOM - когда два раза селектором ищешь элемент. используй переменные. это ко всему коду относится.
 				$('#'+checkboxNotCheckdArrID[i]).prop("disabled", true);
 				$('#'+checkboxNotCheckdArrID[i]).parent().tooltip('enable');
 			}
@@ -787,6 +814,7 @@ $(document).ready(function() {
 	//
 	//
 	// });
+	//todo т.е. каждые две секунды какой то код на всех страницах сайта будет выполняться? это недопустимо
 	setInterval(function() {
 		var position = $(document).scrollTop(),
 				menuLeft = $('#menuLeftList'),
@@ -799,6 +827,7 @@ $(document).ready(function() {
 
 
 	// плавный скролл до элемента
+	//todo убрать код и использовать https://github.com/cferdinandi/smooth-scroll - нам такой скролл может пригодиться на любых страницах сайта. а не только в календаре
 	$(document).on('click', 'a.event, a.calendar__link', function(event) {
 		var link = $(this).attr('href');
 		var elementToScroll = $('#' + link.split('#')[1]);
@@ -827,6 +856,7 @@ $(document).ready(function() {
 
 
 	// заказчик попросил чтобы при клике на пустую ссылку ничего не происходило
+	// todo убрать вообще
 	$(document).on('click', 'a', function(event) {
 		var el = event.target,
 				elHref = $(el).attr('href');
@@ -839,6 +869,8 @@ $(document).ready(function() {
 
 	var myHash = location.hash; //получаем значение хеша
 	//location.hash = ''; //очищаем хеш
+
+	// todo - а это зачем нужно? где это используется и кем?
 	$(window).on('load', function() {
 		var headerHeight = $('.header').outerHeight(); // высота хэдера
 		if(myHash[1] !== undefined && myHash[1] !== '#'){ //проверяем, есть ли в хеше какое-то значение
@@ -857,6 +889,8 @@ $(document).ready(function() {
 
 	});
 
+
+	//todo что за кнопка, что это вообще такое? + btnUp -> btn-up
 	$('#btnUp').click(function() {
 		var destination = 0;
 
@@ -867,6 +901,7 @@ $(document).ready(function() {
 		return false;
 	});
 
+	//todo добавить описание
 	function addClassScroll(element, $class, positionMax) {
 		var position = $(this).scrollTop();
 		if ($class === undefined) {
@@ -883,6 +918,7 @@ $(document).ready(function() {
 		return position;
 	}
 
+    //todo добавить описание
 	function removeClassScroll(element, $class) {
 		var position = $(this).scrollTop();
 		if ($class === undefined) {
@@ -896,6 +932,7 @@ $(document).ready(function() {
 		return position;
 	}
 
+    //todo добавить описание
 	function toggleCollapseScroll(element) {
 		var position = $(this).scrollTop();
 		if (position >= 200) {
@@ -906,6 +943,7 @@ $(document).ready(function() {
 		return position;
 	}
 
+    //todo добавить описание
 	function toggleDropdownScroll(element) {
 		var position = $(this).scrollTop();
 		if (position >= 200) {
@@ -918,6 +956,7 @@ $(document).ready(function() {
 		}
 	}
 
+    //todo добавить описание
 	function collapseItemScrollHide(btnControl, hidePosition) {
 		var position = $(this).scrollTop(),
 				itemControl = $(btnControl.data('target'));
@@ -930,6 +969,7 @@ $(document).ready(function() {
 		}
 	}
 
+    //todo добавить описание
 	function collapseItemScrollShow(btnControl, hidePosition) {
 		var position = $(this).scrollTop(),
 				itemControl = $(btnControl.data('target'));
@@ -1014,7 +1054,7 @@ $(document).ready(function() {
 	});
 	$('[name="period_date_buffer"]').on('change', function(event) {
 		$('#filtersCalendarPeriod').find('option').removeAttr('selected');
-		$('#period_date').val($(this).val());
+		$('#period_date').val($(this).val()); //
 		$('#period_date').text($(this).val());
 		$('#period_date').attr('selected', 'true');
 		$('#filtersCalendarPeriod').val($(this).val());
@@ -1039,7 +1079,7 @@ $(document).ready(function() {
 	});
 
 	/* СОБЫТИЯ В ВИДЖЕТЕ "КАЛЕНДАРЬ" ----------------------------------------------------------------- */
-
+    //todo это тут вообще нужно?
 	// var setTimer;
 	// var setTimerTimeOut = 10000;
 	// setInterval(function(){ // открываем событие на текущей дате по таймеру
@@ -1142,6 +1182,7 @@ $(document).ready(function() {
 	/* datepicker --------------------------------------------------------------------------------------------- */
 
 	// fix datepicker beforeShow
+	//todo напиши, что за багу ты тут решаешь, мы должны понимать это
 	$.extend($.datepicker, {
 		// Reference the original function so we can override it and call it later
 		_inlineDatepicker2: $.datepicker._inlineDatepicker,
