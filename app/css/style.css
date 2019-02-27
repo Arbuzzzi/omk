@@ -9757,7 +9757,7 @@ select.form-control:not([size]):not([multiple]) {
   }
 
   .header:before {
-    max-width: 738px;
+    max-width: 720px;
   }
 
   .header-box__item {
@@ -10391,10 +10391,6 @@ select.form-control:not([size]):not([multiple]) {
 
   .modal-main-slider-title {
     display: none;
-  }
-
-  .header:before {
-    max-width: 550px;
   }
 
   .header-logowrap {
