@@ -4,7 +4,7 @@ $(document).ready(function() {
 	var	edge = ((/edge/).test(ua));
 	var safari = /Safari/.test(navigator.userAgent) && /Apple Computer/.test(navigator.vendor);
 	var scrollbarWidth = $(document).scrollbarWidth();
-	// safari = true;
+	safari = true;
 
 
 	/* Валидация ------------------------------------------------------------------------------------ */
@@ -173,17 +173,56 @@ $(document).ready(function() {
 		}
 	});
 
-	// системы показываются
-	$('#header-nav').on('shown.bs.collapse', function () {
-		var btn = $('#header-navControl');
-		btn.addClass('active')
+	var headerNavSystem = $('#header-nav');
+
+	$(headerNavSystem).on('show.bs.collapse', function (){
+		var position = $(document).scrollTop();
+		if (position <= 0) {
+			$(header).css({'position': ''});
+			$(content).css('padding-top', '');
+		}
 	});
 
-	// системы скрываются
-	$('#header-nav').on('hidden.bs.collapse', function () {
+	$(headerNavSystem).on('shown.bs.collapse', function (){
+		var position = $(document).scrollTop();
+		var btn = $('#header-navControl');
+		btn.addClass('active');
+		if (position <= 0){
+			positionContent = $(header).actual('outerHeight');
+			header.css({'position': 'fixed'});
+			content.css('padding-top', positionContent);
+		}
+	});
+
+	$(headerNavSystem).on('hide.bs.collapse', function (){
+		var position = $(document).scrollTop();
+		if (position <= 0) {
+			header.css({'position': ''});
+			content.css('padding-top', '');
+		}
+	});
+
+	$(headerNavSystem).on('hidden.bs.collapse', function (){
+		var position = $(document).scrollTop();
 		var btn = $('#header-navControl');
 		btn.removeClass('active');
+		if (position <= 0){
+			positionContent = $(header).actual('outerHeight');
+			header.css({'position': 'fixed'});
+			content.css('padding-top', positionContent);
+		}
 	});
+	// // системы показываются
+	// $('#header-nav').on('shown.bs.collapse', function () {
+	// 	var btn = $('#header-navControl');
+	// 	btn.addClass('active')
+	// });
+	//
+	// // системы скрываются
+	// $('#header-nav').on('hidden.bs.collapse', function () {
+	// 	var btn = $('#header-navControl');
+	// 	btn.removeClass('active');
+	// });
 
 	// разворачиваем меню
 	$('#btnDeploy').click(function(event) {
@@ -486,16 +525,17 @@ $(document).ready(function() {
 		var header = $('.header');
 		var content = $('.header + *');
 		var headerBread = $('.header .breadcrumb');
-		var headerNavSystem = $('#header-nav');
+		// var headerNavSystem = $('#header-nav');
 		var menuLeft = $('#menuLeftList');
 		var aside = $('#aside');
 
-		var asideHeight;
-		// if (safari) {
-		// 	$(header).css({'position': 'fixed'}).addClass('fixed');
-		// 	$(content).css('padding-top', positionContent);
-		// }
+		// var asideHeight;
 
+		if (safari || edge) {
+			$(header).css({'position': 'fixed'}).addClass('fixed');
+			$(content).css('padding-top', positionContent);
+		}
+		var paddingTopContentMax = $(header).actual('outerHeight');
 		$(document).on('scroll', function(e) {
 			var windowHeight = $(window).outerHeight();
 			var position = $(this).scrollTop();
@@ -508,6 +548,9 @@ $(document).ready(function() {
 			var positionContent = $(header).actual('outerHeight');
 
 
+			if (paddingTopContentMax < positionContent) paddingTopContentMax = positionContent;
+
+			console.log(paddingTopContentMax);
 			if (mobile && $('#header-nav').hasClass('show')) {
 				$('#header-nav').collapse('hide');
 			}
@@ -526,11 +569,12 @@ $(document).ready(function() {
 			// header
 			if (!mobile) {
 				if (position > 0) {
-					if (!edge) $(header).css({'position': 'fixed'});
+
+					if (!edge && !safari) $(header).css({'position': 'fixed'});
 
 					if (!$(header).hasClass('fixed')) {
 						$(header).addClass('fixed');
-						if (!edge) $(content).css('padding-top', positionContent);
+						if (!edge && !safari) $(content).css('padding-top', positionContent);
 					}
 
 					//
@@ -543,9 +587,9 @@ $(document).ready(function() {
 					}
 
 				} else {
-					if (!edge) $(header).css({'position': ''});
-					if (!edge) $(content).css('padding-top', '');
-					$(header).removeClass('fixed');
+					if (!edge && !safari) $(header).css({'position': ''});
+					if (!edge && !safari) $(content).css('padding-top', '');
+					if (!edge && !safari) $(header).removeClass('fixed');
 					$('#header-nav').collapse('show');
 				}
 			}
@@ -553,13 +597,15 @@ $(document).ready(function() {
 			// header
 			if (!mobile) addClassScroll($(header), 'scroll', positionThree);
 
-			if (safari) {
+			if (safari || edge) {
 				if (position >= positionThree) {
 					$('#menuLeftList').collapse('hide');
 				} else if(menuLeftListDeafult) {
 					$('#menuLeftList').collapse('show');
 					if ($(aside).hasClass('positionTop')) $('#leftNavigationPseudo').collapse('show');
 					if (position <=0) {
+
+						$(content).animate({paddingTop: paddingTopContentMax}, 300);
 						$('#leftNavigationPseudo').collapse('show')
 					}
 				}
@@ -583,7 +629,7 @@ $(document).ready(function() {
 
 
 				}else {
-					$(content).css('padding-top', '');
+					if (!edge && !safari) $(content).css('padding-top', '');
 					$('#btnUp').animate({bottom: 'hide', opacity: 'hide'}, 500);
 					$('.header .breadcrumb').removeAttr('style')
 				}
@@ -600,7 +646,7 @@ $(document).ready(function() {
 				if (!mobile){
 					$('#header-nav').collapse('show');
 				}
-				if (!edge) $(header).removeAttr('style');
+				if (!edge && !safari) $(header).removeAttr('style');
 				addClassScroll($(header));
 				positionContent = $(header).actual('outerHeight');
 			}
@@ -955,11 +1001,11 @@ $(document).ready(function() {
 		$('#navMoreListControl').removeAttr('data-toggle');
 		$('#navMoreListControl').dropdown('dispose');
 		$('.menu-left-more__button>i').animate({opacity: 'hide'}, 400);
-		if (position < positionThree && !safari) {
+		if (position < positionThree && !safari && !edge) {
 			// $('#leftNavigationPseudo').animate({height: $(this).actual('innerHeight')}, 300)
 			$('#leftNavigationPseudo').collapse('show')
 		}
-		if (safari) {
+		if (!edge && !safari) {
 			if (position <= 0) {
 				$('#leftNavigationPseudo').collapse('show')
 			}
