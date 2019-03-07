@@ -31,10 +31,11 @@ $(document).ready(function (){
 			var position = $(this).scrollTop(),
 				heightHeader = $('.header:not(.header.scroll)').outerHeight(),
 				positionContentEvent = $('.content').offset().top,
-				asideBig = $('#aside').outerHeight() > $('#content').outerHeight();
+				asideBig = $('#aside').outerHeight() > $('#content').outerHeight(),
+				headerNavSystemIsShow = $(headerNavSystem).hasClass('show');
 
 
-			if (position > 0 && !header.hasClass('scroll-ie')) {
+			if (position > 0 && !$(header).hasClass('scroll-ie')) {
 				$(header).css({'position': 'fixed'});
 				$(content).css('padding-top', positionContent);
 
@@ -49,9 +50,14 @@ $(document).ready(function (){
 				$(headerBread).css('padding-bottom', '');
 			}
 
-			if (position > positionTwo && headerNavSystem.hasClass('show') ) {
-				$(headerNavSystem).collapse('hide');
+			if (position > positionThree) {
+				if (headerNavSystemIsShow) {
+					$(headerNavSystem).collapse('hide');
+				}
+			} else if(!headerNavSystemIsShow) {
+				$(headerNavSystem).collapse('show');
 			}
+
 			addClassScroll($('.header'), 'scroll', positionThree);
 
 
@@ -81,7 +87,7 @@ $(document).ready(function (){
 		$(headerNavSystem).on('show.bs.collapse', function (){
 			var position = $(document).scrollTop();
 			if (position <= 0) {
-				$(header).css({'position': ''});
+				$(header).css({'position': 'static'}).addClass('fixed');
 				$(content).css('padding-top', '');
 			}
 		});
@@ -90,16 +96,16 @@ $(document).ready(function (){
 			var position = $(document).scrollTop();
 			if (position <= 0){
 				positionContent = $(header).actual('outerHeight');
-				header.css({'position': 'fixed'});
-				content.css('padding-top', positionContent);
+				$(header).css({'position': 'fixed'});
+				$(content).css('padding-top', positionContent);
 			}
 		});
 
 		$(headerNavSystem).on('hide.bs.collapse', function (){
 			var position = $(document).scrollTop();
 			if (position <= 0) {
-				header.css({'position': ''});
-				content.css('padding-top', '');
+				$(header).css({'position': 'static'}).removeClass('fixed');
+				$(content).css('padding-top', '');
 			}
 		});
 
@@ -107,8 +113,8 @@ $(document).ready(function (){
 			var position = $(document).scrollTop();
 			if (position <= 0){
 				positionContent = $(header).actual('outerHeight');
-				header.css({'position': 'fixed'});
-				content.css('padding-top', positionContent);
+				$(header).css({'position': 'fixed'});
+				$(content).css('padding-top', positionContent);
 			}
 		});
 

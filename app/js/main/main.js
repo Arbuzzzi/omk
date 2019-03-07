@@ -115,6 +115,9 @@ $(document).ready(function() {
 
 
 	// menu-burger ---------------------------------------------------------------------------------------------------
+	var header = $('.header');
+	var content = $('.header + *');
+
 	$('#menu-nav-headerGroup').on('show.bs.collapse', function(e) {
 		var menuNavHeader = $(this).parents('.menu-nav-header');
 
@@ -137,16 +140,19 @@ $(document).ready(function() {
 
 	// todo - а если мне понадобится .btn-group в контенте, это ведь тоже сработает. заменить селектор
 	$('.btn-group').on('show.bs.dropdown', function() {
-		$('.header').css('transform', 'none');
+		$(header).css('transform', 'none');
 	});
 
     // todo - а если мне понадобится .btn-group в контенте, это ведь тоже сработает. заменить селектор
 	$('.btn-group').on('hide.bs.dropdown', function() {
-		$('.header').css('transform', '');
+		$(header).css('transform', '');
 	});
 
 
 	/* ПОДМЕНЮ "СИСТЕМЫ" ----------------------------------------------------------------------------- */
+	var headerNavSystem = $('#header-nav');
+
+
 	// мобильные
 	$(window).resize(function (){
 		setTimeout(function (){
@@ -159,7 +165,8 @@ $(document).ready(function() {
 			}
 		},500)
 
-	})
+	});
+
 	if (mobile) {
 		$('#header-nav').collapse('hide');
 		//todo header-navControl -> header-nav-control
@@ -187,6 +194,8 @@ $(document).ready(function() {
 		}
 	});
 
+
+
 	// системы показываются
 	$('#header-nav').on('shown.bs.collapse', function () {
 		var btn = $('#header-navControl');
@@ -199,10 +208,46 @@ $(document).ready(function() {
 		btn.removeClass('active');
 	});
 
+	if (safari || edge) {
+		$(headerNavSystem).on('show.bs.collapse', function (){
+			var position = $(document).scrollTop();
+			if (position <= 0) {
+				$(header).css({'position': ''});
+				$(content).css('padding-top', '');
+			}
+		});
+
+		$(headerNavSystem).on('shown.bs.collapse', function (){
+			var position = $(document).scrollTop();
+			if (position <= 0){
+				positionContent = $(header).actual('outerHeight');
+				$(header).css({'position': 'fixed'});
+				$(content).css('padding-top', positionContent);
+			}
+		});
+
+		$(headerNavSystem).on('hide.bs.collapse', function (){
+			var position = $(document).scrollTop();
+			if (position <= 0) {
+				$(header).css({'position': ''});
+				$(content).css('padding-top', '');
+			}
+		});
+
+		$(headerNavSystem).on('hidden.bs.collapse', function (){
+			var position = $(document).scrollTop();
+			if (position <= 0){
+				positionContent = $(header).actual('outerHeight');
+				$(header).css({'position': 'fixed'});
+				$(content).css('padding-top', positionContent);
+			}
+		});
+	}
+
 	// разворачиваем меню
 	//todo btnDeploy заменить по стандарту на btn-deploy.
 	$('#btnDeploy').click(function(event) {
-		$('.header').removeClass('scroll').css({
+		$(header).removeClass('scroll').css({
 			'position': 'fixed',
 			'padding-bottom': '10px'
 		});
@@ -220,7 +265,7 @@ $(document).ready(function() {
 	// настройки показываются
 	//todo ниже много кода, который непонятно что делает и зачем. нужно расписать хотя бы комментами, если кодом не получается
 	$('#header-navSetting').on('show.bs.collapse', function () {
-		var headerHeight = $('.header').actual('outerHeight');
+		var headerHeight = $(header).actual('outerHeight');
 
 		// инициализация drag & drop
 		//todo заменить селектор. название не очевидное.
@@ -228,7 +273,7 @@ $(document).ready(function() {
 		$( "#sortable" ).disableSelection();
 		$( "#sortable" ).draggable();
 
-		$('.header').css('transform', 'none');
+		$(header).css('transform', 'none');
 
 		$(this).parent().append('<div class="overlay"/>');
 		$('.overlay').animate({opacity: 'show'}, 400);
@@ -238,66 +283,97 @@ $(document).ready(function() {
 			zIndex: '1000'
 		}).addClass('active');
 
-		if ($(document).scrollTop() <= 0 && !safari) {
+
+		if ($(document).scrollTop() <= 0) {
 			$('body').css({
 				overflow: 'hidden',
 				paddingRight: scrollbarWidth,
 				paddingTop: headerHeight
 			});
+			// if (safari && ie && edge)  {
+			// 	$(header).css({
+			// 		'padding-right': scrollbarWidth
+			// 	});
+			// }
 		} else {
 			$('body').css({
 				overflow: 'hidden',
 				paddingRight: scrollbarWidth,
 			});
 		}
+		// if ($(header).hasClass('fixed'))
 
-		var headerPositionDeafult = $('.header').css('position');
-		$('.header').wrap('<div class="extra-wrapper"></div>');
-		$('.header').css({
-			position: '',
-			// 'padding-right': scrollbarWidth'
-		});
-		//todo убрать все комменты
+// <<<<<<< HEAD
+// 		var headerPositionDeafult = $('.header').css('position');
+// 		$('.header').wrap('<div class="extra-wrapper"></div>');
+// 		$('.header').css({
+// 			position: '',
+// 			// 'padding-right': scrollbarWidth'
+// 		});
+// 		//todo убрать все комменты
+// =======
+		var headerPositionDeafult = $(header).css('position');
+		$(header).wrap('<div class="extra-wrapper"></div>');
+
+		if  ($(header).hasClass('fixed') && $(document).scrollTop() > 0) {
+			$(header).css({
+				paddingRight: scrollbarWidth
+			})
+		}
+// >>>>>>> header-sticky-safari
 		// if (ie) {
-		// 	$('.header').css({
-		// 		paddingRight: scrollbarWidth'
+		// 	$(header).css({
+		// 		paddingRight: scrollbarWidth
 		// 	})
 		// }
 
 		checkboxDisabl($(this), 10)
-		// настройки скрываются
-		$('#header-navSetting').on('hide.bs.collapse', function () {
-			$('.header').css('transform', '');
-			$('.overlay').animate({
-				opacity: 0
-			}, 400, function() {
-				$(this).detach()
-			});
-
-			$('body').css({
-				overflow: '',
-				paddingRight: '',
-				paddingTop: ''
-			});
-			$('.header').css({
-				'padding-right': '',
-				'position': headerPositionDeafult
-			});
-			$('.header').unwrap();
-
-			$('#header-navSettingControl').removeClass('active').removeAttr('style');
-		})
 	});
 	$('#header-navSetting').on('shown.bs.collapse', function (){
-		if (ie) {
-			$('.header').css({
-				paddingRight: ''
+		if ($(document).scrollTop() <= 0) {
+			$('body').css({
+				overflow: 'hidden',
+				paddingRight: scrollbarWidth,
+				paddingTop: ''
 			});
-			return false;
+		}
+
+		if  ($(header).hasClass('fixed')) {
+			$(header).css({
+				paddingRight: scrollbarWidth
+			})
 		}
 	});
 
-	//todo англисйкий - тут и ниже со всеми переменными
+// <<<<<<< HEAD
+// 	//todo англисйкий - тут и ниже со всеми переменными
+// =======
+	// настройки скрываются
+	$('#header-navSetting').on('hide.bs.collapse', function () {
+		$(header).css('transform', '');
+		$('.overlay').animate({
+			opacity: 0
+		}, 400, function() {
+			$(this).detach()
+		});
+
+		$('body').css({
+			overflow: '',
+			paddingRight: '',
+			paddingTop: ''
+		});
+		$(header).css({
+			'padding-right': '',
+			// 'position': headerPositionDeafult
+		});
+		$(header).unwrap();
+
+		$('#header-navSettingControl').removeClass('active').removeAttr('style');
+	})
+
+
+
+// >>>>>>> header-sticky-safari
 	var checkboxs = $('input[type="checkbox"].setting-form-checkbox__input'),
 			checkboxCheckd        = $('.setting-form').find('input[type="checkbox"]:checked'),
 			checkboxCheckdInch    = checkboxCheckd.length,
@@ -433,10 +509,10 @@ $(document).ready(function() {
 
 	/* START СКРОЛЛИНГ ------------------------------------------------------------------------------- */
 	if (!mobile) {
-		addClassScroll($('.header'));
+		addClassScroll($(header));
 	}
 	// скрываем элементы во время скроллинга страницы
-	var positionContent = $('.header').actual('outerHeight'),
+	var positionContent = $(header).actual('outerHeight'),
 			chekPosContent,
 			positionOne = $(window).innerHeight(),
 			menuLeftListDeafult = $('#menuLeftList').hasClass('show'),
@@ -447,45 +523,60 @@ $(document).ready(function() {
 			windowHeight = $(window).outerHeight(),
 			windowMoreAside,
 			currentScroll = 0;
+	var paddingTopContentMax = $(header).actual('outerHeight');
 
-	$(window).resize(function (){
-		var position = $(this).scrollTop();
-		var menuLeft = $('#menuLeftList');
-		var meuLeftShown = menuLeft.hasClass('show');
-		positionOne = $(window).innerHeight();
-		
-		windowHeight = $(window).outerHeight();
-		asideWidth = $('#aside').parent().width();
 
-		if (position <= 0) {
-			setTimeout(function (){
+	var $window = $(window);
+	var width = $window.width();
+	var height = $window.height();
+
+	setInterval(function () {
+		console.log(width +' - '+ $window.width());
+		if ((width != $window.width()) || (height != $window.height())) {
+			width = $window.width();
+			height = $window.height();
+
+
+			var position = $(this).scrollTop();
+			var menuLeft = $('#menuLeftList');
+			var meuLeftShown = menuLeft.hasClass('show');
+
+
+			positionOne = $(window).innerHeight();
+
+			windowHeight = $(window).outerHeight();
+			asideWidth = $('#aside').parent().width();
+
+			if (mobile) $('#menuLeftList').collapse('hide');
+			$('.widget-slider').slick('refresh');
+			if (position <= 0) {
+				paddingTopContentMax = $(header).actual('outerHeight');
 				$('#menuLeftList').collapse('show');
-				$('#leftNavigationPseudo').css('display', 'block');
-			}, 1000)
+				// $('#leftNavigationPseudo').css('display', 'block');
+				$(content).animate({
+					paddingTop: paddingTopContentMax
+				}, 400)
 
-		}
-		if (position > 0) {
-			setTimeout(function (){
-				$('#header-nav').collapse('hide');
+
+
+			}
+			if (position > 0) {
+
 				if ($(aside).hasClass('positionTop')) {
-					setTimeout(function (){
-						var headerHeight = $('.header').actual('outerHeight');
-						$(aside).css('top', headerHeight).removeClass('scrollingTop scrollingBottom ');
+					var headerHeight = $(header).actual('outerHeight');
+					$(aside).css('top', headerHeight).removeClass('scrollingTop scrollingBottom ');
 
-						asideHeight = $(aside).actual('outerHeight') + $(header).actual('outerHeight'); // бывает вызыв события scroll
-						windowMoreAside = asideHeight < windowHeight;
-						if (windowMoreAside) {
-							$(aside).css('bottom:', '').addClass('positionTop');
-						}
-					}, 500)
+					asideHeight = $(aside).actual('outerHeight') + $(header).actual('outerHeight'); // бывает вызыв события scroll
+					windowMoreAside = asideHeight < windowHeight;
+					if (windowMoreAside) {
+						$(aside).css('bottom:', '').addClass('positionTop');
+					}
 				}
-			},500)
-		}
-		$(aside).css({
-			width: asideWidth,
-		});
-		if (!mobile) {
-			setTimeout(function (){
+			}
+			$(aside).css({
+				width: asideWidth,
+			});
+			if (!mobile) {
 				$(aside).css({
 					position: '',
 					top: '',
@@ -494,10 +585,85 @@ $(document).ready(function() {
 					marginTop: '',
 				}).removeClass('positionTop positionBottom scrollingTop scrollingBottom')
 					.addClass('positionStatic');
-			}, 600)
+			}
 		}
+	}, 800);
 
-	});
+	// $(window).resize(function (){
+	// 	var position = $(this).scrollTop();
+	// 	var menuLeft = $('#menuLeftList');
+	// 	var meuLeftShown = menuLeft.hasClass('show');
+	//
+	//
+	// 	positionOne = $(window).innerHeight();
+	//
+	// 	windowHeight = $(window).outerHeight();
+	// 	asideWidth = $('#aside').parent().width();
+	//
+	// 	if (mobile) $('#menuLeftList').collapse('hide');
+	//
+	// 	// if (!mobile) {
+	// 	// 	$('#header-nav').collapse('hide');
+	// 	// 	console.log('!mobile');
+	// 	// } else {
+	// 	// 	console.log('mobile');
+	// 	// 	if (position < positionThree) {
+	// 	// 		$('#header-nav').collapse('show');
+	// 	// 	} else {
+	// 	// 		$('#header-nav').collapse('hide');
+	// 	// 	}
+	// 	// }
+	// 	if (position <= 0) {
+	// 		var positionTop = setTimeout(function (){
+	// 			paddingTopContentMax = $(header).actual('outerHeight');
+	// 			$('#menuLeftList').collapse('show');
+	// 			// $('#leftNavigationPseudo').css('display', 'block');
+	// 			$(content).animate({
+	// 				paddingTop: paddingTopContentMax
+	// 			}, 400)
+	// 		}, 500)
+	//
+	//
+	//
+	// 	}
+	// 	clearTimeout(positionTop);
+	// 	if (position > 0) {
+	//
+	// 		setTimeout(function (){
+	// 			// paddingTopContentMax = $(header).actual('outerHeight');
+	//
+	// 			// $(content).animate({
+	// 			// 	paddingTop: paddingTopContentMax
+	// 			// }, 400);
+	// 			if ($(aside).hasClass('positionTop')) {
+	// 				var headerHeight = $(header).actual('outerHeight');
+	// 				$(aside).css('top', headerHeight).removeClass('scrollingTop scrollingBottom ');
+	//
+	// 				asideHeight = $(aside).actual('outerHeight') + $(header).actual('outerHeight'); // бывает вызыв события scroll
+	// 				windowMoreAside = asideHeight < windowHeight;
+	// 				if (windowMoreAside) {
+	// 					$(aside).css('bottom:', '').addClass('positionTop');
+	// 				}
+	// 			}
+	// 		},500)
+	// 	}
+	// 	$(aside).css({
+	// 		width: asideWidth,
+	// 	});
+	// 	if (!mobile) {
+	// 		setTimeout(function (){
+	// 			$(aside).css({
+	// 				position: '',
+	// 				top: '',
+	// 				bottom: '',
+	// 				width: '',
+	// 				marginTop: '',
+	// 			}).removeClass('positionTop positionBottom scrollingTop scrollingBottom')
+	// 				.addClass('positionStatic');
+	// 		}, 600)
+	// 	}
+	//
+	// });
 
 	$('#menuLeftListControl').on('click', function() {
 		var position = $(window).scrollTop();
@@ -508,21 +674,18 @@ $(document).ready(function() {
 			menuLeftListDeafult = !menuLeftListDeafult;
 		}
 	});
-
+	if (safari || edge || ie) {
+		$(header).css({'position': 'fixed'}).addClass('fixed');
+		$(content).css('padding-top', positionContent);
+	}
 	if (!ie) {
-		var header = $('.header');
-		var content = $('.header + *');
 		var headerBread = $('.header .breadcrumb');
-		var headerNavSystem = $('#header-nav');
+		// var headerNavSystem = $('#header-nav');
 		var menuLeft = $('#menuLeftList');
 		var aside = $('#aside');
 
-		var asideHeight;
-		// if (safari) {
-		// 	$(header).css({'position': 'fixed'}).addClass('fixed');
-		// 	$(content).css('padding-top', positionContent);
-		// }
-
+		// var asideHeight;
+		
 		$(document).on('scroll', function(e) {
 			var windowHeight = $(window).outerHeight();
 			var position = $(this).scrollTop();
@@ -534,7 +697,8 @@ $(document).ready(function() {
 			var contentPadding;
 			var positionContent = $(header).actual('outerHeight');
 
-
+			if (paddingTopContentMax < positionContent) paddingTopContentMax = positionContent;
+			
 			if (mobile && $('#header-nav').hasClass('show')) {
 				$('#header-nav').collapse('hide');
 			}
@@ -553,11 +717,12 @@ $(document).ready(function() {
 			// header
 			if (!mobile) {
 				if (position > 0) {
-					if (!edge) $(header).css({'position': 'fixed'});
+
+					if (!edge && !safari) $(header).css({'position': 'fixed'});
 
 					if (!$(header).hasClass('fixed')) {
 						$(header).addClass('fixed');
-						if (!edge) $(content).css('padding-top', positionContent);
+						if (!edge && !safari) $(content).css('padding-top', positionContent);
 					}
 
 					//
@@ -570,9 +735,9 @@ $(document).ready(function() {
 					}
 
 				} else {
-					if (!edge) $(header).css({'position': ''});
-					if (!edge) $(content).css('padding-top', '');
-					$(header).removeClass('fixed');
+					if (!edge && !safari) $(header).css({'position': ''});
+					if (!edge && !safari) $(content).css('padding-top', '');
+					if (!edge && !safari) $(header).removeClass('fixed');
 					$('#header-nav').collapse('show');
 				}
 			}
@@ -580,13 +745,14 @@ $(document).ready(function() {
 			// header
 			if (!mobile) addClassScroll($(header), 'scroll', positionThree);
 
-			if (safari) {
+			if (safari || edge) {
 				if (position >= positionThree) {
 					$('#menuLeftList').collapse('hide');
 				} else if(menuLeftListDeafult) {
 					$('#menuLeftList').collapse('show');
 					if ($(aside).hasClass('positionTop')) $('#leftNavigationPseudo').collapse('show');
 					if (position <=0) {
+						$(content).animate({paddingTop: paddingTopContentMax}, 300);
 						$('#leftNavigationPseudo').collapse('show')
 					}
 				}
@@ -610,7 +776,7 @@ $(document).ready(function() {
 
 
 				}else {
-					$(content).css('padding-top', '');
+					if (!edge && !safari) $(content).css('padding-top', '');
 					$('#btnUp').animate({bottom: 'hide', opacity: 'hide'}, 500);
 					$('.header .breadcrumb').removeAttr('style')
 				}
@@ -624,10 +790,11 @@ $(document).ready(function() {
 
 			// scroll top самый верх экана
 			if (position <= 0){
+
 				if (!mobile){
 					$('#header-nav').collapse('show');
 				}
-				if (!edge) $(header).removeAttr('style');
+				if (!edge && !safari) $(header).removeAttr('style');
 				addClassScroll($(header));
 				positionContent = $(header).actual('outerHeight');
 			}
@@ -652,8 +819,7 @@ $(document).ready(function() {
 			}else {
 				$('.rollUp').removeClass('show');
 			}
-
-
+			
 			// aside
 			if (!mobile) {
 					asideHeight = $(aside).actual('outerHeight') + $(header).actual('outerHeight'); // бывает вызыв события scroll
@@ -671,7 +837,7 @@ $(document).ready(function() {
 
 							if (!$(aside).hasClass('scrollingBottom')) {
 								asideOfsetTop = $(aside).offset().top;
-								headerHeight = $('.header').actual('outerHeight');
+								headerHeight = $(header).actual('outerHeight');
 								contentPadding = parseInt($('.header + *').css('padding-top'));
 
 								$(aside).addClass('scrollingBottom');
@@ -840,7 +1006,7 @@ $(document).ready(function() {
 	function scrollTo ($elementToScroll) {
 		var elementToScroll = $($elementToScroll);
 		var elementToScrollPos = elementToScroll.offset().top;
-		var headerHeight = $('.header').outerHeight(); // высота хэдера
+		var headerHeight = $(header).outerHeight(); // высота хэдера
 		if (elementToScrollPos < positionTwo) {
 			elementToScrollPos = elementToScroll.offset().top - headerHeight - 45;
 		} else {
@@ -872,7 +1038,7 @@ $(document).ready(function() {
 
 	// todo - а это зачем нужно? где это используется и кем?
 	$(window).on('load', function() {
-		var headerHeight = $('.header').outerHeight(); // высота хэдера
+		var headerHeight = $(header).outerHeight(); // высота хэдера
 		if(myHash[1] !== undefined && myHash[1] !== '#'){ //проверяем, есть ли в хеше какое-то значение
 			var elementToScrolling = $(myHash).offset().top;
 			if (elementToScrolling < positionTwo) {
@@ -995,11 +1161,11 @@ $(document).ready(function() {
 		$('#navMoreListControl').removeAttr('data-toggle');
 		$('#navMoreListControl').dropdown('dispose');
 		$('.menu-left-more__button>i').animate({opacity: 'hide'}, 400);
-		if (position < positionThree && !safari) {
+		if (position < positionThree && !safari && !edge) {
 			// $('#leftNavigationPseudo').animate({height: $(this).actual('innerHeight')}, 300)
 			$('#leftNavigationPseudo').collapse('show')
 		}
-		if (safari) {
+		if (!edge && !safari) {
 			if (position <= 0) {
 				$('#leftNavigationPseudo').collapse('show')
 			}
@@ -1918,11 +2084,11 @@ $(document).ready(function() {
 	$('.modal').on('show.bs.modal', function(event) {
 		var position = $(document).scrollTop();
 		if (position > 0)  {
-			$('.header').css('padding-right', scrollbarWidth);
+			$(header).css('padding-right', scrollbarWidth);
 		}
 	});
 	$('.modal').on('hidden.bs.modal', function(event) {
-		$('.header').css('padding-right', '');
+		$(header).css('padding-right', '');
 	});
 
 	$('#modalImgBox').on('show.bs.modal', function(event) {
