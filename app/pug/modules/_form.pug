@@ -1,5 +1,5 @@
 .card
-	form.form
+	form.form#form1
 		.form__box.form__box_title
 			h3.form__title.form__title_main Заполните форму обращения
 			h3.form__title.form__title_alt Отправить форму от другого имени
@@ -13,7 +13,7 @@
 					| Сегодня: 
 					strong 15 октября, 18:29 
 					| (МСК)
-			input#formSubject.form__input(type="text", placeholder="Введите тему обращения")
+			input#formSubject.form__input(type="text", name="subject", placeholder="Введите тему обращения")
 		.form__box.text-right
 			button#formMoreInputsControl.form__button_more(type="button" data-toggle="collapse" data-target="#formMoreInputs" data-alt-text="Отменить")
 				| Отправить от другого имени

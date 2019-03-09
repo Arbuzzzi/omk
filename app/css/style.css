@@ -2137,8 +2137,8 @@ textarea {
   opacity: 0;
 }
 
-.form__input.success,
-.form__textarea.success {
+.form__input.valid,
+.form__textarea.valid {
   border-color: #008330;
 }
 

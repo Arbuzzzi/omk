@@ -25,8 +25,8 @@
             <div class="header-logowrap"><a class="logo header-logo" href="/projects/omk/"><img class="logo-img" src="img/logo.png" alt="Logo"></a></div>
             <nav class="menu-nav menu-nav-header" id="menu-nav-more">
               <div class="nav-more menu-nav-more menu-nav-header-more">
-                <button class="button header-button menu-nav__button menu-nav-header__button" data-toggle="collapse" data-target="#menu-nav-headerGroup" type="button" aria-haspopup="true" aria-expanded="false">РЕГИОНАЛЬНЫЕ НОВОСТИ<i class="icon-arrow-down"></i></button>
-                <ul class="nav-more-list menu-nav-group menu-nav-header-group collapse" id="menu-nav-headerGroup">
+                <button class="button header-button menu-nav__button menu-nav-header__button" data-toggle="collapse" data-target="#menu-nav-header-group" type="button" aria-haspopup="true" aria-expanded="false">РЕГИОНАЛЬНЫЕ НОВОСТИ<i class="icon-arrow-down"></i></button>
+                <ul class="nav-more-list menu-nav-group menu-nav-header-group collapse" id="menu-nav-header-group">
                   <li class="nav-more-list__item menu-nav__item menu-nav-header__item">
                     <div class="menu-nav__textbox menu-nav-header__textbox"><a class="menu-nav__text menu-nav-header__text" href="/projects/omk/">Новости</a>
                       <button class="button-split" data-toggle="collapse" data-target="#menu-nav-header-collapse-1" aria-expanded="false" aria-controls="menu-nav-header-collapse-1"><i class="icon-arrow-down"></i></button>
@@ -413,7 +413,7 @@
                 <button class="header-button button button-deploy" id="btnDeploy">Развернуть</button>
                 <!-- <button id="btnToTop" class="header-button button button-toTop">Наверх</button>-->
                 <!-- /.header-box-->
-                <button class="button-burg margin-left-15" data-toggle="collapse" data-target="#menu-nav-headerGroup" type="button" aria-haspopup="true" aria-expanded="false"><span></span></button>
+                <button class="button-burg margin-left-15" data-toggle="collapse" data-target="#menu-nav-header-group" type="button" aria-haspopup="true" aria-expanded="false"><span></span></button>
               </div>
             </div>
           </div>
@@ -1043,7 +1043,7 @@
                 </div>
               </div>
               <div class="card">
-                <form class="form">
+                <form class="form" id="form1">
                   <div class="form__box form__box_title">
                     <h3 class="form__title form__title_main">Заполните форму обращения</h3>
                     <h3 class="form__title form__title_alt">Отправить форму от другого имени</h3>
@@ -1052,7 +1052,7 @@
                     <label class="form-label form-label_special" for="formSubject">Тема</label>
                     <div class="form-sender"><span class="form__text">
                          Сообщение будет отправлено от: <strong>Константинова Конcтантина </strong></span><span class="form__text">Сегодня: <strong>15 октября, 18:29 </strong>(МСК)</span></div>
-                    <input class="form__input" id="formSubject" type="text" placeholder="Введите тему обращения">
+                    <input class="form__input" id="formSubject" type="text" name="subject" placeholder="Введите тему обращения">
                   </div>
                   <div class="form__box text-right">
                     <button class="form__button_more" id="formMoreInputsControl" type="button" data-toggle="collapse" data-target="#formMoreInputs" data-alt-text="Отменить">Отправить от другого имени</button>

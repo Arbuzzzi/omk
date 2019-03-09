@@ -5,73 +5,46 @@ $(document).ready(function() {
 	var	edge = ((/edge/).test(ua));
 	var safari = /Safari/.test(navigator.userAgent) && /Apple Computer/.test(navigator.vendor);
 	var scrollbarWidth = $(document).scrollbarWidth();
-	// safari = true;
+	safari = true;
 
 
 	/* Валидация ------------------------------------------------------------------------------------ */
 	//todo валидация на что?
-	var x = {
+
+	/** валидация формы заполнено ли поле
+	 * https://jqueryvalidation.org/documentation/
+	 */
+	var options = {
 				rules: {
-						name: {
+					subject: {
 								required: true,
 								minlength: 2,
 						},
-						email: {
-								required: true,
-								email: true
-						},
-						phone: {
-								required: true,
-								// minlength: 18
-						},
-						checkbox: {
-							required: true,
-						},
-						email: {
-							required: true,
-						}
 					},
 					errorPlacement: function(error, element){},
 
 	};
 
 	//todo что это за формы?
-	$("#form1").validate(x);
-	$("#form2").validate(x);
-	$("#form3").validate(x);
 
-	//todo а это что за обработчик? какая страница, что оно делает?
-	$('input[type="checkbox"].policy-chekbox').on('click change', function() {
-		var thisInp = $(this);
-				inputId = thisInp.attr('id');
-
-
-		if (thisInp.prop('checked') == false) {
-			thisInp.addClass('error');
-		} else {
-			thisInp.removeClass('error');
-		}
-
-		if ($('#' + inputId).hasClass('error') == true) {
-			$('label[for='+inputId+']').addClass('label-error')
-
-		}
-		if ($('#' + inputId).hasClass('error') != true) {
-			$('label[for='+inputId+']').removeClass('label-error')
-
-
-		}
-
-	})
+	/** others.html */
+	$("#form1").validate(options);
 
 	// маска для телефона
-	$('input[type="tel"]').mask('9 (999) 999999?999');
-	$('input[type="tel"]').on('change focus click', function() {
+	var tel = $('input[type="tel"]');
+
+	$(tel).mask('9 (999) 999999?999');
+	$(tel).on('change focus click', function() {
 		$(this)[0].setSelectionRange(0, 0);
 	});
 
-	// multiple select
+
 	// todo для чего этот обработчик? не для всего же сайта, правильно?
+
+	/** multiple select
+	 * множественный выбор по клику
+	 * stylegide.html
+	 */
 	$("select[multiple]").mousedown(function(e){
 		e.preventDefault();
 
@@ -86,39 +59,17 @@ $(document).ready(function() {
 	}).mousemove(function(e){e.preventDefault()});
 
 
-	var mobile = false;
-	if ($(window).outerWidth() < 768) {
-		mobile = true;
-	}
+	var mobile = $(this).outerWidth() < 768;
 	$(window).resize(function (e){
-		if ($(this).outerWidth() < 768) {
-			mobile = true;
-		} else {
-			mobile = false;
-		}
+		mobile = $(this).outerWidth() < 768;
 	});
-
-
-	//todo удалить все комментарии в коде
-	// подпункты меню раскрывается при наведении
-	// $('.menu-nav-header__item').on('mouseenter', function(event) {
-	// 	var element = $(event.target).parents('.menu-nav-header__item'),
-	// 			elementControl = $(element.data('target'));
-	// 	if (elementControl.hasClass('collapse')) {
-	// 		elementControl.collapse('show');	
-
-	// 		$(this).on('mouseleave', function(event) {
-	// 			elementControl.collapse('hide');
-	// 		});
-	// 	}
-	// });
 
 
 	// menu-burger ---------------------------------------------------------------------------------------------------
 	var header = $('.header');
 	var content = $('.header + *');
 
-	$('#menu-nav-headerGroup').on('show.bs.collapse', function(e) {
+	$('#menu-nav-header-group').on('show.bs.collapse', function(e) {
 		var menuNavHeader = $(this).parents('.menu-nav-header');
 
 		$(menuNavHeader).addClass('show');
@@ -126,7 +77,7 @@ $(document).ready(function() {
 
 	});
 
-	$('#menu-nav-headerGroup').on('hidden.bs.collapse', function(e) {
+	$('#menu-nav-header-group').on('hidden.bs.collapse', function(e) {
 		var menuNavHeader = $(this).parents('.menu-nav-header');
 
 		if (!mobile) $(menuNavHeader).removeClass('show');
@@ -158,10 +109,10 @@ $(document).ready(function() {
 		setTimeout(function (){
 			if (mobile) {
 				$('#header-nav').hideClickAway('collapse');
-				$('#menu-nav-headerGroup').hideClickAway('collapse');
+				$('#menu-nav-header-group').hideClickAway('collapse');
 			} else {
 				$('#header-nav').hideClickAway();
-				$('#menu-nav-headerGroup').hideClickAway();
+				$('#menu-nav-header-group').hideClickAway();
 			}
 		},500)
 
@@ -173,7 +124,7 @@ $(document).ready(function() {
 		$('#header-navControl').removeClass('active');
 		$('#header-nav').hideClickAway('collapse');
         //todo menu-nav-headerGroup -> menu-nav-header-group
-		$('#menu-nav-headerGroup').hideClickAway('collapse');
+		$('#menu-nav-header-group').hideClickAway('collapse');
 
 
 
@@ -703,9 +654,9 @@ $(document).ready(function() {
 				$('#header-nav').collapse('hide');
 			}
 
-			if ($('#menu-nav-headerGroup').hasClass('show')
+			if ($('#menu-nav-header-group').hasClass('show')
 				|| $('.menu-left-navigation-pseudo').hasClass('show')) {
-				$('#menu-nav-headerGroup').collapse('hide');
+				$('#menu-nav-header-group').collapse('hide');
 			}
 
 			$('*').tooltip('hide');
@@ -802,7 +753,7 @@ $(document).ready(function() {
 			// scroll bottom
 			if (position > 0){
 				$('.menu-left').removeAttr('style');
-				// $('#menu-nav-headerGroup').collapse('hide');
+				// $('#menu-nav-header-group').collapse('hide');
 				// $(header).css('padding-bottom', '');
 
 				// развернуть
