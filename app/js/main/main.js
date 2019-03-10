@@ -7,11 +7,17 @@ $(document).ready(function() {
 	var scrollbarWidth = $(document).scrollbarWidth();
 	// safari = true;
 
+	var mobile = $(this).outerWidth() < 768;
+	$(window).resize(function (e){
+		mobile = $(this).outerWidth() < 768;
+	});
+
 
 	/* Валидация ------------------------------------------------------------------------------------ */
 	//todo валидация на что?
 
-	/** валидация формы заполнено ли поле
+	/**
+	 * валидация формы заполнено ли поле
 	 * https://jqueryvalidation.org/documentation/
 	 */
 	var options = {
@@ -45,6 +51,7 @@ $(document).ready(function() {
 	 * множественный выбор по клику
 	 * stylegide.html
 	 */
+
 	$("select[multiple]").mousedown(function(e){
 		e.preventDefault();
 
@@ -59,17 +66,12 @@ $(document).ready(function() {
 	}).mousemove(function(e){e.preventDefault()});
 
 
-	var mobile = $(this).outerWidth() < 768;
-	$(window).resize(function (e){
-		mobile = $(this).outerWidth() < 768;
-	});
-
-
 	// menu-burger ---------------------------------------------------------------------------------------------------
 	var header = $('.header');
 	var content = $('.header + *');
+	var menuNavHeaderGroup = $('#menu-nav-header-group');
 
-	$('#menu-nav-header-group').on('show.bs.collapse', function(e) {
+	$(menuNavHeaderGroup).on('show.bs.collapse', function(e) {
 		var menuNavHeader = $(this).parents('.menu-nav-header');
 
 		$(menuNavHeader).addClass('show');
@@ -77,54 +79,56 @@ $(document).ready(function() {
 
 	});
 
-	$('#menu-nav-header-group').on('hidden.bs.collapse', function(e) {
+	$(menuNavHeaderGroup).on('hidden.bs.collapse', function(e) {
 		var menuNavHeader = $(this).parents('.menu-nav-header');
 
 		if (!mobile) $(menuNavHeader).removeClass('show');
 
 	});
 
-	//todo rollUp -> roll-up. По стандарту.
-	$('.rollUp').on('click', function(event) {
+	//todo roll-up -> roll-up. По стандарту.
+
+	$('.roll-up').on('click', function(event) {
 		$(document).trigger('scroll');
 	});
 
 	// todo - а если мне понадобится .btn-group в контенте, это ведь тоже сработает. заменить селектор
-	$('.btn-group').on('show.bs.dropdown', function() {
+	var navMore = $('.nav-more');
+	$(navMore).on('show.bs.dropdown', function() {
 		$(header).css('transform', 'none');
 	});
 
     // todo - а если мне понадобится .btn-group в контенте, это ведь тоже сработает. заменить селектор
-	$('.btn-group').on('hide.bs.dropdown', function() {
+	$(navMore).on('hide.bs.dropdown', function() {
 		$(header).css('transform', '');
 	});
 
 
 	/* ПОДМЕНЮ "СИСТЕМЫ" ----------------------------------------------------------------------------- */
 	var headerNavSystem = $('#header-nav');
-
+	var headerNavControl = $('#header-nav-control');
 
 	// мобильные
 	$(window).resize(function (){
 		setTimeout(function (){
 			if (mobile) {
-				$('#header-nav').hideClickAway('collapse');
-				$('#menu-nav-header-group').hideClickAway('collapse');
+				$(headerNavSystem).hideClickAway('collapse');
+				$(menuNavHeaderGroup).hideClickAway('collapse');
 			} else {
-				$('#header-nav').hideClickAway();
-				$('#menu-nav-header-group').hideClickAway();
+				$(headerNavSystem).hideClickAway();
+				$(menuNavHeaderGroup).hideClickAway();
 			}
 		},500)
 
 	});
 
 	if (mobile) {
-		$('#header-nav').collapse('hide');
+		$(headerNavSystem).collapse('hide');
 		//todo header-navControl -> header-nav-control
-		$('#header-navControl').removeClass('active');
-		$('#header-nav').hideClickAway('collapse');
+		$(headerNavControl).removeClass('active');
+		$(headerNavSystem).hideClickAway('collapse');
         //todo menu-nav-headerGroup -> menu-nav-header-group
-		$('#menu-nav-header-group').hideClickAway('collapse');
+		$(menuNavHeaderGroup).hideClickAway('collapse');
 
 
 
@@ -134,28 +138,28 @@ $(document).ready(function() {
 	} else {
 		$('.header-nav-system-wrap').addClass('show')
         //todo дальше писать не буду. Все селекторы не по стандарту нужно привести к одному виду.
-		$('#header-navControl').addClass('active');
+		$(headerNavControl).addClass('active');
 	}
 
 	$(window).resize(function (){
 		if (mobile) {
-			$('#header-nav').collapse('hide');
+			$(headerNavSystem).collapse('hide');
 		} else {
-			$('#header-nav').collapse('show');
+			$(headerNavSystem).collapse('show');
 		}
 	});
 
 
 
 	// системы показываются
-	$('#header-nav').on('shown.bs.collapse', function () {
-		var btn = $('#header-navControl');
+	$(headerNavSystem).on('shown.bs.collapse', function () {
+		var btn = $(headerNavControl);
 		btn.addClass('active')
 	});
 
 	// системы скрываются
-	$('#header-nav').on('hidden.bs.collapse', function () {
-		var btn = $('#header-navControl');
+	$(headerNavSystem).on('hidden.bs.collapse', function () {
+		var btn = $(headerNavControl);
 		btn.removeClass('active');
 	});
 
@@ -203,13 +207,13 @@ $(document).ready(function() {
 			'padding-bottom': '10px'
 		});
 
-		$('#header-nav').collapse('show');
+		$(headerNavSystem).collapse('show');
 
 		//todo по стандарту наименование
 		$('#menuLeftList').collapse('show');
 
         //todo по стандарту наименование
-		$('.rollUp').addClass('show');
+		$('.roll-up').addClass('show');
 		return false;
 	});
 
@@ -562,14 +566,14 @@ $(document).ready(function() {
 	// 	if (mobile) $('#menuLeftList').collapse('hide');
 	//
 	// 	// if (!mobile) {
-	// 	// 	$('#header-nav').collapse('hide');
+	// 	// 	$(headerNavSystem).collapse('hide');
 	// 	// 	console.log('!mobile');
 	// 	// } else {
 	// 	// 	console.log('mobile');
 	// 	// 	if (position < positionThree) {
-	// 	// 		$('#header-nav').collapse('show');
+	// 	// 		$(headerNavSystem).collapse('show');
 	// 	// 	} else {
-	// 	// 		$('#header-nav').collapse('hide');
+	// 	// 		$(headerNavSystem).collapse('hide');
 	// 	// 	}
 	// 	// }
 	// 	if (position <= 0) {
@@ -639,7 +643,7 @@ $(document).ready(function() {
 	}
 	if (!ie) {
 		var headerBread = $('.header .breadcrumb');
-		// var headerNavSystem = $('#header-nav');
+		// var headerNavSystem = $(headerNavSystem);
 		var menuLeft = $('#menuLeftList');
 		var aside = $('#aside');
 
@@ -658,13 +662,13 @@ $(document).ready(function() {
 
 			if (paddingTopContentMax < positionContent) paddingTopContentMax = positionContent;
 			
-			if (mobile && $('#header-nav').hasClass('show')) {
-				$('#header-nav').collapse('hide');
+			if (mobile && $(headerNavSystem).hasClass('show')) {
+				$(headerNavSystem).collapse('hide');
 			}
 
-			if ($('#menu-nav-header-group').hasClass('show')
+			if ($(menuNavHeaderGroup).hasClass('show')
 				|| $('.menu-left-navigation-pseudo').hasClass('show')) {
-				$('#menu-nav-header-group').collapse('hide');
+				$(menuNavHeaderGroup).collapse('hide');
 			}
 
 			$('*').tooltip('hide');
@@ -688,16 +692,16 @@ $(document).ready(function() {
 					// if (!safari) {
 					// }
 					if (position >= positionThree) {
-						$('#header-nav').collapse('hide');
+						$(headerNavSystem).collapse('hide');
 					} else {
-						$('#header-nav').collapse('show');
+						$(headerNavSystem).collapse('show');
 					}
 
 				} else {
 					if (!edge && !safari) $(header).css({'position': ''});
 					if (!edge && !safari) $(content).css('padding-top', '');
 					if (!edge && !safari) $(header).removeClass('fixed');
-					$('#header-nav').collapse('show');
+					$(headerNavSystem).collapse('show');
 				}
 			}
 
@@ -743,15 +747,15 @@ $(document).ready(function() {
 
 			// меню свернуто
 			if ($(header).hasClass('scroll')){
-				$('#header-nav').collapse('hide');
-				$('#header-navControl').removeClass('active');
+				$(headerNavSystem).collapse('hide');
+				$(headerNavControl).removeClass('active');
 			}
 
 			// scroll top самый верх экана
 			if (position <= 0){
 
 				if (!mobile){
-					$('#header-nav').collapse('show');
+					$(headerNavSystem).collapse('show');
 				}
 				if (!edge && !safari) $(header).removeAttr('style');
 				addClassScroll($(header));
@@ -761,14 +765,14 @@ $(document).ready(function() {
 			// scroll bottom
 			if (position > 0){
 				$('.menu-left').removeAttr('style');
-				// $('#menu-nav-header-group').collapse('hide');
+				// $(menuNavHeaderGroup).collapse('hide');
 				// $(header).css('padding-bottom', '');
 
 				// развернуть
-				if (!$('.rollUp').hasClass('show') && $(header).hasClass('scroll')){
-					$('.rollUp').addClass('show');
+				if (!$('.roll-up').hasClass('show') && $(header).hasClass('scroll')){
+					$('.roll-up').addClass('show');
 				}else {
-					$('.rollUp').removeClass('show');
+					$('.roll-up').removeClass('show');
 				}
 
 				// if (!$(header).hasClass('scroll')){
@@ -776,7 +780,7 @@ $(document).ready(function() {
 				// }
 
 			}else {
-				$('.rollUp').removeClass('show');
+				$('.roll-up').removeClass('show');
 			}
 			
 			// aside

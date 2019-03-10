@@ -1674,7 +1674,7 @@ h2 span,
   background-color: transparent;
 }
 
-.rollUp {
+.roll-up {
   position: absolute;
   top: -15px;
   right: -15px;
@@ -1686,11 +1686,11 @@ h2 span,
           transform: rotate(180deg);
 }
 
-.rollUp i {
+.roll-up i {
   color: inherit;
 }
 
-.rollUp i:before {
+.roll-up i:before {
   color: inherit;
 }
 
@@ -3190,11 +3190,11 @@ select.form-control:not([size]):not([multiple]) {
   display: none;
 }
 
-.header .rollUp {
+.header .roll-up {
   display: none;
 }
 
-.header .rollUp.show {
+.header .roll-up.show {
   display: block;
 }
 
@@ -8509,7 +8509,7 @@ select.form-control:not([size]):not([multiple]) {
     border-color: inherit;
   }
 
-  .rollUp:hover {
+  .roll-up:hover {
     color: #BCBDC0;
   }
 
