@@ -5,7 +5,7 @@ $(document).ready(function() {
 	var	edge = ((/edge/).test(ua));
 	var safari = /Safari/.test(navigator.userAgent) && /Apple Computer/.test(navigator.vendor);
 	var scrollbarWidth = $(document).scrollbarWidth();
-	safari = true;
+	// safari = true;
 
 
 	/* Валидация ------------------------------------------------------------------------------------ */
