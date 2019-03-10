@@ -27,6 +27,7 @@ $(document).ready(function (){
 
 		var currentScroll = 0;
 
+		// start scrolling
 		$(document).on('scroll', function(event) {
 			var position = $(this).scrollTop(),
 				heightHeader = $('.header:not(.header.scroll)').outerHeight(),
@@ -40,6 +41,7 @@ $(document).ready(function (){
 				$(content).css('padding-top', positionContent);
 
 				$(header).addClass('scroll-ie');
+				$(header).addClass('fixed');
 				$(menuLeft).collapse('hide');
 				$(headerBread).css('padding-bottom', '15px');
 

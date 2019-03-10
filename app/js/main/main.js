@@ -234,18 +234,17 @@ $(document).ready(function() {
 			zIndex: '1000'
 		}).addClass('active');
 
-
 		if ($(document).scrollTop() <= 0) {
 			$('body').css({
 				overflow: 'hidden',
 				paddingRight: scrollbarWidth,
 				paddingTop: headerHeight
 			});
-			// if (safari && ie && edge)  {
-			// 	$(header).css({
-			// 		'padding-right': scrollbarWidth
-			// 	});
-			// }
+			if (safari || ie || edge)  {
+				$(header).css({
+					'padding-right': ''
+				});
+			}
 		} else {
 			$('body').css({
 				overflow: 'hidden',
@@ -281,7 +280,10 @@ $(document).ready(function() {
 		checkboxDisabl($(this), 10)
 	});
 	$('#header-navSetting').on('shown.bs.collapse', function (){
-		if ($(document).scrollTop() <= 0) {
+		if ($(document).scrollTop() <= 0 && $(header).hasClass('fixed')) {
+
+		}
+		if ($(document).scrollTop() <= 0 && $(header).hasClass('fixed')) {
 			$('body').css({
 				overflow: 'hidden',
 				paddingRight: scrollbarWidth,
@@ -481,64 +483,70 @@ $(document).ready(function() {
 	var width = $window.width();
 	var height = $window.height();
 
-	setInterval(function () {
-		console.log(width +' - '+ $window.width());
-		if ((width != $window.width()) || (height != $window.height())) {
-			width = $window.width();
-			height = $window.height();
+	$(window).resize(function (){
+		var resizeTimeOut;
+
+		clearTimeout(resizeTimeOut);
+		resizeTimeOut = setTimeout(function () {
+			if ((width != $window.width()) || (height != $window.height())) {
+				width = $window.width();
+				height = $window.height();
 
 
-			var position = $(this).scrollTop();
-			var menuLeft = $('#menuLeftList');
-			var meuLeftShown = menuLeft.hasClass('show');
+				var position = $(this).scrollTop();
+				var menuLeft = $('#menuLeftList');
+				var meuLeftShown = menuLeft.hasClass('show');
 
 
-			positionOne = $(window).innerHeight();
+				positionOne = $(window).innerHeight();
 
-			windowHeight = $(window).outerHeight();
-			asideWidth = $('#aside').parent().width();
+				windowHeight = $(window).outerHeight();
+				asideWidth = $('#aside').parent().width();
 
-			if (mobile) $('#menuLeftList').collapse('hide');
-			$('.widget-slider').slick('refresh');
-			if (position <= 0) {
-				paddingTopContentMax = $(header).actual('outerHeight');
-				$('#menuLeftList').collapse('show');
-				// $('#leftNavigationPseudo').css('display', 'block');
-				$(content).animate({
-					paddingTop: paddingTopContentMax
-				}, 400)
+				if (mobile) $('#menuLeftList').collapse('hide');
+				$('.widget-slider').slick('refresh');
+
+				if (position <= 0 && $(header).hasClass('fixed')) {
+					paddingTopContentMax = $(header).actual('outerHeight');
+					$('#menuLeftList').collapse('show');
+					// $('#leftNavigationPseudo').css('display', 'block');
+					$(content).animate({
+						paddingTop: paddingTopContentMax
+					}, 400)
 
 
 
-			}
-			if (position > 0) {
+				}
+				if (position > 0) {
 
-				if ($(aside).hasClass('positionTop')) {
-					var headerHeight = $(header).actual('outerHeight');
-					$(aside).css('top', headerHeight).removeClass('scrollingTop scrollingBottom ');
+					if ($(aside).hasClass('positionTop')) {
+						var headerHeight = $(header).actual('outerHeight');
+						$(aside).css('top', headerHeight).removeClass('scrollingTop scrollingBottom ');
 
-					asideHeight = $(aside).actual('outerHeight') + $(header).actual('outerHeight'); // бывает вызыв события scroll
-					windowMoreAside = asideHeight < windowHeight;
-					if (windowMoreAside) {
-						$(aside).css('bottom:', '').addClass('positionTop');
+						asideHeight = $(aside).actual('outerHeight') + $(header).actual('outerHeight'); // бывает вызыв события scroll
+						windowMoreAside = asideHeight < windowHeight;
+						if (windowMoreAside) {
+							$(aside).css('bottom:', '').addClass('positionTop');
+						}
 					}
 				}
-			}
-			$(aside).css({
-				width: asideWidth,
-			});
-			if (!mobile) {
 				$(aside).css({
-					position: '',
-					top: '',
-					bottom: '',
-					width: '',
-					marginTop: '',
-				}).removeClass('positionTop positionBottom scrollingTop scrollingBottom')
-					.addClass('positionStatic');
+					width: asideWidth,
+				});
+				if (!mobile) {
+					$(aside).css({
+						position: '',
+						top: '',
+						bottom: '',
+						width: '',
+						marginTop: '',
+					}).removeClass('positionTop positionBottom scrollingTop scrollingBottom')
+						.addClass('positionStatic');
+				}
 			}
-		}
-	}, 800);
+		}, 800);
+	});
+
 
 	// $(window).resize(function (){
 	// 	var position = $(this).scrollTop();
