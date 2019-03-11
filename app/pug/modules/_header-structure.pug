@@ -319,7 +319,7 @@ header.header
 					.header-button-inn.button-inn
 						button.header-button.button.button-help помощь
 						button#header-nav-control.header-button.button.active(data-toggle='collapse', data-target='#header-nav', aria-expanded='false', aria-controls='header-nav') Системы
-						button#btnDeploy.header-button.button.button-deploy Развернуть
+						button#btn-deploy.header-button.button.button-deploy Развернуть
 						// <button id="btnToTop" class="header-button button button-toTop">Наверх</button>
 						// /.header-box
 		nav.header-nav-system
@@ -408,13 +408,13 @@ header.header
 										a.link.link-nav.nav-more-list__link(href='#') SAP SSH
 									li.nav-more-list__item
 										a.link.link-nav.nav-more-list__link(href='#') Ширина под самое длинное название с учетом Bold
-							button#header-navSettingControl.button.header-button.header-nav-system-button(type='button', data-toggle='collapse', data-target='#header-navSetting', aria-expanded='false', aria-controls='header-navSetting') Настройка
+							button#header-nav-setting-control.button.header-button.header-nav-system-button(type='button', data-toggle='collapse', data-target='#header-nav-setting', aria-expanded='false', aria-controls='header-navSetting') Настройка
 				.row
 					.col-xl-7.offset-xl-5
-						#header-navSetting.nav-setting.collapse
+						#header-nav-setting.nav-setting.collapse
 							h4.nav-setting__title Для настройки вашего меню, выберите нужные иконки:
 							.nav-setting__items
-								#sortable.nav-setting-wrap
+								#drag-and-drop.nav-setting-wrap
 									.ui-state-default.nav-setting__item-inn(data-control='formCheckbox-0')
 										.header-nav-system__item.nav-setting__item
 											.header-nav-system-icon-box
@@ -599,8 +599,8 @@ header.header
 											input#formCheckbox-17.form-checkbox__input.setting-form-checkbox__input(type='checkbox', name='checkbox_nav_item17', disabled='')
 											span.form-checkbox__text.setting-form-checkbox__text Больше систем
 								.form-checkbox-button-wrap
-									button.button.form-setting-button(type='reset', data-toggle='collapse', data-target='#header-navSetting') Отмена
-									button.button.form-setting-button(type='submit', data-toggle='collapse', data-target='#header-navSetting') Применить
+									button.button.form-setting-button(type='reset', data-toggle='collapse', data-target='#header-nav-setting') Отмена
+									button.button.form-setting-button(type='submit', data-toggle='collapse', data-target='#header-nav-setting') Применить
 	.menu-left-navigation
 		.container
 			.row
@@ -610,7 +610,7 @@ header.header
 							.menu-left__list
 								.menu-left__item.menu-left__item-head
 									.nav-more.menu-left-more.btn-group
-										button#navMoreListControl.menu-left-more__button(type='button', aria-haspopup='true', aria-expanded='false')
+										button#nav-more-list-control.menu-left-more__button(type='button', aria-haspopup='true', aria-expanded='false')
 											| Новости
 											i.icon-arrow-down
 										ul.nav-more-list.menu-left-more__list.dropdown-menu
@@ -646,9 +646,9 @@ header.header
 												a.menu-left__item.menu-left-more__item(href= links.others)
 													.menu-left__text.menu-left-more__link
 														span КОНТАКТЫ
-									button#menuLeftListControl.menu-left-control.active(type='button', data-toggle='collapse', data-target='#menuLeftList', aria-expanded='false', aria-controls='menuLeftList')
+									button#menu-left-list-control.menu-left-control.active(type='button', data-toggle='collapse', data-target='#menu-left-list', aria-expanded='false', aria-controls='menuLeftList')
 								#menuLeftItemCurrent.menu-left__item.menu-left__item-current
-							ul#menuLeftList.menu-left__list.collapse.menuLeftList-group.show
+							ul#menu-left-list.menu-left__list.collapse.menuLeftList-group.show
 								li.menu-left__box
 									a.menu-left__item(href= links.company)
 										.menu-left__text

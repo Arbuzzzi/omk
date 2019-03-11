@@ -15,9 +15,9 @@
 					| (МСК)
 			input#formSubject.form__input(type="text", name="subject", placeholder="Введите тему обращения")
 		.form__box.text-right
-			button#formMoreInputsControl.form__button_more(type="button" data-toggle="collapse" data-target="#formMoreInputs" data-alt-text="Отменить")
+			button#form-more-inputs-control.form__button_more(type="button" data-toggle="collapse" data-target="#form-more-inputs" data-alt-text="Отменить")
 				| Отправить от другого имени
-		#formMoreInputs.form__group.collapse
+		#form-more-inputs.form__group.collapse
 			.form__box
 				label.form-label(for="formFulName")
 					span Ф.И.О.
@@ -38,8 +38,8 @@
 			textarea#formTextarea.form__textarea(placeholder="Введите текст обращения")
 		.form__box.form__box_flex
 			.form-checkbox
-				label.form-checkbox__label(for='formCheckbox')
-					input#formCheckbox.form-checkbox__input(type='checkbox', name='form_copy')
+				label.form-checkbox__label(for='form-checkbox-slide')
+					input#form-checkbox-slide.form-checkbox__input(type='checkbox', name='form_copy')
 					span.form-checkbox__text.form-checkbox__text_thin Отправить себе копию сообщения
 				.form-slide-input
 					label.form-label.form-label_slim(for="formEmailCopy")

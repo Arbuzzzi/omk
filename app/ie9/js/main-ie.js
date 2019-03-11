@@ -9,7 +9,7 @@ $(document).ready(function (){
 		var content = $('.header + *');
 		var headerBread = $('.header .breadcrumb');
 		var headerNavSystem = $('#header-nav');
-		var menuLeft = $('#menuLeftList');
+		var menuLeft = $('#menu-left-list');
 
 		var chekPosContent;
 		var menuLeftListDeafult = $(menuLeft).hasClass('show');

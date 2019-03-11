@@ -5,17 +5,17 @@ $(document).ready(function() {
 	var	edge = ((/edge/).test(ua));
 	var safari = /Safari/.test(navigator.userAgent) && /Apple Computer/.test(navigator.vendor);
 	var scrollbarWidth = $(document).scrollbarWidth();
+	var mobile = $(this).outerWidth() < 768;
+
 	// safari = true;
 
-	var mobile = $(this).outerWidth() < 768;
 	$(window).resize(function (e){
 		mobile = $(this).outerWidth() < 768;
+		scrollbarWidth = $(document).scrollbarWidth();
 	});
 
 
 	/* Валидация ------------------------------------------------------------------------------------ */
-	//todo валидация на что?
-
 	/**
 	 * валидация формы заполнено ли поле
 	 * https://jqueryvalidation.org/documentation/
@@ -31,9 +31,10 @@ $(document).ready(function() {
 
 	};
 
-	//todo что это за формы?
-
-	/** others.html */
+	/**
+	 * #form1 -> others.html
+	 *
+	 * */
 	$("#form1").validate(options);
 
 	// маска для телефона
@@ -47,9 +48,11 @@ $(document).ready(function() {
 
 	// todo для чего этот обработчик? не для всего же сайта, правильно?
 
-	/** multiple select
+	/**
+	 * multiple select
 	 * множественный выбор по клику
 	 * stylegide.html
+	 *
 	 */
 
 	$("select[multiple]").mousedown(function(e){
@@ -75,8 +78,6 @@ $(document).ready(function() {
 		var menuNavHeader = $(this).parents('.menu-nav-header');
 
 		$(menuNavHeader).addClass('show');
-
-
 	});
 
 	$(menuNavHeaderGroup).on('hidden.bs.collapse', function(e) {
@@ -86,19 +87,20 @@ $(document).ready(function() {
 
 	});
 
-	//todo roll-up -> roll-up. По стандарту.
+	// сворачиваем меню если развернуто
+	var rollUp = $('.roll-up');
 
-	$('.roll-up').on('click', function(event) {
+	$(rollUp).on('click', function(event) {
 		$(document).trigger('scroll');
 	});
 
-	// todo - а если мне понадобится .btn-group в контенте, это ведь тоже сработает. заменить селектор
+	// fix bag bs.dropdown для элементов с position: fixed;
 	var navMore = $('.nav-more');
+
 	$(navMore).on('show.bs.dropdown', function() {
 		$(header).css('transform', 'none');
 	});
 
-    // todo - а если мне понадобится .btn-group в контенте, это ведь тоже сработает. заменить селектор
 	$(navMore).on('hide.bs.dropdown', function() {
 		$(header).css('transform', '');
 	});
@@ -122,22 +124,19 @@ $(document).ready(function() {
 
 	});
 
+	var headerNavSystemWrap = $('.header-nav-system-wrap');
+
 	if (mobile) {
 		$(headerNavSystem).collapse('hide');
-		//todo header-navControl -> header-nav-control
 		$(headerNavControl).removeClass('active');
 		$(headerNavSystem).hideClickAway('collapse');
-        //todo menu-nav-headerGroup -> menu-nav-header-group
 		$(menuNavHeaderGroup).hideClickAway('collapse');
 
-
-
 		setTimeout(function (){
-			$('.header-nav-system-wrap').removeClass('mobile-hide');
+			$(headerNavSystemWrap).removeClass('mobile-hide');
 		}, 300)
 	} else {
-		$('.header-nav-system-wrap').addClass('show')
-        //todo дальше писать не буду. Все селекторы не по стандарту нужно привести к одному виду.
+		$(headerNavSystemWrap).addClass('show');
 		$(headerNavControl).addClass('active');
 	}
 
@@ -163,6 +162,7 @@ $(document).ready(function() {
 		btn.removeClass('active');
 	});
 
+	// сохранием отступы при скрытии разворачивании меню "Системы"
 	if (safari || edge) {
 		$(headerNavSystem).on('show.bs.collapse', function (){
 			var position = $(document).scrollTop();
@@ -200,43 +200,46 @@ $(document).ready(function() {
 	}
 
 	// разворачиваем меню
-	//todo btnDeploy заменить по стандарту на btn-deploy.
-	$('#btnDeploy').click(function(event) {
+	var btnDeploy = $('#btn-deploy');
+	var menuLeftList = $('#menu-left-list');
+
+	$(btnDeploy).click(function(event) {
 		$(header).removeClass('scroll').css({
 			'position': 'fixed',
 			'padding-bottom': '10px'
 		});
 
 		$(headerNavSystem).collapse('show');
-
-		//todo по стандарту наименование
-		$('#menuLeftList').collapse('show');
-
-        //todo по стандарту наименование
-		$('.roll-up').addClass('show');
+		$(menuLeftList).collapse('show');
+		$(rollUp).addClass('show');
 		return false;
 	});
 
 	// настройки показываются
 	//todo ниже много кода, который непонятно что делает и зачем. нужно расписать хотя бы комментами, если кодом не получается
-	$('#header-navSetting').on('show.bs.collapse', function () {
+	var headerNavSetting = $('#header-nav-setting');
+
+	$(headerNavSetting).on('show.bs.collapse', function () {
 		var headerHeight = $(header).actual('outerHeight');
 
 		// инициализация drag & drop
-		//todo заменить селектор. название не очевидное.
-		$( "#sortable" ).sortable();
-		$( "#sortable" ).disableSelection();
-		$( "#sortable" ).draggable();
+		var dragAndDrop = $( "#drag-and-drop" );
+
+		$(dragAndDrop).sortable();
+		$(dragAndDrop).disableSelection();
+		$(dragAndDrop).draggable();
 
 		$(header).css('transform', 'none');
 
 		$(this).parent().append('<div class="overlay"/>');
 		$('.overlay').animate({opacity: 'show'}, 400);
 
-		$('#header-navSettingControl').css({
+		$('#header-nav-setting-control').css({
 			position: 'relative',
 			zIndex: '1000'
 		}).addClass('active');
+
+		// сохраняем отступы
 
 		if ($(document).scrollTop() <= 0) {
 			$('body').css({
@@ -255,18 +258,9 @@ $(document).ready(function() {
 				paddingRight: scrollbarWidth,
 			});
 		}
-		// if ($(header).hasClass('fixed'))
+		var headerPositionDefault = $(header).css('position');
 
-// <<<<<<< HEAD
-// 		var headerPositionDeafult = $('.header').css('position');
-// 		$('.header').wrap('<div class="extra-wrapper"></div>');
-// 		$('.header').css({
-// 			position: '',
-// 			// 'padding-right': scrollbarWidth'
-// 		});
-// 		//todo убрать все комменты
-// =======
-		var headerPositionDeafult = $(header).css('position');
+		// обертка для header
 		$(header).wrap('<div class="extra-wrapper"></div>');
 
 		if  ($(header).hasClass('fixed') && $(document).scrollTop() > 0) {
@@ -274,19 +268,11 @@ $(document).ready(function() {
 				paddingRight: scrollbarWidth
 			})
 		}
-// >>>>>>> header-sticky-safari
-		// if (ie) {
-		// 	$(header).css({
-		// 		paddingRight: scrollbarWidth
-		// 	})
-		// }
-
-		checkboxDisabl($(this), 10)
+		checkboxDisable($(this), 10)
 	});
-	$('#header-navSetting').on('shown.bs.collapse', function (){
-		if ($(document).scrollTop() <= 0 && $(header).hasClass('fixed')) {
 
-		}
+	$(headerNavSetting).on('shown.bs.collapse', function (){
+		// сохраняем отступы после завершения анимации
 		if ($(document).scrollTop() <= 0 && $(header).hasClass('fixed')) {
 			$('body').css({
 				overflow: 'hidden',
@@ -302,11 +288,8 @@ $(document).ready(function() {
 		}
 	});
 
-// <<<<<<< HEAD
-// 	//todo англисйкий - тут и ниже со всеми переменными
-// =======
-	// настройки скрываются
-	$('#header-navSetting').on('hide.bs.collapse', function () {
+	// закрытие настроек
+	$(headerNavSetting).on('hide.bs.collapse', function () {
 		$(header).css('transform', '');
 		$('.overlay').animate({
 			opacity: 0
@@ -321,33 +304,31 @@ $(document).ready(function() {
 		});
 		$(header).css({
 			'padding-right': '',
-			// 'position': headerPositionDeafult
 		});
 		$(header).unwrap();
 
-		$('#header-navSettingControl').removeClass('active').removeAttr('style');
-	})
+		$('#header-nav-setting-control').removeClass('active').removeAttr('style');
+	});
 
-
-
-// >>>>>>> header-sticky-safari
-	var checkboxs = $('input[type="checkbox"].setting-form-checkbox__input'),
-			checkboxCheckd        = $('.setting-form').find('input[type="checkbox"]:checked'),
-			checkboxCheckdInch    = checkboxCheckd.length,
-			deafultCheckboxCheckd = checkboxDisabl($('.setting-form'), 10),
-			deafultSettingBoxes     = $('.nav-setting-wrap').html();
+	var checkboxes = $('input[type="checkbox"].setting-form-checkbox__input');
+	var settingForm = $('.setting-form');
+	var checkboxChecked = $(settingForm).find('input[type="checkbox"]:checked');
+	var checkboxCheckedInch = checkboxChecked.length;
+	var defaultCheckboxChecked = checkboxDisable($(settingForm), 10);
+	var navSettingWrap = $('.nav-setting-wrap');
+	var defaultSettingBoxes = $(navSettingWrap).html();
 
 	// сброс формы
 
-	$('.setting-form').on('click', 'button.form-setting-button:reset', function(event) {
+	$(settingForm).on('click', 'button.form-setting-button:reset', function(event) {
 
-		$('.nav-setting-wrap').html(deafultSettingBoxes);
-		checkboxDisabl($(this), 10, deafultCheckboxCheckd, 0);
+		$(navSettingWrap).html(defaultSettingBoxes);
+		checkboxDisable($(this), 10, defaultCheckboxChecked, 0);
 
 	});
 
 	// изменеие checkbox
-	$('.setting-form').on('change', checkboxs, function(event) {
+	$(settingForm).on('change', checkboxes, function(event) {
 		var checkbox   = $(event.target),
 				checkboxID = checkbox.attr('id');
 
@@ -356,13 +337,12 @@ $(document).ready(function() {
 					elParent = el.parent();
 
 			el.appendTo(elParent).show('400');
-			// $('[data-control='+checkboxID+']').show('400');
 
 		} else {
 			$('[data-control='+checkboxID+']').hide('400');
 		}
 
-		checkboxDisabl($(this), 10)
+		checkboxDisable($(this), 10)
 
 	});
 
@@ -388,79 +368,80 @@ $(document).ready(function() {
 		e.preventDefault();
 	});
 
-	//todo что за название? checkboxDisable может быть?
-	//todo и что делает эта функция?
-	function checkboxDisabl(form, max, checkboxArrDeafult, speed) {
-		// form - елемент в котором ищем активные чекбоксы
-		// max - максимальное количество input со значение checked
-		// checkboxArrDeafult - изначальное положение элементов
-		// speed - скорость анимации
+	/**
+	 * функция проверяет сколько чекбоксов отмечено
+	 * если больше max делает все остальные не отмеченными
+	 *
+	 * @param {Object} form - елемент в котором ищем активные чекбоксы
+	 * @param {number} max - максимальное количество input со значение checked
+	 * @param {Object} [checkboxArrDefault=form.find(input[type="checkbox"]:checked)] - изначальное положение элементов
+	 * @param {number} [speedArg=400] - скорость анимации
+	 * @returns {Object} checkboxArrDefault возвращает изначальное положение элементов
+	 */
+	function checkboxDisable(form, max, checkboxArrDefault, speedArg) {
 		var checkbox = form.find('input[type="checkbox"]'),
-				checkboxCheckd,  //todo это и все что ниже - ошибки в анлг языке - checkboxChecked - вот так правильно.
-				checkboxNotCheckd,
-				checkboxCheckdInch,
-				checkboxNotCheckdInch,
-				speed,
+				checkboxChecked,
+				checkboxNotChecked,
+				checkboxCheckedInch,
+				speed = speedArg,
 				checkboxArrID;
 
 		if (speed === undefined) {
 			speed = 400;
 		}
-		if (checkboxArrDeafult === undefined) {
-			checkboxCheckd = form.find('input[type="checkbox"]:checked');
-			checkboxNotCheckd = form.find('input[type="checkbox"]:not(:checked)');
+		if (checkboxArrDefault === undefined) {
+			checkboxChecked = form.find('input[type="checkbox"]:checked');
+			checkboxNotChecked = form.find('input[type="checkbox"]:not(:checked)');
 
 		} else {
-			checkboxCheckd = checkboxArrDeafult['deafultCheckboxCheckd'];
-			checkboxNotCheckd = checkboxArrDeafult['deafultCheckboxNotCheckdInch'];
+			checkboxChecked = checkboxArrDefault['defaultCheckboxChecked'];
+			checkboxNotChecked = checkboxArrDefault['defaultCheckboxNotCheckedInch'];
 		}
 
-		checkboxArrDeafult = {
-			//todo английский, исправить
-			deafultCheckboxCheckd: form.find('input[type="checkbox"]:checked'),
-			//todo английский, исправить
-			deafultCheckboxNotCheckdInch: form.find('input[type="checkbox"]:not(:checked)'),
-		}
+		checkboxArrDefault = {
+			defaultCheckboxChecked: form.find('input[type="checkbox"]:checked'),
+			defaultCheckboxNotCheckedInch: form.find('input[type="checkbox"]:not(:checked)'),
+		};
 
-		checkboxCheckdInch    = checkboxCheckd.length
-		checkboxNotCheckdInch = checkboxNotCheckd.length,
+		checkboxCheckedInch = checkboxChecked.length;
 
-		checkboxNotCheckdArrID = checkboxNotCheckd.map(function(indx, element){
+		var checkboxNotCheckedArrID = checkboxNotChecked.map(function(index, element){
 			return $(element).attr("id");
 		});
 
-		checkboxCheckdArrID = checkboxCheckd.map(function(indx, element){
+		var checkboxCheckedArrID = checkboxChecked.map(function(index, element){
 			return $(element).attr("id");
 		});
 
-		if (checkboxCheckdInch >= max) {
+		if (checkboxCheckedInch >= max) {
 			// если болшье max выключаем не отмеченые checkbox
-			// checkboxNotCheckd.prop("disabled", true);
 
 			// скрываем не отмечене блоки drag & drop
-			for (var i = checkboxNotCheckdArrID.length - 1; i >= 0; i--) {
-				$('[data-control='+checkboxNotCheckdArrID[i]+']').hide(speed);
+			for (var i = checkboxNotCheckedArrID.length - 1; i >= 0; i--) {
+				var itemNotChecked = $('#'+checkboxNotCheckedArrID[i]);
 
-				//todo тут и везде по коду ниже - ты очень сильно грузишь DOM - когда два раза селектором ищешь элемент. используй переменные. это ко всему коду относится.
-				$('#'+checkboxNotCheckdArrID[i]).prop("disabled", true);
-				$('#'+checkboxNotCheckdArrID[i]).parent().tooltip('enable');
+				$('[data-control='+checkboxNotCheckedArrID[i]+']').hide(speed);
+				$(itemNotChecked).prop("disabled", true);
+				$(itemNotChecked).parent().tooltip('enable');
 			}
-			for (var i = checkboxCheckdArrID.length - 1; i >= 0; i--) {
-				$('[data-control='+checkboxCheckdArrID[i]+']').show(speed);
-				$('#'+checkboxCheckdArrID[i]).prop("disabled", false);
-				$('#'+checkboxCheckdArrID[i]).parent().tooltip('disable');
+			for (var i = checkboxCheckedArrID.length - 1; i >= 0; i--) {
+				var itemChecked = $('#'+checkboxCheckedArrID[i]);
+
+				$('[data-control='+checkboxCheckedArrID[i]+']').show(speed);
+				$(itemChecked).prop("disabled", false);
+				$(itemChecked).parent().tooltip('disable');
 			}
 
 
 
 		} else {
 			// если меньше max включаем не отмеченые checkbox
-			checkboxNotCheckd.prop("disabled", false);
-			checkboxNotCheckd.parent().tooltip('disable');
-			checkboxCheckd.parent().tooltip('disable');
+			checkboxNotChecked.prop("disabled", false);
+			checkboxNotChecked.parent().tooltip('disable');
+			checkboxChecked.parent().tooltip('disable');
 
 		}
-		return checkboxArrDeafult;
+		return checkboxArrDefault;
 
 	}
 
@@ -470,9 +451,8 @@ $(document).ready(function() {
 	}
 	// скрываем элементы во время скроллинга страницы
 	var positionContent = $(header).actual('outerHeight'),
-			chekPosContent,
 			positionOne = $(window).innerHeight(),
-			menuLeftListDeafult = $('#menuLeftList').hasClass('show'),
+			menuLeftListDefault = $(menuLeftList).hasClass('show'),
 			positionTwo = positionOne * 2,
 			asideHeight,
 			positionThree =  positionTwo + positionOne,
@@ -483,52 +463,45 @@ $(document).ready(function() {
 	var paddingTopContentMax = $(header).actual('outerHeight');
 
 
-	var $window = $(window);
-	var width = $window.width();
-	var height = $window.height();
+	var width = $(window).width();
+	var height = $(window).height();
+	var leftNavigationPseudo = $('#leftNavigationPseudo');
 
 	$(window).resize(function (){
-		var resizeTimeOut;
+		setTimeout(function () {
 
-		clearTimeout(resizeTimeOut);
-		resizeTimeOut = setTimeout(function () {
-			if ((width != $window.width()) || (height != $window.height())) {
-				width = $window.width();
-				height = $window.height();
-
-
+			if ((width !== $(window).width()) || (height !== $(window).height())) {
 				var position = $(this).scrollTop();
-				var menuLeft = $('#menuLeftList');
-				var meuLeftShown = menuLeft.hasClass('show');
 
+				width = $(window).width();
+				height = $(window).height();
 
 				positionOne = $(window).innerHeight();
 
 				windowHeight = $(window).outerHeight();
 				asideWidth = $('#aside').parent().width();
 
-				if (mobile) $('#menuLeftList').collapse('hide');
+				if (mobile) $(menuLeftList).collapse('hide');
 				$('.widget-slider').slick('refresh');
 
 				if (position <= 0 && $(header).hasClass('fixed')) {
 					paddingTopContentMax = $(header).actual('outerHeight');
-					$('#menuLeftList').collapse('show');
-					// $('#leftNavigationPseudo').css('display', 'block');
+					$(menuLeftList).collapse('show');
 					$(content).animate({
 						paddingTop: paddingTopContentMax
 					}, 400)
-
-
-
 				}
+
 				if (position > 0) {
 
 					if ($(aside).hasClass('positionTop')) {
 						var headerHeight = $(header).actual('outerHeight');
+
+						asideHeight = $(aside).actual('outerHeight') + $(header).actual('outerHeight');
+						windowMoreAside = asideHeight < windowHeight;
+
 						$(aside).css('top', headerHeight).removeClass('scrollingTop scrollingBottom ');
 
-						asideHeight = $(aside).actual('outerHeight') + $(header).actual('outerHeight'); // бывает вызыв события scroll
-						windowMoreAside = asideHeight < windowHeight;
 						if (windowMoreAside) {
 							$(aside).css('bottom:', '').addClass('positionTop');
 						}
@@ -550,91 +523,14 @@ $(document).ready(function() {
 			}
 		}, 800);
 	});
-
-
-	// $(window).resize(function (){
-	// 	var position = $(this).scrollTop();
-	// 	var menuLeft = $('#menuLeftList');
-	// 	var meuLeftShown = menuLeft.hasClass('show');
-	//
-	//
-	// 	positionOne = $(window).innerHeight();
-	//
-	// 	windowHeight = $(window).outerHeight();
-	// 	asideWidth = $('#aside').parent().width();
-	//
-	// 	if (mobile) $('#menuLeftList').collapse('hide');
-	//
-	// 	// if (!mobile) {
-	// 	// 	$(headerNavSystem).collapse('hide');
-	// 	// 	console.log('!mobile');
-	// 	// } else {
-	// 	// 	console.log('mobile');
-	// 	// 	if (position < positionThree) {
-	// 	// 		$(headerNavSystem).collapse('show');
-	// 	// 	} else {
-	// 	// 		$(headerNavSystem).collapse('hide');
-	// 	// 	}
-	// 	// }
-	// 	if (position <= 0) {
-	// 		var positionTop = setTimeout(function (){
-	// 			paddingTopContentMax = $(header).actual('outerHeight');
-	// 			$('#menuLeftList').collapse('show');
-	// 			// $('#leftNavigationPseudo').css('display', 'block');
-	// 			$(content).animate({
-	// 				paddingTop: paddingTopContentMax
-	// 			}, 400)
-	// 		}, 500)
-	//
-	//
-	//
-	// 	}
-	// 	clearTimeout(positionTop);
-	// 	if (position > 0) {
-	//
-	// 		setTimeout(function (){
-	// 			// paddingTopContentMax = $(header).actual('outerHeight');
-	//
-	// 			// $(content).animate({
-	// 			// 	paddingTop: paddingTopContentMax
-	// 			// }, 400);
-	// 			if ($(aside).hasClass('positionTop')) {
-	// 				var headerHeight = $(header).actual('outerHeight');
-	// 				$(aside).css('top', headerHeight).removeClass('scrollingTop scrollingBottom ');
-	//
-	// 				asideHeight = $(aside).actual('outerHeight') + $(header).actual('outerHeight'); // бывает вызыв события scroll
-	// 				windowMoreAside = asideHeight < windowHeight;
-	// 				if (windowMoreAside) {
-	// 					$(aside).css('bottom:', '').addClass('positionTop');
-	// 				}
-	// 			}
-	// 		},500)
-	// 	}
-	// 	$(aside).css({
-	// 		width: asideWidth,
-	// 	});
-	// 	if (!mobile) {
-	// 		setTimeout(function (){
-	// 			$(aside).css({
-	// 				position: '',
-	// 				top: '',
-	// 				bottom: '',
-	// 				width: '',
-	// 				marginTop: '',
-	// 			}).removeClass('positionTop positionBottom scrollingTop scrollingBottom')
-	// 				.addClass('positionStatic');
-	// 		}, 600)
-	// 	}
-	//
-	// });
-
-	$('#menuLeftListControl').on('click', function() {
+	var menuLeftListControl = $('#menu-left-list-control');
+	$(menuLeftListControl).on('click', function() {
 		var position = $(window).scrollTop();
 		if (position <= 0 && !safari) {
-			menuLeftListDeafult = !menuLeftListDeafult;
+			menuLeftListDefault = !menuLeftListDefault;
 		}
 		if (position < positionThree && safari) {
-			menuLeftListDeafult = !menuLeftListDeafult;
+			menuLeftListDefault = !menuLeftListDefault;
 		}
 	});
 	if (safari || edge || ie) {
@@ -643,19 +539,15 @@ $(document).ready(function() {
 	}
 	if (!ie) {
 		var headerBread = $('.header .breadcrumb');
-		// var headerNavSystem = $(headerNavSystem);
-		var menuLeft = $('#menuLeftList');
 		var aside = $('#aside');
+		var dropdownMenu = $('.dropdown-menu');
 
-		// var asideHeight;
-		
 		$(document).on('scroll', function(e) {
 			var windowHeight = $(window).outerHeight();
 			var position = $(this).scrollTop();
 			var positionBottom = position + windowHeight;
-			var positionContentEvent = $('.content').offset().top;
-			var asideBig = $('#aside').outerHeight() > $('#content').outerHeight();
-			var asideOfsetTop;
+			var asideBig = $(aside).outerHeight() > $('#content').outerHeight();
+			var asideOffsetTop;
 			var headerHeight;
 			var contentPadding;
 			var positionContent = $(header).actual('outerHeight');
@@ -673,8 +565,8 @@ $(document).ready(function() {
 
 			$('*').tooltip('hide');
 			// скрываем dropdown при скролле
-			if ($('.dropdown-menu').hasClass('show')) {
-				$('.dropdown-menu').removeClass('show');
+			if ($(dropdownMenu).hasClass('show')) {
+				$(dropdownMenu).removeClass('show');
 			}
 
 			// header
@@ -688,9 +580,6 @@ $(document).ready(function() {
 						if (!edge && !safari) $(content).css('padding-top', positionContent);
 					}
 
-					//
-					// if (!safari) {
-					// }
 					if (position >= positionThree) {
 						$(headerNavSystem).collapse('hide');
 					} else {
@@ -710,38 +599,31 @@ $(document).ready(function() {
 
 			if (safari || edge) {
 				if (position >= positionThree) {
-					$('#menuLeftList').collapse('hide');
-				} else if(menuLeftListDeafult) {
-					$('#menuLeftList').collapse('show');
-					if ($(aside).hasClass('positionTop')) $('#leftNavigationPseudo').collapse('show');
+					$(menuLeftList).collapse('hide');
+				} else if(menuLeftListDefault) {
+					$(menuLeftList).collapse('show');
+					if ($(aside).hasClass('positionTop')) $(leftNavigationPseudo).collapse('show');
 					if (position <=0) {
 						$(content).animate({paddingTop: paddingTopContentMax}, 300);
-						$('#leftNavigationPseudo').collapse('show')
+						$(leftNavigationPseudo).collapse('show')
 					}
 				}
 			}
 
+			if (!$(header).hasClass('scroll') && !$(headerNavSetting).hasClass('show') && !mobile){
 
-			if (!$(header).hasClass('scroll') && !$('#header-navSetting').hasClass('show') && !mobile){
-
-
-
-				if (position > 0 /*&& !asideBig*/){
-					// collapseItemScrollHide($('#menuLeftListControl'), 0);
-					if (!safari) $('#menuLeftList').collapse('hide');
-
-
-					// $(content).css('padding-top', positionContent);
-					$('#btnUp').animate({bottom: 'show'}, 500);
-					$('.header .breadcrumb').css({
+				if (position > 0){
+					if (!safari) $(menuLeftList).collapse('hide');
+					$('#btn-up').animate({bottom: 'show'}, 500);
+					$(headerBread).css({
 						paddingBottom: '15px'
 					});
 
 
 				}else {
 					if (!edge && !safari) $(content).css('padding-top', '');
-					$('#btnUp').animate({bottom: 'hide', opacity: 'hide'}, 500);
-					$('.header .breadcrumb').removeAttr('style')
+					$('#btn-up').animate({bottom: 'hide', opacity: 'hide'}, 500);
+					$(headerBread).removeAttr('style')
 				}
 			}
 
@@ -765,27 +647,21 @@ $(document).ready(function() {
 			// scroll bottom
 			if (position > 0){
 				$('.menu-left').removeAttr('style');
-				// $(menuNavHeaderGroup).collapse('hide');
-				// $(header).css('padding-bottom', '');
 
 				// развернуть
-				if (!$('.roll-up').hasClass('show') && $(header).hasClass('scroll')){
-					$('.roll-up').addClass('show');
+				if (!$(rollUp).hasClass('show') && $(header).hasClass('scroll')){
+					$(rollUp).addClass('show');
 				}else {
-					$('.roll-up').removeClass('show');
+					$(rollUp).removeClass('show');
 				}
 
-				// if (!$(header).hasClass('scroll')){
-				// 	if (!edge) $(header).css({'position': 'fixed'});
-				// }
-
 			}else {
-				$('.roll-up').removeClass('show');
+				$(rollUp).removeClass('show');
 			}
 			
 			// aside
 			if (!mobile) {
-					asideHeight = $(aside).actual('outerHeight') + $(header).actual('outerHeight'); // бывает вызыв события scroll
+					asideHeight = $(aside).actual('outerHeight') + $(header).actual('outerHeight');
 					windowMoreAside = asideHeight < windowHeight;
 
 				if (!asideBig) { // боковая меньше контента
@@ -799,50 +675,21 @@ $(document).ready(function() {
 							$(aside).removeClass('scrollingTop');
 
 							if (!$(aside).hasClass('scrollingBottom')) {
-								asideOfsetTop = $(aside).offset().top;
+								asideOffsetTop = $(aside).offset().top;
 								headerHeight = $(header).actual('outerHeight');
-								contentPadding = parseInt($('.header + *').css('padding-top'));
+								contentPadding = parseInt($(content).css('padding-top'));
 
 								$(aside).addClass('scrollingBottom');
-								if (!$(aside).hasClass('positionStatic')/*
-									&& $(aside).hasClass('scrollingBottom')
-									&& !$(aside).hasClass('scrollingTop')*/) {
+								if (!$(aside).hasClass('positionStatic')) {
 									$(aside).css({
 										position: '',
 										top: '',
 										bottom: '',
-										marginTop: asideOfsetTop - contentPadding,
+										marginTop: asideOffsetTop - contentPadding,
 									}).removeClass('positionTop positionBottom').addClass('positionStatic');
 								}
-
-								// if ($(aside).hasClass('positionStatic')) {
-								// 	asideOfsetTop = $(aside).offset().top;
-								// 	headerHeight = $(header).actual('outerHeight');
-								//
-								// 	$(aside).css({
-								// 		position: 'fixed',
-								// 		top: $(header).actual('outerHeight'),
-								// 		bottom: '',
-								// 		width: asideWidth,
-								// 		marginTop: '',
-								// 	}).addClass('positionTop').removeClass('positionStatic');
-								// }
 							}
 
-							// if ($(aside).hasClass('positionTop')) {
-							// 	asideOfsetTop = $(aside).offset().top;
-							// 	headerHeight = $(header).actual('outerHeight');
-							//
-							// 	$(aside).css({
-							// 		position: '',
-							// 		top: '',
-							// 		bottom: '',
-							// 		width: '',
-							// 		marginTop: asideOfsetTop - position,
-							// 	}).addClass('positionStatic').removeClass('positionTop');
-							// }
-
-							asideOfsetTop = $(aside).offset().top;
 							asideHeight = $(aside).actual('outerHeight') + $(aside).offset().top;
 
 							if (windowMoreAside) {
@@ -866,20 +713,14 @@ $(document).ready(function() {
 									}).addClass('positionBottom').removeClass('positionTop positionStatic');
 								}
 							}
-
-
 						}
 
 					} else { // скролл вверх
 
-						contentPadding = parseInt($('.header + *').css('padding-top'));
+						contentPadding = parseInt($(content).css('padding-top'));
 
-						asideOfsetTop = $(aside).offset().top;
+						asideOffsetTop = $(aside).offset().top;
 						headerHeight = $(header).actual('outerHeight');
-
-						hasAsideTop = $(aside).hasClass('scrollingTop');
-
-
 
 						if (position > 0) {
 
@@ -896,17 +737,17 @@ $(document).ready(function() {
 							$(aside).removeClass('scrollingBottom');
 							$(aside).addClass('scrollingTop');
 
-							asideOfsetTop = $(aside).offset().top;
+							asideOffsetTop = $(aside).offset().top;
 							headerHeight = $(header).actual('outerHeight');
 
-							if (asideOfsetTop < position + headerHeight) {
+							if (asideOffsetTop < position + headerHeight) {
 
 								if ($(aside).hasClass('positionBottom')) {
 									$(aside).css({
 										position: '',
 										top: '',
 										bottom: '',
-										marginTop: asideOfsetTop - contentPadding,
+										marginTop: asideOffsetTop - contentPadding,
 									}).removeClass('positionBottom positionTop').addClass('positionStatic');
 								}
 
@@ -937,26 +778,26 @@ $(document).ready(function() {
 			currentScroll = position;
 		});
 	}
-	//
-	// $('#leftNavigationPseudo').on('hide.bs.collapse', function (){
-	// 	$(this).css('display', 'none');
-	//
-	//
-	// });
-	//todo т.е. каждые две секунды какой то код на всех страницах сайта будет выполняться? это недопустимо
-	setInterval(function() {
-		var position = $(document).scrollTop(),
-				menuLeft = $('#menuLeftList'),
-				meuLeftShown = menuLeft.hasClass('show');
 
-		if (position <= 0 && menuLeftListDeafult && !meuLeftShown) {
-			$('#menuLeftList').collapse('show');
+	$(document).on('scroll', function(e) {
+		var position = $(this).scrollTop();
+		if (position <= 0) {
+			setTimeout(function() {
+				var position = $(document).scrollTop(),
+					meuLeftShown = $(menuLeftList).hasClass('show');
+
+				if (position <= 0 && menuLeftListDefault && !meuLeftShown) {
+					$(menuLeftList).collapse('show');
+				}
+			}, 2000);
 		}
-	}, 2000)
+	});
+
 
 
 	// плавный скролл до элемента
 	//todo убрать код и использовать https://github.com/cferdinandi/smooth-scroll - нам такой скролл может пригодиться на любых страницах сайта. а не только в календаре
+
 	$(document).on('click', 'a.event, a.calendar__link', function(event) {
 		var link = $(this).attr('href');
 		var elementToScroll = $('#' + link.split('#')[1]);
@@ -966,6 +807,12 @@ $(document).ready(function() {
 		}
 	});
 
+	/**
+	 * функция скролит до элемента с учетом высоты header
+	 *
+	 * @param {Object} $elementToScroll
+	 * @returns {boolean}
+	 */
 	function scrollTo ($elementToScroll) {
 		var elementToScroll = $($elementToScroll);
 		var elementToScrollPos = elementToScroll.offset().top;
@@ -978,28 +825,18 @@ $(document).ready(function() {
 
 		if (elementToScroll !== undefined) {
 			$('html:not(:animated),body:not(:animated)').animate({scrollTop: elementToScrollPos}, 800);
-			// event.preventDefault();
 			return false;
 		}
 	}
 
 
-	// заказчик попросил чтобы при клике на пустую ссылку ничего не происходило
-	// todo убрать вообще
-	$(document).on('click', 'a', function(event) {
-		var el = event.target,
-				elHref = $(el).attr('href');
-		if (elHref === undefined || elHref === '#' || elHref === '') {
-			event.preventDefault();
-		}
-	});
-
-
+	/**
+	 * при переходе на страницу события плавный скролл до события
+	 * calendar2.html#events-14-10-2018
+	 */
 
 	var myHash = location.hash; //получаем значение хеша
-	//location.hash = ''; //очищаем хеш
 
-	// todo - а это зачем нужно? где это используется и кем?
 	$(window).on('load', function() {
 		var headerHeight = $(header).outerHeight(); // высота хэдера
 		if(myHash[1] !== undefined && myHash[1] !== '#'){ //проверяем, есть ли в хеше какое-то значение
@@ -1010,27 +847,29 @@ $(document).ready(function() {
 				elementToScrolling = $(myHash).offset().top;
 			}
 
-			$('html:not(:animated),body:not(:animated)').animate({scrollTop: elementToScrolling}, 800,
-				function () {
-
-				});
-		};
-
+			$('html:not(:animated),body:not(:animated)').animate({scrollTop: elementToScrolling}, 800);
+		}
 	});
 
 
 	//todo что за кнопка, что это вообще такое? + btnUp -> btn-up
-	$('#btnUp').click(function() {
-		var destination = 0;
 
-		$('html:not(:animated),body:not(:animated)').animate({
-			scrollTop: destination
-		}, 800, function () {
-		});
+	// скролл до самого верха страницы
+	$('#btn-up').click(function() {
+		$('html:not(:animated),body:not(:animated)').animate({scrollTop: 0 }, 800);
 		return false;
 	});
 
 	//todo добавить описание
+	/**
+	 * добавляет класс если страница
+	 * прокручена больше заданного значения
+	 *
+	 * @param {Object} element
+	 * @param {string} [$class='scroll']
+	 * @param {number} [positionMax=200]
+	 * @returns {number} возвращает текущее значение scrollTop()
+	 */
 	function addClassScroll(element, $class, positionMax) {
 		var position = $(this).scrollTop();
 		if ($class === undefined) {
@@ -1047,111 +886,47 @@ $(document).ready(function() {
 		return position;
 	}
 
-    //todo добавить описание
-	function removeClassScroll(element, $class) {
-		var position = $(this).scrollTop();
-		if ($class === undefined) {
-			$class = 'scroll';
-		}
-		if (position >= 200) {
-			element.removeClass($class);
-		} else {
-			element.addClass($class);
-		}
-		return position;
-	}
-
-    //todo добавить описание
-	function toggleCollapseScroll(element) {
-		var position = $(this).scrollTop();
-		if (position >= 200) {
-			element.collapse('hide');
-		} else {
-			element.collapse('show');
-		}
-		return position;
-	}
-
-    //todo добавить описание
-	function toggleDropdownScroll(element) {
-		var position = $(this).scrollTop();
-		if (position >= 200) {
-			element.attr('data-toggle', 'dropdown');
-			element.find('i').animate({opacity: 'show'}, 400);
-		} else {
-			element.removeAttr('data-toggle');
-			element.dropdown('dispose');
-			element.find('i').animate({opacity: 'hide'}, 400);
-		}
-	}
-
-    //todo добавить описание
-	function collapseItemScrollHide(btnControl, hidePosition) {
-		var position = $(this).scrollTop(),
-				itemControl = $(btnControl.data('target'));
-
-		if (hidePosition === undefined) {
-			hidePosition = 0;
-		}
-		if (position > hidePosition && itemControl.hasClass('show')) {
-			itemControl.collapse('hide');
-		}
-	}
-
-    //todo добавить описание
-	function collapseItemScrollShow(btnControl, hidePosition) {
-		var position = $(this).scrollTop(),
-				itemControl = $(btnControl.data('target'));
-
-		if (hidePosition === undefined) {
-			hidePosition = 0;
-		}
-		if (position < hidePosition && menuLeftListDeafult) {
-			itemControl.collapse('show');
-		}
-	}
-
 
 	/* END СКРОЛЛИНГ ------------------------------------------------------------------------------- */
 
-	// левое меню show 
-	$('#menuLeftList').on('show.bs.collapse', function() {
-		var btn = $('#menuLeftListControl');
+	// левое меню show
+	var navMoreListControl = $('#nav-more-list-control');
+
+	$(menuLeftList).on('show.bs.collapse', function() {
+		var btn = $(menuLeftListControl);
 		var position = $(document).scrollTop();
 
 		btn.addClass('active');
 		$('.menu-left-more__list').removeClass('show');
-		$('#navMoreListControl').removeAttr('data-toggle');
-		$('#navMoreListControl').dropdown('dispose');
+		$(navMoreListControl).removeAttr('data-toggle');
+		$(navMoreListControl).dropdown('dispose');
 		$('.menu-left-more__button>i').animate({opacity: 'hide'}, 400);
+
 		if (position < positionThree && !safari && !edge) {
-			// $('#leftNavigationPseudo').animate({height: $(this).actual('innerHeight')}, 300)
-			$('#leftNavigationPseudo').collapse('show')
+			$(leftNavigationPseudo).collapse('show')
 		}
 		if (!edge && !safari) {
 			if (position <= 0) {
-				$('#leftNavigationPseudo').collapse('show')
+				$(leftNavigationPseudo).collapse('show')
 			}
 		}
 		if (position <= 0) {
-			$('#leftNavigationPseudo').collapse('show')
+			$(leftNavigationPseudo).collapse('show')
 		}
 	});
 
 	// левое меню hide 
-	$('#menuLeftList').on('hide.bs.collapse', function() {
-		var btn = $('#menuLeftListControl');
-		var position = $(document).scrollTop();
+	$(menuLeftList).on('hide.bs.collapse', function() {
+		var btn = $(menuLeftListControl);
 		btn.removeClass('active');
-		$('#navMoreListControl').attr('data-toggle', 'dropdown')
+		$(navMoreListControl).attr('data-toggle', 'dropdown')
 		$('.menu-left-more__button>i').animate({opacity: 'show'}, 400);
-		// $('#leftNavigationPseudo').animate({height: 0}, 300)
-		$('#leftNavigationPseudo').collapse('hide')
+		$(leftNavigationPseudo).collapse('hide')
 
 	});
 
-	var menuLeftList = $('#menuLeftList').actual('outerHeight');
-	$('#leftNavigationPseudo').html('<div style="height:'+menuLeftList+'px;"></div>');
+	var menuLeftListHeight = $(menuLeftList).actual('outerHeight');
+	$(leftNavigationPseudo).html('<div style="height:'+menuLeftListHeight+'px;"></div>');
 
 	// ставим лайки
 	$(document).on('click', '.like-button:not(.comment-button)', function(event) {
@@ -1159,159 +934,53 @@ $(document).ready(function() {
 
 	});
 
+
 	// скрываем показываем фильтры
-	$('#contentFilterButton').on('click', function(event) {
+	$('#content-filter-button').on('click', function(event) {
 		var options = {
 			direction: 'right'
-		}
+		};
 		$('.content-filter__formbox').toggle('slide', options);
 	});
+
 	// ставим текущую дату в фильтре
-	$('#filtersCalendarPeriod').on('change click', function(event) {
-		if ($(this).val() == 'true-date') {
+	var periodDateBuffer = $('[name="period_date_buffer"]');
+	var filtersCalendarPeriod = $('#filters-calendar-period');
+
+	$(filtersCalendarPeriod).on('change click', function(event) {
+		if ($(this).val() === 'true-date') {
 			$(this).val('');
-			$('[name="period_date_buffer"]').datepicker($.datepicker.regional[ "ru" ]);
-			$('[name="period_date_buffer"]').datepicker('widget').addClass('widget-calendar widget-calendar_filter');
-			$('[name="period_date_buffer"]').datepicker('option',{
+			$(periodDateBuffer).datepicker($.datepicker.regional[ "ru" ]);
+			$(periodDateBuffer).datepicker('widget').addClass('widget-calendar widget-calendar_filter');
+			$(periodDateBuffer).datepicker('option',{
 				nextText: '>',
 				prevText: '<',
 			});
-			$('[name="period_date_buffer"]').datepicker('show');
-
-
+			$(periodDateBuffer).datepicker('show');
 		}
 	});
-	$('[name="period_date_buffer"]').on('change', function(event) {
-		$('#filtersCalendarPeriod').find('option').removeAttr('selected');
-		$('#period_date').val($(this).val()); //
-		$('#period_date').text($(this).val());
-		$('#period_date').attr('selected', 'true');
-		$('#filtersCalendarPeriod').val($(this).val());
+
+	$(periodDateBuffer).on('change', function(event) {
+		var periodDate = $('#period-date');
+
+		$(filtersCalendarPeriod).find('option').removeAttr('selected');
+		$(periodDate).val($(this).val());
+		$(periodDate).text($(this).val());
+		$(periodDate).attr('selected', 'true');
+		$(filtersCalendarPeriod).val($(this).val());
 	});
 
 	/* ВИДЖЕТЫ -------------------------------------------------------------------------------------- */
 
-	// hover на виджете с табами
-	$('.widget-tabbox').on('mousemove', '.widget-item', function(event) {
-		var box = $(event.delegateTarget),
-				items = box.find('.widget-item');
-				currentItem = box.find('.widget-item.active');
-		currentItem.attr('data-current', 'true')
-		items.removeClass('active');
-		box.on('mouseleave', '.widget-items', function(event) {
-			$('.widget-item[data-current="true"]').addClass('active')
-		});
-		items.click(function() {
-			$('.widget-item[data-current="true"]').removeAttr('data-current')
-		});
+	// datepicker
 
-	});
-
-	/* СОБЫТИЯ В ВИДЖЕТЕ "КАЛЕНДАРЬ" ----------------------------------------------------------------- */
-    //todo это тут вообще нужно?
-	// var setTimer;
-	// var setTimerTimeOut = 10000;
-	// setInterval(function(){ // открываем событие на текущей дате по таймеру
-	// 	if (!$('#widgetCalendar').hasClass('show-event') && !mobile) {
-	// 		$('#widgetCalendar .ui-datepicker-today.selected a.ui-state-default').trigger('click');
-	// 		setTimer = setTimeout(function () {
-	// 			$('.event-control').trigger('click');
-	// 			$('#widgetCalendar').removeClass('show-event');
-	// 		}, 5000)
-	// 	}
-	// }, 10000);
-
-	// открываем события на выбранной дате
-	// $('#calendarwidgetBox').on('click', 'a.ui-state-default', function(e) {
-	// 	e.preventDefault();
-	// 	var dayCurrent = $(this),
-	// 			eventElements = $(dayCurrent.attr('href')),
-	// 			eventElementArr = eventElements.find('.event'),
-	// 			element = $(e.delegateTarget),
-	// 			subtitle = element.find('.widget-subtitle span'),
-	// 			calendar = element.find('.ui-datepicker-calendar'),
-	// 			eventElementControl = element.find('.event-control');
-	//
-	//
-	// 	element.addClass('show-event');
-	// 	eventElementArr.hide();
-	// 	// скрываем календарь
-	// 	calendar.animate({
-	// 		opacity: 'hide'},
-	// 		150, function() {
-	// 		eventElements.animate({opacity: 'show'}, 150);
-	// 		eventElementControl.animate({opacity: 'show'}, 150);
-	// 	});
-	//
-	// 	// показываем события выбраной даты
-	// 	$(eventElementArr[0]).show().addClass('current');
-	// 	for (var i = 0; i < eventElementArr.length; i++) {
-	// 		$(eventElementArr[i]).attr('data-count', i);
-	// 	}
-	//
-	// 	// если событий больше 1 то делаем их ввиде слайдера
-	// 	if (eventElementArr.length > 1) {
-	//
-	// 		subtitle.after('<div class="event-nav">'+
-	// 											'<button class="prev">&lt;&nbsp;</button>'+
-	// 											'<span class="count">'+1+'&nbsp;из&nbsp;'+eventElementArr.length+'</span>'+
-	// 											'<button class="next">&nbsp;&gt;</button>'+
-	// 										'</div>');
-	// 	}
-	// 	var eventNav = element.find('.event-nav'),
-	// 			prev = $(eventNav).find('.prev'),
-	// 			next = $(eventNav).find('.next'),
-	// 			count = $(eventNav).find('.count');
-	//
-	// 	prev.click(function() {
-	// 		var current = eventElements.find('.event.current');
-	// 		if ($(current).data('count') == 0) {
-	// 			count.text(eventElementArr.length + ' из ' + eventElementArr.length);
-	// 			$(current).fadeOut('150', function() {
-	// 				$(eventElementArr[eventElementArr.length - 1]).fadeIn('150').addClass('current');
-	// 			}).removeClass('current');
-	// 		} else {
-	// 			count.text($(current).data('count') + ' из ' + eventElementArr.length)
-	// 			$(current).fadeOut('150', function() {
-	// 				$(eventElementArr[$(current).data('count') - 1]).fadeIn('150').addClass('current');
-	// 			}).removeClass('current');
-	// 		}
-	// 	});
-	//
-	// 	next.click(function() {
-	// 		var current = eventElements.find('.event.current');
-	// 		if ($(current).data('count') == eventElementArr.length - 1) {
-	// 			count.text('1' + ' из '+eventElementArr.length)
-	// 			$(current).fadeOut('150', function() {
-	// 				$(eventElementArr[0]).fadeIn('150').addClass('current');
-	// 			}).removeClass('current');
-	// 		} else {
-	// 			count.text($(current).data('count')+2 +' из '+eventElementArr.length)
-	// 			$(current).fadeOut('150', function() {
-	// 				$(eventElementArr[$(current).data('count') + 1]).fadeIn('150').addClass('current');
-	// 			}).removeClass('current');
-	// 		}
-	// 	});
-	//
-	// 	// нажимаем на кнопку скрыть
-	// 	eventElementControl.click(function(event) {
-	// 		element.removeClass('show-event');
-	// 		clearTimeout(setTimer);
-	// 		element.find('.event-nav').detach();
-	// 		eventElements.animate({opacity: 'hide'}, 150);
-	// 		eventElementControl.animate({opacity: 'hide'}, 150, function () {
-	// 			calendar.animate({opacity: 'show'}, 150);
-	// 			eventElementArr.hide()
-	// 		});
-	//
-	// 	});
-	// });
-
-
-	/* datepicker --------------------------------------------------------------------------------------------- */
-
-	// fix datepicker beforeShow
-	//todo напиши, что за багу ты тут решаешь, мы должны понимать это
+	/**
+	 * fix datepicker beforeShow
+	 * У inline datepicker не работает метод beforeShow
+	 *
+	 * https://api.jqueryui.com/datepicker/#option-beforeShow
+	 * https://stackoverflow.com/questions/3961963/beforeshow-event-not-firing-on-jqueryui-datepicker
+ 	 */
 	$.extend($.datepicker, {
 		// Reference the original function so we can override it and call it later
 		_inlineDatepicker2: $.datepicker._inlineDatepicker,
@@ -1327,21 +996,21 @@ $(document).ready(function() {
 	});
 
 	var eventsDates = [{
-			date: new Date('02/6/2019'),
-			tooltip: "<p>День металлурга </p>",
+			date: new Date('03/6/2019'),
+			tooltip: "<p>День металлурга</p>",
 			link: "/calendar.html",
 			eventItem: '#event-6',
 			generalItem: '#events-06-10-2018'
 		},
 		{
-			date: new Date('02/14/2019'),
+			date: new Date('03/14/2019'),
 			tooltip: "<p>День металлурга </p><p>День металлурга 2 </p>",
 			link: "/calendar2.html",
 			eventItem: '#event-14',
 			generalItem: '#events-14-10-2018',
 		},
 		{
-			date: new Date('02/24/2019'),
+			date: new Date('03/24/2019'),
 			tooltip: "<p>День металлурга3 </p><p>День металлурга 5 </p><p>День металлурга 5 </p><p>День металлурга 5 </p><p>День металлурга 5 </p><p>День металлурга 5 </p><p>День металлурга 5 </p><p>День металлурга 5 </p><p>День металлурга 5 </p><p>День металлурга3 </p><p>День металлурга 5 </p><p>День металлурга 5 </p><p>День металлурга 5 </p><p>День металлурга 5 </p><p>День металлурга 5 </p><p>День металлурга 5 </p><p>День металлурга 5 </p><p>День металлурга 5 </p>",
 			link: "/calendar3.html",
 			eventItem: '#event-24',
@@ -1350,23 +1019,12 @@ $(document).ready(function() {
 
 	];
 
-	// $('#pageCalendar').datepicker($.extend({
-	// 		inline: true,
-	// 		changeYear: true,
-	// 		changeMonth: true,
-	// 	},
-	// 	$.datepicker.regional['ru_con']
-	// ));
-
-	$('#pageCalendar').datepicker({
+	$('#page-calendar').datepicker({
 		showOtherMonths: true,
 		selectOtherMonths: true,
 		inline: true,
 		nextText: '>',
 		prevText: '<',
-		// showOn: "button",
-		// showButtonPanel: true,
-		// buttonText: "t",
 
 		beforeShow: addElements,
 
@@ -1377,6 +1035,7 @@ $(document).ready(function() {
 			var curDate = new Date(dateFormat);
 
 			var locationPathname = document.location.pathname;
+
 			for (var i = 0; i < eventsDates.length; i++)  {
 				var event = eventsDates[i];
 				var dayDate = event.date;
@@ -1390,12 +1049,7 @@ $(document).ready(function() {
 							window.location.href = event.link+event.generalItem;
 							return false
 						}
-
-
 					}
-
-				} else {
-					// window.location.href = event.link+event.generalItem;
 				}
 			}
 			item.inline = false;
@@ -1413,7 +1067,7 @@ $(document).ready(function() {
 			return [true, '', ''];
 		},
 		onChangeMonthYear: function (year, month, item){
-			var t = this
+			var t = this;
 			setTimeout(function (){
 				addElements($(t));
 			}, 110);
@@ -1425,7 +1079,7 @@ $(document).ready(function() {
 	});
 
 
-	$('#widgetCalendar').datepicker({
+	$('#widget-calendar').datepicker({
 		showOtherMonths: false,
 		selectOtherMonths: true,
 		changeMonth: false,
@@ -1433,12 +1087,12 @@ $(document).ready(function() {
 		nextText: '>',
 		prevText: '<',
 
-		beforeShow: function ($calendar){
-			addCustomElementsInWidget($calendar);
+		beforeShow: function (calendar){
+			addCustomElementsInWidget(calendar);
 		},
 
 		onChangeMonthYear: function (year, month, item){
-			var t = this
+			var t = this;
 			setTimeout(function (){
 				addCustomElementsInWidget($(t));
 			}, 110);
@@ -1455,15 +1109,14 @@ $(document).ready(function() {
 			var dateFormat = dateStringArr[1]+'/'+dateStringArr[0]+'/'+dateStringArr[2];
 
 			var curDate = new Date(dateFormat);
-
+			console.log(this);
 			for (var i = 0; i < eventsDates.length; i++)  {
 				var event = eventsDates[i];
 				var dayDate = event.date;
 
 				if (curDate.getTime() === dayDate.getTime()) {
 					if (event.link !== undefined && event.link !== null) {
-						// document.location.href = event.link;
-						showWidgetCalendarEvent(event.eventItem, this)
+						toggleWidgetCalendarEvent(event.eventItem, this)
 					}
 
 				}
@@ -1485,17 +1138,26 @@ $(document).ready(function() {
 
 	});
 
-	function showWidgetCalendarEvent($itemEvent, $element){
+	/**
+	 * переключение между событием
+	 * выбранной даты и виджетиом календаря
+	 *
+	 * @param {selector|Object} itemEvent - DOM елемент события по выбранной дате
+	 * @param {Object} element - DOM елемент виджет с календарем
+	 *
+	 * @example toggleWidgetCalendarEvent($('#event-6'), $('#widget-calendar'))
+	 */
+	function toggleWidgetCalendarEvent(itemEvent, element){
 		var dayCurrent = $(this),
-			eventElements = $($itemEvent),
+			eventElements = $(itemEvent),
 			eventElementArr = eventElements.find('.event'),
-			element = $($element),
-			subtitle = element.find('.widget-subtitle span'),
-			calendar = element.find('.ui-datepicker-calendar'),
-			eventElementControl = element.parent().find('.event-control');
+			el = $(element),
+			subtitle = $(el).find('.widget-subtitle span'),
+			calendar = $(el).find('.ui-datepicker-calendar'),
+			eventElementControl = $(el).parent().find('.event-control');
 
 
-		element.addClass('show-event');
+		$(el).addClass('show-event');
 		eventElements.addClass('active');
 		eventElementArr.hide();
 		// скрываем календарь
@@ -1521,21 +1183,20 @@ $(document).ready(function() {
 				'<button class="next">&nbsp;&gt;</button>'+
 				'</div>');
 		}
-		var eventNav = element.find('.event-nav'),
+		var eventNav = $(el).find('.event-nav'),
 			prev = $(eventNav).find('.prev'),
 			next = $(eventNav).find('.next'),
 			count = $(eventNav).find('.count');
 
 		prev.click(function() {
 			var current = eventElements.find('.event.current');
-			setTimerTimeOut = 5000;
-			if ($(current).data('count') == 0) {
-				count.text(eventElementArr.length + ' из ' + eventElementArr.length);
+			if ($(current).data('count') === 0) {
+				$(count).text(eventElementArr.length + ' из ' + eventElementArr.length);
 				$(current).fadeOut('150', function() {
 					$(eventElementArr[eventElementArr.length - 1]).fadeIn('150').addClass('current');
 				}).removeClass('current');
 			} else {
-				count.text($(current).data('count') + ' из ' + eventElementArr.length)
+				$(count).text($(current).data('count') + ' из ' + eventElementArr.length)
 				$(current).fadeOut('150', function() {
 					$(eventElementArr[$(current).data('count') - 1]).fadeIn('150').addClass('current');
 				}).removeClass('current');
@@ -1544,14 +1205,13 @@ $(document).ready(function() {
 
 		next.click(function() {
 			var current = eventElements.find('.event.current');
-			setTimerTimeOut = 5000;
-			if ($(current).data('count') == eventElementArr.length - 1) {
-				count.text('1' + ' из '+eventElementArr.length)
+			if ($(current).data('count') === eventElementArr.length - 1) {
+				$(count).text('1' + ' из '+eventElementArr.length)
 				$(current).fadeOut('150', function() {
 					$(eventElementArr[0]).fadeIn('150').addClass('current');
 				}).removeClass('current');
 			} else {
-				count.text($(current).data('count')+2 +' из '+eventElementArr.length)
+				$(count).text($(current).data('count')+2 +' из '+eventElementArr.length);
 				$(current).fadeOut('150', function() {
 					$(eventElementArr[$(current).data('count') + 1]).fadeIn('150').addClass('current');
 				}).removeClass('current');
@@ -1560,9 +1220,8 @@ $(document).ready(function() {
 
 		// нажимаем на кнопку скрыть
 		eventElementControl.click(function(event) {
-			element.removeClass('show-event');
-			// clearTimeout(setTimer);
-			element.find('.event-nav').detach();
+			el.removeClass('show-event');
+			el.find('.event-nav').detach();
 			eventElements.animate({opacity: 'hide'}, 150);
 			eventElementControl.animate({opacity: 'hide'}, 150, function () {
 				calendar.animate({opacity: 'show'}, 150);
@@ -1571,19 +1230,36 @@ $(document).ready(function() {
 
 		});
 	}
-	function addCustomElementsInWidget($item){
-		addControlBtn($item);
-		addHeader($item, false);
-		addPreloader($item)
+
+	/**
+	 * добавление кастомных элементов в виджет календаря
+	 *
+	 * @param {selector|Object} calendar - DOM элемент календаря
+	 */
+	function addCustomElementsInWidget(calendar){
+		addControlBtn(calendar);
+		addHeader(calendar, false);
+		addPreloader(calendar)
 	}
 
-	function addCustomToday($calendar){
-		var today = $($calendar).find('.ui-datepicker-today');
+	/**
+	 * кастомная подпись
+	 *
+	 * @param {selector|Object} calendar - DOM элемент календаря
+	 */
+	function addCustomToday(calendar){
+		var today = $(calendar).find('.ui-datepicker-today');
 
 		$(today).append('<span class="card-calendar__caption">Сегодня</span>');
 	}
-	function addDataTooltip($calendar){
-		var cells = $($calendar).find('.ui-datepicker-calendar td');
+
+	/**
+	 * Tooltip при наведении на дату
+	 *
+	 * @param {selector|Object} calendar - DOM элемент календаря
+	 */
+	function addDataTooltip(calendar){
+		var cells = $(calendar).find('.ui-datepicker-calendar td');
 		$(cells).attr('data-placement', 'right');
 		$(cells).attr('data-toggle', 'tooltip');
 		$(cells).attr('data-html', 'true');
@@ -1593,14 +1269,20 @@ $(document).ready(function() {
 		}, 110);
 	}
 
-	function addHeader($calendar, $title){
-		if ($title === undefined) {
-			var title = true;
+	/**
+	 * кастомная шапка календаря
+	 *
+	 * @param {selector|Object} calendar - DOM элемент календаря
+	 * @param {boolean} [title=true] заголовок
+	 */
+	function addHeader(calendar, title){
+		if (title === undefined) {
+			var titleArg = true;
 		}
-		var header = $($calendar).find('.ui-datepicker-header');
+		var header = $(calendar).find('.ui-datepicker-header');
 		var year = $(header).find('.ui-datepicker-year').text();
 		var month = $(header).find('.ui-datepicker-month').text();
-		var headerUiBtns = $(header).find('.ui-datepicker-prev, .ui-datepicker-next, .ui-datepicker-title');
+		var headerUiButtons = $(header).find('.ui-datepicker-prev, .ui-datepicker-next, .ui-datepicker-title');
 		var todayDate = new Date();
 		var optionsDay = {day: '2-digit'};
 		var todayDateDay = todayDate.toLocaleString("ru", optionsDay).slice(0, 2);
@@ -1610,24 +1292,27 @@ $(document).ready(function() {
 		var todayDateMonth = monthA[todayDate.getMonth()];
 		var uiTitle = $(header).find('.ui-datepicker-title');
 
-		// $(uiTitle).append('<span class="ui-datepicker-current">Сегодня: ' + todayDateDay + ' ' + todayDateMonth+'</span>');
+		if (titleArg) {
 
-		if (title) {
-
-			$(headerUiBtns).wrapAll('<div class="content-subtitle content-subtitle_right"><h3></h3></div>');
+			$(headerUiButtons).wrapAll('<div class="content-subtitle content-subtitle_right"><h3></h3></div>');
 			$(header).addClass('content-title');
 			$(uiTitle).append('<span class="ui-datepicker-current">Сегодня: ' + todayDateDay + ' ' + todayDateMonth+'</span>');
 			$(header).append('<div class="content-subtitle margin-0">\n' +
 				'                 <h2>'+month+',<span> '+year+'</span></h2>\n' +
 				'               </div>');
 		} else {
-			$(headerUiBtns).wrapAll('<div class="widget-subtitle"></div>');
+			$(headerUiButtons).wrapAll('<div class="widget-subtitle"></div>');
 			$(uiTitle).append('<span class="ui-datepicker-current">Сегодня ' + todayDateDay + ' ' + todayDateMonth+''+' '+todayYear+'</span>');
 		}
 	}
 
-	function addControlBtn($calendar){
-		var header = $($calendar).find('.ui-datepicker-header');
+	/**
+	 * Кастомные кнопки "пред", "след" месяц
+	 *
+	 * @param {selector|Object} calendar - DOM элемент календаря
+	 */
+	function addControlBtn(calendar){
+		var header = $(calendar).find('.ui-datepicker-header');
 		var prev = $(header).find('.ui-datepicker-prev');
 		var next = $(header).find('.ui-datepicker-next');
 		$(prev).text($(prev).attr('title')).removeAttr('title');
@@ -1635,8 +1320,13 @@ $(document).ready(function() {
 
 	}
 
-	function addCustomElement ($calendar, $inst) {
-		$('table.ui-datepicker-calendar tbody td').each(function(){
+	/**
+	 * Добавляем количество событий в ячейку календаря
+	 *
+	 * @param {selector|Object} calendar - DOM элемент календаря
+	 */
+	function addToCell (calendar) {
+		$(calendar).find('tbody td').each(function(){
 			var calendarText = $(this).attr('title');
 			if (calendarText !== undefined) {
 				var word = decOfNum($(calendarText).length, ['событие', 'события', 'событий']);
@@ -1644,6 +1334,13 @@ $(document).ready(function() {
 			}
 		});
 	}
+
+	/**
+	 * Прелоадер
+	 *
+	 * @param {selector|Object} item - DOM элемент к которому добавлем прелоадер
+	 * @param {number} [timeout=400]
+	 */
 	function addPreloader(item, timeout){
 		var time;
 		if (timeout === undefined) {
@@ -1655,12 +1352,19 @@ $(document).ready(function() {
 		$(item).css('position', 'relative');
 		setTimeout(function () {
 			$('.preloader').fadeOut('300', function (){
-				// $(item).css('position', '');
 				$(this).remove();
 			});
 
 		}, time)
 	}
+
+	/**
+	 * Спряжение слов (1 событие, 2 события, 5 событий)
+	 *
+	 * @param {number} number - число по которому спрягаем
+	 * @param {array} titles - варианты
+	 * @returns {string}
+	 */
 	function decOfNum(number, titles) {
 		var decCache = [],
 				decCases = [2, 0, 1, 1, 1, 2];
@@ -1668,75 +1372,20 @@ $(document).ready(function() {
 		return titles[decCache[number]];
 	}
 
-	function addElements($calendar) {
-		addCustomToday($calendar);
-		addDataTooltip($calendar);
-		addControlBtn($calendar);
-		addHeader($calendar);
-		addCustomElement();
-		addPreloader($calendar);
+	/**
+	 * Добавляем кастомные элементы в календарь
+	 *
+	 * @param {selector|Object} calendar - DOM элемент к которому добавлем прелоадер
+	 */
+	function addElements(calendar) {
+		addCustomToday(calendar);
+		addDataTooltip(calendar);
+		addControlBtn(calendar);
+		addHeader(calendar);
+		addToCell(calendar);
+		addPreloader(calendar);
 
 	}
-
-	/* СОКРАЩАЕМ ТЕКСТ ------------------------------------------------------------------------------ */
-	// $('.card__title').dotdotdot();
-	// $('.text-ddd').dotdotdot();
-	// $('.text-ddd-210').dotdotdot({
-	// 	keep: '.card__more',
-	// 	tolerance: 10,
-	// 	height: 210,
-	// 	callback: function () {
-	// 		if ($(this).hasClass('ddd-truncated')) {
-	// 			$(this).find('.card__more').css('display', 'table');
-	// 			$(this).dotdotdot({tolerance: 0})
-	// 		}
-	// 	}
-	// });
-	//
-	// $('.text-ddd-260').dotdotdot({
-	// 	keep: '.card__more',
-	// 	// tolerance: 10,
-	// 	height: 260,
-	// 	callback: function () {
-	// 		if ($(this).hasClass('ddd-truncated')) {
-	// 			$(this).find('.card__more').css('display', 'table');
-	// 			// $(this).dotdotdot({tolerance: 0})
-	// 		}
-	// 	}
-	// });
-	//
-	// $('.text-ddd-135').dotdotdot({
-	// 	keep: '.card__more',
-	// 	tolerance: 10,
-	// 	// height: 135,
-	// 	callback: function () {
-	// 		if ($(this).hasClass('ddd-truncated')) {
-	// 			$(this).find('.card__more').css('display', 'table');
-	// 			$(this).dotdotdot({tolerance: 0})
-	// 		}
-	// 	}
-	// });
-	//
-	// $(window).resize(function (){
-	// 	setTimeout(function (){
-	// 		$('.ddd-truncated').dotdotdot();
-	// 		$('.card__title').dotdotdot();
-	// 		$('.text-ddd').dotdotdot();
-	//
-	// 		$('.text-ddd-135').dotdotdot({
-	// 			keep: '.card__more',
-	// 			tolerance: 10,
-	// 			// height: 135,
-	// 			callback: function () {
-	// 				if ($(this).hasClass('ddd-truncated')) {
-	// 					$(this).find('.card__more').css('display', 'table');
-	// 					$(this).dotdotdot({tolerance: 0})
-	// 				}
-	// 			}
-	// 		});
-	// 	}, 1000)
-	//
-	// });
 
 	/* TOOLTIPS ------------------------------------------------------------------------------------ */
 	$('.calendar__day').tooltip();
@@ -1751,8 +1400,8 @@ $(document).ready(function() {
 		nextArrow: '<div class="slider-arrow slider-arrow__right \
 								widget-slider-arrow widget-slider-arrow__right"></div>',
 	});
-
-	$('.card-full-slider-wrap').on('init reInit afterChange', 
+	var cardFullSliderWrap = $('.card-full-slider-wrap');
+	$(cardFullSliderWrap).on('init reInit afterChange',
 		function(event, slick, currentSlide, nextSlide){
 			var status = $(this).find('.card-slider-number span'),
 					slide = $(this).find('.card__imgbox');
@@ -1782,10 +1431,7 @@ $(document).ready(function() {
 				numberSlide4 + '...');
 	});
 
-	$('.card-full-slider-wrap').slick({
-		// onInit: function() {
-		// 	$('.card-slider-number span').text(i + '/' + slick.slideCount);
-		// },
+	$(cardFullSliderWrap).slick({
 		prevArrow: '<div class="slider-arrow slider-arrow__left"></div>',
 		nextArrow: '<div class="slider-arrow slider-arrow__right"></div>',
 	});
@@ -1836,31 +1482,26 @@ $(document).ready(function() {
 		]
 	});
 
-	// $('.card-modern-slider-wrap').slick({
-	// 	prevArrow: '<div class="slider-arrow slider-arrow__left"></div>',
-	// 	nextArrow: '<div class="slider-arrow slider-arrow__right"></div>'
-	// });
-
-
 	/* Show long comment ----------------------------------------------------------------------------- */
 	
-	var commentBox = $('.comment-box'),
-			commentHasComment = $('.comment:has(.comment)'),
-			commentButtons = $(commentHasComment).find('.comment__link'),
-			commentButtonsMore = $(commentHasComment).find('.comment__link.more'),
-			commentButtonsLess = $(commentHasComment).find('.comment__link.less');
+	var commentBox = $('.comment-box');
+	var commentHasComment = $('.comment:has(.comment)');
 
-	$(commentHasComment).each(function ($key, $item){
-		$($item).find('.comment__link.more').first().removeClass('hide')
+	//показываем кнопку развернуть если у комментария есть вложенные комментарии
+
+	$(commentHasComment).each(function ($key, item){
+		$(item).find('.comment__link.more').first().removeClass('hide')
 	});
 
+	// разворачиваем свернутые комментарии
 	$(commentHasComment).on('click', function (e){
-		var elTarget = e.target,
-				commentButton = $(elTarget).parent('.comment__link'),
-				commentButtonBox = $(commentButton).parent('.comment__links'),
-				commentButtonLess = $(commentButtonBox).find('.comment__link.less'),
-				commentButtonMore = $(commentButtonBox).find('.comment__link.more'),
-				commentButtonTarget = $($(commentButton).data('target'));
+		var elTarget = e.target;
+		var commentButton = $(elTarget).parent('.comment__link');
+		var commentButtonBox = $(commentButton).parent('.comment__links');
+		var commentButtonLess = $(commentButtonBox).find('.comment__link.less');
+		var commentButtonMore = $(commentButtonBox).find('.comment__link.more');
+		var commentButtonTarget = $($(commentButton).data('target'));
+
 		$(commentButtonTarget).on('show.bs.collapse', function (e){
 			e.stopPropagation();
 			$(commentButtonMore).fadeOut(150, function (){
@@ -1882,13 +1523,13 @@ $(document).ready(function() {
 		});
 	});
 
+	// скрываем часть комментария если высота больше 180px
 	for (var i = 0; i < commentBox.length; i++) {
 		var	text = $(commentBox[i]).find('.comment__text > *'),
-				textBlock = $(commentBox[i]).find('.comment__text'),
 				textHeight = 0;
 		for (var x = 0; x < text.length; x++) {
 			textHeight = textHeight + $(text[x]).actual('outerHeight')
-		};
+		}
 		
 		if (textHeight > 180) {
 			$(commentBox[i]).append(
@@ -1899,16 +1540,10 @@ $(document).ready(function() {
 			')
 		}
 	}
-	// var commentText = $('.comment__text');
-	// // var commentTextHeight = $('.comment__text').actual('outerHeight');
-	// $(commentText).each(function ($key, $item){
-	// 	var commentTextHeight = $($item).actual('outerHeight',{includeMargin : true});
-	// });
 
-	// if ($('.comment__text'))
-	var elControlDeafultText;
+	var elControlDefaultText;
 
-
+	// разворачиваем длинный комментарий
 	$(document).on('click', '.comment-long__showbtn', function(event) {
 		var el = $(this),
 				elParent = el.parents('.comment-box'),
@@ -1929,54 +1564,34 @@ $(document).ready(function() {
 
 	/* Ответить на комментарий ----------------------------------------------------------------------- */
 	
-	var elDeafultText,
-			formDuplicateShow = false;
+	var formDuplicateShow = false;
 
 
 	$(document).on('click', '.comment__reply', function(event) {
-		var commentFormbox = $('#commentFormbox').clone(),
-				commentFormboxAppend,
-				commentFormboxOrigin = $('.comment-form-inn'),
+		var commentFormBox = $('#comment-formbox').clone();
+		var commentFormBoxAppend;
+		var commentFormBoxOrigin = $('.comment-form-inn');
 
-				elControl = $(this),				
-				elParent = elControl.closest('.comment'),
-				elParentID = elParent.attr('id'),
+		var elControl = $(this);
+		var elParent = elControl.closest('.comment');
 
-				formActive = elControl.hasClass('form-active');
+		var formDuplicate = $('.form-duplicate');
 
-		event.stopImmediatePropagation()
-		commentFormboxAppend = commentFormboxCreate(elControl, commentFormbox);
+		event.stopImmediatePropagation();
+
+		commentFormBoxAppend = commentFormBoxCreate(elControl, commentFormBox);
 
 		if (!elControl.hasClass('form-active')) {
-			elControlDeafultText = elControl.text();
+			elControlDefaultText = elControl.text();
 		}
 
 		// проверяем где юзер отвечает на коммент
 		if (formDuplicateShow && $('.modal-main').hasClass('show')) {
-			$('.form-duplicate').collapse('hide');
+			$(formDuplicate).collapse('hide');
 		}
 
-		$('.form-duplicate').on('hidden.bs.collapse', function() {
-			$('.comment__reply').text(elControlDeafultText);
-			$('.comment__reply').removeClass('form-active');
-			$('.comment__reply').removeAttr('data-target');
-			$('.comment').removeClass('show-form');
-			$(this).collapse('dispose');
-			formDuplicateShow = false;
-			$(this).remove();
-		});
-
-		// $('.comment').on('hide.bs.collapse', function (e){
-		// 	$('.comment__reply').text(elControlDeafultText);
-		// 	$('.comment__reply').removeClass('form-active');
-		// 	$('.comment__reply').removeAttr('data-target');
-		// 	$('.comment').removeClass('show-form');
-		// 	$(this).collapse('dispose');
-		// 	formDuplicateShow = false;
-		// 	$(this).remove();
-		// });
-
-		$(commentFormboxAppend).on('shown.bs.collapse', function(event) {
+		// меняет разметку после показа копии формы
+		$(commentFormBoxAppend).on('shown.bs.collapse', function(event) {
 			elControl.addClass('form-active');
 			elControl.text('Отменить');
 			$(this).collapse('dispose');
@@ -1984,48 +1599,78 @@ $(document).ready(function() {
 			formDuplicateShow = true;
 		});
 
-		
-		$(commentFormboxAppend).on('show.bs.collapse', function(event) {
-			commentFormboxOrigin.collapse('hide');
+		// возвращает разметку после скрытия копии формы
+		$(formDuplicate).on('hidden.bs.collapse', function() {
+			var commentReply = $('.comment__reply');
+
+			$(commentReply).text(elControlDefaultText)
+				.removeClass('form-active')
+				.removeAttr('data-target');
+
+			$('.comment').removeClass('show-form');
+			$(this).collapse('dispose');
+			formDuplicateShow = false;
+			$(this).remove();
+		});
+
+		// скрывает стандартную форму
+		$(commentFormBoxAppend).on('show.bs.collapse', function(event) {
+			commentFormBoxOrigin.collapse('hide');
 		});
 
 		
 		if (!elControl.hasClass('form-active')) {
 
-			commentFormboxShow(elControl, commentFormboxAppend).collapse('show');
-			commentFormboxOrigin.collapse('hide');
+			commentFormBoxShow(elControl, commentFormBoxAppend).collapse('show');
+			commentFormBoxOrigin.collapse('hide');
 			
 		} else {
-			$('.form-duplicate').collapse('hide');
-			commentFormboxOrigin.collapse('show');
+			$(formDuplicate).collapse('hide');
+			commentFormBoxOrigin.collapse('show');
 		}
 
 		event.preventDefault();
 
-		function commentFormboxShow(elControl, addElement) {
-			var eventParent = elControl.closest('.comment');
+		/**
+		 * добавлеет созданю форму в DOM
+		 *
+		 * @param elControl
+		 * @param addElement
+		 * @returns {*|jQuery.fn.init|jQuery|HTMLElement}
+		 */
+		function commentFormBoxShow(elControl, addElement) {
+			var eventParent = $(elControl).closest('.comment');
 
-			eventParent.addClass('show-form');
-			eventParent.find('.comment-box:first').after($(addElement));
+			eventParent.addClass('show-form')
+				.find('.comment-box:first')
+				.after($(addElement));
 
-			elControl.attr('data-target', '#'+$(addElement).attr('id'));
+			$(elControl).attr('data-target', '#'+$(addElement).attr('id'));
 			
 			return $(addElement);			
 		}
-		function commentFormboxCreate(event, elClone) {
-			var eventParent = $($(event).parents('.comment-box'))
+
+		/**
+		 * Создает копию формы
+		 *
+		 * @param event
+		 * @param elClone
+		 * @returns {*|jQuery.fn.init|jQuery|HTMLElement}
+		 */
+		function commentFormBoxCreate(event, elClone) {
+			var eventParent = $($(event).parents('.comment-box')),
 					eventParentID = elParent.attr('id'),
 					eventParentTitle = eventParent.find('.comment__nickname:first').text(),
 					
 					elementID = $(elClone).attr('id'),
 					elementNew = $(elClone);
 
-			$(elClone).removeClass('comment-form-inn show');
-			$(elClone).attr('id', elementID+'_'+eventParentID);
-			$(elClone).attr('data-parent', '#allComentators');
-			$(elClone).addClass('form-duplicate collapse');
-			$(elClone).find('form.comment-form').addClass('comment-form-reply');
-			$(elClone).find('textarea.comment-form__textarea').val(eventParentTitle+', ');
+			$(elClone).removeClass('comment-form-inn show')
+				.attr('id', elementID+'_'+eventParentID)
+				.attr('data-parent', '#allComentators')
+				.addClass('form-duplicate collapse')
+				.find('form.comment-form').addClass('comment-form-reply')
+				.find('textarea.comment-form__textarea').val(eventParentTitle+', ');
 			return elementNew;
 		}
 	});
@@ -2036,7 +1681,10 @@ $(document).ready(function() {
 	/* modals -------------------------------------------------------------------------------- */
 
 	// header fix bug
-	$($('[data-toggle="modal"]').data('target')).on('show.bs.modal', function (){
+	// добавлет отступ при открытии модальных окон
+	var modals = $($('[data-toggle="modal"]').data('target'));
+
+	$(modals).on('show.bs.modal', function (){
 		if ($(header).hasClass('fixed')){
 			$(header).css({
 				paddingRight: scrollbarWidth,
@@ -2044,28 +1692,24 @@ $(document).ready(function() {
 		}
 	});
 
-	$('.modal').on('show.bs.modal', function(event) {
-		var position = $(document).scrollTop();
-		if (position > 0)  {
-			$(header).css('padding-right', scrollbarWidth);
-		}
-	});
-	$('.modal').on('hidden.bs.modal', function(event) {
+	// удаляет отступ
+	$(modals).on('hidden.bs.modal', function(event) {
 		$(header).css('padding-right', '');
 	});
 
-	$('#modalImgBox').on('show.bs.modal', function(event) {
-		var modal 				= $(this),
-				modalContent  = modal.find('.modal-main__content'),
+	$('#modal-img-box').on('show.bs.modal', function(event) {
+		var modal = $(this);
+		var modalContent = modal.find('.modal-main__content');
 
-				elControl 		= $(event.relatedTarget),
-				elAdd,
+		var elControl = $(event.relatedTarget);
+		var targetContent = $(elControl.data('target-content')).clone();
 
-				targetContent = $(elControl.data('target-content')).clone();
 		modalContent.html(targetContent);
 	});
 
-	$('#modalVideo').on('show.bs.modal', function(event) {
+	var modalVideo = $('#modal-video');
+
+	$(modalVideo).on('show.bs.modal', function(event) {
 		var modal = $(this),
 				modalContent = modal.find('.modal-video iframe'),
 				elControl = $(event.relatedTarget),
@@ -2075,7 +1719,7 @@ $(document).ready(function() {
 		addPreloader($(modalContent).parent(), 600);
 	});
 
-	$('#modalVideo').on('hidden.bs.modal', function(event) {
+	$(modalVideo).on('hidden.bs.modal', function(event) {
 		var modal = $(this),
 			modalContent = modal.find('.modal-video iframe');
 
@@ -2083,12 +1727,10 @@ $(document).ready(function() {
 	});
 
 
-
+	// нумерация слайдов
 	$('.modal-main-slider-wrap').on('init reInit afterChange',
 		function(event, slick, currentSlide, nextSlide){
-			// нумерация слайдов в модалке
 			var status = $('.slider-number'),
-					slide = $(this).find('.card__imgbox'),
 					i = (currentSlide ? currentSlide : 0) + 1,
 					currentLink = '<span class="card-number-elem">'+'#'+i+'</span>',
 					statusInner = currentLink + ' из ' + slick.slideCount;
@@ -2096,7 +1738,9 @@ $(document).ready(function() {
 			status.html(statusInner);			
 	});
 
-	$('#modalContentSlider').on('show.bs.modal', function(event) {
+	// модальное окно со слайдером и комментариями
+	var modalContentSlider = $('#modalContentSlider');
+	$(modalContentSlider).on('show.bs.modal', function(event) {
 		var modal 				= $(this),
 				modalContent  = modal.find('.modal-main__content'),
 
@@ -2105,23 +1749,26 @@ $(document).ready(function() {
 
 				targetContent             = $(elControl.data('target-content')).clone(),
 				targetContentSliderTitle  = targetContent.find('.post-info').clone(),
-				// targetComments            = targetContent.find('.comments-dark').clone(),
 
 				sliderModal 		= modal.find('.modal-main-slider-wrap'),
-				sliderTitle 		= modal.find('.modal-main-slider-title'),
-				sliderComments 	= modal.find('.modal-main-comments');
+				sliderTitle 		= modal.find('.modal-main-slider-title');
 
 		event.stopImmediatePropagation();
-		// modal.addClass('modal-main-preload');
+
 		elAdd = getElement(targetContent);
 
 		sliderModal.html(elAdd); // вставляем слайдер
 
 		sliderTitle.html(targetContentSliderTitle); // вставляем заголовок слайдера
 
-		// sliderComments.html(targetComments); // вставляем блок комментариев
 		addPreloader(modalContent);
 
+		/**
+		 * возвращает элементы слайдера
+		 *
+		 * @param {selector | Object} el
+		 * @returns {*|jQuery}
+		 */
 		function getElement(el) {
 			var element = $(el),
 					elements;
@@ -2135,30 +1782,22 @@ $(document).ready(function() {
 		}
 	});
 
-	$('#modalContentSlider').on('shown.bs.modal', function(event) {
+	$(modalContentSlider).on('shown.bs.modal', function(event) {
 		var modal 				= $(this),
-				modalContent  = modal.find('.modal-main__content'),
 				body = $('body'),
 
 				elControl 		= $(event.relatedTarget),
-				elControlCurrent = elControl.data('current-slide'),
-				elAdd,
-
-				targetContent = $(elControl.data('target-content')).clone(),
-
-				sliderModal 	= modal.find('.modal-main-slider-wrap');
+				elControlCurrent = elControl.data('current-slide');
 
 		$(body).addClass('modal-main-contents-open');
 		modal.css('padding-right', '');
 
-		// $('.comment').collapse();
-
-		$('#modalMainSliderTop').slick({
+		$('#modal-main-slider-top').slick({
 			slidesToShow: 1,
 			slidesToScroll: 1,
 			infinite: false,
 			initialSlide: elControlCurrent,
-			asNavFor: '#modalMainSliderBottom',
+			asNavFor: '#modal-main-slider-bottom',
 			prevArrow: '<div class="slider-arrow \
 															slider-arrow__left \
 															modal-main-slider-arrow \
@@ -2169,17 +1808,14 @@ $(document).ready(function() {
 															modal-main-slider-arrow__right"></div>',
 		});
 
-		$('#modalMainSliderBottom').slick({
+		$('#modal-main-slider-bottom').slick({
 			slidesToShow: 7,
 			slidesToScroll: 1,
 			initialSlide: elControlCurrent,
 			focusOnSelect: true,
-			// focusOnChange: true,
-			// centerMode: true,
 			centerPadding: '0px',
-			// waitForAnimate: false,
 			infinite: false,
-			asNavFor: '#modalMainSliderTop',
+			asNavFor: '#modal-main-slider-top',
 			prevArrow: '<div class="slider-arrow \
 															slider-arrow__left \
 															modal-main-slider-arrow \
@@ -2189,44 +1825,29 @@ $(document).ready(function() {
 															modal-main-slider-arrow \
 															modal-main-slider-arrow__right"></div>',
 		});
-
-		// setTimeout(function () {
-		// 	$('.preloader').fadeOut('300');
-		// 	modal.removeClass('modal-main-preload');
-		// }, 800)
-
 	});
 
-	$('#modalMainSliderBottom').on('click', '.slick-slide', function(event) {
-		var eventSlide = $('#modalMainSliderBottom').slick('slickCurrentSlide');
-		$('#modalMainSliderTop').slick('slickGoTo', eventSlide);
+	var modalMainSliderBottom = $('#modal-main-slider-bottom');
+	$(modalMainSliderBottom).on('click', '.slick-slide', function(event) {
+		var eventSlide = $(modalMainSliderBottom).slick('slickCurrentSlide');
+		$('#modal-main-slider-top').slick('slickGoTo', eventSlide);
 	});	
 
-	$('#modalContentSlider').on('hidden.bs.modal', function(event) {
-		var modal 				= $(this),
-				modalContent  = modal.find('.modal-main__content'),
-
-				elControl 		= $(event.relatedTarget),
-				elAdd,
-
-				sliderModal 	= modal.find('.modal-main-slider-wrap'),
-				targetContent = $(elControl.data('target-content')).clone();
-
-		modal.modal('dispose');
+	$(modalContentSlider).on('hidden.bs.modal', function(event) {
+		var modalContent = $(this),
+				sliderModal = modalContent.find('.modal-main-slider-wrap');
+		modalContent.modal('dispose');
 		$(sliderModal).slick('unslick');
 		$('.preloader').stop().show();
 	});
 
 	$(document).on('click', '.card-number-elem', function(event) {
-			var elEvent = $(this),
+			var elEvent = $(this);
 
-					textArea = $('#modalContentSlider').find('.comment-form__textarea:visible'),
-					textAreaPositionTop = textArea.position().top;
+			var textArea = $(modalContentSlider).find('.comment-form__textarea:visible');
+			var textAreaPositionTop = textArea.position().top;
 
-					modalDialog = $('#modalContentSlider').find('.modal-dialog');
-
-			// $('.form-duplicate').collapse('hide');
-			$('#modalContentSlider')
+			$(modalContentSlider)
 				.animate({
 					scrollTop: textAreaPositionTop,
 				}, 800, function(){
@@ -2238,17 +1859,20 @@ $(document).ready(function() {
 
 	$(document).on('click', '.modal-main-comments__curentImg', function(event) {
 		var element = $(this);
-		$('#modalContentSlider')
+		$(modalContentSlider)
 			.animate({
 				scrollTop: 0,
 			}, 800, function(){
-				$('#modalMainSliderTop').slick('slickGoTo', parseInt(element.attr('href') - 1));
+				$('#modal-main-slider-top').slick('slickGoTo', parseInt(element.attr('href') - 1));
 			});
 
 		event.preventDefault();
 	});
 
-	/* Main icons ------------------------------------------------------------------------------------- */
+	/**
+	 * Свои иконки меню "Системы"
+	 * profile.html
+	 */
 	var iconDefault;
 	$('.main-icon').on('click keyup', function (event){
 		var elClick = event.target,
@@ -2268,7 +1892,6 @@ $(document).ready(function() {
 
 				images = $(el).find('.main-icon__img'),
 
-				currentBlock = $(el).find('.card-links.edits'),
 				currentIconBox = $(el).find('.main-icon__imgbox:has(.main-icon__img.active)'),
 
 				buttonRemove = $(block).find('[data-remove].main-icon__button'),
@@ -2315,7 +1938,7 @@ $(document).ready(function() {
 
 		// save keypress"Enter"
 		$(inputs).keyup(function(e){
-			if(e.keyCode == 13) {
+			if(e.keyCode === 13) {
 				$(buttonSave).trigger('click');
 			}
 		});
@@ -2384,7 +2007,6 @@ $(document).ready(function() {
 			$(buttonAdd).prop('disabled', true);
 			editsBlock();
 			$(blockImages).find('.icon-symbol').addClass('active');
-			var nID = $(blocks).length + 1;
 			var btnGroup = $(buttonGroup).before('<div class="card card-links main-icon__card margin-bottom-0 padding-bottom-lg-30 padding-bottom-sm-10 edits adds">\n' +
 				'          <div class="card-links-wrap">\n' +
 				'            <div class="card-links__img">\n' +
@@ -2415,110 +2037,142 @@ $(document).ready(function() {
 			$(blockUppend).find('.main-icon__input.current').val('Название системы').focus();
 
 		}
+
+		/**
+		 * функция редактирования блока с иконками
+		 */
 		function editsBlock(){
 			$(buttonAddPrimary).prop('disabled', true);
 			$(block).addClass('edits');
 			$(blocksNotEdits).addClass('disabled');
 			$(blockImages).addClass('active');
-			// $(buttonIcon).addClass('active');
 			$(blockImages).find($('.'+$(buttonIcon).data('icon'))).addClass('active');
 		}
-		function toggleElement($elementHide, $elementShow){
-			$($elementHide).fadeOut(200, function (){
+
+		/**
+		 * Функция для плавного исчезновения одного элемента DOM
+		 * и появление вместо него другого
+		 *
+		 * @param {selector|Object} elementHide
+		 * @param {selector|Object} elementShow
+		 */
+		function toggleElement(elementHide, elementShow){
+			$(elementHide).fadeOut(200, function (){
 				$(this).addClass('hide');
 
-				$($elementShow).fadeIn(200, function (){
+				$(elementShow).fadeIn(200, function (){
 					$(this).removeClass('hide');
 				})
 			});
 		}
 	});
 
-	/* Forms ------------------------------------------------------------------------------------------ */
-	var deafultTextBtn = $('#formMoreInputsControl').text();
-	var formMoreInputs = $('#formMoreInputs');
+	/*
+	 * Форма обращения с произвольным именем
+	 * others.html
+	 */
+	var defaultTextBtn = $('#form-more-inputs-control').text();
+	var formMoreInputs = $('#form-more-inputs');
+	var formSender = $('.form-sender');
+	var formTitleMain = $('.form__title_main');
+	var formTitleAlt = $('.form__title_alt');
 
-	formMoreInputs.on('show.bs.collapse', function(event) {
-		var elControl = $('#formMoreInputsControl'),
+	$(formMoreInputs).on('show.bs.collapse', function(event) {
+		var elControl = $('#form-more-inputs-control'),
 				elControlAltText = elControl.data('alt-text');
 
 		elControl.text(elControlAltText);
 		if (mobile) {
-			$('.form-sender').animate({height: 'hide'},'400');
+			$(formSender).animate({height: 'hide'},'400');
 		} else {
-			$('.form-sender').fadeOut('400');
+			$(formSender).fadeOut('400');
 		}
 
-		$('.form__title_main').fadeOut('400');
-		$('.form__title_alt').fadeIn('400', function (){
+		$(formTitleMain).fadeOut('400');
+		$(formTitleAlt).fadeIn('400', function (){
 			$(this).css('position', 'static')
 		});
 		
 	});
 
-	formMoreInputs.on('hide.bs.collapse', function(event) {
-		var elControl = $('#formMoreInputsControl');
+	$(formMoreInputs).on('hide.bs.collapse', function(event) {
+		var elControl = $('#form-more-inputs-control');
 
-		elControl.text(deafultTextBtn);
+		elControl.text(defaultTextBtn);
 		if (mobile) {
-			$('.form-sender').animate({height: 'show'},'400');
+			$(formSender).animate({height: 'show'},'400');
 		} else {
-			$('.form-sender').fadeIn('400');
+			$(formSender).fadeIn('400');
 		}
 
-		$('.form__title_alt').fadeOut('400').css('position', '');
-		$('.form__title_main').fadeIn('400');
+		$(formTitleAlt).fadeOut('400').css('position', '');
+		$(formTitleMain).fadeIn('400');
 
 	});
 
-	$('#formCheckbox').on('change', function() {
+	$('#form-checkbox-slide').on('change', function() {
+		var formSlideInput = $('.form-slide-input');
 		if (mobile)  {
-			$('.form-slide-input').animate({height: 'toggle'}, '400')
+			$(formSlideInput).animate({height: 'toggle'}, '400')
 		} else {
-			$('.form-slide-input').toggle('slide');
+			$(formSlideInput).toggle('slide');
 		}
 
 	});
 
-	$('.article.collapse, .card.collapse').on('show.bs.collapse', function(event) {
+	/**
+	 * спойдлеры
+	 * spoyler.html
+	 */
+	var collapsedElement = $('.article.collapse, .card.collapse');
+
+	$(collapsedElement).on('show.bs.collapse', function(event) {
 		$(this).find('.card-full-slider-wrap').slick('unslick');
-		// $(this).addClass('modal-main-preload');
 		$('[data-target="#'+ $(this).attr('id') +'"]').addClass('active');
 		
 	});
-	$('.article.collapse, .card.collapse').on('shown.bs.collapse', function(event) {
+	$(collapsedElement).on('shown.bs.collapse', function(event) {
 		var element = $(this);
 		$(this).find('.card-full-slider-wrap').slick({
 			prevArrow: '<div class="slider-arrow slider-arrow__left"></div>',
 			nextArrow: '<div class="slider-arrow slider-arrow__right"></div>',
 		});
 		$('[data-target="#'+ $(this).attr('id') +'"]').addClass('active');
-		// setTimeout(function () {
-		// 	$('.preloader').fadeOut('300');
-		// 	element.removeClass('modal-main-preload');
-		// }, 800)
 	});
 
-	$('.article.collapse, .card.collapse').on('hide.bs.collapse', function(event) {
+	$(collapsedElement).on('hide.bs.collapse', function(event) {
 		$('[data-target="#'+ $(this).attr('id') +'"]').removeClass('active');
 		
 	});
 
-	$.fn.hasAttr = function($attrName) {
-		return this.attr($attrName) !== undefined;
-	};
-
 });
 
 (function($){
-	jQuery.fn.hideClickAway = function($bootstrapEvent){
+	/**
+	 * проверяет есть ли атрибут у элемента DOM
+	 *
+	 * @param {string} attrName
+	 * @returns {boolean}
+	 */
+	jQuery.fn.hasAttr = function(attrName) {
+		return this.attr(attrName) !== undefined;
+	};
+
+	/**
+	 * скрытие элемента при клике не по нему
+	 *
+	 * @param {string} bootstrapEvent
+	 * @returns {*}
+	 */
+	jQuery.fn.hideClickAway = function(bootstrapEvent){
+
 		var el = $(this);
 		var make = function (){
-			if (!!$bootstrapEvent){
+			if (!!bootstrapEvent){
 				$(document).mouseup(function (e){ // событие клика по веб-документу
 					if (!el.is(e.target) // если клик был не по нашему блоку
 						&& el.has(e.target).length === 0) { // не по его дочерним элементам
-						switch ($bootstrapEvent){ // проверяем событие
+						switch (bootstrapEvent){ // проверяем событие
 							case 'collapse':
 								el.collapse('hide');
 								break;
@@ -2540,6 +2194,11 @@ $(document).ready(function() {
 
 		
 	};
+	/**
+	 * возвращает ширину скроллбара
+	 *
+	 * @returns {number}
+	 */
 	jQuery.fn.scrollbarWidth = function() {
 		var block = $('<div>').css({'height':'50px','width':'50px'}),
 			indicator = $('<div>').css({'height':'200px'});
@@ -2552,4 +2211,3 @@ $(document).ready(function() {
 		return (w1 - w2);
 	};
 })(jQuery);
-

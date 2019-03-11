@@ -410,7 +410,7 @@
               <div class="header-button-inn button-inn">
                 <button class="header-button button button-help">помощь</button>
                 <button class="header-button button" id="header-nav-control" data-toggle="collapse" data-target="#header-nav">Системы</button>
-                <button class="header-button button button-deploy" id="btnDeploy">Развернуть</button>
+                <button class="header-button button button-deploy" id="btn-deploy">Развернуть</button>
                 <!-- <button id="btnToTop" class="header-button button button-toTop">Наверх</button>-->
                 <!-- /.header-box-->
                 <button class="button-burg margin-left-15" data-toggle="collapse" data-target="#menu-nav-header-group" type="button" aria-haspopup="true" aria-expanded="false"><span></span></button>
@@ -467,16 +467,16 @@
                         <li class="nav-more-list__item"><a class="link link-nav nav-more-list__link" href="#">Ширина под самое длинное название с учетом Bold</a></li>
                       </ul>
                     </div>
-                    <button class="button header-button button-more d-none d-lg-inline-block" id="header-navSettingControl" type="button" data-toggle="collapse" data-target="#header-navSetting" aria-expanded="false" aria-controls="header-navSetting">Настройка</button>
+                    <button class="button header-button button-more d-none d-lg-inline-block" id="header-nav-setting-control" type="button" data-toggle="collapse" data-target="#header-nav-setting" aria-expanded="false" aria-controls="header-navSetting">Настройка</button>
                   </div>
                 </div>
               </div>
               <div class="row">
                 <div class="col-lg-7 offset-lg-5">
-                  <div class="nav-setting collapse" id="header-navSetting">
+                  <div class="nav-setting collapse" id="header-nav-setting">
                     <h4 class="nav-setting__title">Для настройки вашего меню, выберите нужные иконки:</h4>
                     <div class="nav-setting__items">
-                      <div class="nav-setting-wrap" id="sortable">
+                      <div class="nav-setting-wrap" id="drag-and-drop">
                         <div class="ui-state-default nav-setting__item-inn" data-control="formCheckbox-0">
                           <div class="header-nav-system__item nav-setting__item">
                             <div class="header-nav-system-icon-box"><i class="icon-book"></i></div>
@@ -697,8 +697,8 @@
                         </div>
                       </div>
                       <div class="form-checkbox-button-wrap">
-                        <button class="button form-setting-button" type="reset" data-toggle="collapse" data-target="#header-navSetting">Отмена</button>
-                        <button class="button form-setting-button" type="submit" data-toggle="collapse" data-target="#header-navSetting">Применить</button>
+                        <button class="button form-setting-button" type="reset" data-toggle="collapse" data-target="#header-nav-setting">Отмена</button>
+                        <button class="button form-setting-button" type="submit" data-toggle="collapse" data-target="#header-nav-setting">Применить</button>
                       </div>
                     </form>
                   </div>
@@ -717,7 +717,7 @@
                   <div class="menu-left__list">
                     <div class="menu-left__item menu-left__item-head">
                       <div class="nav-more menu-left-more btn-group">
-                        <button class="menu-left-more__button" id="navMoreListControl" type="button" aria-haspopup="true" aria-expanded="false">Новости <i class="icon-arrow-down"></i></button>
+                        <button class="menu-left-more__button" id="nav-more-list-control" type="button" aria-haspopup="true" aria-expanded="false">Новости <i class="icon-arrow-down"></i></button>
                         <ul class="nav-more-list menu-left-more__list dropdown-menu">
                           <li class="nav-more-list__item menu-left-more__box menu-left__box"><a class="menu-left__item menu-left-more__item" href="#">
                               <div class="menu-left__text menu-left-more__link"><span>КОМПАНИЯ</span></div></a></li>
@@ -737,11 +737,11 @@
                               <div class="menu-left__text menu-left-more__link"><span>КОНТАКТЫ</span></div></a></li>
                         </ul>
                       </div>
-                      <button class="menu-left-control active" id="menuLeftListControl" type="button" data-toggle="collapse" data-target="#menuLeftList" aria-expanded="false" aria-controls="menuLeftList"></button>
+                      <button class="menu-left-control active" id="menu-left-list-control" type="button" data-toggle="collapse" data-target="#menu-left-list" aria-expanded="false" aria-controls="menuLeftList"></button>
                     </div>
                     <div class="menu-left__item menu-left__item-current" id="menuLeftItemCurrent"></div>
                   </div>
-                  <ul class="menu-left__list collapse menuLeftList-group show" id="menuLeftList">
+                  <ul class="menu-left__list collapse menuLeftList-group show" id="menu-left-list">
                     <li class="menu-left__box"><a class="menu-left__item" href="#">
                         <div class="menu-left__text"><span>КОМПАНИЯ</span></div></a></li>
                     <li class="menu-left__box"><a class="menu-left__item" href="#">
@@ -852,9 +852,11 @@
                 </div>
               </div>
               <!-- widget widget-calendar-->
-              <div class="widget-calendar widget-box"><a class="widget-title widget-title_link" href="/calendar.html">КАЛЕНДАРЬ СОБЫТИЙ
-                  <button class="event-control"><i class="icon-arrow-down"></i></button></a>
-                <div id="widgetCalendar"></div>
+              <div class="widget-calendar widget-box">
+                <div class="widget-title"><a class="widget-title_link" href="/calendar.html">КАЛЕНДАРЬ СОБЫТИЙ</a>
+                  <button class="event-control"><i class="icon-arrow-down"></i></button>
+                </div>
+                <div id="widget-calendar"></div>
                 <div class="events" id="event-6"><a class="event calendar-lnk" href="calendar.html#events-06-10-2018">
                     <div class="event-title"><span>День металлурга</span></div>
                     <div class="widget-imgbox widget-imgbox_calendar" style="background-image: url(img/article-img-01.jpg);"></div></a><a class="event calendar-lnk" href="calendar.html#event2-06-10-2018">
@@ -1052,7 +1054,7 @@
                   </div>
                 </div>
                 <div class="card card-full">
-                  <div class="card__imgbox card__imgbox_xl" style="background-image: url(img/img-block-full-01.jpg);" data-target="#modalImgBox" data-toggle="modal" data-target-content="#image_xl"><img class="card-image" id="image_xl" src="img/img-block-full-01.jpg"></div>
+                  <div class="card__imgbox card__imgbox_xl" style="background-image: url(img/img-block-full-01.jpg);" data-target="#modal-img-box" data-toggle="modal" data-target-content="#image_xl"><img class="card-image" id="image_xl" src="img/img-block-full-01.jpg"></div>
                 </div>
               </div>
               <!--Галерея - "Изображение", высота "300 px"-->
@@ -1065,7 +1067,7 @@
                   </div>
                 </div>
                 <div class="card card-full">
-                  <div class="card__imgbox card__imgbox_lg" style="background-image: url(img/img-block-full-02.jpg);" data-target="#modalImgBox" data-toggle="modal" data-target-content="#image_lg"><img class="card-image" id="image_lg" src="img/img-block-full-02.jpg"></div>
+                  <div class="card__imgbox card__imgbox_lg" style="background-image: url(img/img-block-full-02.jpg);" data-target="#modal-img-box" data-toggle="modal" data-target-content="#image_lg"><img class="card-image" id="image_lg" src="img/img-block-full-02.jpg"></div>
                 </div>
               </div>
               <!--Галерея - "Изображение", высота "210 px"-->
@@ -1078,7 +1080,7 @@
                   </div>
                 </div>
                 <div class="card card-full">
-                  <div class="card__imgbox card__imgbox_sm" style="background-image: url(img/img-block-full-03.jpg);" data-target="#modalImgBox" data-toggle="modal" data-target-content="#image_sm"><img class="card-image" id="image_sm" src="img/img-block-full-03.jpg"></div>
+                  <div class="card__imgbox card__imgbox_sm" style="background-image: url(img/img-block-full-03.jpg);" data-target="#modal-img-box" data-toggle="modal" data-target-content="#image_sm"><img class="card-image" id="image_sm" src="img/img-block-full-03.jpg"></div>
                 </div>
               </div>
               <!--Галерея - "Слайдер с описанием", тип "Светлый"-->
@@ -1797,7 +1799,7 @@
                           </div>
                         </div>
                       </div>
-                      <div class="comment-form-inn colapse show" id="commentFormbox">
+                      <div class="comment-form-inn colapse show" id="comment-formbox">
                         <div class="comment comment_special">
                           <div class="article-author">
                             <p class="article-author__left">Оставить комментарий:</p>
@@ -2125,12 +2127,12 @@
       <div class="container">
         <div class="row">
           <div class="col-12">
-            <button class="button button-up" id="btnUp"><i class="icon-arrow-down"></i></button>
+            <button class="button button-up" id="btn-up"><i class="icon-arrow-down"></i></button>
           </div>
         </div>
       </div>
     </div>
-    <div class="modal fade modal-main" id="modalImgBox" tabindex="-1" role="dialog" aria-labelledby="modalImgBoxLabel" aria-hidden="true">
+    <div class="modal fade modal-main" id="modal-img-box" tabindex="-1" role="dialog" aria-labelledby="modalImgBoxLabel" aria-hidden="true">
       <div class="modal-dialog container" role="document">
         <div class="modal-content">
           <div class="row">
@@ -2151,11 +2153,11 @@
               </div>
               <div class="modal-main__content">
                 <div class="modal-main-slider">
-                  <div class="modal-main-slider-wrap" id="modalMainSliderTop"></div>
+                  <div class="modal-main-slider-wrap" id="modal-main-slider-top"></div>
                 </div>
                 <div class="modal-main-slider-title"></div>
                 <div class="modal-main-slider modal-main-slider-bottom">
-                  <div class="modal-main-slider-wrap modal-main-slider-wrap_bottom" id="modalMainSliderBottom"></div>
+                  <div class="modal-main-slider-wrap modal-main-slider-wrap_bottom" id="modal-main-slider-bottom"></div>
                 </div>
                 <div class="modal-main-comments">
                   <div class="cards comments-dark">
@@ -2283,7 +2285,7 @@
                           </div>
                         </div>
                       </div>
-                      <div class="comment-form-inn colapse show" id="commentFormbox">
+                      <div class="comment-form-inn colapse show" id="comment-formbox">
                         <div class="comment comment_special">
                           <div class="article-author">
                             <p class="article-author__left">Оставить комментарий:</p>
@@ -2330,6 +2332,7 @@
     <script src="js/libs/validate/jquery.validate.min.js"></script>
     <script src="js/libs/jquery.maskedinput.min.js"></script>
     <script src="js/libs/bootstrap-modal-ios.js"></script>
+    <!--script(src='js/libs/detect-browser/detect-browser.js')-->
     <!-- main script-->
     <script src="js/main/main.js?0.3.9"></script><!--[if lte IE 9]><link href="ie9/css/bootstrap-ie9.css" rel="stylesheet" /><![endif]--><!--[if lte IE 9]><link rel="stylesheet" href="ie9/css/style-ie9.css" /><![endif]--><!--[if lte IE 9]><script src="ie9/js/bootstrap-ie9.js"></script><![endif]--><!--[if lte IE 9]><script src="ie9/js/main-ie9.js"></script><![endif]-->
     <script src="ie9/js/main-ie.js?0.3.9"></script>
