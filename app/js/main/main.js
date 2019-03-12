@@ -788,7 +788,6 @@ $(document).ready(function() {
 
 
 	// плавный скролл до элемента
-	//todo убрать код и использовать https://github.com/cferdinandi/smooth-scroll - нам такой скролл может пригодиться на любых страницах сайта. а не только в календаре
 
 	$(document).on('click', 'a.event, a.calendar__link', function() {
 		var link = $(this).attr('href');
@@ -843,16 +842,12 @@ $(document).ready(function() {
 		}
 	});
 
-
-	//todo что за кнопка, что это вообще такое? + btnUp -> btn-up
-
 	// скролл до самого верха страницы
 	$('#btn-up').click(function() {
 		$('html:not(:animated),body:not(:animated)').animate({scrollTop: 0 }, 800);
 		return false;
 	});
 
-	//todo добавить описание
 	/**
 	 * добавляет класс если страница
 	 * прокручена больше заданного значения
@@ -1010,7 +1005,9 @@ $(document).ready(function() {
 		},
 
 	];
-
+	// calendar.html
+	// calendar2.html
+	// calendar3.html
 	$('#page-calendar').datepicker({
 		showOtherMonths: true,
 		selectOtherMonths: true,
@@ -1378,7 +1375,16 @@ $(document).ready(function() {
 	$('.card-calendar td').tooltip();
 	$('.sliderBlog').slick();
 
-	/* СЛАЙДЕРЫ sliders ------------------------------------------------------------------------------*/
+
+	/*
+	* СЛАЙДЕРЫ sliders
+	*
+	* index.html
+	* gallery.html
+	* video.html
+	* spoyler.html
+	* others.html
+	*/
 	$('.widget-slider').slick({
 		autoplay: true,
 		prevArrow: '<div class="slider-arrow slider-arrow__left \
@@ -1468,7 +1474,12 @@ $(document).ready(function() {
 		]
 	});
 
-	/* Show long comment ----------------------------------------------------------------------------- */
+	/*
+	* Show long comment
+	*
+	* index.html
+	* gallery.html
+	* */
 	
 	var commentBox = $('.comment-box');
 	var commentHasComment = $('.comment:has(.comment)');
@@ -1857,6 +1868,7 @@ $(document).ready(function() {
 
 	/**
 	 * Свои иконки меню "Системы"
+	 *
 	 * profile.html
 	 */
 	var iconDefault;
@@ -2055,6 +2067,7 @@ $(document).ready(function() {
 
 	/*
 	 * Форма обращения с произвольным именем
+	 *
 	 * others.html
 	 */
 	var defaultTextBtn = $('#form-more-inputs-control').text();
@@ -2107,6 +2120,7 @@ $(document).ready(function() {
 
 	/**
 	 * спойдлеры
+	 * 
 	 * spoyler.html
 	 */
 	var collapsedElement = $('.article.collapse, .card.collapse');
