@@ -1,8 +1,5 @@
 $(document).ready(function (){
-	var ua = window.navigator.userAgent.toLowerCase();
-	var ie = (/trident/gi).test(ua) || (/msie/gi).test(ua);
-	var edge = ((/edge/).test(ua));
-	var ie9 = 	document.all && !window.atob;
+	var ie = $.browser.msie;
 
 	if (ie) {
 		var header = $('.header');

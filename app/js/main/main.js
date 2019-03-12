@@ -1,15 +1,11 @@
 $(document).ready(function() {
-	//todo в инете полно библиотек, которые умеют определять браузер https://github.com/lancedikson/bowser
-	var ua = window.navigator.userAgent.toLowerCase();
-	var ie = (/trident/gi).test(ua) || (/msie/gi).test(ua);
-	var	edge = ((/edge/).test(ua));
-	var safari = /Safari/.test(navigator.userAgent) && /Apple Computer/.test(navigator.vendor);
+	var ie = $.browser.msie;
+	var	edge = $.browser.edge;
+	var safari = $.browser.safari;
 	var scrollbarWidth = $(document).scrollbarWidth();
 	var mobile = $(this).outerWidth() < 768;
 
-	// safari = true;
-
-	$(window).resize(function (e){
+	$(window).resize(function (){
 		mobile = $(this).outerWidth() < 768;
 		scrollbarWidth = $(document).scrollbarWidth();
 	});
@@ -44,10 +40,7 @@ $(document).ready(function() {
 	$(tel).on('change focus click', function() {
 		$(this)[0].setSelectionRange(0, 0);
 	});
-
-
-	// todo для чего этот обработчик? не для всего же сайта, правильно?
-
+	
 	/**
 	 * multiple select
 	 * множественный выбор по клику
@@ -72,15 +65,16 @@ $(document).ready(function() {
 	// menu-burger ---------------------------------------------------------------------------------------------------
 	var header = $('.header');
 	var content = $('.header + *');
+	var aside = $('#aside');
 	var menuNavHeaderGroup = $('#menu-nav-header-group');
 
-	$(menuNavHeaderGroup).on('show.bs.collapse', function(e) {
+	$(menuNavHeaderGroup).on('show.bs.collapse', function() {
 		var menuNavHeader = $(this).parents('.menu-nav-header');
 
 		$(menuNavHeader).addClass('show');
 	});
 
-	$(menuNavHeaderGroup).on('hidden.bs.collapse', function(e) {
+	$(menuNavHeaderGroup).on('hidden.bs.collapse', function() {
 		var menuNavHeader = $(this).parents('.menu-nav-header');
 
 		if (!mobile) $(menuNavHeader).removeClass('show');
@@ -90,7 +84,7 @@ $(document).ready(function() {
 	// сворачиваем меню если развернуто
 	var rollUp = $('.roll-up');
 
-	$(rollUp).on('click', function(event) {
+	$(rollUp).on('click', function() {
 		$(document).trigger('scroll');
 	});
 
@@ -203,7 +197,7 @@ $(document).ready(function() {
 	var btnDeploy = $('#btn-deploy');
 	var menuLeftList = $('#menu-left-list');
 
-	$(btnDeploy).click(function(event) {
+	$(btnDeploy).click(function() {
 		$(header).removeClass('scroll').css({
 			'position': 'fixed',
 			'padding-bottom': '10px'
@@ -258,7 +252,6 @@ $(document).ready(function() {
 				paddingRight: scrollbarWidth,
 			});
 		}
-		var headerPositionDefault = $(header).css('position');
 
 		// обертка для header
 		$(header).wrap('<div class="extra-wrapper"></div>');
@@ -312,15 +305,13 @@ $(document).ready(function() {
 
 	var checkboxes = $('input[type="checkbox"].setting-form-checkbox__input');
 	var settingForm = $('.setting-form');
-	var checkboxChecked = $(settingForm).find('input[type="checkbox"]:checked');
-	var checkboxCheckedInch = checkboxChecked.length;
 	var defaultCheckboxChecked = checkboxDisable($(settingForm), 10);
 	var navSettingWrap = $('.nav-setting-wrap');
 	var defaultSettingBoxes = $(navSettingWrap).html();
 
 	// сброс формы
 
-	$(settingForm).on('click', 'button.form-setting-button:reset', function(event) {
+	$(settingForm).on('click', 'button.form-setting-button:reset', function() {
 
 		$(navSettingWrap).html(defaultSettingBoxes);
 		checkboxDisable($(this), 10, defaultCheckboxChecked, 0);
@@ -356,12 +347,12 @@ $(document).ready(function() {
 			type: $form.attr('method'),
 			url: $form.attr('action'),
 			data: $form.serialize()
-		}).done(function(msg) {
+		}).done(function() {
 
 			$('[data-nav-control='+buttons+']').removeClass('active');
 
 
-		}).fail(function(msg) {
+		}).fail(function() {
 			alert('Ошибка! Обратитесь к администратору.');
 		});
 		//отмена действия по умолчанию для кнопки submit
@@ -379,12 +370,10 @@ $(document).ready(function() {
 	 * @returns {Object} checkboxArrDefault возвращает изначальное положение элементов
 	 */
 	function checkboxDisable(form, max, checkboxArrDefault, speedArg) {
-		var checkbox = form.find('input[type="checkbox"]'),
-				checkboxChecked,
+		var checkboxChecked,
 				checkboxNotChecked,
 				checkboxCheckedInch,
-				speed = speedArg,
-				checkboxArrID;
+				speed = speedArg;
 
 		if (speed === undefined) {
 			speed = 400;
@@ -424,7 +413,7 @@ $(document).ready(function() {
 				$(itemNotChecked).prop("disabled", true);
 				$(itemNotChecked).parent().tooltip('enable');
 			}
-			for (var i = checkboxCheckedArrID.length - 1; i >= 0; i--) {
+			for (i = checkboxCheckedArrID.length - 1; i >= 0; i--) {
 				var itemChecked = $('#'+checkboxCheckedArrID[i]);
 
 				$('[data-control='+checkboxCheckedArrID[i]+']').show(speed);
@@ -456,7 +445,7 @@ $(document).ready(function() {
 			positionTwo = positionOne * 2,
 			asideHeight,
 			positionThree =  positionTwo + positionOne,
-			asideWidth = $('#aside').parent().width(),
+			asideWidth = $(aside).parent().width(),
 			windowHeight = $(window).outerHeight(),
 			windowMoreAside,
 			currentScroll = 0;
@@ -523,6 +512,8 @@ $(document).ready(function() {
 			}
 		}, 800);
 	});
+
+	// запоминаем свернуто ли левок меню
 	var menuLeftListControl = $('#menu-left-list-control');
 	$(menuLeftListControl).on('click', function() {
 		var position = $(window).scrollTop();
@@ -533,16 +524,18 @@ $(document).ready(function() {
 			menuLeftListDefault = !menuLeftListDefault;
 		}
 	});
+
+	// fix bags scroll
 	if (safari || edge || ie) {
 		$(header).css({'position': 'fixed'}).addClass('fixed');
 		$(content).css('padding-top', positionContent);
 	}
+
 	if (!ie) {
 		var headerBread = $('.header .breadcrumb');
-		var aside = $('#aside');
 		var dropdownMenu = $('.dropdown-menu');
 
-		$(document).on('scroll', function(e) {
+		$(document).on('scroll', function() {
 			var windowHeight = $(window).outerHeight();
 			var position = $(this).scrollTop();
 			var positionBottom = position + windowHeight;
@@ -641,7 +634,6 @@ $(document).ready(function() {
 				}
 				if (!edge && !safari) $(header).removeAttr('style');
 				addClassScroll($(header));
-				positionContent = $(header).actual('outerHeight');
 			}
 
 			// scroll bottom
@@ -779,7 +771,7 @@ $(document).ready(function() {
 		});
 	}
 
-	$(document).on('scroll', function(e) {
+	$(document).on('scroll', function() {
 		var position = $(this).scrollTop();
 		if (position <= 0) {
 			setTimeout(function() {
@@ -798,7 +790,7 @@ $(document).ready(function() {
 	// плавный скролл до элемента
 	//todo убрать код и использовать https://github.com/cferdinandi/smooth-scroll - нам такой скролл может пригодиться на любых страницах сайта. а не только в календаре
 
-	$(document).on('click', 'a.event, a.calendar__link', function(event) {
+	$(document).on('click', 'a.event, a.calendar__link', function() {
 		var link = $(this).attr('href');
 		var elementToScroll = $('#' + link.split('#')[1]);
 
@@ -810,20 +802,20 @@ $(document).ready(function() {
 	/**
 	 * функция скролит до элемента с учетом высоты header
 	 *
-	 * @param {Object} $elementToScroll
+	 * @param {selector|Object} elementToScroll
 	 * @returns {boolean}
 	 */
-	function scrollTo ($elementToScroll) {
-		var elementToScroll = $($elementToScroll);
-		var elementToScrollPos = elementToScroll.offset().top;
+	function scrollTo (elementToScroll) {
+		var elementScroll = $(elementToScroll);
+		var elementToScrollPos = elementScroll.offset().top;
 		var headerHeight = $(header).outerHeight(); // высота хэдера
 		if (elementToScrollPos < positionTwo) {
-			elementToScrollPos = elementToScroll.offset().top - headerHeight - 45;
+			elementToScrollPos = elementScroll.offset().top - headerHeight - 45;
 		} else {
-			elementToScrollPos = elementToScroll.offset().top - 90;
+			elementToScrollPos = elementScroll.offset().top - 90;
 		}
 
-		if (elementToScroll !== undefined) {
+		if (elementScroll !== undefined) {
 			$('html:not(:animated),body:not(:animated)').animate({scrollTop: elementToScrollPos}, 800);
 			return false;
 		}
@@ -1099,12 +1091,6 @@ $(document).ready(function() {
 			addPreloader(this);
 		},
 		onSelect: function (dateString, item) {
-			var options = {
-				year: 'numeric',
-				month: '2-digit',
-				day: '2-digit',
-			};
-
 			var dateStringArr = dateString.split('.');
 			var dateFormat = dateStringArr[1]+'/'+dateStringArr[0]+'/'+dateStringArr[2];
 
@@ -1402,7 +1388,7 @@ $(document).ready(function() {
 	});
 	var cardFullSliderWrap = $('.card-full-slider-wrap');
 	$(cardFullSliderWrap).on('init reInit afterChange',
-		function(event, slick, currentSlide, nextSlide){
+		function(event, slick, currentSlide){
 			var status = $(this).find('.card-slider-number span'),
 					slide = $(this).find('.card__imgbox');
 			slide.attr('data-current-slide', currentSlide);
@@ -1544,7 +1530,7 @@ $(document).ready(function() {
 	var elControlDefaultText;
 
 	// разворачиваем длинный комментарий
-	$(document).on('click', '.comment-long__showbtn', function(event) {
+	$(document).on('click', '.comment-long__showbtn', function() {
 		var el = $(this),
 				elParent = el.parents('.comment-box'),
 				text = $(elParent).find('.comment__text > *'),
@@ -2117,7 +2103,6 @@ $(document).ready(function() {
 		} else {
 			$(formSlideInput).toggle('slide');
 		}
-
 	});
 
 	/**
@@ -2161,8 +2146,8 @@ $(document).ready(function() {
 	/**
 	 * скрытие элемента при клике не по нему
 	 *
-	 * @param {string} bootstrapEvent
-	 * @returns {*}
+	 * @param {string} [bootstrapEvent=unbind]
+	 * @returns {this}
 	 */
 	jQuery.fn.hideClickAway = function(bootstrapEvent){
 
