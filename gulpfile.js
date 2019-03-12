@@ -44,6 +44,15 @@ gulp.task('sass-watch', gulp.series('sass'), function (done) {
     done();
 });
 
+gulp.task('sass-build', function (done) {
+    gulp.src('app/sass/**/*.+(scss|sass)') // Берем источник
+      .pipe(sass()) // Преобразуем Sass в CSS посредством gulp-sass
+      .pipe(gcmq()) // Группируем медиа
+      .pipe(autoprefixer(['last 15 versions', '> 0.1%', 'ie 8', 'ie 7'], { cascade: true })) // Создаем префиксы
+      .pipe(gulp.dest('app/css')); // Выгружаем результата в папку app/css
+    done();
+});
+
 gulp.task('pug-w', function buildHTML() {
   return gulp.src(['app/pug/**/*.pug', '!app/pug/**/_*.pug'])
   .pipe(pug({
@@ -55,6 +64,15 @@ gulp.task('pug-w', function buildHTML() {
       })) )
   .pipe(gulp.dest('app'))
   .pipe(browserSync.reload({stream: true}))
+});
+
+gulp.task('pug-build', function buildHTML(done) {
+  gulp.src(['app/pug/**/*.pug', '!app/pug/**/_*.pug'])
+  .pipe(pug({
+    pretty: true,
+  }))
+  .pipe(gulp.dest('app'));
+  done();
 });
 
 gulp.task('pug-watch', gulp.series('pug-w'), function (done) {
@@ -130,7 +148,7 @@ gulp.task('optimize', gulp.series('clean-min', 'min-css', 'min-js'));
 //         .pipe(gulp.dest('app/min/img'));
 // });
 
-gulp.task('build', gulp.series('clean', 'optimize', function(done) {
+gulp.task('build', gulp.series('sass-build','pug-build', 'clean', 'optimize', function(done) {
 
     gulp.src('app/fonts/**/*') // Переносим шрифты в продакшен
     .pipe(gulp.dest('dist/fonts'));
