@@ -35,7 +35,7 @@ html(lang='ru')
 					.col-12.col-md-9
 						.content-group#content
 							//- block vars
-							
+
 							block content
 								- var eventDate = '';
 								- var pageTitle = '';
@@ -50,28 +50,28 @@ html(lang='ru')
 							i.icon-arrow-down
 		include ../modals/_modal
 		include ../modals/_modal-content-slider
-		// /.container
-		// /.footer
 		// jQuery
 		script(src='js/libs/jquery.min.js')
+
 		// jQuery-UI
 		script(src='jquery-ui-1.12.1.custom/jquery-ui.min.js')
 		script(src='jquery-ui-1.12.1.custom/datepicker-ru.js')
-		//script(src='jquery-ui-1.12.1.custom/datepicker.extension.range.min.js')
 		script(src='jquery-ui-1.12.1.custom/jquery.ui.touch-punch.min.js')
-		script(src='js/libs/jquery.dotdotdot.js')
+
 		// slick
 		script(src='slick/slick.min.js')
+
 		// Bootstrap
-		//+ie('if ! IE 9', '<script src="js/libs/bootstrap/bootstrap.bundle.min.js"></script>')
 		script(src='js/libs/bootstrap/bootstrap.bundle.min.js')
-		script(src='js/libs/jquery.actual.min.js')
+		script(src='js/libs/bootstrap-modal-ios.js')
+
 		// Валидация
 		script(src='js/libs/validate/jquery.validate.min.js')
 		script(src='js/libs/jquery.maskedinput.min.js')
-		script(src='js/libs/bootstrap-modal-ios.js')
 		script(src='js/libs/getbrowser/getBrowser.js')
+
 		// main script
+		script(src='js/libs/jquery.actual.min.js')
 		script(src='js/main/main.js'+version)
 
 		+ie('if lte IE 9', '<link href="ie9/css/bootstrap-ie9.css" rel="stylesheet" />')
