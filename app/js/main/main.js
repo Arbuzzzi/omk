@@ -210,7 +210,6 @@ $(document).ready(function() {
 	});
 
 	// настройки показываются
-	//todo ниже много кода, который непонятно что делает и зачем. нужно расписать хотя бы комментами, если кодом не получается
 	var headerNavSetting = $('#header-nav-setting');
 
 	$(headerNavSetting).on('show.bs.collapse', function () {
