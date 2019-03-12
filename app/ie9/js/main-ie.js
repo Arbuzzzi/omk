@@ -8,30 +8,20 @@ $(document).ready(function (){
 		var headerNavSystem = $('#header-nav');
 		var menuLeft = $('#menu-left-list');
 
-		var chekPosContent;
-		var menuLeftListDeafult = $(menuLeft).hasClass('show');
-
 		var positionContent = $(header).actual('outerHeight');
-		var positionContentDefault = positionContent;
 		var positionOne = $(window).innerHeight();
 		var positionTwo = positionOne * 2;
 		var positionThree =  positionTwo + positionOne;
-
-		var asideHeight;
-		var asideWidth = $('#aside').parent().width();
-		var windowHeight = $(window).outerHeight();
-		var windowMoreAside;
-
-		var currentScroll = 0;
+		var paddingTopContentMax = $(header).actual('outerHeight');
 
 		// start scrolling
-		$(document).on('scroll', function(event) {
-			var position = $(this).scrollTop(),
-				heightHeader = $('.header:not(.header.scroll)').outerHeight(),
-				positionContentEvent = $('.content').offset().top,
-				asideBig = $('#aside').outerHeight() > $('#content').outerHeight(),
-				headerNavSystemIsShow = $(headerNavSystem).hasClass('show');
+		$(document).on('scroll', function() {
+			var position = $(this).scrollTop();
+			var headerNavSystemIsShow = $(headerNavSystem).hasClass('show');
 
+			positionContent = $(header).actual('outerHeight');
+
+			if (paddingTopContentMax < positionContent) paddingTopContentMax = positionContent;
 
 			if (position > 0 && !$(header).hasClass('scroll-ie')) {
 				$(header).css({'position': 'fixed'});
@@ -42,14 +32,15 @@ $(document).ready(function (){
 				$(menuLeft).collapse('hide');
 				$(headerBread).css('padding-bottom', '15px');
 
-			} else if (position <= 0){
+			} else if (position <= 0){ // скролл самый верх
 				$(header).removeClass('scroll-ie');
 				$(menuLeft).collapse('show');
 				$(headerNavSystem).collapse('show');
 				$(headerBread).css('padding-bottom', '');
+				$(content).animate({paddingTop: paddingTopContentMax}, 300);
 			}
 
-			if (position > positionThree) {
+			if (position > positionThree) { // высота прокрутка больше 2х экранов
 				if (headerNavSystemIsShow) {
 					$(headerNavSystem).collapse('hide');
 				}
@@ -71,9 +62,11 @@ $(document).ready(function (){
 			$(headerNavSystem).collapse('hide');
 			$(headerBread).css('padding-bottom', '15px');
 		}
+		// фиксируем хэдер
 		$(header).css({'position': 'fixed'}).addClass('fixed');
 		$(content).css('padding-top', positionContent);
 
+		// добавляем отступ хэдеру при открытии модальных окон
 		$($('[data-toggle="modal"]').data('target')).on('show.bs.modal', function (){
 			var scrollbarWidth = $(document).scrollbarWidth();
 			if ($(header).hasClass('fixed')){
@@ -83,6 +76,7 @@ $(document).ready(function (){
 			}
 		});
 
+		// разворачивние меню "системы" сохранение отступов
 		$(headerNavSystem).on('show.bs.collapse', function (){
 			var position = $(document).scrollTop();
 			if (position <= 0) {
@@ -99,7 +93,7 @@ $(document).ready(function (){
 				$(content).css('padding-top', positionContent);
 			}
 		});
-
+		// сворачивание меню "системы" сохранение отступов
 		$(headerNavSystem).on('hide.bs.collapse', function (){
 			var position = $(document).scrollTop();
 			if (position <= 0) {
@@ -119,6 +113,15 @@ $(document).ready(function (){
 
 	}
 
+	/**
+	 * добавляет класс если страница
+	 * прокручена больше заданного значения
+	 *
+	 * @param {Object} element
+	 * @param {string} [$class='scroll']
+	 * @param {number} [positionMax=200]
+	 * @returns {number} возвращает текущее значение scrollTop()
+	 */
 	function addClassScroll(element, $class, positionMax) {
 		var position = $(this).scrollTop();
 		if ($class === undefined) {

@@ -660,15 +660,11 @@ $(document).ready(function() {
 
 					if (position > currentScroll) { // скроллим вниз
 
-						var hasAsideTop;
-						hasAsideTop = $(aside).hasClass('scrollingTop');
-
 						if (position > 0) {
 							$(aside).removeClass('scrollingTop');
 
 							if (!$(aside).hasClass('scrollingBottom')) {
 								asideOffsetTop = $(aside).offset().top;
-								headerHeight = $(header).actual('outerHeight');
 								contentPadding = parseInt($(content).css('padding-top'));
 
 								$(aside).addClass('scrollingBottom');
@@ -906,7 +902,7 @@ $(document).ready(function() {
 	$(menuLeftList).on('hide.bs.collapse', function() {
 		var btn = $(menuLeftListControl);
 		btn.removeClass('active');
-		$(navMoreListControl).attr('data-toggle', 'dropdown')
+		$(navMoreListControl).attr('data-toggle', 'dropdown');
 		$('.menu-left-more__button>i').animate({opacity: 'show'}, 400);
 		$(leftNavigationPseudo).collapse('hide')
 
@@ -916,14 +912,14 @@ $(document).ready(function() {
 	$(leftNavigationPseudo).html('<div style="height:'+menuLeftListHeight+'px;"></div>');
 
 	// ставим лайки
-	$(document).on('click', '.like-button:not(.comment-button)', function(event) {
+	$(document).on('click', '.like-button:not(.comment-button)', function() {
 		$(this).toggleClass('active');
 
 	});
 
 
 	// скрываем показываем фильтры
-	$('#content-filter-button').on('click', function(event) {
+	$('#content-filter-button').on('click', function() {
 		var options = {
 			direction: 'right'
 		};
@@ -934,7 +930,7 @@ $(document).ready(function() {
 	var periodDateBuffer = $('[name="period_date_buffer"]');
 	var filtersCalendarPeriod = $('#filters-calendar-period');
 
-	$(filtersCalendarPeriod).on('change click', function(event) {
+	$(filtersCalendarPeriod).on('change click', function() {
 		if ($(this).val() === 'true-date') {
 			$(this).val('');
 			$(periodDateBuffer).datepicker($.datepicker.regional[ "ru" ]);
@@ -947,7 +943,7 @@ $(document).ready(function() {
 		}
 	});
 
-	$(periodDateBuffer).on('change', function(event) {
+	$(periodDateBuffer).on('change', function() {
 		var periodDate = $('#period-date');
 
 		$(filtersCalendarPeriod).find('option').removeAttr('selected');
