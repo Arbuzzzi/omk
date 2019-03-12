@@ -9602,7 +9602,7 @@ select.form-control:not([size]):not([multiple]) {
   }
 
   .widget-content__right {
-    max-width: 45%;
+    max-width: 54px;
   }
 
   .widget-title {

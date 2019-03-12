@@ -167,7 +167,8 @@
 			max-width: 114px;
 			text-align: right;
 			@include lg-block {
-				max-width: 45%;
+				//max-width: 45%;
+				max-width: 54px;
 			}
 		}
 	}
