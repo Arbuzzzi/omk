@@ -40,7 +40,7 @@ $(document).ready(function() {
 	$(tel).on('change focus click', function() {
 		$(this)[0].setSelectionRange(0, 0);
 	});
-	
+
 	/**
 	 * multiple select
 	 * множественный выбор по клику
