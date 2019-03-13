@@ -97,14 +97,14 @@ gulp.task('ie9', function(done) {
     done();
 });
 
-gulp.task('watch', function() {
+gulp.task('watch', gulp.parallel('browser-sync', function() {
     if (sassUse) gulp.watch('app/css/style-ie9.css', gulp.series('ie9', 'reload'));
     if (sassUse) gulp.watch('app/sass/**/**/*.+(scss|sass)', gulp.series('sass-watch')); // Наблюдение за sass файлами в папке sass
     if (pugUse) gulp.watch('app/**/*.pug', gulp.series('pug-watch')); // Наблюдение за PUG файлами в корне проекта
     if (!pugUse) gulp.watch('app/*.html', browserSync.reload); // Наблюдение за HTML файлами в корне проекта
     if (!sassUse) gulp.watch('app/**/*.css', browserSync.reload); // Наблюдение за CSS файлами в корне проекта
     gulp.watch('app/**/*.js', gulp.series('reload'));   // Наблюдение за JS файлами в папке js
-});
+}));
 
 gulp.task('min-js', function () {
     return gulp.src('app/js/**/*.js')
@@ -188,7 +188,7 @@ gulp.task('clear', function () {
     return cache.clearAll();
 });
 
-gulp.task('default', gulp.parallel('watch', 'browser-sync'));
+gulp.task('default', gulp.series('sass-watch', 'pug-watch', 'watch'));
 
 //  Команды в окне команд:
 //  "gulp" - запускаем watch
