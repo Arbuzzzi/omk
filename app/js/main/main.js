@@ -162,7 +162,7 @@ $(document).ready(function() {
 			var position = $(document).scrollTop();
 			if (position <= 0) {
 				$(header).css({'position': ''});
-				$(content).css('padding-top', '');
+				$(content).stop(true).css('padding-top', '');
 			}
 		});
 
@@ -171,7 +171,7 @@ $(document).ready(function() {
 			if (position <= 0){
 				positionContent = $(header).actual('outerHeight');
 				$(header).css({'position': 'fixed'});
-				$(content).css('padding-top', positionContent);
+				$(content).stop(true).css('padding-top', positionContent);
 			}
 		});
 
@@ -179,7 +179,7 @@ $(document).ready(function() {
 			var position = $(document).scrollTop();
 			if (position <= 0) {
 				$(header).css({'position': ''});
-				$(content).css('padding-top', '');
+				$(content).stop(true).css('padding-top', '');
 			}
 		});
 
@@ -188,7 +188,7 @@ $(document).ready(function() {
 			if (position <= 0){
 				positionContent = $(header).actual('outerHeight');
 				$(header).css({'position': 'fixed'});
-				$(content).css('padding-top', positionContent);
+				$(content).stop(true).css('padding-top', positionContent);
 			}
 		});
 	}
