@@ -5559,6 +5559,7 @@ select.form-control:not([size]):not([multiple]) {
   display: inline-block;
   margin: 0;
   color: #797c82;
+  line-height: normal;
   font-size: 0;
   font-weight: 400;
   text-align: center;
