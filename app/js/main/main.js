@@ -1705,9 +1705,10 @@ $(document).ready(function() {
 	/* modals -------------------------------------------------------------------------------- */
 
 	// header fix bug
-	// добавлет отступ при открытии модальных окон
+
 	var modals = $($('[data-toggle="modal"]').data('target'));
 
+	// добавлет отступ при открытии модальных окон
 	$(modals).on('show.bs.modal', function (){
 		if ($(header).hasClass('fixed')){
 			$(header).css({
@@ -1763,7 +1764,7 @@ $(document).ready(function() {
 	});
 
 	// модальное окно со слайдером и комментариями
-	var modalContentSlider = $('#modalContentSlider');
+	var modalContentSlider = $('#modal-content-slider');
 	$(modalContentSlider).on('show.bs.modal', function(event) {
 		var modal 				= $(this),
 				modalContent  = modal.find('.modal-main__content'),
@@ -1787,6 +1788,12 @@ $(document).ready(function() {
 
 		addPreloader(modalContent);
 
+		// сохраняем отступ у хедэра
+		if ($(header).hasClass('fixed')){
+			$(header).css({
+				paddingRight: scrollbarWidth,
+			})
+		}
 		/**
 		 * возвращает элементы слайдера
 		 *
@@ -1852,20 +1859,27 @@ $(document).ready(function() {
 	});
 
 	var modalMainSliderBottom = $('#modal-main-slider-bottom');
-	$(modalMainSliderBottom).on('click', '.slick-slide', function(event) {
+	$(modalMainSliderBottom).on('click', '.slick-slide', function() {
 		var eventSlide = $(modalMainSliderBottom).slick('slickCurrentSlide');
 		$('#modal-main-slider-top').slick('slickGoTo', eventSlide);
 	});	
 
-	$(modalContentSlider).on('hidden.bs.modal', function(event) {
+	$(modalContentSlider).on('hidden.bs.modal', function() {
 		var modalContent = $(this),
 				sliderModal = modalContent.find('.modal-main-slider-wrap');
 		modalContent.modal('dispose');
 		$(sliderModal).slick('unslick');
 		$('.preloader').stop().show();
+
+		// сохраняем отступ у хедэра
+		if ($(header).hasClass('fixed')){
+			$(header).css({
+				paddingRight: '',
+			})
+		}
 	});
 
-	$(document).on('click', '.card-number-elem', function(event) {
+	$(document).on('click', '.card-number-elem', function() {
 			var elEvent = $(this);
 
 			var textArea = $(modalContentSlider).find('.comment-form__textarea:visible');

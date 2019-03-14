@@ -56,10 +56,13 @@ body {
   line-height: normal;
 	&.modal-open {
 		.header {
-			//transform: translateX(-8px);
+			transition: none !important;
+			&:before {
+				margin-left: -8px;
+				transition: none !important;
+			}
 
 			@media (min-width: 768px) {
-				//padding-right: 0px !important;
 			}
 			@include md-block {
 				//transform: none;

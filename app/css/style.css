@@ -689,6 +689,19 @@ body {
   line-height: normal;
 }
 
+body.modal-open .header {
+  -webkit-transition: none !important;
+  -o-transition: none !important;
+  transition: none !important;
+}
+
+body.modal-open .header:before {
+  margin-left: -8px;
+  -webkit-transition: none !important;
+  -o-transition: none !important;
+  transition: none !important;
+}
+
 img {
   max-width: 100%;
 }
@@ -3023,9 +3036,6 @@ select.form-control:not([size]):not([multiple]) {
   border: 1px solid #DDDEE0;
   -webkit-border-radius: 5px;
           border-radius: 5px;
-  -webkit-transition: 0.4s;
-  -o-transition: 0.4s;
-  transition: 0.4s;
   opacity: 0;
 }
 
