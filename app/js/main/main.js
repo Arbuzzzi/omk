@@ -523,7 +523,9 @@ $(document).ready(function() {
 			menuLeftListDefault = !menuLeftListDefault;
 		}
 	});
-
+	if ($(document).scrollTop() >= positionThree) {
+		$(leftNavigationPseudo).collapse('hide');
+	}
 	// fix bags scroll
 	if (safari || edge || ie) {
 		$(header).css({'position': 'fixed'}).addClass('fixed');
@@ -1387,7 +1389,9 @@ $(document).ready(function() {
 		nextArrow: '<div class="slider-arrow slider-arrow__right \
 								widget-slider-arrow widget-slider-arrow__right"></div>',
 	});
+
 	var cardFullSliderWrap = $('.card-full-slider-wrap');
+
 	$(cardFullSliderWrap).on('init reInit afterChange',
 		function(event, slick, currentSlide){
 			var status = $(this).find('.card-slider-number span'),
@@ -1399,10 +1403,13 @@ $(document).ready(function() {
 			
 	});
 
-	$('.card-modern-slider-wrap').on('init reInit afterChange',
+	var cardModernSliderWrap = $('.card-modern-slider-wrap');
+
+	$(cardModernSliderWrap).on('init reInit afterChange',
 		function(event, slick, currentSlide, nextSlide){
-			var status = $(this).find('.card-slider-number_modern span'),
-					slide = $(this).find('.card__imgbox');
+			var slider = $(this);
+			var status = $(this).find('.card-slider-number_modern span');
+			var slide = $(this).find('.card__imgbox');
 			slide.attr('data-current-slide', currentSlide);
 			//currentSlide is undefined on init -- set it to 0 in this case (currentSlide is 0 based)
 			var i = slick.currentSlide;
@@ -1411,12 +1418,37 @@ $(document).ready(function() {
 			var numberSlide2 = i + 2 <= slidesLength ? i + 2 : i - (slidesLength - 2);
 			var numberSlide3 = i + 3 <= slidesLength ? i + 3 : i - (slidesLength - 3);
 			var numberSlide4 = i + 4 <= slidesLength ? i + 4 : i - (slidesLength - 4);
-
-			status.html('<strong>'+numberSlide1+'</strong>' + ' ' +
-				numberSlide2 + ' ' +
-				numberSlide3 + ' ' +
-				numberSlide4 + '...');
+			switch (slidesLength){
+				case 1:
+					break;
+				case 2:
+					status.html('<strong>'+numberSlide1+'</strong>' + '&#8194;' +
+						'<span class="slide-num">'+numberSlide2+'</span>' + '&#8194;');
+					break;
+				case 3:
+					status.html('<strong>'+numberSlide1+'</strong>' + '&#8194;' +
+						'<span class="slide-num">'+numberSlide2+'</span>' + '&#8194;' +
+						'<span class="slide-num">'+numberSlide3+'</span>' + '&#8194;');
+					break;
+				case 4:
+					status.html('<strong>'+numberSlide1+'</strong>' + '&#8194;' +
+						'<span class="slide-num">'+numberSlide2+'</span>' + '&#8194;' +
+						'<span class="slide-num">'+numberSlide3+'</span>' + '&#8194;' +
+						'<span class="slide-num">'+numberSlide4+'</span>' + '&#8194;');
+					break;
+				default:
+					status.html('<strong>'+numberSlide1+'</strong>' + '&#8194;' +
+						'<span class="slide-num">'+numberSlide2+'</span>' + '&#8194;' +
+						'<span class="slide-num">'+numberSlide3+'</span>' + '&#8194;' +
+						'<span class="slide-num">'+numberSlide4+'</span>' + ' ...');
+					break;
+			}
+			status.find('.slide-num').on('click', function() {
+				var slideDigit = parseInt($(this).text());
+				$(slider).slick('slickGoTo', slideDigit - 1);
+			});
 	});
+
 
 	$(cardFullSliderWrap).slick({
 		prevArrow: '<div class="slider-arrow slider-arrow__left"></div>',
@@ -1711,7 +1743,7 @@ $(document).ready(function() {
 		addPreloader($(modalContent).parent(), 600);
 	});
 
-	$(modalVideo).on('hidden.bs.modal', function(event) {
+	$(modalVideo).on('hidden.bs.modal', function() {
 		var modal = $(this),
 			modalContent = modal.find('.modal-video iframe');
 

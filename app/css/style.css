@@ -4718,6 +4718,10 @@ select.form-control:not([size]):not([multiple]) {
   font-weight: 400;
 }
 
+.card-slider-number_modern .slide-num {
+  cursor: pointer;
+}
+
 .card-slider-number_modern strong {
   font-size: 18px;
   font-weight: 400;
@@ -4859,6 +4863,8 @@ select.form-control:not([size]):not([multiple]) {
 .card-modern__content .card__text p {
   margin-bottom: 15px;
   font-weight: 400;
+  line-height: 1.4;
+  color: #d0d1d3;
 }
 
 .card-modern__content_bottom {
@@ -8823,6 +8829,10 @@ select.form-control:not([size]):not([multiple]) {
     padding: 14px;
   }
 
+  .card-slider-number_modern .slide-num:hover {
+    color: #ffffff;
+  }
+
   .card-user:hover .card-user__photo {
     border-color: #ee3124;
   }
@@ -11011,10 +11021,12 @@ select.form-control:not([size]):not([multiple]) {
 
   .article-author .article-author__left {
     margin-top: 0;
+    line-height: normal;
   }
 
   .article-author .article-author__username {
-    margin-top: -4px;
+    margin-top: -2px;
+    line-height: 16px;
   }
 
   .article-author__left {
@@ -11056,6 +11068,14 @@ select.form-control:not([size]):not([multiple]) {
   .comments-dark .article-author__username {
     font-size: 6px;
     margin: 0;
+  }
+
+  .comments-dark .article-author .article-author__left {
+    line-height: 16px;
+  }
+
+  .comments-dark .article-author .article-author__username {
+    line-height: 16px;
   }
 
   .circuit-item__link {

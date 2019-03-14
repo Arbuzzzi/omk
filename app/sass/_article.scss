@@ -177,13 +177,15 @@
 		.article-author__left {
 			@include xs-block {
 				margin-top: 0;
+				line-height: normal;
 			}
 
 		}
 		.article-author__username {
 			margin-top: 0.5px;
 			@include xs-block {
-				margin-top: -4px;
+				margin-top: -2px;
+				line-height: 16px;
 			}
 
 		}

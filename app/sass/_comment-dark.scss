@@ -54,5 +54,17 @@
 				margin: 0;
 			}
 		}
+		.article-author__left {
+			@include xs-block {
+				line-height: 16px;
+			}
+
+		}
+		.article-author__username {
+			@include xs-block {
+				line-height: 16px;
+			}
+
+		}
 	}
 }
