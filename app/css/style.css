@@ -5739,6 +5739,7 @@ select.form-control:not([size]):not([multiple]) {
   display: none;
   height: 168px;
   margin-top: -5px;
+  overflow: hidden;
 }
 
 .event {
@@ -10666,6 +10667,14 @@ select.form-control:not([size]):not([multiple]) {
 
   .like-button {
     font-size: 12px;
+  }
+
+  .card-modern__info {
+    margin-left: auto;
+  }
+
+  .card-modern__content {
+    max-width: none;
   }
 
   .card-icons__iconbox {

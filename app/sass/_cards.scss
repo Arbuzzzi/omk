@@ -760,6 +760,9 @@
 				height: 310px;
 				padding-left: 15px;
 			}
+			@include sm-block {
+				margin-left: auto;
+			}
 			@include xs-block {
 				height: 340px;
 				padding-right: 15px;
@@ -777,6 +780,9 @@
 				padding-left: 0;
 				vertical-align: bottom;
 				max-width: 270px;
+			}
+			@include sm-block {
+				max-width: none;
 			}
 			@include xs-block {
 				padding-left: 5px;
