@@ -226,6 +226,22 @@
 				color: #d0d1d3;
 			}
 		}
+		&.video-caption {
+			@include xs-block {
+				display: flex;
+				flex-direction: column;
+			}
+			p {
+				@include xs-block {
+					font-size: 12px;
+				}
+			}
+			h3 {
+				@include xs-block {
+					font-size: 16px;
+				}
+			}
+		}
 	}
 	&-filter {
 		display: flex;
