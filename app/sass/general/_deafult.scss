@@ -405,14 +405,13 @@ section, .section {
 	@include clearfix;
 	&-group {
 		float: left;
-		max-width: 93%;
+		color: #bcbdc0;
 		white-space: nowrap;
 		overflow: hidden;
 		direction: rtl;
 		text-overflow: ellipsis;
-		color: #bcbdc0;
 		@include xs-block {
-
+			max-width: 93%;
 		}
 	}
 	&-back {

@@ -1375,13 +1375,12 @@ h2 span,
 
 .breadcrumb-group {
   float: left;
-  max-width: 93%;
+  color: #bcbdc0;
   white-space: nowrap;
   overflow: hidden;
   direction: rtl;
   -o-text-overflow: ellipsis;
      text-overflow: ellipsis;
-  color: #bcbdc0;
 }
 
 .breadcrumb__link {
@@ -10789,6 +10788,10 @@ select.form-control:not([size]):not([multiple]) {
 
   .fix-height-210 {
     height: 210px !important;
+  }
+
+  .breadcrumb-group {
+    max-width: 93%;
   }
 
   .breadcrumb-back {
