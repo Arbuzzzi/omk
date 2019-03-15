@@ -245,6 +245,7 @@
 	display: none;
 	height: 168px;
 	margin-top: -5px;
+	overflow: hidden;
 	@include md-block {
 		height: 100px;
 	}
