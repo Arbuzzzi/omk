@@ -10963,6 +10963,7 @@ select.form-control:not([size]):not([multiple]) {
 
   .card-modern__info {
     height: 340px;
+    padding-right: 15px;
   }
 
   .card-modern__content {
