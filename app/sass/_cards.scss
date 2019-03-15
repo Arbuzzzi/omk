@@ -118,6 +118,9 @@
 		@include md-block {
 			min-height: 125px;
 		}
+		@include xs-block {
+			min-height: 180px;
+		}
 		&[data-toggle="modal"] {
 			cursor: pointer;
 		}

@@ -10894,6 +10894,10 @@ select.form-control:not([size]):not([multiple]) {
     font-size: 16px;
   }
 
+  .card__imgbox {
+    min-height: 180px;
+  }
+
   .card__imgbox_xs {
     height: 180px;
   }
