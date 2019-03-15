@@ -57,8 +57,9 @@ html(lang='ru')
 		script(src='jquery-ui-1.12.1.custom/jquery-ui.min.js')
 		script(src='jquery-ui-1.12.1.custom/datepicker-ru.js')
 		script(src='jquery-ui-1.12.1.custom/jquery.ui.touch-punch.min.js')
-
-		// slick
+		script.
+			$.widget.bridge('uibutton', $.ui.button);
+			$.widget.bridge('uitooltip', $.ui.tooltip);
 		script(src='slick/slick.min.js')
 
 		// Bootstrap

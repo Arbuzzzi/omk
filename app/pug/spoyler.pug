@@ -12,10 +12,11 @@ block content
 	include articles/_article-04
 	.card.margin-bottom-15
 		.content-title
-			.content-titlebox_dark.content-titlebox_collapse.active(data-toggle="collapse" data-target="#articleCollapseSlider01")
+			.content-titlebox_dark.content-titlebox_collapse.active.spoiler-title(data-toggle="collapse" data-target="#articleCollapseSlider01")
 				h4 Контент-слайдер - это многостраничный спойлер
+				span.slide-count &lt; 1 &gt;
 	#articleCollapseSlider01.card.card-full.card-full-slider.collapse.show
-		.card-full-slider-wrap.card-wrap.card-full-wrap
+		.card-full-slider-wrap.card-wrap.card-full-wrap.spoiler-slider
 			.card-full-slider__item
 				- var articleClass = 'article-slider';
 				- var ID = '';

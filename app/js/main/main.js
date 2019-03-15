@@ -1372,7 +1372,20 @@ $(document).ready(function() {
 	/* TOOLTIPS ------------------------------------------------------------------------------------ */
 	$('.calendar__day').tooltip();
 	$('.card-calendar td').tooltip();
+	$.widget.bridge('uitooltip', $.ui.tooltip);
+	$('.tooltip-mouse').uitooltip({
+		// placement: 'auto',
+		// trigger: 'click',
+		// container: 'body',
+		track: true,
+		tooltipClass: 'tooltip_light',
+		close: function () { $(".ui-helper-hidden-accessible > *:not(:last)").remove(); },
+		// html: true,
+		// template: '<div class="tooltip tooltip_light" role="tooltip"><div class="arrow"></div><div class="tooltip-inner"></div></div>'
+	});
+
 	$('.sliderBlog').slick();
+
 
 
 	/*
@@ -1392,6 +1405,11 @@ $(document).ready(function() {
 								widget-slider-arrow widget-slider-arrow__right"></div>',
 	});
 
+	/**
+	 * нумерация слайдов
+	 *
+	 * gallery.html
+	 */
 	var cardFullSliderWrap = $('.card-full-slider-wrap');
 
 	$(cardFullSliderWrap).on('init reInit afterChange',
@@ -1405,6 +1423,11 @@ $(document).ready(function() {
 			
 	});
 
+	/**
+	 * нумерация слайдов в слайдере модерн
+	 *
+	 * gallery.html
+	 */
 	var cardModernSliderWrap = $('.card-modern-slider-wrap');
 
 	$(cardModernSliderWrap).on('init reInit afterChange',
@@ -1502,6 +1525,24 @@ $(document).ready(function() {
 			}
 		]
 	});
+
+	/*
+	* нумерация текущего слайда в спойлере
+	*
+	* spoyler.html
+	*/
+	var spoilerSlider = $('.spoiler-slider');
+
+	$(spoilerSlider).on('init reInit afterChange',
+	 function(event, slick, currentSlide, nextSlide){
+		 var slider = $(this);
+		 var parentSlider = $(slider).parents('.collapse');
+		 var headSlider = $('[data-target="#'+$(parentSlider).attr('id')+'"]');
+		 var slideCountEl = $(headSlider).find('.slide-count');
+		 var i = slick.currentSlide + 1;
+
+		 $(slideCountEl).html('&lt; '+i+' &gt;')
+	 });
 
 	/*
 	* Show long comment

@@ -454,14 +454,43 @@ section, .section {
 *.fixed {
 	position: fixed;
 }
+$tooltip-offset: -30px;
+@mixin bsTooltip($direction) {
+	&.bs-tooltip-#{$direction},
+	&.bs-tooltip-auto[x-placement^="#{$direction}"] {
+		@content;
+	}
+}
+@mixin bsTooltipArrow($direction) {
+	&.bs-tooltip-#{$direction} .arrow:before,
+	&.bs-tooltip-auto[x-placement^="#{$direction}"] .arrow:before {
+		@content;
+	}
+}
 .tooltip {
 	z-index: 110000;
+	&_light {
+		width: 200px;
+		background-color: #FBFBFB;
+		border: 1px solid #dddee0 !important;
+		border-radius: 5px;
+		text-align: left;
+		padding: 10px !important;
+		color: #000000;
+		font-size: 14px !important;
+		line-height: 1.4 !important;
+		* {
+			font-size: inherit !important;
+			line-height: inherit !important;
+		}
+	}
 }
 .tooltip-inner {
+	padding: 10px;
 	p {
 		text-align: left;
-		
 	}
+
 }
 .hashtag {
 	float: left;

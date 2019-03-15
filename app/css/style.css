@@ -1429,6 +1429,28 @@ h2 span,
   z-index: 110000;
 }
 
+.tooltip_light {
+  width: 200px;
+  background-color: #FBFBFB;
+  border: 1px solid #dddee0 !important;
+  -webkit-border-radius: 5px;
+          border-radius: 5px;
+  text-align: left;
+  padding: 10px !important;
+  color: #000000;
+  font-size: 14px !important;
+  line-height: 1.4 !important;
+}
+
+.tooltip_light * {
+  font-size: inherit !important;
+  line-height: inherit !important;
+}
+
+.tooltip-inner {
+  padding: 10px;
+}
+
 .tooltip-inner p {
   text-align: left;
 }
@@ -3927,7 +3949,7 @@ select.form-control:not([size]):not([multiple]) {
   position: relative;
   padding-top: 5px;
   padding-bottom: 7px;
-  padding-right: 15px;
+  padding-right: 30px;
   -webkit-transition: background-color 0.4s, -webkit-transform 0.4s;
   transition: background-color 0.4s, -webkit-transform 0.4s;
   -o-transition: transform 0.4s, background-color 0.4s;
@@ -4169,6 +4191,27 @@ select.form-control:not([size]):not([multiple]) {
   position: static;
   top: auto;
   bottom: auto;
+}
+
+.spoiler-title::after {
+  display: block;
+  content: "";
+  clear: both;
+}
+
+.spoiler-title > * {
+  float: left;
+}
+
+.spoiler-title .slide-count {
+  display: block;
+  text-align: right;
+  float: none;
+  margin-right: 40px;
+  font-family: Roboto, sans-serif;
+  font-size: 16px;
+  line-height: 26.4px;
+  vertical-align: baseline;
 }
 
 .cards {
@@ -10009,6 +10052,10 @@ select.form-control:not([size]):not([multiple]) {
     font-size: 20px;
   }
 
+  .content-titlebox_dark h4 {
+    font-size: 12px;
+  }
+
   .content-subtitle h2 {
     font-size: 14px;
   }
@@ -10044,6 +10091,11 @@ select.form-control:not([size]):not([multiple]) {
     -webkit-transform: translateY(1.5px);
         -ms-transform: translateY(1.5px);
             transform: translateY(1.5px);
+  }
+
+  .spoiler-title .slide-count {
+    font-size: 12px;
+    line-height: 14.4px;
   }
 
   .card {
@@ -10895,6 +10947,10 @@ select.form-control:not([size]):not([multiple]) {
 
   .content-text.video-caption h3 {
     font-size: 16px;
+  }
+
+  .spoiler-title .slide-count {
+    display: none;
   }
 
   .card__imgbox {

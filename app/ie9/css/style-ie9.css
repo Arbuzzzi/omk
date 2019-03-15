@@ -131,6 +131,10 @@
   color: #5e6167;
 }
 
+.menu-left-more__button {
+  margin-bottom: -9px;
+}
+
 .menu-horizontal__list::after {
   display: block;
   clear: both;
