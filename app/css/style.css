@@ -1558,6 +1558,7 @@ h2 span,
 }
 
 .link-nav {
+  display: block;
   color: #a1a3a7;
   letter-spacing: 0.2px;
   font-size: 12px;
