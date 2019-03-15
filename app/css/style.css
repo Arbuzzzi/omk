@@ -10973,6 +10973,10 @@ select.form-control:not([size]):not([multiple]) {
     font-size: 20px;
   }
 
+  .card-modern__content .card__text p {
+    font-size: 12px;
+  }
+
   .card-fifth-slider__imgbox {
     height: 180px;
   }

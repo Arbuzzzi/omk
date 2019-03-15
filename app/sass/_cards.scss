@@ -811,6 +811,9 @@
 						font-size: 10px;
 						margin-bottom: 10px;
 					}
+					@include xs-block {
+						font-size: 12px;
+					}
 				}
 			}
 			.card-slider-number {
