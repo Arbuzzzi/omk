@@ -405,6 +405,20 @@ section, .section {
 	@include clearfix;
 	&-group {
 		float: left;
+		max-width: 93%;
+		white-space: nowrap;
+		overflow: hidden;
+		direction: rtl;
+		text-overflow: ellipsis;
+		color: #bcbdc0;
+		@include xs-block {
+
+		}
+	}
+	&-back {
+		@include xs-block {
+			display: none;
+		}
 	}
 	&__link {
 		color: #bcbdc0;

@@ -262,6 +262,10 @@
 
 
 		}
+		@include xs-block {
+			max-width: none;
+			width: 60px;
+		}
 		a {
 			font-size: 13px;
 			line-height: 16px;

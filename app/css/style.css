@@ -1375,6 +1375,13 @@ h2 span,
 
 .breadcrumb-group {
   float: left;
+  max-width: 93%;
+  white-space: nowrap;
+  overflow: hidden;
+  direction: rtl;
+  -o-text-overflow: ellipsis;
+     text-overflow: ellipsis;
+  color: #bcbdc0;
 }
 
 .breadcrumb__link {
@@ -10784,6 +10791,10 @@ select.form-control:not([size]):not([multiple]) {
     height: 210px !important;
   }
 
+  .breadcrumb-back {
+    display: none;
+  }
+
   .hashtag {
     float: right;
   }
@@ -10879,6 +10890,11 @@ select.form-control:not([size]):not([multiple]) {
 
   .header-box__info {
     padding-right: 15px;
+  }
+
+  .header-question {
+    max-width: none;
+    width: 60px;
   }
 
   .header-user {
