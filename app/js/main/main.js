@@ -460,7 +460,6 @@ $(document).ready(function() {
 
 			if ((width !== $(window).width()) || (height !== $(window).height())) {
 				var position = $(this).scrollTop();
-
 				width = $(window).width();
 				height = $(window).height();
 
@@ -469,7 +468,10 @@ $(document).ready(function() {
 				windowHeight = $(window).outerHeight();
 				asideWidth = $('#aside').parent().width();
 
-				if (mobile) $(menuLeftList).collapse('hide');
+				if (mobile) {
+					$(menuLeftList).collapse('hide');
+					$(header).removeClass('scroll');
+				}
 				$('.widget-slider').slick('refresh');
 
 				if (position <= 0 && $(header).hasClass('fixed')) {
