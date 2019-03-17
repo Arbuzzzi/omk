@@ -587,7 +587,7 @@ $(document).ready(function() {
 
 					if (!$(header).hasClass('fixed')) {
 						$(header).addClass('fixed');
-						// if (!edge && !safari) $(content).css('padding-top', positionContent);
+						if (!edge && !safari) $(content).css('padding-top', positionContent);
 					}
 
 					if (position >= positionThree) {
