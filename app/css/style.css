@@ -3705,10 +3705,10 @@ select.form-control:not([size]):not([multiple]) {
   text-align: center;
   line-height: 30px;
   vertical-align: middle;
-  -webkit-transform: rotateX(0deg);
-          transform: rotateX(0deg);
-  -ms-transform: rotateX(0deg);
-  -sand-transform: rotate(0deg);
+  -webkit-transform: rotateX(-180deg) scale(-1, 1);
+          transform: rotateX(-180deg) scale(-1, 1);
+  -ms-transform: rotateX(-180deg) scale(-1, 1);
+  -sand-transform: rotate(-180deg);
   -webkit-transition: 0.4s;
   -o-transition: 0.4s;
   transition: 0.4s;
@@ -3726,22 +3726,22 @@ select.form-control:not([size]):not([multiple]) {
   /* Better Font Rendering =========== */
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  color: #BCBDC0;
+  color: #5e6167;
   font-size: 12px;
 }
 
 .menu-left-control.active {
-  -webkit-transform: rotateX(-180deg) scale(-1, 1);
-          transform: rotateX(-180deg) scale(-1, 1);
-  -ms-transform: rotateX(-180deg) scale(-1, 1);
-  -sand-transform: rotate(-180deg);
+  -webkit-transform: rotateX(0deg);
+          transform: rotateX(0deg);
+  -ms-transform: rotateX(0deg);
+  -sand-transform: rotate(0deg);
   -webkit-transition: 0.4s;
   -o-transition: 0.4s;
   transition: 0.4s;
 }
 
 .menu-left-control.active:before {
-  color: #5e6167;
+  color: #BCBDC0;
 }
 
 .menu-left-more {

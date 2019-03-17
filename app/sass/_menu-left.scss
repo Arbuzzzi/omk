@@ -96,23 +96,23 @@
 		text-align: center;
 		line-height: 30px;
 		vertical-align: middle;
-		transform: rotateX(0deg);
-		-ms-transform: rotateX(0deg);
-		-sand-transform: rotate(0deg);
+		transform: rotateX(-180deg) scale(-1, 1);
+		-ms-transform: rotateX(-180deg) scale(-1, 1);
+		-sand-transform: rotate(-180deg);
 		transition: 0.4s;
 		&:before {
 			content: '\e910';
 			@include icon;
-			color: #BCBDC0;
+			color: $basic-color;
 			font-size: 12px;
 		}
 		&.active{
-			transform: rotateX(-180deg) scale(-1, 1);
-			-ms-transform: rotateX(-180deg) scale(-1, 1);
-			-sand-transform: rotate(-180deg);
+			transform: rotateX(0deg);
+			-ms-transform: rotateX(0deg);
+			-sand-transform: rotate(0deg);
 			transition: 0.4s;
 			&:before {
-				color: $basic-color;
+				color: #BCBDC0;
 			}
 		}
 	}

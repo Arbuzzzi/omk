@@ -593,12 +593,12 @@ $(document).ready(function() {
 					if (position >= positionThree) {
 						$(headerNavSystem).collapse('hide');
 						if (!$(header).hasClass('scroll') && !screenLG) {
-							$(header).fadeOut(200, function (){
+							$(header).slideUp(150, function (){
 								setTimeout(function (){
 									setTimeout(function (){
 										$(document).trigger('scroll');
 									},500);
-									$(header).addClass('scroll').slideDown(200);
+									$(header).addClass('scroll').slideDown(150);
 								}, 5)
 
 							});
@@ -606,12 +606,14 @@ $(document).ready(function() {
 
 
 					} else {
-						// $(headerNavSystem).collapse('show');
-						// if ($(header).hasClass('scroll') && !screenLG) {
-						// 	$(header).fadeOut(200, function (){
-						// 		$(header).removeClass('scroll').fadeIn(200);
-						// 	});
-						// }
+						if (!safari && !edge) {
+							$(headerNavSystem).collapse('show');
+							if ($(header).hasClass('scroll') && !screenLG) {
+								$(header).slideUp(150, function (){
+									$(header).removeClass('scroll').slideDown(150);
+								});
+							}
+						}
 					}
 
 				} else {
@@ -623,28 +625,13 @@ $(document).ready(function() {
 			}
 
 			// header
-			// if (!mobile) addClassScroll($(header), 'scroll', positionThree);
-
-			// if (safari || edge) {
-			// 	if (position >= positionThree) {
-			// 		$(menuLeftList).collapse('hide');
-			// 	} else if(menuLeftListDefault) {
-			// 		$(menuLeftList).collapse('show');
-			// 		if ($(aside).hasClass('positionTop')) $(leftNavigationPseudo).collapse('show');
-			// 		if (position <=0) {
-			// 			$(content).animate({paddingTop: paddingTopContentMax}, 300);
-			// 			$(leftNavigationPseudo).collapse('show')
-			// 		}
-			// 	}
-			// }
 			$(leftNavigationPseudo).stop(true).removeClass('show collapsing');
 			$(menuLeftList).stop(true).removeClass('show collapsing');
 			if (!$(header).hasClass('scroll') && !$(headerNavSetting).hasClass('show') && !screenSM){
 
 				if (position > 0){
-					/*if (!safari) */ setTimeout(function (){
+					setTimeout(function (){
 						if ($(menuLeftList).hasClass('show')) $(menuLeftList).collapse('hide');
-						// $(menuLeftList).collapse('hide');
 					}, 200)
 					$('#btn-up').animate({bottom: 'show'}, 500);
 					$(headerBread).css({
@@ -652,7 +639,7 @@ $(document).ready(function() {
 					});
 
 
-				}else {
+				} else {
 					if (!edge && !safari) $(content).css('padding-top', '');
 					$('#btn-up').animate({bottom: 'hide', opacity: 'hide'}, 500);
 					$(headerBread).removeAttr('style')
@@ -677,7 +664,6 @@ $(document).ready(function() {
 					$(headerNavSystem).collapse('show');
 				}
 				if (!edge && !safari) $(header).removeAttr('style');
-				// addClassScroll($(header));
 			}
 
 			// scroll bottom
@@ -973,10 +959,30 @@ $(document).ready(function() {
 	// ставим текущую дату в фильтре
 	var periodDateBuffer = $('[name="period_date_buffer"]');
 	var filtersCalendarPeriod = $('#filters-calendar-period');
+	var periodDate = $('#period-date');
+	var selectedOption = $(filtersCalendarPeriod).find(':selected');
 
-	$(filtersCalendarPeriod).on('change click', function() {
-		if ($(this).val() === 'true-date') {
-			$(this).val('');
+	// сброс формы чтобы открыть каледарь change
+	$(filtersCalendarPeriod).click(function (){
+		if ($(this).val() === $(periodDateBuffer).val()) $(this).val('');
+	});
+
+	// сохраняем ранее выбранную дату
+	$(filtersCalendarPeriod).on('focus', function (){
+		selectedOption = $(this).find(':selected');
+	});
+
+	$(filtersCalendarPeriod).on('focusout', function (){
+		if ($(selectedOption).val() === $(periodDateBuffer).val()) {
+			$(this).val($(periodDateBuffer).val())
+		}
+	});
+
+	// выбор даты
+	$(filtersCalendarPeriod).on('change', function() {
+		selectedOption = $(this).find(':selected');
+
+		if ($(this).val() === 'true-date' || $(this).val() === $(periodDateBuffer).val()) {
 			$(periodDateBuffer).datepicker($.datepicker.regional[ "ru" ]);
 			$(periodDateBuffer).datepicker('widget').addClass('widget-calendar widget-calendar_filter');
 			$(periodDateBuffer).datepicker('option',{
@@ -987,9 +993,8 @@ $(document).ready(function() {
 		}
 	});
 
+	// буфер чтобы показать календарь
 	$(periodDateBuffer).on('change', function() {
-		var periodDate = $('#period-date');
-
 		$(filtersCalendarPeriod).find('option').removeAttr('selected');
 		$(periodDate).val($(this).val());
 		$(periodDate).text($(this).val());
