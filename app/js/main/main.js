@@ -3,10 +3,14 @@ $(document).ready(function() {
 	var	edge = $.browser.edge;
 	var safari = $.browser.safari;
 	var scrollbarWidth = $(document).scrollbarWidth();
-	var mobile = $(this).outerWidth() < 768;
+	var screenSM = $(this).outerWidth() < 768;
+	var screenMD = $(this).outerWidth() < 992;
+	var screenLG = $(this).outerWidth() < 1230;
 
 	$(window).resize(function (){
-		mobile = $(this).outerWidth() < 768;
+		screenSM = $(this).outerWidth() < 768;
+		screenMD = $(this).outerWidth() < 992;
+		screenLG = $(this).outerWidth() < 1230;
 		scrollbarWidth = $(document).scrollbarWidth();
 	});
 
@@ -77,7 +81,7 @@ $(document).ready(function() {
 	$(menuNavHeaderGroup).on('hidden.bs.collapse', function() {
 		var menuNavHeader = $(this).parents('.menu-nav-header');
 
-		if (!mobile) $(menuNavHeader).removeClass('show');
+		if (!screenSM) $(menuNavHeader).removeClass('show');
 
 	});
 
@@ -107,7 +111,7 @@ $(document).ready(function() {
 	// мобильные
 	$(window).resize(function (){
 		setTimeout(function (){
-			if (mobile) {
+			if (screenSM) {
 				$(headerNavSystem).hideClickAway('collapse');
 				$(menuNavHeaderGroup).hideClickAway('collapse');
 			} else {
@@ -120,7 +124,7 @@ $(document).ready(function() {
 
 	var headerNavSystemWrap = $('.header-nav-system-wrap');
 
-	if (mobile) {
+	if (screenSM) {
 		$(headerNavSystem).collapse('hide');
 		$(headerNavControl).removeClass('active');
 		$(headerNavSystem).hideClickAway('collapse');
@@ -135,7 +139,7 @@ $(document).ready(function() {
 	}
 
 	$(window).resize(function (){
-		if (mobile) {
+		if (screenSM) {
 			$(headerNavSystem).collapse('hide');
 		} else {
 			$(headerNavSystem).collapse('show');
@@ -434,9 +438,8 @@ $(document).ready(function() {
 	}
 
 	/* START СКРОЛЛИНГ ------------------------------------------------------------------------------- */
-	if (!mobile) {
-		addClassScroll($(header));
-	}
+
+
 	// скрываем элементы во время скроллинга страницы
 	var positionContent = $(header).actual('outerHeight'),
 			positionOne = $(window).innerHeight(),
@@ -449,12 +452,17 @@ $(document).ready(function() {
 			windowMoreAside,
 			currentScroll = 0;
 	var paddingTopContentMax = $(header).actual('outerHeight');
+	var headerOverlay = '<div class="header-overlay"/>';
 
 
 	var width = $(window).width();
 	var height = $(window).height();
 	var leftNavigationPseudo = $('#leftNavigationPseudo');
 
+	if (!screenSM) {
+		// $(header).before(headerOverlay);
+		// addClassScroll($(header));
+	}
 	$(window).resize(function (){
 		setTimeout(function () {
 
@@ -468,9 +476,15 @@ $(document).ready(function() {
 				windowHeight = $(window).outerHeight();
 				asideWidth = $('#aside').parent().width();
 
-				if (mobile) {
+				if (screenSM) {
 					$(menuLeftList).collapse('hide');
 					$(header).removeClass('scroll');
+					$('.header-overlay').remove();
+				} else {
+					if (!$('div').is('.header-overlay')) {
+
+						$(header).before(headerOverlay);
+					}
 				}
 				$('.widget-slider').slick('refresh');
 
@@ -500,7 +514,7 @@ $(document).ready(function() {
 				$(aside).css({
 					width: asideWidth,
 				});
-				if (!mobile) {
+				if (!screenSM) {
 					$(aside).css({
 						position: '',
 						top: '',
@@ -549,8 +563,8 @@ $(document).ready(function() {
 			var positionContent = $(header).actual('outerHeight');
 
 			if (paddingTopContentMax < positionContent) paddingTopContentMax = positionContent;
-			
-			if (mobile && $(headerNavSystem).hasClass('show')) {
+
+			if (screenSM && $(headerNavSystem).hasClass('show')) {
 				$(headerNavSystem).collapse('hide');
 			}
 
@@ -566,20 +580,38 @@ $(document).ready(function() {
 			}
 
 			// header
-			if (!mobile) {
+			if (!screenSM) {
 				if (position > 0) {
 
 					if (!edge && !safari) $(header).css({'position': 'fixed'});
 
 					if (!$(header).hasClass('fixed')) {
 						$(header).addClass('fixed');
-						if (!edge && !safari) $(content).css('padding-top', positionContent);
+						// if (!edge && !safari) $(content).css('padding-top', positionContent);
 					}
 
 					if (position >= positionThree) {
 						$(headerNavSystem).collapse('hide');
+						if (!$(header).hasClass('scroll') && !screenLG) {
+							$(header).fadeOut(200, function (){
+								setTimeout(function (){
+									setTimeout(function (){
+										$(document).trigger('scroll');
+									},500);
+									$(header).addClass('scroll').slideDown(200);
+								}, 5)
+
+							});
+						}
+
+
 					} else {
-						$(headerNavSystem).collapse('show');
+						// $(headerNavSystem).collapse('show');
+						// if ($(header).hasClass('scroll') && !screenLG) {
+						// 	$(header).fadeOut(200, function (){
+						// 		$(header).removeClass('scroll').fadeIn(200);
+						// 	});
+						// }
 					}
 
 				} else {
@@ -591,25 +623,29 @@ $(document).ready(function() {
 			}
 
 			// header
-			if (!mobile) addClassScroll($(header), 'scroll', positionThree);
+			// if (!mobile) addClassScroll($(header), 'scroll', positionThree);
 
-			if (safari || edge) {
-				if (position >= positionThree) {
-					$(menuLeftList).collapse('hide');
-				} else if(menuLeftListDefault) {
-					$(menuLeftList).collapse('show');
-					if ($(aside).hasClass('positionTop')) $(leftNavigationPseudo).collapse('show');
-					if (position <=0) {
-						$(content).animate({paddingTop: paddingTopContentMax}, 300);
-						$(leftNavigationPseudo).collapse('show')
-					}
-				}
-			}
-
-			if (!$(header).hasClass('scroll') && !$(headerNavSetting).hasClass('show') && !mobile){
+			// if (safari || edge) {
+			// 	if (position >= positionThree) {
+			// 		$(menuLeftList).collapse('hide');
+			// 	} else if(menuLeftListDefault) {
+			// 		$(menuLeftList).collapse('show');
+			// 		if ($(aside).hasClass('positionTop')) $(leftNavigationPseudo).collapse('show');
+			// 		if (position <=0) {
+			// 			$(content).animate({paddingTop: paddingTopContentMax}, 300);
+			// 			$(leftNavigationPseudo).collapse('show')
+			// 		}
+			// 	}
+			// }
+			$(leftNavigationPseudo).stop(true).removeClass('show collapsing');
+			$(menuLeftList).stop(true).removeClass('show collapsing');
+			if (!$(header).hasClass('scroll') && !$(headerNavSetting).hasClass('show') && !screenSM){
 
 				if (position > 0){
-					if (!safari) $(menuLeftList).collapse('hide');
+					/*if (!safari) */ setTimeout(function (){
+						if ($(menuLeftList).hasClass('show')) $(menuLeftList).collapse('hide');
+						// $(menuLeftList).collapse('hide');
+					}, 200)
 					$('#btn-up').animate({bottom: 'show'}, 500);
 					$(headerBread).css({
 						paddingBottom: '15px'
@@ -631,12 +667,17 @@ $(document).ready(function() {
 
 			// scroll top самый верх экана
 			if (position <= 0){
-
-				if (!mobile){
+				if ($(header).hasClass('scroll') && !screenLG) {
+					$(header).fadeOut(200, function (){
+						$(header).removeClass('scroll').slideDown(400);
+					});
+					$(headerBread).removeAttr('style')
+				}
+				if (!screenSM){
 					$(headerNavSystem).collapse('show');
 				}
 				if (!edge && !safari) $(header).removeAttr('style');
-				addClassScroll($(header));
+				// addClassScroll($(header));
 			}
 
 			// scroll bottom
@@ -653,9 +694,9 @@ $(document).ready(function() {
 			}else {
 				$(rollUp).removeClass('show');
 			}
-			
+
 			// aside
-			if (!mobile) {
+			if (!screenSM) {
 					asideHeight = $(aside).actual('outerHeight') + $(header).actual('outerHeight');
 					windowMoreAside = asideHeight < windowHeight;
 
@@ -780,7 +821,7 @@ $(document).ready(function() {
 				if (position <= 0 && menuLeftListDefault && !meuLeftShown) {
 					$(menuLeftList).collapse('show');
 				}
-			}, 2000);
+			}, 800);
 		}
 	});
 
@@ -2165,7 +2206,7 @@ $(document).ready(function() {
 				elControlAltText = elControl.data('alt-text');
 
 		elControl.text(elControlAltText);
-		if (mobile) {
+		if (screenSM) {
 			$(formSender).animate({height: 'hide'},'400');
 		} else {
 			$(formSender).fadeOut('400');
@@ -2182,7 +2223,7 @@ $(document).ready(function() {
 		var elControl = $('#form-more-inputs-control');
 
 		elControl.text(defaultTextBtn);
-		if (mobile) {
+		if (screenSM) {
 			$(formSender).animate({height: 'show'},'400');
 		} else {
 			$(formSender).fadeIn('400');
@@ -2195,7 +2236,7 @@ $(document).ready(function() {
 
 	$('#form-checkbox-slide').on('change', function() {
 		var formSlideInput = $('.form-slide-input');
-		if (mobile)  {
+		if (screenSM)  {
 			$(formSlideInput).animate({height: 'toggle'}, '400')
 		} else {
 			$(formSlideInput).toggle('slide');
