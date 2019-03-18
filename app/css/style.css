@@ -4660,10 +4660,6 @@ select.form-control:not([size]):not([multiple]) {
   line-height: 1.4;
 }
 
-.card__text.text-ddd-135 {
-  max-height: 135px;
-}
-
 .card__text p {
   font-size: 17px;
   margin-bottom: 15px;
@@ -9504,7 +9500,7 @@ select.form-control:not([size]):not([multiple]) {
 
   .header:before {
     opacity: 1;
-    max-width: 990px;
+    max-width: 960px;
     width: -webkit-calc(100% - 30px);
     width: calc(100% - 30px);
   }
@@ -10209,10 +10205,6 @@ select.form-control:not([size]):not([multiple]) {
     max-height: 30px;
   }
 
-  .card__text.text-ddd-135 {
-    max-height: 110px;
-  }
-
   .card__text p {
     font-size: 9px;
   }
@@ -10767,16 +10759,25 @@ select.form-control:not([size]):not([multiple]) {
 
   .card-links__imgbox {
     display: inline-block;
-    font-size: 16px;
-    max-width: 16px;
+    font-size: 22px;
+    max-width: 22px;
+  }
+
+  .card-links__items {
+    padding-left: 50px;
   }
 
   .card-links__left {
     width: 120px;
   }
 
+  .card-links__lnkbox .link-icon-save {
+    left: -20px;
+    top: 2px;
+  }
+
   .card-links__lnk {
-    font-size: 10px;
+    font-size: 16px;
   }
 
   .card-links__lnk_small {
@@ -10785,6 +10786,18 @@ select.form-control:not([size]):not([multiple]) {
 
   .card-calendar .ui-datepicker-header .ui-datepicker-title * {
     font-size: 9px;
+  }
+
+  .article-blockquote {
+    font-size: 16px;
+  }
+
+  .article-text p {
+    font-size: 16px;
+  }
+
+  .article-author {
+    padding: 5px;
   }
 }
 
@@ -10821,6 +10834,7 @@ select.form-control:not([size]):not([multiple]) {
 
   .hashtag {
     float: right;
+    font-size: 16px;
   }
 
   .button {
@@ -10957,7 +10971,7 @@ select.form-control:not([size]):not([multiple]) {
   .content-titlebox p,
   .content-titlebox div,
   .content-titlebox span {
-    font-size: 20px;
+    font-size: 24px;
   }
 
   .content-text h3 {
@@ -11015,16 +11029,12 @@ select.form-control:not([size]):not([multiple]) {
 
   .card__title {
     max-height: 67px;
-    font-size: 20px;
+    font-size: 18px;
     min-height: auto;
   }
 
-  .card__text.text-ddd-135 {
-    max-height: 135px;
-  }
-
   .card__text p {
-    font-size: 12px;
+    font-size: 16px;
   }
 
   .card__text_mobile {
@@ -11037,6 +11047,7 @@ select.form-control:not([size]):not([multiple]) {
 
   .card-date {
     font-size: 12px;
+    max-width: 200px;
   }
 
   .card-logo:nth-child(5n) {
@@ -11074,11 +11085,11 @@ select.form-control:not([size]):not([multiple]) {
   }
 
   .card-modern__content .content-titlebox {
-    font-size: 20px;
+    font-size: 24px;
   }
 
   .card-modern__content .card__text p {
-    font-size: 12px;
+    font-size: 16px;
   }
 
   .card-fifth-slider__imgbox {
@@ -11104,8 +11115,8 @@ select.form-control:not([size]):not([multiple]) {
     padding-left: 0;
   }
 
-  .card-links__imgbox {
-    font-size: 12px;
+  .card-links__lnkbox .link-icon-save:before {
+    font-size: 22px;
   }
 
   .card-calendar .ui-datepicker-header .content-subtitle {
@@ -11157,6 +11168,7 @@ select.form-control:not([size]):not([multiple]) {
   .article-author p {
     display: inline-block;
     margin-top: 5px;
+    font-size: 14px;
   }
 
   .article-author .article-author__left {

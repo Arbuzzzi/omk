@@ -529,6 +529,8 @@ $(document).ready(function() {
 	});
 
 	// запоминаем свернуто ли левок меню
+
+
 	var menuLeftListControl = $('#menu-left-list-control');
 	$(menuLeftListControl).on('click', function() {
 		var position = $(window).scrollTop();
@@ -547,6 +549,9 @@ $(document).ready(function() {
 		$(header).css({'position': 'fixed'}).addClass('fixed');
 		$(content).css('padding-top', positionContent);
 	}
+
+	// если страница загруужена на середине
+	if (!screenMD) $(document).trigger('scroll');
 
 	if (!ie) {
 		var headerBread = $('.header .breadcrumb');
@@ -592,6 +597,7 @@ $(document).ready(function() {
 
 					if (position >= positionThree) {
 						$(headerNavSystem).collapse('hide');
+
 						if (!$(header).hasClass('scroll') && !screenLG) {
 							$(header).slideUp(150, function (){
 								setTimeout(function (){
@@ -625,8 +631,10 @@ $(document).ready(function() {
 			}
 
 			// header
-			$(leftNavigationPseudo).stop(true).removeClass('show collapsing');
-			$(menuLeftList).stop(true).removeClass('show collapsing');
+			if (!safari && !edge) {
+				$(leftNavigationPseudo).stop(true).removeClass('show collapsing');
+				$(menuLeftList).stop(true).removeClass('show collapsing');
+			}
 			if (!$(header).hasClass('scroll') && !$(headerNavSetting).hasClass('show') && !screenSM){
 
 				if (position > 0){
