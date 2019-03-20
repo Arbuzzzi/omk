@@ -67,6 +67,7 @@ $(document).ready(function() {
 
 
 	// menu-burger ---------------------------------------------------------------------------------------------------
+	var body = $('body');
 	var header = $('.header');
 	var content = $('.header + *');
 	var aside = $('#aside');
@@ -107,6 +108,19 @@ $(document).ready(function() {
 	/* ПОДМЕНЮ "СИСТЕМЫ" ----------------------------------------------------------------------------- */
 	var headerNavSystem = $('#header-nav');
 	var headerNavControl = $('#header-nav-control');
+	var paddingTopContent = $(header).actual('outerHeight');
+
+	if (ie) {
+		setInterval(function (){
+			if ($(document).scrollTop() <= 0) {
+				paddingTopContent = $(header).actual('outerHeight');
+			}
+		}, 50)
+	}
+
+	$(window).bind('load', function (){
+		paddingTopContent = $(header).actual('outerHeight');
+	});
 
 	// мобильные
 	$(window).resize(function (){
@@ -164,7 +178,9 @@ $(document).ready(function() {
 	// if (safari || edge) {
 		$(headerNavSystem).on('show.bs.collapse', function (){
 			var position = $(document).scrollTop();
+
 			if (position <= 0) {
+				$(body).css({overflow: 'hidden', paddingRight: scrollbarWidth});
 				$(header).css({'position': 'static'});
 				$(content).stop(true).css('padding-top', '');
 			}
@@ -172,16 +188,21 @@ $(document).ready(function() {
 
 		$(headerNavSystem).on('shown.bs.collapse', function (){
 			var position = $(document).scrollTop();
+
 			if (position <= 0){
+				$(body).css({overflow: '', paddingRight: ''});
 				positionContent = $(header).actual('outerHeight');
 				$(header).css({'position': ''});
 				$(content).stop(true).css('padding-top', positionContent);
+				paddingTopContent = $(header).actual('outerHeight');
 			}
 		});
 
 		$(headerNavSystem).on('hide.bs.collapse', function (){
 			var position = $(document).scrollTop();
+
 			if (position <= 0) {
+				$(body).css({overflow: 'hidden', paddingRight: scrollbarWidth});
 				$(header).css({'position': 'static'});
 				$(content).stop(true).css('padding-top', '');
 			}
@@ -189,10 +210,13 @@ $(document).ready(function() {
 
 		$(headerNavSystem).on('hidden.bs.collapse', function (){
 			var position = $(document).scrollTop();
+
 			if (position <= 0){
+				$(body).css({overflow: '', paddingRight: ''});
 				positionContent = $(header).actual('outerHeight');
 				$(header).css({'position': ''});
 				$(content).stop(true).css('padding-top', positionContent);
+				paddingTopContent = $(header).actual('outerHeight');
 			}
 		});
 	// }
@@ -208,7 +232,7 @@ $(document).ready(function() {
 		});
 
 		$(headerNavSystem).collapse('show');
-		$(menuLeftList).collapse('show');
+		// $(menuLeftList).collapse('show');
 		$(rollUp).addClass('show');
 		return false;
 	});
@@ -239,7 +263,7 @@ $(document).ready(function() {
 		// сохраняем отступы
 
 		if ($(document).scrollTop() <= 0) {
-			$('body').css({
+			$(body).css({
 				overflow: 'hidden',
 				paddingRight: scrollbarWidth,
 				paddingTop: headerHeight
@@ -250,7 +274,7 @@ $(document).ready(function() {
 				});
 			}
 		} else {
-			$('body').css({
+			$(body).css({
 				overflow: 'hidden',
 				paddingRight: scrollbarWidth,
 			});
@@ -274,7 +298,7 @@ $(document).ready(function() {
 	$(headerNavSetting).on('shown.bs.collapse', function (){
 		// сохраняем отступы после завершения анимации
 		if ($(document).scrollTop() <= 0 && $(header).hasClass('fixed')) {
-			$('body').css({
+			$(body).css({
 				overflow: 'hidden',
 				paddingRight: scrollbarWidth,
 				paddingTop: ''
@@ -297,7 +321,7 @@ $(document).ready(function() {
 			$(this).detach()
 		});
 
-		$('body').css({
+		$(body).css({
 			overflow: '',
 			paddingRight: '',
 			paddingTop: ''
@@ -464,6 +488,7 @@ $(document).ready(function() {
 	var height = $(window).height();
 	var leftNavigationPseudo = $('#leftNavigationPseudo');
 
+	var headerNavSystemDefault = $(headerNavSystem).hasClass('show');
 	if (!screenSM) {
 		// $(header).before(headerOverlay);
 		// addClassScroll($(header));
@@ -482,7 +507,7 @@ $(document).ready(function() {
 				asideWidth = $('#aside').parent().width();
 
 				if (screenSM) {
-					$(menuLeftList).collapse('hide');
+					// $(menuLeftList).collapse('hide');
 					$(header).removeClass('scroll');
 					// $('.header-overlay').remove();
 				} else {
@@ -495,7 +520,7 @@ $(document).ready(function() {
 
 				if (position <= 0 && $(header).hasClass('fixed')) {
 					paddingTopContentMax = $(header).actual('outerHeight');
-					$(menuLeftList).collapse('show');
+					// $(menuLeftList).collapse('show');
 					$(content).animate({
 						paddingTop: paddingTopContentMax
 					}, 400)
@@ -536,24 +561,24 @@ $(document).ready(function() {
 	// запоминаем свернуто ли левок меню
 
 
-	var menuLeftListControl = $('#menu-left-list-control');
-	$(menuLeftListControl).on('click', function() {
-		var position = $(window).scrollTop();
-		if (position <= 0 && !safari) {
-			menuLeftListDefault = !menuLeftListDefault;
-		}
-		if (position < positionThree && safari) {
-			menuLeftListDefault = !menuLeftListDefault;
-		}
-	});
+	// var menuLeftListControl = $('#menu-left-list-control');
+	// $(menuLeftListControl).on('click', function() {
+	// 	var position = $(window).scrollTop();
+	// 	if (position <= 0 && !safari) {
+	// 		menuLeftListDefault = !menuLeftListDefault;
+	// 	}
+	// 	if (position < positionThree && safari) {
+	// 		menuLeftListDefault = !menuLeftListDefault;
+	// 	}
+	// });
 
-	if ($(document).scrollTop() >= positionThree) {
-		$(leftNavigationPseudo).collapse('hide');
-	}
+	// if ($(document).scrollTop() >= positionThree) {
+	// 	$(leftNavigationPseudo).collapse('hide');
+	// }
 	// fix bags scroll
-	if (safari || edge || ie) {
-		$(header).css({'position': 'fixed'}).addClass('fixed');
-	}
+	// if (safari || edge || ie) {
+	// 	$(header).css({'position': 'fixed'}).addClass('fixed');
+	// }
 	$(content).css('padding-top', positionContent);
 
 	// если страница загруужена на середине
@@ -596,12 +621,70 @@ $(document).ready(function() {
 
 			if (!screenLG) {
 				if (position > 0) {
-					if ($(headerBread).hasClass('show')) $(headerBread).addClass('show');
+					if (!$(headerBread).hasClass('show')) $(headerBread).addClass('show');
+					if (position > paddingTopContent) {
+						if (!$(headerBread).hasClass('show')) $(headerBread).addClass('show');
+						$(header).fadeIn(150).addClass('scroll');
+						if (headerNavSystemDefault) {
+							$(headerNavSystem).removeClass('show')/*.collapse('hide');*/
+						}
+
+						setTimeout(function (){
+						}, 50);
+					} else {
+						if (position < currentScroll) {
+							if (position < paddingTopContent - $(headerBread).offset().top) {
+
+								$(headerBread).removeClass('show');
+							}
+						}
+						$(headerNavSystem).addClass('show');
+						if (!$(header).hasClass('show')){
+
+							$(header)
+								.addClass('show')
+								.removeClass('scroll')
+								.slideDown(200);
+						}
+						if ($(header).hasClass('scroll')) {
+							$(header)
+								.addClass('show')
+								.removeClass('scroll')
+								.slideDown(200);
+						}
+
+						$(content).stop(true).animate({paddingTop: paddingTopContent}, 300);
+						// $(headerBread).removeClass('show');
+
+						setTimeout(function (){
+						}, 50);
+
+					}
 				} else {
-					$(content).animate({paddingTop: positionContent}, 300);
-					$(headerBread).removeClass('show');
+					setTimeout(function (){
+						$(headerNavSystem).addClass('show');
+						// $(header).fadeOut(150, function (){
+						if (!$(header).hasClass('show')){
+
+							$(header)
+								.addClass('show')
+								.removeClass('scroll')
+								.slideDown(200);
+						}
+						// })
+						if ($(header).hasClass('scroll')) {
+							$(header)
+								.addClass('show')
+								.removeClass('scroll')
+								.slideDown(200);
+						}
+
+						$(content).stop(true).animate({paddingTop: paddingTopContent}, 300);
+						$(headerBread).removeClass('show');
+					}, 50);
 				}
 			}
+			console.log(paddingTopContent);
 
 			// header
 			// if (!screenSM) {
@@ -709,7 +792,7 @@ $(document).ready(function() {
 			// }
 
 			// aside
-			if (!screenSM) {
+			if (!screenSM && !ie) {
 					asideHeight = $(aside).actual('outerHeight') + $(header).actual('outerHeight');
 					windowMoreAside = asideHeight < windowHeight;
 
@@ -807,6 +890,16 @@ $(document).ready(function() {
 							}
 
 						} else {
+							// $(aside).css({
+							// 	position: '',
+							// 	top: '',
+							// 	bottom: '',
+							// 	// marginTop: asideOffsetTop - contentPadding,
+							// })
+							// 	.animate({marginTop: asideOffsetTop}, 300)
+							// 	.removeClass('positionBottom positionTop')
+							// 	.addClass('positionStatic');
+
 							$(aside).css({
 								position: '',
 								top: '',
@@ -824,19 +917,19 @@ $(document).ready(function() {
 		});
 	}
 
-	$(document).on('scroll', function() {
-		var position = $(this).scrollTop();
-		if (position <= 0) {
-			setTimeout(function() {
-				var position = $(document).scrollTop(),
-					meuLeftShown = $(menuLeftList).hasClass('show');
-
-				if (position <= 0 && menuLeftListDefault && !meuLeftShown) {
-					$(menuLeftList).collapse('show');
-				}
-			}, 800);
-		}
-	});
+	// $(document).on('scroll', function() {
+	// 	var position = $(this).scrollTop();
+	// 	if (position <= 0) {
+	// 		setTimeout(function() {
+	// 			var position = $(document).scrollTop(),
+	// 				meuLeftShown = $(menuLeftList).hasClass('show');
+	//
+	// 			if (position <= 0 && menuLeftListDefault && !meuLeftShown) {
+	// 				$(menuLeftList).collapse('show');
+	// 			}
+	// 		}, 800);
+	// 	}
+	// });
 
 
 
@@ -930,43 +1023,43 @@ $(document).ready(function() {
 	/* END СКРОЛЛИНГ ------------------------------------------------------------------------------- */
 
 	// левое меню show
-	var navMoreListControl = $('#nav-more-list-control');
-
-	$(menuLeftList).on('show.bs.collapse', function() {
-		var btn = $(menuLeftListControl);
-		var position = $(document).scrollTop();
-
-		btn.addClass('active');
-		$('.menu-left-more__list').removeClass('show');
-		$(navMoreListControl).removeAttr('data-toggle');
-		$(navMoreListControl).dropdown('dispose');
-		$('.menu-left-more__button>i').animate({opacity: 'hide'}, 400);
-
-		if (position < positionThree && !safari && !edge) {
-			$(leftNavigationPseudo).collapse('show')
-		}
-		if (!edge && !safari) {
-			if (position <= 0) {
-				$(leftNavigationPseudo).collapse('show')
-			}
-		}
-		if (position <= 0) {
-			$(leftNavigationPseudo).collapse('show')
-		}
-	});
-
-	// левое меню hide 
-	$(menuLeftList).on('hide.bs.collapse', function() {
-		var btn = $(menuLeftListControl);
-		btn.removeClass('active');
-		$(navMoreListControl).attr('data-toggle', 'dropdown');
-		$('.menu-left-more__button>i').animate({opacity: 'show'}, 400);
-		$(leftNavigationPseudo).collapse('hide')
-
-	});
-
-	var menuLeftListHeight = $(menuLeftList).actual('outerHeight');
-	$(leftNavigationPseudo).html('<div style="height:'+menuLeftListHeight+'px;"></div>');
+	// var navMoreListControl = $('#nav-more-list-control');
+	//
+	// $(menuLeftList).on('show.bs.collapse', function() {
+	// 	var btn = $(menuLeftListControl);
+	// 	var position = $(document).scrollTop();
+	//
+	// 	btn.addClass('active');
+	// 	$('.menu-left-more__list').removeClass('show');
+	// 	$(navMoreListControl).removeAttr('data-toggle');
+	// 	$(navMoreListControl).dropdown('dispose');
+	// 	$('.menu-left-more__button>i').animate({opacity: 'hide'}, 400);
+	//
+	// 	if (position < positionThree && !safari && !edge) {
+	// 		$(leftNavigationPseudo).collapse('show')
+	// 	}
+	// 	if (!edge && !safari) {
+	// 		if (position <= 0) {
+	// 			$(leftNavigationPseudo).collapse('show')
+	// 		}
+	// 	}
+	// 	if (position <= 0) {
+	// 		$(leftNavigationPseudo).collapse('show')
+	// 	}
+	// });
+	//
+	// // левое меню hide
+	// $(menuLeftList).on('hide.bs.collapse', function() {
+	// 	var btn = $(menuLeftListControl);
+	// 	btn.removeClass('active');
+	// 	$(navMoreListControl).attr('data-toggle', 'dropdown');
+	// 	$('.menu-left-more__button>i').animate({opacity: 'show'}, 400);
+	// 	$(leftNavigationPseudo).collapse('hide')
+	//
+	// });
+	//
+	// var menuLeftListHeight = $(menuLeftList).actual('outerHeight');
+	// $(leftNavigationPseudo).html('<div style="height:'+menuLeftListHeight+'px;"></div>');
 
 	// ставим лайки
 	$(document).on('click', '.like-button:not(.comment-button)', function() {

@@ -36,6 +36,8 @@
 
 
 .header {
+	display: none;
+	opacity: 0;
 	position: fixed;
 	top: 0;
 	z-index: 1000;
@@ -45,6 +47,7 @@
 	padding-bottom: 15px;
 	-webkit-backface-visibility: hidden;
 	backface-visibility: hidden;
+	//transition: opacity 0.4s;
 	@include lg-block {
 		padding-top: 15px;
 		padding-bottom: 0;
@@ -92,6 +95,7 @@
 	// }
 	&.show {
 		display: block;
+		opacity: 1;
 	}
 	&-overlay {
 		position: fixed;
@@ -406,7 +410,7 @@
 	}
 	.breadcrumb {
 		position: absolute;
-		top: 0;
+		top: 10px;
 		left: 0;
 		padding-bottom: 15px;
 		width: 100%;

@@ -2842,11 +2842,11 @@ select.form-control:not([size]):not([multiple]) {
   top: 0;
   z-index: 1000;
   padding-top: 15px;
-  padding-bottom: 0;
+  padding-bottom: 12px;
   background-color: #fff;
   -webkit-transform: translateZ(0);
           transform: translateZ(0);
-  opacity: 0;
+  opacity: 1;
   -webkit-transition: opacity 0.5s;
   -o-transition: opacity 0.5s;
   transition: opacity 0.5s;
@@ -3051,6 +3051,8 @@ select.form-control:not([size]):not([multiple]) {
 }
 
 .header {
+  display: none;
+  opacity: 0;
   position: fixed;
   top: 0;
   z-index: 1000;
@@ -3085,6 +3087,7 @@ select.form-control:not([size]):not([multiple]) {
 
 .header.show {
   display: block;
+  opacity: 1;
 }
 
 .header-overlay {
@@ -3246,7 +3249,7 @@ select.form-control:not([size]):not([multiple]) {
 
 .header .breadcrumb {
   position: absolute;
-  top: 0;
+  top: 10px;
   left: 0;
   padding-bottom: 15px;
   width: 100%;
