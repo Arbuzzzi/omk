@@ -17,7 +17,7 @@
 - links.sport = 'sport.html';
 - links.others = 'others.html';
 
-header.header
+header.header.fixed
 	.container
 		.header-box
 			.header-box__item.header-box__logo
@@ -674,129 +674,129 @@ header.header
 									.form-checkbox-button-wrap
 										button.button.form-setting-button(type='reset', data-toggle='collapse', data-target='#header-nav-setting') Отмена
 										button.button.form-setting-button(type='submit', data-toggle='collapse', data-target='#header-nav-setting') Применить
-	.menu-left-navigation
+	.menu-left-navigation---
 		.container
 			.row
 				.col-xl-3
-					nav.menu-left
-						.menu-left-wrap
-							.menu-left__list
-								.menu-left__item.menu-left__item-head
-									.nav-more.menu-left-more.btn-group
-										button#nav-more-list-control.menu-left-more__button(type='button', aria-haspopup='true', aria-expanded='false')
-											| Новости 
-											i.icon-arrow-down
-										ul.nav-more-list.menu-left-more__list.dropdown-menu
-											li.nav-more-list__item.menu-left-more__box.menu-left__box
-												a.menu-left__item.menu-left-more__item(href='#')
-													.menu-left__text.menu-left-more__link
-														span КОМПАНИЯ
-											li.nav-more-list__item.menu-left-more__box.menu-left__box
-												a.menu-left__item.menu-left-more__item(href='#')
-													.menu-left__text.menu-left-more__link
-														span СОТРУДНИКАМ
-											li.nav-more-list__item.menu-left-more__box.menu-left__box
-												a.menu-left__item.menu-left-more__item(href='#')
-													.menu-left__text.menu-left-more__link
-														span БАТАШЕВСКАЯ ПРЕМИЯ
-											li.nav-more-list__item.menu-left-more__box.menu-left__box
-												a.menu-left__item.menu-left-more__item(href= links.productions_system)
-													.menu-left__text.menu-left-more__link
-														span ПРОИЗВОДСТВЕННАЯ СИСТЕМА
-											li.nav-more-list__item.menu-left-more__box.menu-left__box
-												a.menu-left__item.menu-left-more__item(href='#')
-													.menu-left__text.menu-left-more__link
-														span БИБЛИОТЕКА
-											li.nav-more-list__item.menu-left-more__box.menu-left__box
-												a.menu-left__item.menu-left-more__item(href='#')
-													.menu-left__text.menu-left-more__link
-														span ГАЛЕРЕЯ
-											li.nav-more-list__item.menu-left-more__box.menu-left__box
-												a.menu-left__item.menu-left-more__item(href='#')
-													.menu-left__text.menu-left-more__link
-														span СПОРТ
-											li.nav-more-list__item.menu-left-more__box.menu-left__box
-												a.menu-left__item.menu-left-more__item(href='#')
-													.menu-left__text.menu-left-more__link
-														span КОНТАКТЫ
-									button#menu-left-list-control.menu-left-control.active(type='button', data-toggle='collapse', data-target='#menu-left-list', aria-expanded='false', aria-controls='menuLeftList')
-								#menuLeftItemCurrent.menu-left__item.menu-left__item-current
-							ul#menu-left-list.menu-left__list.collapse.menuLeftList-group.show
-								li.menu-left__box
-									a.menu-left__item(href='#')
-										.menu-left__text
-											span КОМПАНИЯ
-								li.menu-left__box
-									a.menu-left__item(href='#')
-										.menu-left__text
-											span СОТРУДНИКАМ
-								li.menu-left__box
-									a.menu-left__item(href='#')
-										.menu-left__text
-											span БАТАШЕВСКАЯ ПРЕМИЯ
-								li.menu-left__box
-									a.menu-left__item(href= links.productions_system)
-										.menu-left__text
-											span ПРОИЗВОДСТВЕННАЯ СИСТЕМА
-								li.menu-left__box
-									a.menu-left__item(href='#')
-										.menu-left__text
-											span БЛАГОТВОРИТЕЛЬНОСТЬ
-								li.menu-left__box
-									a.menu-left__item(href='#')
-										.menu-left__text
-											span БИБЛИОТЕКА
-								li.menu-left__box
-									a.menu-left__item(href='#')
-										.menu-left__text
-											span ГАЛЕРЕЯ
-								li.menu-left__box
-									a.menu-left__item(href='#')
-										.menu-left__text
-											span СПОРТ
-								li.menu-left__box
-									a.menu-left__item(href='#')
-										.menu-left__text
-											span КОНТАКТЫ
+					//nav.menu-left
+					//	.menu-left-wrap
+					//		.menu-left__list
+					//			.menu-left__item.menu-left__item-head
+					//				.nav-more.menu-left-more.btn-group
+					//					button#nav-more-list-control.menu-left-more__button(type='button', aria-haspopup='true', aria-expanded='false')
+					//						| Новости
+					//						i.icon-arrow-down
+					//					ul.nav-more-list.menu-left-more__list.dropdown-menu
+					//						li.nav-more-list__item.menu-left-more__box.menu-left__box
+					//							a.menu-left__item.menu-left-more__item(href='#')
+					//								.menu-left__text.menu-left-more__link
+					//									span КОМПАНИЯ
+					//						li.nav-more-list__item.menu-left-more__box.menu-left__box
+					//							a.menu-left__item.menu-left-more__item(href='#')
+					//								.menu-left__text.menu-left-more__link
+					//									span СОТРУДНИКАМ
+					//						li.nav-more-list__item.menu-left-more__box.menu-left__box
+					//							a.menu-left__item.menu-left-more__item(href='#')
+					//								.menu-left__text.menu-left-more__link
+					//									span БАТАШЕВСКАЯ ПРЕМИЯ
+					//						li.nav-more-list__item.menu-left-more__box.menu-left__box
+					//							a.menu-left__item.menu-left-more__item(href= links.productions_system)
+					//								.menu-left__text.menu-left-more__link
+					//									span ПРОИЗВОДСТВЕННАЯ СИСТЕМА
+					//						li.nav-more-list__item.menu-left-more__box.menu-left__box
+					//							a.menu-left__item.menu-left-more__item(href='#')
+					//								.menu-left__text.menu-left-more__link
+					//									span БИБЛИОТЕКА
+					//						li.nav-more-list__item.menu-left-more__box.menu-left__box
+					//							a.menu-left__item.menu-left-more__item(href='#')
+					//								.menu-left__text.menu-left-more__link
+					//									span ГАЛЕРЕЯ
+					//						li.nav-more-list__item.menu-left-more__box.menu-left__box
+					//							a.menu-left__item.menu-left-more__item(href='#')
+					//								.menu-left__text.menu-left-more__link
+					//									span СПОРТ
+					//						li.nav-more-list__item.menu-left-more__box.menu-left__box
+					//							a.menu-left__item.menu-left-more__item(href='#')
+					//								.menu-left__text.menu-left-more__link
+					//									span КОНТАКТЫ
+					//				button#menu-left-list-control.menu-left-control.active(type='button', data-toggle='collapse', data-target='#menu-left-list', aria-expanded='false', aria-controls='menuLeftList')
+					//			#menuLeftItemCurrent.menu-left__item.menu-left__item-current
+					//		ul#menu-left-list.menu-left__list.collapse.menuLeftList-group.show
+					//			li.menu-left__box
+					//				a.menu-left__item(href='#')
+					//					.menu-left__text
+					//						span КОМПАНИЯ
+					//			li.menu-left__box
+					//				a.menu-left__item(href='#')
+					//					.menu-left__text
+					//						span СОТРУДНИКАМ
+					//			li.menu-left__box
+					//				a.menu-left__item(href='#')
+					//					.menu-left__text
+					//						span БАТАШЕВСКАЯ ПРЕМИЯ
+					//			li.menu-left__box
+					//				a.menu-left__item(href= links.productions_system)
+					//					.menu-left__text
+					//						span ПРОИЗВОДСТВЕННАЯ СИСТЕМА
+					//			li.menu-left__box
+					//				a.menu-left__item(href='#')
+					//					.menu-left__text
+					//						span БЛАГОТВОРИТЕЛЬНОСТЬ
+					//			li.menu-left__box
+					//				a.menu-left__item(href='#')
+					//					.menu-left__text
+					//						span БИБЛИОТЕКА
+					//			li.menu-left__box
+					//				a.menu-left__item(href='#')
+					//					.menu-left__text
+					//						span ГАЛЕРЕЯ
+					//			li.menu-left__box
+					//				a.menu-left__item(href='#')
+					//					.menu-left__text
+					//						span СПОРТ
+					//			li.menu-left__box
+					//				a.menu-left__item(href='#')
+					//					.menu-left__text
+					//						span КОНТАКТЫ
 				.col-xl-9.col-12
-					nav.menu-horizontal
-						ul.menu-horizontal__list
-							li.menu-horizontal__box
-								a.menu-horizontal__item(href='#')
-									span.menu-horizontal__text НОВОСТИ ОМК
-							li.menu-horizontal__box
-								a.menu-horizontal__item.current(href='#')
-									span.menu-horizontal__text РЕГИОНАЛЬНЫЕ НОВОСТИ
-							li.menu-horizontal__box
-								a.menu-horizontal__item(href='#')
-									span.menu-horizontal__text ПС ОМК
-							li.menu-horizontal__box
-								a.menu-horizontal__item(href='#')
-									span.menu-horizontal__text НОВОСТИ ПОДРАЗДЕЛЕНИЙ
-							li.menu-horizontal__box
-								a.menu-horizontal__item(href='#')
-									span.menu-horizontal__text НОВОСТИ ФОНДА
-							li.menu-horizontal__box.menu-horizontal__box-more
-								.menu-horizontal__item.menu-horizontal__item-more
-									.nav-more.btn-group
-										button.button.header-button.button-more(type='button', data-toggle='dropdown', aria-haspopup='true', aria-expanded='false')
-											| Ещё 
-											i.icon-arrow-down
-										ul.nav-more-list.dropdown-menu.dropdown-menu-right
-											li.nav-more-list__item
-												a.link.link-nav.nav-more-list__link(href='#') Блоги
-											li.nav-more-list__item
-												a.link.link-nav.nav-more-list__link(href='#') Газпром новости
-											li.nav-more-list__item
-												a.link.link-nav.nav-more-list__link(href='#') SAP новости
-											li.nav-more-list__item
-												a.link.link-nav.nav-more-list__link(href='#') Производственные новости
-											li.nav-more-list__item
-												a.link.link-nav.nav-more-list__link(href='#') Системы Всех новостей
-											li.nav-more-list__item
-												a.link.link-nav.nav-more-list__link(href='#') SAP SSH
-											li.nav-more-list__item
-												a.link.link-nav.nav-more-list__link(href='#') Ширина под самое длинное название с учетом Bold
+					//nav.menu-horizontal
+					//	ul.menu-horizontal__list
+					//		li.menu-horizontal__box
+					//			a.menu-horizontal__item(href='#')
+					//				span.menu-horizontal__text НОВОСТИ ОМК
+					//		li.menu-horizontal__box
+					//			a.menu-horizontal__item.current(href='#')
+					//				span.menu-horizontal__text РЕГИОНАЛЬНЫЕ НОВОСТИ
+					//		li.menu-horizontal__box
+					//			a.menu-horizontal__item(href='#')
+					//				span.menu-horizontal__text ПС ОМК
+					//		li.menu-horizontal__box
+					//			a.menu-horizontal__item(href='#')
+					//				span.menu-horizontal__text НОВОСТИ ПОДРАЗДЕЛЕНИЙ
+					//		li.menu-horizontal__box
+					//			a.menu-horizontal__item(href='#')
+					//				span.menu-horizontal__text НОВОСТИ ФОНДА
+					//		li.menu-horizontal__box.menu-horizontal__box-more
+					//			.menu-horizontal__item.menu-horizontal__item-more
+					//				.nav-more.btn-group
+					//					button.button.header-button.button-more(type='button', data-toggle='dropdown', aria-haspopup='true', aria-expanded='false')
+					//						| Ещё
+					//						i.icon-arrow-down
+					//					ul.nav-more-list.dropdown-menu.dropdown-menu-right
+					//						li.nav-more-list__item
+					//							a.link.link-nav.nav-more-list__link(href='#') Блоги
+					//						li.nav-more-list__item
+					//							a.link.link-nav.nav-more-list__link(href='#') Газпром новости
+					//						li.nav-more-list__item
+					//							a.link.link-nav.nav-more-list__link(href='#') SAP новости
+					//						li.nav-more-list__item
+					//							a.link.link-nav.nav-more-list__link(href='#') Производственные новости
+					//						li.nav-more-list__item
+					//							a.link.link-nav.nav-more-list__link(href='#') Системы Всех новостей
+					//						li.nav-more-list__item
+					//							a.link.link-nav.nav-more-list__link(href='#') SAP SSH
+					//						li.nav-more-list__item
+					//							a.link.link-nav.nav-more-list__link(href='#') Ширина под самое длинное название с учетом Bold
 					.breadcrumb-wrap
 						.breadcrumb
 							.breadcrumb-group

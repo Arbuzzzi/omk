@@ -33,6 +33,52 @@ html(lang='ru')
 						.aside-wrap#aside
 							include _aside
 					.col-12.col-md-9
+						nav.menu-horizontal
+							ul.menu-horizontal__list
+								li.menu-horizontal__box
+									a.menu-horizontal__item(href='#')
+										span.menu-horizontal__text НОВОСТИ ОМК
+								li.menu-horizontal__box
+									a.menu-horizontal__item.current(href='#')
+										span.menu-horizontal__text РЕГИОНАЛЬНЫЕ НОВОСТИ
+								li.menu-horizontal__box
+									a.menu-horizontal__item(href='#')
+										span.menu-horizontal__text ПС ОМК
+								li.menu-horizontal__box
+									a.menu-horizontal__item(href='#')
+										span.menu-horizontal__text НОВОСТИ ПОДРАЗДЕЛЕНИЙ
+								li.menu-horizontal__box
+									a.menu-horizontal__item(href='#')
+										span.menu-horizontal__text НОВОСТИ ФОНДА
+								li.menu-horizontal__box.menu-horizontal__box-more
+									.menu-horizontal__item.menu-horizontal__item-more
+										.nav-more.btn-group
+											button.button.header-button.button-more(type='button', data-toggle='dropdown', aria-haspopup='true', aria-expanded='false')
+												| Ещё
+												i.icon-arrow-down
+											ul.nav-more-list.dropdown-menu.dropdown-menu-right
+												li.nav-more-list__item
+													a.link.link-nav.nav-more-list__link(href='#') Блоги
+												li.nav-more-list__item
+													a.link.link-nav.nav-more-list__link(href='#') Газпром новости
+												li.nav-more-list__item
+													a.link.link-nav.nav-more-list__link(href='#') SAP новости
+												li.nav-more-list__item
+													a.link.link-nav.nav-more-list__link(href='#') Производственные новости
+												li.nav-more-list__item
+													a.link.link-nav.nav-more-list__link(href='#') Системы Всех новостей
+												li.nav-more-list__item
+													a.link.link-nav.nav-more-list__link(href='#') SAP SSH
+												li.nav-more-list__item
+													a.link.link-nav.nav-more-list__link(href='#') Ширина под самое длинное название с учетом Bold
+						.breadcrumb-wrap
+							.breadcrumb.show.d-none.d-xl-block
+								.breadcrumb-group
+									a.breadcrumb__link(href='#') Главная
+									a.breadcrumb__link(href='#') Новости ОМК
+									a.breadcrumb__link(href='#') Производственная Система
+								.breadcrumb-back
+									a.breadcrumb__link(href='#') &lt;&lt;Назад
 						.content-group#content
 							//- block vars
 

@@ -46,7 +46,10 @@ button, input, optgroup, select, textarea {
 	// font-family: 'Gotham Pro', Arial, sans-serif;
 	// transition: 0.5s;
 }
-
+//html {
+//	overflow-x: hidden;
+//	overflow-y: auto;
+//}
 body {
 	font-size: 16px;
 	font-family: 'Roboto', sans-serif;
@@ -401,8 +404,15 @@ section, .section {
 .breadcrumb {
   display: block;
   margin: 0;
-  padding: 15px 0 15px;
+  padding: 15px 0 0;
+	background-color: $light-color;
+	transition: 0.3s;
+	opacity: 0;
 	@include clearfix;
+	&.show {
+		display: block;
+		opacity: 1;
+	}
 	&-group {
 		float: left;
 		color: #bcbdc0;
@@ -411,7 +421,7 @@ section, .section {
 		direction: rtl;
 		text-overflow: ellipsis;
 		@include xs-block {
-			max-width: 93%;
+			max-width: 100%;
 		}
 	}
 	&-back {

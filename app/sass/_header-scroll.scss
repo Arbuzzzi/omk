@@ -1,18 +1,24 @@
 .header.scroll {
 	position: fixed;
+	width: 100%;
+	top: 0;
 	z-index: 1000;
 	padding-top: 15px;
 	padding-bottom: 0;
 	background-color: #fff;
 	transform: translateZ(0);
-	opacity: 1;
+	opacity: 0;
+	transition: opacity 0.5s;
+	&.show {
+		opacity: 1;
+	}
 	&:before {
 		opacity: 1;
 	}
 
-	& + * {
-		padding-top: 95px;
-	}
+	//& + * {
+	//	padding-top: 95px;
+	//}
 	.header {
 		&-box {
 			align-items: center;
@@ -161,6 +167,7 @@
 		}
 	}
 	.breadcrumb {
+		display: block;
 		padding-top: 3px;
 	}
 	.menu-horizontal, .menu-left {
