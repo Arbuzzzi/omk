@@ -842,7 +842,7 @@ $(document).ready(function() {
 				&& !screenSM
 				&& !headerNavSystemCollapsing) {
 			paddingTopContent = $(header).actual('outerHeight');
-			$(content).stop(true).animate({paddingTop: paddingTopContent}, 300);
+			$(content).filter(':not(:animated)').animate({paddingTop: paddingTopContent}, 300);
 		}
 	}, 150);
 
@@ -1415,11 +1415,12 @@ $(document).ready(function() {
 		var isTimout = !time;
 		var pos = position ? position : 'absolute';
 		var preloader = '<div class="preloader"><div class="page-loader-circle"></div></div>';
+		var preloaderWidth = pos === 'fixed' ? windowWidth : '';
+
 		preloader = $(preloader).css({
 			position: pos,
-			width: pos === 'fixed' ? windowWidth : '',
+			width: preloaderWidth,
 		});
-		console.log(windowWidth);
 		$(item).append(preloader);
 		$(item).css({
 			position: 'relative',
