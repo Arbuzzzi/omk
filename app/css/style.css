@@ -577,9 +577,10 @@
 .preloader {
   position: fixed;
   top: 0;
-  right: 0;
   bottom: 0;
   left: 0;
+  width: 100%;
+  max-height: 100vh;
   z-index: 999999;
   display: block;
   background: #fff;
@@ -594,11 +595,9 @@
   margin: -18px 0 0 -18px;
   -webkit-border-radius: 50%;
           border-radius: 50%;
-  border: 2px solid;
-  border-top-color: #222222;
-  border-bottom-color: rgba(0, 0, 0, 0.15);
-  border-left-color: #222222;
+  border: 2px solid #222222;
   border-right-color: rgba(0, 0, 0, 0.15);
+  border-bottom-color: rgba(0, 0, 0, 0.15);
   -webkit-animation: page-loader-circle 0.8s linear infinite;
   animation: page-loader-circle 0.8s linear infinite;
 }
@@ -3070,7 +3069,7 @@ select.form-control:not([size]):not([multiple]) {
   position: absolute;
   display: block;
   top: 10px;
-  bottom: 9px;
+  bottom: 8px;
   left: 50%;
   -webkit-transform: translateX(-50%);
       -ms-transform: translateX(-50%);
@@ -3088,6 +3087,49 @@ select.form-control:not([size]):not([multiple]) {
 .header.show {
   display: block;
   opacity: 1;
+}
+
+.header.deploy-show .menu-left-navigation {
+  position: absolute;
+  left: 50%;
+  width: 100%;
+  padding-top: 15px;
+  -webkit-transform: translateX(-50%);
+      -ms-transform: translateX(-50%);
+          transform: translateX(-50%);
+}
+
+.header.deploy-show .menu-left-navigation:before {
+  content: "";
+  position: absolute;
+  display: block;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 60px;
+  background-color: #fff;
+}
+
+.header.deploy-show .breadcrumb {
+  top: 0;
+  left: -1px;
+  right: -1px;
+  width: auto;
+}
+
+.header.deploy-show .menu-left,
+.header.deploy-show .menu-horizontal {
+  display: block;
+  opacity: 1;
+}
+
+.header .menu-left,
+.header .menu-horizontal {
+  display: none;
+  opacity: 0;
+  -webkit-transition: opacity 0.4s;
+  -o-transition: opacity 0.4s;
+  transition: opacity 0.4s;
 }
 
 .header-overlay {
@@ -3248,6 +3290,7 @@ select.form-control:not([size]):not([multiple]) {
 }
 
 .header .breadcrumb {
+  display: none;
   position: absolute;
   top: 10px;
   left: 0;
@@ -3284,6 +3327,7 @@ select.form-control:not([size]):not([multiple]) {
   max-width: 1200px;
   margin-left: -15px;
   margin-right: -15px;
+  padding-top: 5px;
 }
 
 .header-nav-system__content {
@@ -3301,7 +3345,6 @@ select.form-control:not([size]):not([multiple]) {
 
 .header-nav-system-wrap {
   position: relative;
-  margin-top: 5px;
 }
 
 .header-nav-system-wrap:after {
@@ -3437,6 +3480,9 @@ select.form-control:not([size]):not([multiple]) {
   margin-bottom: 20px;
   background-color: rgba(251, 251, 251, 0.5);
   background-image: url(../img/icon/dashed.svg);
+  -webkit-background-size: 98.9% 98.9%;
+          background-size: 98.9%;
+  background-repeat: no-repeat;
 }
 
 .nav-setting__item {
@@ -3490,6 +3536,10 @@ select.form-control:not([size]):not([multiple]) {
   width: 100%;
   max-width: 33.33333333%;
   text-align: left;
+}
+
+.setting-form-checkbox__label {
+  min-width: auto;
 }
 
 .nav-more {
@@ -3641,10 +3691,6 @@ select.form-control:not([size]):not([multiple]) {
 
 .menu-left-wrap {
   background-color: #f4f5f5;
-}
-
-.menu-left-navigation {
-  padding-top: 15px;
 }
 
 .menu-left-title {
@@ -4673,7 +4719,7 @@ select.form-control:not([size]):not([multiple]) {
   font-family: "PT Serif", serif;
   font-size: 16px;
   font-weight: 400;
-  line-height: 1.4;
+  line-height: 1.21;
 }
 
 .card__text p {
@@ -9689,10 +9735,6 @@ select.form-control:not([size]):not([multiple]) {
     display: none;
   }
 
-  .menu-left-navigation-pseudo {
-    display: none !important;
-  }
-
   .menu-horizontal {
     display: none;
   }
@@ -10971,21 +11013,17 @@ select.form-control:not([size]):not([multiple]) {
 
   .header-nav-system-wrap {
     left: 0;
-    margin-top: 40px;
+    margin-top: 37px;
   }
 
   .header-nav-system-wrap.mobile-hide {
     display: none !important;
+    opacity: 0;
   }
 
   .menu-nav-group {
     right: 0;
-    margin-top: 53px;
-  }
-
-  .menu-left-navigation {
-    margin-left: -15px;
-    margin-right: -15px;
+    margin-top: 50px;
   }
 
   .content-titlebox h1,

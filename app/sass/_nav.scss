@@ -4,6 +4,7 @@
 	max-width: 1200px;
 	margin-left: -15px;
 	margin-right: -15px;
+	padding-top: 5px;
 	// @include mA();
 	&__content {
 		padding: 5px 15px 4px;
@@ -21,7 +22,7 @@
 	}
 	&-wrap {
 		position: relative;
-		margin-top: 5px;
+		//margin-top: 5px;
 
 		@include lg-block {
 			margin-top: 10px;
@@ -37,7 +38,7 @@
 		}
 		@include xs-block {
 			left: 0;
-			margin-top: 40px;
+			margin-top: 37px;
 		}
 
 		@include after("\e90e") {
@@ -53,6 +54,7 @@
 		&.mobile-hide {
 			@include xs-block {
 				display: none !important;
+				opacity: 0;
 			}
 		}
 	}
@@ -174,6 +176,8 @@
 		margin-bottom: 20px;
 		background-color: rgba(#fbfbfb, 0.5);
 		background-image: url(../img/icon/dashed.svg);
+		background-size: 98.9%;
+		background-repeat: no-repeat;
 	}
 	&__item {
 		@include mA();
@@ -226,6 +230,9 @@
 			width: 100%;
 			max-width: 33.33333333%;
 			text-align: left;
+			&__label {
+				min-width: auto;
+			}
 		}
 	}
 }
@@ -319,7 +326,7 @@
 		}
 		@include xs-block {
 			right: 0;
-			margin-top: 53px;
+			margin-top: 50px;
 		}
 		ul {
 			@include listUnstyle();

@@ -1,9 +1,12 @@
 .preloader {
 	position: fixed;
 	top: 0;
-	right: 0;
+	//right: 0;
 	bottom: 0;
 	left: 0;
+	width: 100%;
+	//max-width: 100%;
+	max-height: 100vh;
 	z-index: 999999;
 	display: block;
 	background: #fff;
@@ -17,11 +20,9 @@
 	height: 36px;
 	margin: -18px 0 0 -18px;
 	border-radius: 50%;
-	border: 2px solid;
-	border-top-color: rgba(34, 34, 34, 1);
-	border-bottom-color: rgba(0, 0, 0, 0.15);
-	border-left-color: rgba(34, 34, 34, 1);
+	border: 2px solid rgba(34, 34, 34, 1);
 	border-right-color: rgba(0, 0, 0, 0.15);
+	border-bottom-color: rgba(0, 0, 0, 0.15);
 	-webkit-animation: page-loader-circle 0.8s linear infinite;
 	animation: page-loader-circle 0.8s linear infinite;
 }

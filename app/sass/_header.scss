@@ -62,7 +62,7 @@
 	}
 	@include before {
 		top: 10px;
-		bottom: 9px;
+		bottom: 8px;
 		left: 50%;
 		//margin-left: (-1170px/2);
 		transform: translateX(-50%);
@@ -96,6 +96,40 @@
 	&.show {
 		display: block;
 		opacity: 1;
+	}
+	&.deploy-show {
+		.menu-left-navigation {
+			position: absolute;
+			left: 50%;
+			width: 100%;
+			padding-top: 15px;
+			transform: translateX(-50%);
+			@include before() {
+				top: 0;
+				left: 0;
+				width: 100%;
+				height: 60px;
+				background-color: #fff;
+			}
+		}
+		.breadcrumb {
+			top: 0;
+			left: -1px;
+			right: -1px;
+			width: auto;
+		}
+		.menu-left,
+		.menu-horizontal {
+			display: block;
+			opacity: 1;
+		}
+
+	}
+	.menu-left,
+	.menu-horizontal {
+		display: none;
+		opacity: 0;
+		transition: opacity 0.4s;
 	}
 	&-overlay {
 		position: fixed;
@@ -409,6 +443,7 @@
 		}
 	}
 	.breadcrumb {
+		display: none;
 		position: absolute;
 		top: 10px;
 		left: 0;

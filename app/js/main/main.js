@@ -3,14 +3,18 @@ $(document).ready(function() {
 	var	edge = $.browser.edge;
 	var safari = $.browser.safari;
 	var scrollbarWidth = $(document).scrollbarWidth();
-	var screenSM = $(this).outerWidth() < 768;
-	var screenMD = $(this).outerWidth() < 992;
-	var screenLG = $(this).outerWidth() < 1230;
+	var allElements = $('*');
+	var windowWidth = $(this).outerWidth();
+	var screenSM = windowWidth < 768;
+	var screenMD = windowWidth < 992;
+	var screenLG = windowWidth < 1230;
 
 	$(window).resize(function (){
-		screenSM = $(this).outerWidth() < 768;
-		screenMD = $(this).outerWidth() < 992;
-		screenLG = $(this).outerWidth() < 1230;
+		screenSM = windowWidth < 768;
+		screenMD = windowWidth < 992;
+		screenLG = windowWidth < 1230;
+
+		windowWidth = $(this).outerWidth();
 		scrollbarWidth = $(document).scrollbarWidth();
 	});
 
@@ -109,6 +113,7 @@ $(document).ready(function() {
 	var headerNavSystem = $('#header-nav');
 	var headerNavControl = $('#header-nav-control');
 	var paddingTopContent = $(header).actual('outerHeight');
+	var headerNavSystemDefault = true;
 
 	if (ie) {
 		setInterval(function (){
@@ -136,27 +141,27 @@ $(document).ready(function() {
 
 	});
 
-	var headerNavSystemWrap = $('.header-nav-system-wrap');
-
 	if (screenSM) {
 		$(headerNavSystem).collapse('hide');
 		$(headerNavControl).removeClass('active');
 		$(headerNavSystem).hideClickAway('collapse');
 		$(menuNavHeaderGroup).hideClickAway('collapse');
 
-		setTimeout(function (){
-			$(headerNavSystemWrap).removeClass('mobile-hide');
-		}, 300)
+		$(headerNavSystem).removeClass('mobile-hide show');
+		// setTimeout(function (){
+		// }, 300)
 	} else {
-		$(headerNavSystemWrap).addClass('show');
+		$(headerNavSystem).addClass('show');
 		$(headerNavControl).addClass('active');
 	}
 
 	$(window).resize(function (){
 		if (screenSM) {
 			$(headerNavSystem).collapse('hide');
+			$(headerNavSystem).removeClass('mobile-hide show');
 		} else {
 			$(headerNavSystem).collapse('show');
+			$(headerNavSystem).addClass('mobile-hide show');
 		}
 	});
 
@@ -179,8 +184,10 @@ $(document).ready(function() {
 		$(headerNavSystem).on('show.bs.collapse', function (){
 			var position = $(document).scrollTop();
 
-			if (position <= 0) {
-				$(body).css({overflow: 'hidden', paddingRight: scrollbarWidth});
+			if (position <= 0 && !screenSM) {
+				if (!$(headerNavSetting).hasClass('show')) {
+					$(body).css({overflow: 'hidden', paddingRight: scrollbarWidth});
+				}
 				$(header).css({'position': 'static'});
 				$(content).stop(true).css('padding-top', '');
 			}
@@ -189,19 +196,25 @@ $(document).ready(function() {
 		$(headerNavSystem).on('shown.bs.collapse', function (){
 			var position = $(document).scrollTop();
 
-			if (position <= 0){
-				$(body).css({overflow: '', paddingRight: ''});
+			if (position <= 0  && !screenSM){
+				if (!$(headerNavSetting).hasClass('show')) {
+					$(body).css({overflow: '', paddingRight: ''});
+				}
 				positionContent = $(header).actual('outerHeight');
 				$(header).css({'position': ''});
 				$(content).stop(true).css('padding-top', positionContent);
+			}
+
+			if (position <= paddingTopContent) {
 				paddingTopContent = $(header).actual('outerHeight');
+				headerNavSystemDefault = $(headerNavSystem).hasClass('show');
 			}
 		});
 
 		$(headerNavSystem).on('hide.bs.collapse', function (){
 			var position = $(document).scrollTop();
 
-			if (position <= 0) {
+			if (position <= 0  && !screenSM) {
 				$(body).css({overflow: 'hidden', paddingRight: scrollbarWidth});
 				$(header).css({'position': 'static'});
 				$(content).stop(true).css('padding-top', '');
@@ -211,12 +224,15 @@ $(document).ready(function() {
 		$(headerNavSystem).on('hidden.bs.collapse', function (){
 			var position = $(document).scrollTop();
 
-			if (position <= 0){
+			if (position <= 0  && !screenSM){
 				$(body).css({overflow: '', paddingRight: ''});
 				positionContent = $(header).actual('outerHeight');
 				$(header).css({'position': ''});
 				$(content).stop(true).css('padding-top', positionContent);
+			}
+			if (position <= paddingTopContent) {
 				paddingTopContent = $(header).actual('outerHeight');
+				headerNavSystemDefault = $(headerNavSystem).hasClass('show');
 			}
 		});
 	// }
@@ -226,7 +242,10 @@ $(document).ready(function() {
 	var menuLeftList = $('#menu-left-list');
 
 	$(btnDeploy).click(function() {
-		$(header).removeClass('scroll').css({
+		$(header)
+			.removeClass('scroll')
+			.addClass('deploy-show')
+			.css({
 			'position': 'fixed',
 			'padding-bottom': '10px'
 		});
@@ -246,14 +265,18 @@ $(document).ready(function() {
 		// инициализация drag & drop
 		var dragAndDrop = $( "#drag-and-drop" );
 
+		addPreloader(body, false, 'fixed');
+
 		$(dragAndDrop).sortable();
 		$(dragAndDrop).disableSelection();
 		$(dragAndDrop).draggable();
 
 		$(header).css('transform', 'none');
 
-		$(this).parent().append('<div class="overlay"/>');
-		$('.overlay').animate({opacity: 'show'}, 400);
+		$(this)
+			.parent()
+			.append('<div class="overlay"/>')
+			.animate({opacity: 'show'}, 400);
 
 		$('#header-nav-setting-control').css({
 			position: 'relative',
@@ -261,35 +284,22 @@ $(document).ready(function() {
 		}).addClass('active');
 
 		// сохраняем отступы
-
-		if ($(document).scrollTop() <= 0) {
+		$(body).css({
+			overflow: 'hidden',
+			paddingRight: scrollbarWidth,
+		});
+		if ($(document).scrollTop() <= $(header).actual('outerHeight')) {
 			$(body).css({
-				overflow: 'hidden',
-				paddingRight: scrollbarWidth,
-				paddingTop: headerHeight
-			});
-			if (safari || ie || edge)  {
-				$(header).css({
-					'padding-right': ''
-				});
-			}
-		} else {
-			$(body).css({
-				overflow: 'hidden',
-				paddingRight: scrollbarWidth,
+				marginTop: '-' + $(header).actual('outerHeight')+'px',
 			});
 		}
 
 		// обертка для header
 		$(header).wrap('<div class="extra-wrapper"></div>');
 
-		if  ($(header).hasClass('fixed') && $(document).scrollTop() > 0) {
+		if ($(header).hasClass('fixed')) {
 			$(header).css({
-				// paddingRight: scrollbarWidth
-			})
-		} else {
-			$(header).css({
-				paddingRight: ''
+				position: 'static'
 			})
 		}
 		checkboxDisable($(this), 10)
@@ -297,23 +307,26 @@ $(document).ready(function() {
 
 	$(headerNavSetting).on('shown.bs.collapse', function (){
 		// сохраняем отступы после завершения анимации
-		if ($(document).scrollTop() <= 0 && $(header).hasClass('fixed')) {
-			$(body).css({
-				overflow: 'hidden',
-				paddingRight: scrollbarWidth,
-				paddingTop: ''
-			});
-		}
+		hidePreloader(body);
 
-		if ($(header).hasClass('fixed') && $(document).scrollTop() > 0) {
-			$(header).css({
-				paddingRight: '',
-			});
-		}
+		// if ($(document).scrollTop() <= 0 && $(header).hasClass('fixed')) {
+		// 	$(body).css({
+		// 		overflow: 'hidden',
+		// 		paddingRight: scrollbarWidth,
+		// 		paddingTop: ''
+		// 	});
+		// }
+		//
+		// if ($(header).hasClass('fixed') && $(document).scrollTop() > 0) {
+		// 	$(header).css({
+		// 		paddingRight: '',
+		// 	});
+		// }
 	});
 
 	// закрытие настроек
 	$(headerNavSetting).on('hide.bs.collapse', function () {
+		addPreloader(body, false, 'fixed');
 		$(header).css('transform', '');
 		$('.overlay').animate({
 			opacity: 0
@@ -324,14 +337,20 @@ $(document).ready(function() {
 		$(body).css({
 			overflow: '',
 			paddingRight: '',
-			paddingTop: ''
+			paddingTop: '',
+			marginTop: ''
 		});
+
 		$(header).css({
 			'padding-right': '',
+			position: ''
 		});
 		$(header).unwrap();
 
 		$('#header-nav-setting-control').removeClass('active').removeAttr('style');
+	});
+	$(headerNavSetting).on('hidden.bs.collapse', function () {
+		hidePreloader(body);
 	});
 
 	var checkboxes = $('input[type="checkbox"].setting-form-checkbox__input');
@@ -488,7 +507,6 @@ $(document).ready(function() {
 	var height = $(window).height();
 	var leftNavigationPseudo = $('#leftNavigationPseudo');
 
-	var headerNavSystemDefault = $(headerNavSystem).hasClass('show');
 	if (!screenSM) {
 		// $(header).before(headerOverlay);
 		// addClassScroll($(header));
@@ -586,352 +604,250 @@ $(document).ready(function() {
 
 	// var headerDuplicate = $(header).clone();
 	// headerDuplicate = $(header).before(headerDuplicate).addClass('scroll').removeClass('show');
-	ie = true;
-	if (ie) {
-		var headerBread = $('.header .breadcrumb');
-		var dropdownMenu = $('.dropdown-menu');
-		var contentBody = $('#content');
+	// ie = true;
+	var headerBread = $('.header .breadcrumb');
+	var dropdownMenu = $('.dropdown-menu');
+	var contentBody = $('#content');
+	$(document).on('scroll', function() {
+		var windowHeight = $(window).outerHeight();
+		var position = $(this).scrollTop();
+		var positionBottom = position + windowHeight;
+		var asideBig = $(aside).outerHeight() > $(contentBody).outerHeight();
+		var asideOffsetTop;
+		var headerHeight;
+		var contentPadding;
+		var positionContent = $(header).actual('outerHeight');
+		var headerHasScroll = $(header).hasClass('scroll');
 
-		$(document).on('scroll', function() {
-			var windowHeight = $(window).outerHeight();
-			var position = $(this).scrollTop();
-			var positionBottom = position + windowHeight;
-			var asideBig = $(aside).outerHeight() > $(contentBody).outerHeight();
-			var asideOffsetTop;
-			var headerHeight;
-			var contentPadding;
-			var positionContent = $(header).actual('outerHeight');
+		if (paddingTopContentMax < positionContent) paddingTopContentMax = positionContent;
 
-			if (paddingTopContentMax < positionContent) paddingTopContentMax = positionContent;
+		if (screenSM && $(headerNavSystem).hasClass('show')) {
+			$(headerNavSystem).collapse('hide');
+		}
 
-			if (screenSM && $(headerNavSystem).hasClass('show')) {
-				$(headerNavSystem).collapse('hide');
-			}
+		if ($(menuNavHeaderGroup).hasClass('show')) {
+			$(menuNavHeaderGroup).collapse('hide');
+		}
 
-			// if ($(menuNavHeaderGroup).hasClass('show')
-			// 	|| $('.menu-left-navigation-pseudo').hasClass('show')) {
-			// 	$(menuNavHeaderGroup).collapse('hide');
-			// }
+		// скрываем dropdown при скролле
+		if ($(dropdownMenu).hasClass('show')) {
+			$(dropdownMenu).removeClass('show');
+		}
 
-			// $('*').tooltip('hide');
-			// скрываем dropdown при скролле
-			if ($(dropdownMenu).hasClass('show')) {
-				$(dropdownMenu).removeClass('show');
-			}
+		if ($(rollUp).hasClass('show')){
+			$(rollUp).removeClass('show');
+		}
+		if ($(header).hasClass('deploy-show')) {
+			$(header).removeClass('deploy-show');
+		}
+		if (!screenLG) {
+			if (position > 0) {
+				if (!$(headerBread).hasClass('show')) $(headerBread).addClass('show');
 
-			if (!screenLG) {
-				if (position > 0) {
-					if (!$(headerBread).hasClass('show')) $(headerBread).addClass('show');
-					if (position > paddingTopContent) {
-						if (!$(headerBread).hasClass('show')) $(headerBread).addClass('show');
+				if (position > paddingTopContent) {
+					if (!headerHasScroll) {
 						$(header).fadeIn(150).addClass('scroll');
-						if (headerNavSystemDefault) {
-							$(headerNavSystem).removeClass('show')/*.collapse('hide');*/
+
+						if (!$(headerBread).hasClass('show')) $(headerBread).addClass('show');
+
+						if ($(headerNavSystem).hasClass('show')){
+							$(headerNavSystem).removeClass('show');
+							$(headerNavControl).removeClass('active');
 						}
-
-						setTimeout(function (){
-						}, 50);
-					} else {
-						if (position < currentScroll) {
-							if (position < paddingTopContent - $(headerBread).offset().top) {
-
-								$(headerBread).removeClass('show');
-							}
-						}
-						$(headerNavSystem).addClass('show');
-						if (!$(header).hasClass('show')){
-
-							$(header)
-								.addClass('show')
-								.removeClass('scroll')
-								.slideDown(200);
-						}
-						if ($(header).hasClass('scroll')) {
-							$(header)
-								.addClass('show')
-								.removeClass('scroll')
-								.slideDown(200);
-						}
-
-						$(content).stop(true).animate({paddingTop: paddingTopContent}, 300);
-						// $(headerBread).removeClass('show');
-
-						setTimeout(function (){
-						}, 50);
 
 					}
+
 				} else {
-					setTimeout(function (){
+					if (position < currentScroll) {
+						if (position < paddingTopContent - $(headerBread).offset().top) {
+
+							$(headerBread).removeClass('show');
+						}
+					}
+					if (headerNavSystemDefault) {
+						$(headerNavControl).addClass('active');
 						$(headerNavSystem).addClass('show');
-						// $(header).fadeOut(150, function (){
-						if (!$(header).hasClass('show')){
+					}
+					if (!$(header).hasClass('show')){
 
-							$(header)
-								.addClass('show')
-								.removeClass('scroll')
-								.slideDown(200);
-						}
-						// })
-						if ($(header).hasClass('scroll')) {
-							$(header)
-								.addClass('show')
-								.removeClass('scroll')
-								.slideDown(200);
-						}
+						$(header)
+							.addClass('show')
+							.removeClass('scroll')
+							.slideDown(200);
+					}
+					if (headerHasScroll) {
+						$(header)
+							.addClass('show')
+							.removeClass('scroll')
+							.slideDown(200);
+					}
 
-						$(content).stop(true).animate({paddingTop: paddingTopContent}, 300);
-						$(headerBread).removeClass('show');
-					}, 50);
+					$(content).stop(true).animate({paddingTop: paddingTopContent}, 300);
+					// $(headerBread).removeClass('show');
 				}
+			} else {
+
+				if (headerNavSystemDefault) {
+					$(headerNavControl).addClass('active');
+					$(headerNavSystem).addClass('show');
+				}
+				if (!$(header).hasClass('show')){
+
+					$(header)
+						.addClass('show')
+						.removeClass('scroll')
+						.slideDown(200);
+				}
+				if (headerHasScroll) {
+					$(header)
+						.addClass('show')
+						.removeClass('scroll')
+						.slideDown(200);
+				}
+
+				$(content).stop(true).animate({paddingTop: paddingTopContent}, 300);
+				$(headerBread).removeClass('show');
+				setTimeout(function (){
+				}, 50);
 			}
-			console.log(paddingTopContent);
+		}
+		// aside
+		if (!screenSM && !ie) {
+				asideHeight = $(aside).actual('outerHeight') + $(header).actual('outerHeight');
+				windowMoreAside = asideHeight < windowHeight;
 
-			// header
-			// if (!screenSM) {
-			// 	if (position > 0) {
-			//
-			// 		if (!edge && !safari) $(header).css({'position': 'fixed'});
-			//
-			// 		if (!$(header).hasClass('fixed')) {
-			// 			$(header).addClass('fixed');
-			// 			if (!edge && !safari) $(content).css('padding-top', positionContent);
-			// 		}
-			//
-			// 		if (position >= positionThree) {
-			// 			$(headerNavSystem).collapse('hide');
-			//
-			// 			if (!$(header).hasClass('scroll') && !screenLG) {
-			// 				$(header).fadeOut(150, function (){
-			// 					setTimeout(function (){
-			// 						setTimeout(function (){
-			// 							$(document).trigger('scroll');
-			// 						},500);
-			// 						$(header).addClass('scroll').fadeIn(150);
-			// 					}, 5)
-			//
-			// 				});
-			// 			}
-			//
-			//
-			// 		} else {
-			// 			if (!safari && !edge) {
-			// 				$(headerNavSystem).collapse('show');
-			// 				if ($(header).hasClass('scroll') && !screenLG) {
-			// 					$(header).fadeOut(150, function (){
-			// 						$(header).removeClass('scroll').fadeIn(150);
-			// 					});
-			// 				}
-			// 			}
-			// 		}
-			//
-			// 	} else {
-			// 		if (!edge && !safari) $(header).css({'position': ''});
-			// 		if (!edge && !safari) $(content).css('padding-top', '');
-			// 		if (!edge && !safari) $(header).removeClass('fixed');
-			// 		$(headerNavSystem).collapse('show');
-			// 	}
-			// }
-			//
-			// // header
-			// if (!safari && !edge) {
-			// 	$(leftNavigationPseudo).stop(true).removeClass('show collapsing');
-			// 	$(menuLeftList).stop(true).removeClass('show collapsing');
-			// }
-			// if (!$(header).hasClass('scroll') && !$(headerNavSetting).hasClass('show') && !screenSM){
-			//
-			// 	if (position > 0){
-			// 		setTimeout(function (){
-			// 			if ($(menuLeftList).hasClass('show')) $(menuLeftList).collapse('hide');
-			// 		}, 200)
-			// 		$('#btn-up').animate({bottom: 'show'}, 500);
-			// 		$(headerBread).css({
-			// 			paddingBottom: '15px'
-			// 		});
-			//
-			//
-			// 	} else {
-			// 		if (!edge && !safari) $(content).css('padding-top', '');
-			// 		$('#btn-up').animate({bottom: 'hide', opacity: 'hide'}, 500);
-			// 		$(headerBread).removeAttr('style')
-			// 	}
-			// }
-			//
-			// // меню свернуто
-			// if ($(header).hasClass('scroll')){
-			// 	$(headerNavSystem).collapse('hide');
-			// 	$(headerNavControl).removeClass('active');
-			// }
-			//
-			// // scroll top самый верх экана
-			// if (position <= 0){
-			// 	if ($(header).hasClass('scroll') && !screenLG) {
-			// 		$(header).fadeOut(200, function (){
-			// 			$(header).removeClass('scroll').fadeIn(400);
-			// 		});
-			// 		$(headerBread).removeAttr('style')
-			// 	}
-			// 	if (!screenSM){
-			// 		$(headerNavSystem).collapse('show');
-			// 	}
-			// 	if (!edge && !safari) $(header).removeAttr('style');
-			// }
-			//
-			// // scroll bottom
-			// if (position > 0){
-			// 	$('.menu-left').removeAttr('style');
-			//
-			// 	// развернуть
-			// 	if (!$(rollUp).hasClass('show') && $(header).hasClass('scroll')){
-			// 		$(rollUp).addClass('show');
-			// 	}else {
-			// 		$(rollUp).removeClass('show');
-			// 	}
-			//
-			// }else {
-			// 	$(rollUp).removeClass('show');
-			// }
+			if (!asideBig) { // боковая меньше контента
 
-			// aside
-			if (!screenSM && !ie) {
-					asideHeight = $(aside).actual('outerHeight') + $(header).actual('outerHeight');
-					windowMoreAside = asideHeight < windowHeight;
+				if (position > currentScroll) { // скроллим вниз
 
-				if (!asideBig) { // боковая меньше контента
+					if (position > 0) {
+						$(aside).removeClass('scrollingTop');
 
-					if (position > currentScroll) { // скроллим вниз
+						if (!$(aside).hasClass('scrollingBottom')) {
+							asideOffsetTop = $(aside).offset().top;
+							contentPadding = parseInt($(content).css('padding-top'));
 
-						if (position > 0) {
-							$(aside).removeClass('scrollingTop');
-
-							if (!$(aside).hasClass('scrollingBottom')) {
-								asideOffsetTop = $(aside).offset().top;
-								contentPadding = parseInt($(content).css('padding-top'));
-
-								$(aside).addClass('scrollingBottom');
-								if (!$(aside).hasClass('positionStatic')) {
-									$(aside).css({
-										position: '',
-										top: '',
-										bottom: '',
-										marginTop: asideOffsetTop - contentPadding,
-									}).removeClass('positionTop positionBottom').addClass('positionStatic');
-								}
+							$(aside).addClass('scrollingBottom');
+							if (!$(aside).hasClass('positionStatic')) {
+								$(aside).css({
+									position: '',
+									top: '',
+									bottom: '',
+									marginTop: asideOffsetTop - contentPadding,
+								}).removeClass('positionTop positionBottom').addClass('positionStatic');
 							}
+						}
 
-							asideHeight = $(aside).actual('outerHeight') + $(aside).offset().top;
+						asideHeight = $(aside).actual('outerHeight') + $(aside).offset().top;
 
-							if (windowMoreAside) {
+						if (windowMoreAside) {
+							$(aside).css({
+								position: 'fixed',
+								top: $(header).actual('outerHeight'),
+								bottom: '',
+								marginTop: '',
+								width: $('#aside').parent().width(),
+							}).addClass('positionTop').removeClass('positionStatic positionBottom');
+						}
+
+						if (positionBottom >= asideHeight) { // прилепляем асайд к низу
+							if (!windowMoreAside) {
 								$(aside).css({
 									position: 'fixed',
-									top: $(header).actual('outerHeight'),
-									bottom: '',
+									top: '',
+									bottom: '0px',
 									marginTop: '',
 									width: $('#aside').parent().width(),
-								}).addClass('positionTop').removeClass('positionStatic positionBottom');
-							}
-
-							if (positionBottom >= asideHeight) { // прилепляем асайд к низу
-								if (!windowMoreAside) {
-									$(aside).css({
-										position: 'fixed',
-										top: '',
-										bottom: '0px',
-										marginTop: '',
-										width: $('#aside').parent().width(),
-									}).addClass('positionBottom').removeClass('positionTop positionStatic');
-								}
+								}).addClass('positionBottom').removeClass('positionTop positionStatic');
 							}
 						}
+					}
 
-					} else { // скролл вверх
+				} else { // скролл вверх
 
-						contentPadding = parseInt($(content).css('padding-top'));
+					contentPadding = parseInt($(content).css('padding-top'));
+
+					asideOffsetTop = $(aside).offset().top;
+					headerHeight = $(header).actual('outerHeight');
+
+					if (position > 0) {
+
+						if (!$(header).hasClass('scroll') && $(aside).hasClass('positionTop')) {
+							headerHeight = $(header).actual('outerHeight');
+							$(aside).css({
+								position: '',
+								top: headerHeight,
+								bottom: '',
+								marginTop: '',
+							});
+						}
+
+						$(aside).removeClass('scrollingBottom');
+						$(aside).addClass('scrollingTop');
 
 						asideOffsetTop = $(aside).offset().top;
 						headerHeight = $(header).actual('outerHeight');
 
-						if (position > 0) {
+						if (asideOffsetTop < position + headerHeight) {
 
-							if (!$(header).hasClass('scroll') && $(aside).hasClass('positionTop')) {
-								headerHeight = $(header).actual('outerHeight');
+							if ($(aside).hasClass('positionBottom')) {
 								$(aside).css({
 									position: '',
-									top: headerHeight,
+									top: '',
 									bottom: '',
-									marginTop: '',
-								});
-							}
-
-							$(aside).removeClass('scrollingBottom');
-							$(aside).addClass('scrollingTop');
-
-							asideOffsetTop = $(aside).offset().top;
-							headerHeight = $(header).actual('outerHeight');
-
-							if (asideOffsetTop < position + headerHeight) {
-
-								if ($(aside).hasClass('positionBottom')) {
-									$(aside).css({
-										position: '',
-										top: '',
-										bottom: '',
-										marginTop: asideOffsetTop - contentPadding,
-									}).removeClass('positionBottom positionTop').addClass('positionStatic');
-								}
-
-							} else {
-								$(aside).css({
-									position: 'fixed',
-									top: $(header).actual('outerHeight'),
-									bottom: '',
-									width: asideWidth,
-									marginTop: '',
-								}).addClass('positionTop').removeClass('positionStatic');
+									marginTop: asideOffsetTop - contentPadding,
+								}).removeClass('positionBottom positionTop').addClass('positionStatic');
 							}
 
 						} else {
-							// $(aside).css({
-							// 	position: '',
-							// 	top: '',
-							// 	bottom: '',
-							// 	// marginTop: asideOffsetTop - contentPadding,
-							// })
-							// 	.animate({marginTop: asideOffsetTop}, 300)
-							// 	.removeClass('positionBottom positionTop')
-							// 	.addClass('positionStatic');
-
 							$(aside).css({
-								position: '',
-								top: '',
+								position: 'fixed',
+								top: $(header).actual('outerHeight'),
 								bottom: '',
-								width: '',
+								width: asideWidth,
 								marginTop: '',
-							}).removeClass('positionTop positionBottom scrollingTop scrollingBottom')
-								.addClass('positionStatic');
+							}).addClass('positionTop').removeClass('positionStatic');
 						}
+
+					} else {
+						$(aside).css({
+							position: '',
+							top: '',
+							bottom: '',
+							width: '',
+							marginTop: '',
+						}).removeClass('positionTop positionBottom scrollingTop scrollingBottom')
+							.addClass('positionStatic');
 					}
 				}
 			}
+		}
 
-			currentScroll = position;
-		});
-	}
+		currentScroll = position;
+	});
 
-	// $(document).on('scroll', function() {
-	// 	var position = $(this).scrollTop();
-	// 	if (position <= 0) {
-	// 		setTimeout(function() {
-	// 			var position = $(document).scrollTop(),
-	// 				meuLeftShown = $(menuLeftList).hasClass('show');
-	//
-	// 			if (position <= 0 && menuLeftListDefault && !meuLeftShown) {
-	// 				$(menuLeftList).collapse('show');
-	// 			}
-	// 		}, 800);
-	// 	}
-	// });
-
-
+	/*
+	* проверка на случай если, высота шапки
+	* не совпадает с padding content
+	* (напрмер если обновить страницу на середине)
+	* */
+	setInterval(function (){
+		var position = $(document).scrollTop();
+		var headerHeight = $(header).actual('outerHeight');
+		var headerNavSystemCollapsing = $(headerNavSystem).hasClass('collapsing');
+		console.log('position ' + position);
+		console.log('paddingTopContent ' + paddingTopContent);
+		console.log('headerHeight ' + headerHeight);
+		console.log('!screenSM ' + !screenSM);
+		console.log('!headerNavSystemCollapsing ' + !headerNavSystemCollapsing);
+		if (position <= 0
+				&& paddingTopContent < headerHeight
+				&& !screenSM
+				&& !headerNavSystemCollapsing) {
+			paddingTopContent = $(header).actual('outerHeight');
+			$(content).stop(true).animate({paddingTop: paddingTopContent}, 300);
+		}
+	}, 150);
 
 	// плавный скролл до элемента
 
@@ -1257,7 +1173,6 @@ $(document).ready(function() {
 			var dateFormat = dateStringArr[1]+'/'+dateStringArr[0]+'/'+dateStringArr[2];
 
 			var curDate = new Date(dateFormat);
-			console.log(this);
 			for (var i = 0; i < eventsDates.length; i++)  {
 				var event = eventsDates[i];
 				var dayDate = event.date;
@@ -1485,25 +1400,55 @@ $(document).ready(function() {
 
 	/**
 	 * Прелоадер
+	 * если вторым параметром передать false то прелоадер
+	 * не уберется, убрать прелоадер можно будет с помощью hidePreloader(item);
 	 *
 	 * @param {selector|Object} item - DOM элемент к которому добавлем прелоадер
-	 * @param {number} [timeout=400]
+	 * @param {boolean|number} [timeout=400] время через каторое уберется прелоадер
+	 * @param {string} [position='absolute'] css position preloader
 	 */
-	function addPreloader(item, timeout){
+
+	function addPreloader(item, timeout, position){
 		var time;
 		if (timeout === undefined) {
 			time = 400
 		} else {
 			time = timeout;
 		}
-		$(item).append('<div class="preloader" style="position: absolute"><div class="page-loader-circle"></div></div>');
-		$(item).css('position', 'relative');
-		setTimeout(function () {
-			$('.preloader').fadeOut('300', function (){
-				$(this).remove();
-			});
+		var isTimout = !time;
+		var pos = position ? position : 'absolute';
+		var preloader = '<div class="preloader"><div class="page-loader-circle"></div></div>';
+		preloader = $(preloader).css({
+			position: pos,
+			width: pos === 'fixed' ? windowWidth : '',
+		});
+		console.log(windowWidth);
+		$(item).append(preloader);
+		$(item).css({
+			position: 'relative',
+		});
+		if (!isTimout) {
+			setTimeout(function () {
+				hidePreloader(item)
 
-		}, time)
+			}, time)
+		}
+	}
+
+	/**
+	 * Убирает прелоадер
+	 *
+	 * @param {selector|Object} item - DOM элемент к которому был добавлен прелоадер
+	 */
+	function hidePreloader(item){
+		$(item)
+			.css({
+				position: '',
+			})
+			.find('.preloader')
+			.fadeOut('300', function (){
+				$(this).remove();
+		});
 	}
 
 	/**
