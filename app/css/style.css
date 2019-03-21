@@ -3419,7 +3419,7 @@ select.form-control:not([size]):not([multiple]) {
 .nav-setting {
   position: absolute;
   z-index: 100;
-  top: -3px;
+  top: 3px;
   right: 0;
   width: 100%;
   margin-right: 15px;

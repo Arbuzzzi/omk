@@ -835,13 +835,10 @@ $(document).ready(function() {
 		var position = $(document).scrollTop();
 		var headerHeight = $(header).actual('outerHeight');
 		var headerNavSystemCollapsing = $(headerNavSystem).hasClass('collapsing');
-		console.log('position ' + position);
-		console.log('paddingTopContent ' + paddingTopContent);
-		console.log('headerHeight ' + headerHeight);
-		console.log('!screenSM ' + !screenSM);
-		console.log('!headerNavSystemCollapsing ' + !headerNavSystemCollapsing);
+		var paddingContentRelevant = parseFloat($(content).css('padding-top'));
+		
 		if (position <= 0
-				&& paddingTopContent < headerHeight
+				&& paddingContentRelevant !== headerHeight
 				&& !screenSM
 				&& !headerNavSystemCollapsing) {
 			paddingTopContent = $(header).actual('outerHeight');
