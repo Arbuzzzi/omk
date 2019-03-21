@@ -836,7 +836,7 @@ $(document).ready(function() {
 		var headerHeight = $(header).actual('outerHeight');
 		var headerNavSystemCollapsing = $(headerNavSystem).hasClass('collapsing');
 		var paddingContentRelevant = parseFloat($(content).css('padding-top'));
-		
+
 		if (position <= 0
 				&& paddingContentRelevant !== headerHeight
 				&& !screenSM
