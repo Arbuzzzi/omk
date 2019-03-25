@@ -183,11 +183,15 @@
 				margin-top: 5px;
 				font-size: 14px;
 			}
+			span {
+				display: inline-block;
+			}
 		}
 		.article-author__left {
 			@include xs-block {
 				margin-top: 0;
 				line-height: normal;
+				margin-bottom: 5px;
 			}
 
 		}
@@ -210,7 +214,10 @@
 				font-size: 12px;
 			}
 			@include xs-block {
-				font-size: 10px;
+				font-size: 14px;
+				float: none;
+				text-align: left;
+				margin-bottom: 5px;
 			}
 		}
 
@@ -224,7 +231,9 @@
 				font-size: 10px;
 			}
 			@include xs-block {
-				font-size: 8px;
+				font-size: 12px;
+				float: none;
+				text-align: left;
 			}
 		}
 	}

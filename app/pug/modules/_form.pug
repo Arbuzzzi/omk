@@ -3,7 +3,7 @@
 		.form__box.form__box_title
 			h3.form__title.form__title_main Заполните форму обращения
 			h3.form__title.form__title_alt Отправить форму от другого имени
-		.form__box
+		.form__box.form__box_special-label
 			label.form-label.form-label_special(for="formSubject") Тема
 			.form-sender
 				span.form__text 
@@ -37,7 +37,7 @@
 				span Текст обращения
 			textarea#formTextarea.form__textarea(placeholder="Введите текст обращения")
 		.form__box.form__box_flex
-			.form-checkbox
+			.form-checkbox.form-checkbox_slide
 				label.form-checkbox__label(for='form-checkbox-slide')
 					input#form-checkbox-slide.form-checkbox__input(type='checkbox', name='form_copy')
 					span.form-checkbox__text.form-checkbox__text_thin Отправить себе копию сообщения

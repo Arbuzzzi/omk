@@ -3,6 +3,9 @@
 	border-collapse: collapse;	
 	border-spacing: 0px;
 	tr {
+		@include md-block {
+			vertical-align: top;
+		}
 		td {
 			padding-right: 5px;
 			min-width: 235px;

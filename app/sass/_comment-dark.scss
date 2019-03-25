@@ -41,28 +41,32 @@
 		background-color: rgba(#fbfbfb, 0.3);
 		color: #eeefef;
 		font-size: 7px;
+		@include xs-block {
+			padding: 3px 5px;
+		}
 		&__left {
 			@include xs-block {
-				font-size: 8px;
-				margin: 0;
+				//font-size: 8px;
+				//margin: 0;
 			}
 		}
 		&__username {
 			margin-top: 2.5px;
 			@include xs-block {
-				font-size: 6px;
-				margin: 0;
+				//font-size: 6px;
+				//margin: 0;
+				font-size: 13px;
 			}
 		}
 		.article-author__left {
 			@include xs-block {
-				line-height: 16px;
+				//line-height: 16px;
 			}
 
 		}
 		.article-author__username {
 			@include xs-block {
-				line-height: 16px;
+				//line-height: 16px;
 			}
 
 		}

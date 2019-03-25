@@ -1,4 +1,6 @@
 $(document).ready(function (){
+	console.log(window);
+	window.innerWidth = 1230;
 	$(function(){
 		setTimeout(function (){
 			$('[data-toggle="tooltip"]').tooltip('dispose');

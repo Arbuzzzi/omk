@@ -46,7 +46,8 @@ block content
 				.article-author
 					each item in ['#статья','#событие2019','#фамилия','#справочное_слово']
 						a.hashtag(href='#')= item
-					p Автор статьи: Елена Мацинова
+					p= 'Автор статьи: '
+						span Елена Мацинова
 	.card
 		include modules/_tag-box
 	.card

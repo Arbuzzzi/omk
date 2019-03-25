@@ -2,20 +2,31 @@ $(document).ready(function() {
 	var ie = $.browser.msie;
 	var	edge = $.browser.edge;
 	var safari = $.browser.safari;
+	var firefox = $.browser.firefox;
 	var scrollbarWidth = $(document).scrollbarWidth();
 	var allElements = $('*');
 	var windowWidth = $(this).outerWidth();
 	var screenSM = windowWidth < 768;
-	var screenMD = windowWidth < 992;
+	var screenMD = windowWidth < 991;
 	var screenLG = windowWidth < 1230;
 
-	$(window).resize(function (){
-		screenSM = windowWidth < 768;
-		screenMD = windowWidth < 992;
-		screenLG = windowWidth < 1230;
+	var width = $(window).width();
+	var height = $(window).height();
 
-		windowWidth = $(this).outerWidth();
-		scrollbarWidth = $(document).scrollbarWidth();
+	$(window).resize(function (){
+		setTimeout(function (){
+			if ((width !== $(window).width()) || (height !== $(window).height())){
+				var position = $(this).scrollTop();
+				width = $(window).width();
+				height = $(window).height();
+				windowWidth = $(this).outerWidth();
+				scrollbarWidth = $(document).scrollbarWidth();
+
+				screenSM = windowWidth < 768;
+				screenMD = windowWidth < 992;
+				screenLG = windowWidth < 1230;
+			}
+		}, 800);
 	});
 
 
@@ -114,6 +125,8 @@ $(document).ready(function() {
 	var headerNavControl = $('#header-nav-control');
 	var paddingTopContent = $(header).actual('outerHeight');
 	var headerNavSystemDefault = true;
+	// var navMoreDropdown = $('.nav-more.btn-group.dropup').find('.dropdown-menu');
+	// var navMoreDropdown = $('#header-nav-more-item');
 
 	if (ie) {
 		setInterval(function (){
@@ -503,8 +516,6 @@ $(document).ready(function() {
 	var headerOverlay = '<div class="header-overlay"/>';
 
 
-	var width = $(window).width();
-	var height = $(window).height();
 	var leftNavigationPseudo = $('#leftNavigationPseudo');
 
 	if (!screenSM) {
@@ -513,7 +524,7 @@ $(document).ready(function() {
 	}
 	$(window).resize(function (){
 		setTimeout(function () {
-
+			console.log('resize');
 			if ((width !== $(window).width()) || (height !== $(window).height())) {
 				var position = $(this).scrollTop();
 				width = $(window).width();
@@ -524,7 +535,12 @@ $(document).ready(function() {
 				windowHeight = $(window).outerHeight();
 				asideWidth = $('#aside').parent().width();
 
-				if (screenSM) {
+				$(document).trigger('scroll');
+				$(aside).css({
+					width: asideWidth,
+				});
+
+				if (screenLG) {
 					// $(menuLeftList).collapse('hide');
 					$(header).removeClass('scroll');
 					// $('.header-overlay').remove();
@@ -534,6 +550,7 @@ $(document).ready(function() {
 						// $(header).before(headerOverlay);
 					}
 				}
+
 				$('.widget-slider').slick('refresh');
 
 				if (position <= 0 && $(header).hasClass('fixed')) {
@@ -559,9 +576,7 @@ $(document).ready(function() {
 						}
 					}
 				}
-				$(aside).css({
-					width: asideWidth,
-				});
+
 				if (!screenSM) {
 					$(aside).css({
 						position: '',
@@ -640,6 +655,7 @@ $(document).ready(function() {
 		if ($(header).hasClass('deploy-show')) {
 			$(header).removeClass('deploy-show');
 		}
+
 		if (!screenLG) {
 			if (position > 0) {
 				if (!$(headerBread).hasClass('show')) $(headerBread).addClass('show');
@@ -711,8 +727,23 @@ $(document).ready(function() {
 				}, 50);
 			}
 		}
+
+		if (screenLG && !screenSM) {
+			if (position > paddingTopContent) {
+				if ($(headerNavSystem).hasClass('show')){
+					$(headerNavSystem).removeClass('show');
+					$(headerNavControl).removeClass('active');
+				}
+
+			} else if (!screenSM) {
+				if (headerNavSystemDefault) {
+					$(headerNavControl).addClass('active');
+					$(headerNavSystem).addClass('show');
+				}
+			}
+		}
 		// aside
-		if (!screenSM && !ie) {
+		if (!screenSM && !ie && !firefox) {
 				asideHeight = $(aside).actual('outerHeight') + $(header).actual('outerHeight');
 				windowMoreAside = asideHeight < windowHeight;
 
@@ -1605,6 +1636,14 @@ $(document).ready(function() {
 		]
 	});
 
+	var mobileSlider = $('.card-mobile-slider-wrap');
+	$(mobileSlider).slick({
+		slidesToShow:1,
+		slidesToScroll: 1,
+		prevArrow: '<div class="slider-arrow slider-arrow__left"></div>',
+		nextArrow: '<div class="slider-arrow slider-arrow__right"></div>',
+	});
+
 	$('.card-third-slider-wrap').slick({
 		slidesToShow: 3,
 		slidesToScroll: 1,
@@ -2304,7 +2343,7 @@ $(document).ready(function() {
 
 	$('#form-checkbox-slide').on('change', function() {
 		var formSlideInput = $('.form-slide-input');
-		if (screenSM)  {
+		if (screenSM) {
 			$(formSlideInput).animate({height: 'toggle'}, '400')
 		} else {
 			$(formSlideInput).toggle('slide');

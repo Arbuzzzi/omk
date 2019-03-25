@@ -370,10 +370,13 @@
 	}
 	&__title {
 		min-height: 44px;
-		max-height: 55px;
+		//max-height: 55px;
 		margin-bottom: 15px;
 		font-family: "PT Serif", serif;
 		font-size: 17px;
+		@include lg-block {
+			font-size: 15px;
+		}
 		@include md-block {
 			margin-bottom: 10px;
 			min-height: 30px;
@@ -418,8 +421,12 @@
 		p {
 			font-size: 17px;
 			margin-bottom: 15px;
+			@include lg-block {
+				font-size: 15px;
+			}
 			@include md-block {
 				font-size: 9px;
+				margin-bottom: 6px;
 			}
 			@include xs-block {
 				font-size: 16px;
@@ -436,6 +443,20 @@
 			text-decoration: none;
 			@include hover {
 				text-decoration: underline;
+			}
+		}
+		&_ads {
+			word-wrap: break-word;
+			min-height: 132px;
+
+			@include lg-block {
+				min-height: 120px;
+			}
+			@include md-block {
+				min-height: 80px;
+			}
+			@include xs-block {
+				min-height: auto;
 			}
 		}
 		&_mobile {
@@ -470,10 +491,10 @@
 		font-size: 12px;
 		font-weight: 400;
 		@include md-block {
-			font-size: 8px;
+			font-size: 10px;
 		}
 		@include xs-block {
-			font-size: 12px;
+			font-size: 16px;
 			max-width: 200px;
 		}
 		&_light {
@@ -896,6 +917,15 @@
 		&__text {
 			padding-top: 15px;
 			max-height: 305px;
+			@include sm-block {
+				margin-bottom: 6px;
+			}
+		}
+		&__title {
+			font-size: 22px;
+			@include lg-block {
+				font-size: 15px;
+			}
 		}
 
 		&-slider {
@@ -1037,8 +1067,10 @@
 				width: 8.33333%;
 			}
 			@include xs-block {
-				font-size: 10px;
 				padding: 6px;
+				margin-bottom: 5px;
+				width: 16.66666%;
+				font-size: 20px;
 			}
 		}
 		//table {
@@ -1180,6 +1212,9 @@
 				margin-bottom: 30px;
 				padding: 0;
 				border: none;
+				@include xs-block {
+					margin-bottom: 15px;
+				}
 				.close {
 					position: absolute;
 					top: -20px;
@@ -1202,9 +1237,12 @@
 				font-family: Roboto, sans-serif;
 				font-size: 22px;
 				font-weight: 500;
-				line-height: 17px;
+				line-height: 1.4;
 				@include fontInherit {
 					margin: 0;
+				}
+				@include xs-block {
+					margin-bottom: 5px;
 				}
 			}
 			&-subtitle {
@@ -1243,6 +1281,9 @@
 					font-family: Roboto, sans-serif;
 					font-size: 14px;
 					font-weight: 400;
+					@include xs-block {
+						margin-bottom: 6px;
+					}
 				}
 				h3 {
 					margin-bottom: 5px;
@@ -1255,19 +1296,27 @@
 				}
 			}
 			&-table {
-				&__line {
-					font-size: 0;
-					&:nth-child(2n) {
-						background-color: #f4f5f5;
+				td {
+					p {
+						min-width: 110px;
 					}
 				}
-				&__col {
-					display: inline-block;
-					width: 50%;
-					padding: 10px;
-					vertical-align: top;
-					font-size: 16px;
+				.table td:first-child, .table th:first-child {
+					 max-width: none;
 				}
+				//&__line {
+				//	font-size: 0;
+				//	&:nth-child(2n) {
+				//		background-color: #f4f5f5;
+				//	}
+				//}
+				//&__col {
+				//	display: inline-block;
+				//	width: 50%;
+				//	padding: 10px;
+				//	vertical-align: top;
+				//	font-size: 16px;
+				//}
 			}
 		}
 	}
@@ -1380,8 +1429,17 @@
 	&__items {
 		width: 100%;
 		padding-left: 28px;
+		max-width: 85%;
+		@include md-block {
+			max-width: 100%;
+		}
 		@include sm-block {
 			padding-left: 50px;
+		}
+		&_small-offset {
+			@include sm-block {
+				padding-left: 15px;
+			}
 		}
 	}
 	&__item {
@@ -1549,7 +1607,7 @@
 				font-size: 10px;
 			}
 			@include sm-block {
-				font-size: 8px;
+				font-size: 12px;
 			}
 		}
 	}
@@ -1571,6 +1629,11 @@
 			height: 85px;
 			margin-right: 10px;
 		}
+		@include xs-block {
+			width: 110px;
+			height: 125px;
+			margin-right: 15px;
+		}
 
 		img {
 			display: none;
@@ -1582,8 +1645,11 @@
 		justify-content: flex-start;
 		min-height: 130px;
 		@include md-block {
-		    min-height: auto;
+			min-height: auto;
 			max-width: 90px;
+		}
+		@include xs-block {
+			max-width: 110px;
 		}
 		button {
 			margin-top: auto;
@@ -1601,8 +1667,15 @@
 			font-size: 8px;
 			line-height: 1.4;
 			margin-bottom: 10px;
+			@include xs-block {
+				font-size: 14px;
+			}
 		}
 		p {
+			margin-bottom: 10px;
+			@include md-block {
+				margin-bottom: 0;
+			}
 			strong {
 				display: block;
 				font-weight: 700;
