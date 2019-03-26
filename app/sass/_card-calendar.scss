@@ -10,6 +10,9 @@
 	.ui-datepicker-header {
 		//display: none !important;
 		padding: 0;
+		@include xs-block {
+			margin-bottom: 2px;
+		}
 		h3 {
 			position: relative;
 		}
@@ -19,7 +22,8 @@
 			}
 			h2 {
 				@include xs-block {
-					font-size: 9px;
+					font-size: 14px;
+					line-height: 1.7;
 					margin-bottom: 0;
 				}
 
@@ -34,14 +38,16 @@
 			* {
 				font-size: 16px;
 				@include lg-block {
-					font-size: 12px;
+					//font-size: 12px;
+					font-size: 13px;
+					line-height: 1.6;
 				}
-				@include sm-block {
-					font-size: 9px;
-				}
-				@include xs-block {
-					font-size: 8px;
-				}
+				//@include sm-block {
+				//	font-size: 9px;
+				//}
+				//@include xs-block {
+				//
+				//}
 			}
 			.ui-datepicker-month, .ui-datepicker-year {
 				display: none;
@@ -84,7 +90,7 @@
 					font-size: 10px;
 				}
 				@include xs-block {
-					font-size: 8px;
+					//font-size: 10px;
 				}
 			}
 		}

@@ -1876,7 +1876,7 @@ $(document).ready(function() {
 
 	// добавлет отступ при открытии модальных окон
 	$(modals).on('show.bs.modal', function (){
-		if ($(header).hasClass('fixed')){
+		if ($(header).hasClass('fixed') && !screenSM){
 			$(header).css({
 				paddingRight: scrollbarWidth,
 			})
@@ -1955,7 +1955,7 @@ $(document).ready(function() {
 		addPreloader(modalContent);
 
 		// сохраняем отступ у хедэра
-		if ($(header).hasClass('fixed')){
+		if ($(header).hasClass('fixed') && !screenSM){
 			$(header).css({
 				paddingRight: scrollbarWidth,
 			})

@@ -1421,6 +1421,10 @@
 						padding-bottom: 4px;
 						background-color: #f4f5f5;
 						border-bottom: 1px solid #f4f5f5;
+						@include xs-block {
+							padding-top: 5px;
+							padding-bottom: 6px;
+						}
 					}
 				}
 			}
@@ -1433,7 +1437,8 @@
 				}
 				@include xs-block {
 					font-size: 8px;
-					@include pdLR(10px);
+					padding: 6px 12px;
+					//@include pdLR(12px);
 				}
 			}
 			&-tabs {
