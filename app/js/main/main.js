@@ -1636,13 +1636,21 @@ $(document).ready(function() {
 		]
 	});
 
-	var mobileSlider = $('.card-mobile-slider-wrap');
-	$(mobileSlider).slick({
-		slidesToShow:1,
-		slidesToScroll: 1,
-		prevArrow: '<div class="slider-arrow slider-arrow__left"></div>',
-		nextArrow: '<div class="slider-arrow slider-arrow__right"></div>',
-	});
+	// var mobileSlider = $('.card-mobile-slider-wrap');
+	// $(mobileSlider).each(function (i, item){
+	// 	$(item).slick({
+	// 		slidesToShow: 1,
+	// 		slidesToScroll: 1,
+	// 		prevArrow: '<div class="slider-arrow slider-arrow__left"></div>',
+	// 		nextArrow: '<div class="slider-arrow slider-arrow__right"></div>',
+	// 	});
+	// });
+	// $(mobileSlider).slick({
+	// 	slidesToShow:1,
+	// 	slidesToScroll: 1,
+	// 	prevArrow: '<div class="slider-arrow slider-arrow__left"></div>',
+	// 	nextArrow: '<div class="slider-arrow slider-arrow__right"></div>',
+	// });
 
 	$('.card-third-slider-wrap').slick({
 		slidesToShow: 3,
@@ -2028,6 +2036,14 @@ $(document).ready(function() {
 															slider-arrow__right \
 															modal-main-slider-arrow \
 															modal-main-slider-arrow__right"></div>',
+			responsive: [
+				{
+					breakpoint: 767,
+					settings: {
+						infinite: true
+					}
+				}
+			]
 		});
 
 		$('#modal-main-slider-bottom').slick({
@@ -2046,6 +2062,14 @@ $(document).ready(function() {
 															slider-arrow__right \
 															modal-main-slider-arrow \
 															modal-main-slider-arrow__right"></div>',
+			responsive: [
+				{
+					breakpoint: 992,
+					settings: {
+						slidesToShow: 5,
+					}
+				}
+			]
 		});
 	});
 

@@ -412,6 +412,7 @@
 		white-space: nowrap;
 		text-overflow: ellipsis;
 		font-size: 8px;
+		line-height: 1.2;
 	}
 	@include xs-block {
 		font-size: 10px;
@@ -538,7 +539,7 @@
 		min-width: 100px;
 	}
 	@include md-block {
-		min-width: 95px;
+		min-width: 75px;
 	}
 	@include sm-block {
 		min-width: 95px;

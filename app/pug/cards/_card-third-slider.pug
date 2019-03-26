@@ -1,7 +1,7 @@
 if cardSettings === undefined
 	-var cardSettings = {};
 .card.card-full.card-full-slider
-	.card-full-slider-wrap.card-wrap.card-full-wrap
+	.card-full-slider-wrap.card-wrap.card-full-wrap.mobile-hide
 		.card-full-slider__item
 			.card__imgwrap
 				.card__imgbox.card__imgbox_third(class=cardSettings.advantClass, style='background-image: url(img/article-img-01.jpg)')
@@ -12,3 +12,28 @@ if cardSettings === undefined
 				.card__imgbox.card__imgbox_third(class=cardSettings.advantClass, style='background-image: url(img/article-img-01.jpg)')
 				.card__imgbox.card__imgbox_third(class=cardSettings.advantClass, style='background-image: url(img/article-img-02.jpg)')
 				.card__imgbox.card__imgbox_third(class=cardSettings.advantClass, style='background-image: url(img/block-img-05.jpg)')
+
+.card-full-slider-wrap.card-mobile-slider-wrap.card-wrap.card-full-wrap.mobile-show
+	.card-full-slider__item
+		.card__imgwrap
+				.card__imgbox(class=cardSettings.advantClass, style='background-image: url(img/article-img-01.jpg)')
+
+	.card-full-slider__item
+		.card__imgwrap
+				.card__imgbox(class=cardSettings.advantClass, style='background-image: url(img/article-img-02.jpg)')
+
+	.card-full-slider__item
+		.card__imgwrap
+				.card__imgbox(class=cardSettings.advantClass, style='background-image: url(img/block-img-01.jpg)')
+
+	.card-full-slider__item
+		.card__imgwrap
+			.card__imgbox(class=cardSettings.advantClass, style='background-image: url(img/article-img-01.jpg)')
+
+	.card-full-slider__item
+		.card__imgwrap
+				.card__imgbox(class=cardSettings.advantClass, style='background-image: url(img/article-img-02.jpg)')
+
+	.card-full-slider__item
+		.card__imgwrap
+				.card__imgbox(class=cardSettings.advantClass, style='background-image: url(img/block-img-05.jpg)')

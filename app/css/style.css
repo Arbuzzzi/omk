@@ -4387,6 +4387,14 @@ select.form-control:not([size]):not([multiple]) {
   color: #ffffff;
 }
 
+.card.mobile-hide {
+  display: block;
+}
+
+.card.mobile-show {
+  display: none;
+}
+
 .card-wrap {
   position: relative;
   display: -webkit-box;
@@ -4418,6 +4426,14 @@ select.form-control:not([size]):not([multiple]) {
   z-index: 1;
   height: 100%;
   width: 100%;
+}
+
+.card-wrap.mobile-hide {
+  display: block;
+}
+
+.card-wrap.mobile-show {
+  display: none;
 }
 
 .card_slim {
@@ -6810,7 +6826,6 @@ select.form-control:not([size]):not([multiple]) {
 }
 
 .article-preview-text {
-  height: 70px;
   overflow: hidden;
 }
 
@@ -7097,10 +7112,6 @@ select.form-control:not([size]):not([multiple]) {
   background-color: rgba(251, 251, 251, 0.3);
   color: #eeefef;
   font-size: 7px;
-}
-
-.comments-dark .article-author__username {
-  margin-top: 2.5px;
 }
 
 .post-info {
@@ -7417,6 +7428,10 @@ select.form-control:not([size]):not([multiple]) {
 
 .main-icon__card.disabled * {
   cursor: no-drop;
+  color: #d0d1d3;
+}
+
+.main-icon__card.disabled .card-links__lnk.mobile-dark {
   color: #d0d1d3;
 }
 
@@ -9630,7 +9645,7 @@ select.form-control:not([size]):not([multiple]) {
   }
 
   .modal-main-slider-bottom .modal-main-slider__imgbox {
-    height: 85px;
+    height: 70px;
   }
 
   .header.scroll .header-question a {
@@ -9904,6 +9919,10 @@ select.form-control:not([size]):not([multiple]) {
     min-height: 120px;
   }
 
+  .card-logo:nth-child(5n) {
+    padding-right: 8px;
+  }
+
   .card-full__imgbox {
     height: 300px;
   }
@@ -9956,6 +9975,7 @@ select.form-control:not([size]):not([multiple]) {
   .card-links__lnkbox .link-icon-save {
     opacity: 1;
     font-size: 14px;
+    top: 2px;
   }
 
   .card-links__lnkbox .link-icon-save:before {
@@ -9966,7 +9986,8 @@ select.form-control:not([size]):not([multiple]) {
   }
 
   .card-links__lnk {
-    font-size: 12px;
+    font-size: 17px;
+    line-height: 1.2;
   }
 
   .card-links__lnk_small {
@@ -10176,6 +10197,7 @@ select.form-control:not([size]):not([multiple]) {
     -o-text-overflow: ellipsis;
        text-overflow: ellipsis;
     font-size: 8px;
+    line-height: 1.2;
   }
 
   .button-big-o {
@@ -10184,7 +10206,7 @@ select.form-control:not([size]):not([multiple]) {
   }
 
   .button-width-142 {
-    min-width: 95px;
+    min-width: 75px;
   }
 
   .form-search__label {
@@ -10214,7 +10236,23 @@ select.form-control:not([size]):not([multiple]) {
   }
 
   .modal-main-slider__item .card-image {
-    height: 205px;
+    height: 323px;
+  }
+
+  .modal-main-slider-arrow__left {
+    left: 0;
+  }
+
+  .modal-main-slider-arrow__right {
+    right: 0;
+  }
+
+  .modal-main-slider-title .post-info {
+    padding: 6px 22px 6px;
+  }
+
+  .modal-main-slider-bottom .modal-main-slider-wrap {
+    padding: 0 10px;
   }
 
   .header:before {
@@ -10297,9 +10335,10 @@ select.form-control:not([size]):not([multiple]) {
   }
 
   .like-button {
-    font-size: 10px;
+    font-size: 9px;
     line-height: 1.4;
     vertical-align: top;
+    margin-left: 6px;
   }
 
   .like-button .icon-comment {
@@ -10387,19 +10426,14 @@ select.form-control:not([size]):not([multiple]) {
   }
 
   .card__title {
-    margin-bottom: 10px;
+    margin-bottom: 5px;
     min-height: 30px;
-    max-height: 30px;
     font-size: 9px;
-  }
-
-  .card__title a {
-    max-height: 30px;
   }
 
   .card__text p {
-    font-size: 9px;
-    margin-bottom: 6px;
+    font-size: 10px;
+    margin-bottom: 5px;
   }
 
   .card__text_ads {
@@ -10426,10 +10460,11 @@ select.form-control:not([size]):not([multiple]) {
 
   .card-logo {
     padding-right: 8px;
+    margin-bottom: 8px;
   }
 
   .card-logo__imgbox {
-    width: 96px;
+    width: 94px;
     height: 72px;
     line-height: 36px;
   }
@@ -10440,8 +10475,8 @@ select.form-control:not([size]):not([multiple]) {
   }
 
   .card-slider__item {
-    padding-left: -7.5px;
-    padding-right: -7.5px;
+    padding-left: 7.5px;
+    padding-right: 7.5px;
   }
 
   .card-slider-number_modern {
@@ -10520,6 +10555,11 @@ select.form-control:not([size]):not([multiple]) {
 
   .card-modern__content .card-slider-number {
     font-size: 10px;
+  }
+
+  .card-third-slider__item:after {
+    left: 7.5px;
+    right: 7.5px;
   }
 
   .card-half-imgbox {
@@ -10615,6 +10655,12 @@ select.form-control:not([size]):not([multiple]) {
 
   .card-links__left {
     width: 165px;
+    text-align: left;
+  }
+
+  .card-links__left .card-links__lnk {
+    width: 165px;
+    text-align: left;
   }
 
   .card-links__lnkbox {
@@ -10627,8 +10673,8 @@ select.form-control:not([size]):not([multiple]) {
     top: 3px;
   }
 
-  .card-links__lnk {
-    font-size: 11px;
+  .card-links__lnk.mobile-dark {
+    color: #000000;
   }
 
   .card-links__lnk_small {
@@ -10652,12 +10698,12 @@ select.form-control:not([size]):not([multiple]) {
 
   .card-person__text {
     font-size: 8px;
-    line-height: 1.4;
-    margin-bottom: 10px;
+    line-height: 1.3;
+    margin-bottom: 5px;
   }
 
   .card-person__text p {
-    margin-bottom: 0;
+    margin-bottom: 5px;
   }
 
   .widget-calendar {
@@ -10799,6 +10845,18 @@ select.form-control:not([size]):not([multiple]) {
     font-size: 10px;
   }
 
+  .comment_special .article-author__left {
+    float: none;
+    text-align: left;
+  }
+
+  .comment_special .article-author__username {
+    float: none;
+    text-align: left;
+    line-height: 16px;
+    margin-top: -2px;
+  }
+
   .comment-box {
     padding-left: 30px;
   }
@@ -10837,6 +10895,10 @@ select.form-control:not([size]):not([multiple]) {
   .comment-form__textarea {
     padding: 15px;
     font-size: 12px;
+  }
+
+  .comments-dark {
+    margin-top: 18px;
   }
 
   .post-info__title {
@@ -10973,6 +11035,22 @@ select.form-control:not([size]):not([multiple]) {
 
   .like-button {
     font-size: 16px;
+  }
+
+  .card.mobile-hide {
+    display: none;
+  }
+
+  .card.mobile-show {
+    display: block;
+  }
+
+  .card-wrap.mobile-hide {
+    display: none;
+  }
+
+  .card-wrap.mobile-show {
+    display: block;
   }
 
   .card-modern__info {
@@ -11334,7 +11412,6 @@ select.form-control:not([size]):not([multiple]) {
   }
 
   .card__title {
-    max-height: 67px;
     font-size: 18px;
     min-height: auto;
   }
@@ -11527,10 +11604,6 @@ select.form-control:not([size]):not([multiple]) {
     font-size: 12px;
     float: none;
     text-align: left;
-  }
-
-  .article-preview-text {
-    height: 75px;
   }
 
   .comment {

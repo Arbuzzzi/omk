@@ -1,44 +1,28 @@
 .card.card-full.card-full-slider
-	.card-full-slider-wrap.card-wrap.card-full-wrap
+	.card-full-slider-wrap.card-wrap.card-full-wrap.mobile-hide
 		//- - var i = '01';
 		- var imgClass = '';
 		- var imgBoxClass ='';
+		- var allImages = [];
 
 		.card-full-slider__item
 			.card__imgwrap.margin-bottom-15
 				- var items = ['03', '12', '01'];
+				- allImages = allImages.concat(items);
 				each item in items
 					- var imgUrl = 'img/block-img-'+item+'.jpg';
 					.article-imgbox.article-imgbox_third(style='background-image: url('+imgUrl+')', class=imgBoxClass)
 						img(src=imgUrl, class=imgClass)
 			.card__imgwrap.margin-bottom-15
 				- var items = ['06', '05', '04'];
+				- allImages = allImages.concat(items);
 				each item in items
 					- var imgUrl = 'img/block-img-'+item+'.jpg';
 					.article-imgbox.article-imgbox_third(style='background-image: url('+imgUrl+')', class=imgBoxClass)
 						img(src=imgUrl, class=imgClass)
 			.card__imgwrap.margin-bottom-15
 				- var items = ['09', '10', '07'];
-				each item in items
-					- var imgUrl = 'img/block-img-'+item+'.jpg';
-					.article-imgbox.article-imgbox_third(style='background-image: url('+imgUrl+')', class=imgBoxClass)
-						img(src=imgUrl, class=imgClass)
-
-		.card-full-slider__item
-			.card__imgwrap.margin-bottom-15
-				- var items = ['03', '12', '01'];
-				each item in items
-					- var imgUrl = 'img/block-img-'+item+'.jpg';
-					.article-imgbox.article-imgbox_third(style='background-image: url('+imgUrl+')', class=imgBoxClass)
-						img(src=imgUrl, class=imgClass)
-			.card__imgwrap.margin-bottom-15
-				- var items = ['06', '05', '04'];
-				each item in items
-					- var imgUrl = 'img/block-img-'+item+'.jpg';
-					.article-imgbox.article-imgbox_third(style='background-image: url('+imgUrl+')', class=imgBoxClass)
-						img(src=imgUrl, class=imgClass)
-			.card__imgwrap.margin-bottom-15
-				- var items = ['09', '10', '07'];
+				- allImages = allImages.concat(items);
 				each item in items
 					- var imgUrl = 'img/block-img-'+item+'.jpg';
 					.article-imgbox.article-imgbox_third(style='background-image: url('+imgUrl+')', class=imgBoxClass)
@@ -47,19 +31,54 @@
 		.card-full-slider__item
 			.card__imgwrap.margin-bottom-15
 				- var items = ['03', '12', '01'];
+				- allImages = allImages.concat(items);
 				each item in items
 					- var imgUrl = 'img/block-img-'+item+'.jpg';
 					.article-imgbox.article-imgbox_third(style='background-image: url('+imgUrl+')', class=imgBoxClass)
 						img(src=imgUrl, class=imgClass)
 			.card__imgwrap.margin-bottom-15
 				- var items = ['06', '05', '04'];
+				- allImages = allImages.concat(items);
 				each item in items
 					- var imgUrl = 'img/block-img-'+item+'.jpg';
 					.article-imgbox.article-imgbox_third(style='background-image: url('+imgUrl+')', class=imgBoxClass)
 						img(src=imgUrl, class=imgClass)
 			.card__imgwrap.margin-bottom-15
 				- var items = ['09', '10', '07'];
+				- allImages = allImages.concat(items);
 				each item in items
 					- var imgUrl = 'img/block-img-'+item+'.jpg';
 					.article-imgbox.article-imgbox_third(style='background-image: url('+imgUrl+')', class=imgBoxClass)
 						img(src=imgUrl, class=imgClass)
+
+		.card-full-slider__item
+			.card__imgwrap.margin-bottom-15
+				- var items = ['03', '12', '01'];
+				- allImages = allImages.concat(items);
+				each item in items
+					- var imgUrl = 'img/block-img-'+item+'.jpg';
+					.article-imgbox.article-imgbox_third(style='background-image: url('+imgUrl+')', class=imgBoxClass)
+						img(src=imgUrl, class=imgClass)
+			.card__imgwrap.margin-bottom-15
+				- var items = ['06', '05', '04'];
+				- allImages = allImages.concat(items);
+				each item in items
+					- var imgUrl = 'img/block-img-'+item+'.jpg';
+					.article-imgbox.article-imgbox_third(style='background-image: url('+imgUrl+')', class=imgBoxClass)
+						img(src=imgUrl, class=imgClass)
+			.card__imgwrap.margin-bottom-15
+				- var items = ['09', '10', '07'];
+				- allImages = allImages.concat(items);
+				each item in items
+					- var imgUrl = 'img/block-img-'+item+'.jpg';
+					.article-imgbox.article-imgbox_third(style='background-image: url('+imgUrl+')', class=imgBoxClass)
+						img(src=imgUrl, class=imgClass)
+
+
+	.card-full-slider-wrap.card-mobile-slider-wrap.card-wrap.card-full-wrap.mobile-show
+		each item in allImages
+			- var imgUrl = 'img/block-img-'+item+'.jpg';
+			.card-full-slider__item
+				.card__imgwrap
+						.card__imgbox(style='background-image: url(' + imgUrl + ')', class=imgBoxClass)
+							img(src=imgUrl, class=imgClass)

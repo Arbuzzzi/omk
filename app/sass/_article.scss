@@ -239,10 +239,10 @@
 	}
 	&-preview {
 		&-text {
-			height: 70px;
+			//height: 70px;
 			overflow: hidden;
 			@include xs-block {
-				height: 75px;
+				//height: 75px;
 			}
 		}
 		.tagbox {

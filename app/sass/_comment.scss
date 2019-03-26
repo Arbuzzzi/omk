@@ -14,12 +14,22 @@
 			display: block;
 			line-height: 20px;
 			margin: 0;
+			@include md-block {
+				float: none;
+				text-align: left;
+			}
 
 		}
 		.article-author__username {
 			display: block;
 			line-height: 20px;
 			margin: 0;
+			@include md-block {
+				float: none;
+				text-align: left;
+				line-height: 16px;
+				margin-top: -2px;
+			}
 
 		}
 	}

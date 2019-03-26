@@ -88,7 +88,8 @@ gulp.task('browser-sync', function() { // Создаем таск browser-sync
             baseDir: 'app' // Директория для сервера - app
         },
         notify: false, // Отключаем уведомления
-        online: true
+        online: true,
+        tunnel: true
     });
 });
 
