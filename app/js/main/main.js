@@ -19,6 +19,7 @@ $(document).ready(function() {
 				var position = $(this).scrollTop();
 				width = $(window).width();
 				height = $(window).height();
+
 				windowWidth = $(this).outerWidth();
 				scrollbarWidth = $(document).scrollbarWidth();
 
@@ -168,15 +169,6 @@ $(document).ready(function() {
 		$(headerNavControl).addClass('active');
 	}
 
-	$(window).resize(function (){
-		if (screenSM) {
-			$(headerNavSystem).collapse('hide');
-			$(headerNavSystem).removeClass('mobile-hide show');
-		} else {
-			$(headerNavSystem).collapse('show');
-			$(headerNavSystem).addClass('mobile-hide show');
-		}
-	});
 
 
 
@@ -522,32 +514,34 @@ $(document).ready(function() {
 		// $(header).before(headerOverlay);
 		// addClassScroll($(header));
 	}
+	var widthTwo = $(window).width();
+	var heightTwo = $(window).height();
+
 	$(window).resize(function (){
 		setTimeout(function () {
-			console.log('resize');
-			if ((width !== $(window).width()) || (height !== $(window).height())) {
-				var position = $(this).scrollTop();
-				width = $(window).width();
-				height = $(window).height();
+			if ((widthTwo !== $(window).width()) || (heightTwo !== $(window).height())) {
+				var position = $(document).scrollTop();
+				widthTwo = $(window).width();
+				heightTwo = $(window).height();
 
 				positionOne = $(window).innerHeight();
 
 				windowHeight = $(window).outerHeight();
-				asideWidth = $('#aside').parent().width();
+				asideWidth = $(aside).parent().width();
 
-				$(document).trigger('scroll');
 				$(aside).css({
 					width: asideWidth,
 				});
 
+				if (screenSM) {
+					$(headerNavSystem).collapse('hide');
+					$(headerNavSystem).removeClass('mobile-hide show');
+				}
 				if (screenLG) {
-					// $(menuLeftList).collapse('hide');
 					$(header).removeClass('scroll');
-					// $('.header-overlay').remove();
 				} else {
-					if (!$('div').is('.header-overlay')) {
-
-						// $(header).before(headerOverlay);
+					if (position >= paddingTopContent) {
+						$(header).addClass('scroll');
 					}
 				}
 
@@ -555,71 +549,43 @@ $(document).ready(function() {
 
 				if (position <= 0 && $(header).hasClass('fixed')) {
 					paddingTopContentMax = $(header).actual('outerHeight');
-					// $(menuLeftList).collapse('show');
+
+					if (headerNavSystemDefault && !screenSM) {
+						$(headerNavSystem).collapse('show');
+						$(headerNavSystem).addClass('mobile-hide show');
+					}
+
+					// сохраняем отступ у контента при ресайзе
 					$(content).animate({
 						paddingTop: paddingTopContentMax
 					}, 400)
 				}
 
+				// сохраняем положение aside при ресайзе
 				if (position > 0) {
-
-					if ($(aside).hasClass('positionTop')) {
-						var headerHeight = $(header).actual('outerHeight');
-
-						asideHeight = $(aside).actual('outerHeight') + $(header).actual('outerHeight');
-						windowMoreAside = asideHeight < windowHeight;
-
-						$(aside).css('top', headerHeight).removeClass('scrollingTop scrollingBottom ');
-
-						if (windowMoreAside) {
-							$(aside).css('bottom:', '').addClass('positionTop');
-						}
+					if (!screenSM) {
+						var asideOffsetTop = $(aside).offset().top;
+						var contentPadding = parseInt($(content).css('padding-top'));
+						var marginOffset = asideOffsetTop > contentPadding ? asideOffsetTop - contentPadding : position;
+						$(aside).css({
+							position: '',
+							top: '',
+							bottom: '',
+							marginTop: marginOffset,
+						}).removeClass('positionTop positionBottom').addClass('positionStatic');
 					}
-				}
 
-				if (!screenSM) {
-					$(aside).css({
-						position: '',
-						top: '',
-						bottom: '',
-						width: '',
-						marginTop: '',
-					}).removeClass('positionTop positionBottom scrollingTop scrollingBottom')
-						.addClass('positionStatic');
 				}
 			}
 		}, 800);
 	});
 
-	// запоминаем свернуто ли левок меню
 
-
-	// var menuLeftListControl = $('#menu-left-list-control');
-	// $(menuLeftListControl).on('click', function() {
-	// 	var position = $(window).scrollTop();
-	// 	if (position <= 0 && !safari) {
-	// 		menuLeftListDefault = !menuLeftListDefault;
-	// 	}
-	// 	if (position < positionThree && safari) {
-	// 		menuLeftListDefault = !menuLeftListDefault;
-	// 	}
-	// });
-
-	// if ($(document).scrollTop() >= positionThree) {
-	// 	$(leftNavigationPseudo).collapse('hide');
-	// }
-	// fix bags scroll
-	// if (safari || edge || ie) {
-	// 	$(header).css({'position': 'fixed'}).addClass('fixed');
-	// }
 	$(content).css('padding-top', positionContent);
 
 	// если страница загруужена на середине
 	if (!screenMD) $(document).trigger('scroll');
 
-	// var headerDuplicate = $(header).clone();
-	// headerDuplicate = $(header).before(headerDuplicate).addClass('scroll').removeClass('show');
-	// ie = true;
 	var headerBread = $('.header .breadcrumb');
 	var dropdownMenu = $('.dropdown-menu');
 	var contentBody = $('#content');
@@ -742,6 +708,7 @@ $(document).ready(function() {
 				}
 			}
 		}
+
 		// aside
 		if (!screenSM && !ie && !firefox) {
 				asideHeight = $(aside).actual('outerHeight') + $(header).actual('outerHeight');

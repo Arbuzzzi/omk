@@ -6,12 +6,12 @@
 	margin-right: -15px;
 	padding-top: 5px;
 	// @include mA();
-	@include lg-block {
-		padding-top: 12px;
-	}
-	@include sm-block {
-		padding-top: 5px;
-	}
+	//@include lg-block {
+	//	padding-top: 12px;
+	//}
+	//@include sm-block {
+	//	padding-top: 5px;
+	//}
 	&__content {
 		padding: 5px 15px 4px;
 		background-image: linear-gradient(180deg, #e4e4e4 0%, rgba(212, 212, 212, 0.24) 22%, #ececec 100%);
@@ -19,6 +19,12 @@
 		background-color: #fff;
 		border-radius: 5px;
 		text-align: center;
+		@include lg-block {
+			margin-top: 12px;
+		}
+		@include sm-block {
+			margin-top: 5px;
+		}
 		@include sm-block {
 			position: static;
 			border: 1px solid #dddee0;

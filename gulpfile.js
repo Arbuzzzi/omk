@@ -75,7 +75,7 @@ gulp.task('pug-build', function buildHTML(done) {
   done();
 });
 
-gulp.task('pug-watch', gulp.series('pug-w'), function (done) {
+gulp.task('pug-watch', gulp.parallel('pug-w'), function (done) {
     // browserSync.reload();
     done();
 });
@@ -88,8 +88,8 @@ gulp.task('browser-sync', function() { // Создаем таск browser-sync
             baseDir: 'app' // Директория для сервера - app
         },
         notify: false, // Отключаем уведомления
-        online: true,
-        tunnel: true
+        // online: true,
+        // tunnel: true
     });
 });
 

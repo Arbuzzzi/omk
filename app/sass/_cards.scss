@@ -360,6 +360,51 @@
 			}
 		}
 	}
+	&__preview {
+		&_xl {
+			min-height: 360px;
+			@include md-block {
+				min-height: 180px;
+			}
+		}
+
+		&_lg {
+			min-height: 300px;
+			@include md-block {
+				min-height: 165px;
+			}
+		}
+
+		&_md {
+			min-height: 280px;
+			@include md-block {
+				min-height: 140px;
+			}
+		}
+
+		&_sm {
+			min-height: 210px;
+			@include lg-block {
+				min-height: 180px;
+			}
+			@include md-block {
+				min-height: 125px;
+			}
+		}
+
+		&_xs {
+			min-height: 135px;
+			@include lg-block {
+				min-height: 120px;
+			}
+			@include md-block {
+				min-height: 80px;
+			}
+			@include xs-block {
+				min-height: 180px;
+			}
+		}
+	}
 	&__info {
 		padding: 15px 30px 30px;
 		&_xl{
@@ -446,7 +491,7 @@
 			font-size: 17px;
 			margin-bottom: 15px;
 			@include lg-block {
-				font-size: 15px;
+				font-size: 14px;
 			}
 			@include md-block {
 				font-size: 10px;
@@ -540,6 +585,7 @@
 		@include md-block {
 			@include pdLR(25px);
 			font-size: 10px;
+			max-width: 127px;
 		}
 	}
 
@@ -551,6 +597,9 @@
 		margin-bottom: 15px;
 		padding-right: 15px;
 		box-sizing: content-box;
+		@include lg-block {
+			padding-right: 10px;
+		}
 		@include md-block {
 			padding-right: 8px;
 			margin-bottom: 8px;
@@ -558,6 +607,9 @@
 		&:nth-child(5n) {
 			padding-right: 0;
 			@include lg-block {
+				padding-right: 10px;
+			}
+			@include md-block {
 				padding-right: 8px;
 			}
 			@include xs-block {
@@ -1492,7 +1544,7 @@
 		margin-bottom: 5px;
 		@include clearfix;
 		@include md-block {
-			margin-bottom: 0;
+			margin-bottom: 5px;
 			font-size: 10px;
 		}
 	}
