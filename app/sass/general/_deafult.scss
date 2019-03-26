@@ -63,12 +63,13 @@ body {
 			&:before {
 				margin-left: -8px;
 				transition: none !important;
+				@include md-block {
+					margin-left: 0;
+					//transform: none;
+				}
 			}
 
 			@media (min-width: 768px) {
-			}
-			@include md-block {
-				//transform: none;
 			}
 		}
 	}
@@ -316,7 +317,8 @@ h6, .h6,
 		color: #a5a6aa;
 		transition: 0.3s;
 		@include md-block {
-			font-size: 10px;
+			font-size: 13px;
+			vertical-align: baseline;
 		}
 		&:first-child {
 			margin-left: 5px;
