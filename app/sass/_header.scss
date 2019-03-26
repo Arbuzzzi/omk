@@ -86,6 +86,7 @@
 			max-width: 530px;
 		}
 		@include xs-block {
+			min-width: 290px;
 			max-width: 100%;
 			width: calc(100% - 30px);
 		}

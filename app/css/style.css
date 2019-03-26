@@ -11343,6 +11343,7 @@ select.form-control:not([size]):not([multiple]) {
   }
 
   .header:before {
+    min-width: 290px;
     max-width: 100%;
     width: -webkit-calc(100% - 30px);
     width: calc(100% - 30px);
