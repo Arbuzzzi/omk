@@ -488,7 +488,11 @@ $(document).ready(function() {
 				positionOne = $(window).innerHeight();
 
 				windowHeight = $(window).outerHeight();
+
 				asideWidth = $(aside).parent().width();
+				asideHeight = $(aside).actual('outerHeight') + $(aside).offset().top;
+
+				windowMoreAside = asideHeight < windowHeight;
 
 				$(aside).css({
 					width: asideWidth,
@@ -528,12 +532,29 @@ $(document).ready(function() {
 						var asideOffsetTop = $(aside).offset().top;
 						var contentPadding = parseInt($(content).css('padding-top'));
 						var marginOffset = asideOffsetTop > contentPadding ? asideOffsetTop - contentPadding : position;
-						$(aside).css({
-							position: '',
-							top: '',
-							bottom: '',
-							marginTop: marginOffset,
-						}).removeClass('positionTop positionBottom').addClass('positionStatic');
+						if (windowMoreAside) {
+							// $(aside).css({
+							// 	position: 'fixed',
+							// 	top: '',
+							// 	bottom: '0px',
+							// 	marginTop: '',
+							// 	width: $('#aside').parent().width(),
+							// }).addClass('positionBottom').removeClass('positionTop positionStatic');
+
+							$(aside).css({
+								position: '',
+								top: '',
+								bottom: '',
+								marginTop: marginOffset,
+							}).removeClass('positionTop positionBottom').addClass('positionStatic');
+						} else {
+							$(aside).css({
+								position: '',
+								top: '',
+								bottom: '',
+								marginTop: '',
+							}).removeClass('positionTop positionBottom').addClass('positionStatic');
+						}
 					}
 
 				}
@@ -660,7 +681,6 @@ $(document).ready(function() {
 					var paddingContentRelevant = parseFloat($(content).css('padding-top'));
 
 					if (paddingContentRelevant !== headerHeight
-						/*&& !screenSM*/
 						&& !headerNavSystemCollapsing) {
 						paddingTopContent = $(header).actual('outerHeight');
 						$(content).stop(true).filter(':not(:animated)').animate({paddingTop: paddingTopContent}, 300);
