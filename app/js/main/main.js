@@ -126,16 +126,6 @@ $(document).ready(function() {
 	var headerNavControl = $('#header-nav-control');
 	var paddingTopContent = $(header).actual('outerHeight');
 	var headerNavSystemDefault = true;
-	// var navMoreDropdown = $('.nav-more.btn-group.dropup').find('.dropdown-menu');
-	// var navMoreDropdown = $('#header-nav-more-item');
-
-	// if (ie) {
-	// 	setInterval(function (){
-	// 		if ($(document).scrollTop() <= 0) {
-	// 			paddingTopContent = $(header).actual('outerHeight');
-	// 		}
-	// 	}, 50)
-	// }
 
 	$(window).bind('load', function (){
 		paddingTopContent = $(header).actual('outerHeight');
