@@ -1,10 +1,7 @@
 $(document).ready(function() {
 	var ie = $.browser.msie;
-	var	edge = $.browser.edge;
-	var safari = $.browser.safari;
 	var firefox = $.browser.firefox;
 	var scrollbarWidth = $(document).scrollbarWidth();
-	var allElements = $('*');
 	var windowWidth = $(this).outerWidth();
 	var screenSM = windowWidth < 768;
 	var screenMD = windowWidth < 991;
@@ -16,7 +13,6 @@ $(document).ready(function() {
 	$(window).resize(function (){
 		setTimeout(function (){
 			if ((width !== $(window).width()) || (height !== $(window).height())){
-				var position = $(this).scrollTop();
 				width = $(window).width();
 				height = $(window).height();
 
@@ -175,62 +171,60 @@ $(document).ready(function() {
 	});
 
 	// сохранием отступы при скрытии разворачивании меню "Системы"
-	// if (safari || edge) {
-		$(headerNavSystem).on('show.bs.collapse', function (){
-			var position = $(document).scrollTop();
+	$(headerNavSystem).on('show.bs.collapse', function (){
+		var position = $(document).scrollTop();
 
-			if (position <= 0 && !screenSM) {
-				if (!$(headerNavSetting).hasClass('show')) {
-					$(body).css({overflow: 'hidden', paddingRight: scrollbarWidth});
-				}
-				$(header).css({'position': 'static'});
-				$(content).stop(true).css('padding-top', '');
-			}
-		});
-
-		$(headerNavSystem).on('shown.bs.collapse', function (){
-			var position = $(document).scrollTop();
-
-			if (position <= 0  && !screenSM){
-				if (!$(headerNavSetting).hasClass('show')) {
-					$(body).css({overflow: '', paddingRight: ''});
-				}
-				positionContent = $(header).actual('outerHeight');
-				$(header).css({'position': ''});
-				$(content).stop(true).css('padding-top', positionContent);
-			}
-
-			if (position <= paddingTopContent) {
-				paddingTopContent = $(header).actual('outerHeight');
-				headerNavSystemDefault = $(headerNavSystem).hasClass('show');
-			}
-		});
-
-		$(headerNavSystem).on('hide.bs.collapse', function (){
-			var position = $(document).scrollTop();
-
-			if (position <= 0  && !screenSM) {
+		if (position <= 0 && !screenSM) {
+			if (!$(headerNavSetting).hasClass('show')) {
 				$(body).css({overflow: 'hidden', paddingRight: scrollbarWidth});
-				$(header).css({'position': 'static'});
-				$(content).stop(true).css('padding-top', '');
 			}
-		});
+			$(header).css({'position': 'static'});
+			$(content).stop(true).css('padding-top', '');
+		}
+	});
 
-		$(headerNavSystem).on('hidden.bs.collapse', function (){
-			var position = $(document).scrollTop();
+	$(headerNavSystem).on('shown.bs.collapse', function (){
+		var position = $(document).scrollTop();
 
-			if (position <= 0  && !screenSM){
+		if (position <= 0  && !screenSM){
+			if (!$(headerNavSetting).hasClass('show')) {
 				$(body).css({overflow: '', paddingRight: ''});
-				positionContent = $(header).actual('outerHeight');
-				$(header).css({'position': ''});
-				$(content).stop(true).css('padding-top', positionContent);
 			}
-			if (position <= paddingTopContent) {
-				paddingTopContent = $(header).actual('outerHeight');
-				headerNavSystemDefault = $(headerNavSystem).hasClass('show');
-			}
-		});
-	// }
+			positionContent = $(header).actual('outerHeight');
+			$(header).css({'position': ''});
+			$(content).stop(true).css('padding-top', positionContent);
+		}
+
+		if (position <= paddingTopContent) {
+			paddingTopContent = $(header).actual('outerHeight');
+			headerNavSystemDefault = $(headerNavSystem).hasClass('show');
+		}
+	});
+
+	$(headerNavSystem).on('hide.bs.collapse', function (){
+		var position = $(document).scrollTop();
+
+		if (position <= 0  && !screenSM) {
+			$(body).css({overflow: 'hidden', paddingRight: scrollbarWidth});
+			$(header).css({'position': 'static'});
+			$(content).stop(true).css('padding-top', '');
+		}
+	});
+
+	$(headerNavSystem).on('hidden.bs.collapse', function (){
+		var position = $(document).scrollTop();
+
+		if (position <= 0  && !screenSM){
+			$(body).css({overflow: '', paddingRight: ''});
+			positionContent = $(header).actual('outerHeight');
+			$(header).css({'position': ''});
+			$(content).stop(true).css('padding-top', positionContent);
+		}
+		if (position <= paddingTopContent) {
+			paddingTopContent = $(header).actual('outerHeight');
+			headerNavSystemDefault = $(headerNavSystem).hasClass('show');
+		}
+	});
 
 	// разворачиваем меню
 	var btnDeploy = $('#btn-deploy');
