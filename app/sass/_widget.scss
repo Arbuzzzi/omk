@@ -83,19 +83,31 @@
 		// min-height: 125px;
 		background: center no-repeat;
 		background-size: cover;
-		&_calendar {
-			margin-top: auto;
-			height: 100%;
-			min-height: 115px;
-			@include md-block {
-				min-height: auto;
-			}
-		}
 		&[style] {
 			min-height: 100%;
 			img {
 				//display: none;
 				opacity: 0;
+			}
+		}
+		&_calendar {
+			margin-top: auto;
+
+			&[style] {
+				height: 100%;
+				min-height: 115px;
+				max-height: 140px;
+				@include md-block {
+					min-height: auto;
+					max-height: 80px;
+				}
+				img {
+					//display: none;
+					opacity: 0;
+				}
+			}
+			@include md-block {
+				min-height: auto;
 			}
 		}
 		//img {

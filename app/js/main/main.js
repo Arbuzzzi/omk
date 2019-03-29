@@ -129,13 +129,13 @@ $(document).ready(function() {
 	// var navMoreDropdown = $('.nav-more.btn-group.dropup').find('.dropdown-menu');
 	// var navMoreDropdown = $('#header-nav-more-item');
 
-	if (ie) {
-		setInterval(function (){
-			if ($(document).scrollTop() <= 0) {
-				paddingTopContent = $(header).actual('outerHeight');
-			}
-		}, 50)
-	}
+	// if (ie) {
+	// 	setInterval(function (){
+	// 		if ($(document).scrollTop() <= 0) {
+	// 			paddingTopContent = $(header).actual('outerHeight');
+	// 		}
+	// 	}, 50)
+	// }
 
 	$(window).bind('load', function (){
 		paddingTopContent = $(header).actual('outerHeight');
@@ -244,7 +244,6 @@ $(document).ready(function() {
 
 	// разворачиваем меню
 	var btnDeploy = $('#btn-deploy');
-	var menuLeftList = $('#menu-left-list');
 
 	$(btnDeploy).click(function() {
 		$(header)
@@ -256,7 +255,6 @@ $(document).ready(function() {
 		});
 
 		$(headerNavSystem).collapse('show');
-		// $(menuLeftList).collapse('show');
 		$(rollUp).addClass('show');
 		return false;
 	});
@@ -265,16 +263,15 @@ $(document).ready(function() {
 	var headerNavSetting = $('#header-nav-setting');
 
 	$(headerNavSetting).on('show.bs.collapse', function () {
-		var headerHeight = $(header).actual('outerHeight');
 
 		// инициализация drag & drop
 		var dragAndDrop = $( "#drag-and-drop" );
 
-		addPreloader(body, false, 'fixed');
-
 		$(dragAndDrop).sortable();
 		$(dragAndDrop).disableSelection();
 		$(dragAndDrop).draggable();
+
+		addPreloader(body, false, 'fixed');
 
 		$(header).css('transform', 'none');
 
@@ -293,6 +290,11 @@ $(document).ready(function() {
 			overflow: 'hidden',
 			paddingRight: scrollbarWidth,
 		});
+
+		/**
+		 * Сдвигаем body чтобы не было пустого пространства
+		 * при скроллинге при переполнении настроек систем
+		 */
 		if ($(document).scrollTop() <= $(header).actual('outerHeight')) {
 			$(body).css({
 				marginTop: '-' + $(header).actual('outerHeight')+'px',
@@ -311,22 +313,7 @@ $(document).ready(function() {
 	});
 
 	$(headerNavSetting).on('shown.bs.collapse', function (){
-		// сохраняем отступы после завершения анимации
 		hidePreloader(body);
-
-		// if ($(document).scrollTop() <= 0 && $(header).hasClass('fixed')) {
-		// 	$(body).css({
-		// 		overflow: 'hidden',
-		// 		paddingRight: scrollbarWidth,
-		// 		paddingTop: ''
-		// 	});
-		// }
-		//
-		// if ($(header).hasClass('fixed') && $(document).scrollTop() > 0) {
-		// 	$(header).css({
-		// 		paddingRight: '',
-		// 	});
-		// }
 	});
 
 	// закрытие настроек
@@ -495,25 +482,15 @@ $(document).ready(function() {
 	// скрываем элементы во время скроллинга страницы
 	var positionContent = $(header).actual('outerHeight');
 	var positionOne = $(window).innerHeight();
-	var menuLeftListDefault = $(menuLeftList).hasClass('show');
 	var positionTwo = positionOne * 2;
 	var asideHeight;
-	var positionThree =  positionContent; //positionTwo + positionOne;
 	var asideWidth = $(aside).parent().width();
 	var windowHeight = $(window).outerHeight();
 	var windowMoreAside;
 	var currentScroll = 0;
 
 	var paddingTopContentMax = $(header).actual('outerHeight');
-	var headerOverlay = '<div class="header-overlay"/>';
 
-
-	var leftNavigationPseudo = $('#leftNavigationPseudo');
-
-	if (!screenSM) {
-		// $(header).before(headerOverlay);
-		// addClassScroll($(header));
-	}
 	var widthTwo = $(window).width();
 	var heightTwo = $(window).height();
 
@@ -665,7 +642,6 @@ $(document).ready(function() {
 					}
 
 					$(content).stop(true).animate({paddingTop: paddingTopContent}, 300);
-					// $(headerBread).removeClass('show');
 				}
 			} else {
 
@@ -689,10 +665,27 @@ $(document).ready(function() {
 
 				$(content).stop(true).animate({paddingTop: paddingTopContent}, 300);
 				$(headerBread).removeClass('show');
-				setTimeout(function (){
-				}, 50);
 			}
 		}
+
+		if  (position <= 0) {
+			setTimeout(function (){
+				if (position <= 0) {
+					headerHeight = $(header).actual('outerHeight');
+					var headerNavSystemCollapsing = $(headerNavSystem).hasClass('collapsing');
+					var paddingContentRelevant = parseFloat($(content).css('padding-top'));
+
+					if (paddingContentRelevant !== headerHeight
+						/*&& !screenSM*/
+						&& !headerNavSystemCollapsing) {
+						paddingTopContent = $(header).actual('outerHeight');
+						$(content).stop(true).filter(':not(:animated)').animate({paddingTop: paddingTopContent}, 300);
+					}
+				}
+			}, 400)
+
+		}
+
 
 		if (screenLG && !screenSM) {
 			if (position > paddingTopContent) {
@@ -829,7 +822,7 @@ $(document).ready(function() {
 	* не совпадает с padding content
 	* (напрмер если обновить страницу на середине)
 	* */
-	setInterval(function (){
+	setTimeout(function (){
 		var position = $(document).scrollTop();
 		var headerHeight = $(header).actual('outerHeight');
 		var headerNavSystemCollapsing = $(headerNavSystem).hasClass('collapsing');
@@ -842,7 +835,7 @@ $(document).ready(function() {
 			paddingTopContent = $(header).actual('outerHeight');
 			$(content).filter(':not(:animated)').animate({paddingTop: paddingTopContent}, 300);
 		}
-	}, 150);
+	}, 500);
 
 	// плавный скролл до элемента
 
@@ -932,45 +925,6 @@ $(document).ready(function() {
 
 
 	/* END СКРОЛЛИНГ ------------------------------------------------------------------------------- */
-
-	// левое меню show
-	// var navMoreListControl = $('#nav-more-list-control');
-	//
-	// $(menuLeftList).on('show.bs.collapse', function() {
-	// 	var btn = $(menuLeftListControl);
-	// 	var position = $(document).scrollTop();
-	//
-	// 	btn.addClass('active');
-	// 	$('.menu-left-more__list').removeClass('show');
-	// 	$(navMoreListControl).removeAttr('data-toggle');
-	// 	$(navMoreListControl).dropdown('dispose');
-	// 	$('.menu-left-more__button>i').animate({opacity: 'hide'}, 400);
-	//
-	// 	if (position < positionThree && !safari && !edge) {
-	// 		$(leftNavigationPseudo).collapse('show')
-	// 	}
-	// 	if (!edge && !safari) {
-	// 		if (position <= 0) {
-	// 			$(leftNavigationPseudo).collapse('show')
-	// 		}
-	// 	}
-	// 	if (position <= 0) {
-	// 		$(leftNavigationPseudo).collapse('show')
-	// 	}
-	// });
-	//
-	// // левое меню hide
-	// $(menuLeftList).on('hide.bs.collapse', function() {
-	// 	var btn = $(menuLeftListControl);
-	// 	btn.removeClass('active');
-	// 	$(navMoreListControl).attr('data-toggle', 'dropdown');
-	// 	$('.menu-left-more__button>i').animate({opacity: 'show'}, 400);
-	// 	$(leftNavigationPseudo).collapse('hide')
-	//
-	// });
-	//
-	// var menuLeftListHeight = $(menuLeftList).actual('outerHeight');
-	// $(leftNavigationPseudo).html('<div style="height:'+menuLeftListHeight+'px;"></div>');
 
 	// ставим лайки
 	$(document).on('click', '.like-button:not(.comment-button)', function() {
@@ -1479,21 +1433,13 @@ $(document).ready(function() {
 	/* TOOLTIPS ------------------------------------------------------------------------------------ */
 	$('.calendar__day').tooltip();
 	$('.card-calendar td').tooltip();
+
 	$.widget.bridge('uitooltip', $.ui.tooltip);
 	$('.tooltip-mouse').uitooltip({
-		// placement: 'auto',
-		// trigger: 'click',
-		// container: 'body',
 		track: true,
 		tooltipClass: 'tooltip_light',
 		close: function () { $(".ui-helper-hidden-accessible > *:not(:last)").remove(); },
-		// html: true,
-		// template: '<div class="tooltip tooltip_light" role="tooltip"><div class="arrow"></div><div class="tooltip-inner"></div></div>'
 	});
-
-	$('.sliderBlog').slick();
-
-
 
 	/*
 	* СЛАЙДЕРЫ sliders
@@ -1504,6 +1450,7 @@ $(document).ready(function() {
 	* spoyler.html
 	* others.html
 	*/
+	$('.sliderBlog').slick();
 	$('.widget-slider').slick({
 		autoplay: true,
 		prevArrow: '<div class="slider-arrow slider-arrow__left \
@@ -1602,22 +1549,6 @@ $(document).ready(function() {
 			}
 		]
 	});
-
-	// var mobileSlider = $('.card-mobile-slider-wrap');
-	// $(mobileSlider).each(function (i, item){
-	// 	$(item).slick({
-	// 		slidesToShow: 1,
-	// 		slidesToScroll: 1,
-	// 		prevArrow: '<div class="slider-arrow slider-arrow__left"></div>',
-	// 		nextArrow: '<div class="slider-arrow slider-arrow__right"></div>',
-	// 	});
-	// });
-	// $(mobileSlider).slick({
-	// 	slidesToShow:1,
-	// 	slidesToScroll: 1,
-	// 	prevArrow: '<div class="slider-arrow slider-arrow__left"></div>',
-	// 	nextArrow: '<div class="slider-arrow slider-arrow__right"></div>',
-	// });
 
 	$('.card-third-slider-wrap').slick({
 		slidesToShow: 3,

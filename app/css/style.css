@@ -6102,17 +6102,25 @@ select.form-control:not([size]):not([multiple]) {
           background-size: cover;
 }
 
-.widget-imgbox_calendar {
-  margin-top: auto;
-  height: 100%;
-  min-height: 115px;
-}
-
 .widget-imgbox[style] {
   min-height: 100%;
 }
 
 .widget-imgbox[style] img {
+  opacity: 0;
+}
+
+.widget-imgbox_calendar {
+  margin-top: auto;
+}
+
+.widget-imgbox_calendar[style] {
+  height: 100%;
+  min-height: 115px;
+  max-height: 140px;
+}
+
+.widget-imgbox_calendar[style] img {
   opacity: 0;
 }
 
@@ -10815,6 +10823,11 @@ select.form-control:not([size]):not([multiple]) {
 
   .widget_fix-height-240 {
     height: 140px;
+  }
+
+  .widget-imgbox_calendar[style] {
+    min-height: auto;
+    max-height: 80px;
   }
 
   .widget-imgbox_calendar {
