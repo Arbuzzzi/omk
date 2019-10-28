@@ -216,6 +216,4 @@ $RECYCLE.BIN/
 # html
 # app/*.html
 
-dist/*
-
 # End of https://www.gitignore.io/api/node,macos,windows,phpstorm
