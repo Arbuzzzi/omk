@@ -1924,55 +1924,55 @@ $(document).ready(function() {
 		$(body).addClass('modal-main-contents-open');
 		modal.css('padding-right', '');
 
-		$('#modal-main-slider-top').slick({
-			slidesToShow: 1,
-			slidesToScroll: 1,
-			infinite: false,
-			initialSlide: elControlCurrent,
-			asNavFor: '#modal-main-slider-bottom',
-			prevArrow: '<div class="slider-arrow \
-															slider-arrow__left \
-															modal-main-slider-arrow \
-															modal-main-slider-arrow__left"></div>',
-			nextArrow: '<div class="slider-arrow \
-															slider-arrow__right \
-															modal-main-slider-arrow \
-															modal-main-slider-arrow__right"></div>',
-			responsive: [
-				{
-					breakpoint: 767,
-					settings: {
-						infinite: true
-					}
-				}
-			]
-		});
-
-		$('#modal-main-slider-bottom').slick({
-			slidesToShow: 7,
-			slidesToScroll: 1,
-			initialSlide: elControlCurrent,
-			focusOnSelect: true,
-			centerPadding: '0px',
-			infinite: false,
-			asNavFor: '#modal-main-slider-top',
-			prevArrow: '<div class="slider-arrow \
-															slider-arrow__left \
-															modal-main-slider-arrow \
-															modal-main-slider-arrow__left"></div>',
-			nextArrow: '<div class="slider-arrow \
-															slider-arrow__right \
-															modal-main-slider-arrow \
-															modal-main-slider-arrow__right"></div>',
-			responsive: [
-				{
-					breakpoint: 992,
-					settings: {
-						slidesToShow: 5,
-					}
-				}
-			]
-		});
+        // $('#modal-main-slider-top').slick({
+        // 	slidesToShow: 1,
+        // 	slidesToScroll: 1,
+        // 	infinite: false,
+        // 	initialSlide: elControlCurrent,
+        // 	asNavFor: '#modal-main-slider-bottom',
+        // 	prevArrow: '<div class="slider-arrow \
+        // 													slider-arrow__left \
+        // 													modal-main-slider-arrow \
+        // 													modal-main-slider-arrow__left"></div>',
+        // 	nextArrow: '<div class="slider-arrow \
+        // 													slider-arrow__right \
+        // 													modal-main-slider-arrow \
+        // 													modal-main-slider-arrow__right"></div>',
+        // 	responsive: [
+        // 		{
+        // 			breakpoint: 767,
+        // 			settings: {
+        // 				infinite: true
+        // 			}
+        // 		}
+        // 	]
+        // });
+        //
+        // $('#modal-main-slider-bottom').slick({
+        // 	slidesToShow: 7,
+        // 	slidesToScroll: 1,
+        // 	initialSlide: elControlCurrent,
+        // 	focusOnSelect: true,
+        // 	centerPadding: '0px',
+        // 	infinite: false,
+        // 	asNavFor: '#modal-main-slider-top',
+        // 	prevArrow: '<div class="slider-arrow \
+        // 													slider-arrow__left \
+        // 													modal-main-slider-arrow \
+        // 													modal-main-slider-arrow__left"></div>',
+        // 	nextArrow: '<div class="slider-arrow \
+        // 													slider-arrow__right \
+        // 													modal-main-slider-arrow \
+        // 													modal-main-slider-arrow__right"></div>',
+        // 	responsive: [
+        // 		{
+        // 			breakpoint: 992,
+        // 			settings: {
+        // 				slidesToShow: 5,
+        // 			}
+        // 		}
+        // 	]
+        // });
 	});
 
 	var modalMainSliderBottom = $('#modal-main-slider-bottom');
