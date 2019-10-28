@@ -1,5 +1,7 @@
 # OMK
 
+Все страницы проекта https://arbuzzzi.github.io/omk/app/all-pages.html
+
 Должны быть установлены глобально:
 - Gulp https://github.com/gulpjs/gulp
 
