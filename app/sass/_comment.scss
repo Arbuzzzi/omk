@@ -14,12 +14,22 @@
 			display: block;
 			line-height: 20px;
 			margin: 0;
+			@include md-block {
+				float: none;
+				text-align: left;
+			}
 
 		}
 		.article-author__username {
 			display: block;
 			line-height: 20px;
 			margin: 0;
+			@include md-block {
+				float: none;
+				text-align: left;
+				line-height: 16px;
+				margin-top: -2px;
+			}
 
 		}
 	}
@@ -65,6 +75,9 @@
 		color: $basic-color;
 		font-size: 14px;
 		font-weight: 400;
+		@include xs-block {
+			font-size: 16px;
+		}
 	}
 	&__date {
 		margin-bottom: 20px;
@@ -103,6 +116,10 @@
 			@include md-block {
 				font-size: 12px;
 				margin-bottom: 10px;
+			}
+			@include xs-block {
+				font-size: 16px;
+				line-height: 1.4;
 			}
 		}
 	}

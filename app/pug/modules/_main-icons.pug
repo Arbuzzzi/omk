@@ -1,7 +1,7 @@
 // mixins ------------------------------------------------------------------------------------------------------------
 
 mixin iconLinksBlock($icon, $text, $id)
-	.card.card-links.main-icon__card.margin-bottom-0.padding-bottom-lg-30.padding-bottom-sm-10
+	.card.card-links.main-icon__card.margin-bottom-sm-0.padding-bottom-lg-30.padding-bottom-sm-10
 		.card-links-wrap
 			.card-links__img
 				.card-links__imgbox.main-icon__imgbox
@@ -9,7 +9,7 @@ mixin iconLinksBlock($icon, $text, $id)
 			.card-links__items.main-icon__items
 				.card-links__item.card-links__lnkbox.card-links__head.main-icon__item
 					.card-links__left
-						button.card-links__lnk.main-icon__title(type="button", data-edit="true")= $text
+						button.card-links__lnk.mobile-dark.main-icon__title(type="button", data-edit="true")= $text
 						.main-icon__inputs.hide
 							label.form-label.margin-bottom-5.font-size-14(for="mainIconInputTitle-"+$id) Название
 							input.form__input.main-icon__input.margin-bottom-15.current(id="mainIconInputTitle-" + $id, name="title", maxlength="24", placeholder="Название системы")

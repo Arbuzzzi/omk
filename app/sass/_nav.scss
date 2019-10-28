@@ -4,7 +4,14 @@
 	max-width: 1200px;
 	margin-left: -15px;
 	margin-right: -15px;
+	padding-top: 5px;
 	// @include mA();
+	//@include lg-block {
+	//	padding-top: 12px;
+	//}
+	//@include sm-block {
+	//	padding-top: 5px;
+	//}
 	&__content {
 		padding: 5px 15px 4px;
 		background-image: linear-gradient(180deg, #e4e4e4 0%, rgba(212, 212, 212, 0.24) 22%, #ececec 100%);
@@ -12,19 +19,30 @@
 		background-color: #fff;
 		border-radius: 5px;
 		text-align: center;
+		@include lg-block {
+			margin-top: 12px;
+		}
+		@include sm-block {
+			margin-top: 5px;
+		}
 		@include sm-block {
 			position: static;
 			border: 1px solid #dddee0;
 			background-image: none;
 			filter: none;
 		}
+		@include xs-block {
+			max-height: calc(100vh - 147px);
+			overflow-y: scroll;
+			overflow-x: hidden;
+		}
 	}
 	&-wrap {
 		position: relative;
-		margin-top: 5px;
+		//margin-top: 5px;
 
 		@include lg-block {
-			margin-top: 10px;
+			//margin-top: 10px;
 		}
 		@include sm-block {
 			position: absolute;
@@ -37,7 +55,7 @@
 		}
 		@include xs-block {
 			left: 0;
-			margin-top: 40px;
+			margin-top: 37px;
 		}
 
 		@include after("\e90e") {
@@ -53,6 +71,7 @@
 		&.mobile-hide {
 			@include xs-block {
 				display: none !important;
+				opacity: 0;
 			}
 		}
 	}
@@ -137,7 +156,7 @@
 	// display: none;
 	position: absolute;
 	z-index: 100;
-	top: -3px; 
+	top: 3px;
 	right: 0;
 	width: 100%;
 	margin-right: 15px;
@@ -174,6 +193,8 @@
 		margin-bottom: 20px;
 		background-color: rgba(#fbfbfb, 0.5);
 		background-image: url(../img/icon/dashed.svg);
+		background-size: 98.9%;
+		background-repeat: no-repeat;
 	}
 	&__item {
 		@include mA();
@@ -226,6 +247,9 @@
 			width: 100%;
 			max-width: 33.33333333%;
 			text-align: left;
+			&__label {
+				min-width: auto;
+			}
 		}
 	}
 }
@@ -278,6 +302,13 @@
 		@include sm-block {
 			position: static;
 		}
+		&-group {
+			@include xs-block {
+				max-height: calc(100vh - 147px);
+				overflow-y: scroll;
+				overflow-x: hidden;
+			}
+		}
 	}
 	&__button {
 		position: relative;
@@ -319,7 +350,7 @@
 		}
 		@include xs-block {
 			right: 0;
-			margin-top: 53px;
+			margin-top: 50px;
 		}
 		ul {
 			@include listUnstyle();

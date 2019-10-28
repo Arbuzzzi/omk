@@ -83,17 +83,37 @@
 		// min-height: 125px;
 		background: center no-repeat;
 		background-size: cover;
+		&[style] {
+			min-height: 100%;
+			img {
+				//display: none;
+				opacity: 0;
+			}
+		}
 		&_calendar {
 			margin-top: auto;
-			height: 100%;
-			min-height: 115px;
+
+			&[style] {
+				height: 100%;
+				min-height: 115px;
+				max-height: 140px;
+				@include md-block {
+					min-height: auto;
+					max-height: 80px;
+				}
+				img {
+					//display: none;
+					opacity: 0;
+				}
+			}
 			@include md-block {
 				min-height: auto;
 			}
 		}
-		img {
-
-		}
+		//img {
+		//	//display: none;
+		//	opacity: 0;
+		//}
 		&_full {
 			height: 180px;
 			margin-bottom: 10px;
@@ -121,6 +141,9 @@
 				color: $light-color;
 				font-size: 18px;
 				font-weight: 400;
+				@include lg-block {
+					font-size: 14px;
+				}
 
 			}
 
@@ -128,6 +151,9 @@
 				color: #bcbdc0;
 				font-size: 16px;
 				font-weight: 400;
+				@include lg-block {
+					font-size: 10px;
+				}
 			}
 		}
 	}
@@ -151,7 +177,7 @@
 		&_ads {
 			min-height: 315px;
 			@include lg-block {
-				min-height: 275px;
+				min-height: 265px;
 			}
 			@include md-block {
 				min-height: 175px;
@@ -167,7 +193,11 @@
 			max-width: 114px;
 			text-align: right;
 			@include lg-block {
-				max-width: 45%;
+				//max-width: 45%;
+				//max-width: 54px;
+				max-width: none;
+				width: 85px;
+				min-height: 110px;
 			}
 		}
 	}
@@ -241,7 +271,7 @@
 		font-size: 12px;
 		font-weight: 400;
 		@include lg-block {
-			font-size: 8px;
+			font-size: 10px;
 		}
 		@include md-block {
 			font-size: 6px;
@@ -256,6 +286,9 @@
 			font-family: "Roboto", sans-serif;
 			font-size: 14px;
 			font-weight: 400;
+			@include lg-block {
+				font-size: 12px;
+			}
 			@include md-block {
 				font-size: 10px;
 			}

@@ -2,10 +2,21 @@
 @import 'general/_variables.scss';
 @import 'general/_mixin.scss';
 
+@import 'general/_smart-grid.scss';
+
 .container, .row {
 	@include clearfix;
 }
 
+.body {
+	overflow: auto !important;
+}
+.container {
+	@include lg-block {
+		//min-width: 1230px !important;
+		//max-width: 1230px !important;
+	}
+}
 .user {
 	&__name {
 		display: inline-block;
@@ -116,6 +127,9 @@
 				color: $basic-color;
 			}
 		}
+	}
+	&-more__button {
+		margin-bottom: -9px;
 	}
 }
 .menu-horizontal {

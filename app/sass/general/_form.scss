@@ -2,6 +2,9 @@
 input, textarea {
 	font-size: 12px;
 	line-height: 1;
+	@media screen and (-webkit-min-device-pixel-ratio:0) {
+		font-size: 16px !important;
+	}
 }
 .form { 
 
@@ -13,6 +16,9 @@ input, textarea {
 			border: 1px solid #dfdfdf;
 			border-radius: 6px;
 			cursor: text;
+			@include lg-block {
+				padding: 6px 10px 6px;
+			}
 			@include md-block {
 				padding: 3px 10px 3px;
 				font-size: 12px;
@@ -20,7 +26,7 @@ input, textarea {
 		}
 		&__input {
 			display: block;
-			width: 94%;
+			width: 97%;
 		}
 		&__button {
 
@@ -74,12 +80,34 @@ input, textarea {
 		&_small {
 			max-width: 270px;
 		}
+		&_special-label {
+			display: flex;
+			flex-direction: column;
+			label {
+				float: none;
+				display: block;
+				text-align: left;
+
+			}
+			.form-sender {
+				float: none;
+				display: block;
+				order: -1;
+				text-align: right;
+			}
+		}
 	}
 
 	&-slide {
 		&-input {
 			display: none;
 			width: 100%;
+			@include md-block {
+				padding-top: 10px;
+			}
+			@include xs-block {
+				padding-top: 0;
+			}
 		}
 	}
 	&-label {
@@ -139,6 +167,11 @@ input, textarea {
 		font-weight: 300;
 		color: #a5a6aa;
 		vertical-align: middle;
+		@include sm-block {
+			display: block;
+			margin: 0;
+			line-height: 1.3;
+		}
 		&:last-child {
 			margin-right: 0;
 		}
@@ -170,16 +203,20 @@ input, textarea {
 			//transition: text-indent 400ms; // анимация для placeholder
 			opacity: 1;
 			transition: opacity 0.4s;
+			@include xs-block {
+				font-size: 16px;
+			}
 		}
 
 		&:focus {
 			&::placeholder {
 				//text-indent: -500px; // анимация для placeholder
 				opacity: 0;
+
 			}
 
 		}
-		&.success {
+		&.valid {
 			border-color: $valid-color;
 		}
 		&.error {
@@ -203,6 +240,13 @@ input, textarea {
 			margin-left: 9px;
 			padding: 0px 10px 2px;
 			max-width: 203px;
+			@include lg-block {
+				max-width: 150px;
+			}
+			@include xs-block {
+				padding-top: 2px;
+				line-height: normal;
+			}
 		}
 		
 
@@ -247,7 +291,9 @@ input, textarea {
 		align-items: center;
 		margin-left: auto;
 		text-align: right;
-
+		@include lg-block {
+			align-items: flex-start;
+		}
 	}
 
 	&__button {
@@ -258,6 +304,18 @@ input, textarea {
 		font-weight: 400;
 		@include hover {
 			background-color: $tooltip-bg;
+		}
+		@include lg-block {
+			min-width: 145px;
+		}
+		@include md-block {
+			min-width: 100px;
+		}
+		@include xs-block {
+			font-size: 12px;
+			min-width: 146px;
+			padding-top: 5px;
+			padding-bottom: 5px;
 		}
 		&_more {
 			color: $basic-color;
@@ -274,6 +332,16 @@ input, textarea {
 		align-items: center;
 		width: 100%;
 		max-width: 700px;
+		&_slide {
+			@include lg-block {
+				margin-right: 10px;
+				min-height: 30px;
+			}
+			@include md-block {
+				min-height: auto;
+				display: block;
+			}
+		}
 		@include xs-block {
 			display: block;
 		}
@@ -537,6 +605,9 @@ input, textarea {
 				color: inherit;
 			}
 		}
+	}
+	&__select {
+		text-align: left;
 	}
 	// &__searchbox {
 

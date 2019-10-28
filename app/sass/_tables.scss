@@ -4,10 +4,17 @@
 	border-radius: 5px;
 	width: 100%;
 	border-spacing: 0px;
+	@include xs-block {
+		border: none;
+		border-radius: 5px;
+	}
 	&-inn {
 		@include lg-block {
 			overflow-x: scroll;
-
+		}
+		@include xs-block {
+			border: 1px solid #bcbdc0;
+			border-radius: 5px;
 		}
 	}
 	thead {

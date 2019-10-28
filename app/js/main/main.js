@@ -1,71 +1,69 @@
 $(document).ready(function() {
-	var ua = window.navigator.userAgent.toLowerCase();
-	var ie = (/trident/gi).test(ua) || (/msie/gi).test(ua);
-	var	edge = ((/edge/).test(ua));
-	var safari = /Safari/.test(navigator.userAgent) && /Apple Computer/.test(navigator.vendor);
+	var ie = $.browser.msie;
+	var firefox = $.browser.firefox;
 	var scrollbarWidth = $(document).scrollbarWidth();
-	// safari = true;
+	var windowWidth = $(this).outerWidth();
+	var screenSM = windowWidth < 768;
+	var screenMD = windowWidth < 991;
+	var screenLG = windowWidth < 1230;
+
+	var width = $(window).width();
+	var height = $(window).height();
+
+	$(window).resize(function (){
+		setTimeout(function (){
+			if ((width !== $(window).width()) || (height !== $(window).height())){
+				width = $(window).width();
+				height = $(window).height();
+
+				windowWidth = $(this).outerWidth();
+				scrollbarWidth = $(document).scrollbarWidth();
+
+				screenSM = windowWidth < 768;
+				screenMD = windowWidth < 992;
+				screenLG = windowWidth < 1230;
+			}
+		}, 800);
+	});
 
 
 	/* Валидация ------------------------------------------------------------------------------------ */
-	var x = {
+	/**
+	 * валидация формы заполнено ли поле
+	 * https://jqueryvalidation.org/documentation/
+	 */
+	var options = {
 				rules: {
-						name: {
+					subject: {
 								required: true,
 								minlength: 2,
 						},
-						email: {
-								required: true,
-								email: true
-						},
-						phone: {
-								required: true,
-								// minlength: 18
-						},
-						checkbox: {
-							required: true,
-						},
-						email: {
-							required: true,
-						}
 					},
 					errorPlacement: function(error, element){},
 
 	};
-	$("#form1").validate(x);
-	$("#form2").validate(x);
-	$("#form3").validate(x);
 
-	$('input[type="checkbox"].policy-chekbox').on('click change', function() {
-		var thisInp = $(this);
-				inputId = thisInp.attr('id');
-
-
-		if (thisInp.prop('checked') == false) {
-			thisInp.addClass('error');
-		} else {
-			thisInp.removeClass('error');
-		}
-
-		if ($('#' + inputId).hasClass('error') == true) {
-			$('label[for='+inputId+']').addClass('label-error')
-
-		}
-		if ($('#' + inputId).hasClass('error') != true) {
-			$('label[for='+inputId+']').removeClass('label-error')
-
-
-		}
-
-	})
+	/**
+	 * #form1 -> others.html
+	 *
+	 * */
+	$("#form1").validate(options);
 
 	// маска для телефона
-	$('input[type="tel"]').mask('9 (999) 999999?999');
-	$('input[type="tel"]').on('change focus click', function() {
+	var tel = $('input[type="tel"]');
+
+	$(tel).mask('9 (999) 999999?999');
+	$(tel).on('change focus click', function() {
 		$(this)[0].setSelectionRange(0, 0);
 	});
 
-	// multiple select
+	/**
+	 * multiple select
+	 * множественный выбор по клику
+	 * stylegide.html
+	 *
+	 */
+
 	$("select[multiple]").mousedown(function(e){
 		e.preventDefault();
 
@@ -79,244 +77,232 @@ $(document).ready(function() {
 		$(select).focus();
 	}).mousemove(function(e){e.preventDefault()});
 
-	var mobile = false;
-	if ($(window).outerWidth() < 768) {
-		mobile = true;
-	}
-	$(window).resize(function (e){
-		if ($(this).outerWidth() < 768) {
-			mobile = true;
-		} else {
-			mobile = false;
-		}
-	});
-
-
-	// подпункты меню раскрывается при наведении
-	// $('.menu-nav-header__item').on('mouseenter', function(event) {
-	// 	var element = $(event.target).parents('.menu-nav-header__item'),
-	// 			elementControl = $(element.data('target'));
-	// 	if (elementControl.hasClass('collapse')) {
-	// 		elementControl.collapse('show');	
-
-	// 		$(this).on('mouseleave', function(event) {
-	// 			elementControl.collapse('hide');
-	// 		});
-	// 	}
-	// });
-
 
 	// menu-burger ---------------------------------------------------------------------------------------------------
+	var body = $('body');
 	var header = $('.header');
 	var content = $('.header + *');
+	var aside = $('#aside');
+	var menuNavHeaderGroup = $('#menu-nav-header-group');
 
-	$('#menu-nav-headerGroup').on('show.bs.collapse', function(e) {
+	$(menuNavHeaderGroup).on('show.bs.collapse', function() {
 		var menuNavHeader = $(this).parents('.menu-nav-header');
 
 		$(menuNavHeader).addClass('show');
-
-
 	});
 
-	$('#menu-nav-headerGroup').on('hidden.bs.collapse', function(e) {
+	$(menuNavHeaderGroup).on('hidden.bs.collapse', function() {
 		var menuNavHeader = $(this).parents('.menu-nav-header');
 
-		if (!mobile) $(menuNavHeader).removeClass('show');
+		if (!screenSM) $(menuNavHeader).removeClass('show');
 
 	});
 
-	$('.rollUp').on('click', function(event) {
+	// сворачиваем меню если развернуто
+	var rollUp = $('.roll-up');
+
+	$(rollUp).on('click', function() {
 		$(document).trigger('scroll');
 	});
 
-	$('.btn-group').on('show.bs.dropdown', function() {
+	// fix bag bs.dropdown для элементов с position: fixed;
+	var navMore = $('.nav-more');
+
+	$(navMore).on('show.bs.dropdown', function() {
 		$(header).css('transform', 'none');
 	});
 
-	$('.btn-group').on('hide.bs.dropdown', function() {
+	$(navMore).on('hide.bs.dropdown', function() {
 		$(header).css('transform', '');
 	});
 
 
 	/* ПОДМЕНЮ "СИСТЕМЫ" ----------------------------------------------------------------------------- */
 	var headerNavSystem = $('#header-nav');
+	var headerNavControl = $('#header-nav-control');
+	var paddingTopContent = $(header).actual('outerHeight');
+	var headerNavSystemDefault = true;
 
+	$(window).bind('load', function (){
+		paddingTopContent = $(header).actual('outerHeight');
+	});
 
 	// мобильные
 	$(window).resize(function (){
 		setTimeout(function (){
-			if (mobile) {
-				$('#header-nav').hideClickAway('collapse');
-				$('#menu-nav-headerGroup').hideClickAway('collapse');
+			if (screenSM) {
+				$(headerNavSystem).hideClickAway('collapse');
+				$(menuNavHeaderGroup).hideClickAway('collapse');
 			} else {
-				$('#header-nav').hideClickAway();
-				$('#menu-nav-headerGroup').hideClickAway();
+				$(headerNavSystem).hideClickAway();
+				$(menuNavHeaderGroup).hideClickAway();
 			}
 		},500)
 
 	});
 
-	if (mobile) {
-		$('#header-nav').collapse('hide');
-		$('#header-navControl').removeClass('active');
-		$('#header-nav').hideClickAway('collapse');
-		$('#menu-nav-headerGroup').hideClickAway('collapse');
+	if (screenSM) {
+		$(headerNavSystem).collapse('hide');
+		$(headerNavControl).removeClass('active');
+		$(headerNavSystem).hideClickAway('collapse');
+		$(menuNavHeaderGroup).hideClickAway('collapse');
 
-
-
-		setTimeout(function (){
-			$('.header-nav-system-wrap').removeClass('mobile-hide');
-		}, 300)
+		$(headerNavSystem).removeClass('mobile-hide show');
+		// setTimeout(function (){
+		// }, 300)
 	} else {
-		$('.header-nav-system-wrap').addClass('show')
-		$('#header-navControl').addClass('active');
+		$(headerNavSystem).addClass('show');
+		$(headerNavControl).addClass('active');
 	}
 
-	$(window).resize(function (){
-		if (mobile) {
-			$('#header-nav').collapse('hide');
-		} else {
-			$('#header-nav').collapse('show');
-		}
-	});
 
 
 
 	// системы показываются
-	$('#header-nav').on('shown.bs.collapse', function () {
-		var btn = $('#header-navControl');
+	$(headerNavSystem).on('shown.bs.collapse', function () {
+		var btn = $(headerNavControl);
 		btn.addClass('active')
 	});
 
 	// системы скрываются
-	$('#header-nav').on('hidden.bs.collapse', function () {
-		var btn = $('#header-navControl');
+	$(headerNavSystem).on('hidden.bs.collapse', function () {
+		var btn = $(headerNavControl);
 		btn.removeClass('active');
 	});
 
-	if (safari || edge) {
-		$(headerNavSystem).on('show.bs.collapse', function (){
-			var position = $(document).scrollTop();
-			if (position <= 0) {
-				$(header).css({'position': ''});
-				$(content).css('padding-top', '');
-			}
-		});
+	// сохранием отступы при скрытии разворачивании меню "Системы"
+	$(headerNavSystem).on('show.bs.collapse', function (){
+		var position = $(document).scrollTop();
 
-		$(headerNavSystem).on('shown.bs.collapse', function (){
-			var position = $(document).scrollTop();
-			if (position <= 0){
-				positionContent = $(header).actual('outerHeight');
-				$(header).css({'position': 'fixed'});
-				$(content).css('padding-top', positionContent);
+		if (position <= 0 && !screenSM) {
+			if (!$(headerNavSetting).hasClass('show')) {
+				$(body).css({overflow: 'hidden', paddingRight: scrollbarWidth});
 			}
-		});
+			$(header).css({'position': 'static'});
+			$(content).stop(true).css('padding-top', '');
+		}
+	});
 
-		$(headerNavSystem).on('hide.bs.collapse', function (){
-			var position = $(document).scrollTop();
-			if (position <= 0) {
-				$(header).css({'position': ''});
-				$(content).css('padding-top', '');
-			}
-		});
+	$(headerNavSystem).on('shown.bs.collapse', function (){
+		var position = $(document).scrollTop();
 
-		$(headerNavSystem).on('hidden.bs.collapse', function (){
-			var position = $(document).scrollTop();
-			if (position <= 0){
-				positionContent = $(header).actual('outerHeight');
-				$(header).css({'position': 'fixed'});
-				$(content).css('padding-top', positionContent);
+		if (position <= 0  && !screenSM){
+			if (!$(headerNavSetting).hasClass('show')) {
+				$(body).css({overflow: '', paddingRight: ''});
 			}
-		});
-	}
+			positionContent = $(header).actual('outerHeight');
+			$(header).css({'position': ''});
+			$(content).stop(true).css('padding-top', positionContent);
+		}
+
+		if (position <= paddingTopContent) {
+			paddingTopContent = $(header).actual('outerHeight');
+			headerNavSystemDefault = $(headerNavSystem).hasClass('show');
+		}
+	});
+
+	$(headerNavSystem).on('hide.bs.collapse', function (){
+		var position = $(document).scrollTop();
+
+		if (position <= 0  && !screenSM) {
+			$(body).css({overflow: 'hidden', paddingRight: scrollbarWidth});
+			$(header).css({'position': 'static'});
+			$(content).stop(true).css('padding-top', '');
+		}
+	});
+
+	$(headerNavSystem).on('hidden.bs.collapse', function (){
+		var position = $(document).scrollTop();
+
+		if (position <= 0  && !screenSM){
+			$(body).css({overflow: '', paddingRight: ''});
+			positionContent = $(header).actual('outerHeight');
+			$(header).css({'position': ''});
+			$(content).stop(true).css('padding-top', positionContent);
+		}
+		if (position <= paddingTopContent) {
+			paddingTopContent = $(header).actual('outerHeight');
+			headerNavSystemDefault = $(headerNavSystem).hasClass('show');
+		}
+	});
 
 	// разворачиваем меню
-	$('#btnDeploy').click(function(event) {
-		$(header).removeClass('scroll').css({
+	var btnDeploy = $('#btn-deploy');
+
+	$(btnDeploy).click(function() {
+		$(header)
+			.removeClass('scroll')
+			.addClass('deploy-show')
+			.css({
 			'position': 'fixed',
 			'padding-bottom': '10px'
 		});
 
-		$('#header-nav').collapse('show');
-		$('#menuLeftList').collapse('show');
-
-		$('.rollUp').addClass('show');
+		$(headerNavSystem).collapse('show');
+		$(rollUp).addClass('show');
 		return false;
 	});
 
 	// настройки показываются
-	$('#header-navSetting').on('show.bs.collapse', function () {
-		var headerHeight = $(header).actual('outerHeight');
+	var headerNavSetting = $('#header-nav-setting');
+
+	$(headerNavSetting).on('show.bs.collapse', function () {
 
 		// инициализация drag & drop
-		$( "#sortable" ).sortable();
-		$( "#sortable" ).disableSelection();
-		$( "#sortable" ).draggable();
+		var dragAndDrop = $( "#drag-and-drop" );
+
+		$(dragAndDrop).sortable();
+		$(dragAndDrop).disableSelection();
+		$(dragAndDrop).draggable();
+
+		addPreloader(body, false, 'fixed');
 
 		$(header).css('transform', 'none');
 
-		$(this).parent().append('<div class="overlay"/>');
-		$('.overlay').animate({opacity: 'show'}, 400);
+		$(this)
+			.parent()
+			.append('<div class="overlay"/>')
+			.animate({opacity: 'show'}, 400);
 
-		$('#header-navSettingControl').css({
+		$('#header-nav-setting-control').css({
 			position: 'relative',
 			zIndex: '1000'
 		}).addClass('active');
 
+		// сохраняем отступы
+		$(body).css({
+			overflow: 'hidden',
+			paddingRight: scrollbarWidth,
+		});
 
-		if ($(document).scrollTop() <= 0) {
-			$('body').css({
-				overflow: 'hidden',
-				paddingRight: scrollbarWidth,
-				paddingTop: headerHeight
-			});
-			// if (safari && ie && edge)  {
-			// 	$(header).css({
-			// 		'padding-right': scrollbarWidth
-			// 	});
-			// }
-		} else {
-			$('body').css({
-				overflow: 'hidden',
-				paddingRight: scrollbarWidth,
+		/**
+		 * Сдвигаем body чтобы не было пустого пространства
+		 * при скроллинге при переполнении настроек систем
+		 */
+		if ($(document).scrollTop() <= $(header).actual('outerHeight')) {
+			$(body).css({
+				marginTop: '-' + $(header).actual('outerHeight')+'px',
 			});
 		}
-		// if ($(header).hasClass('fixed'))
 
-		var headerPositionDeafult = $(header).css('position');
+		// обертка для header
 		$(header).wrap('<div class="extra-wrapper"></div>');
 
-		if  ($(header).hasClass('fixed') && $(document).scrollTop() > 0) {
+		if ($(header).hasClass('fixed')) {
 			$(header).css({
-				paddingRight: scrollbarWidth
+				position: 'static'
 			})
 		}
-		// if (ie) {
-		// 	$(header).css({
-		// 		paddingRight: scrollbarWidth
-		// 	})
-		// }
-
-		checkboxDisabl($(this), 10)
-	});
-	$('#header-navSetting').on('shown.bs.collapse', function (){
-		if ($(document).scrollTop() <= 0) {
-			$('body').css({
-				overflow: 'hidden',
-				paddingRight: scrollbarWidth,
-				paddingTop: ''
-			});
-		}
-
-		if  ($(header).hasClass('fixed')) {
-			$(header).css({
-				paddingRight: scrollbarWidth
-			})
-		}
+		checkboxDisable($(this), 10)
 	});
 
-	// настройки скрываются
-	$('#header-navSetting').on('hide.bs.collapse', function () {
+	$(headerNavSetting).on('shown.bs.collapse', function (){
+		hidePreloader(body);
+	});
+
+	// закрытие настроек
+	$(headerNavSetting).on('hide.bs.collapse', function () {
+		addPreloader(body, false, 'fixed');
 		$(header).css('transform', '');
 		$('.overlay').animate({
 			opacity: 0
@@ -324,39 +310,42 @@ $(document).ready(function() {
 			$(this).detach()
 		});
 
-		$('body').css({
+		$(body).css({
 			overflow: '',
 			paddingRight: '',
-			paddingTop: ''
+			paddingTop: '',
+			marginTop: ''
 		});
+
 		$(header).css({
 			'padding-right': '',
-			// 'position': headerPositionDeafult
+			position: ''
 		});
 		$(header).unwrap();
 
-		$('#header-navSettingControl').removeClass('active').removeAttr('style');
-	})
+		$('#header-nav-setting-control').removeClass('active').removeAttr('style');
+	});
+	$(headerNavSetting).on('hidden.bs.collapse', function () {
+		hidePreloader(body);
+	});
 
-
-
-	var checkboxs = $('input[type="checkbox"].setting-form-checkbox__input'),
-			checkboxCheckd        = $('.setting-form').find('input[type="checkbox"]:checked'),
-			checkboxCheckdInch    = checkboxCheckd.length,
-			deafultCheckboxCheckd = checkboxDisabl($('.setting-form'), 10),
-			deafultSettingBoxes     = $('.nav-setting-wrap').html();
+	var checkboxes = $('input[type="checkbox"].setting-form-checkbox__input');
+	var settingForm = $('.setting-form');
+	var defaultCheckboxChecked = checkboxDisable($(settingForm), 10);
+	var navSettingWrap = $('.nav-setting-wrap');
+	var defaultSettingBoxes = $(navSettingWrap).html();
 
 	// сброс формы
 
-	$('.setting-form').on('click', 'button.form-setting-button:reset', function(event) {
+	$(settingForm).on('click', 'button.form-setting-button:reset', function() {
 
-		$('.nav-setting-wrap').html(deafultSettingBoxes);
-		checkboxDisabl($(this), 10, deafultCheckboxCheckd, 0);
+		$(navSettingWrap).html(defaultSettingBoxes);
+		checkboxDisable($(this), 10, defaultCheckboxChecked, 0);
 
 	});
 
 	// изменеие checkbox
-	$('.setting-form').on('change', checkboxs, function(event) {
+	$(settingForm).on('change', checkboxes, function(event) {
 		var checkbox   = $(event.target),
 				checkboxID = checkbox.attr('id');
 
@@ -365,13 +354,12 @@ $(document).ready(function() {
 					elParent = el.parent();
 
 			el.appendTo(elParent).show('400');
-			// $('[data-control='+checkboxID+']').show('400');
 
 		} else {
 			$('[data-control='+checkboxID+']').hide('400');
 		}
 
-		checkboxDisabl($(this), 10)
+		checkboxDisable($(this), 10)
 
 	});
 
@@ -385,575 +373,477 @@ $(document).ready(function() {
 			type: $form.attr('method'),
 			url: $form.attr('action'),
 			data: $form.serialize()
-		}).done(function(msg) {
+		}).done(function() {
 
 			$('[data-nav-control='+buttons+']').removeClass('active');
 
 
-		}).fail(function(msg) {
+		}).fail(function() {
 			alert('Ошибка! Обратитесь к администратору.');
 		});
 		//отмена действия по умолчанию для кнопки submit
 		e.preventDefault();
 	});
 
-	function checkboxDisabl(form, max, checkboxArrDeafult, speed) {
-		// form - елемент в котором ищем активные чекбоксы
-		// max - максимальное количество input со значение checked
-		// checkboxArrDeafult - изначальное положение элементов
-		// speed - скорость анимации
-		var checkbox = form.find('input[type="checkbox"]'),
-				checkboxCheckd,
-				checkboxNotCheckd,
-				checkboxCheckdInch,
-				checkboxNotCheckdInch,
-				speed,
-				checkboxArrID;
+	/**
+	 * функция проверяет сколько чекбоксов отмечено
+	 * если больше max делает все остальные не отмеченными
+	 *
+	 * @param {Object} form - елемент в котором ищем активные чекбоксы
+	 * @param {number} max - максимальное количество input со значение checked
+	 * @param {Object} [checkboxArrDefault=form.find(input[type="checkbox"]:checked)] - изначальное положение элементов
+	 * @param {number} [speedArg=400] - скорость анимации
+	 * @returns {Object} checkboxArrDefault возвращает изначальное положение элементов
+	 */
+	function checkboxDisable(form, max, checkboxArrDefault, speedArg) {
+		var checkboxChecked,
+				checkboxNotChecked,
+				checkboxCheckedInch,
+				speed = speedArg;
 
 		if (speed === undefined) {
 			speed = 400;
 		}
-		if (checkboxArrDeafult === undefined) {
-			checkboxCheckd = form.find('input[type="checkbox"]:checked');
-			checkboxNotCheckd = form.find('input[type="checkbox"]:not(:checked)');
+		if (checkboxArrDefault === undefined) {
+			checkboxChecked = form.find('input[type="checkbox"]:checked');
+			checkboxNotChecked = form.find('input[type="checkbox"]:not(:checked)');
 
 		} else {
-			checkboxCheckd = checkboxArrDeafult['deafultCheckboxCheckd'];
-			checkboxNotCheckd = checkboxArrDeafult['deafultCheckboxNotCheckdInch'];
+			checkboxChecked = checkboxArrDefault['defaultCheckboxChecked'];
+			checkboxNotChecked = checkboxArrDefault['defaultCheckboxNotCheckedInch'];
 		}
 
-		checkboxArrDeafult = {
-			deafultCheckboxCheckd: form.find('input[type="checkbox"]:checked'),
-			deafultCheckboxNotCheckdInch: form.find('input[type="checkbox"]:not(:checked)'),
+		checkboxArrDefault = {
+			defaultCheckboxChecked: form.find('input[type="checkbox"]:checked'),
+			defaultCheckboxNotCheckedInch: form.find('input[type="checkbox"]:not(:checked)'),
+		};
 
-		}
+		checkboxCheckedInch = checkboxChecked.length;
 
-		checkboxCheckdInch    = checkboxCheckd.length
-		checkboxNotCheckdInch = checkboxNotCheckd.length,
-
-		checkboxNotCheckdArrID = checkboxNotCheckd.map(function(indx, element){
+		var checkboxNotCheckedArrID = checkboxNotChecked.map(function(index, element){
 			return $(element).attr("id");
 		});
 
-		checkboxCheckdArrID = checkboxCheckd.map(function(indx, element){
+		var checkboxCheckedArrID = checkboxChecked.map(function(index, element){
 			return $(element).attr("id");
 		});
 
-		if (checkboxCheckdInch >= max) {
+		if (checkboxCheckedInch >= max) {
 			// если болшье max выключаем не отмеченые checkbox
-			// checkboxNotCheckd.prop("disabled", true);
 
 			// скрываем не отмечене блоки drag & drop
-			for (var i = checkboxNotCheckdArrID.length - 1; i >= 0; i--) {
-				$('[data-control='+checkboxNotCheckdArrID[i]+']').hide(speed);
-				$('#'+checkboxNotCheckdArrID[i]).prop("disabled", true);
-				$('#'+checkboxNotCheckdArrID[i]).parent().tooltip('enable');
+			for (var i = checkboxNotCheckedArrID.length - 1; i >= 0; i--) {
+				var itemNotChecked = $('#'+checkboxNotCheckedArrID[i]);
+
+				$('[data-control='+checkboxNotCheckedArrID[i]+']').hide(speed);
+				$(itemNotChecked).prop("disabled", true);
+				$(itemNotChecked).parent().tooltip('enable');
 			}
-			for (var i = checkboxCheckdArrID.length - 1; i >= 0; i--) {
-				$('[data-control='+checkboxCheckdArrID[i]+']').show(speed);
-				$('#'+checkboxCheckdArrID[i]).prop("disabled", false);
-				$('#'+checkboxCheckdArrID[i]).parent().tooltip('disable');
+			for (i = checkboxCheckedArrID.length - 1; i >= 0; i--) {
+				var itemChecked = $('#'+checkboxCheckedArrID[i]);
+
+				$('[data-control='+checkboxCheckedArrID[i]+']').show(speed);
+				$(itemChecked).prop("disabled", false);
+				$(itemChecked).parent().tooltip('disable');
 			}
 
 
 
 		} else {
 			// если меньше max включаем не отмеченые checkbox
-			checkboxNotCheckd.prop("disabled", false);
-			checkboxNotCheckd.parent().tooltip('disable');
-			checkboxCheckd.parent().tooltip('disable');
+			checkboxNotChecked.prop("disabled", false);
+			checkboxNotChecked.parent().tooltip('disable');
+			checkboxChecked.parent().tooltip('disable');
 
 		}
-		return checkboxArrDeafult;
+		return checkboxArrDefault;
 
 	}
 
 	/* START СКРОЛЛИНГ ------------------------------------------------------------------------------- */
-	if (!mobile) {
-		addClassScroll($(header));
-	}
+
+
 	// скрываем элементы во время скроллинга страницы
-	var positionContent = $(header).actual('outerHeight'),
-			chekPosContent,
-			positionOne = $(window).innerHeight(),
-			menuLeftListDeafult = $('#menuLeftList').hasClass('show'),
-			positionTwo = positionOne * 2,
-			asideHeight,
-			positionThree =  positionTwo + positionOne,
-			asideWidth = $('#aside').parent().width(),
-			windowHeight = $(window).outerHeight(),
-			windowMoreAside,
-			currentScroll = 0;
+	var positionContent = $(header).actual('outerHeight');
+	var positionOne = $(window).innerHeight();
+	var positionTwo = positionOne * 2;
+	var asideHeight;
+	var asideWidth = $(aside).parent().width();
+	var windowHeight = $(window).outerHeight();
+	var windowMoreAside;
+	var currentScroll = 0;
+
 	var paddingTopContentMax = $(header).actual('outerHeight');
 
+	var widthTwo = $(window).width();
+	var heightTwo = $(window).height();
 
-	var $window = $(window);
-	var width = $window.width();
-	var height = $window.height();
+	$(window).resize(function (){
+		setTimeout(function () {
+			if ((widthTwo !== $(window).width()) || (heightTwo !== $(window).height())) {
+				var position = $(document).scrollTop();
+				widthTwo = $(window).width();
+				heightTwo = $(window).height();
 
-	setInterval(function () {
-		console.log(width +' - '+ $window.width());
-		if ((width != $window.width()) || (height != $window.height())) {
-			width = $window.width();
-			height = $window.height();
+				positionOne = $(window).innerHeight();
 
+				windowHeight = $(window).outerHeight();
 
-			var position = $(this).scrollTop();
-			var menuLeft = $('#menuLeftList');
-			var meuLeftShown = menuLeft.hasClass('show');
+				asideWidth = $(aside).parent().width();
+				asideHeight = $(aside).actual('outerHeight') + $(aside).offset().top;
 
+				windowMoreAside = asideHeight < windowHeight;
 
-			positionOne = $(window).innerHeight();
-
-			windowHeight = $(window).outerHeight();
-			asideWidth = $('#aside').parent().width();
-
-			if (mobile) $('#menuLeftList').collapse('hide');
-			$('.widget-slider').slick('refresh');
-			if (position <= 0) {
-				paddingTopContentMax = $(header).actual('outerHeight');
-				$('#menuLeftList').collapse('show');
-				// $('#leftNavigationPseudo').css('display', 'block');
-				$(content).animate({
-					paddingTop: paddingTopContentMax
-				}, 400)
-
-
-
-			}
-			if (position > 0) {
-
-				if ($(aside).hasClass('positionTop')) {
-					var headerHeight = $(header).actual('outerHeight');
-					$(aside).css('top', headerHeight).removeClass('scrollingTop scrollingBottom ');
-
-					asideHeight = $(aside).actual('outerHeight') + $(header).actual('outerHeight'); // бывает вызыв события scroll
-					windowMoreAside = asideHeight < windowHeight;
-					if (windowMoreAside) {
-						$(aside).css('bottom:', '').addClass('positionTop');
-					}
-				}
-			}
-			$(aside).css({
-				width: asideWidth,
-			});
-			if (!mobile) {
 				$(aside).css({
-					position: '',
-					top: '',
-					bottom: '',
-					width: '',
-					marginTop: '',
-				}).removeClass('positionTop positionBottom scrollingTop scrollingBottom')
-					.addClass('positionStatic');
-			}
-		}
-	}, 800);
+					width: asideWidth,
+				});
 
-	// $(window).resize(function (){
-	// 	var position = $(this).scrollTop();
-	// 	var menuLeft = $('#menuLeftList');
-	// 	var meuLeftShown = menuLeft.hasClass('show');
-	//
-	//
-	// 	positionOne = $(window).innerHeight();
-	//
-	// 	windowHeight = $(window).outerHeight();
-	// 	asideWidth = $('#aside').parent().width();
-	//
-	// 	if (mobile) $('#menuLeftList').collapse('hide');
-	//
-	// 	// if (!mobile) {
-	// 	// 	$('#header-nav').collapse('hide');
-	// 	// 	console.log('!mobile');
-	// 	// } else {
-	// 	// 	console.log('mobile');
-	// 	// 	if (position < positionThree) {
-	// 	// 		$('#header-nav').collapse('show');
-	// 	// 	} else {
-	// 	// 		$('#header-nav').collapse('hide');
-	// 	// 	}
-	// 	// }
-	// 	if (position <= 0) {
-	// 		var positionTop = setTimeout(function (){
-	// 			paddingTopContentMax = $(header).actual('outerHeight');
-	// 			$('#menuLeftList').collapse('show');
-	// 			// $('#leftNavigationPseudo').css('display', 'block');
-	// 			$(content).animate({
-	// 				paddingTop: paddingTopContentMax
-	// 			}, 400)
-	// 		}, 500)
-	//
-	//
-	//
-	// 	}
-	// 	clearTimeout(positionTop);
-	// 	if (position > 0) {
-	//
-	// 		setTimeout(function (){
-	// 			// paddingTopContentMax = $(header).actual('outerHeight');
-	//
-	// 			// $(content).animate({
-	// 			// 	paddingTop: paddingTopContentMax
-	// 			// }, 400);
-	// 			if ($(aside).hasClass('positionTop')) {
-	// 				var headerHeight = $(header).actual('outerHeight');
-	// 				$(aside).css('top', headerHeight).removeClass('scrollingTop scrollingBottom ');
-	//
-	// 				asideHeight = $(aside).actual('outerHeight') + $(header).actual('outerHeight'); // бывает вызыв события scroll
-	// 				windowMoreAside = asideHeight < windowHeight;
-	// 				if (windowMoreAside) {
-	// 					$(aside).css('bottom:', '').addClass('positionTop');
-	// 				}
-	// 			}
-	// 		},500)
-	// 	}
-	// 	$(aside).css({
-	// 		width: asideWidth,
-	// 	});
-	// 	if (!mobile) {
-	// 		setTimeout(function (){
-	// 			$(aside).css({
-	// 				position: '',
-	// 				top: '',
-	// 				bottom: '',
-	// 				width: '',
-	// 				marginTop: '',
-	// 			}).removeClass('positionTop positionBottom scrollingTop scrollingBottom')
-	// 				.addClass('positionStatic');
-	// 		}, 600)
-	// 	}
-	//
-	// });
-
-	$('#menuLeftListControl').on('click', function() {
-		var position = $(window).scrollTop();
-		if (position <= 0 && !safari) {
-			menuLeftListDeafult = !menuLeftListDeafult;
-		}
-		if (position < positionThree && safari) {
-			menuLeftListDeafult = !menuLeftListDeafult;
-		}
-	});
-	if (safari || edge || ie) {
-		$(header).css({'position': 'fixed'}).addClass('fixed');
-		$(content).css('padding-top', positionContent);
-	}
-	if (!ie) {
-		var headerBread = $('.header .breadcrumb');
-		// var headerNavSystem = $('#header-nav');
-		var menuLeft = $('#menuLeftList');
-		var aside = $('#aside');
-
-		// var asideHeight;
-		
-		$(document).on('scroll', function(e) {
-			var windowHeight = $(window).outerHeight();
-			var position = $(this).scrollTop();
-			var positionBottom = position + windowHeight;
-			var positionContentEvent = $('.content').offset().top;
-			var asideBig = $('#aside').outerHeight() > $('#content').outerHeight();
-			var asideOfsetTop;
-			var headerHeight;
-			var contentPadding;
-			var positionContent = $(header).actual('outerHeight');
-
-			if (paddingTopContentMax < positionContent) paddingTopContentMax = positionContent;
-			
-			if (mobile && $('#header-nav').hasClass('show')) {
-				$('#header-nav').collapse('hide');
-			}
-
-			if ($('#menu-nav-headerGroup').hasClass('show')
-				|| $('.menu-left-navigation-pseudo').hasClass('show')) {
-				$('#menu-nav-headerGroup').collapse('hide');
-			}
-
-			$('*').tooltip('hide');
-			// скрываем dropdown при скролле
-			if ($('.dropdown-menu').hasClass('show')) {
-				$('.dropdown-menu').removeClass('show');
-			}
-
-			// header
-			if (!mobile) {
-				if (position > 0) {
-
-					if (!edge && !safari) $(header).css({'position': 'fixed'});
-
-					if (!$(header).hasClass('fixed')) {
-						$(header).addClass('fixed');
-						if (!edge && !safari) $(content).css('padding-top', positionContent);
-					}
-
-					//
-					// if (!safari) {
-					// }
-					if (position >= positionThree) {
-						$('#header-nav').collapse('hide');
-					} else {
-						$('#header-nav').collapse('show');
-					}
-
+				if (screenSM) {
+					$(headerNavSystem).collapse('hide');
+					$(headerNavSystem).removeClass('mobile-hide show');
+				}
+				if (screenLG) {
+					$(header).removeClass('scroll');
 				} else {
-					if (!edge && !safari) $(header).css({'position': ''});
-					if (!edge && !safari) $(content).css('padding-top', '');
-					if (!edge && !safari) $(header).removeClass('fixed');
-					$('#header-nav').collapse('show');
-				}
-			}
-
-			// header
-			if (!mobile) addClassScroll($(header), 'scroll', positionThree);
-
-			if (safari || edge) {
-				if (position >= positionThree) {
-					$('#menuLeftList').collapse('hide');
-				} else if(menuLeftListDeafult) {
-					$('#menuLeftList').collapse('show');
-					if ($(aside).hasClass('positionTop')) $('#leftNavigationPseudo').collapse('show');
-					if (position <=0) {
-						$(content).animate({paddingTop: paddingTopContentMax}, 300);
-						$('#leftNavigationPseudo').collapse('show')
+					if (position >= paddingTopContent) {
+						$(header).addClass('scroll');
 					}
 				}
-			}
 
+				$('.widget-slider').slick('refresh');
 
-			if (!$(header).hasClass('scroll') && !$('#header-navSetting').hasClass('show') && !mobile){
+				if (position <= 0 && $(header).hasClass('fixed')) {
+					paddingTopContentMax = $(header).actual('outerHeight');
 
+					if (headerNavSystemDefault && !screenSM) {
+						$(headerNavSystem).collapse('show');
+						$(headerNavSystem).addClass('mobile-hide show');
+					}
 
-
-				if (position > 0 /*&& !asideBig*/){
-					// collapseItemScrollHide($('#menuLeftListControl'), 0);
-					if (!safari) $('#menuLeftList').collapse('hide');
-
-
-					// $(content).css('padding-top', positionContent);
-					$('#btnUp').animate({bottom: 'show'}, 500);
-					$('.header .breadcrumb').css({
-						paddingBottom: '15px'
-					});
-
-
-				}else {
-					if (!edge && !safari) $(content).css('padding-top', '');
-					$('#btnUp').animate({bottom: 'hide', opacity: 'hide'}, 500);
-					$('.header .breadcrumb').removeAttr('style')
-				}
-			}
-
-			// меню свернуто
-			if ($(header).hasClass('scroll')){
-				$('#header-nav').collapse('hide');
-				$('#header-navControl').removeClass('active');
-			}
-
-			// scroll top самый верх экана
-			if (position <= 0){
-
-				if (!mobile){
-					$('#header-nav').collapse('show');
-				}
-				if (!edge && !safari) $(header).removeAttr('style');
-				addClassScroll($(header));
-				positionContent = $(header).actual('outerHeight');
-			}
-
-			// scroll bottom
-			if (position > 0){
-				$('.menu-left').removeAttr('style');
-				// $('#menu-nav-headerGroup').collapse('hide');
-				// $(header).css('padding-bottom', '');
-
-				// развернуть
-				if (!$('.rollUp').hasClass('show') && $(header).hasClass('scroll')){
-					$('.rollUp').addClass('show');
-				}else {
-					$('.rollUp').removeClass('show');
+					// сохраняем отступ у контента при ресайзе
+					$(content).animate({
+						paddingTop: paddingTopContentMax
+					}, 400)
 				}
 
-				// if (!$(header).hasClass('scroll')){
-				// 	if (!edge) $(header).css({'position': 'fixed'});
-				// }
+				// сохраняем положение aside при ресайзе
+				if (position > 0) {
+					if (!screenSM) {
+						var asideOffsetTop = $(aside).offset().top;
+						var contentPadding = parseInt($(content).css('padding-top'));
+						var marginOffset = asideOffsetTop > contentPadding ? asideOffsetTop - contentPadding : position;
+						if (windowMoreAside) {
+							// $(aside).css({
+							// 	position: 'fixed',
+							// 	top: '',
+							// 	bottom: '0px',
+							// 	marginTop: '',
+							// 	width: $('#aside').parent().width(),
+							// }).addClass('positionBottom').removeClass('positionTop positionStatic');
 
-			}else {
-				$('.rollUp').removeClass('show');
-			}
-			
-			// aside
-			if (!mobile) {
-					asideHeight = $(aside).actual('outerHeight') + $(header).actual('outerHeight'); // бывает вызыв события scroll
-					windowMoreAside = asideHeight < windowHeight;
-
-				if (!asideBig) { // боковая меньше контента
-
-					if (position > currentScroll) { // скроллим вниз
-
-						var hasAsideTop;
-						hasAsideTop = $(aside).hasClass('scrollingTop');
-
-						if (position > 0) {
-							$(aside).removeClass('scrollingTop');
-
-							if (!$(aside).hasClass('scrollingBottom')) {
-								asideOfsetTop = $(aside).offset().top;
-								headerHeight = $(header).actual('outerHeight');
-								contentPadding = parseInt($('.header + *').css('padding-top'));
-
-								$(aside).addClass('scrollingBottom');
-								if (!$(aside).hasClass('positionStatic')/*
-									&& $(aside).hasClass('scrollingBottom')
-									&& !$(aside).hasClass('scrollingTop')*/) {
-									$(aside).css({
-										position: '',
-										top: '',
-										bottom: '',
-										marginTop: asideOfsetTop - contentPadding,
-									}).removeClass('positionTop positionBottom').addClass('positionStatic');
-								}
-
-								// if ($(aside).hasClass('positionStatic')) {
-								// 	asideOfsetTop = $(aside).offset().top;
-								// 	headerHeight = $(header).actual('outerHeight');
-								//
-								// 	$(aside).css({
-								// 		position: 'fixed',
-								// 		top: $(header).actual('outerHeight'),
-								// 		bottom: '',
-								// 		width: asideWidth,
-								// 		marginTop: '',
-								// 	}).addClass('positionTop').removeClass('positionStatic');
-								// }
-							}
-
-							// if ($(aside).hasClass('positionTop')) {
-							// 	asideOfsetTop = $(aside).offset().top;
-							// 	headerHeight = $(header).actual('outerHeight');
-							//
-							// 	$(aside).css({
-							// 		position: '',
-							// 		top: '',
-							// 		bottom: '',
-							// 		width: '',
-							// 		marginTop: asideOfsetTop - position,
-							// 	}).addClass('positionStatic').removeClass('positionTop');
-							// }
-
-							asideOfsetTop = $(aside).offset().top;
-							asideHeight = $(aside).actual('outerHeight') + $(aside).offset().top;
-
-							if (windowMoreAside) {
-								$(aside).css({
-									position: 'fixed',
-									top: $(header).actual('outerHeight'),
-									bottom: '',
-									marginTop: '',
-									width: $('#aside').parent().width(),
-								}).addClass('positionTop').removeClass('positionStatic positionBottom');
-							}
-
-							if (positionBottom >= asideHeight) { // прилепляем асайд к низу
-								if (!windowMoreAside) {
-									$(aside).css({
-										position: 'fixed',
-										top: '',
-										bottom: '0px',
-										marginTop: '',
-										width: $('#aside').parent().width(),
-									}).addClass('positionBottom').removeClass('positionTop positionStatic');
-								}
-							}
-
-
-						}
-
-					} else { // скролл вверх
-
-						contentPadding = parseInt($('.header + *').css('padding-top'));
-
-						asideOfsetTop = $(aside).offset().top;
-						headerHeight = $(header).actual('outerHeight');
-
-						hasAsideTop = $(aside).hasClass('scrollingTop');
-
-
-
-						if (position > 0) {
-
-							if (!$(header).hasClass('scroll') && $(aside).hasClass('positionTop')) {
-								headerHeight = $(header).actual('outerHeight');
-								$(aside).css({
-									position: '',
-									top: headerHeight,
-									bottom: '',
-									marginTop: '',
-								});
-							}
-
-							$(aside).removeClass('scrollingBottom');
-							$(aside).addClass('scrollingTop');
-
-							asideOfsetTop = $(aside).offset().top;
-							headerHeight = $(header).actual('outerHeight');
-
-							if (asideOfsetTop < position + headerHeight) {
-
-								if ($(aside).hasClass('positionBottom')) {
-									$(aside).css({
-										position: '',
-										top: '',
-										bottom: '',
-										marginTop: asideOfsetTop - contentPadding,
-									}).removeClass('positionBottom positionTop').addClass('positionStatic');
-								}
-
-							} else {
-								$(aside).css({
-									position: 'fixed',
-									top: $(header).actual('outerHeight'),
-									bottom: '',
-									width: asideWidth,
-									marginTop: '',
-								}).addClass('positionTop').removeClass('positionStatic');
-							}
-
+							$(aside).css({
+								position: '',
+								top: '',
+								bottom: '',
+								marginTop: marginOffset,
+							}).removeClass('positionTop positionBottom').addClass('positionStatic');
 						} else {
 							$(aside).css({
 								position: '',
 								top: '',
 								bottom: '',
-								width: '',
 								marginTop: '',
-							}).removeClass('positionTop positionBottom scrollingTop scrollingBottom')
-								.addClass('positionStatic');
+							}).removeClass('positionTop positionBottom').addClass('positionStatic');
 						}
+					}
+
+				}
+			}
+		}, 800);
+	});
+
+
+	$(content).css('padding-top', positionContent);
+
+	// если страница загруужена на середине
+	if (!screenMD) $(document).trigger('scroll');
+
+	var headerBread = $('.header .breadcrumb');
+	var dropdownMenu = $('.dropdown-menu');
+	var contentBody = $('#content');
+	$(document).on('scroll', function() {
+		var windowHeight = $(window).outerHeight();
+		var position = $(this).scrollTop();
+		var positionBottom = position + windowHeight;
+		var asideBig = $(aside).outerHeight() > $(contentBody).outerHeight();
+		var asideOffsetTop;
+		var headerHeight;
+		var contentPadding;
+		var positionContent = $(header).actual('outerHeight');
+		var headerHasScroll = $(header).hasClass('scroll');
+
+		if (paddingTopContentMax < positionContent) paddingTopContentMax = positionContent;
+
+		if (screenSM && $(headerNavSystem).hasClass('show')) {
+			$(headerNavSystem).collapse('hide');
+		}
+
+		if ($(menuNavHeaderGroup).hasClass('show')) {
+			$(menuNavHeaderGroup).collapse('hide');
+		}
+
+		// скрываем dropdown при скролле
+		if ($(dropdownMenu).hasClass('show')) {
+			$(dropdownMenu).removeClass('show');
+		}
+
+		if ($(rollUp).hasClass('show')){
+			$(rollUp).removeClass('show');
+		}
+		if ($(header).hasClass('deploy-show')) {
+			$(header).removeClass('deploy-show');
+		}
+
+		if (!screenLG) {
+			if (position > 0) {
+				if (!$(headerBread).hasClass('show')) $(headerBread).addClass('show');
+
+				if (position > paddingTopContent) {
+					if (!headerHasScroll) {
+						$(header).fadeIn(150).addClass('scroll');
+
+						if (!$(headerBread).hasClass('show')) $(headerBread).addClass('show');
+
+						if ($(headerNavSystem).hasClass('show')){
+							$(headerNavSystem).removeClass('show');
+							$(headerNavControl).removeClass('active');
+						}
+
+					}
+
+				} else {
+					if (position < currentScroll) {
+						if (position < paddingTopContent - $(headerBread).offset().top) {
+
+							$(headerBread).removeClass('show');
+						}
+					}
+					if (headerNavSystemDefault) {
+						$(headerNavControl).addClass('active');
+						$(headerNavSystem).addClass('show');
+					}
+					if (!$(header).hasClass('show')){
+
+						$(header)
+							.addClass('show')
+							.removeClass('scroll')
+							.slideDown(200);
+					}
+					if (headerHasScroll) {
+						$(header)
+							.addClass('show')
+							.removeClass('scroll')
+							.slideDown(200);
+					}
+
+					$(content).stop(true).animate({paddingTop: paddingTopContent}, 300);
+				}
+			} else {
+
+				if (headerNavSystemDefault) {
+					$(headerNavControl).addClass('active');
+					$(headerNavSystem).addClass('show');
+				}
+				if (!$(header).hasClass('show')){
+
+					$(header)
+						.addClass('show')
+						.removeClass('scroll')
+						.slideDown(200);
+				}
+				if (headerHasScroll) {
+					$(header)
+						.addClass('show')
+						.removeClass('scroll')
+						.slideDown(200);
+				}
+
+				$(content).stop(true).animate({paddingTop: paddingTopContent}, 300);
+				$(headerBread).removeClass('show');
+			}
+		}
+
+		if  (position <= 0) {
+			setTimeout(function (){
+				if (position <= 0) {
+					headerHeight = $(header).actual('outerHeight');
+					var headerNavSystemCollapsing = $(headerNavSystem).hasClass('collapsing');
+					var paddingContentRelevant = parseFloat($(content).css('padding-top'));
+
+					if (paddingContentRelevant !== headerHeight
+						&& !headerNavSystemCollapsing) {
+						paddingTopContent = $(header).actual('outerHeight');
+						$(content).stop(true).filter(':not(:animated)').animate({paddingTop: paddingTopContent}, 300);
+					}
+				}
+			}, 400)
+
+		}
+
+
+		if (screenLG && !screenSM) {
+			if (position > paddingTopContent) {
+				if ($(headerNavSystem).hasClass('show')){
+					$(headerNavSystem).removeClass('show');
+					$(headerNavControl).removeClass('active');
+				}
+
+			} else if (!screenSM) {
+				if (headerNavSystemDefault) {
+					$(headerNavControl).addClass('active');
+					$(headerNavSystem).addClass('show');
+				}
+			}
+		}
+
+		// aside
+		if (!screenSM && !ie && !firefox) {
+				asideHeight = $(aside).actual('outerHeight') + $(header).actual('outerHeight');
+				windowMoreAside = asideHeight < windowHeight;
+
+			if (!asideBig) { // боковая меньше контента
+
+				if (position > currentScroll) { // скроллим вниз
+
+					if (position > 0) {
+						$(aside).removeClass('scrollingTop');
+
+						if (!$(aside).hasClass('scrollingBottom')) {
+							asideOffsetTop = $(aside).offset().top;
+							contentPadding = parseInt($(content).css('padding-top'));
+
+							$(aside).addClass('scrollingBottom');
+							if (!$(aside).hasClass('positionStatic')) {
+								$(aside).css({
+									position: '',
+									top: '',
+									bottom: '',
+									marginTop: asideOffsetTop - contentPadding,
+								}).removeClass('positionTop positionBottom').addClass('positionStatic');
+							}
+						}
+
+						asideHeight = $(aside).actual('outerHeight') + $(aside).offset().top;
+
+						if (windowMoreAside) {
+							$(aside).css({
+								position: 'fixed',
+								top: $(header).actual('outerHeight'),
+								bottom: '',
+								marginTop: '',
+								width: $('#aside').parent().width(),
+							}).addClass('positionTop').removeClass('positionStatic positionBottom');
+						}
+
+						if (positionBottom >= asideHeight) { // прилепляем асайд к низу
+							if (!windowMoreAside) {
+								$(aside).css({
+									position: 'fixed',
+									top: '',
+									bottom: '0px',
+									marginTop: '',
+									width: $('#aside').parent().width(),
+								}).addClass('positionBottom').removeClass('positionTop positionStatic');
+							}
+						}
+					}
+
+				} else { // скролл вверх
+
+					contentPadding = parseInt($(content).css('padding-top'));
+
+					asideOffsetTop = $(aside).offset().top;
+					headerHeight = $(header).actual('outerHeight');
+
+					if (position > 0) {
+
+						if (!$(header).hasClass('scroll') && $(aside).hasClass('positionTop')) {
+							headerHeight = $(header).actual('outerHeight');
+							$(aside).css({
+								position: '',
+								top: headerHeight,
+								bottom: '',
+								marginTop: '',
+							});
+						}
+
+						$(aside).removeClass('scrollingBottom');
+						$(aside).addClass('scrollingTop');
+
+						asideOffsetTop = $(aside).offset().top;
+						headerHeight = $(header).actual('outerHeight');
+
+						if (asideOffsetTop < position + headerHeight) {
+
+							if ($(aside).hasClass('positionBottom')) {
+								$(aside).css({
+									position: '',
+									top: '',
+									bottom: '',
+									marginTop: asideOffsetTop - contentPadding,
+								}).removeClass('positionBottom positionTop').addClass('positionStatic');
+							}
+
+						} else {
+							$(aside).css({
+								position: 'fixed',
+								top: $(header).actual('outerHeight'),
+								bottom: '',
+								width: asideWidth,
+								marginTop: '',
+							}).addClass('positionTop').removeClass('positionStatic');
+						}
+
+					} else {
+						$(aside).css({
+							position: '',
+							top: '',
+							bottom: '',
+							width: '',
+							marginTop: '',
+						}).removeClass('positionTop positionBottom scrollingTop scrollingBottom')
+							.addClass('positionStatic');
 					}
 				}
 			}
-
-			currentScroll = position;
-		});
-	}
-	//
-	// $('#leftNavigationPseudo').on('hide.bs.collapse', function (){
-	// 	$(this).css('display', 'none');
-	//
-	//
-	// });
-	setInterval(function() {
-		var position = $(document).scrollTop(),
-				menuLeft = $('#menuLeftList'),
-				meuLeftShown = menuLeft.hasClass('show');
-
-		if (position <= 0 && menuLeftListDeafult && !meuLeftShown) {
-			$('#menuLeftList').collapse('show');
 		}
-	}, 2000)
 
+		currentScroll = position;
+	});
+
+	/*
+	* проверка на случай если, высота шапки
+	* не совпадает с padding content
+	* (напрмер если обновить страницу на середине)
+	* */
+	setTimeout(function (){
+		var position = $(document).scrollTop();
+		var headerHeight = $(header).actual('outerHeight');
+		var headerNavSystemCollapsing = $(headerNavSystem).hasClass('collapsing');
+		var paddingContentRelevant = parseFloat($(content).css('padding-top'));
+
+		if (position <= 0
+				&& paddingContentRelevant !== headerHeight
+				&& !screenSM
+				&& !headerNavSystemCollapsing) {
+			paddingTopContent = $(header).actual('outerHeight');
+			$(content).filter(':not(:animated)').animate({paddingTop: paddingTopContent}, 300);
+		}
+	}, 500);
 
 	// плавный скролл до элемента
-	$(document).on('click', 'a.event, a.calendar__link', function(event) {
+
+	$(document).on('click', 'a.event, a.calendar__link', function() {
 		var link = $(this).attr('href');
 		var elementToScroll = $('#' + link.split('#')[1]);
 
@@ -962,37 +852,36 @@ $(document).ready(function() {
 		}
 	});
 
-	function scrollTo ($elementToScroll) {
-		var elementToScroll = $($elementToScroll);
-		var elementToScrollPos = elementToScroll.offset().top;
+	/**
+	 * функция скролит до элемента с учетом высоты header
+	 *
+	 * @param {selector|Object} elementToScroll
+	 * @returns {boolean}
+	 */
+	function scrollTo (elementToScroll) {
+		var elementScroll = $(elementToScroll);
+		var elementToScrollPos = elementScroll.offset().top;
 		var headerHeight = $(header).outerHeight(); // высота хэдера
 		if (elementToScrollPos < positionTwo) {
-			elementToScrollPos = elementToScroll.offset().top - headerHeight - 45;
+			elementToScrollPos = elementScroll.offset().top - headerHeight - 45;
 		} else {
-			elementToScrollPos = elementToScroll.offset().top - 90;
+			elementToScrollPos = elementScroll.offset().top - 90;
 		}
 
-		if (elementToScroll !== undefined) {
+		if (elementScroll !== undefined) {
 			$('html:not(:animated),body:not(:animated)').animate({scrollTop: elementToScrollPos}, 800);
-			// event.preventDefault();
 			return false;
 		}
 	}
 
 
-	// заказчик попросил чтобы при клике на пустую ссылку ничего не происходило
-	$(document).on('click', 'a', function(event) {
-		var el = event.target,
-				elHref = $(el).attr('href');
-		if (elHref === undefined || elHref === '#' || elHref === '') {
-			event.preventDefault();
-		}
-	});
-
-
+	/**
+	 * при переходе на страницу события плавный скролл до события
+	 * calendar2.html#events-14-10-2018
+	 */
 
 	var myHash = location.hash; //получаем значение хеша
-	//location.hash = ''; //очищаем хеш
+
 	$(window).on('load', function() {
 		var headerHeight = $(header).outerHeight(); // высота хэдера
 		if(myHash[1] !== undefined && myHash[1] !== '#'){ //проверяем, есть ли в хеше какое-то значение
@@ -1003,24 +892,25 @@ $(document).ready(function() {
 				elementToScrolling = $(myHash).offset().top;
 			}
 
-			$('html:not(:animated),body:not(:animated)').animate({scrollTop: elementToScrolling}, 800,
-				function () {
-
-				});
-		};
-
+			$('html:not(:animated),body:not(:animated)').animate({scrollTop: elementToScrolling}, 800);
+		}
 	});
 
-	$('#btnUp').click(function() {
-		var destination = 0;
-
-		$('html:not(:animated),body:not(:animated)').animate({
-			scrollTop: destination
-		}, 800, function () {
-		});
+	// скролл до самого верха страницы
+	$('#btn-up').click(function() {
+		$('html:not(:animated),body:not(:animated)').animate({scrollTop: 0 }, 800);
 		return false;
 	});
 
+	/**
+	 * добавляет класс если страница
+	 * прокручена больше заданного значения
+	 *
+	 * @param {Object} element
+	 * @param {string} [$class='scroll']
+	 * @param {number} [positionMax=200]
+	 * @returns {number} возвращает текущее значение scrollTop()
+	 */
 	function addClassScroll(element, $class, positionMax) {
 		var position = $(this).scrollTop();
 		if ($class === undefined) {
@@ -1037,265 +927,81 @@ $(document).ready(function() {
 		return position;
 	}
 
-	function removeClassScroll(element, $class) {
-		var position = $(this).scrollTop();
-		if ($class === undefined) {
-			$class = 'scroll';
-		}
-		if (position >= 200) {
-			element.removeClass($class);
-		} else {
-			element.addClass($class);
-		}
-		return position;
-	}
-
-	function toggleCollapseScroll(element) {
-		var position = $(this).scrollTop();
-		if (position >= 200) {
-			element.collapse('hide');
-		} else {
-			element.collapse('show');
-		}
-		return position;
-	}
-
-	function toggleDropdownScroll(element) {
-		var position = $(this).scrollTop();
-		if (position >= 200) {
-			element.attr('data-toggle', 'dropdown');
-			element.find('i').animate({opacity: 'show'}, 400);
-		} else {
-			element.removeAttr('data-toggle');
-			element.dropdown('dispose');
-			element.find('i').animate({opacity: 'hide'}, 400);
-		}
-	}
-
-	function collapseItemScrollHide(btnControl, hidePosition) {
-		var position = $(this).scrollTop(),
-				itemControl = $(btnControl.data('target'));
-
-		if (hidePosition === undefined) {
-			hidePosition = 0;
-		}
-		if (position > hidePosition && itemControl.hasClass('show')) {
-			itemControl.collapse('hide');
-		}
-	}
-
-	function collapseItemScrollShow(btnControl, hidePosition) {
-		var position = $(this).scrollTop(),
-				itemControl = $(btnControl.data('target'));
-
-		if (hidePosition === undefined) {
-			hidePosition = 0;
-		}
-		if (position < hidePosition && menuLeftListDeafult) {
-			itemControl.collapse('show');
-		}
-	}
-
 
 	/* END СКРОЛЛИНГ ------------------------------------------------------------------------------- */
 
-	// левое меню show 
-	$('#menuLeftList').on('show.bs.collapse', function() {
-		var btn = $('#menuLeftListControl');
-		var position = $(document).scrollTop();
-
-		btn.addClass('active');
-		$('.menu-left-more__list').removeClass('show');
-		$('#navMoreListControl').removeAttr('data-toggle');
-		$('#navMoreListControl').dropdown('dispose');
-		$('.menu-left-more__button>i').animate({opacity: 'hide'}, 400);
-		if (position < positionThree && !safari && !edge) {
-			// $('#leftNavigationPseudo').animate({height: $(this).actual('innerHeight')}, 300)
-			$('#leftNavigationPseudo').collapse('show')
-		}
-		if (!edge && !safari) {
-			if (position <= 0) {
-				$('#leftNavigationPseudo').collapse('show')
-			}
-		}
-		if (position <= 0) {
-			$('#leftNavigationPseudo').collapse('show')
-		}
-	});
-
-	// левое меню hide 
-	$('#menuLeftList').on('hide.bs.collapse', function() {
-		var btn = $('#menuLeftListControl');
-		var position = $(document).scrollTop();
-		btn.removeClass('active');
-		$('#navMoreListControl').attr('data-toggle', 'dropdown')
-		$('.menu-left-more__button>i').animate({opacity: 'show'}, 400);
-		// $('#leftNavigationPseudo').animate({height: 0}, 300)
-		$('#leftNavigationPseudo').collapse('hide')
-
-	});
-
-	var menuLeftList = $('#menuLeftList').actual('outerHeight');
-	$('#leftNavigationPseudo').html('<div style="height:'+menuLeftList+'px;"></div>');
-
 	// ставим лайки
-	$(document).on('click', '.like-button:not(.comment-button)', function(event) {
+	$(document).on('click', '.like-button:not(.comment-button)', function() {
 		$(this).toggleClass('active');
 
 	});
 
+
 	// скрываем показываем фильтры
-	$('#contentFilterButton').on('click', function(event) {
+	$('#content-filter-button').on('click', function() {
 		var options = {
 			direction: 'right'
-		}
+		};
 		$('.content-filter__formbox').toggle('slide', options);
 	});
+
 	// ставим текущую дату в фильтре
-	$('#filtersCalendarPeriod').on('change click', function(event) {
-		if ($(this).val() == 'true-date') {
-			$(this).val('');
-			$('[name="period_date_buffer"]').datepicker($.datepicker.regional[ "ru" ]);
-			$('[name="period_date_buffer"]').datepicker('widget').addClass('widget-calendar widget-calendar_filter');
-			$('[name="period_date_buffer"]').datepicker('option',{
+	var periodDateBuffer = $('[name="period_date_buffer"]');
+	var filtersCalendarPeriod = $('#filters-calendar-period');
+	var periodDate = $('#period-date');
+	var selectedOption = $(filtersCalendarPeriod).find(':selected');
+
+	// сброс формы чтобы открыть каледарь change
+	$(filtersCalendarPeriod).click(function (){
+		if ($(this).val() === $(periodDateBuffer).val()) $(this).val('');
+	});
+
+	// сохраняем ранее выбранную дату
+	$(filtersCalendarPeriod).on('focus', function (){
+		selectedOption = $(this).find(':selected');
+	});
+
+	$(filtersCalendarPeriod).on('focusout', function (){
+		if ($(selectedOption).val() === $(periodDateBuffer).val()) {
+			$(this).val($(periodDateBuffer).val())
+		}
+	});
+
+	// выбор даты
+	$(filtersCalendarPeriod).on('change', function() {
+		selectedOption = $(this).find(':selected');
+
+		if ($(this).val() === 'true-date' || $(this).val() === $(periodDateBuffer).val()) {
+			$(periodDateBuffer).datepicker($.datepicker.regional[ "ru" ]);
+			$(periodDateBuffer).datepicker('widget').addClass('widget-calendar widget-calendar_filter');
+			$(periodDateBuffer).datepicker('option',{
 				nextText: '>',
 				prevText: '<',
 			});
-			$('[name="period_date_buffer"]').datepicker('show');
-
-
+			$(periodDateBuffer).datepicker('show');
 		}
 	});
-	$('[name="period_date_buffer"]').on('change', function(event) {
-		$('#filtersCalendarPeriod').find('option').removeAttr('selected');
-		$('#period_date').val($(this).val());
-		$('#period_date').text($(this).val());
-		$('#period_date').attr('selected', 'true');
-		$('#filtersCalendarPeriod').val($(this).val());
+
+	// буфер чтобы показать календарь
+	$(periodDateBuffer).on('change', function() {
+		$(filtersCalendarPeriod).find('option').removeAttr('selected');
+		$(periodDate).val($(this).val());
+		$(periodDate).text($(this).val());
+		$(periodDate).attr('selected', 'true');
+		$(filtersCalendarPeriod).val($(this).val());
 	});
 
 	/* ВИДЖЕТЫ -------------------------------------------------------------------------------------- */
 
-	// hover на виджете с табами
-	$('.widget-tabbox').on('mousemove', '.widget-item', function(event) {
-		var box = $(event.delegateTarget),
-				items = box.find('.widget-item');
-				currentItem = box.find('.widget-item.active');
-		currentItem.attr('data-current', 'true')
-		items.removeClass('active');
-		box.on('mouseleave', '.widget-items', function(event) {
-			$('.widget-item[data-current="true"]').addClass('active')
-		});
-		items.click(function() {
-			$('.widget-item[data-current="true"]').removeAttr('data-current')
-		});
+	// datepicker
 
-	});
-
-	/* СОБЫТИЯ В ВИДЖЕТЕ "КАЛЕНДАРЬ" ----------------------------------------------------------------- */
-
-	// var setTimer;
-	// var setTimerTimeOut = 10000;
-	// setInterval(function(){ // открываем событие на текущей дате по таймеру
-	// 	if (!$('#widgetCalendar').hasClass('show-event') && !mobile) {
-	// 		$('#widgetCalendar .ui-datepicker-today.selected a.ui-state-default').trigger('click');
-	// 		setTimer = setTimeout(function () {
-	// 			$('.event-control').trigger('click');
-	// 			$('#widgetCalendar').removeClass('show-event');
-	// 		}, 5000)
-	// 	}
-	// }, 10000);
-
-	// открываем события на выбранной дате
-	// $('#calendarwidgetBox').on('click', 'a.ui-state-default', function(e) {
-	// 	e.preventDefault();
-	// 	var dayCurrent = $(this),
-	// 			eventElements = $(dayCurrent.attr('href')),
-	// 			eventElementArr = eventElements.find('.event'),
-	// 			element = $(e.delegateTarget),
-	// 			subtitle = element.find('.widget-subtitle span'),
-	// 			calendar = element.find('.ui-datepicker-calendar'),
-	// 			eventElementControl = element.find('.event-control');
-	//
-	//
-	// 	element.addClass('show-event');
-	// 	eventElementArr.hide();
-	// 	// скрываем календарь
-	// 	calendar.animate({
-	// 		opacity: 'hide'},
-	// 		150, function() {
-	// 		eventElements.animate({opacity: 'show'}, 150);
-	// 		eventElementControl.animate({opacity: 'show'}, 150);
-	// 	});
-	//
-	// 	// показываем события выбраной даты
-	// 	$(eventElementArr[0]).show().addClass('current');
-	// 	for (var i = 0; i < eventElementArr.length; i++) {
-	// 		$(eventElementArr[i]).attr('data-count', i);
-	// 	}
-	//
-	// 	// если событий больше 1 то делаем их ввиде слайдера
-	// 	if (eventElementArr.length > 1) {
-	//
-	// 		subtitle.after('<div class="event-nav">'+
-	// 											'<button class="prev">&lt;&nbsp;</button>'+
-	// 											'<span class="count">'+1+'&nbsp;из&nbsp;'+eventElementArr.length+'</span>'+
-	// 											'<button class="next">&nbsp;&gt;</button>'+
-	// 										'</div>');
-	// 	}
-	// 	var eventNav = element.find('.event-nav'),
-	// 			prev = $(eventNav).find('.prev'),
-	// 			next = $(eventNav).find('.next'),
-	// 			count = $(eventNav).find('.count');
-	//
-	// 	prev.click(function() {
-	// 		var current = eventElements.find('.event.current');
-	// 		if ($(current).data('count') == 0) {
-	// 			count.text(eventElementArr.length + ' из ' + eventElementArr.length);
-	// 			$(current).fadeOut('150', function() {
-	// 				$(eventElementArr[eventElementArr.length - 1]).fadeIn('150').addClass('current');
-	// 			}).removeClass('current');
-	// 		} else {
-	// 			count.text($(current).data('count') + ' из ' + eventElementArr.length)
-	// 			$(current).fadeOut('150', function() {
-	// 				$(eventElementArr[$(current).data('count') - 1]).fadeIn('150').addClass('current');
-	// 			}).removeClass('current');
-	// 		}
-	// 	});
-	//
-	// 	next.click(function() {
-	// 		var current = eventElements.find('.event.current');
-	// 		if ($(current).data('count') == eventElementArr.length - 1) {
-	// 			count.text('1' + ' из '+eventElementArr.length)
-	// 			$(current).fadeOut('150', function() {
-	// 				$(eventElementArr[0]).fadeIn('150').addClass('current');
-	// 			}).removeClass('current');
-	// 		} else {
-	// 			count.text($(current).data('count')+2 +' из '+eventElementArr.length)
-	// 			$(current).fadeOut('150', function() {
-	// 				$(eventElementArr[$(current).data('count') + 1]).fadeIn('150').addClass('current');
-	// 			}).removeClass('current');
-	// 		}
-	// 	});
-	//
-	// 	// нажимаем на кнопку скрыть
-	// 	eventElementControl.click(function(event) {
-	// 		element.removeClass('show-event');
-	// 		clearTimeout(setTimer);
-	// 		element.find('.event-nav').detach();
-	// 		eventElements.animate({opacity: 'hide'}, 150);
-	// 		eventElementControl.animate({opacity: 'hide'}, 150, function () {
-	// 			calendar.animate({opacity: 'show'}, 150);
-	// 			eventElementArr.hide()
-	// 		});
-	//
-	// 	});
-	// });
-
-
-	/* datepicker --------------------------------------------------------------------------------------------- */
-
-	// fix datepicker beforeShow
+	/**
+	 * fix datepicker beforeShow
+	 * У inline datepicker не работает метод beforeShow
+	 *
+	 * https://api.jqueryui.com/datepicker/#option-beforeShow
+	 * https://stackoverflow.com/questions/3961963/beforeshow-event-not-firing-on-jqueryui-datepicker
+ 	 */
 	$.extend($.datepicker, {
 		// Reference the original function so we can override it and call it later
 		_inlineDatepicker2: $.datepicker._inlineDatepicker,
@@ -1311,21 +1017,21 @@ $(document).ready(function() {
 	});
 
 	var eventsDates = [{
-			date: new Date('02/6/2019'),
-			tooltip: "<p>День металлурга </p>",
+			date: new Date('03/6/2019'),
+			tooltip: "<p>День металлурга</p>",
 			link: "/calendar.html",
 			eventItem: '#event-6',
 			generalItem: '#events-06-10-2018'
 		},
 		{
-			date: new Date('02/14/2019'),
+			date: new Date('03/14/2019'),
 			tooltip: "<p>День металлурга </p><p>День металлурга 2 </p>",
 			link: "/calendar2.html",
 			eventItem: '#event-14',
 			generalItem: '#events-14-10-2018',
 		},
 		{
-			date: new Date('02/24/2019'),
+			date: new Date('03/24/2019'),
 			tooltip: "<p>День металлурга3 </p><p>День металлурга 5 </p><p>День металлурга 5 </p><p>День металлурга 5 </p><p>День металлурга 5 </p><p>День металлурга 5 </p><p>День металлурга 5 </p><p>День металлурга 5 </p><p>День металлурга 5 </p><p>День металлурга3 </p><p>День металлурга 5 </p><p>День металлурга 5 </p><p>День металлурга 5 </p><p>День металлурга 5 </p><p>День металлурга 5 </p><p>День металлурга 5 </p><p>День металлурга 5 </p><p>День металлурга 5 </p>",
 			link: "/calendar3.html",
 			eventItem: '#event-24',
@@ -1333,24 +1039,15 @@ $(document).ready(function() {
 		},
 
 	];
-
-	// $('#pageCalendar').datepicker($.extend({
-	// 		inline: true,
-	// 		changeYear: true,
-	// 		changeMonth: true,
-	// 	},
-	// 	$.datepicker.regional['ru_con']
-	// ));
-
-	$('#pageCalendar').datepicker({
+	// calendar.html
+	// calendar2.html
+	// calendar3.html
+	$('#page-calendar').datepicker({
 		showOtherMonths: true,
 		selectOtherMonths: true,
 		inline: true,
 		nextText: '>',
 		prevText: '<',
-		// showOn: "button",
-		// showButtonPanel: true,
-		// buttonText: "t",
 
 		beforeShow: addElements,
 
@@ -1361,6 +1058,7 @@ $(document).ready(function() {
 			var curDate = new Date(dateFormat);
 
 			var locationPathname = document.location.pathname;
+
 			for (var i = 0; i < eventsDates.length; i++)  {
 				var event = eventsDates[i];
 				var dayDate = event.date;
@@ -1374,12 +1072,7 @@ $(document).ready(function() {
 							window.location.href = event.link+event.generalItem;
 							return false
 						}
-
-
 					}
-
-				} else {
-					// window.location.href = event.link+event.generalItem;
 				}
 			}
 			item.inline = false;
@@ -1397,7 +1090,7 @@ $(document).ready(function() {
 			return [true, '', ''];
 		},
 		onChangeMonthYear: function (year, month, item){
-			var t = this
+			var t = this;
 			setTimeout(function (){
 				addElements($(t));
 			}, 110);
@@ -1409,7 +1102,7 @@ $(document).ready(function() {
 	});
 
 
-	$('#widgetCalendar').datepicker({
+	$('#widget-calendar').datepicker({
 		showOtherMonths: false,
 		selectOtherMonths: true,
 		changeMonth: false,
@@ -1417,37 +1110,29 @@ $(document).ready(function() {
 		nextText: '>',
 		prevText: '<',
 
-		beforeShow: function ($calendar){
-			addCustomElementsInWidget($calendar);
+		beforeShow: function (calendar){
+			addCustomElementsInWidget(calendar);
 		},
 
 		onChangeMonthYear: function (year, month, item){
-			var t = this
+			var t = this;
 			setTimeout(function (){
 				addCustomElementsInWidget($(t));
 			}, 110);
 			addPreloader(this);
 		},
 		onSelect: function (dateString, item) {
-			var options = {
-				year: 'numeric',
-				month: '2-digit',
-				day: '2-digit',
-			};
-
 			var dateStringArr = dateString.split('.');
 			var dateFormat = dateStringArr[1]+'/'+dateStringArr[0]+'/'+dateStringArr[2];
 
 			var curDate = new Date(dateFormat);
-
 			for (var i = 0; i < eventsDates.length; i++)  {
 				var event = eventsDates[i];
 				var dayDate = event.date;
 
 				if (curDate.getTime() === dayDate.getTime()) {
 					if (event.link !== undefined && event.link !== null) {
-						// document.location.href = event.link;
-						showWidgetCalendarEvent(event.eventItem, this)
+						toggleWidgetCalendarEvent(event.eventItem, this)
 					}
 
 				}
@@ -1469,17 +1154,26 @@ $(document).ready(function() {
 
 	});
 
-	function showWidgetCalendarEvent($itemEvent, $element){
+	/**
+	 * переключение между событием
+	 * выбранной даты и виджетиом календаря
+	 *
+	 * @param {selector|Object} itemEvent - DOM елемент события по выбранной дате
+	 * @param {Object} element - DOM елемент виджет с календарем
+	 *
+	 * @example toggleWidgetCalendarEvent($('#event-6'), $('#widget-calendar'))
+	 */
+	function toggleWidgetCalendarEvent(itemEvent, element){
 		var dayCurrent = $(this),
-			eventElements = $($itemEvent),
+			eventElements = $(itemEvent),
 			eventElementArr = eventElements.find('.event'),
-			element = $($element),
-			subtitle = element.find('.widget-subtitle span'),
-			calendar = element.find('.ui-datepicker-calendar'),
-			eventElementControl = element.parent().find('.event-control');
+			el = $(element),
+			subtitle = $(el).find('.widget-subtitle span'),
+			calendar = $(el).find('.ui-datepicker-calendar'),
+			eventElementControl = $(el).parent().find('.event-control');
 
 
-		element.addClass('show-event');
+		$(el).addClass('show-event');
 		eventElements.addClass('active');
 		eventElementArr.hide();
 		// скрываем календарь
@@ -1505,21 +1199,20 @@ $(document).ready(function() {
 				'<button class="next">&nbsp;&gt;</button>'+
 				'</div>');
 		}
-		var eventNav = element.find('.event-nav'),
+		var eventNav = $(el).find('.event-nav'),
 			prev = $(eventNav).find('.prev'),
 			next = $(eventNav).find('.next'),
 			count = $(eventNav).find('.count');
 
 		prev.click(function() {
 			var current = eventElements.find('.event.current');
-			setTimerTimeOut = 5000;
-			if ($(current).data('count') == 0) {
-				count.text(eventElementArr.length + ' из ' + eventElementArr.length);
+			if ($(current).data('count') === 0) {
+				$(count).text(eventElementArr.length + ' из ' + eventElementArr.length);
 				$(current).fadeOut('150', function() {
 					$(eventElementArr[eventElementArr.length - 1]).fadeIn('150').addClass('current');
 				}).removeClass('current');
 			} else {
-				count.text($(current).data('count') + ' из ' + eventElementArr.length)
+				$(count).text($(current).data('count') + ' из ' + eventElementArr.length)
 				$(current).fadeOut('150', function() {
 					$(eventElementArr[$(current).data('count') - 1]).fadeIn('150').addClass('current');
 				}).removeClass('current');
@@ -1528,14 +1221,13 @@ $(document).ready(function() {
 
 		next.click(function() {
 			var current = eventElements.find('.event.current');
-			setTimerTimeOut = 5000;
-			if ($(current).data('count') == eventElementArr.length - 1) {
-				count.text('1' + ' из '+eventElementArr.length)
+			if ($(current).data('count') === eventElementArr.length - 1) {
+				$(count).text('1' + ' из '+eventElementArr.length)
 				$(current).fadeOut('150', function() {
 					$(eventElementArr[0]).fadeIn('150').addClass('current');
 				}).removeClass('current');
 			} else {
-				count.text($(current).data('count')+2 +' из '+eventElementArr.length)
+				$(count).text($(current).data('count')+2 +' из '+eventElementArr.length);
 				$(current).fadeOut('150', function() {
 					$(eventElementArr[$(current).data('count') + 1]).fadeIn('150').addClass('current');
 				}).removeClass('current');
@@ -1544,9 +1236,8 @@ $(document).ready(function() {
 
 		// нажимаем на кнопку скрыть
 		eventElementControl.click(function(event) {
-			element.removeClass('show-event');
-			// clearTimeout(setTimer);
-			element.find('.event-nav').detach();
+			el.removeClass('show-event');
+			el.find('.event-nav').detach();
 			eventElements.animate({opacity: 'hide'}, 150);
 			eventElementControl.animate({opacity: 'hide'}, 150, function () {
 				calendar.animate({opacity: 'show'}, 150);
@@ -1555,19 +1246,36 @@ $(document).ready(function() {
 
 		});
 	}
-	function addCustomElementsInWidget($item){
-		addControlBtn($item);
-		addHeader($item, false);
-		addPreloader($item)
+
+	/**
+	 * добавление кастомных элементов в виджет календаря
+	 *
+	 * @param {selector|Object} calendar - DOM элемент календаря
+	 */
+	function addCustomElementsInWidget(calendar){
+		addControlBtn(calendar);
+		addHeader(calendar, false);
+		addPreloader(calendar)
 	}
 
-	function addCustomToday($calendar){
-		var today = $($calendar).find('.ui-datepicker-today');
+	/**
+	 * кастомная подпись
+	 *
+	 * @param {selector|Object} calendar - DOM элемент календаря
+	 */
+	function addCustomToday(calendar){
+		var today = $(calendar).find('.ui-datepicker-today');
 
 		$(today).append('<span class="card-calendar__caption">Сегодня</span>');
 	}
-	function addDataTooltip($calendar){
-		var cells = $($calendar).find('.ui-datepicker-calendar td');
+
+	/**
+	 * Tooltip при наведении на дату
+	 *
+	 * @param {selector|Object} calendar - DOM элемент календаря
+	 */
+	function addDataTooltip(calendar){
+		var cells = $(calendar).find('.ui-datepicker-calendar td');
 		$(cells).attr('data-placement', 'right');
 		$(cells).attr('data-toggle', 'tooltip');
 		$(cells).attr('data-html', 'true');
@@ -1577,14 +1285,20 @@ $(document).ready(function() {
 		}, 110);
 	}
 
-	function addHeader($calendar, $title){
-		if ($title === undefined) {
-			var title = true;
+	/**
+	 * кастомная шапка календаря
+	 *
+	 * @param {selector|Object} calendar - DOM элемент календаря
+	 * @param {boolean} [title=true] заголовок
+	 */
+	function addHeader(calendar, title){
+		if (title === undefined) {
+			var titleArg = true;
 		}
-		var header = $($calendar).find('.ui-datepicker-header');
+		var header = $(calendar).find('.ui-datepicker-header');
 		var year = $(header).find('.ui-datepicker-year').text();
 		var month = $(header).find('.ui-datepicker-month').text();
-		var headerUiBtns = $(header).find('.ui-datepicker-prev, .ui-datepicker-next, .ui-datepicker-title');
+		var headerUiButtons = $(header).find('.ui-datepicker-prev, .ui-datepicker-next, .ui-datepicker-title');
 		var todayDate = new Date();
 		var optionsDay = {day: '2-digit'};
 		var todayDateDay = todayDate.toLocaleString("ru", optionsDay).slice(0, 2);
@@ -1594,24 +1308,27 @@ $(document).ready(function() {
 		var todayDateMonth = monthA[todayDate.getMonth()];
 		var uiTitle = $(header).find('.ui-datepicker-title');
 
-		// $(uiTitle).append('<span class="ui-datepicker-current">Сегодня: ' + todayDateDay + ' ' + todayDateMonth+'</span>');
+		if (titleArg) {
 
-		if (title) {
-
-			$(headerUiBtns).wrapAll('<div class="content-subtitle content-subtitle_right"><h3></h3></div>');
+			$(headerUiButtons).wrapAll('<div class="content-subtitle content-subtitle_right"><h3></h3></div>');
 			$(header).addClass('content-title');
 			$(uiTitle).append('<span class="ui-datepicker-current">Сегодня: ' + todayDateDay + ' ' + todayDateMonth+'</span>');
 			$(header).append('<div class="content-subtitle margin-0">\n' +
 				'                 <h2>'+month+',<span> '+year+'</span></h2>\n' +
 				'               </div>');
 		} else {
-			$(headerUiBtns).wrapAll('<div class="widget-subtitle"></div>');
+			$(headerUiButtons).wrapAll('<div class="widget-subtitle"></div>');
 			$(uiTitle).append('<span class="ui-datepicker-current">Сегодня ' + todayDateDay + ' ' + todayDateMonth+''+' '+todayYear+'</span>');
 		}
 	}
 
-	function addControlBtn($calendar){
-		var header = $($calendar).find('.ui-datepicker-header');
+	/**
+	 * Кастомные кнопки "пред", "след" месяц
+	 *
+	 * @param {selector|Object} calendar - DOM элемент календаря
+	 */
+	function addControlBtn(calendar){
+		var header = $(calendar).find('.ui-datepicker-header');
 		var prev = $(header).find('.ui-datepicker-prev');
 		var next = $(header).find('.ui-datepicker-next');
 		$(prev).text($(prev).attr('title')).removeAttr('title');
@@ -1619,8 +1336,13 @@ $(document).ready(function() {
 
 	}
 
-	function addCustomElement ($calendar, $inst) {
-		$('table.ui-datepicker-calendar tbody td').each(function(){
+	/**
+	 * Добавляем количество событий в ячейку календаря
+	 *
+	 * @param {selector|Object} calendar - DOM элемент календаря
+	 */
+	function addToCell (calendar) {
+		$(calendar).find('tbody td').each(function(){
 			var calendarText = $(this).attr('title');
 			if (calendarText !== undefined) {
 				var word = decOfNum($(calendarText).length, ['событие', 'события', 'событий']);
@@ -1628,23 +1350,68 @@ $(document).ready(function() {
 			}
 		});
 	}
-	function addPreloader(item, timeout){
+
+	/**
+	 * Прелоадер
+	 * если вторым параметром передать false то прелоадер
+	 * не уберется, убрать прелоадер можно будет с помощью hidePreloader(item);
+	 *
+	 * @param {selector|Object} item - DOM элемент к которому добавлем прелоадер
+	 * @param {boolean|number} [timeout=400] время через каторое уберется прелоадер
+	 * @param {string} [position='absolute'] css position preloader
+	 */
+
+	function addPreloader(item, timeout, position){
 		var time;
 		if (timeout === undefined) {
 			time = 400
 		} else {
 			time = timeout;
 		}
-		$(item).append('<div class="preloader" style="position: absolute"><div class="page-loader-circle"></div></div>');
-		$(item).css('position', 'relative');
-		setTimeout(function () {
-			$('.preloader').fadeOut('300', function (){
-				// $(item).css('position', '');
-				$(this).remove();
-			});
+		var isTimout = !time;
+		var pos = position ? position : 'absolute';
+		var preloader = '<div class="preloader"><div class="page-loader-circle"></div></div>';
+		var preloaderWidth = pos === 'fixed' ? windowWidth : '';
 
-		}, time)
+		preloader = $(preloader).css({
+			position: pos,
+			width: preloaderWidth,
+		});
+		$(item).append(preloader);
+		$(item).css({
+			position: 'relative',
+		});
+		if (!isTimout) {
+			setTimeout(function () {
+				hidePreloader(item)
+
+			}, time)
+		}
 	}
+
+	/**
+	 * Убирает прелоадер
+	 *
+	 * @param {selector|Object} item - DOM элемент к которому был добавлен прелоадер
+	 */
+	function hidePreloader(item){
+		$(item)
+			.css({
+				position: '',
+			})
+			.find('.preloader')
+			.fadeOut('300', function (){
+				$(this).remove();
+		});
+	}
+
+	/**
+	 * Спряжение слов (1 событие, 2 события, 5 событий)
+	 *
+	 * @param {number} number - число по которому спрягаем
+	 * @param {array} titles - варианты
+	 * @returns {string}
+	 */
 	function decOfNum(number, titles) {
 		var decCache = [],
 				decCases = [2, 0, 1, 1, 1, 2];
@@ -1652,82 +1419,42 @@ $(document).ready(function() {
 		return titles[decCache[number]];
 	}
 
-	function addElements($calendar) {
-		addCustomToday($calendar);
-		addDataTooltip($calendar);
-		addControlBtn($calendar);
-		addHeader($calendar);
-		addCustomElement();
-		addPreloader($calendar);
+	/**
+	 * Добавляем кастомные элементы в календарь
+	 *
+	 * @param {selector|Object} calendar - DOM элемент к которому добавлем прелоадер
+	 */
+	function addElements(calendar) {
+		addCustomToday(calendar);
+		addDataTooltip(calendar);
+		addControlBtn(calendar);
+		addHeader(calendar);
+		addToCell(calendar);
+		addPreloader(calendar);
 
 	}
-
-	/* СОКРАЩАЕМ ТЕКСТ ------------------------------------------------------------------------------ */
-	// $('.card__title').dotdotdot();
-	// $('.text-ddd').dotdotdot();
-	// $('.text-ddd-210').dotdotdot({
-	// 	keep: '.card__more',
-	// 	tolerance: 10,
-	// 	height: 210,
-	// 	callback: function () {
-	// 		if ($(this).hasClass('ddd-truncated')) {
-	// 			$(this).find('.card__more').css('display', 'table');
-	// 			$(this).dotdotdot({tolerance: 0})
-	// 		}
-	// 	}
-	// });
-	//
-	// $('.text-ddd-260').dotdotdot({
-	// 	keep: '.card__more',
-	// 	// tolerance: 10,
-	// 	height: 260,
-	// 	callback: function () {
-	// 		if ($(this).hasClass('ddd-truncated')) {
-	// 			$(this).find('.card__more').css('display', 'table');
-	// 			// $(this).dotdotdot({tolerance: 0})
-	// 		}
-	// 	}
-	// });
-	//
-	// $('.text-ddd-135').dotdotdot({
-	// 	keep: '.card__more',
-	// 	tolerance: 10,
-	// 	// height: 135,
-	// 	callback: function () {
-	// 		if ($(this).hasClass('ddd-truncated')) {
-	// 			$(this).find('.card__more').css('display', 'table');
-	// 			$(this).dotdotdot({tolerance: 0})
-	// 		}
-	// 	}
-	// });
-	//
-	// $(window).resize(function (){
-	// 	setTimeout(function (){
-	// 		$('.ddd-truncated').dotdotdot();
-	// 		$('.card__title').dotdotdot();
-	// 		$('.text-ddd').dotdotdot();
-	//
-	// 		$('.text-ddd-135').dotdotdot({
-	// 			keep: '.card__more',
-	// 			tolerance: 10,
-	// 			// height: 135,
-	// 			callback: function () {
-	// 				if ($(this).hasClass('ddd-truncated')) {
-	// 					$(this).find('.card__more').css('display', 'table');
-	// 					$(this).dotdotdot({tolerance: 0})
-	// 				}
-	// 			}
-	// 		});
-	// 	}, 1000)
-	//
-	// });
 
 	/* TOOLTIPS ------------------------------------------------------------------------------------ */
 	$('.calendar__day').tooltip();
 	$('.card-calendar td').tooltip();
-	$('.sliderBlog').slick();
 
-	/* СЛАЙДЕРЫ sliders ------------------------------------------------------------------------------*/
+	$.widget.bridge('uitooltip', $.ui.tooltip);
+	$('.tooltip-mouse').uitooltip({
+		track: true,
+		tooltipClass: 'tooltip_light',
+		close: function () { $(".ui-helper-hidden-accessible > *:not(:last)").remove(); },
+	});
+
+	/*
+	* СЛАЙДЕРЫ sliders
+	*
+	* index.html
+	* gallery.html
+	* video.html
+	* spoyler.html
+	* others.html
+	*/
+	$('.sliderBlog').slick();
 	$('.widget-slider').slick({
 		autoplay: true,
 		prevArrow: '<div class="slider-arrow slider-arrow__left \
@@ -1736,8 +1463,15 @@ $(document).ready(function() {
 								widget-slider-arrow widget-slider-arrow__right"></div>',
 	});
 
-	$('.card-full-slider-wrap').on('init reInit afterChange', 
-		function(event, slick, currentSlide, nextSlide){
+	/**
+	 * нумерация слайдов
+	 *
+	 * gallery.html
+	 */
+	var cardFullSliderWrap = $('.card-full-slider-wrap');
+
+	$(cardFullSliderWrap).on('init reInit afterChange',
+		function(event, slick, currentSlide){
 			var status = $(this).find('.card-slider-number span'),
 					slide = $(this).find('.card__imgbox');
 			slide.attr('data-current-slide', currentSlide);
@@ -1747,10 +1481,18 @@ $(document).ready(function() {
 			
 	});
 
-	$('.card-modern-slider-wrap').on('init reInit afterChange',
+	/**
+	 * нумерация слайдов в слайдере модерн
+	 *
+	 * gallery.html
+	 */
+	var cardModernSliderWrap = $('.card-modern-slider-wrap');
+
+	$(cardModernSliderWrap).on('init reInit afterChange',
 		function(event, slick, currentSlide, nextSlide){
-			var status = $(this).find('.card-slider-number_modern span'),
-					slide = $(this).find('.card__imgbox');
+			var slider = $(this);
+			var status = $(this).find('.card-slider-number_modern span');
+			var slide = $(this).find('.card__imgbox');
 			slide.attr('data-current-slide', currentSlide);
 			//currentSlide is undefined on init -- set it to 0 in this case (currentSlide is 0 based)
 			var i = slick.currentSlide;
@@ -1759,17 +1501,39 @@ $(document).ready(function() {
 			var numberSlide2 = i + 2 <= slidesLength ? i + 2 : i - (slidesLength - 2);
 			var numberSlide3 = i + 3 <= slidesLength ? i + 3 : i - (slidesLength - 3);
 			var numberSlide4 = i + 4 <= slidesLength ? i + 4 : i - (slidesLength - 4);
-
-			status.html('<strong>'+numberSlide1+'</strong>' + ' ' +
-				numberSlide2 + ' ' +
-				numberSlide3 + ' ' +
-				numberSlide4 + '...');
+			switch (slidesLength){
+				case 1:
+					break;
+				case 2:
+					status.html('<strong>'+numberSlide1+'</strong>' + '&#8194;' +
+						'<span class="slide-num">'+numberSlide2+'</span>' + '&#8194;');
+					break;
+				case 3:
+					status.html('<strong>'+numberSlide1+'</strong>' + '&#8194;' +
+						'<span class="slide-num">'+numberSlide2+'</span>' + '&#8194;' +
+						'<span class="slide-num">'+numberSlide3+'</span>' + '&#8194;');
+					break;
+				case 4:
+					status.html('<strong>'+numberSlide1+'</strong>' + '&#8194;' +
+						'<span class="slide-num">'+numberSlide2+'</span>' + '&#8194;' +
+						'<span class="slide-num">'+numberSlide3+'</span>' + '&#8194;' +
+						'<span class="slide-num">'+numberSlide4+'</span>' + '&#8194;');
+					break;
+				default:
+					status.html('<strong>'+numberSlide1+'</strong>' + '&#8194;' +
+						'<span class="slide-num">'+numberSlide2+'</span>' + '&#8194;' +
+						'<span class="slide-num">'+numberSlide3+'</span>' + '&#8194;' +
+						'<span class="slide-num">'+numberSlide4+'</span>' + ' ...');
+					break;
+			}
+			status.find('.slide-num').on('click', function() {
+				var slideDigit = parseInt($(this).text());
+				$(slider).slick('slickGoTo', slideDigit - 1);
+			});
 	});
 
-	$('.card-full-slider-wrap').slick({
-		// onInit: function() {
-		// 	$('.card-slider-number span').text(i + '/' + slick.slideCount);
-		// },
+
+	$(cardFullSliderWrap).slick({
 		prevArrow: '<div class="slider-arrow slider-arrow__left"></div>',
 		nextArrow: '<div class="slider-arrow slider-arrow__right"></div>',
 	});
@@ -1820,31 +1584,49 @@ $(document).ready(function() {
 		]
 	});
 
-	// $('.card-modern-slider-wrap').slick({
-	// 	prevArrow: '<div class="slider-arrow slider-arrow__left"></div>',
-	// 	nextArrow: '<div class="slider-arrow slider-arrow__right"></div>'
-	// });
+	/*
+	* нумерация текущего слайда в спойлере
+	*
+	* spoyler.html
+	*/
+	var spoilerSlider = $('.spoiler-slider');
 
+	$(spoilerSlider).on('init reInit afterChange',
+	 function(event, slick, currentSlide, nextSlide){
+		 var slider = $(this);
+		 var parentSlider = $(slider).parents('.collapse');
+		 var headSlider = $('[data-target="#'+$(parentSlider).attr('id')+'"]');
+		 var slideCountEl = $(headSlider).find('.slide-count');
+		 var i = slick.currentSlide + 1;
 
-	/* Show long comment ----------------------------------------------------------------------------- */
+		 $(slideCountEl).html('&lt; '+i+' &gt;')
+	 });
+
+	/*
+	* Show long comment
+	*
+	* index.html
+	* gallery.html
+	* */
 	
-	var commentBox = $('.comment-box'),
-			commentHasComment = $('.comment:has(.comment)'),
-			commentButtons = $(commentHasComment).find('.comment__link'),
-			commentButtonsMore = $(commentHasComment).find('.comment__link.more'),
-			commentButtonsLess = $(commentHasComment).find('.comment__link.less');
+	var commentBox = $('.comment-box');
+	var commentHasComment = $('.comment:has(.comment)');
 
-	$(commentHasComment).each(function ($key, $item){
-		$($item).find('.comment__link.more').first().removeClass('hide')
+	//показываем кнопку развернуть если у комментария есть вложенные комментарии
+
+	$(commentHasComment).each(function ($key, item){
+		$(item).find('.comment__link.more').first().removeClass('hide')
 	});
 
+	// разворачиваем свернутые комментарии
 	$(commentHasComment).on('click', function (e){
-		var elTarget = e.target,
-				commentButton = $(elTarget).parent('.comment__link'),
-				commentButtonBox = $(commentButton).parent('.comment__links'),
-				commentButtonLess = $(commentButtonBox).find('.comment__link.less'),
-				commentButtonMore = $(commentButtonBox).find('.comment__link.more'),
-				commentButtonTarget = $($(commentButton).data('target'));
+		var elTarget = e.target;
+		var commentButton = $(elTarget).parent('.comment__link');
+		var commentButtonBox = $(commentButton).parent('.comment__links');
+		var commentButtonLess = $(commentButtonBox).find('.comment__link.less');
+		var commentButtonMore = $(commentButtonBox).find('.comment__link.more');
+		var commentButtonTarget = $($(commentButton).data('target'));
+
 		$(commentButtonTarget).on('show.bs.collapse', function (e){
 			e.stopPropagation();
 			$(commentButtonMore).fadeOut(150, function (){
@@ -1866,13 +1648,13 @@ $(document).ready(function() {
 		});
 	});
 
+	// скрываем часть комментария если высота больше 180px
 	for (var i = 0; i < commentBox.length; i++) {
 		var	text = $(commentBox[i]).find('.comment__text > *'),
-				textBlock = $(commentBox[i]).find('.comment__text'),
 				textHeight = 0;
 		for (var x = 0; x < text.length; x++) {
 			textHeight = textHeight + $(text[x]).actual('outerHeight')
-		};
+		}
 		
 		if (textHeight > 180) {
 			$(commentBox[i]).append(
@@ -1883,17 +1665,11 @@ $(document).ready(function() {
 			')
 		}
 	}
-	// var commentText = $('.comment__text');
-	// // var commentTextHeight = $('.comment__text').actual('outerHeight');
-	// $(commentText).each(function ($key, $item){
-	// 	var commentTextHeight = $($item).actual('outerHeight',{includeMargin : true});
-	// });
 
-	// if ($('.comment__text'))
-	var elControlDeafultText;
+	var elControlDefaultText;
 
-
-	$(document).on('click', '.comment-long__showbtn', function(event) {
+	// разворачиваем длинный комментарий
+	$(document).on('click', '.comment-long__showbtn', function() {
 		var el = $(this),
 				elParent = el.parents('.comment-box'),
 				text = $(elParent).find('.comment__text > *'),
@@ -1913,54 +1689,34 @@ $(document).ready(function() {
 
 	/* Ответить на комментарий ----------------------------------------------------------------------- */
 	
-	var elDeafultText,
-			formDuplicateShow = false;
+	var formDuplicateShow = false;
 
 
 	$(document).on('click', '.comment__reply', function(event) {
-		var commentFormbox = $('#commentFormbox').clone(),
-				commentFormboxAppend,
-				commentFormboxOrigin = $('.comment-form-inn'),
+		var commentFormBox = $('#comment-formbox').clone();
+		var commentFormBoxAppend;
+		var commentFormBoxOrigin = $('.comment-form-inn');
 
-				elControl = $(this),				
-				elParent = elControl.closest('.comment'),
-				elParentID = elParent.attr('id'),
+		var elControl = $(this);
+		var elParent = elControl.closest('.comment');
 
-				formActive = elControl.hasClass('form-active');
+		var formDuplicate = $('.form-duplicate');
 
-		event.stopImmediatePropagation()
-		commentFormboxAppend = commentFormboxCreate(elControl, commentFormbox);
+		event.stopImmediatePropagation();
+
+		commentFormBoxAppend = commentFormBoxCreate(elControl, commentFormBox);
 
 		if (!elControl.hasClass('form-active')) {
-			elControlDeafultText = elControl.text();
+			elControlDefaultText = elControl.text();
 		}
 
 		// проверяем где юзер отвечает на коммент
 		if (formDuplicateShow && $('.modal-main').hasClass('show')) {
-			$('.form-duplicate').collapse('hide');
+			$(formDuplicate).collapse('hide');
 		}
 
-		$('.form-duplicate').on('hidden.bs.collapse', function() {
-			$('.comment__reply').text(elControlDeafultText);
-			$('.comment__reply').removeClass('form-active');
-			$('.comment__reply').removeAttr('data-target');
-			$('.comment').removeClass('show-form');
-			$(this).collapse('dispose');
-			formDuplicateShow = false;
-			$(this).remove();
-		});
-
-		// $('.comment').on('hide.bs.collapse', function (e){
-		// 	$('.comment__reply').text(elControlDeafultText);
-		// 	$('.comment__reply').removeClass('form-active');
-		// 	$('.comment__reply').removeAttr('data-target');
-		// 	$('.comment').removeClass('show-form');
-		// 	$(this).collapse('dispose');
-		// 	formDuplicateShow = false;
-		// 	$(this).remove();
-		// });
-
-		$(commentFormboxAppend).on('shown.bs.collapse', function(event) {
+		// меняет разметку после показа копии формы
+		$(commentFormBoxAppend).on('shown.bs.collapse', function(event) {
 			elControl.addClass('form-active');
 			elControl.text('Отменить');
 			$(this).collapse('dispose');
@@ -1968,48 +1724,78 @@ $(document).ready(function() {
 			formDuplicateShow = true;
 		});
 
-		
-		$(commentFormboxAppend).on('show.bs.collapse', function(event) {
-			commentFormboxOrigin.collapse('hide');
+		// возвращает разметку после скрытия копии формы
+		$(formDuplicate).on('hidden.bs.collapse', function() {
+			var commentReply = $('.comment__reply');
+
+			$(commentReply).text(elControlDefaultText)
+				.removeClass('form-active')
+				.removeAttr('data-target');
+
+			$('.comment').removeClass('show-form');
+			$(this).collapse('dispose');
+			formDuplicateShow = false;
+			$(this).remove();
+		});
+
+		// скрывает стандартную форму
+		$(commentFormBoxAppend).on('show.bs.collapse', function(event) {
+			commentFormBoxOrigin.collapse('hide');
 		});
 
 		
 		if (!elControl.hasClass('form-active')) {
 
-			commentFormboxShow(elControl, commentFormboxAppend).collapse('show');
-			commentFormboxOrigin.collapse('hide');
+			commentFormBoxShow(elControl, commentFormBoxAppend).collapse('show');
+			commentFormBoxOrigin.collapse('hide');
 			
 		} else {
-			$('.form-duplicate').collapse('hide');
-			commentFormboxOrigin.collapse('show');
+			$(formDuplicate).collapse('hide');
+			commentFormBoxOrigin.collapse('show');
 		}
 
 		event.preventDefault();
 
-		function commentFormboxShow(elControl, addElement) {
-			var eventParent = elControl.closest('.comment');
+		/**
+		 * добавлеет созданю форму в DOM
+		 *
+		 * @param elControl
+		 * @param addElement
+		 * @returns {*|jQuery.fn.init|jQuery|HTMLElement}
+		 */
+		function commentFormBoxShow(elControl, addElement) {
+			var eventParent = $(elControl).closest('.comment');
 
-			eventParent.addClass('show-form');
-			eventParent.find('.comment-box:first').after($(addElement));
+			eventParent.addClass('show-form')
+				.find('.comment-box:first')
+				.after($(addElement));
 
-			elControl.attr('data-target', '#'+$(addElement).attr('id'));
+			$(elControl).attr('data-target', '#'+$(addElement).attr('id'));
 			
 			return $(addElement);			
 		}
-		function commentFormboxCreate(event, elClone) {
-			var eventParent = $($(event).parents('.comment-box'))
+
+		/**
+		 * Создает копию формы
+		 *
+		 * @param event
+		 * @param elClone
+		 * @returns {*|jQuery.fn.init|jQuery|HTMLElement}
+		 */
+		function commentFormBoxCreate(event, elClone) {
+			var eventParent = $($(event).parents('.comment-box')),
 					eventParentID = elParent.attr('id'),
 					eventParentTitle = eventParent.find('.comment__nickname:first').text(),
 					
 					elementID = $(elClone).attr('id'),
 					elementNew = $(elClone);
 
-			$(elClone).removeClass('comment-form-inn show');
-			$(elClone).attr('id', elementID+'_'+eventParentID);
-			$(elClone).attr('data-parent', '#allComentators');
-			$(elClone).addClass('form-duplicate collapse');
-			$(elClone).find('form.comment-form').addClass('comment-form-reply');
-			$(elClone).find('textarea.comment-form__textarea').val(eventParentTitle+', ');
+			$(elClone).removeClass('comment-form-inn show')
+				.attr('id', elementID+'_'+eventParentID)
+				.attr('data-parent', '#allComentators')
+				.addClass('form-duplicate collapse')
+				.find('form.comment-form').addClass('comment-form-reply')
+				.find('textarea.comment-form__textarea').val(eventParentTitle+', ');
 			return elementNew;
 		}
 	});
@@ -2020,36 +1806,36 @@ $(document).ready(function() {
 	/* modals -------------------------------------------------------------------------------- */
 
 	// header fix bug
-	$($('[data-toggle="modal"]').data('target')).on('show.bs.modal', function (){
-		if ($(header).hasClass('fixed')){
+
+	var modals = $($('[data-toggle="modal"]').data('target'));
+
+	// добавлет отступ при открытии модальных окон
+	$(modals).on('show.bs.modal', function (){
+		if ($(header).hasClass('fixed') && !screenSM){
 			$(header).css({
 				paddingRight: scrollbarWidth,
 			})
 		}
 	});
 
-	$('.modal').on('show.bs.modal', function(event) {
-		var position = $(document).scrollTop();
-		if (position > 0)  {
-			$(header).css('padding-right', scrollbarWidth);
-		}
-	});
-	$('.modal').on('hidden.bs.modal', function(event) {
+	// удаляет отступ
+	$(modals).on('hidden.bs.modal', function(event) {
 		$(header).css('padding-right', '');
 	});
 
-	$('#modalImgBox').on('show.bs.modal', function(event) {
-		var modal 				= $(this),
-				modalContent  = modal.find('.modal-main__content'),
+	$('#modal-img-box').on('show.bs.modal', function(event) {
+		var modal = $(this);
+		var modalContent = modal.find('.modal-main__content');
 
-				elControl 		= $(event.relatedTarget),
-				elAdd,
+		var elControl = $(event.relatedTarget);
+		var targetContent = $(elControl.data('target-content')).clone();
 
-				targetContent = $(elControl.data('target-content')).clone();
 		modalContent.html(targetContent);
 	});
 
-	$('#modalVideo').on('show.bs.modal', function(event) {
+	var modalVideo = $('#modal-video');
+
+	$(modalVideo).on('show.bs.modal', function(event) {
 		var modal = $(this),
 				modalContent = modal.find('.modal-video iframe'),
 				elControl = $(event.relatedTarget),
@@ -2059,7 +1845,7 @@ $(document).ready(function() {
 		addPreloader($(modalContent).parent(), 600);
 	});
 
-	$('#modalVideo').on('hidden.bs.modal', function(event) {
+	$(modalVideo).on('hidden.bs.modal', function() {
 		var modal = $(this),
 			modalContent = modal.find('.modal-video iframe');
 
@@ -2067,12 +1853,10 @@ $(document).ready(function() {
 	});
 
 
-
+	// нумерация слайдов
 	$('.modal-main-slider-wrap').on('init reInit afterChange',
 		function(event, slick, currentSlide, nextSlide){
-			// нумерация слайдов в модалке
 			var status = $('.slider-number'),
-					slide = $(this).find('.card__imgbox'),
 					i = (currentSlide ? currentSlide : 0) + 1,
 					currentLink = '<span class="card-number-elem">'+'#'+i+'</span>',
 					statusInner = currentLink + ' из ' + slick.slideCount;
@@ -2080,7 +1864,9 @@ $(document).ready(function() {
 			status.html(statusInner);			
 	});
 
-	$('#modalContentSlider').on('show.bs.modal', function(event) {
+	// модальное окно со слайдером и комментариями
+	var modalContentSlider = $('#modal-content-slider');
+	$(modalContentSlider).on('show.bs.modal', function(event) {
 		var modal 				= $(this),
 				modalContent  = modal.find('.modal-main__content'),
 
@@ -2089,23 +1875,32 @@ $(document).ready(function() {
 
 				targetContent             = $(elControl.data('target-content')).clone(),
 				targetContentSliderTitle  = targetContent.find('.post-info').clone(),
-				// targetComments            = targetContent.find('.comments-dark').clone(),
 
 				sliderModal 		= modal.find('.modal-main-slider-wrap'),
-				sliderTitle 		= modal.find('.modal-main-slider-title'),
-				sliderComments 	= modal.find('.modal-main-comments');
+				sliderTitle 		= modal.find('.modal-main-slider-title');
 
 		event.stopImmediatePropagation();
-		// modal.addClass('modal-main-preload');
+
 		elAdd = getElement(targetContent);
 
 		sliderModal.html(elAdd); // вставляем слайдер
 
 		sliderTitle.html(targetContentSliderTitle); // вставляем заголовок слайдера
 
-		// sliderComments.html(targetComments); // вставляем блок комментариев
 		addPreloader(modalContent);
 
+		// сохраняем отступ у хедэра
+		if ($(header).hasClass('fixed') && !screenSM){
+			$(header).css({
+				paddingRight: scrollbarWidth,
+			})
+		}
+		/**
+		 * возвращает элементы слайдера
+		 *
+		 * @param {selector | Object} el
+		 * @returns {*|jQuery}
+		 */
 		function getElement(el) {
 			var element = $(el),
 					elements;
@@ -2119,98 +1914,95 @@ $(document).ready(function() {
 		}
 	});
 
-	$('#modalContentSlider').on('shown.bs.modal', function(event) {
+	$(modalContentSlider).on('shown.bs.modal', function(event) {
 		var modal 				= $(this),
-				modalContent  = modal.find('.modal-main__content'),
 				body = $('body'),
 
 				elControl 		= $(event.relatedTarget),
-				elControlCurrent = elControl.data('current-slide'),
-				elAdd,
-
-				targetContent = $(elControl.data('target-content')).clone(),
-
-				sliderModal 	= modal.find('.modal-main-slider-wrap');
+				elControlCurrent = elControl.data('current-slide');
 
 		$(body).addClass('modal-main-contents-open');
 		modal.css('padding-right', '');
 
-		// $('.comment').collapse();
-
-		$('#modalMainSliderTop').slick({
-			slidesToShow: 1,
-			slidesToScroll: 1,
-			infinite: false,
-			initialSlide: elControlCurrent,
-			asNavFor: '#modalMainSliderBottom',
-			prevArrow: '<div class="slider-arrow \
-															slider-arrow__left \
-															modal-main-slider-arrow \
-															modal-main-slider-arrow__left"></div>',
-			nextArrow: '<div class="slider-arrow \
-															slider-arrow__right \
-															modal-main-slider-arrow \
-															modal-main-slider-arrow__right"></div>',
-		});
-
-		$('#modalMainSliderBottom').slick({
-			slidesToShow: 7,
-			slidesToScroll: 1,
-			initialSlide: elControlCurrent,
-			focusOnSelect: true,
-			// focusOnChange: true,
-			// centerMode: true,
-			centerPadding: '0px',
-			// waitForAnimate: false,
-			infinite: false,
-			asNavFor: '#modalMainSliderTop',
-			prevArrow: '<div class="slider-arrow \
-															slider-arrow__left \
-															modal-main-slider-arrow \
-															modal-main-slider-arrow__left"></div>',
-			nextArrow: '<div class="slider-arrow \
-															slider-arrow__right \
-															modal-main-slider-arrow \
-															modal-main-slider-arrow__right"></div>',
-		});
-
-		// setTimeout(function () {
-		// 	$('.preloader').fadeOut('300');
-		// 	modal.removeClass('modal-main-preload');
-		// }, 800)
-
+        // $('#modal-main-slider-top').slick({
+        // 	slidesToShow: 1,
+        // 	slidesToScroll: 1,
+        // 	infinite: false,
+        // 	initialSlide: elControlCurrent,
+        // 	asNavFor: '#modal-main-slider-bottom',
+        // 	prevArrow: '<div class="slider-arrow \
+        // 													slider-arrow__left \
+        // 													modal-main-slider-arrow \
+        // 													modal-main-slider-arrow__left"></div>',
+        // 	nextArrow: '<div class="slider-arrow \
+        // 													slider-arrow__right \
+        // 													modal-main-slider-arrow \
+        // 													modal-main-slider-arrow__right"></div>',
+        // 	responsive: [
+        // 		{
+        // 			breakpoint: 767,
+        // 			settings: {
+        // 				infinite: true
+        // 			}
+        // 		}
+        // 	]
+        // });
+        //
+        // $('#modal-main-slider-bottom').slick({
+        // 	slidesToShow: 7,
+        // 	slidesToScroll: 1,
+        // 	initialSlide: elControlCurrent,
+        // 	focusOnSelect: true,
+        // 	centerPadding: '0px',
+        // 	infinite: false,
+        // 	asNavFor: '#modal-main-slider-top',
+        // 	prevArrow: '<div class="slider-arrow \
+        // 													slider-arrow__left \
+        // 													modal-main-slider-arrow \
+        // 													modal-main-slider-arrow__left"></div>',
+        // 	nextArrow: '<div class="slider-arrow \
+        // 													slider-arrow__right \
+        // 													modal-main-slider-arrow \
+        // 													modal-main-slider-arrow__right"></div>',
+        // 	responsive: [
+        // 		{
+        // 			breakpoint: 992,
+        // 			settings: {
+        // 				slidesToShow: 5,
+        // 			}
+        // 		}
+        // 	]
+        // });
 	});
 
-	$('#modalMainSliderBottom').on('click', '.slick-slide', function(event) {
-		var eventSlide = $('#modalMainSliderBottom').slick('slickCurrentSlide');
-		$('#modalMainSliderTop').slick('slickGoTo', eventSlide);
+	var modalMainSliderBottom = $('#modal-main-slider-bottom');
+	$(modalMainSliderBottom).on('click', '.slick-slide', function() {
+		var eventSlide = $(modalMainSliderBottom).slick('slickCurrentSlide');
+		$('#modal-main-slider-top').slick('slickGoTo', eventSlide);
 	});	
 
-	$('#modalContentSlider').on('hidden.bs.modal', function(event) {
-		var modal 				= $(this),
-				modalContent  = modal.find('.modal-main__content'),
-
-				elControl 		= $(event.relatedTarget),
-				elAdd,
-
-				sliderModal 	= modal.find('.modal-main-slider-wrap'),
-				targetContent = $(elControl.data('target-content')).clone();
-
-		modal.modal('dispose');
+	$(modalContentSlider).on('hidden.bs.modal', function() {
+		var modalContent = $(this),
+				sliderModal = modalContent.find('.modal-main-slider-wrap');
+		modalContent.modal('dispose');
 		$(sliderModal).slick('unslick');
 		$('.preloader').stop().show();
+
+		// сохраняем отступ у хедэра
+		if ($(header).hasClass('fixed')){
+			$(header).css({
+				paddingRight: '',
+			})
+		}
 	});
 
-	$(document).on('click', '.card-number-elem', function(event) {
-			var elEvent = $(this),
+	$(document).on('click', '.card-number-elem', function() {
+			var elEvent = $(this);
 
-					textArea = $('#modalContentSlider').find('.comment-form__textarea:visible'),
-					textAreaPositionTop = textArea.position().top;
+			var textArea = $(modalContentSlider).find('.comment-form__textarea:visible');
+			var textAreaPositionTop = textArea.position().top;
 
-					modalDialog = $('#modalContentSlider').find('.modal-dialog');
-
-			// $('.form-duplicate').collapse('hide');
-			$('#modalContentSlider')
+			$(modalContentSlider)
 				.animate({
 					scrollTop: textAreaPositionTop,
 				}, 800, function(){
@@ -2222,17 +2014,21 @@ $(document).ready(function() {
 
 	$(document).on('click', '.modal-main-comments__curentImg', function(event) {
 		var element = $(this);
-		$('#modalContentSlider')
+		$(modalContentSlider)
 			.animate({
 				scrollTop: 0,
 			}, 800, function(){
-				$('#modalMainSliderTop').slick('slickGoTo', parseInt(element.attr('href') - 1));
+				$('#modal-main-slider-top').slick('slickGoTo', parseInt(element.attr('href') - 1));
 			});
 
 		event.preventDefault();
 	});
 
-	/* Main icons ------------------------------------------------------------------------------------- */
+	/**
+	 * Свои иконки меню "Системы"
+	 *
+	 * profile.html
+	 */
 	var iconDefault;
 	$('.main-icon').on('click keyup', function (event){
 		var elClick = event.target,
@@ -2252,7 +2048,6 @@ $(document).ready(function() {
 
 				images = $(el).find('.main-icon__img'),
 
-				currentBlock = $(el).find('.card-links.edits'),
 				currentIconBox = $(el).find('.main-icon__imgbox:has(.main-icon__img.active)'),
 
 				buttonRemove = $(block).find('[data-remove].main-icon__button'),
@@ -2299,7 +2094,7 @@ $(document).ready(function() {
 
 		// save keypress"Enter"
 		$(inputs).keyup(function(e){
-			if(e.keyCode == 13) {
+			if(e.keyCode === 13) {
 				$(buttonSave).trigger('click');
 			}
 		});
@@ -2368,7 +2163,6 @@ $(document).ready(function() {
 			$(buttonAdd).prop('disabled', true);
 			editsBlock();
 			$(blockImages).find('.icon-symbol').addClass('active');
-			var nID = $(blocks).length + 1;
 			var btnGroup = $(buttonGroup).before('<div class="card card-links main-icon__card margin-bottom-0 padding-bottom-lg-30 padding-bottom-sm-10 edits adds">\n' +
 				'          <div class="card-links-wrap">\n' +
 				'            <div class="card-links__img">\n' +
@@ -2399,110 +2193,143 @@ $(document).ready(function() {
 			$(blockUppend).find('.main-icon__input.current').val('Название системы').focus();
 
 		}
+
+		/**
+		 * функция редактирования блока с иконками
+		 */
 		function editsBlock(){
 			$(buttonAddPrimary).prop('disabled', true);
 			$(block).addClass('edits');
 			$(blocksNotEdits).addClass('disabled');
 			$(blockImages).addClass('active');
-			// $(buttonIcon).addClass('active');
 			$(blockImages).find($('.'+$(buttonIcon).data('icon'))).addClass('active');
 		}
-		function toggleElement($elementHide, $elementShow){
-			$($elementHide).fadeOut(200, function (){
+
+		/**
+		 * Функция для плавного исчезновения одного элемента DOM
+		 * и появление вместо него другого
+		 *
+		 * @param {selector|Object} elementHide
+		 * @param {selector|Object} elementShow
+		 */
+		function toggleElement(elementHide, elementShow){
+			$(elementHide).fadeOut(200, function (){
 				$(this).addClass('hide');
 
-				$($elementShow).fadeIn(200, function (){
+				$(elementShow).fadeIn(200, function (){
 					$(this).removeClass('hide');
 				})
 			});
 		}
 	});
 
-	/* Forms ------------------------------------------------------------------------------------------ */
-	var deafultTextBtn = $('#formMoreInputsControl').text();
-	var formMoreInputs = $('#formMoreInputs');
+	/*
+	 * Форма обращения с произвольным именем
+	 *
+	 * others.html
+	 */
+	var defaultTextBtn = $('#form-more-inputs-control').text();
+	var formMoreInputs = $('#form-more-inputs');
+	var formSender = $('.form-sender');
+	var formTitleMain = $('.form__title_main');
+	var formTitleAlt = $('.form__title_alt');
 
-	formMoreInputs.on('show.bs.collapse', function(event) {
-		var elControl = $('#formMoreInputsControl'),
+	$(formMoreInputs).on('show.bs.collapse', function(event) {
+		var elControl = $('#form-more-inputs-control'),
 				elControlAltText = elControl.data('alt-text');
 
 		elControl.text(elControlAltText);
-		if (mobile) {
-			$('.form-sender').animate({height: 'hide'},'400');
+		if (screenSM) {
+			$(formSender).animate({height: 'hide'},'400');
 		} else {
-			$('.form-sender').fadeOut('400');
+			$(formSender).fadeOut('400');
 		}
 
-		$('.form__title_main').fadeOut('400');
-		$('.form__title_alt').fadeIn('400', function (){
+		$(formTitleMain).fadeOut('400');
+		$(formTitleAlt).fadeIn('400', function (){
 			$(this).css('position', 'static')
 		});
 		
 	});
 
-	formMoreInputs.on('hide.bs.collapse', function(event) {
-		var elControl = $('#formMoreInputsControl');
+	$(formMoreInputs).on('hide.bs.collapse', function(event) {
+		var elControl = $('#form-more-inputs-control');
 
-		elControl.text(deafultTextBtn);
-		if (mobile) {
-			$('.form-sender').animate({height: 'show'},'400');
+		elControl.text(defaultTextBtn);
+		if (screenSM) {
+			$(formSender).animate({height: 'show'},'400');
 		} else {
-			$('.form-sender').fadeIn('400');
+			$(formSender).fadeIn('400');
 		}
 
-		$('.form__title_alt').fadeOut('400').css('position', '');
-		$('.form__title_main').fadeIn('400');
+		$(formTitleAlt).fadeOut('400').css('position', '');
+		$(formTitleMain).fadeIn('400');
 
 	});
 
-	$('#formCheckbox').on('change', function() {
-		if (mobile)  {
-			$('.form-slide-input').animate({height: 'toggle'}, '400')
+	$('#form-checkbox-slide').on('change', function() {
+		var formSlideInput = $('.form-slide-input');
+		if (screenSM) {
+			$(formSlideInput).animate({height: 'toggle'}, '400')
 		} else {
-			$('.form-slide-input').toggle('slide');
+			$(formSlideInput).toggle('slide');
 		}
-
 	});
 
-	$('.article.collapse, .card.collapse').on('show.bs.collapse', function(event) {
+	/**
+	 * спойдлеры
+	 * 
+	 * spoyler.html
+	 */
+	var collapsedElement = $('.article.collapse, .card.collapse');
+
+	$(collapsedElement).on('show.bs.collapse', function(event) {
 		$(this).find('.card-full-slider-wrap').slick('unslick');
-		// $(this).addClass('modal-main-preload');
 		$('[data-target="#'+ $(this).attr('id') +'"]').addClass('active');
 		
 	});
-	$('.article.collapse, .card.collapse').on('shown.bs.collapse', function(event) {
+	$(collapsedElement).on('shown.bs.collapse', function(event) {
 		var element = $(this);
 		$(this).find('.card-full-slider-wrap').slick({
 			prevArrow: '<div class="slider-arrow slider-arrow__left"></div>',
 			nextArrow: '<div class="slider-arrow slider-arrow__right"></div>',
 		});
 		$('[data-target="#'+ $(this).attr('id') +'"]').addClass('active');
-		// setTimeout(function () {
-		// 	$('.preloader').fadeOut('300');
-		// 	element.removeClass('modal-main-preload');
-		// }, 800)
 	});
 
-	$('.article.collapse, .card.collapse').on('hide.bs.collapse', function(event) {
+	$(collapsedElement).on('hide.bs.collapse', function(event) {
 		$('[data-target="#'+ $(this).attr('id') +'"]').removeClass('active');
 		
 	});
 
-	$.fn.hasAttr = function($attrName) {
-		return this.attr($attrName) !== undefined;
-	};
-
 });
 
 (function($){
-	jQuery.fn.hideClickAway = function($bootstrapEvent){
+	/**
+	 * проверяет есть ли атрибут у элемента DOM
+	 *
+	 * @param {string} attrName
+	 * @returns {boolean}
+	 */
+	jQuery.fn.hasAttr = function(attrName) {
+		return this.attr(attrName) !== undefined;
+	};
+
+	/**
+	 * скрытие элемента при клике не по нему
+	 *
+	 * @param {string} [bootstrapEvent=unbind]
+	 * @returns {this}
+	 */
+	jQuery.fn.hideClickAway = function(bootstrapEvent){
+
 		var el = $(this);
 		var make = function (){
-			if (!!$bootstrapEvent){
+			if (!!bootstrapEvent){
 				$(document).mouseup(function (e){ // событие клика по веб-документу
 					if (!el.is(e.target) // если клик был не по нашему блоку
 						&& el.has(e.target).length === 0) { // не по его дочерним элементам
-						switch ($bootstrapEvent){ // проверяем событие
+						switch (bootstrapEvent){ // проверяем событие
 							case 'collapse':
 								el.collapse('hide');
 								break;
@@ -2524,6 +2351,11 @@ $(document).ready(function() {
 
 		
 	};
+	/**
+	 * возвращает ширину скроллбара
+	 *
+	 * @returns {number}
+	 */
 	jQuery.fn.scrollbarWidth = function() {
 		var block = $('<div>').css({'height':'50px','width':'50px'}),
 			indicator = $('<div>').css({'height':'200px'});
@@ -2536,4 +2368,3 @@ $(document).ready(function() {
 		return (w1 - w2);
 	};
 })(jQuery);
-

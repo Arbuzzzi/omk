@@ -31,7 +31,8 @@ block content
 				.article-author
 					each item in ['#статья','#событие2019','#фамилия','#справочное_слово']
 						a.hashtag(href='#')= item
-					p Автор статьи: Елена Мацинова
+					p= 'Автор статьи: '
+						span Елена Мацинова
 	.card
 		h2.font-size-32.margin-bottom-15 Заголовок с тегом h2, PT Serif, 32, Regular
 		h3.font-size-28.margin-bottom-15 Заголовок с тегом h3, PT Serif, 28, Regular

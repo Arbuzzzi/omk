@@ -1,8 +1,12 @@
 .container::after,
 .row::after {
   display: block;
-  clear: both;
   content: "";
+  clear: both;
+}
+
+.body {
+  overflow: auto !important;
 }
 
 .user__name {
@@ -15,8 +19,8 @@
 
 .form-search::after {
   display: block;
-  clear: both;
   content: "";
+  clear: both;
 }
 
 .form-search__input {
@@ -35,14 +39,14 @@
 
 .header::after {
   display: block;
-  clear: both;
   content: "";
+  clear: both;
 }
 
 .header-box::after {
   display: block;
-  clear: both;
   content: "";
+  clear: both;
 }
 
 .header-box > div {
@@ -51,8 +55,8 @@
 
 .header-box__logo::after {
   display: block;
-  clear: both;
   content: "";
+  clear: both;
 }
 
 .header-box__item {
@@ -92,8 +96,8 @@
 
 .header-nav-button-inn::after {
   display: block;
-  clear: both;
   content: "";
+  clear: both;
 }
 
 .header-nav__link span {
@@ -115,8 +119,8 @@
 
 .setting-form-wrap::after {
   display: block;
-  clear: both;
   content: "";
+  clear: both;
 }
 
 .setting-form-checkbox {
@@ -131,10 +135,14 @@
   color: #5e6167;
 }
 
+.menu-left-more__button {
+  margin-bottom: -9px;
+}
+
 .menu-horizontal__list::after {
   display: block;
-  clear: both;
   content: "";
+  clear: both;
 }
 
 .menu-horizontal__box {
@@ -149,8 +157,8 @@
 
 .header.scroll .header-info::after {
   display: block;
-  clear: both;
   content: "";
+  clear: both;
 }
 
 .header.scroll .header-info__time {
@@ -182,8 +190,8 @@
 
 .card-links-wrap::after {
   display: block;
-  clear: both;
   content: "";
+  clear: both;
 }
 
 .card-links__img {
@@ -222,8 +230,8 @@
 
 .form-checkbox::after {
   display: block;
-  clear: both;
   content: "";
+  clear: both;
 }
 
 .form-checkbox__label {
@@ -239,8 +247,8 @@
 
 .form__box_flex::after {
   display: block;
-  clear: both;
   content: "";
+  clear: both;
 }
 
 .card {
@@ -249,8 +257,8 @@
 
 .widget-content::after {
   display: block;
-  clear: both;
   content: "";
+  clear: both;
 }
 
 .widget-content__left,
@@ -265,8 +273,8 @@
 
 .widget-text_small::after {
   display: block;
-  clear: both;
   content: "";
+  clear: both;
 }
 
 .widget-text_small p {

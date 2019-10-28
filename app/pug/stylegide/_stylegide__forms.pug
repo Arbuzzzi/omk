@@ -13,7 +13,7 @@
 				label.form-label.form-label_special(for="formSubject") Тема
 				input#formSubject.form__input(type="text", placeholder="Введите тему обращения")
 			.form__box.text-right
-			#formMoreInputs.form__group
+			#form-more-inputs.form__group
 				.form__box
 					label.form-label(for="formFulName")
 						span Ф.И.О.
@@ -27,7 +27,7 @@
 				.form__box.form__box_small
 					label.form-label(for="formEmail1")
 						span Email
-					input#formEmail1.form__input.success(type="email", placeholder="Введите ваш Email")
+					input#formEmail1.form__input.valid(type="email", placeholder="Введите ваш Email")
 
 				.form__box.form__box_small
 					label.form-label(for="formEmail2")
@@ -50,7 +50,7 @@
 
 					label.form-label.form-label_slim(for="formEmailCopy")
 						span Дополнительный Email (необяз.):
-						input#formEmailCopy.form__input.form__input_slim.success(type="email", placeholder="konstantinopolskiy.k@yandex.ru")
+						input#formEmailCopy.form__input.form__input_slim.valid(type="email", placeholder="konstantinopolskiy.k@yandex.ru")
 				.form__buttonbox
 					button.button.form__button(type="submit") Отправить
 			.form__box.form__box_flex

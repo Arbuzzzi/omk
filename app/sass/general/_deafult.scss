@@ -46,7 +46,10 @@ button, input, optgroup, select, textarea {
 	// font-family: 'Gotham Pro', Arial, sans-serif;
 	// transition: 0.5s;
 }
-
+//html {
+//	overflow-x: hidden;
+//	overflow-y: auto;
+//}
 body {
 	font-size: 16px;
 	font-family: 'Roboto', sans-serif;
@@ -56,18 +59,24 @@ body {
   line-height: normal;
 	&.modal-open {
 		.header {
-			//transform: translateX(-8px);
+			transition: none !important;
+			&:before {
+				margin-left: -8px;
+				transition: none !important;
+				@include md-block {
+					margin-left: 0;
+					//transform: none;
+				}
+			}
 
 			@media (min-width: 768px) {
-				//padding-right: 0px !important;
-			}
-			@include md-block {
-				//transform: none;
 			}
 		}
 	}
 }
-
+.container {
+	min-width: 290px;
+}
 img{
 	max-width: 100%;
 }
@@ -308,7 +317,8 @@ h6, .h6,
 		color: #a5a6aa;
 		transition: 0.3s;
 		@include md-block {
-			font-size: 10px;
+			font-size: 13px;
+			vertical-align: baseline;
 		}
 		&:first-child {
 			margin-left: 5px;
@@ -398,10 +408,30 @@ section, .section {
 .breadcrumb {
   display: block;
   margin: 0;
-  padding: 15px 0 15px;
+  padding: 15px 0 0;
+	background-color: $light-color;
+	transition: 0.3s;
+	opacity: 0;
 	@include clearfix;
+	&.show {
+		display: block;
+		opacity: 1;
+	}
 	&-group {
 		float: left;
+		color: #bcbdc0;
+		white-space: nowrap;
+		overflow: hidden;
+		direction: rtl;
+		text-overflow: ellipsis;
+		@include xs-block {
+			max-width: 100%;
+		}
+	}
+	&-back {
+		@include xs-block {
+			display: none;
+		}
 	}
 	&__link {
 		color: #bcbdc0;
@@ -451,14 +481,43 @@ section, .section {
 *.fixed {
 	position: fixed;
 }
+$tooltip-offset: -30px;
+@mixin bsTooltip($direction) {
+	&.bs-tooltip-#{$direction},
+	&.bs-tooltip-auto[x-placement^="#{$direction}"] {
+		@content;
+	}
+}
+@mixin bsTooltipArrow($direction) {
+	&.bs-tooltip-#{$direction} .arrow:before,
+	&.bs-tooltip-auto[x-placement^="#{$direction}"] .arrow:before {
+		@content;
+	}
+}
 .tooltip {
 	z-index: 110000;
+	&_light {
+		width: 200px;
+		background-color: #FBFBFB;
+		border: 1px solid #dddee0 !important;
+		border-radius: 5px;
+		text-align: left;
+		padding: 10px !important;
+		color: #000000;
+		font-size: 14px !important;
+		line-height: 1.4 !important;
+		* {
+			font-size: inherit !important;
+			line-height: inherit !important;
+		}
+	}
 }
 .tooltip-inner {
+	padding: 10px;
 	p {
 		text-align: left;
-		
 	}
+
 }
 .hashtag {
 	float: left;
@@ -470,6 +529,7 @@ section, .section {
 	}
 	@include xs-block {
 		float: right;
+		font-size: 16px;
 	}
 }
 .logo-wrap {

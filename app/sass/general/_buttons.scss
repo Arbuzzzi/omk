@@ -17,14 +17,17 @@
 		display: inline-block;
 		font-size: 12px;
 		@include md-block {
-			font-size: 9px;
-			max-height: 10px;
-			overflow: hidden;
+			font-size: 10px;
+			margin-bottom: 5px;
+		}
+		@include xs-block {
+			font-size: 14px;
 		}
 	}
 	&-deafult {
 		color: #008acc;
 		text-decoration: underline;
+		display: inline-block;
 		@include hover {
 			text-decoration: none;
 		}
@@ -70,6 +73,7 @@
 
 
 .link-nav {
+	display: block;
 	color: $thin-color;
 	letter-spacing: 0.2px;
 	font-size: 12px;
@@ -116,7 +120,8 @@
 		color: darken(#008330, 10);
 	}
 	@include md-block {
-		font-size: 9px;
+		font-size: 11px;
+		margin-bottom: 5px;
 	}
 }
 .page-link {
@@ -251,7 +256,7 @@
 	}
 }
 
-.rollUp {
+.roll-up {
 	position: absolute;
 	top: -15px;
 	right: -15px;
@@ -407,6 +412,7 @@
 		white-space: nowrap;
 		text-overflow: ellipsis;
 		font-size: 8px;
+		line-height: 1.2;
 	}
 	@include xs-block {
 		font-size: 10px;
@@ -506,6 +512,11 @@
 			min-width: 148px;
 			font-size: 9px;
 		}
+		@include xs-block {
+			min-width: 135px;
+			padding: 12px 10px;
+			margin-bottom: 11px;
+		}
 		&-danger {
 			border-color: $special-color;
 			@include hover {
@@ -528,7 +539,10 @@
 		min-width: 100px;
 	}
 	@include md-block {
-		min-width: 80px;
+		min-width: 75px;
+	}
+	@include sm-block {
+		min-width: 95px;
 	}
 }
 .button-width-170 {
@@ -545,4 +559,18 @@
 .button-border {
 	border: 1px solid #dddee0;
 	background-color: #f4f5f5;
+}
+.change-profile {
+	&.xs-hide {
+		display: block;
+		@include xs-block {
+			display: none;
+		}
+	}
+	&.xs-show {
+		display: none;
+		@include xs-block {
+			display: block;
+		}
+	}
 }

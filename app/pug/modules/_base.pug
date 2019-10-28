@@ -9,10 +9,11 @@ html(lang='ru')
 		meta(charset='utf-8')
 		meta(name='viewport', content='width=device-width, initial-scale=1, shrink-to-fit=no')
 		//meta(name='viewport', content='width=device-width')
+		//+ie('if lte IE 9', '<meta name="viewport" content="width=1230px">')
+
 		meta(name='description', content='')
 		meta(name='author', content='')
 		link(rel='stylesheet', href='css/normalize.css')
-		//- link(rel='stylesheet', href='css/bootstrap/bootstrap-grid.css')
 		link(rel='stylesheet', href='css/bootstrap/bootstrap.css')
 		link(rel='stylesheet', href='jquery-ui-1.12.1.custom/jquery-ui.structure.min.css')
 		link(rel='stylesheet', href='jquery-ui-1.12.1.custom/jquery-ui.min.css')
@@ -34,9 +35,55 @@ html(lang='ru')
 						.aside-wrap#aside
 							include _aside
 					.col-12.col-md-9
+						nav.menu-horizontal
+							ul.menu-horizontal__list
+								li.menu-horizontal__box
+									a.menu-horizontal__item(href='#')
+										span.menu-horizontal__text НОВОСТИ ОМК
+								li.menu-horizontal__box
+									a.menu-horizontal__item.current(href='#')
+										span.menu-horizontal__text РЕГИОНАЛЬНЫЕ НОВОСТИ
+								li.menu-horizontal__box
+									a.menu-horizontal__item(href='#')
+										span.menu-horizontal__text ПС ОМК
+								li.menu-horizontal__box
+									a.menu-horizontal__item(href='#')
+										span.menu-horizontal__text НОВОСТИ ПОДРАЗДЕЛЕНИЙ
+								li.menu-horizontal__box
+									a.menu-horizontal__item(href='#')
+										span.menu-horizontal__text НОВОСТИ ФОНДА
+								li.menu-horizontal__box.menu-horizontal__box-more
+									.menu-horizontal__item.menu-horizontal__item-more
+										.nav-more.btn-group
+											button.button.header-button.button-more(type='button', data-toggle='dropdown', aria-haspopup='true', aria-expanded='false')
+												| Ещё
+												i.icon-arrow-down
+											ul.nav-more-list.dropdown-menu.dropdown-menu-right
+												li.nav-more-list__item
+													a.link.link-nav.nav-more-list__link(href='#') Блоги
+												li.nav-more-list__item
+													a.link.link-nav.nav-more-list__link(href='#') Газпром новости
+												li.nav-more-list__item
+													a.link.link-nav.nav-more-list__link(href='#') SAP новости
+												li.nav-more-list__item
+													a.link.link-nav.nav-more-list__link(href='#') Производственные новости
+												li.nav-more-list__item
+													a.link.link-nav.nav-more-list__link(href='#') Системы Всех новостей
+												li.nav-more-list__item
+													a.link.link-nav.nav-more-list__link(href='#') SAP SSH
+												li.nav-more-list__item
+													a.link.link-nav.nav-more-list__link(href='#') Ширина под самое длинное название с учетом Bold
+						.breadcrumb-wrap
+							.breadcrumb.show.d-none.d-xl-block
+								.breadcrumb-group
+									a.breadcrumb__link(href='#') Главная
+									a.breadcrumb__link(href='#') Новости ОМК
+									a.breadcrumb__link(href='#') Производственная Система
+								.breadcrumb-back
+									a.breadcrumb__link(href='#') &lt;&lt;Назад
 						.content-group#content
 							//- block vars
-							
+
 							block content
 								- var eventDate = '';
 								- var pageTitle = '';
@@ -47,31 +94,33 @@ html(lang='ru')
 			.container
 				.row
 					.col-12
-						button#btnUp.button.button-up
+						button#btn-up.button.button-up
 							i.icon-arrow-down
 		include ../modals/_modal
 		include ../modals/_modal-content-slider
-		// /.container
-		// /.footer
 		// jQuery
 		script(src='js/libs/jquery.min.js')
+
 		// jQuery-UI
 		script(src='jquery-ui-1.12.1.custom/jquery-ui.min.js')
 		script(src='jquery-ui-1.12.1.custom/datepicker-ru.js')
-		//script(src='jquery-ui-1.12.1.custom/datepicker.extension.range.min.js')
 		script(src='jquery-ui-1.12.1.custom/jquery.ui.touch-punch.min.js')
-		script(src='js/libs/jquery.dotdotdot.js')
-		// slick
+		script.
+			$.widget.bridge('uibutton', $.ui.button);
+			$.widget.bridge('uitooltip', $.ui.tooltip);
 		script(src='slick/slick.min.js')
+
 		// Bootstrap
-		//+ie('if ! IE 9', '<script src="js/libs/bootstrap/bootstrap.bundle.min.js"></script>')
 		script(src='js/libs/bootstrap/bootstrap.bundle.min.js')
-		script(src='js/libs/jquery.actual.min.js')
+		script(src='js/libs/bootstrap-modal-ios.js')
+
 		// Валидация
 		script(src='js/libs/validate/jquery.validate.min.js')
 		script(src='js/libs/jquery.maskedinput.min.js')
-		script(src='js/libs/bootstrap-modal-ios.js')
+		script(src='js/libs/getbrowser/getBrowser.js')
+
 		// main script
+		script(src='js/libs/jquery.actual.min.js')
 		script(src='js/main/main.js'+version)
 
 		+ie('if lte IE 9', '<link href="ie9/css/bootstrap-ie9.css" rel="stylesheet" />')

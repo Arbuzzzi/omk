@@ -75,6 +75,7 @@
 		margin: 0;
 
 		color: $dark-color;
+		line-height: normal;
 		font-size: 0;
 		font-weight: 400;
 		text-align: center;
@@ -244,6 +245,7 @@
 	display: none;
 	height: 168px;
 	margin-top: -5px;
+	overflow: hidden;
 	@include md-block {
 		height: 100px;
 	}

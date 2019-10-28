@@ -20,7 +20,7 @@ block content
 				.content-text
 					h3 Главный инженер отделения трубопрокатного цеха
 						span.sub (Подразделение отдела № 1023)
-
+					a.change-profile.link-danger.link-small.xs-show(href="#") Редактировать профиль
 					table.profile-info.margin-bottom-lg-15.margin-bottom-10
 						tbody
 							tr
@@ -28,10 +28,10 @@ block content
 									p
 										span.light Телефон:
 								td
-									p +7&nbsp;(83&nbsp;177)&nbsp;3-76-05&nbsp;доб.&nbsp;4526
+									p +7&nbsp;(83&nbsp;177)&nbsp;3&#8209;76&#8209;05 доб.&nbsp;4526
 								td.text-right
 									p
-										a.link-danger.link-small(href="#") Редактировать профиль
+										a.change-profile.xs-hide.link-danger.link-small(href="#") Редактировать профиль
 							tr
 								td.text-right
 									p
@@ -94,7 +94,7 @@ block content
 				.card-links__img
 					.card-links__imgbox
 						img(src="img/icon/save.svg")
-				.card-links__items
+				.card-links__items.card-links__items_small-offset
 					- var items = [{type: 'Блог (25.10.19 от Русланова Михаила)', content: '"Почему так сильно перестроили расписание?"'}, {type: 'Новость от 08.02.19 (Региональные новости)', content: 'Более 10,6 млн тонн рулонного проката произвел литейно-прокатный комплек...'}, {type: 'Новость от 08.02.19 (Новости ОМК)', content: 'Применяемые технологические методы изготовления и ремонта'}, {type: 'Статья (Библиотека > Архив > Основные положения)', content: 'Типы производства по ГОСТ 14.004-83'}, {type: 'Документ (Компания > Конституция)', content: 'Конституция ОМК'}];
 					each item in items
 						.card-links__item
@@ -104,7 +104,7 @@ block content
 								.card-links__right
 									a.card-links__lnk.card-links__lnk_small.link-special.color-thin(href="") Удалить
 							.card-links__lnkbox
-								a.card-links__lnk.text-ddd.color-thin(href="")= item.content
+								a.card-links__lnk.mobile-dark(href="")= item.content
 	include modules/_main-icons
 	.row
 		.col-12
@@ -119,7 +119,7 @@ block content
 			- var n = 0;
 			while n < 5
 				- var n = n + 1;
-				.col-6.col-sm-6.col-md-4
+				.col-10.col-sm-6.col-md-4.m-auto.m-sm-0
 					.card-person.margin-bottom-15
 						.card-person__imgbox(style="background-image: url(img/widget-img-06.jpg)")
 							img(src="img/widget-img-06.jpg" alt="image")
@@ -129,7 +129,7 @@ block content
 									strong Еремина
 									strong Наталья
 									strong Константиновна
-									| Председатель правления ОМК
+								p Председатель правления ОМК
 							button.button.button-border.button-width-142.button-height-30 Поздравить
 
 	.row
@@ -145,23 +145,23 @@ block content
 						p
 		.col-12.col-sm-8
 			.card
-				.card__text.text-ddd-210
+				.card__text.card__preview_sm
 					p
 						| Литейно-прокатный комплекс Выксунского металлургического завода (АО «ВМЗ», Нижегородская область, входит в состав Объединенной металлургической компании, АО «ОМК») за 10 лет работы произвел более 10,6 млн тонн горячекатаного рулонного проката, став важным звеном в полностью отечественной цепочке производства труб для нефтегазового комплекса.
 
 	.row
 		.col-12.col-sm-4
 			.card
-				a.card-third__imgbox.card__imgbox(href="#", style='background-image: url(img/block-img-13.jpg);')
+				a.card__imgbox.card__imgbox_sm(href="#", style='background-image: url(img/block-img-13.jpg);')
 					.card-warning-text.hide
 						p
 		.col-12.col-sm-8
 			.card
-				.card__text.text-ddd-210
+				.card__text.card__preview_sm
 					p
 						| Литейно-прокатный комплекс Выксунского металлургического завода (АО «ВМЗ», Нижегородская область, входит в состав Объединенной металлургической компании, АО «ОМК») за 10 лет работы произвел более 10,6 млн тонн горячекатаного рулонного проката, став важным звеном в полностью отечественной цепочке производства труб для нефтегазового комплекса...
 					p
-						| Литейно-прокатный комплекс - уникальное для России предприятие, в котором в единый технологический процесс совмещены процесс
+						| Литейно-прокатный комплекс - уникальное для...
 					a.button.card__more(href='#') Читать далее
 
 

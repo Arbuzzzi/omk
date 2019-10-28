@@ -1,10 +1,12 @@
+- var slides;
+
 mixin slideModern ()
 	.card-full-slider__item.card-modern-slider__item
 		.card-modern__imgbox.card__imgbox(style='background-image: url(img/img-block-full-04.jpg);')
 			img(src="img/article-img-01.jpg", alt="image")
 			.card-modern__inn
 				.row
-					.col-12.col-md-7.offset-md-5
+					.col-12.col-sm-7.offset-sm-5
 						.card__info.card-modern__info
 							.card-modern__content.card-modern__content_bottom
 								.content-title
@@ -34,8 +36,9 @@ mixin slideModern ()
 
 	.card.card-full.card-full-slider.card-modern
 		.card-full-slider-wrap.card-wrap.card-full-wrap.card-modern-slider-wrap
-			+slideModern()
-			+slideModern()
-			+slideModern()
-			+slideModern()
-			+slideModern()
+			if slides === undefined || text === false
+				- slides = 4
+
+			while slides > 0
+				- slides--
+				+slideModern()

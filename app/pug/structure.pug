@@ -28,7 +28,7 @@ block vars
 							img(src="img/logo-text.svg", alt="logo text")
 				.col-12.col-sm-9.col-lg-8
 					.card
-						.card-text.font-size-10.font-size-lg-14
+						.card-text.font-size-12.font-size-lg-14
 							p
 								strong Объединенная металлургическая компания (АО «ОМК»)
 								| – один из крупнейших российских производителей металлопродукции для ведущих энергетических, транспортных и промышленных компаний. ОМК — комплексный поставщик продукции для добычи и транспортировки газа и нефти. Выпускает трубы различного назначения, железнодорожные колеса, листовой прокат, соединительные детали трубопроводов, трубопроводную арматуру, рессоры.
@@ -47,11 +47,11 @@ block vars
 						.modal-subtitle
 							p= user.job
 					.modal-body
-						.row
-							.col-sm-3
+						.row.d-block.d-sm-flex
+							.col-5.col-sm-3.float-left
 								.modal-imgbox(style="background-image: url(" + user.photo + ");")
 									img(src=user.photo alt="user-photo")
-							.col-sm-9
+							.col-12.col-sm-9
 								.modal-text
 									p #{user.name + ' ' + user.surname} — председатель совета директоров ОМК с июля 2017 года.
 
@@ -63,30 +63,58 @@ block vars
 								.modal-text
 									h3 СЕКРЕТАРИ
 								.modal-table
-									.modal-table__line
-										.modal-table__col
-											p Александра Валерьевна
-											p Константинова
-										.modal-table__col
-											p +7 (495) 423-32-52 доб. 2553
-									.modal-table__line
-										.modal-table__col
-											p Александра Валерьевна
-											p Константинова
-										.modal-table__col
-											p +7 (495) 423-32-52 доб. 2553
-									.modal-table__line
-										.modal-table__col
-											p Александра Валерьевна
-											p Константинова
-										.modal-table__col
-											p +7 (495) 423-32-52 доб. 2553
-									.modal-table__line
-										.modal-table__col
-											p Александра Валерьевна
-											p Константинова
-										.modal-table__col
-											p +7 (495) 423-32-52 доб. 2553
+									.table-inn
+										table.table.table-thin-head
+											tbody
+												tr
+													td
+														p Александра Валерьевна
+														p Константинова
+													td
+														p +7&nbsp;(495)&nbsp;423&#8209;32&#8209;52 доб.&nbsp;2553
+												tr
+													td
+														p Александра Валерьевна
+														p Константинова
+													td
+														p +7&nbsp;(495)&nbsp;423&#8209;32&#8209;52 доб.&nbsp;2553
+												tr
+													td
+														p Александра Валерьевна
+														p Константинова
+													td
+														p +7&nbsp;(495)&nbsp;423&#8209;32&#8209;52 доб.&nbsp;2553
+												tr
+													td
+														p Александра Валерьевна
+														p Константинова
+													td
+														p +7&nbsp;(495)&nbsp;423&#8209;32&#8209;52 доб.&nbsp;2553
+
+									//.modal-table__line
+									//	.modal-table__col
+									//		p Александра Валерьевна
+									//		p Константинова
+									//	.modal-table__col
+									//		p +7 (495) 423-32-52 доб. 2553
+									//.modal-table__line
+									//	.modal-table__col
+									//		p Александра Валерьевна
+									//		p Константинова
+									//	.modal-table__col
+									//		p +7 (495) 423-32-52 доб. 2553
+									//.modal-table__line
+									//	.modal-table__col
+									//		p Александра Валерьевна
+									//		p Константинова
+									//	.modal-table__col
+									//		p +7 (495) 423-32-52 доб. 2553
+									//.modal-table__line
+									//	.modal-table__col
+									//		p Александра Валерьевна
+									//		p Константинова
+									//	.modal-table__col
+									//		p +7 (495) 423-32-52 доб. 2553
 
 block content
 	.row
@@ -217,7 +245,7 @@ block content
 									img(src="img/logo-text.svg", alt="logo text")
 						.col-12.col-sm-8
 							.card
-								.card-text.font-size-10.font-size-lg-14
+								.card-text.font-size-12.font-size-lg-14
 									p
 										strong Объединенная металлургическая компания (АО «ОМК»)
 										| – один из крупнейших российских производителей металлопродукции для ведущих энергетических, транспортных и промышленных компаний. ОМК — комплексный поставщик продукции для добычи и транспортировки газа и нефти. Выпускает трубы различного назначения, железнодорожные колеса, листовой прокат, соединительные детали трубопроводов, трубопроводную арматуру, рессоры.

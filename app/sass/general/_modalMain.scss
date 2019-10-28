@@ -87,6 +87,9 @@
 			// min-height: 700px;
 			overflow: hidden;
 			font-size: 0;
+			//@include md-block {
+			//	padding: 0 7.5px;
+			//}
 			.card-image {
 				border-radius: 0;
 				height: 700px;
@@ -95,7 +98,7 @@
 				// height: 100%;
 				object-fit: cover;
 				@include md-block {
-					height: 205px;
+					height: 323px;
 				}
 			}
 		}
@@ -103,12 +106,18 @@
 			// width: 20px;
 			&__left {
 				left: 0;
+				@include md-block {
+					left: 0;
+				}
 				@include xs-block {
 					left: 0;
 				}
 			}
 			&__right {
 				right: 0;
+				@include md-block {
+					right: 0;
+				}
 				@include xs-block {
 					right: 0;
 				}
@@ -120,11 +129,17 @@
 			}
 			.post-info {
 				display: block;
+				@include md-block {
+					padding: 6px 22px 6px;
+				}
 			}
 		}
 		&-bottom {
 			.modal-main-slider-wrap {
 				padding: 0 25px;
+				@include md-block {
+					padding: 0 10px;
+				}
 			}
 			.modal-main-slider__item {
 				padding: 0 5px;
@@ -140,7 +155,7 @@
 				overflow: hidden;
 				cursor: pointer;
 				@include lg-block {
-					height: 85px;
+					height: 70px;
 				}
 				img {
 					width: 100%;

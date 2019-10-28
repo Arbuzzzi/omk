@@ -27,6 +27,18 @@
 			color: $light-color;
 		}
 	}
+	&.mobile-hide {
+		display: block;
+		@include sm-block {
+			display: none;
+		}
+	}
+	&.mobile-show {
+		display: none;
+		@include sm-block {
+			display: block;
+		}
+	}
 	&-wrap {
 		position: relative;
 		display: flex;
@@ -46,6 +58,18 @@
 			z-index: 1;
 			height: 100%;
 			width: 100%;
+		}
+		&.mobile-hide {
+			display: block;
+			@include sm-block {
+				display: none;
+			}
+		}
+		&.mobile-show {
+			display: none;
+			@include sm-block {
+				display: block;
+			}
 		}
 	}
 	&_slim {
@@ -117,6 +141,9 @@
 		}
 		@include md-block {
 			min-height: 125px;
+		}
+		@include xs-block {
+			min-height: 180px;
 		}
 		&[data-toggle="modal"] {
 			cursor: pointer;
@@ -333,6 +360,51 @@
 			}
 		}
 	}
+	&__preview {
+		&_xl {
+			min-height: 360px;
+			@include md-block {
+				min-height: 180px;
+			}
+		}
+
+		&_lg {
+			min-height: 300px;
+			@include md-block {
+				min-height: 165px;
+			}
+		}
+
+		&_md {
+			min-height: 280px;
+			@include md-block {
+				min-height: 140px;
+			}
+		}
+
+		&_sm {
+			min-height: 210px;
+			@include lg-block {
+				min-height: 180px;
+			}
+			@include md-block {
+				min-height: 125px;
+			}
+		}
+
+		&_xs {
+			min-height: 135px;
+			@include lg-block {
+				min-height: 120px;
+			}
+			@include md-block {
+				min-height: 80px;
+			}
+			@include xs-block {
+				min-height: 180px;
+			}
+		}
+	}
 	&__info {
 		padding: 15px 30px 30px;
 		&_xl{
@@ -367,21 +439,24 @@
 	}
 	&__title {
 		min-height: 44px;
-		max-height: 55px;
+		//max-height: 55px;
 		margin-bottom: 15px;
 		font-family: "PT Serif", serif;
 		font-size: 17px;
+		@include lg-block {
+			font-size: 15px;
+		}
 		@include md-block {
-			margin-bottom: 10px;
+			margin-bottom: 5px;
 			min-height: 30px;
-			max-height: 30px;
+			//max-height: 30px;
 			font-size: 9px;
 
 
 		}
 		@include xs-block {
-			max-height: 67px;
-			font-size: 20px;
+			//max-height: 67px;
+			font-size: 18px;
 			min-height: auto;
 		}
 		&>h1, &>h2, &>h3, &>h4, &>h5 {
@@ -397,7 +472,7 @@
 				text-decoration: underline;
 			}
 			@include md-block {
-				max-height: 30px;
+				//max-height: 30px;
 			}
 		}
 
@@ -410,25 +485,20 @@
 		font-family: "PT Serif", serif;
 		font-size: 16px;
 		font-weight: 400;
-		line-height: 1.4;
-		&.text-ddd-135 {
-			max-height: 135px;
-			@include md-block {
-				max-height: 110px;
-			}
-			@include xs-block {
-				max-height: 135px;
-			}
-		}
+		line-height: 1.21;
 
 		p {
 			font-size: 17px;
 			margin-bottom: 15px;
+			@include lg-block {
+				font-size: 14px;
+			}
 			@include md-block {
-				font-size: 9px;
+				font-size: 10px;
+				margin-bottom: 5px;
 			}
 			@include xs-block {
-				font-size: 12px;
+				font-size: 16px;
 			}
 			&:last-child {
 				margin-bottom: 0;
@@ -442,6 +512,20 @@
 			text-decoration: none;
 			@include hover {
 				text-decoration: underline;
+			}
+		}
+		&_ads {
+			word-wrap: break-word;
+			min-height: 132px;
+
+			@include lg-block {
+				min-height: 120px;
+			}
+			@include md-block {
+				min-height: 80px;
+			}
+			@include xs-block {
+				min-height: auto;
 			}
 		}
 		&_mobile {
@@ -476,10 +560,11 @@
 		font-size: 12px;
 		font-weight: 400;
 		@include md-block {
-			font-size: 8px;
+			font-size: 10px;
 		}
 		@include xs-block {
-			font-size: 12px;
+			font-size: 16px;
+			max-width: 200px;
 		}
 		&_light {
 			color: $light-color;
@@ -500,6 +585,7 @@
 		@include md-block {
 			@include pdLR(25px);
 			font-size: 10px;
+			max-width: 127px;
 		}
 	}
 
@@ -511,11 +597,21 @@
 		margin-bottom: 15px;
 		padding-right: 15px;
 		box-sizing: content-box;
+		@include lg-block {
+			padding-right: 10px;
+		}
 		@include md-block {
 			padding-right: 8px;
+			margin-bottom: 8px;
 		}
 		&:nth-child(5n) {
 			padding-right: 0;
+			@include lg-block {
+				padding-right: 10px;
+			}
+			@include md-block {
+				padding-right: 8px;
+			}
 			@include xs-block {
 				padding-right: 8px;
 			}
@@ -532,7 +628,7 @@
 			padding: 15px;
 			text-align: center;
 			@include md-block {
-				width: 96px;
+				width: 94px;
 				height: 72px;
 				line-height: 36px;
 			}
@@ -579,8 +675,8 @@
 			padding-left: 15px;
 			padding-right: 15px;
 			@include md-block {
-				padding-left: -7.5px;
-				padding-right: -7.5px;
+				padding-left: 7.5px;
+				padding-right: 7.5px;
 			}
 		}
 		&-number {
@@ -595,11 +691,18 @@
 				font-family: "Roboto", sans-serif;
 				font-size: 14px;
 				font-weight: 400;
+				//letter-spacing: 2px;
 				@include md-block {
 					font-size: 8px;
 				}
 				@include xs-block {
 					font-size: 10px;
+				}
+				.slide-num {
+					cursor: pointer;
+					@include hover {
+						color: $light-color;
+					}
 				}
 				strong {
 					font-size: 18px;
@@ -750,8 +853,12 @@
 				height: 310px;
 				padding-left: 15px;
 			}
+			@include sm-block {
+				margin-left: auto;
+			}
 			@include xs-block {
 				height: 340px;
+				padding-right: 15px;
 			}
 		}
 		&__content {
@@ -766,6 +873,9 @@
 				padding-left: 0;
 				vertical-align: bottom;
 				max-width: 270px;
+			}
+			@include sm-block {
+				max-width: none;
 			}
 			@include xs-block {
 				padding-left: 5px;
@@ -782,7 +892,7 @@
 					font-size: 28px;
 				}
 				@include xs-block {
-					font-size: 20px;
+					font-size: 24px;
 				}
 				* {
 					font-size: inherit;
@@ -798,9 +908,14 @@
 				p {
 					margin-bottom: 15px;
 					font-weight: 400;
+					line-height: 1.4;
+					color: #d0d1d3;
 					@include md-block {
 						font-size: 10px;
 						margin-bottom: 10px;
+					}
+					@include xs-block {
+						font-size: 16px;
 					}
 				}
 			}
@@ -848,7 +963,10 @@
 					height: 100%;
 					border: 1px solid #dddee0;
 					border-radius: 5px;
-
+					@include md-block {
+						left: 7.5px;
+						right: 7.5px;
+					}
 				}
 			}
 		}
@@ -882,6 +1000,15 @@
 		&__text {
 			padding-top: 15px;
 			max-height: 305px;
+			@include sm-block {
+				margin-bottom: 6px;
+			}
+		}
+		&__title {
+			font-size: 22px;
+			@include lg-block {
+				font-size: 15px;
+			}
 		}
 
 		&-slider {
@@ -1023,8 +1150,10 @@
 				width: 8.33333%;
 			}
 			@include xs-block {
-				font-size: 10px;
 				padding: 6px;
+				margin-bottom: 5px;
+				width: 16.66666%;
+				font-size: 20px;
 			}
 		}
 		//table {
@@ -1166,6 +1295,9 @@
 				margin-bottom: 30px;
 				padding: 0;
 				border: none;
+				@include xs-block {
+					margin-bottom: 15px;
+				}
 				.close {
 					position: absolute;
 					top: -20px;
@@ -1188,9 +1320,12 @@
 				font-family: Roboto, sans-serif;
 				font-size: 22px;
 				font-weight: 500;
-				line-height: 17px;
+				line-height: 1.4;
 				@include fontInherit {
 					margin: 0;
+				}
+				@include xs-block {
+					margin-bottom: 5px;
 				}
 			}
 			&-subtitle {
@@ -1229,6 +1364,9 @@
 					font-family: Roboto, sans-serif;
 					font-size: 14px;
 					font-weight: 400;
+					@include xs-block {
+						margin-bottom: 6px;
+					}
 				}
 				h3 {
 					margin-bottom: 5px;
@@ -1241,19 +1379,27 @@
 				}
 			}
 			&-table {
-				&__line {
-					font-size: 0;
-					&:nth-child(2n) {
-						background-color: #f4f5f5;
+				td {
+					p {
+						min-width: 110px;
 					}
 				}
-				&__col {
-					display: inline-block;
-					width: 50%;
-					padding: 10px;
-					vertical-align: top;
-					font-size: 16px;
+				.table td:first-child, .table th:first-child {
+					 max-width: none;
 				}
+				//&__line {
+				//	font-size: 0;
+				//	&:nth-child(2n) {
+				//		background-color: #f4f5f5;
+				//	}
+				//}
+				//&__col {
+				//	display: inline-block;
+				//	width: 50%;
+				//	padding: 10px;
+				//	vertical-align: top;
+				//	font-size: 16px;
+				//}
 			}
 		}
 	}
@@ -1275,6 +1421,10 @@
 						padding-bottom: 4px;
 						background-color: #f4f5f5;
 						border-bottom: 1px solid #f4f5f5;
+						@include xs-block {
+							padding-top: 5px;
+							padding-bottom: 6px;
+						}
 					}
 				}
 			}
@@ -1287,7 +1437,8 @@
 				}
 				@include xs-block {
 					font-size: 8px;
-					@include pdLR(10px);
+					padding: 6px 12px;
+					//@include pdLR(12px);
 				}
 			}
 			&-tabs {
@@ -1352,11 +1503,11 @@
 		}
 		@include sm-block {
 			display: inline-block;
-			font-size: 16px;
-			max-width: 16px;
+			font-size: 22px;
+			max-width: 22px;
 		}
 		@include xs-block {
-			font-size: 12px;
+			//font-size: 12px;
 			//max-width: 12px;
 		}
 		i {
@@ -1366,6 +1517,18 @@
 	&__items {
 		width: 100%;
 		padding-left: 28px;
+		max-width: 85%;
+		@include md-block {
+			max-width: 100%;
+		}
+		@include sm-block {
+			padding-left: 50px;
+		}
+		&_small-offset {
+			@include sm-block {
+				padding-left: 15px;
+			}
+		}
 	}
 	&__item {
 		padding: 5px 10px;
@@ -1386,7 +1549,7 @@
 		margin-bottom: 5px;
 		@include clearfix;
 		@include md-block {
-			margin-bottom: 0;
+			margin-bottom: 5px;
 			font-size: 10px;
 		}
 	}
@@ -1398,9 +1561,16 @@
 		}
 		@include md-block {
 			width: 165px;
+			text-align: left;
 		}
 		@include sm-block {
 			width: 120px;
+		}
+		.card-links__lnk {
+			@include md-block {
+				width: 165px;
+				text-align: left;
+			}
 		}
 	}
 	&__right {
@@ -1433,6 +1603,14 @@
 			font-size: 10px;
 			line-height: 1.2;
 		}
+		//.card-links__lnk {
+		//	@include md-block {
+		//		color: #000000;
+		//		&.color-thin {
+		//			color: #a1a3a7;
+		//		}
+		//	}
+		//}
 		.link-icon-save {
 
 			position: absolute;
@@ -1451,6 +1629,11 @@
 			@include lg-block {
 				opacity: 1;
 				font-size: 14px;
+				top: 2px;
+			}
+			@include sm-block {
+				left: -20px;
+				top: 2px;
 			}
 			@include before('\e920') {
 				top: 50%;
@@ -1466,27 +1649,16 @@
 					left: 12px;
 					top: 3px;
 				}
-				//opacity: 0;
-				//transition: 0.4s;
+				@include xs-block {
+					font-size: 22px;
+				}
 			}
-
-			//&:before {
-			//	@include hover {
-			//		color: $special-color;
-			//	}
-			//}
-
 		}
 		@include hover {
 			.card-links__lnk {
-				//text-decoration: underline;
 			}
 			.link-icon-save {
 				opacity: 1;
-				//&:before {
-				//	opacity: 1;
-				//	left: 0;
-				//}
 			}
 		}
 
@@ -1502,14 +1674,18 @@
 		height: auto;
 		min-height: auto;
 		@include lg-block {
-			font-size: 12px;
+			font-size: 17px;
+			line-height: 1.2;
 		}
-		@include md-block {
-			font-size: 11px;
+		&.mobile-dark {
+			@include md-block {
+				color: #000000;
+			}
 		}
 
 		@include sm-block {
-			font-size: 10px;
+			font-size: 16px;
+
 		}
 
 		&.color-thin {
@@ -1538,7 +1714,7 @@
 				font-size: 10px;
 			}
 			@include sm-block {
-				font-size: 8px;
+				font-size: 12px;
 			}
 		}
 	}
@@ -1560,6 +1736,11 @@
 			height: 85px;
 			margin-right: 10px;
 		}
+		@include xs-block {
+			width: 110px;
+			height: 125px;
+			margin-right: 15px;
+		}
 
 		img {
 			display: none;
@@ -1571,8 +1752,11 @@
 		justify-content: flex-start;
 		min-height: 130px;
 		@include md-block {
-		    min-height: auto;
+			min-height: auto;
 			max-width: 90px;
+		}
+		@include xs-block {
+			max-width: 110px;
 		}
 		button {
 			margin-top: auto;
@@ -1588,10 +1772,17 @@
 		line-height: 14px;
 		@include md-block {
 			font-size: 8px;
-			line-height: 1.4;
-			margin-bottom: 10px;
+			line-height: 1.3;
+			margin-bottom: 5px;
+			@include xs-block {
+				font-size: 14px;
+			}
 		}
 		p {
+			margin-bottom: 10px;
+			@include md-block {
+				margin-bottom: 5px;
+			}
 			strong {
 				display: block;
 				font-weight: 700;
